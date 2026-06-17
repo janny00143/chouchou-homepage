@@ -55,7 +55,7 @@ a{color:inherit}
 const WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
 const UNLOCK_CODE="ZHOUZHOU";
 const LINE="https://lin.ee/RscRWCp";
-const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。請閱讀這份日文物件資料，整理成繁體中文。請只輸出 JSON：{"物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年數":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"其他":{"修繕紀錄":"","注意事項":""},"補充":""} 規則：全部繁體中文、不要出現任何日文字；唯一例外是地名車站名店家名物件名稱可保留原文；房間格局用 1LDK 2DK 這種；面積用㎡並換算坪；金額換算好懂（3,980万円→3,980萬日圓）；建築構造翻中文（鋼筋混凝土/鋼骨造/木造），不用RC/SRC；沒寫的填「圖面未標示」；補充放其他重點簡短條列。`;
+const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。請閱讀這份日文物件資料，整理成繁體中文。請只輸出 JSON：{"物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年數":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"其他":{"修繕紀錄":"","注意事項":""},"補充":""} 規則：全部繁體中文、不要出現任何日文字；唯一例外是地名車站名店家名物件名稱可保留原文；房間格局用 1LDK 2DK 這種；面積用㎡並換算坪；金額換算好懂（3,980万円→3,980萬日圓）；建築構造翻中文（鋼筋混凝土/鋼骨造/木造），不用RC/SRC；沒寫的填「圖面未標示」；每個欄位都要簡短一行、不要長篇；補充最多3點、每點15字內，不要逐條翻譯整份改裝清單；整份內容務必精簡。`;
 document.getElementById('lineGate').href=LINE;
 let file=null,preview=null;
 function unlock(){if(document.getElementById('code').value.trim().toUpperCase()===UNLOCK_CODE.toUpperCase()){document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{document.getElementById('codeErr').style.display='block';}}
