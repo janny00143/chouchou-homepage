@@ -1,4 +1,4 @@
-<!-- 周周・日本房產翻譯機（穩定版・分物件類型）。GitHub 上 translate.html 整份取代。 -->
+<!-- 周周・日本房產翻譯機。GitHub 上 translate.html 整份取代。 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>日本房產翻譯機 | 周周</title>
@@ -23,7 +23,7 @@
 .badge{display:inline-block;font-size:13px;font-weight:500;color:#fff;background:var(--rose);padding:2px 12px;border-radius:999px;margin-bottom:8px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
 .stat{border-radius:12px;padding:12px;text-align:center;background:#f5f5f4}.stat.acc{background:#fff1f2}.stat .k{font-size:12px;color:var(--mut);margin-bottom:3px}.stat .v{font-weight:700}.stat.acc .v{color:var(--rose);font-size:18px}
-.row{display:flex;gap:12px;padding:8px 0;font-size:14px;border-top:1px solid #f5f5f4}.row:first-of-type{border-top:none}.row .k{color:var(--mut);width:80px;flex:0 0 auto}
+.row{display:flex;gap:12px;padding:8px 0;font-size:14px;border-top:1px solid #f5f5f4}.row:first-of-type{border-top:none}.row .k{color:var(--mut);width:90px;flex:0 0 auto}
 </style>
 
 <div class="wrap">
@@ -55,7 +55,7 @@
 const WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
 const UNLOCK_CODE="ZHOUZHOU";
 const LINE="https://lin.ee/RscRWCp";
-const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。閱讀這份日文物件資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","土地面積":"","建物面積":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年數":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"其他":{"修繕紀錄":"","注意事項":""},"補充":""} 規則：全部繁體中文、不要任何日文字（地名車站店家物件名稱可保留原文）。物件類型判斷為「公寓」「一戶建」「土地」或「其他」。公寓：填專有面積與陽台面積。一戶建：填土地面積與建物面積。土地：填土地面積，房間格局與建物欄位填「圖面未標示」。面積用㎡並換算坪；金額換算好懂（3,980万円→3,980萬日圓）；建築構造翻中文（鋼筋混凝土/鋼骨造/木造），不用RC/SRC；沒寫的填「圖面未標示」；每欄簡短一行；補充最多3點、每點15字內，務必精簡。`;
+const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。閱讀這份日文物件資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","土地面積":"","建物面積":"","周邊環境":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年月":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"其他":{"修繕紀錄":"","注意事項":""},"補充":""} 規則：全部繁體中文、不要任何日文字（地名車站店家物件名稱可保留原文）。物件類型判斷為「公寓」「一戶建」「土地」或「其他」。公寓：填專有面積、陽台面積、管理費、修繕基金、管理型態、管理公司、總戶數。一戶建：填土地面積、建物面積、周邊環境；管理費/修繕基金/管理型態/管理公司/總戶數填「圖面未標示」。土地：填土地面積、周邊環境；房間格局與建物相關欄位填「圖面未標示」。交通要寫清楚最近車站與步行分鐘。建築年月要含完工年月（例：2003年3月）。建築構造寫清楚材料（鋼筋混凝土/鋼骨造/木造，不用RC/SRC）。周邊環境寫學校、超市、公園、生活機能等。金額換算好懂（3,980万円→3,980萬日圓）。沒寫的填「圖面未標示」；每欄簡短一行；補充最多3點、每點15字內，務必精簡。`;
 document.getElementById('lineGate').href=LINE;
 let file=null,preview=null;
 function unlock(){if(document.getElementById('code').value.trim().toUpperCase()===UNLOCK_CODE.toUpperCase()){document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{document.getElementById('codeErr').style.display='block';}}
@@ -64,6 +64,14 @@ function processImage(file){return new Promise((res)=>{if(!file.type.startsWith(
 function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${f.name}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
 function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
+function zhErr(msg){const s=String(msg||'');
+  if(/high demand|overload|try again later|UNAVAILABLE|503/i.test(s))return 'Gemini 現在使用量較大，請等幾秒再按一次「開始翻譯分析」';
+  if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '今天的免費額度可能用完了，請晚點再試';
+  if(/API.?key|invalid|PERMISSION/i.test(s))return '後端金鑰設定有誤，請確認 Cloudflare 設定';
+  if(/fetch|network|Failed to/i.test(s))return '連線不穩，請再按一次「開始翻譯分析」';
+  if(/截斷|Unterminated|token|JSON/i.test(s))return 'AI 回答被截斷，請再按一次重試';
+  if(/格式/.test(s))return s;
+  return '發生錯誤，請再試一次（'+s+'）';}
 function delay(ms){return new Promise(s=>setTimeout(s,ms));}
 async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return await r.json();}catch(e){last=e;if(i<2)await delay(800);}}throw last;}
 async function go(){
@@ -75,26 +83,36 @@ async function go(){
     const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:PROMPT});
     if(j.error)throw new Error(j.error);
     let o=null;
-    try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('AI 回答被截斷，請再按一次重試');}
+    try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
     if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
     showResult(o);
-  }catch(e){
-    const msg=(e&&e.message?e.message:String(e));
-    showErr('分析失敗："'+(msg.indexOf('fetch')>=0?'連線不穩，請再按一次「開始翻譯分析」':msg)+'"');
-  }
+  }catch(e){showErr('分析失敗：'+zhErr(e&&e.message?e.message:e));}
 }
 function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
 function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':v}</div></div>`;}
-function statsFor(o){const t=String(o.物件類型||'');
-  if(t.indexOf('土地')>=0)return statf('物件類型','土地',true)+statf('土地面積',o.土地面積)+statf('建物面積',o.建物面積);
-  if(t.indexOf('戶建')>=0||t.indexOf('戸建')>=0||t.indexOf('透天')>=0)return statf('房間格局',o.房間格局,true)+statf('土地面積',o.土地面積)+statf('建物面積',o.建物面積);
-  return statf('房間格局',o.房間格局,true)+statf('專有面積',o.專有面積)+statf('陽台面積',o.陽台面積);}
 function showResult(o){
-  o=o||{};const m=o.金額||{},info=o.物件資訊||{},ot=o.其他||{};const type=o.物件類型||'';
+  o=o||{};const m=o.金額||{},info=o.物件資訊||{},ot=o.其他||{};const t=String(o.物件類型||'');
+  const isLand=t.indexOf('土地')>=0;
+  const isHouse=t.indexOf('戶建')>=0||t.indexOf('戸建')>=0||t.indexOf('透天')>=0;
+  const isApt=!isLand&&!isHouse;
+  // 上方 3 格
+  let stats;
+  if(isLand)stats=statf('物件類型','土地',true)+statf('土地面積',o.土地面積)+statf('建物面積',o.建物面積);
+  else if(isHouse)stats=statf('房間格局',o.房間格局,true)+statf('土地面積',o.土地面積)+statf('建物面積',o.建物面積);
+  else stats=statf('房間格局',o.房間格局,true)+statf('專有面積',o.專有面積)+statf('陽台面積',o.陽台面積);
+  // 金額
+  let money;
+  if(isApt)money=rowf('販售價格',m.販售價格)+rowf('管理費',m.管理費)+rowf('修繕基金',m.修繕基金)+rowf('其他費用',m.其他費用);
+  else money=rowf('販售價格',m.販售價格)+rowf('其他費用',m.其他費用);
+  // 物件資訊
+  let detail;
+  if(isLand)detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('周邊環境',o.周邊環境);
+  else if(isHouse)detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('建築年月',info.建築年月)+rowf('建築構造／材料',info.建築構造)+rowf('周邊環境',o.周邊環境);
+  else detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('建築年月',info.建築年月)+rowf('建築構造／材料',info.建築構造)+rowf('管理型態',info.管理型態)+rowf('管理公司',info.管理公司)+rowf('總戶數',info.總戶數);
   const html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?file.name:''}</div>`}
-<div class="tcard">${type?`<span class="badge">${type}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${o.物件名稱||'圖面未標示'}</h2><div class="stats">${statsFor(o)}</div></div>
-<div class="tcard"><h3>💰 金額</h3>${rowf('販售價格',m.販售價格)}${rowf('管理費',m.管理費)}${rowf('修繕基金',m.修繕基金)}${rowf('其他費用',m.其他費用)}</div>
-<div class="tcard"><h3>🏠 物件資訊</h3>${rowf('地址',info.地址)}${rowf('建築年數',info.建築年數)}${rowf('交通',info.交通)}${rowf('建築構造',info.建築構造)}${rowf('管理型態',info.管理型態)}${rowf('管理公司',info.管理公司)}${rowf('總戶數',info.總戶數)}</div>
+<div class="tcard">${t?`<span class="badge">${t}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${o.物件名稱||'圖面未標示'}</h2><div class="stats">${stats}</div></div>
+<div class="tcard"><h3>💰 金額</h3>${money}</div>
+<div class="tcard"><h3>📍 物件資訊</h3>${detail}</div>
 <div class="tcard"><h3>ℹ️ 其他</h3>${rowf('修繕紀錄',ot.修繕紀錄)}${rowf('注意事項',ot.注意事項)}</div>
 ${o.補充&&String(o.補充).trim()?`<div class="tcard" style="background:#f5f5f4"><h3>補充重點</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${o.補充}</p></div>`:''}
 <button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
