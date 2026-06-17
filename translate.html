@@ -1,0 +1,83 @@
+<!-- 周周・日本房產翻譯機（獨立頁）。在 GitHub 新增一個檔案叫 translate.html，貼上這整段。 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本房產翻譯機 | 周周</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px}
+.wrap{max-width:640px;margin:0 auto}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;font-family:inherit}
+.btn-line{background:var(--green);color:#fff}.btn-line:hover{background:var(--green-d)}
+.btn-rose{background:var(--rose);color:#fff}.btn-rose:hover{background:var(--rose-d)}
+.btn-g{background:#fff;border:1px solid var(--line)}
+.top{text-align:center;margin-bottom:22px}.top h1{font-size:24px}.top p{color:var(--mut);font-size:14px;margin-top:4px}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin-bottom:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.gate{text-align:center}
+.lock{width:54px;height:54px;border-radius:16px;background:#d1fae5;color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:25px}
+.gate input{padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;width:150px}
+.drop{border:2px dashed var(--line);border-radius:18px;padding:34px;text-align:center;cursor:pointer}.drop:hover{border-color:var(--rose)}
+.err{display:none;background:#fffbeb;border:1px solid #fde68a;color:#b45309;border-radius:12px;padding:14px;font-size:14px;margin-top:14px}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:14px}.tcard h3{font-size:16px;margin-bottom:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.stat{border-radius:12px;padding:12px;text-align:center;background:#f5f5f4}.stat.acc{background:#fff1f2}.stat .k{font-size:12px;color:var(--mut);margin-bottom:3px}.stat .v{font-weight:700}.stat.acc .v{color:var(--rose);font-size:18px}
+.row{display:flex;gap:12px;padding:8px 0;font-size:14px;border-top:1px solid #f5f5f4}.row:first-of-type{border-top:none}.row .k{color:var(--mut);width:80px;flex:0 0 auto}
+</style>
+
+<div class="wrap">
+  <a class="back" href="index.html">← 回周周首頁</a>
+  <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面（圖片或 PDF）丟進來，幫你翻成中文並整理重點</p></div>
+
+  <div class="card gate" id="gate">
+    <div class="lock">🔒</div>
+    <h2 style="margin-bottom:8px">本工具限周周的 LINE 好友使用</h2>
+    <p style="color:var(--mut);font-size:14px;margin-bottom:18px">加入周周 LINE 後會自動傳給你「使用碼」，輸入即可解鎖。</p>
+    <a class="btn btn-line" id="lineGate" target="_blank" style="margin-bottom:16px">加 LINE 取得使用碼</a><br>
+    <div style="display:inline-flex;gap:8px;margin-top:6px"><input id="code" placeholder="輸入使用碼" onkeydown="if(event.key==='Enter')unlock()"><button class="btn" style="background:var(--ink);color:#fff" onclick="unlock()">解鎖</button></div>
+    <p id="codeErr" style="display:none;color:var(--rose);font-size:14px;margin-top:8px">使用碼不正確</p>
+  </div>
+
+  <div id="upload" style="display:none">
+    <div class="drop" id="drop" onclick="document.getElementById('fileIn').click()">
+      <input type="file" id="fileIn" accept="image/*,application/pdf" style="display:none" onchange="pick(this.files[0])">
+      <div id="dropEmpty"><div style="font-size:34px;margin-bottom:8px">📤</div><b>點此上傳，或把檔案拖進來</b><p style="color:var(--mut);font-size:14px;margin-top:4px">支援 JPG／PNG／PDF</p></div>
+      <div id="dropFile" style="display:none"></div>
+    </div>
+    <p class="err" id="err"></p>
+  </div>
+
+  <div id="result" style="display:none"></div>
+</div>
+
+<script>
+const WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
+const UNLOCK_CODE="ZHOUZHOU";
+const LINE="https://lin.ee/RscRWCp";
+const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。請閱讀這份日文物件資料，整理成繁體中文。請只輸出 JSON：{"物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年數":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"其他":{"修繕紀錄":"","注意事項":""},"補充":""} 規則：全部繁體中文、不要出現任何日文字；唯一例外是地名車站名店家名物件名稱可保留原文；房間格局用 1LDK 2DK 這種；面積用㎡並換算坪；金額換算好懂（3,980万円→3,980萬日圓）；建築構造翻中文（鋼筋混凝土/鋼骨造/木造），不用RC/SRC；沒寫的填「圖面未標示」；補充放其他重點簡短條列。`;
+document.getElementById('lineGate').href=LINE;
+let file=null,preview=null;
+function unlock(){if(document.getElementById('code').value.trim().toUpperCase()===UNLOCK_CODE.toUpperCase()){document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{document.getElementById('codeErr').style.display='block';}}
+function b64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
+function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${f.name}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
+function reset(){file=null;preview=null;document.getElementById('dropEmpty').style.display='block';document.getElementById('dropFile').style.display='none';document.getElementById('result').style.display='none';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';}
+function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;}
+async function go(){if(!file)return;const b=document.getElementById('goBtn');b.disabled=true;b.textContent='分析中…';document.getElementById('err').style.display='none';try{const data=await b64(file);const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data,mediaType:file.type||'image/jpeg',prompt:PROMPT})});const j=await r.json();if(j.error)throw new Error(j.error);const o=JSON.parse(j.text.replace(/```json|```/g,'').trim());showResult(o);}catch(e){showErr('分析失敗："'+e.message+'"');b.disabled=false;b.textContent='開始翻譯分析';}}
+function rowf(k,v){const e=!v||!v.trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
+function statf(k,v,a){const e=!v||!v.trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':v}</div></div>`;}
+function showResult(o){document.getElementById('upload').style.display='none';const R=document.getElementById('result');R.style.display='block';const m=o.金額||{},info=o.物件資訊||{},ot=o.其他||{};
+R.innerHTML=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳 PDF：${file.name}</div>`}
+<div class="tcard"><p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${o.物件名稱||'圖面未標示'}</h2><div class="stats">${statf('房間格局',o.房間格局,true)}${statf('專有面積',o.專有面積)}${statf('陽台面積',o.陽台面積)}</div></div>
+<div class="tcard"><h3>💰 金額</h3>${rowf('販售價格',m.販售價格)}${rowf('管理費',m.管理費)}${rowf('修繕基金',m.修繕基金)}${rowf('其他費用',m.其他費用)}</div>
+<div class="tcard"><h3>🏠 物件資訊</h3>${rowf('地址',info.地址)}${rowf('建築年數',info.建築年數)}${rowf('交通',info.交通)}${rowf('建築構造',info.建築構造)}${rowf('管理型態',info.管理型態)}${rowf('管理公司',info.管理公司)}${rowf('總戶數',info.總戶數)}</div>
+<div class="tcard"><h3>ℹ️ 其他</h3>${rowf('修繕紀錄',ot.修繕紀錄)}${rowf('注意事項',ot.注意事項)}</div>
+${o.補充&&o.補充.trim()?`<div class="tcard" style="background:#f5f5f4"><h3>補充重點</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${o.補充}</p></div>`:''}
+<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
+<p style="text-align:center;font-size:12px;color:#a8a29e;margin-top:10px">※ AI 翻譯僅供參考，實際條件請以原始資料與周周確認為準。</p>
+<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px">想要諮詢？點此聯繫周周</a></div>`;window.scrollTo({top:0,behavior:'smooth'});}
+const dz=document.getElementById('drop');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--rose)';});
+dz.addEventListener('dragleave',()=>dz.style.borderColor='');
+dz.addEventListener('drop',e=>{e.preventDefault();dz.style.borderColor='';pick(e.dataTransfer.files[0]);});
+</script>
