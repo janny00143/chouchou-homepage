@@ -1,4 +1,4 @@
-<!-- 周周・日本房產翻譯機（獨立頁）。在 GitHub 新增一個檔案叫 translate.html，貼上這整段。 -->
+<!-- 周周・日本房產翻譯機（獨立頁・穩定版）。GitHub 上 translate.html 整份取代。 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>日本房產翻譯機 | 周周</title>
@@ -6,8 +6,7 @@
 <style>
 :root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--line:#e7e5e4}
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px}
-.wrap{max-width:640px;margin:0 auto}
-a{color:inherit}
+.wrap{max-width:640px;margin:0 auto}a{color:inherit}
 .btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;font-family:inherit}
 .btn-line{background:var(--green);color:#fff}.btn-line:hover{background:var(--green-d)}
 .btn-rose{background:var(--rose);color:#fff}.btn-rose:hover{background:var(--rose-d)}
@@ -60,22 +59,44 @@ document.getElementById('lineGate').href=LINE;
 let file=null,preview=null;
 function unlock(){if(document.getElementById('code').value.trim().toUpperCase()===UNLOCK_CODE.toUpperCase()){document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{document.getElementById('codeErr').style.display='block';}}
 function b64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
-function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${f.name}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
-function reset(){file=null;preview=null;document.getElementById('dropEmpty').style.display='block';document.getElementById('dropFile').style.display='none';document.getElementById('result').style.display='none';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';}
-function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;}
-async function go(){if(!file)return;const b=document.getElementById('goBtn');b.disabled=true;b.textContent='分析中…';document.getElementById('err').style.display='none';try{const data=await b64(file);const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data,mediaType:file.type||'image/jpeg',prompt:PROMPT})});const j=await r.json();if(j.error)throw new Error(j.error);const o=JSON.parse(j.text.replace(/```json|```/g,'').trim());showResult(o);}catch(e){showErr('分析失敗："'+e.message+'"');b.disabled=false;b.textContent='開始翻譯分析';}}
-function rowf(k,v){const e=!v||!v.trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
-function statf(k,v,a){const e=!v||!v.trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':v}</div></div>`;}
-function showResult(o){document.getElementById('upload').style.display='none';const R=document.getElementById('result');R.style.display='block';const m=o.金額||{},info=o.物件資訊||{},ot=o.其他||{};
-R.innerHTML=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳 PDF：${file.name}</div>`}
+function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${f.name}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
+function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
+function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
+async function go(){
+  if(!file)return;
+  const b=document.getElementById('goBtn');if(b){b.disabled=true;b.textContent='分析中…';}
+  document.getElementById('err').style.display='none';
+  try{
+    const data=await b64(file);
+    const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data,mediaType:file.type||'image/jpeg',prompt:PROMPT})});
+    const j=await r.json();
+    if(j.error)throw new Error(j.error);
+    let o=null;
+    try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('AI 回答被截斷，請再按一次「開始翻譯分析」重試');}
+    if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
+    showResult(o);
+  }catch(e){
+    showErr('分析失敗："'+(e&&e.message?e.message:e)+'"');
+  }
+}
+function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
+function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':v}</div></div>`;}
+function showResult(o){
+  o=o||{};const m=o.金額||{},info=o.物件資訊||{},ot=o.其他||{};
+  const html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?file.name:''}</div>`}
 <div class="tcard"><p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${o.物件名稱||'圖面未標示'}</h2><div class="stats">${statf('房間格局',o.房間格局,true)}${statf('專有面積',o.專有面積)}${statf('陽台面積',o.陽台面積)}</div></div>
 <div class="tcard"><h3>💰 金額</h3>${rowf('販售價格',m.販售價格)}${rowf('管理費',m.管理費)}${rowf('修繕基金',m.修繕基金)}${rowf('其他費用',m.其他費用)}</div>
 <div class="tcard"><h3>🏠 物件資訊</h3>${rowf('地址',info.地址)}${rowf('建築年數',info.建築年數)}${rowf('交通',info.交通)}${rowf('建築構造',info.建築構造)}${rowf('管理型態',info.管理型態)}${rowf('管理公司',info.管理公司)}${rowf('總戶數',info.總戶數)}</div>
 <div class="tcard"><h3>ℹ️ 其他</h3>${rowf('修繕紀錄',ot.修繕紀錄)}${rowf('注意事項',ot.注意事項)}</div>
-${o.補充&&o.補充.trim()?`<div class="tcard" style="background:#f5f5f4"><h3>補充重點</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${o.補充}</p></div>`:''}
+${o.補充&&String(o.補充).trim()?`<div class="tcard" style="background:#f5f5f4"><h3>補充重點</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${o.補充}</p></div>`:''}
 <button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
 <p style="text-align:center;font-size:12px;color:#a8a29e;margin-top:10px">※ AI 翻譯僅供參考，實際條件請以原始資料與周周確認為準。</p>
-<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px">想要諮詢？點此聯繫周周</a></div>`;window.scrollTo({top:0,behavior:'smooth'});}
+<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px">想要諮詢？點此聯繫周周</a></div>`;
+  const R=document.getElementById('result');
+  R.innerHTML=html;R.style.display='block';
+  document.getElementById('upload').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 const dz=document.getElementById('drop');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--rose)';});
 dz.addEventListener('dragleave',()=>dz.style.borderColor='');
