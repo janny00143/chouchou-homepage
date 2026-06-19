@@ -73,7 +73,7 @@ function zhErr(msg){const s=String(msg||'');
   if(/格式/.test(s))return s;
   return '發生錯誤，請再試一次（'+s+'）';}
 function delay(ms){return new Promise(s=>setTimeout(s,ms));}
-async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return await r.json();}catch(e){last=e;if(i<2)await delay(800);}}throw last;}
+async function callWorker(body){let last;for(let i=0;i<4;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(j&&j.error&&/high demand|overload|unavailable|503|resource_exhausted|429|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(2500*(i+1));continue;}return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 async function go(){
   if(!file)return;
   const b=document.getElementById('goBtn');if(b){b.disabled=true;b.textContent='分析中…';}
