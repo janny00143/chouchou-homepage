@@ -28,7 +28,7 @@
 
 <div class="wrap">
   <a class="back" href="index.html">← 回周周首頁</a>
-  <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面（圖片或 PDF）丟進來，幫你翻成中文並整理重點</p></div>
+  <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面（JPG）丟進來，幫你翻成中文並整理重點<br><span style="font-size:13px">約 3 分鐘可以自動翻譯出一張，如果檔案太大會跑不出來喔～</span></p></div>
 
   <div class="card gate" id="gate">
     <div class="lock">🔒</div>
@@ -41,8 +41,8 @@
 
   <div id="upload" style="display:none">
     <div class="drop" id="drop" onclick="document.getElementById('fileIn').click()">
-      <input type="file" id="fileIn" accept="image/*,application/pdf" style="display:none" onchange="pick(this.files[0])">
-      <div id="dropEmpty"><div style="font-size:34px;margin-bottom:8px">📤</div><b>點此上傳，或把檔案拖進來</b><p style="color:var(--mut);font-size:14px;margin-top:4px">支援 JPG／PNG／PDF</p></div>
+      <input type="file" id="fileIn" accept="image/*" style="display:none" onchange="pick(this.files[0])">
+      <div id="dropEmpty"><div style="font-size:34px;margin-bottom:8px">📤</div><b>點此上傳，或把檔案拖進來</b><p style="color:var(--mut);font-size:14px;margin-top:4px">支援 JPG／PNG 圖片</p></div>
       <div id="dropFile" style="display:none"></div>
     </div>
     <p class="err" id="err"></p>
@@ -66,7 +66,7 @@ function reset(){file=null;preview=null;const fi=document.getElementById('fileIn
 function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
 function zhErr(msg){const s=String(msg||'');
   if(/high demand|overload|try again later|UNAVAILABLE|503/i.test(s))return 'Gemini 現在使用量較大，請等幾秒再按一次「開始翻譯分析」';
-  if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '今天的免費額度可能用完了，請晚點再試';
+  if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '免費額度暫時達到上限（連續太快會這樣），請等 1~2 分鐘再按一次';
   if(/API.?key|invalid|PERMISSION/i.test(s))return '後端金鑰設定有誤，請確認 Cloudflare 設定';
   if(/fetch|network|Failed to/i.test(s))return '連線不穩，請再按一次「開始翻譯分析」';
   if(/截斷|Unterminated|token|JSON/i.test(s))return 'AI 回答被截斷，請再按一次重試';
