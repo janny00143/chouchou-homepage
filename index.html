@@ -217,7 +217,7 @@ const NAV=[["home","首頁"],["services","服務項目"],["translate","房產翻
 let curCat=null;
 const cat=id=>CATS.find(c=>c.id===id)||{name:"未分類",g:"linear-gradient(135deg,#a8a29e,#d6d3d1)",c:"#a8a29e"};
 const ytEmbed=u=>{if(!u)return"";const m=u.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/);return m?"https://www.youtube.com/embed/"+m[1]:""};
-const cov=a=>a.cover?`background-image:url("${a.cover}"),${cat(a.cat).g}`:`background-image:${cat(a.cat).g}`;
+const cov=a=>a.cover?`background-image:url("https://janny00143.github.io/chouchou-homepage/${a.cover}"),${cat(a.cat).g}`:`background-image:${cat(a.cat).g}`;
 const rt=a=>Math.max(1,Math.round(a.body.join("").replace(/\s/g,"").length/350));
 function socHTML(){let s="";if(S.ig)s+=`<a href="${S.ig}" target="_blank" title="Instagram" style="background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)">IG</a>`;if(S.yt)s+=`<a href="${S.yt}" target="_blank" title="YouTube" style="background:#ff0000">YT</a>`;if(S.tiktok)s+=`<a href="${S.tiktok}" target="_blank" title="TikTok" style="background:#111">抖</a>`;if(S.threads)s+=`<a href="${S.threads}" target="_blank" title="Threads" style="background:#111">脆</a>`;return s}
 function show(v,id){if(v==='translate'){location.href='translate.html';return;}document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));document.getElementById('v-'+v).classList.add('on');document.querySelectorAll('#mainnav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));document.getElementById('mnav').style.display='none';if(v==='article'&&id)openArt(id);window.scrollTo({top:0,behavior:'smooth'});}
