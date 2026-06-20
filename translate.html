@@ -24,6 +24,9 @@
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
 .stat{border-radius:12px;padding:12px;text-align:center;background:#f5f5f4}.stat.acc{background:#fff1f2}.stat .k{font-size:12px;color:var(--mut);margin-bottom:3px}.stat .v{font-weight:700}.stat.acc .v{color:var(--rose);font-size:18px}
 .row{display:flex;gap:12px;padding:8px 0;font-size:14px;border-top:1px solid #f5f5f4}.row:first-of-type{border-top:none}.row .k{color:var(--mut);width:90px;flex:0 0 auto}
+.blurtxt{filter:blur(4.5px);-webkit-user-select:none;user-select:none;color:#a8a29e}
+.locktip{margin-top:12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:10px;padding:10px 12px;font-size:13px;color:var(--rose-d);text-align:center;line-height:1.6}
+.locktip a{color:var(--rose-d);font-weight:700;text-decoration:underline}
 </style>
 
 <div class="wrap">
@@ -57,19 +60,23 @@ const UNLOCK_CODE="ZHOUZHOU";
 const LINE="https://lin.ee/RscRWCp";
 const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。閱讀這份日文物件資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","土地面積":"","建物面積":"","周邊環境":"","翻新":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年月":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"分析":{"優點":"","缺點":""},"補充":"","連結資訊":""}
 規則：
-- 全部繁體中文，不要任何日文字（地名、車站、店家、物件名稱可保留原文）。
+- 全部繁體中文，請用台灣人習慣的用詞（例如：公寓、一戶建、車站、徒步、坪數、屋齡），不要用中國用語。地名、車站、店家、物件名稱可保留原文。
 - 物件類型判斷為「公寓」「一戶建」「土地」或「其他」。公寓：填專有面積、陽台面積、管理費、修繕基金、管理型態、管理公司、總戶數。一戶建：填土地面積、建物面積；管理相關欄位填「圖面未標示」。土地：填土地面積；房間格局與建物相關欄位填「圖面未標示」。
 - 地址盡量完整（都道府縣市區町村番地），此欄會用來顯示地圖，務必準確；只判讀得出部分就填部分，完全無法判讀填「圖面未標示」。
-- 交通要寫清楚最近車站與步行分鐘。
-- 周邊環境要具體：列出最近的學校、便利商店、超市、公園、醫院等生活機能，並盡量標出步行分鐘數（圖面有寫才寫，沒寫不要編）。
-- 建築年月要含完工年月（例：2003年3月）。建築構造寫清楚材料（鋼筋混凝土／鋼骨造／木造，不要用RC/SRC）。
-- 翻新：特別注意圖面是否有「新規内装／リフォーム／リノベーション／リノベ／フルリフォーム／改装」等字樣。有的話務必在「翻新」寫出翻新範圍與內容（例如：廚房、衛浴、地板、壁紙、給排水管線更新等），越具體越好，這是重要加分項。沒有就填「圖面未標示」。
-- 分析：站在房仲角度幫客戶評估。「優點」大方寫出所有賣點（地點、價格、格局、採光、翻新、生活機能、車站距離等）。「缺點」要客觀、不要浮誇，並盡量補上「可被優點覆蓋」或「改善建議」的說法。例：價格偏低但地點稍遠；離車站很近但屬舊耐震（1981年前），不過已翻新／需再確認是否取得新耐震基準；屋齡較高但已整新。優缺點各最多3點、每點一句話。
+- 交通：寫最近車站與徒步分鐘。若有多條路線或多個車站，請「每個車站獨立一行」，用換行分隔。範例：
+JR山手線・JR京濱東北線・東急目黑線「目黑」站 徒步10分
+JR山手線・JR京濱東北線・東急目黑線「惠比壽」站 徒步12分
+- 周邊環境要具體：列出最近的學校、便利商店、超市、公園、醫院等生活機能，並盡量標出徒步分鐘數（圖面有寫才寫，沒寫不要編）。每項獨立一行、開頭加「・」。
+- 建築年月要含完工年月（例：2003年3月）。
+- 建築構造：寫材料與樓層，格式為「材料造／地下X樓、地上Y樓建」，材料用中文（鋼筋混凝土造／鋼骨造／木造，不要用RC/SRC）。範例：鋼筋混凝土造／地下1樓、地上5樓建。
+- 翻新：特別注意圖面是否有「新規内装／リフォーム／リノベーション／リノベ／フルリフォーム／改装」等字樣。有的話務必寫出翻新範圍與內容（廚房、衛浴、地板、壁紙、給排水管線等），每項獨立一行、開頭加「・」，越具體越好，這是重要加分項。沒有就填「圖面未標示」。
+- 分析「優點」：站在房仲角度，大方寫出所有賣點（地點、價格、格局、採光、翻新、生活機能、車站距離等），可以寫詳細一點，每點獨立一行、開頭加「・」。
+- 分析「缺點」：請用溫和、不嚇人的方式，只點出 1～2 個「建議買前再確認」的中性方向（例如可以再看看屋齡、距離、樓層、座向等），不要寫得負面、不要直接斷定是缺點、不要點破痛點。每點一句話、開頭加「・」。
 - 金額換算好懂（3,980万円→3,980萬日圓）。
-- 補充：把修繕紀錄、注意事項、特約、其他重點整合在這裡，最多4點、每點簡短。
+- 補充：把修繕紀錄、注意事項、特約、其他重點整合在這裡，每點獨立一行、開頭加「・」，最多4點、簡短易讀。
 - 連結資訊：如果圖面上有網址、QR碼旁的說明文字、或其他重要描述句子／詞語，寫在這裡（網址照原樣寫出來）。沒有就留空字串。
 - 沒寫的欄位一律填「圖面未標示」；不要猜測、不要編造。
-- 如果整張圖品質太差、大部分內容無法判讀，不要硬猜，請在「補充」明確寫：「圖片不夠清晰，建議提供畫質更好的圖片，或直接諮詢周周更快喔！」寧可不分析，也不要給出錯誤資訊。`;
+- 如果整張圖品質太差、大部分內容無法判讀，不要硬猜，請在「補充」明確寫：「・圖片不夠清晰，建議提供畫質更好的圖片，或直接諮詢周周更快喔！」寧可不分析，也不要給出錯誤資訊。`;
 document.getElementById('lineGate').href=LINE;
 let file=null,preview=null;
 function unlock(){if(document.getElementById('code').value.trim().toUpperCase()===UNLOCK_CODE.toUpperCase()){document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{document.getElementById('codeErr').style.display='block';}}
@@ -88,6 +95,7 @@ function zhErr(msg){const s=String(msg||'');
   return '發生錯誤，請再試一次（'+s+'）';}
 function delay(ms){return new Promise(s=>setTimeout(s,ms));}
 function linkify(t){return String(t).replace(/(https?:\/\/[^\s，、）)]+)/g,'<a href="$1" target="_blank" style="color:var(--rose);word-break:break-all">$1</a>');}
+function teaser(text,headLen){text=String(text||'').trim();if(!text)return'';if(text.length<=headLen)return text+'<span class="blurtxt">　　　　詳細分析請洽周周喔</span>';return text.slice(0,headLen)+'<span class="blurtxt">'+text.slice(headLen)+'</span>';}
 async function callWorker(body){let last;for(let i=0;i<4;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(j&&j.error&&/high demand|overload|unavailable|503|resource_exhausted|429|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(2500*(i+1));continue;}return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 async function go(){
   if(!file)return;
@@ -103,7 +111,7 @@ async function go(){
     showResult(o);
   }catch(e){showErr('分析失敗：'+zhErr(e&&e.message?e.message:e));}
 }
-function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
+function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;white-space:pre-line;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
 function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':v}</div></div>`;}
 function showResult(o){
   o=o||{};const m=o.金額||{},info=o.物件資訊||{};const t=String(o.物件類型||'');
@@ -125,16 +133,23 @@ function showResult(o){
   const hasAddr=addr.trim()&&addr.indexOf('未標示')<0;
   const mapBlock=hasAddr?`<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(addr)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500">📍 在 Google 地圖開啟這個位置（已附連結給您）→</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ 地圖位置由 AI 依圖面地址自動判讀，可能有誤，請以原始資料為準。</p></div>`:'';
   const reno=String(o.翻新||'');const hasReno=reno.trim()&&reno.indexOf('未標示')<0;
-  const renoCard=hasReno?`<div class="tcard" style="background:#fff1f2;border-color:#fecdd3"><h3 style="color:var(--rose-d)">✨ 翻新／リフォーム資訊</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${reno}</p></div>`:'';
+  const renoCard=hasReno?`<div class="tcard" style="background:#fff1f2;border-color:#fecdd3"><h3 style="color:var(--rose-d)">✨ 翻新資訊</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${reno}</p></div>`:'';
   const an=o.分析||{};const pros=String(an.優點||'').trim(),cons=String(an.缺點||'').trim();
-  const analysisCard=(pros||cons)?`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${pros?`<div style="margin-bottom:10px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${pros}</p></div>`:''}${cons?`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${cons}</p></div>`:''}</div>`:'';
+  let analysisCard='';
+  if(pros||cons){
+    let inner='';
+    if(pros){const h=Math.max(10,Math.ceil(pros.length*2/3));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,h)}</p></div>`;}
+    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,25)}</p></div>`;}
+    inner+=`<div class="locktip">🔒 完整的優缺點分析沒有全部顯示～<br><a href="${LINE}" target="_blank">加周周 LINE</a>，我幫你把這個物件詳細看一遍！</div>`;
+    analysisCard=`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${inner}</div>`;
+  }
   const sup=String(o.補充||'').trim();const link=String(o.連結資訊||'').trim();const hasLink=link&&link.indexOf('未標示')<0;
   const supCard=(sup||hasLink)?`<div class="tcard" style="background:#f5f5f4"><h3>📋 其他補充重點</h3>${sup?`<p style="font-size:14px;color:#44403c;white-space:pre-line">${sup}</p>`:''}${hasLink?`<p style="font-size:14px;color:#44403c;margin-top:8px">🔗 圖面上的連結／QR／其他資訊：<br>${linkify(link)}</p>`:''}</div>`:'';
   const html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?file.name:''}</div>`}
 <div class="tcard">${t?`<span class="badge">${t}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${o.物件名稱||'圖面未標示'}</h2><div class="stats">${stats}</div></div>
-${renoCard}
 <div class="tcard"><h3>💰 金額</h3>${money}</div>
 <div class="tcard"><h3>📍 物件資訊</h3>${detail}${mapBlock}</div>
+${renoCard}
 ${analysisCard}
 ${supCard}
 <button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
