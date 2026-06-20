@@ -22,7 +22,7 @@
 .tcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:14px}.tcard h3{font-size:16px;margin-bottom:10px}
 .badge{display:inline-block;font-size:13px;font-weight:500;color:#fff;background:var(--rose);padding:2px 12px;border-radius:999px;margin-bottom:8px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
-.stat{border-radius:12px;padding:12px;text-align:center;background:#f5f5f4}.stat.acc{background:#fff1f2}.stat .k{font-size:12px;color:var(--mut);margin-bottom:3px}.stat .v{font-weight:700}.stat.acc .v{color:var(--rose);font-size:18px}
+.stat{border-radius:12px;padding:12px;text-align:center;background:#f5f5f4}.stat.acc{background:#fff1f2}.stat .k{font-size:12px;color:var(--mut);margin-bottom:3px}.stat .v{font-weight:700;white-space:pre-line;line-height:1.5}.stat.acc .v{color:var(--rose);font-size:18px}
 .row{display:flex;gap:12px;padding:8px 0;font-size:14px;border-top:1px solid #f5f5f4}.row:first-of-type{border-top:none}.row .k{color:var(--mut);width:90px;flex:0 0 auto}
 .blurtxt{filter:blur(4.5px);-webkit-user-select:none;user-select:none;color:#a8a29e}
 .locktip{margin-top:12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:10px;padding:10px 12px;font-size:13px;color:var(--rose-d);text-align:center;line-height:1.6}
@@ -31,7 +31,7 @@
 
 <div class="wrap">
   <a class="back" href="index.html">← 回周周首頁</a>
-  <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面（JPG）丟進來，幫你翻成中文並整理重點<br><span style="font-size:13px">約 3 分鐘可以自動翻譯出一張，如果檔案太大會跑不出來喔～</span></p></div>
+  <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面（JPG）丟進來，幫你翻成中文並整理重點<br><span style="font-size:13px">約 3 分鐘可以自動翻譯出一張，如果檔案太大會跑不出來喔～<br>圖片不夠清楚或太小，也可能會導致分析錯誤喔～</span></p></div>
 
   <div class="card gate" id="gate">
     <div class="lock">🔒</div>
@@ -60,20 +60,21 @@ const UNLOCK_CODE="ZHOUZHOU";
 const LINE="https://lin.ee/RscRWCp";
 const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。閱讀這份日文物件資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","土地面積":"","建物面積":"","周邊環境":"","翻新":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年月":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"分析":{"優點":"","缺點":""},"補充":"","連結資訊":""}
 規則：
-- 全部繁體中文，請用台灣人習慣的用詞（例如：公寓、一戶建、車站、徒步、坪數、屋齡），不要用中國用語。地名、車站、店家、物件名稱可保留原文。
+- 全部繁體中文，請用台灣人習慣的用詞（例如：公寓、一戶建、車站、徒步、坪數、屋齡）。地名、車站、店家、物件名稱可保留原文。
 - 物件類型判斷為「公寓」「一戶建」「土地」或「其他」。公寓：填專有面積、陽台面積、管理費、修繕基金、管理型態、管理公司、總戶數。一戶建：填土地面積、建物面積；管理相關欄位填「圖面未標示」。土地：填土地面積；房間格局與建物相關欄位填「圖面未標示」。
+- 一戶建（透天）若各樓層面積不同，「建物面積」欄位請寫清楚每層樓的大小，每層獨立一行，例如「1樓 12.5坪\n2樓 10.8坪\n3樓 6.2坪」，方便客戶看每層空間。
 - 地址盡量完整（都道府縣市區町村番地），此欄會用來顯示地圖，務必準確；只判讀得出部分就填部分，完全無法判讀填「圖面未標示」。
-- 交通：寫最近車站與徒步分鐘。若有多條路線或多個車站，請「每個車站獨立一行」，用換行分隔。範例：
+- 交通：寫最近車站與徒步分鐘。把「駅」翻成「車站」或「站」。若有多條路線或多個車站，請「每個車站獨立一行」，用換行分隔。範例：
 JR山手線・JR京濱東北線・東急目黑線「目黑」站 徒步10分
 JR山手線・JR京濱東北線・東急目黑線「惠比壽」站 徒步12分
-- 周邊環境要具體：列出最近的學校、便利商店、超市、公園、醫院等生活機能，並盡量標出徒步分鐘數（圖面有寫才寫，沒寫不要編）。每項獨立一行、開頭加「・」。
+- 周邊環境：列出最近的學校、便利商店、超市、公園、醫院等生活機能，並盡量標出徒步分鐘數。全部翻成繁體中文，若保留日文原名請用（）附在後面（例如：超市（マルエツ）徒步3分）。每項獨立一行、開頭加「・」（圖面有寫才寫，沒寫不要編）。
 - 建築年月要含完工年月（例：2003年3月）。
-- 建築構造：寫材料與樓層，格式為「材料造／地下X樓、地上Y樓建」，材料用中文（鋼筋混凝土造／鋼骨造／木造，不要用RC/SRC）。範例：鋼筋混凝土造／地下1樓、地上5樓建。
-- 翻新：特別注意圖面是否有「新規内装／リフォーム／リノベーション／リノベ／フルリフォーム／改装」等字樣。有的話務必寫出翻新範圍與內容（廚房、衛浴、地板、壁紙、給排水管線等），每項獨立一行、開頭加「・」，越具體越好，這是重要加分項。沒有就填「圖面未標示」。
+- 建築構造：寫材料與樓層，格式為「材料造／地下X樓、地上Y樓建」，材料用中文（鋼筋混凝土造／鋼骨造／木造，不要用RC/SRC、不要用「階」要用「樓」）。範例：鋼筋混凝土造／地下1樓、地上5樓建。
+- 翻新：特別注意圖面是否有「新規內裝／リフォーム／リノベーション／リノベ／フルリフォーム／改裝」等字樣。有的話務必寫出翻新範圍與內容（廚房、衛浴、地板、壁紙、給排水管線等），全部寫繁體中文、不要出現任何日文，每項獨立一行、開頭加「・」，越具體越好，這是重要加分項。沒有就填「圖面未標示」。
 - 分析「優點」：站在房仲角度，大方寫出所有賣點（地點、價格、格局、採光、翻新、生活機能、車站距離等），可以寫詳細一點，每點獨立一行、開頭加「・」。
-- 分析「缺點」：請用溫和、不嚇人的方式，只點出 1～2 個「建議買前再確認」的中性方向（例如可以再看看屋齡、距離、樓層、座向等），不要寫得負面、不要直接斷定是缺點、不要點破痛點。每點一句話、開頭加「・」。
+- 分析「缺點」：請用更耐人尋味、欲言又止、話講到一半的語氣，只起個頭、點到為止、不要講完，讓人很想知道後面。例如「這間採光看起來不錯，不過有一點要特別留意的是它的…」就停住。不要寫得負面、不要直接斷定是缺點、不要點破痛點。一句就好、開頭加「・」。
 - 金額換算好懂（3,980万円→3,980萬日圓）。
-- 補充：把修繕紀錄、注意事項、特約、其他重點整合在這裡，每點獨立一行、開頭加「・」，最多4點、簡短易讀。
+- 補充：把修繕紀錄、注意事項、特約、其他重點整合在這裡，全部寫成台灣人看得懂的繁體中文、不要日文，每點獨立一行、開頭加「・」，最多4點、簡短易讀。
 - 連結資訊：如果圖面上有網址、QR碼旁的說明文字、或其他重要描述句子／詞語，寫在這裡（網址照原樣寫出來）。沒有就留空字串。
 - 沒寫的欄位一律填「圖面未標示」；不要猜測、不要編造。
 - 如果整張圖品質太差、大部分內容無法判讀，不要硬猜，請在「補充」明確寫：「・圖片不夠清晰，建議提供畫質更好的圖片，或直接諮詢周周更快喔！」寧可不分析，也不要給出錯誤資訊。`;
@@ -129,9 +130,12 @@ function showResult(o){
   if(isLand)detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('周邊環境',o.周邊環境);
   else if(isHouse)detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('建築年月',info.建築年月)+rowf('建築構造／材料',info.建築構造)+rowf('周邊環境',o.周邊環境);
   else detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('建築年月',info.建築年月)+rowf('建築構造／材料',info.建築構造)+rowf('管理型態',info.管理型態)+rowf('管理公司',info.管理公司)+rowf('總戶數',info.總戶數)+rowf('周邊環境',o.周邊環境);
-  const addr=String(info.地址||'');
-  const hasAddr=addr.trim()&&addr.indexOf('未標示')<0;
-  const mapBlock=hasAddr?`<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(addr)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500">📍 在 Google 地圖開啟這個位置（已附連結給您）→</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ 地圖位置由 AI 依圖面地址自動判讀，可能有誤，請以原始資料為準。</p></div>`:'';
+  const addr=String(info.地址||'');const name=String(o.物件名稱||'');
+  const addrOk=addr.trim()&&addr.indexOf('未標示')<0;
+  const nameOk=name.trim()&&name.indexOf('未標示')<0;
+  const mapQ=addrOk?addr:(nameOk?name:'');
+  const byName=!addrOk&&nameOk;
+  const mapBlock=mapQ?`<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500">📍 在 Google 地圖開啟這個位置（已附連結給您）→</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」在地圖上找的位置，' : '地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`:'';
   const reno=String(o.翻新||'');const hasReno=reno.trim()&&reno.indexOf('未標示')<0;
   const renoCard=hasReno?`<div class="tcard" style="background:#fff1f2;border-color:#fecdd3"><h3 style="color:var(--rose-d)">✨ 翻新資訊</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${reno}</p></div>`:'';
   const an=o.分析||{};const pros=String(an.優點||'').trim(),cons=String(an.缺點||'').trim();
@@ -139,8 +143,8 @@ function showResult(o){
   if(pros||cons){
     let inner='';
     if(pros){const h=Math.max(10,Math.ceil(pros.length*2/3));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,h)}</p></div>`;}
-    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,25)}</p></div>`;}
-    inner+=`<div class="locktip">🔒 完整的優缺點分析沒有全部顯示～<br><a href="${LINE}" target="_blank">加周周 LINE</a>，我幫你把這個物件詳細看一遍！</div>`;
+    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,18)}</p></div>`;}
+    inner+=`<div class="locktip">🔒 完整的優缺點分析沒有全部顯示～<br><a href="${LINE}" target="_blank">加周周 LINE</a>，我幫你把這個物件詳細看一遍+分析。</div>`;
     analysisCard=`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${inner}</div>`;
   }
   const sup=String(o.補充||'').trim();const link=String(o.連結資訊||'').trim();const hasLink=link&&link.indexOf('未標示')<0;
@@ -153,7 +157,7 @@ ${renoCard}
 ${analysisCard}
 ${supCard}
 <button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
-<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯僅供參考，可能會有誤差<br>實際條件務必以原始資料與周周再次確認喔！</p></div>
+<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯僅供參考，可能會有誤差<br>圖片不夠清楚也可能造成判讀錯誤<br>實際條件務必以原始資料與周周再次確認喔！</p></div>
 <div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px">想要諮詢？點此聯繫周周</a></div>`;
   const R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 const dz=document.getElementById('drop');
