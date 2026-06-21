@@ -83,18 +83,18 @@ footer{border-top:1px solid var(--line);background:#fff;margin-top:50px}footer .
       <div><b style="font-size:18px">🏠 日本房產翻譯機</b><p style="font-size:14px;opacity:.95;margin-top:2px">看不懂日文圖面？上傳 JPG 圖片，馬上翻成中文整理重點</p></div>
       <span class="btn" style="background:#fff;color:var(--rose)">立即使用 →</span>
     </div></a>
-    <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-      <div style="flex:0 0 auto;width:190px;max-width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000">
+    <div class="search"><input id="q" placeholder="搜尋文章…" oninput="render()"></div>
+    <div class="grid" id="grid"></div>
+    <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin:26px 0 0;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <div style="flex:0 0 auto;width:150px;max-width:100%;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#000">
         <iframe src="https://www.youtube.com/embed/YwqJo7iZuQI" title="周周的影片" allowfullscreen style="width:100%;height:100%;border:0"></iframe>
       </div>
-      <div style="flex:1;min-width:200px">
-        <b style="font-size:18px">🎬 周周的影片</b>
+      <div style="flex:1;min-width:180px">
+        <b style="font-size:17px">🎬 周周的影片</b>
         <p style="color:var(--mut);font-size:14px;margin:6px 0 12px">日本買房、東京生活的小知識，用短影片快速看懂。追蹤我看更多！</p>
         <a class="btn btn-line" href="https://www.youtube.com/@travelfish67" target="_blank">前往 YouTube 頻道</a>
       </div>
     </div>
-    <div class="search"><input id="q" placeholder="搜尋文章…" oninput="render()"></div>
-    <div class="grid" id="grid"></div>
     <div class="cta"><h2>想了解日本買房？</h2><p>不管自住還是投資，直接加 LINE 找周周聊聊，看到喜歡的物件也可以貼給我看。</p><a class="btn btn-line big" id="lineHome" target="_blank">加 LINE 諮詢</a></div>
   </section>
 
