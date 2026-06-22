@@ -80,10 +80,11 @@ JR山手線・JR京濱東北線・東急目黑線「惠比壽」站 徒步12分
 - 如果整張圖品質太差、大部分內容無法判讀，不要硬猜，請在「補充」明確寫：「・圖片不夠清晰，建議提供畫質更好的圖片，或直接諮詢周周更快喔！」寧可不分析，也不要給出錯誤資訊。`;
 document.getElementById('lineGate').href=LINE;
 let file=null,preview=null;
+function esc(s){s=String(s==null?'':s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function unlock(){if(document.getElementById('code').value.trim().toUpperCase()===UNLOCK_CODE.toUpperCase()){document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{document.getElementById('codeErr').style.display='block';}}
 function b64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
 function processImage(file){return new Promise((res)=>{if(!file.type.startsWith('image/')){b64(file).then(d=>res({data:d,mediaType:file.type||'application/pdf'}));return;}const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const max=2000;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s);}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);try{const u=cv.toDataURL('image/jpeg',0.82);res({data:u.split(',')[1],mediaType:'image/jpeg'});}catch(e){b64(file).then(d=>res({data:d,mediaType:file.type}));}};img.onerror=()=>{b64(file).then(d=>res({data:d,mediaType:file.type}));};img.src=URL.createObjectURL(file);});}
-function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${f.name}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
+function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${esc(f.name)}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
 function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
 function zhErr(msg){const s=String(msg||'');
@@ -95,8 +96,8 @@ function zhErr(msg){const s=String(msg||'');
   if(/格式/.test(s))return s;
   return '發生錯誤，請再試一次（'+s+'）';}
 function delay(ms){return new Promise(s=>setTimeout(s,ms));}
-function linkify(t){return String(t).replace(/(https?:\/\/[^\s，、）)]+)/g,'<a href="$1" target="_blank" style="color:var(--rose);word-break:break-all">$1</a>');}
-function teaser(text,headLen){text=String(text||'').trim();if(!text)return'';if(text.length<=headLen)return text+'<span class="blurtxt">　　　　詳細分析請洽周周喔</span>';return text.slice(0,headLen)+'<span class="blurtxt">'+text.slice(headLen)+'</span>';}
+function linkify(t){return esc(String(t)).replace(/(https?:\/\/[^\s，、）)<]+)/g,'<a href="$1" target="_blank" rel="noopener" style="color:var(--rose);word-break:break-all">$1</a>');}
+function teaser(text,headLen){text=String(text||'').trim();if(!text)return'';if(text.length<=headLen)return esc(text)+'<span class="blurtxt">　　　　詳細分析請洽周周喔</span>';return esc(text.slice(0,headLen))+'<span class="blurtxt">'+esc(text.slice(headLen))+'</span>';}
 async function callWorker(body){let last;for(let i=0;i<4;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(j&&j.error&&/high demand|overload|unavailable|503|resource_exhausted|429|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(2500*(i+1));continue;}return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 async function go(){
   if(!file)return;
@@ -112,8 +113,8 @@ async function go(){
     showResult(o);
   }catch(e){showErr('分析失敗：'+zhErr(e&&e.message?e.message:e));}
 }
-function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;white-space:pre-line;${e?'color:#d6d3d1':''}">${e?'圖面未標示':v}</span></div>`;}
-function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':v}</div></div>`;}
+function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;white-space:pre-line;${e?'color:#d6d3d1':''}">${e?'圖面未標示':esc(v)}</span></div>`;}
+function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':esc(v)}</div></div>`;}
 function showResult(o){
   o=o||{};const m=o.金額||{},info=o.物件資訊||{};const t=String(o.物件類型||'');
   const isLand=t.indexOf('土地')>=0;
@@ -137,7 +138,7 @@ function showResult(o){
   const byName=!addrOk&&nameOk;
   const mapBlock=mapQ?`<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500">📍 在 Google 地圖開啟這個位置（已附連結給您）→</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」在地圖上找的位置，' : '地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`:'';
   const reno=String(o.翻新||'');const hasReno=reno.trim()&&reno.indexOf('未標示')<0;
-  const renoCard=hasReno?`<div class="tcard" style="background:#fff1f2;border-color:#fecdd3"><h3 style="color:var(--rose-d)">✨ 翻新資訊</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${reno}</p></div>`:'';
+  const renoCard=hasReno?`<div class="tcard" style="background:#fff1f2;border-color:#fecdd3"><h3 style="color:var(--rose-d)">✨ 翻新資訊</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(reno)}</p></div>`:'';
   const an=o.分析||{};const pros=String(an.優點||'').trim(),cons=String(an.缺點||'').trim();
   let analysisCard='';
   if(pros||cons){
@@ -148,9 +149,9 @@ function showResult(o){
     analysisCard=`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${inner}</div>`;
   }
   const sup=String(o.補充||'').trim();const link=String(o.連結資訊||'').trim();const hasLink=link&&link.indexOf('未標示')<0;
-  const supCard=(sup||hasLink)?`<div class="tcard" style="background:#f5f5f4"><h3>📋 其他補充重點</h3>${sup?`<p style="font-size:14px;color:#44403c;white-space:pre-line">${sup}</p>`:''}${hasLink?`<p style="font-size:14px;color:#44403c;margin-top:8px">🔗 圖面上的連結／QR／其他資訊：<br>${linkify(link)}</p>`:''}</div>`:'';
-  const html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?file.name:''}</div>`}
-<div class="tcard">${t?`<span class="badge">${t}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${o.物件名稱||'圖面未標示'}</h2><div class="stats">${stats}</div></div>
+  const supCard=(sup||hasLink)?`<div class="tcard" style="background:#f5f5f4"><h3>📋 其他補充重點</h3>${sup?`<p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(sup)}</p>`:''}${hasLink?`<p style="font-size:14px;color:#44403c;margin-top:8px">🔗 圖面上的連結／QR／其他資訊：<br>${linkify(link)}</p>`:''}</div>`:'';
+  const html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?esc(file.name):''}</div>`}
+<div class="tcard">${t?`<span class="badge">${esc(t)}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${esc(o.物件名稱)||'圖面未標示'}</h2><div class="stats">${stats}</div></div>
 <div class="tcard"><h3>💰 金額</h3>${money}</div>
 <div class="tcard"><h3>📍 物件資訊</h3>${detail}${mapBlock}</div>
 ${renoCard}
