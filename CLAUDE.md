@@ -1,4 +1,3 @@
-[Uploading CLAUDE (2).md…]()
 # CLAUDE.md — 接手規則（任何 AI 接手前請先讀完）
 
 > 這份是給「下一個接手這個網站的 AI」用的最高優先規則。
