@@ -57,6 +57,9 @@ function page(a) {
   if (cover) ld.image = cover;
   const t = esc(a.title) + "｜周周・日本房仲";
   const d = esc(a.ex);
+  const others = ART.filter(r => r.id !== a.id && (r.url || SLUG[r.id]));
+  const rel = [...others.filter(r => r.cat === a.cat), ...others.filter(r => r.cat !== a.cat).sort((x, y) => (y.date || "").localeCompare(x.date || ""))].slice(0, 3);
+  const relHTML = rel.length ? `<section style="margin-top:32px;border-top:1px solid var(--line);padding-top:18px"><h2 style="font-size:18px;margin-bottom:10px">延伸閱讀</h2>` + rel.map(r => `<a href="${r.url || SLUG[r.id] + ".html"}" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ ${r.title}</a>`).join("") + `</section>` : "";
   return `<!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
@@ -65,6 +68,7 @@ function page(a) {
 <title>${t}</title>
 <meta name="description" content="${d}">
 <link rel="canonical" href="${url}">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="${t}">
@@ -87,6 +91,7 @@ ${STYLE}
 ${bodyHTML}
 ${vid}
 <div class="ablock" style="margin-top:26px"><div><b>這篇有幫到你嗎？有問題直接問我</b><br><span style="color:var(--mut);font-size:14px">看到喜歡的物件也可以直接貼給周周看看。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div>
+${relHTML}
 <p style="margin:30px 0;font-size:14px"><a href="index.html" style="color:var(--rose);font-weight:600">← 看更多周周的文章</a></p>
 </main>
 <footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap cp">© ${new Date().getFullYear()} 周周・日本房仲</div></footer>
