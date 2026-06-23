@@ -88,7 +88,9 @@ ${STYLE}
 <div class="acov" style="${bg}"><span>${c.name}</span></div>
 <h1 style="font-size:26px;line-height:1.45;margin-bottom:10px">${a.title}</h1>
 <div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:22px"><span>周周</span><span>${a.date}</span><span>約 ${rt(a)} 分鐘</span></div>
+<div class="post">
 ${bodyHTML}
+</div>
 ${vid}
 <div class="ablock" style="margin-top:26px"><div><b>這篇有幫到你嗎？有問題直接問我</b><br><span style="color:var(--mut);font-size:14px">看到喜歡的物件也可以直接貼給周周看看。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div>
 ${relHTML}
