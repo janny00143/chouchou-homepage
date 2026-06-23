@@ -23,17 +23,19 @@
 ### 重要檔案
 | 檔案 | 用途 |
 |---|---|
-| `index.html` | 網站主體：首頁＋所有頁面＋全部文章（靠 JS 渲染）。 |
+| `index.html` | 網站主體：首頁＋所有頁面＋全部文章資料（`ART` 陣列）。 |
 | `translate.html` | 房產圖面翻譯機（前端）。 |
 | `minpaku.html` | 民宿（民泊）法規獨立頁，文章 a4 連到這。 |
-| `rent-vs-buy.html` | ⚠️ 疑似無引用的舊殘檔，動前先確認沒被連結。 |
-| `pexels-*.jpg` | 文章封面與版面圖，全放 root。 |
+| `<slug>.html`（如 `japan-property-tax-guide.html`） | **每篇文章的獨立 SEO 靜態頁**，由 `generate-pages.cjs` 自動產生。**勿手改**；要改內容請改 `index.html` 的 `ART` 再重跑產生器（見第 9 節）。 |
+| `generate-pages.cjs` | 文章獨立頁／`sitemap.xml`／`robots.txt` 的產生器。 |
+| `sitemap.xml` / `robots.txt` | 給搜尋引擎用，由產生器產出，勿手改。 |
+| `cover-*.jpg` / `pexels-*.jpg` | 文章封面與版面圖，全放 root。 |
 
 ---
 
 ## 2. 文章系統怎麼運作（最重要）
 
-- 所有文章都寫在 `index.html` 的 **`ART` 陣列**，靠 JS 在前端渲染，**不另外開獨立 HTML 檔**。
+- 所有文章的**內容資料**都寫在 `index.html` 的 **`ART` 陣列**；首頁靠 JS 渲染卡片。**另外**每篇會由 `generate-pages.cjs` 產生一個獨立 SEO 靜態頁（見第 9 節）——但**文章內容仍只在 `ART` 維護**，不要手改獨立頁。
 - **唯一例外：民宿 a4**，用 `url:"minpaku.html"` 讓卡片直接跳轉到獨立頁，不走 JS 文章渲染。
 - 每篇文章物件欄位：`{id, cat, date, title, tags, cover, video, ex, body[]}`；`url` 為選填，有 `url` 就跳外部頁。
 - `cat` 對應 `CATS` 的 6 個分類：`foreign`（外國人買房）/ `live`（自住攻略）/ `invest`（投資收租）/ `minpaku`（民宿法規）/ `area`（區域介紹）/ `loan`（貸款稅務）。
@@ -104,3 +106,21 @@
 4. 改完**保持單檔可獨立運作**（直接用瀏覽器開得起來）。
 5. 完成後**用清楚的訊息 commit**；非經明確同意不亂改其他檔。
 6. **交付規則（周周指示）**：只要有改動／新增任何檔案，**一定要把改好的完整檔打包成「可下載檔」交給周周**（不是貼片段），由她自行上傳覆蓋。**唯一例外**：當你確實具備 GitHub 寫入權限、能自己自動 push／上傳時，才可省略給檔。目前連接器多為唯讀（push／API 寫入會回 403），故預設一律給下載檔。
+
+---
+
+## 9. SEO 與文章獨立頁（改文章後必看）
+
+為了被搜尋引擎收錄、且每篇有獨立可分享網址，除了 `index.html` 的 `ART` 資料外，**每篇文章還有一個獨立的靜態 SEO 頁**（檔名是英文 slug，例如 `japan-property-tax-guide.html`）。
+
+- 這些頁由 **`generate-pages.cjs`** 自動產生，含專屬 `title`／`description`／`canonical`／Open Graph／JSON-LD 結構化資料；內容直接寫在 HTML（搜尋引擎抓得到）。
+- 首頁卡片是真連結（`<a href>`），指向這些頁；連結用 `index.html` 裡的 **`SLUG` 對照表**（`id → slug`）。
+- **改／加文章的 SOP**：
+  1. 改 `index.html` 的 `ART`。
+  2. （**新增**文章時）在 `generate-pages.cjs` 與 `index.html` 的 `SLUG` **兩處都加同一組 `id→slug`**（slug 用英文關鍵字）。
+  3. 在 repo 根目錄執行 `node generate-pages.cjs` 重新產生獨立頁與 `sitemap.xml`／`robots.txt`。
+  4. commit／push。
+- **不要手改** `<slug>.html`、`sitemap.xml`、`robots.txt`（重跑產生器會覆蓋）。
+- 讓 Google 收錄：須在 **Google Search Console** 驗證網站並提交 `sitemap.xml`（帳號層級操作，由周周做；驗證碼可交給 AI 加到首頁 head）。
+
+> 註：這等於多了「產生頁面」一步。雖非傳統 build，但**改完文章一定要重跑產生器**，否則獨立頁與 sitemap 會跟 `ART` 不同步。
