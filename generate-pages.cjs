@@ -27,7 +27,8 @@ const SLUG = {
   a13: "japan-property-price-negotiation",
   a14: "taiwan-to-japan-driving-license",
   a15: "japan-earthquake-resistance-guide",
-  a16: "japan-house-viewing-tools"
+  a16: "japan-house-viewing-tools",
+  a17: "tokyo-23-wards-area-guide"
 };
 
 const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
