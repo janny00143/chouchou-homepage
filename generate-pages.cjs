@@ -92,7 +92,7 @@ ${STYLE}
 <a class="back" href="index.html">← 回周周首頁</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
 <div class="acov" style="${bg}"><span>${c.name}</span></div>
-<h1 style="font-size:26px;line-height:1.45;margin-bottom:10px">${a.title}</h1>
+<h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
 <div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:22px"><span>周周</span><span>${a.date}</span><span>約 ${rt(a)} 分鐘</span></div>
 <div class="post">
 ${bodyHTML}
