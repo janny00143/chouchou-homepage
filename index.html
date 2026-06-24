@@ -271,6 +271,7 @@ document.getElementById('mainnav').innerHTML=NAV.map(n=>`<a data-v="${n[0]}" onc
 document.getElementById('mnav').innerHTML=NAV.map(n=>`<a onclick="show('${n[0]}');return false">${n[1]}</a>`).join("")+`<a href="${S.line}" target="_blank" style="color:var(--green-d)">加 LINE 諮詢</a>`;
 document.getElementById('catbar').innerHTML=`<select class="catsel" id="catSelect" onchange="setCat(this.value||null)"><option value="">📚 全部文章</option>`+CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")+`</select><a class="chip tool" href="translate.html" style="margin-left:auto">🏠 房產翻譯機</a>`;
 ['lineTop','lineIntro','lineHome','lineP','lineL','lineI','lineA','lineFoot','lineSvc','lineFloat'].forEach(i=>{const e=document.getElementById(i);if(e)e.href=S.line;});
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
 document.getElementById('introSocs').innerHTML=socHTML();document.getElementById('aboutSocs').innerHTML=socHTML();document.getElementById('footSocs').innerHTML=socHTML();
 document.getElementById('bio').innerHTML=S.bio.map(p=>`<p style="margin-bottom:12px;color:#44403c">${p}</p>`).join("");
 document.getElementById('lineId').textContent=S.lineId;

@@ -57,6 +57,11 @@ function page(a) {
     mainEntityOfPage: url
   };
   if (cover) ld.image = cover;
+  const ldCrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+    { "@type": "ListItem", position: 2, name: c.name, item: BASE + "#" + a.cat },
+    { "@type": "ListItem", position: 3, name: a.title, item: url }
+  ] };
   const t = esc(a.title) + "｜周周・日本房仲";
   const d = esc(a.ex);
   const others = ART.filter(r => r.id !== a.id && (r.url || SLUG[r.id]));
@@ -84,6 +89,7 @@ function page(a) {
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g,"\\u003c").replace(/>/g,"\\u003e").replace(/&/g,"\\u0026")}</script>
+<script type="application/ld+json">${JSON.stringify(ldCrumb).replace(/</g,"\\u003c").replace(/>/g,"\\u003e").replace(/&/g,"\\u0026")}</script>
 ${STYLE}
 </head>
 <body>
@@ -103,6 +109,7 @@ ${relHTML}
 <p style="margin:30px 0;font-size:14px"><a href="index.html" style="color:var(--rose);font-weight:600">← 看更多周周的文章</a></p>
 </main>
 <footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap cp">© ${new Date().getFullYear()} 周周・日本房仲</div></footer>
+<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 </body>
 </html>`;
 }
