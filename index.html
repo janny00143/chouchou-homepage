@@ -55,6 +55,8 @@ h1.t{font-size:33px;font-weight:800;line-height:1.25;letter-spacing:-.5px;margin
 .about{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:22px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
 .av{width:76px;height:76px;border-radius:18px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;font-size:30px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}.about p.line{display:flex;gap:8px;font-size:14px;margin-bottom:10px}.about .ico{color:#a8a29e;flex:0 0 auto}
+.profile{display:flex;gap:22px;align-items:flex-start;text-align:left;flex-wrap:wrap}.profile .av{width:88px;height:88px;font-size:34px;box-shadow:0 8px 20px rgba(244,63,94,.28)}.profile .pinfo{flex:1;min-width:250px}.profile .pname{font-size:24px;font-weight:800;margin:0 0 4px}.profile .prole{color:var(--mut);font-size:14px;margin:0 0 14px}.areas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.areas span{font-size:13px;font-weight:600;padding:5px 13px;border-radius:999px;background:#fff5f7;color:var(--rose);border:1px solid #fecdd3}.areas span.main{background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;border:none}#bio,#bio p{text-align:left}#bio p{line-height:1.95;margin-bottom:12px;color:#44403c}
+.coinfo .ci{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px dashed #ececec}.coinfo .ci:last-child{border-bottom:none}.coinfo .cc{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:#f5f5f4;display:flex;align-items:center;justify-content:center;font-size:16px}.coinfo .ct{flex:1;min-width:0}.coinfo .cl{font-size:11px;color:#a8a29e;font-weight:700;letter-spacing:.5px;margin-bottom:2px}.coinfo .cv{font-size:14px;color:#292524;font-weight:600;word-break:break-word;line-height:1.55}.coinfo .cv a{color:var(--rose)}
 .qr{display:flex;flex-direction:column;align-items:center;background:#f5f5f4;border-radius:14px;padding:16px;margin-top:14px}
 .socs a{display:inline-flex;width:38px;height:38px;border-radius:11px;color:#fff;align-items:center;justify-content:center;margin-right:8px;font-size:13px;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:.15s}.socs a:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.2)}
 footer{border-top:1px solid var(--line);background:#fff;margin-top:50px}footer .row{padding:28px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}footer .cp{padding-bottom:22px;font-size:12px;color:#a8a29e}
@@ -198,18 +200,19 @@ footer{border-top:1px solid var(--line);background:#fff;margin-top:50px}footer .
 
   <section class="view" id="v-about">
     <div class="about">
-      <div class="panel" style="display:flex;gap:20px;flex-wrap:wrap">
+      <div class="panel profile">
         <div class="av">周</div>
-        <div style="flex:1;min-width:240px">
-          <h1 class="t" style="font-size:24px">關於周周</h1>
-          <p class="area" style="color:var(--rose);font-size:14px;margin-bottom:14px">📍 東京23區為主，周邊地區橫濱、神奈川、千葉近郊等也可以介紹</p>
+        <div class="pinfo">
+          <h1 class="pname">關於周周</h1>
+          <p class="prole">周欣妤 ｜ 台灣人・東京第一線房仲</p>
+          <div class="areas"><span class="main">📍 東京 23 區（主力）</span><span>橫濱</span><span>神奈川</span><span>千葉近郊</span></div>
           <div id="bio"></div>
-          <div style="margin-top:16px"><a class="btn btn-line" id="lineA" target="_blank">加 LINE 諮詢</a> <span class="socs" id="aboutSocs"></span></div>
+          <div style="margin-top:18px"><a class="btn btn-line" id="lineA" target="_blank">加 LINE 諮詢</a> <span class="socs" id="aboutSocs"></span></div>
         </div>
       </div>
       <div class="two">
-        <div class="panel"><h2 style="margin-bottom:14px">📞 聯繫我們</h2><p>LINE ID：<b id="lineId"></b></p><div class="qr"><img id="qr" width="150" height="150" alt="LINE QR"><p style="font-size:12px;color:var(--mut);margin-top:8px">掃描或長按加入 LINE</p></div></div>
-        <div class="panel" id="company"><h2 style="margin-bottom:14px">🏢 公司資訊</h2></div>
+        <div class="panel"><h2 style="margin-bottom:14px;text-align:left">📞 聯繫我們</h2><p style="text-align:left">LINE ID：<b id="lineId"></b></p><div class="qr"><img id="qr" width="150" height="150" alt="LINE QR"><p style="font-size:12px;color:var(--mut);margin-top:8px">掃描或長按加入 LINE</p></div></div>
+        <div class="panel"><h2 style="margin-bottom:6px;text-align:left">🏢 公司資訊</h2><div class="coinfo" id="company"></div></div>
       </div>
     </div>
   </section>
@@ -280,7 +283,7 @@ document.getElementById('introSocs').innerHTML=socHTML();document.getElementById
 document.getElementById('bio').innerHTML=S.bio.map(p=>`<p style="margin-bottom:12px;color:#44403c">${p}</p>`).join("");
 document.getElementById('lineId').textContent=S.lineId;
 document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(S.line);
-const c=S.company;document.getElementById('company').innerHTML+=`<p class="line"><span class="ico">🏢</span>${c.name}</p><p class="line"><span class="ico">👤</span>${c.person}</p><p class="line"><span class="ico">📄</span>宅建業免許：${c.license}</p><p class="line"><span class="ico">📍</span>${c.addr}</p><p class="line"><span class="ico">📱</span>携帯 ${c.mobile}</p><p class="line"><span class="ico">☎️</span>TEL ${c.tel}</p><p class="line"><span class="ico">📠</span>FAX ${c.fax}</p><p class="line"><span class="ico">✉️</span><a href="mailto:${c.email}" style="color:var(--rose)">${c.email}</a></p><p class="line"><span class="ico">🌐</span><a href="${c.hp}" target="_blank" style="color:var(--rose)">${c.hp}</a></p>`;
+const c=S.company;const ci=(ic,l,v)=>`<div class="ci"><div class="cc">${ic}</div><div class="ct"><div class="cl">${l}</div><div class="cv">${v}</div></div></div>`;document.getElementById('company').innerHTML=ci('🏢','公司','株式会社アンドプラス 住宅営業部（株式會社ANDPLUS）')+ci('👤','負責人','周 欣妤 ／ Syu ShinYu ／ シュウ シンユウ')+ci('📄','宅建業免許',c.license)+ci('📍','地址',c.addr)+ci('📱','手機',`<a href="tel:${c.mobile.replace(/[^0-9]/g,'')}">${c.mobile}</a>`)+ci('☎️','公司電話',`<a href="tel:${c.tel.replace(/[^0-9]/g,'')}">${c.tel}</a>`)+ci('📠','傳真',c.fax)+ci('✉️','信箱',`<a href="mailto:${c.email}">${c.email}</a>`)+ci('🌐','公司官網',`<a href="${c.hp}" target="_blank">${c.hp}</a>`);
 document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+c.name;
 document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>`<div class="step"><span class="n">${i+1}</span><div><h3>${s[0]}</h3><p style="color:var(--mut);font-size:14px">${s[1]}</p></div></div>`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>`<div class="it"><span class="ck">✓</span>${t}</div>`).join("");
