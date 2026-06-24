@@ -58,6 +58,7 @@ footer{border-top:1px solid var(--line);background:#fff;margin-top:50px}footer .
 @media(max-width:820px){.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.svc{grid-template-columns:1fr}.svcsec{grid-template-columns:1fr}h1.t{font-size:27px}nav.main{display:none}.burger{display:block}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
 .mnav{display:none;border-top:1px solid var(--line);background:#fff;padding:8px 0}.mnav a{display:block;padding:10px 16px}
+.line-float{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:13px 20px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 6px 20px rgba(16,185,129,.45);transition:transform .15s,box-shadow .15s}.line-float:hover{background:var(--green-d);transform:translateY(-2px);box-shadow:0 10px 28px rgba(16,185,129,.55)}.line-float .ic{font-size:18px;line-height:1}.line-float::before{content:"";position:absolute;inset:0;border-radius:999px;animation:lfpulse 2.4s infinite;pointer-events:none}@keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.45)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}@media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
 </style>
 
 <header>
@@ -195,6 +196,7 @@ footer{border-top:1px solid var(--line);background:#fff;margin-top:50px}footer .
     </div>
   </section>
 </main>
+<a class="line-float" id="lineFloat" target="_blank"><span class="ic">💬</span>加 LINE 諮詢</a>
 
 <footer>
   <div class="wrap row"><div><p style="font-weight:700" id="fName">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，周邊地區橫濱、神奈川、千葉近郊等也可以介紹</p></div><div style="display:flex;align-items:center;gap:8px"><span class="socs" id="footSocs"></span><a class="btn btn-line" id="lineFoot" target="_blank">加 LINE 諮詢</a></div></div>
@@ -252,7 +254,7 @@ document.getElementById('brand').textContent=S.brand;document.getElementById('fN
 document.getElementById('mainnav').innerHTML=NAV.map(n=>`<a data-v="${n[0]}" onclick="show('${n[0]}');return false">${n[1]}</a>`).join("");
 document.getElementById('mnav').innerHTML=NAV.map(n=>`<a onclick="show('${n[0]}');return false">${n[1]}</a>`).join("")+`<a href="${S.line}" target="_blank" style="color:var(--green-d)">加 LINE 諮詢</a>`;
 document.getElementById('catbar').innerHTML=`<select class="catsel" id="catSelect" onchange="setCat(this.value||null)"><option value="">📚 全部文章</option>`+CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")+`</select><a class="chip tool" href="translate.html" style="margin-left:auto">🏠 房產翻譯機</a>`;
-['lineTop','lineIntro','lineHome','lineP','lineL','lineI','lineA','lineFoot','lineSvc'].forEach(i=>{const e=document.getElementById(i);if(e)e.href=S.line;});
+['lineTop','lineIntro','lineHome','lineP','lineL','lineI','lineA','lineFoot','lineSvc','lineFloat'].forEach(i=>{const e=document.getElementById(i);if(e)e.href=S.line;});
 document.getElementById('introSocs').innerHTML=socHTML();document.getElementById('aboutSocs').innerHTML=socHTML();document.getElementById('footSocs').innerHTML=socHTML();
 document.getElementById('bio').innerHTML=S.bio.map(p=>`<p style="margin-bottom:12px;color:#44403c">${p}</p>`).join("");
 document.getElementById('lineId').textContent=S.lineId;
