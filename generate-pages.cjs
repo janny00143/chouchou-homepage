@@ -76,7 +76,6 @@ function page(a) {
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
-<script>(function(){try{var t=localStorage.getItem("theme")||(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
@@ -101,7 +100,7 @@ ${STYLE}
 </head>
 <body>
 <div id="rp"></div>
-<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><span style="display:flex;align-items:center;gap:8px"><button class="tgl" onclick="toggleTheme()" aria-label="深色模式">🌙</button><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></span></div></div>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
 <main class="wrap" style="max-width:760px;padding-top:18px">
 <a class="back" href="index.html">← 回周周首頁</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
@@ -120,7 +119,6 @@ ${relHTML}
 <footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap cp">© ${new Date().getFullYear()} 周周・日本房仲</div></footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="回到頂端">↑</button>
-<script>function toggleTheme(){var d=document.documentElement,n=d.getAttribute("data-theme")==="dark"?"light":"dark";d.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}document.querySelectorAll(".tgl").forEach(function(b){b.textContent=n==="dark"?"☀️":"🌙";});}document.querySelectorAll(".tgl").forEach(function(b){b.textContent=document.documentElement.getAttribute("data-theme")==="dark"?"☀️":"🌙";});</script>
 <script>(function(){var rp=document.getElementById('rp'),btt=document.getElementById('btt');function os(){var h=document.documentElement,sc=h.scrollTop||document.body.scrollTop,mx=h.scrollHeight-h.clientHeight;rp.style.width=(mx>0?sc/mx*100:0)+'%';btt.style.display=sc>500?'flex':'none';}window.addEventListener('scroll',os,{passive:true});os();btt.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};var post=document.querySelector('.post');if(post){var heads=[];post.querySelectorAll('p').forEach(function(p){var fe=p.querySelector('b');if(fe&&p.firstElementChild===fe){var t=fe.textContent.trim();if(t.length>=3&&t.length<=42)heads.push({p:p,t:t});}});if(heads.length>=4){var toc=document.createElement('div');toc.className='toc';var html='<div class="toc-t">📑 本篇目錄</div>';heads.forEach(function(h,i){var id='sec'+i;h.p.id=id;h.p.classList.add('sec');html+='<a href="#'+id+'">'+h.t+'</a>';});toc.innerHTML=html;post.parentNode.insertBefore(toc,post);}}})();</script>
 </body>
 </html>`;

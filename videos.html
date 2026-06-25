@@ -1,0 +1,48 @@
+<!-- 周周的影片牆。GitHub 上 videos.html 整份取代。要加影片：在下方 VIDEOS 陣列加 YouTube 影片 ID。 -->
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>周周的影片｜日本買房 Vlog｜周周・日本房仲</title>
+<meta name="description" content="周周的日本買房影片：用影片帶你認識日本買房、自住、投資與生活的眉角。歡迎訂閱 YouTube 頻道。">
+<link rel="canonical" href="https://janny00143.github.io/chouchou-homepage/videos.html">
+<meta property="og:title" content="周周的影片｜日本買房 Vlog"><meta property="og:description" content="用影片帶你認識日本買房的眉角。"><meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.sbar{background:#fff;border-bottom:1px solid var(--line)}
+.wrap{max-width:840px;margin:0 auto;padding:0 16px}a{color:inherit}
+.tgl{background:none;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:16px;color:var(--ink);flex:0 0 auto}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
+.top{text-align:center;margin-bottom:22px}.top h1{font-size:26px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
+.vidwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.vidwall .vw{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.vidwall iframe{width:100%;height:100%;border:0;display:block}
+.empty{text-align:center;color:var(--mut);padding:30px;border:1px dashed var(--line);border-radius:14px}
+.cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:24px;text-align:center;margin:24px 0}.cta p{margin-bottom:12px;font-size:15px}
+.cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
+.yt{display:inline-flex;align-items:center;gap:6px;background:#ff0000;color:#fff;border-radius:999px;font-weight:700;padding:11px 22px;text-decoration:none;margin-bottom:26px}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px}
+html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
+html[data-theme="dark"] .sbar{background:#1c1917}
+</style>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
+<div class="wrap">
+  <a class="back" href="index.html">← 回周周首頁</a>
+  <div class="top"><h1>🎬 周周的影片</h1><p>用影片帶你認識日本買房、自住、投資與生活的眉角</p></div>
+  <div style="text-align:center"><a class="yt" href="https://www.youtube.com/@travelfish67" target="_blank" rel="noopener">▶ 訂閱 YouTube 頻道</a></div>
+  <div class="vidwall" id="vidwall"></div>
+  <div class="cta"><p>看完影片有問題，或想找適合的物件？<br>直接加 LINE 找周周聊聊 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div>
+  <p class="foot">© 2026 周周・日本房仲</p>
+</div>
+<script>
+// 要新增影片：把 YouTube 影片 ID 加進這個陣列即可（網址 youtube.com/watch?v=XXXX 或 shorts/XXXX 的 XXXX）
+const VIDEOS=["YwqJo7iZuQI"];
+var w=document.getElementById('vidwall');
+w.innerHTML=VIDEOS.length?VIDEOS.map(function(id){return '<div class="vw"><iframe src="https://www.youtube.com/embed/'+id+'" title="周周的影片" loading="lazy" allowfullscreen></iframe></div>';}).join(''):'<div class="empty">影片陸續上架中，先到 YouTube 頻道看看吧！</div>';
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
+</script>
