@@ -51,7 +51,8 @@ function page(a) {
   const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : "");
   const bodyHTML = a.body.map(p => p.trim().startsWith("<div") ? p : "<p>" + p + "</p>").join("");
   const em = ytEmbed(a.video);
-  const vid = em ? `<div class="vid"><iframe src="${em}" allowfullscreen loading="lazy"></iframe></div>` : "";
+  const vidId = em ? em.split("/embed/")[1] : "";
+  const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/hqdefault.jpg" alt="影片" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
   const ld = {
     "@context": "https://schema.org", "@type": "Article",
     headline: a.title, description: a.ex,
@@ -92,7 +93,7 @@ function page(a) {
 <meta property="og:url" content="${url}">${cover ? `\n<meta property="og:image" content="${cover}">` : ""}
 <meta name="twitter:card" content="summary_large_image">
 <meta property="article:published_time" content="${a.date}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://i.ytimg.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g,"\\u003c").replace(/>/g,"\\u003e").replace(/&/g,"\\u0026")}</script>
 <script type="application/ld+json">${JSON.stringify(ldCrumb).replace(/</g,"\\u003c").replace(/>/g,"\\u003e").replace(/&/g,"\\u0026")}</script>
@@ -119,6 +120,7 @@ ${relHTML}
 <footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap cp">© ${new Date().getFullYear()} 周周・日本房仲</div></footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="回到頂端">↑</button>
+<script>document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ytf');if(f&&!f.dataset.l){f.dataset.l=1;f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.id+'?autoplay=1" title="影片" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe>';}});</script>
 <script>(function(){var rp=document.getElementById('rp'),btt=document.getElementById('btt');function os(){var h=document.documentElement,sc=h.scrollTop||document.body.scrollTop,mx=h.scrollHeight-h.clientHeight;rp.style.width=(mx>0?sc/mx*100:0)+'%';btt.style.display=sc>500?'flex':'none';}window.addEventListener('scroll',os,{passive:true});os();btt.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};var post=document.querySelector('.post');if(post){var heads=[];post.querySelectorAll('p').forEach(function(p){var fe=p.querySelector('b');if(fe&&p.firstElementChild===fe){var t=fe.textContent.trim();if(t.length>=3&&t.length<=42)heads.push({p:p,t:t});}});if(heads.length>=4){var toc=document.createElement('div');toc.className='toc';var html='<div class="toc-t">📑 本篇目錄</div>';heads.forEach(function(h,i){var id='sec'+i;h.p.id=id;h.p.classList.add('sec');html+='<a href="#'+id+'">'+h.t+'</a>';});toc.innerHTML=html;post.parentNode.insertBefore(toc,post);}}})();</script>
 </body>
 </html>`;
