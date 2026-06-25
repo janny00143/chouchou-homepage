@@ -41,7 +41,7 @@ const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g,
 const cat = id => CATS.find(c => c.id === id) || { name: "未分類", g: "linear-gradient(135deg,#a8a29e,#d6d3d1)", c: "#a8a29e" };
 const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/); return m ? "https://www.youtube.com/embed/" + m[1] : ""; };
 const rt = a => Math.max(1, Math.round(a.body.join("").replace(/\s/g, "").length / 350));
-const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + c) : ""; };
+const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
 
 function page(a) {
   const slug = SLUG[a.id];
@@ -82,7 +82,8 @@ function page(a) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${t}</title>
 <meta name="description" content="${d}">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">${cover ? `
+<link rel="preload" as="image" href="${cover}">` : ""}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
