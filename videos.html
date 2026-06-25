@@ -19,8 +19,13 @@
 .btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
 .back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
 .top{text-align:center;margin-bottom:22px}.top h1{font-size:26px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
-.vidwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-.vidwall .vw{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.carousel{position:relative;margin:0 -4px}
+.vidwall{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 4px;scrollbar-width:thin}
+.vidwall::-webkit-scrollbar{height:6px}.vidwall::-webkit-scrollbar-thumb{background:#d6d3d1;border-radius:3px}
+.vidwall .vw{flex:0 0 calc((100% - 32px)/3);scroll-snap-align:start;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.cbtn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:none;background:rgba(0,0,0,.55);color:#fff;font-size:22px;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center}
+.cbtn.prev{left:0}.cbtn.next{right:0}.cbtn:hover{background:var(--rose)}
+@media(max-width:600px){.vidwall .vw{flex:0 0 72%}}
 .vidwall iframe{width:100%;height:100%;border:0;display:block}.ytf{position:relative;cursor:pointer;width:100%;height:100%;background:#000;display:block}.ytf img{width:100%;height:100%;object-fit:cover;display:block}.ytf .pbtn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;padding-left:3px;pointer-events:none}.ytf:hover .pbtn{background:var(--rose)}
 .empty{text-align:center;color:var(--mut);padding:30px;border:1px dashed var(--line);border-radius:14px}
 .cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:24px;text-align:center;margin:24px 0}.cta p{margin-bottom:12px;font-size:15px}
@@ -35,13 +40,14 @@ html[data-theme="dark"] .sbar{background:#1c1917}
   <a class="back" href="index.html">← 回周周首頁</a>
   <div class="top"><h1>🎬 周周的影片</h1><p>用影片帶你認識日本買房、自住、投資與生活的眉角</p></div>
   <div style="text-align:center"><a class="yt" href="https://www.youtube.com/@travelfish67" target="_blank" rel="noopener">▶ 訂閱 YouTube 頻道</a></div>
-  <div class="vidwall" id="vidwall"></div>
+  <div class="carousel"><button class="cbtn prev" onclick="scrollVids(-1)" aria-label="上一個">‹</button><div class="vidwall" id="vidwall"></div><button class="cbtn next" onclick="scrollVids(1)" aria-label="下一個">›</button></div>
   <div class="cta"><p>看完影片有問題，或想找適合的物件？<br>直接加 LINE 找周周聊聊 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div>
   <p class="foot">© 2026 周周・日本房仲</p>
 </div>
 <script>
 // 要新增影片：把 YouTube 影片 ID 加進這個陣列即可（網址 youtube.com/watch?v=XXXX 或 shorts/XXXX 的 XXXX）
 const VIDEOS=["IVBNhY7N0Ac","z3fE68ir-6E","hTtulzKgjzM","fAizcxutacY","8fY3ioHl8a0","FIK0Ol9uEXc","-8bCGb_-WiM"];
+function scrollVids(d){var el=document.getElementById('vidwall');el.scrollBy({left:d*el.clientWidth*0.85,behavior:'smooth'});}
 var w=document.getElementById('vidwall');
 w.innerHTML=VIDEOS.length?VIDEOS.map(function(id){return '<div class="vw"><div class="ytf" data-id="'+id+'"><img src="https://i.ytimg.com/vi/'+id+'/oardefault.jpg" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg\'" alt="影片縮圖" loading="lazy"><span class="pbtn">▶</span></div></div>';}).join(''):'<div class="empty">影片陸續上架中，先到 YouTube 頻道看看吧！</div>';
 document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ytf');if(f&&!f.dataset.l){f.dataset.l=1;f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.id+'?autoplay=1" title="周周的影片" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe>';}});
