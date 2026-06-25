@@ -41,7 +41,7 @@ html[data-theme="dark"] .sbar{background:#1c1917}
 </div>
 <script>
 // 要新增影片：把 YouTube 影片 ID 加進這個陣列即可（網址 youtube.com/watch?v=XXXX 或 shorts/XXXX 的 XXXX）
-const VIDEOS=["YwqJo7iZuQI"];
+const VIDEOS=["IVBNhY7N0Ac","z3fE68ir-6E","hTtulzKgjzM","fAizcxutacY","8fY3ioHl8a0","FIK0Ol9uEXc","-8bCGb_-WiM"];
 var w=document.getElementById('vidwall');
 w.innerHTML=VIDEOS.length?VIDEOS.map(function(id){return '<div class="vw"><iframe src="https://www.youtube.com/embed/'+id+'" title="周周的影片" loading="lazy" allowfullscreen></iframe></div>';}).join(''):'<div class="empty">影片陸續上架中，先到 YouTube 頻道看看吧！</div>';
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
