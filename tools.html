@@ -1,0 +1,160 @@
+<!-- 周周・日本買房試算工具。GitHub 上 tools.html 整份取代。 -->
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>日本買房試算工具｜房貸・總費用・投報率｜周周</title>
+<meta name="description" content="周周的日本買房試算工具：房貸月付、購屋總費用與自備款、租金投報率（表面/實質利回り）、日圓台幣與坪㎡換算。一鍵把結果傳給周周諮詢。">
+<link rel="canonical" href="https://janny00143.github.io/chouchou-homepage/tools.html">
+<meta property="og:title" content="日本買房試算工具｜周周"><meta property="og:description" content="房貸月付、購屋總費用、投報率、日圓台幣換算，一次算清楚。"><meta property="og:type" content="website"><meta property="og:url" content="https://janny00143.github.io/chouchou-homepage/tools.html">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px}
+.wrap{max-width:640px;margin:0 auto}a{color:inherit}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin-bottom:14px}
+.top{text-align:center;margin-bottom:18px}.top h1{font-size:25px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:18px}
+.tabs a{font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.tabs a:hover{border-color:var(--rose);color:var(--rose)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.card h2{font-size:19px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.card .sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.f{margin-bottom:13px}
+.f label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:5px}
+.f .inp{display:flex;align-items:center;gap:8px;background:#f5f5f4;border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.f .inp:focus-within{border-color:var(--rose);background:#fff}
+.f input{flex:1;border:none;background:transparent;font-size:17px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);width:100%;outline:none}
+.f .unit{color:var(--mut);font-size:14px;flex:0 0 auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.out{background:#fff1f2;border:1px solid #fecdd3;border-radius:14px;padding:16px 18px;margin-top:6px}
+.out .big{font-size:13px;color:var(--rose-d);font-weight:600}
+.out .num{font-size:30px;font-weight:800;color:var(--rose);margin:2px 0 10px;line-height:1.1}
+.orow{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-top:1px dashed #fde0e4}
+.orow .v{font-weight:700}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:13px;line-height:1.7}
+.cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-bottom:18px}
+.cta p{margin-bottom:12px;font-size:15px}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--rose);border:none;border-radius:999px;font-weight:700;cursor:pointer;font-size:15px;padding:12px 26px;text-decoration:none}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin-top:8px;line-height:1.8}
+@media(max-width:480px){.out .num{font-size:25px}}
+</style>
+
+<div class="wrap">
+  <a class="back" href="index.html">← 回周周首頁</a>
+  <div class="top"><h1>🧮 日本買房試算工具</h1><p>房貸月付、總費用、投報率、匯率坪數，一次算清楚<br><span style="font-size:13px">算完有問題，直接把結果傳給周周看看 👇</span></p></div>
+
+  <div class="tabs">
+    <a href="#loan">🏦 房貸試算</a>
+    <a href="#cost">💴 總費用・自備款</a>
+    <a href="#yield">📈 投報率</a>
+    <a href="#conv">🔁 匯率・坪數換算</a>
+  </div>
+
+  <!-- 1. 房貸 -->
+  <div class="card" id="loan">
+    <h2>🏦 房貸月付試算</h2>
+    <p class="sub">等額本息（元利均等）概算。實際利率與可貸成數依各銀行審查為準。</p>
+    <div class="two">
+      <div class="f"><label>房屋總價</label><div class="inp"><input id="l_price" type="number" inputmode="decimal" value="6000"><span class="unit">萬日圓</span></div></div>
+      <div class="f"><label>頭期款</label><div class="inp"><input id="l_down" type="number" inputmode="decimal" value="1200"><span class="unit">萬日圓</span></div></div>
+      <div class="f"><label>年利率</label><div class="inp"><input id="l_rate" type="number" inputmode="decimal" value="2.0" step="0.1"><span class="unit">%</span></div></div>
+      <div class="f"><label>貸款年限</label><div class="inp"><input id="l_years" type="number" inputmode="numeric" value="35"><span class="unit">年</span></div></div>
+    </div>
+    <div class="out">
+      <div class="big">每月還款</div><div class="num" id="l_m">—</div>
+      <div class="orow"><span>貸款金額</span><span class="v" id="l_loan">—</span></div>
+      <div class="orow"><span>總利息</span><span class="v" id="l_int">—</span></div>
+      <div class="orow"><span>連本帶利總還款</span><span class="v" id="l_total">—</span></div>
+    </div>
+    <div class="note">⚠️ 外國人／非居住者的可貸成數與利率，依個案與銀行審查為準，本試算僅供概念參考。</div>
+  </div>
+
+  <!-- 2. 總費用 -->
+  <div class="card" id="cost">
+    <h2>💴 購屋總費用・自備款</h2>
+    <p class="sub">中古公寓大樓概算。仲介手數料依法定上限計算，其餘諸費用為概估。</p>
+    <div class="two">
+      <div class="f"><label>房屋總價</label><div class="inp"><input id="c_price" type="number" inputmode="decimal" value="6000"><span class="unit">萬日圓</span></div></div>
+      <div class="f"><label>頭期款比例</label><div class="inp"><input id="c_downpct" type="number" inputmode="decimal" value="20"><span class="unit">%</span></div></div>
+    </div>
+    <div class="out">
+      <div class="big">購屋需準備的現金（頭期＋諸費用）</div><div class="num" id="c_cash">—</div>
+      <div class="orow"><span>頭期款</span><span class="v" id="c_down">—</span></div>
+      <div class="orow"><span>仲介手數料（含稅）</span><span class="v" id="c_fee">—</span></div>
+      <div class="orow"><span>其他諸費用（概估）</span><span class="v" id="c_other">—</span></div>
+      <div class="orow"><span>諸費用合計</span><span class="v" id="c_costsum">—</span></div>
+    </div>
+    <div class="note">⚠️ 「其他諸費用」含登記、不動產取得稅、印紙稅、火災保險、貸款事務費等，本試算以房價約 4% 概估；不動產取得稅依評價額與各自治體不同，實際請由稅理士／司法書士確認。</div>
+  </div>
+
+  <!-- 3. 投報率 -->
+  <div class="card" id="yield">
+    <h2>📈 租金投報率</h2>
+    <p class="sub">表面利回り＝年租金÷物件價格；實質利回り再扣掉持有支出與購入諸費用。</p>
+    <div class="two">
+      <div class="f"><label>物件價格</label><div class="inp"><input id="y_price" type="number" inputmode="decimal" value="3000"><span class="unit">萬日圓</span></div></div>
+      <div class="f"><label>每月租金</label><div class="inp"><input id="y_rent" type="number" inputmode="decimal" value="12"><span class="unit">萬日圓</span></div></div>
+      <div class="f"><label>每月管理費＋修繕</label><div class="inp"><input id="y_cost" type="number" inputmode="decimal" value="2"><span class="unit">萬日圓</span></div></div>
+      <div class="f"><label>年其他支出（稅・保險等）</label><div class="inp"><input id="y_other" type="number" inputmode="decimal" value="10"><span class="unit">萬日圓</span></div></div>
+    </div>
+    <div class="out">
+      <div class="two" style="gap:12px">
+        <div><div class="big">表面投報率</div><div class="num" id="y_gross">—</div></div>
+        <div><div class="big">實質投報率</div><div class="num" id="y_net">—</div></div>
+      </div>
+      <div class="orow"><span>年租金收入</span><span class="v" id="y_yrent">—</span></div>
+      <div class="orow"><span>年持有支出</span><span class="v" id="y_yexp">—</span></div>
+    </div>
+    <div class="note">⚠️ 投報率不等於實際報酬，未計入空室、租金下跌、修繕、貸款利息與稅金等風險，實際以個案為準。</div>
+  </div>
+
+  <!-- 4. 換算 -->
+  <div class="card" id="conv">
+    <h2>🔁 匯率・坪數換算</h2>
+    <p class="sub">匯率請填當日參考值（預設約 0.21）。坪⇄㎡ 自動換算（1 坪 ≈ 3.305 ㎡）。</p>
+    <div class="f"><label>匯率（1 日圓 = ? 台幣）</label><div class="inp"><input id="fx_rate" type="number" inputmode="decimal" value="0.21" step="0.001"><span class="unit">TWD/JPY</span></div></div>
+    <div class="two">
+      <div class="f"><label>日圓</label><div class="inp"><input id="fx_jpy" type="number" inputmode="decimal" value="10000"><span class="unit">日圓</span></div></div>
+      <div class="f"><label>台幣</label><div class="inp"><input id="fx_twd" type="number" inputmode="decimal" value="2100"><span class="unit">台幣</span></div></div>
+    </div>
+    <div style="height:8px"></div>
+    <div class="two">
+      <div class="f"><label>坪</label><div class="inp"><input id="cv_tsubo" type="number" inputmode="decimal" value="20"><span class="unit">坪</span></div></div>
+      <div class="f"><label>平方公尺</label><div class="inp"><input id="cv_sqm" type="number" inputmode="decimal" value="66.12"><span class="unit">㎡</span></div></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <p>算完想找適合的物件，或有貸款／稅務問題？<br>把你的試算結果直接傳給周周 👇</p>
+    <a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a>
+  </div>
+  <p class="foot">本頁所有試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以各銀行、稅理士、司法書士與最新法規為準。</p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};
+const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圓";
+// 房貸
+function calcLoan(){const price=+$('l_price').value*1e4,down=+$('l_down').value*1e4,rate=+$('l_rate').value,years=+$('l_years').value;const loan=Math.max(0,price-down);const r=rate/100/12,n=years*12;let m=0;if(n>0)m=r>0?loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):loan/n;const total=m*n,interest=total-loan;$('l_m').textContent=m>0?yen0(m):"—";$('l_loan').textContent=yfmt(loan);$('l_int').textContent=yfmt(interest);$('l_total').textContent=yfmt(total);}
+// 總費用
+function calcCost(){const price=+$('c_price').value*1e4,dp=+$('c_downpct').value;const down=price*dp/100;const fee=(price*0.03+6e4)*1.1;const other=price*0.04;const costsum=fee+other;const cash=down+costsum;$('c_down').textContent=yfmt(down);$('c_fee').textContent=yfmt(fee);$('c_other').textContent=yfmt(other);$('c_costsum').textContent=yfmt(costsum);$('c_cash').textContent=yfmt(cash);}
+// 投報
+function calcYield(){const price=+$('y_price').value*1e4,rent=+$('y_rent').value*1e4,mcost=+$('y_cost').value*1e4,other=+$('y_other').value*1e4;const yrent=rent*12,yexp=mcost*12+other;const gross=price>0?yrent/price*100:0;const buycost=price*0.07;const net=(price+buycost)>0?(yrent-yexp)/(price+buycost)*100:0;$('y_gross').textContent=gross>0?gross.toFixed(2)+" %":"—";$('y_net').textContent=net?net.toFixed(2)+" %":"—";$('y_yrent').textContent=yfmt(yrent);$('y_yexp').textContent=yfmt(yexp);}
+// 換算
+function fxFromJpy(){const r=+$('fx_rate').value;$('fx_twd').value=(+$('fx_jpy').value*r).toFixed(0);}
+function fxFromTwd(){const r=+$('fx_rate').value;if(r>0)$('fx_jpy').value=(+$('fx_twd').value/r).toFixed(0);}
+function cvFromTsubo(){$('cv_sqm').value=(+$('cv_tsubo').value*3.305785).toFixed(2);}
+function cvFromSqm(){$('cv_tsubo').value=(+$('cv_sqm').value/3.305785).toFixed(2);}
+['l_price','l_down','l_rate','l_years'].forEach(i=>$(i).addEventListener('input',calcLoan));
+['c_price','c_downpct'].forEach(i=>$(i).addEventListener('input',calcCost));
+['y_price','y_rent','y_cost','y_other'].forEach(i=>$(i).addEventListener('input',calcYield));
+$('fx_rate').addEventListener('input',fxFromJpy);$('fx_jpy').addEventListener('input',fxFromJpy);$('fx_twd').addEventListener('input',fxFromTwd);
+$('cv_tsubo').addEventListener('input',cvFromTsubo);$('cv_sqm').addEventListener('input',cvFromSqm);
+calcLoan();calcCost();calcYield();
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
+</script>
