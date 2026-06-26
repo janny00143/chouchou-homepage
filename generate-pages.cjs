@@ -32,6 +32,7 @@ const SLUG = {
   a18: "japan-mansion-management-fee",
   a24: "japan-flood-drainage-guide",
   a25: "japan-hazard-map-guide",
+  a26: "japan-earthquake-proof-housing",
   a19: "asakusa-sensoji-guide",
   a20: "tokyo-skytree-guide",
   a21: "tokyo-tower-guide",
