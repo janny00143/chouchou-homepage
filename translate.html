@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--line:#e7e5e4}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px;font-size:16px}
 .wrap{max-width:640px;margin:0 auto}a{color:inherit}
 .btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;font-family:inherit}
 .btn-line{background:var(--green);color:#fff}.btn-line:hover{background:var(--green-d)}
@@ -32,9 +32,9 @@
 .blurtxt{filter:blur(4.5px);-webkit-user-select:none;user-select:none;color:#a8a29e}
 .locktip{margin-top:12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:10px;padding:10px 12px;font-size:13px;color:var(--rose-d);text-align:center;line-height:1.6}
 .locktip a{color:var(--rose-d);font-weight:700;text-decoration:underline}
-</style>
+.fzoom{zoom:var(--fs,1.1)}.fzoom img{zoom:calc(1/var(--fs,1.1))}</style>
 
-<div class="wrap">
+<div class="wrap fzoom">
   <a class="back" href="index.html">← 回周周首頁</a>
   <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面丟進來，幫你翻成中文並整理重點<br><span style="font-size:13px">約 3 分鐘可以自動翻譯出一張，如果檔案太大會跑不出來喔~<br>圖片不夠清楚或太小，也可能會導致分析錯誤喔！</span></p></div>
 
