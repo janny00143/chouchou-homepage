@@ -36,30 +36,11 @@
   <a class="back" href="index.html">← 回周周首頁</a>
   <div class="top"><h1>💬 意見回饋</h1><p>網站、文章或服務有任何想法、建議，都歡迎告訴周周——可以匿名，幫我把這裡做得更好！</p></div>
   <div class="card">
-    <form onsubmit="return sendFb(event)">
-      <div class="f"><label>回饋類型</label><select id="fb_type"><option>網站／使用建議</option><option>文章內容回饋</option><option>找房／買房諮詢</option><option>合作邀約</option><option>其他</option></select></div>
-      <div class="f"><label>你的稱呼（選填）</label><input id="fb_name" type="text" placeholder="怎麼稱呼你？"></div>
-      <div class="f"><label>聯絡方式（選填・可匿名）</label><input id="fb_contact" type="text" placeholder="LINE ID／Email／電話（可不填）"><p style="font-size:12px;color:var(--mut);margin-top:5px">不留也沒關係，可以匿名 🙂 若留下有效的聯絡方式，周周才方便回覆你。</p></div>
-      <div class="f"><label>回饋內容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="想說的話都可以寫在這裡…" required></textarea></div>
-      <button class="submit" type="submit">📨 送出回饋</button>
-    </form>
-    <div class="or">— 或 —</div>
-    <div class="line-wrap"><a class="btn-line" id="lineFb" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 直接用 LINE 告訴周周</a></div>
-    <div class="note">📩 點「送出回饋」會開啟你的 Email 把內容寄給周周（s-syu@and-p.jp）。若手機沒有設定 Email，建議直接用上面的 LINE 傳給我最快。</div>
+    <p style="text-align:center;color:#57534e;font-size:15px;line-height:1.95;margin-bottom:20px">有任何建議，或想找周周聊聊買房，<br>直接用 LINE 傳訊息給我最快、最直接 👇<br><span style="font-size:13px;color:var(--mut)">想匿名也沒關係，只說建議、不留個資都可以。</span></p>
+    <div class="line-wrap"><a class="btn-line" id="lineFb" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 用 LINE 告訴周周</a></div>
   </div>
   <p class="foot">© 2026 周周・日本房仲</p>
 </div>
 <script>
-function sendFb(e){e.preventDefault();
-  var type=document.getElementById('fb_type').value;
-  var name=document.getElementById('fb_name').value.trim()||'匿名';
-  var contact=document.getElementById('fb_contact').value.trim()||'未提供';
-  var msg=document.getElementById('fb_msg').value.trim();
-  if(!msg){alert('請填寫回饋內容');return false;}
-  var subj='【網站意見回饋】'+type;
-  var body='回饋類型：'+type+'\n稱呼：'+name+'\n聯絡方式：'+contact+'\n\n內容：\n'+msg;
-  window.location.href='mailto:s-syu@and-p.jp?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
-  return false;
-}
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
 </script>
