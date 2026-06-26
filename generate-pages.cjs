@@ -52,7 +52,7 @@ function page(a) {
   const c = cat(a.cat);
   const cover = coverURL(a);
   const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : "");
-  const bodyHTML = a.body.map(p => p.trim().startsWith("<div") ? p : "<p>" + p + "</p>").join("");
+  const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; const m = t.match(/^<b>([\s\S]+)<\/b>$/); return m ? '<p class="ah"><b>' + m[1] + "</b></p>" : "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
   const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/hqdefault.jpg" alt="影片" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
