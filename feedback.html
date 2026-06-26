@@ -25,7 +25,7 @@
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--rose);background:#fff}
 .f textarea{min-height:130px;resize:vertical;line-height:1.7}
 .req{color:var(--rose)}
-.submit{width:100%;background:var(--rose);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:16px;padding:13px;cursor:pointer;font-family:inherit}
+.submit{width:100%;background:var(--rose);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:16px;padding:13px;cursor:pointer;font-family:inherit;text-align:center}
 .submit:hover{background:var(--rose-d)}
 .or{text-align:center;color:var(--mut);font-size:13px;margin:16px 0}
 .line-wrap{text-align:center}
@@ -42,6 +42,7 @@
       <div class="f"><label>你的稱呼（選填）</label><input id="fb_name" type="text" placeholder="怎麼稱呼你？"></div>
       <div class="f"><label>聯絡方式（選填・可匿名）</label><input id="fb_contact" type="text" placeholder="LINE ID／Email／電話（可不填）"><p style="font-size:12px;color:var(--mut);margin-top:5px">不留也沒關係，可以匿名 🙂 若留下有效的聯絡方式，周周才方便回覆你。</p></div>
       <div class="f"><label>回饋內容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="想說的話都可以寫在這裡…" required></textarea></div>
+      <input type="text" id="fb_hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="submit" type="submit">📨 送出回饋</button>
     </form>
     <div id="fbStatus" style="display:none;text-align:center;font-weight:600;padding:18px 14px;border-radius:14px;background:#f0fdf4;color:#15803d;line-height:1.7"></div>
@@ -59,6 +60,7 @@ async function sendFb(e){e.preventDefault();
   var contact=document.getElementById('fb_contact').value.trim()||'未提供';
   var msg=document.getElementById('fb_msg').value.trim();
   if(!msg){alert('請填寫回饋內容');return false;}
+  if(document.getElementById('fb_hp').value){form.style.display='none';status.style.display='block';status.innerHTML='✅ 已送出，謝謝你的回饋！周周會看到 ❤️';return false;}
   btn.disabled=true;btn.textContent='傳送中…';
   var data={access_key:'d1ac2743-8999-4270-abe8-9896caaf693b',subject:'【網站意見回饋】'+type,from_name:name,'回饋類型':type,'稱呼':name,'聯絡方式':contact,'內容':msg};
   try{
