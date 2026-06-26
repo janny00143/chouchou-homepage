@@ -44,22 +44,35 @@
       <div class="f"><label>回饋內容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="想說的話都可以寫在這裡…" required></textarea></div>
       <button class="submit" type="submit">📨 送出回饋</button>
     </form>
+    <div id="fbStatus" style="display:none;text-align:center;font-weight:600;padding:18px 14px;border-radius:14px;background:#f0fdf4;color:#15803d;line-height:1.7"></div>
     <div class="or">— 或 —</div>
     <div class="line-wrap"><a class="btn-line" id="lineFb" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 直接用 LINE 告訴周周</a></div>
-    <div class="note">📩 點「送出回饋」會開啟你的 Email 把內容寄給周周。手機沒設定 Email 的話，用上面的 LINE 傳給我最快。</div>
+    <div class="note">📩 按「送出回饋」會直接傳到周周這邊（不用開信箱、電腦手機都可以）。想用上面的 LINE 傳給我也歡迎，一樣快哦~ 感謝 💛</div>
   </div>
   <p class="foot">© 2026 周周・日本房仲</p>
 </div>
 <script>
-function sendFb(e){e.preventDefault();
+async function sendFb(e){e.preventDefault();
+  var form=e.target,btn=form.querySelector('.submit'),status=document.getElementById('fbStatus');
   var type=document.getElementById('fb_type').value;
   var name=document.getElementById('fb_name').value.trim()||'匿名';
   var contact=document.getElementById('fb_contact').value.trim()||'未提供';
   var msg=document.getElementById('fb_msg').value.trim();
   if(!msg){alert('請填寫回饋內容');return false;}
-  var subj='【網站意見回饋】'+type;
-  var body='回饋類型：'+type+'\n稱呼：'+name+'\n聯絡方式：'+contact+'\n\n內容：\n'+msg;
-  window.location.href='mailto:janny00143@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  btn.disabled=true;btn.textContent='傳送中…';
+  var data={access_key:'d1ac2743-8999-4270-abe8-9896caaf693b',subject:'【網站意見回饋】'+type,from_name:name,'回饋類型':type,'稱呼':name,'聯絡方式':contact,'內容':msg};
+  try{
+    var r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
+    var j=await r.json();
+    if(!j.success)throw new Error(j.message||'fail');
+    form.style.display='none';
+    status.style.display='block';
+    status.innerHTML='✅ 已送出，謝謝你的回饋！周周會看到 💛';
+  }catch(err){
+    btn.disabled=false;btn.textContent='📨 送出回饋';
+    status.style.display='block';status.style.background='#fef2f2';status.style.color='#dc2626';
+    status.innerHTML='😢 送出失敗，網路可能不太穩。請再按一次，或直接用下面的 LINE 傳給周周～';
+  }
   return false;
 }
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
