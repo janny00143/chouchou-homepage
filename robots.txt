@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://janny00143.github.io/chouchou-homepage/sitemap.xml
+Sitemap: https://chouchouinjapan.com/sitemap.xml

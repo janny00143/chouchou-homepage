@@ -3,7 +3,7 @@
    來源：index.html 的 ART / S / CATS / <style>
    每次有改文章，重跑這支即可重新產生。 */
 const fs = require("fs");
-const BASE = "https://janny00143.github.io/chouchou-homepage/";
+const BASE = "https://chouchouinjapan.com/";
 const ROOT = __dirname;
 
 let src = fs.readFileSync(ROOT + "/index.html", "utf8");
