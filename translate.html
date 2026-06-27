@@ -42,7 +42,7 @@
     <div class="lock">🔒</div>
     <h2 style="margin-bottom:8px">本工具限周周的 LINE 好友使用</h2>
     <p style="color:var(--mut);font-size:14px;margin-bottom:18px">加入周周 LINE 後會自動傳給你「使用碼」，輸入即可解鎖。</p>
-    <a class="btn btn-line" id="lineGate" target="_blank" style="margin-bottom:16px">加 LINE 取得使用碼</a><br>
+    <a class="btn btn-line" id="lineGate" target="_blank" style="margin-bottom:16px" rel='noopener'>加 LINE 取得使用碼</a><br>
     <div style="display:inline-flex;gap:8px;margin-top:6px"><input id="code" placeholder="輸入使用碼" onkeydown="if(event.key==='Enter')unlock()"><button class="btn" style="background:var(--ink);color:#fff" onclick="unlock()">解鎖</button></div>
     <p id="codeErr" style="display:none;color:var(--rose);font-size:14px;margin-top:8px">使用碼不正確</p>
   </div>
@@ -146,7 +146,7 @@ function showResult(o){
   const nameOk=name.trim()&&name.indexOf('未標示')<0;
   const mapQ=addrOk?addr:(nameOk?name:'');
   const byName=!addrOk&&nameOk;
-  const mapBlock=mapQ?`<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500">📍 在 Google 地圖開啟這個位置（已附連結給您）→</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」在地圖上找的位置，' : '地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`:'';
+  const mapBlock=mapQ?`<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500" rel='noopener'>📍 在 Google 地圖開啟這個位置（已附連結給您）→</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」在地圖上找的位置，' : '地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`:'';
   const reno=String(o.翻新||'');const hasReno=reno.trim()&&reno.indexOf('未標示')<0;
   const renoCard=hasReno?`<div class="tcard" style="background:#fff1f2;border-color:#fecdd3"><h3 style="color:var(--rose-d)">✨ 翻新資訊</h3><p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(reno)}</p></div>`:'';
   const an=o.分析||{};const pros=String(an.優點||'').trim(),cons=String(an.缺點||'').trim();
@@ -155,7 +155,7 @@ function showResult(o){
     let inner='';
     if(pros){const h=Math.max(10,Math.ceil(pros.length*2/3));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,h)}</p></div>`;}
     if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,18)}</p></div>`;}
-    inner+=`<div class="locktip">🔒想了解完整優缺點分析？<br><a href="${LINE}" target="_blank">加周周 LINE</a>，我幫你把這個物件詳細看一遍+分析。</div>`;
+    inner+=`<div class="locktip">🔒想了解完整優缺點分析？<br><a href="${LINE}" target="_blank" rel='noopener'>加周周 LINE</a>，我幫你把這個物件詳細看一遍+分析。</div>`;
     analysisCard=`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${inner}</div>`;
   }
   const sup=String(o.補充||'').trim();const link=String(o.連結資訊||'').trim();const hasLink=link&&link.indexOf('未標示')<0;
@@ -169,7 +169,7 @@ ${analysisCard}
 ${supCard}
 <button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
 <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯僅供參考，可能會有誤差<br>圖片不夠清楚也可能造成判讀錯誤<br>實際條件務必以原始資料與周周再次確認喔！</p></div>
-<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px">想要諮詢？點此聯繫周周</a></div>`;
+<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
   const R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 const dz=document.getElementById('drop');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--rose)';});
