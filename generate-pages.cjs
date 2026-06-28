@@ -57,7 +57,7 @@ function page(a) {
   const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); return m ? '<p class="ah"><b>' + m[1] + "</b></p>" : "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
-  const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/hqdefault.jpg" alt="影片" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
+  const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="影片" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
   const ld = {
     "@context": "https://schema.org", "@type": "Article",
     headline: a.title, description: a.ex,
