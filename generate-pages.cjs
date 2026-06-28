@@ -53,7 +53,7 @@ function page(a) {
   const url = BASE + slug + ".html";
   const c = cat(a.cat);
   const cover = coverURL(a);
-  const bg = a.coverFit === "contain" ? ("background:#f6f0db url('" + cover + "') center/contain no-repeat") : ("background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : ""));
+  const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : "");
   const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); return m ? '<p class="ah"><b>' + m[1] + "</b></p>" : "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
@@ -111,7 +111,7 @@ ${STYLE}
 <main class="wrap" style="max-width:760px;padding-top:18px">
 <a class="back" href="index.html">← 回周周首頁</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
-<div class="acov" style="${bg}"><span>${c.name}</span></div>
+${a.coverFit === "contain" ? `<img src="${cover}" alt="${esc(a.title)}" loading="lazy" style="width:100%;border-radius:18px;display:block;margin-bottom:20px">` : `<div class="acov" style="${bg}"><span>${c.name}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
 <div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:16px"><span>周周</span><span>${a.date}</span><span>約 ${rt(a)} 分鐘</span></div>
 <div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f 分享</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(a.title+" "+url)}" target="_blank" rel="noopener">Threads 分享</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(a.title)}" target="_blank" rel="noopener">𝕏 分享</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ 已複製';return false">🔗 複製連結</a></div>
