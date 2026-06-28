@@ -53,7 +53,7 @@ function page(a) {
   const url = BASE + slug + ".html";
   const c = cat(a.cat);
   const cover = coverURL(a);
-  const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : "");
+  const bg = a.coverFit === "contain" ? ("background:#f6f0db url('" + cover + "') center/contain no-repeat") : ("background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : ""));
   const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); return m ? '<p class="ah"><b>' + m[1] + "</b></p>" : "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
