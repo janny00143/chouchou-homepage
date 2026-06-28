@@ -112,7 +112,7 @@ ${STYLE}
 <div class="acov" style="${bg}"><span>${c.name}</span></div>
 <h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
 <div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:16px"><span>周周</span><span>${a.date}</span><span>約 ${rt(a)} 分鐘</span></div>
-<div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f 分享</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(a.title+" "+url)}" target="_blank" rel="noopener">脆 分享</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(a.title)}" target="_blank" rel="noopener">𝕏 分享</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ 已複製';return false">🔗 複製連結</a></div>
+<div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f 分享</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(a.title+" "+url)}" target="_blank" rel="noopener">Threads 分享</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(a.title)}" target="_blank" rel="noopener">𝕏 分享</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ 已複製';return false">🔗 複製連結</a></div>
 <div class="post">
 ${bodyHTML}
 </div>
