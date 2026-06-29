@@ -195,23 +195,28 @@ ${supCard}
 <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯僅供參考，可能會有誤差<br>圖片不夠清楚也可能造成判讀錯誤<br>實際條件務必以原始資料與周周再次確認喔！</p></div>
 <div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
   const R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
-function setMode(m){mode=m;var bs=document.querySelectorAll('.modesel .mode');for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-mode')===m);}var h=document.getElementById('modehint');if(h)h.textContent=(m==='invest'?'投資（收租）物件：利回、年間賃料、戶數、入居狀況、建物構造等，並幫你推估實質利回。':'住宅自住物件：格局、面積、管理費、周邊生活機能等。');}
+function setMode(m){mode=m;var bs=document.querySelectorAll('.modesel .mode');for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-mode')===m);}var h=document.getElementById('modehint');if(h)h.textContent=(m==='invest'?'投資（收租）物件：抓出表面利回並推估實質利回，收益與物件資訊有寫才顯示。':'住宅自住物件：格局、面積、管理費、周邊生活機能等。');}
 function pctNum(s){var m=String(s||'').match(/(\d+(?:\.\d+)?)\s*%/);return m?parseFloat(m[1]):null;}
 function mapHTML(addr,name){addr=String(addr||'');name=String(name||'');var addrOk=addr.trim()&&addr.indexOf('未標示')<0;var nameOk=name.trim()&&name.indexOf('未標示')<0;var mapQ=addrOk?addr:(nameOk?name:'');var byName=!addrOk&&nameOk;if(!mapQ)return '';return `<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500" rel='noopener'>📍 在 Google 地圖開啟這個位置 →</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」找的位置，':'地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`;}
 function showInvestResult(o){
   o=o||{};var m=o.金額||{},li=o.利回||{},inc=o.收益資訊||{},info=o.物件資訊||{};var t=String(o.物件類型||'');
+  function R(k,v){var e=!v||!String(v).trim()||String(v).indexOf('未標示')>=0;return e?'':rowf(k,v);}
   var surfN=pctNum(li.表面利回);
   var realActual=String(li.實質利回||'').trim();var realOk=realActual&&realActual.indexOf('未標示')<0;
   var realEst=(surfN!=null)?(Math.round(surfN*0.7944*10)/10)+'%（估）':'';
   var realShow=realOk?li.實質利回:realEst;
-  var realLabel=realOk?'實質利回（淨）':'實質利回（估）';
   var payback=(surfN!=null&&surfN>0)?(Math.round(100/surfN*10)/10)+' 年':'';
-  var stats=statf('表面利回',li.表面利回,true)+statf(realLabel,realShow)+statf('總戶數',inc.總戶數);
   var ybox=function(k,v,big){var e=!v||!String(v).trim();return `<div class="ybox${big?' big':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':esc(v)}</div></div>`;};
-  var yieldCard=`<div class="ycard"><h3>📈 利回（投報率）</h3><div class="ygrid">${ybox('表面利回（毛）',li.表面利回,true)}${ybox(realLabel,realShow)}${ybox('現況利回',li.現況利回)}${ybox('滿室想定利回',li.滿室想定利回)}${ybox('表面回收年數（毛）',payback)}</div><p style="font-size:12px;color:var(--mut);margin-top:10px;line-height:1.6">※「實質利回（估）」以經費率15%、購入諸費用7%推估（約表面的0.79倍），僅供參考、非保證；表面利回未扣管理／修繕／空室／稅金，實際到手會更低。請以原始資料與周周確認。</p></div>`;
-  var money=rowf('販售價格',m.販售價格)+rowf('年間賃料收入',m.年間賃料收入)+rowf('月額賃料收入',m.月額賃料收入)+rowf('管理／營運支出',m.管理營運支出);
-  var income=rowf('入居狀況',inc.入居狀況)+rowf('格局構成',inc.格局構成)+rowf('建物構造／材料',inc.建物構造)+rowf('建築年月',inc.建築年月)+rowf('土地面積',inc.土地面積)+rowf('建物面積',inc.建物面積);
-  var detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('用途地域',info.用途地域)+rowf('建蔽率／容積率',info.建蔽率容積率)+rowf('管理狀況',info.管理狀況);
+  var ygrid=ybox('表面利回（毛）',li.表面利回,true);
+  if(surfN!=null){ygrid+=ybox('實質利回（估・經費15%）',realShow)+ybox('表面回收年數（毛）',payback);}
+  var yieldCard=`<div class="ycard"><h3>📈 利回（投報率）</h3><div class="ygrid">${ygrid}</div><p style="font-size:12px;color:var(--mut);margin-top:10px;line-height:1.6">※「實質利回（估）」以經費率15%、購入諸費用7%推估（約表面的0.79倍），僅供參考、非保證；表面利回未扣管理／修繕／空室／稅金，實際到手會更低。請以原始資料與周周確認。</p></div>`;
+  var money=R('販售價格',m.販售價格)+R('年間賃料收入',m.年間賃料收入)+R('月額賃料收入',m.月額賃料收入)+R('管理／營運支出',m.管理營運支出);
+  var moneyCard=money?`<div class="tcard"><h3>💰 金額・收益</h3>${money}</div>`:'';
+  var income=R('總戶數',inc.總戶數)+R('入居狀況',inc.入居狀況)+R('格局構成',inc.格局構成)+R('建物構造／材料',inc.建物構造)+R('建築年月',inc.建築年月)+R('土地面積',inc.土地面積)+R('建物面積',inc.建物面積);
+  var incomeCard=income?`<div class="tcard"><h3>🏢 收益資訊</h3>${income}</div>`:'';
+  var detail=R('地址',info.地址)+R('交通／車站',info.交通)+R('用途地域',info.用途地域)+R('建蔽率／容積率',info.建蔽率容積率)+R('管理狀況',info.管理狀況);
+  var mp=mapHTML(info.地址,o.物件名稱);
+  var detailCard=(detail||mp)?`<div class="tcard"><h3>📍 物件資訊</h3>${detail}${mp}</div>`:'';
   var an=o.分析||{};var ya=String(an.利回分析||'').trim(),pros=String(an.優點||'').trim(),cons=String(an.缺點||'').trim();
   var analysisCard='';
   if(ya||pros||cons){
@@ -225,17 +230,17 @@ function showInvestResult(o){
   var sup=String(o.補充||'').trim();var link=String(o.連結資訊||'').trim();var hasLink=link&&link.indexOf('未標示')<0;
   var supCard=(sup||hasLink)?`<div class="tcard" style="background:#f5f5f4"><h3>📋 其他補充重點</h3>${sup?`<p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(sup)}</p>`:''}${hasLink?`<p style="font-size:14px;color:#44403c;margin-top:8px">🔗 圖面上的連結／QR／其他資訊：<br>${linkify(link)}</p>`:''}</div>`:'';
   var html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?esc(file.name):''}</div>`}
-<div class="tcard">${t?`<span class="badge">${esc(t)}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${esc(o.物件名稱)||'圖面未標示'}</h2><div class="stats">${stats}</div></div>
+<div class="tcard">${t?`<span class="badge">${esc(t)}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:2px">${esc(o.物件名稱)||'圖面未標示'}</h2></div>
 ${yieldCard}
-<div class="tcard"><h3>💰 金額・收益</h3>${money}</div>
-<div class="tcard"><h3>🏢 收益資訊</h3>${income}</div>
-<div class="tcard"><h3>📍 物件資訊</h3>${detail}${mapHTML(info.地址,o.物件名稱)}</div>
+${moneyCard}
+${incomeCard}
+${detailCard}
 ${analysisCard}
 ${supCard}
 <button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
 <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯與利回僅供參考，可能有誤差<br>投報率與收益務必以原始資料與周周再次確認喔！</p></div>
 <div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
-  var R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
+  var R2=document.getElementById('result');R2.innerHTML=html;R2.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 const dz=document.getElementById('drop');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--rose)';});
 dz.addEventListener('dragleave',()=>dz.style.borderColor='');

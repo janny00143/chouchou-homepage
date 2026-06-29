@@ -39,7 +39,9 @@ const SLUG = {
   a22: "asakusa-oshiage-property-price",
   a23: "tokyo-tower-area-property-price",
   a27: "japan-property-contract-documents",
-  a28: "japan-business-manager-visa"
+  a28: "japan-business-manager-visa",
+  a29: "japan-property-purchase-costs",
+  a30: "japan-real-estate-agent-fee"
 };
 
 const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");

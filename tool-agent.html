@@ -1,4 +1,4 @@
-<!-- 周周・買房試算工具（房貸月付試算器）。GitHub 上 tool-loan.html 整份取代。 -->
+<!-- 周周・買房試算工具（仲介手數料・仲介費試算）。GitHub 上 tool-agent.html 整份取代。 -->
 <meta charset="utf-8">
 <script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","字級調整");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
@@ -6,17 +6,16 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f43f5e">
-<title>房貸月付試算器｜周周・日本房仲</title>
-<meta name="description" content="輸入房價、頭期、利率與年限，立即算出每月房貸還款與總利息。">
-<link rel="canonical" href="https://chouchouinjapan.com/tool-loan.html">
-<meta property="og:title" content="房貸月付試算器｜周周"><meta property="og:description" content="輸入房價、頭期、利率與年限，立即算出每月房貸還款與總利息。"><meta property="og:type" content="website">
+<title>日本買房仲介費試算（仲介手數料上限）｜周周・日本房仲</title>
+<meta name="description" content="輸入房價，依日本法定分級距公式自動算出仲介手數料（仲介費）上限，含 10% 消費稅。">
+<link rel="canonical" href="https://chouchouinjapan.com/tool-agent.html">
+<meta property="og:title" content="日本買房仲介費試算｜周周"><meta property="og:description" content="輸入房價，自動算出日本買房仲介手數料上限（含稅）。"><meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
 .sbar{background:#fff;border-bottom:1px solid var(--line)}
 .wrap{max-width:640px;margin:0 auto;padding:0 16px}a{color:inherit}
 .toolmain{zoom:var(--fs,1.1)}.toolmain img{zoom:calc(1/var(--fs,1.1))}
-.tgl{background:none;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:16px;color:var(--ink);flex:0 0 auto}
 .btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
 .back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
 .top{text-align:center;margin-bottom:16px}.top h1{font-size:24px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
@@ -31,26 +30,36 @@
 .f .inp:focus-within{border-color:var(--rose);background:#fff}
 .f input{flex:1;border:none;background:transparent;font-size:17px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);width:100%;outline:none}
 .f .unit{color:var(--mut);font-size:14px;flex:0 0 auto}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .out{background:#fff1f2;border:1px solid #fecdd3;border-radius:14px;padding:16px 18px;margin-top:6px}
 .out .big{font-size:13px;color:var(--rose-d);font-weight:600}.out .num{font-size:30px;font-weight:800;color:var(--rose);margin:2px 0 10px;line-height:1.1}
 .orow{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-top:1px dashed #fde0e4}.orow .v{font-weight:700}
+.tiers{background:#f5f5f4;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13.5px;line-height:1.9}
+.tiers b{color:var(--ink)}
 .note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:13px;line-height:1.7}
 .cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-bottom:18px}.cta p{margin-bottom:12px;font-size:15px}
 .cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
 .foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px;line-height:1.8}
 html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
-html[data-theme="dark"] .f .inp{background:#0f0d0c}
+html[data-theme="dark"] .f .inp,html[data-theme="dark"] .tiers{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
 @media(max-width:480px){.out .num{font-size:25px}}</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index.html">← 回首頁</a>
-  <div class="top"><h1>🏦 房貸月付試算器</h1><p>輸入房價、頭期、利率與年限，立即算出每月房貸還款與總利息。</p></div>
-  <div class="toolnav"><a href="tool-loan.html" class="act">🏦 房貸試算</a><a href="tool-cost.html">💴 總費用</a><a href="tool-agent.html">🤝 仲介費</a><a href="tool-yield.html">📈 投報率</a><a href="tool-fx.html">💱 即時匯率</a><a href="tool-area.html">📐 坪數・帖</a></div>
-  <div class="card"><h2>🏦 房貸月付試算</h2><p class="sub">等額本息（元利均等）概算。實際利率與可貸成數依各銀行審查為準。</p><div class="two"><div class="f"><label>房屋總價</label><div class="inp"><input id="l_price" type="number" inputmode="decimal" value="6000"><span class="unit">萬日圓</span></div></div><div class="f"><label>頭期款</label><div class="inp"><input id="l_down" type="number" inputmode="decimal" value="1200"><span class="unit">萬日圓</span></div></div><div class="f"><label>年利率</label><div class="inp"><input id="l_rate" type="number" inputmode="decimal" value="2.0" step="0.1"><span class="unit">%</span></div></div><div class="f"><label>貸款年限</label><div class="inp"><input id="l_years" type="number" inputmode="numeric" value="35"><span class="unit">年</span></div></div></div><div class="out"><div class="big">每月還款</div><div class="num" id="l_m">—</div><div class="orow"><span>貸款金額</span><span class="v" id="l_loan">—</span></div><div class="orow"><span>總利息</span><span class="v" id="l_int">—</span></div><div class="orow"><span>連本帶利總還款</span><span class="v" id="l_total">—</span></div></div><div class="note">⚠️ 外國人／非居住者的可貸成數與利率，依個案與銀行審查為準，本試算僅供概念參考。</div></div>
-  <div class="cta"><p>算完想找適合的物件，或有貸款／稅務問題？<br>把你的試算結果直接傳給周周 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div>
-  <p class="foot">本頁試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以各銀行、稅理士、司法書士與最新法規為準。</p>
+  <div class="top"><h1>🤝 仲介費（仲介手數料）試算</h1><p>輸入房價，依日本法定分級距公式自動算出仲介手數料上限（含 10% 消費稅）。</p></div>
+  <div class="toolnav"><a href="tool-loan.html">🏦 房貸試算</a><a href="tool-cost.html">💴 總費用</a><a href="tool-agent.html" class="act">🤝 仲介費</a><a href="tool-yield.html">📈 投報率</a><a href="tool-fx.html">💱 即時匯率</a><a href="tool-area.html">📐 坪數・帖</a></div>
+  <div class="card"><h2>🤝 仲介手數料上限試算</h2><p class="sub">日本仲介費依房價「分級距」計算，這裡用速算公式算出法定上限（含稅）。</p>
+    <div class="f"><label>房屋總價</label><div class="inp"><input id="a_price" type="number" inputmode="decimal" value="6000"><span class="unit">萬日圓</span></div></div>
+    <div class="out"><div class="big">仲介手數料上限（含稅）</div><div class="num" id="a_fee">—</div>
+      <div class="orow"><span>稅前金額</span><span class="v" id="a_base">—</span></div>
+      <div class="orow"><span>消費稅（10%）</span><span class="v" id="a_tax">—</span></div>
+      <div class="orow"><span>適用級距</span><span class="v" id="a_tier">—</span></div>
+    </div>
+    <div class="tiers"><b>📐 分級距公式（需另計 10% 消費稅）</b><br>・房價 <b>200 萬日圓以下</b>：房價 × 5%<br>・房價 <b>200～400 萬日圓</b>：房價 × 4% ＋ 2 萬日圓<br>・房價 <b>超過 400 萬日圓</b>：房價 × 3% ＋ 6 萬日圓</div>
+    <div class="note">⚠️ 此為法定「上限」，實際以契約為準；金額四捨五入概算。新成屋／建商直售等情況仲介費可能不同。</div>
+  </div>
+  <div class="cta"><p>算完想找適合的物件，或想確認這筆仲介費？<br>把結果直接傳給周周 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div>
+  <p class="foot">本頁試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以契約、各銀行與最新法規為準。</p>
 </div>
-<script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圓";function calc(){const price=+$('l_price').value*1e4,down=+$('l_down').value*1e4,rate=+$('l_rate').value,years=+$('l_years').value;const loan=Math.max(0,price-down);const r=rate/100/12,n=years*12;let m=0;if(n>0)m=r>0?loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):loan/n;const total=m*n;$('l_m').textContent=m>0?yen0(m):"—";$('l_loan').textContent=yfmt(loan);$('l_int').textContent=yfmt(total-loan);$('l_total').textContent=yfmt(total);}['l_price','l_down','l_rate','l_years'].forEach(i=>$(i).addEventListener('input',calc));calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
+<script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200萬以下（5%）";if(price<=4e6)return "200～400萬（4%＋2萬）";return "超過400萬（3%＋6萬）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=yfmt(fee);$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
