@@ -32,6 +32,7 @@
 .blurtxt{filter:blur(4.5px);-webkit-user-select:none;user-select:none;color:#a8a29e}
 .locktip{margin-top:12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:10px;padding:10px 12px;font-size:13px;color:var(--rose-d);text-align:center;line-height:1.6}
 .locktip a{color:var(--rose-d);font-weight:700;text-decoration:underline}
+.modesel{display:flex;gap:8px;margin-bottom:4px}.modesel .mode{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 8px;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer;font-family:inherit;line-height:1.3}.modesel .mode.on{background:var(--rose);color:#fff;border-color:var(--rose)}.ycard{background:#fff1f2;border:1px solid #fecdd3;border-radius:18px;padding:20px;margin-top:14px}.ycard h3{font-size:16px;margin-bottom:10px;color:var(--rose-d)}.ygrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.ybox{background:#fff;border-radius:12px;padding:12px;text-align:center}.ybox.big{grid-column:1/-1;background:var(--rose);color:#fff}.ybox .k{font-size:12px;color:var(--mut);margin-bottom:3px}.ybox.big .k{color:#ffe4e6}.ybox .v{font-weight:700;font-size:17px}.ybox.big .v{font-size:24px}
 .fzoom{zoom:var(--fs,1.1)}.fzoom img{zoom:calc(1/var(--fs,1.1))}</style>
 
 <div class="wrap fzoom">
@@ -48,6 +49,11 @@
   </div>
 
   <div id="upload" style="display:none">
+    <div class="modesel" id="modesel">
+      <button type="button" class="mode on" data-mode="home" onclick="setMode('home')">🏠 住宅物件</button>
+      <button type="button" class="mode" data-mode="invest" onclick="setMode('invest')">📈 投資物件（一棟・收租）</button>
+    </div>
+    <p id="modehint" style="text-align:center;color:var(--mut);font-size:13px;margin:8px 0 14px">住宅自住物件：格局、面積、管理費、周邊生活機能等。</p>
     <div class="drop" id="drop" onclick="document.getElementById('fileIn').click()">
       <input type="file" id="fileIn" accept="image/*" style="display:none" onchange="pick(this.files[0])">
       <div id="dropEmpty"><div style="font-size:34px;margin-bottom:8px">📤</div><b>點此上傳，或把檔案拖進來</b><p style="color:var(--mut);font-size:14px;margin-top:4px">支援 JPG／PNG 圖片</p></div>
@@ -82,14 +88,30 @@ JR山手線・JR京濱東北線・東急目黑線「惠比壽」站 徒步12分
 - 建築構造：寫材料與樓層，格式為「材料造／地下X樓、地上Y樓建」，材料用中文（鋼筋混凝土造／鋼骨造／木造，不要用RC/SRC、不要用「階」要用「樓」）。範例：鋼筋混凝土造／地下1樓、地上5樓建。
 - 翻新：特別注意圖面是否有「新規內裝／リフォーム／リノベーション／リノベ／フルリフォーム／改裝」等字樣。有的話務必寫出翻新範圍與內容（廚房、衛浴、地板、壁紙、給排水管線等），全部寫繁體中文、不要出現任何日文，每項獨立一行、開頭加「・」，越具體越好，這是重要加分項。沒有就填「圖面未標示」。
 - 分析「優點」：站在房仲角度，大方寫出所有賣點（地點、價格、格局、採光、翻新、生活機能、車站距離等），可以寫詳細一點，每點獨立一行、開頭加「・」。
-- 分析「缺點」：請用更耐人尋味、欲言又止、話講到一半的語氣，只起個頭、點到為止、不要講完，讓人很想知道後面。例如「這間採光看起來不錯，不過有一點要特別留意的是它的…」就停住。不要寫得負面、不要直接斷定是缺點、不要點破痛點。一句就好、開頭加「・」。
+- 分析「缺點」：寫 1～2 點「需要留意」的地方（例如屋齡與未來修繕、管理或修繕基金、採光通風、格局、車站距離、周邊環境等），用提醒的語氣點出方向、具體一點，但不要寫得太負面、不要直接斷定。每點獨立一行、開頭加「・」。一定要有內容，不可空白。
 - 金額換算好懂（3,980万円→3,980萬日圓）。
 - 補充：把用途地域、防火指定、私道負擔、都市計畫、高度地區、主要道路、電力瓦斯水道、停車位、現況、交屋日、修繕紀錄、注意事項、特約等其他重點都整合在這裡。所有日文詞都必須翻成台灣看得懂的中文，絕對不要留任何日文，例如：都市ガス→都市瓦斯、プロパンガス→桶裝瓦斯、駐車スペース→停車位、あり→有、なし→無、○台分→○台份、引渡し／引渡日→交屋日、本下水→公共下水道、初旬→上旬、中旬→中旬、下旬→下旬、現況→目前狀況、建築中→興建中、更地→空地、私道負担→私設道路分攤。圖面上有幾點重點就列幾點、不要刪減，每點獨立一行、開頭加「・」、簡短易讀。
 - 連結資訊：如果圖面上有網址、QR碼旁的說明文字、或其他重要描述句子／詞語，寫在這裡（網址照原樣寫出來）。沒有就留空字串。
 - 沒寫的欄位一律填「圖面未標示」；不要猜測、不要編造。
 - 如果整張圖品質太差、大部分內容無法判讀，不要硬猜，請在「補充」明確寫：「・圖片不夠清晰，建議提供畫質更好的圖片，或直接諮詢周周更快喔！」寧可不分析，也不要給出錯誤資訊。`;
+const INVEST_PROMPT=`你是協助台灣客戶看懂日本「投資（收租）物件」販售圖面（マイソク・収益物件資料）的專家。這類物件通常是一整棟公寓（一棟マンション／アパート）或收租用不動產，重點在「利回（投報率）」與收益狀況。閱讀這份日文資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","金額":{"販售價格":"","年間賃料收入":"","月額賃料收入":"","管理營運支出":""},"利回":{"表面利回":"","實質利回":"","現況利回":"","滿室想定利回":""},"收益資訊":{"總戶數":"","入居狀況":"","格局構成":"","建物構造":"","建築年月":"","土地面積":"","建物面積":""},"物件資訊":{"地址":"","交通":"","用途地域":"","建蔽率容積率":"","管理狀況":""},"分析":{"利回分析":"","優點":"","缺點":""},"補充":"","連結資訊":""}
+規則：
+- 【最高優先】除「物件名稱」外，所有欄位一律繁體中文（台灣用語），絕對禁止出現任何日文假名（平假名／片假名）；日文漢字詞也要換成台灣看得懂的說法。輸出前逐欄自我檢查，發現假名就改成中文再輸出。
+- 物件名稱（唯一例外）：保留日文原文，後面用（）附上中文翻譯或讀音。
+- 物件類型：判斷為「一棟公寓大樓（鋼筋混凝土）」「一棟公寓（木造／輕量鋼骨）」「整棟商業大樓」「區分（單戶收租）」「土地」或「其他」，用中文寫，不要用日文假名。
+- 利回（投報率）最重要，務必仔細判讀：表面利回り→表面利回；実質利回り→實質利回；現況利回り→現況利回；満室時利回り→滿室想定利回。照圖面數字寫成百分比（例：7.85%）。完全沒有的欄位才填「圖面未標示」，不要亂編；尤其「實質利回」圖面常常沒寫，沒寫就填「圖面未標示」（系統會另外推估，你不用自己算）。
+- 金額：販售價格、年間賃料收入（通常是「満室想定」年收）、月額賃料收入、管理營運支出（管理費・修繕・固定資產稅等，有寫才填）。金額換好懂（例：1億2,800万円→1億2,800萬日圓）。
+- 收益資訊：總戶數（○戶／○室）；入居狀況（満室→滿租／空室あり→有空房／入居率○%／○戶中○戶入居 都翻中文）；格局構成（例：1K×8戶、2LDK×4戶）；建物構造（材料造／地上Y樓建，材料用中文：鋼筋混凝土造／鋼骨造／木造，不要用RC/SRC、用「樓」不要用「階」）；建築年月（含完工年月）；土地面積；建物面積（延床面積）。
+- 物件資訊：地址盡量完整（會用來顯示地圖，務必準確）；交通（最近車站＋徒步分鐘，「駅」翻「車站／站」，多車站各自獨立一行）；用途地域、建蔽率／容積率（有寫才填）；管理狀況。
+- 分析「利回分析」：站在房仲角度白話解讀這個物件的投報率，務必保守務實、不要保證穩賺或斷定報酬。重點提醒：表面利回是還沒扣管理費、修繕、空室、稅金的「毛數字」，實際到手的實質利回會更低；並依「格局構成」點出主要客層（例：1K 多為單身上班族／學生，家庭房型客層較穩定但租金總額高）；以及影響收益的關鍵（屋齡與未來修繕、入居率與空室風險、貸款條件等）。每點獨立一行、開頭加「・」，內容寫具體、可以多寫幾點。
+- 分析「優點」：大方寫出收租賣點（利回水準、滿租、戶數規模、屋況、車站距離、生活機能等），每點獨立一行、開頭加「・」，至少寫 4～6 點、寫具體一點。
+- 分析「缺點」：寫 1～2 點需要留意的地方，用提醒的語氣點出方向（例如屋齡偏高未來修繕、入居率、區位空室等），具體一點但不要寫得太絕、不要直接斷定，每點獨立一行、開頭加「・」。一定要有內容，不可空白。
+- 補充：用途地域、防火指定、現況、交屋、管理狀況、租金明細（レントロール）、注意事項、特約等重點整合在此，全部翻中文、不留日文，每點獨立一行、開頭加「・」。
+- 連結資訊：圖面上的網址、QR 旁說明或重要描述（網址照原樣寫出）。沒有就留空字串。
+- 沒寫的欄位一律填「圖面未標示」，不要猜測編造。
+- 若整張圖品質太差大部分無法判讀，在「補充」明確寫：「・圖片不夠清晰，建議提供畫質更好的圖片，或直接諮詢周周更快喔！」寧可不分析也不要給錯誤資訊。`;
 document.getElementById('lineGate').href=LINE;
-let file=null,preview=null;
+let file=null,preview=null,mode='home';
 function esc(s){s=String(s==null?'':s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 async function _sha(t){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
 async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='請輸入使用碼';err.style.color='var(--rose)';err.style.display='block';return;}var ok=false;try{ok=(await _sha(code))===UNLOCK_HASH;}catch(e){ok=false;}if(ok){try{sessionStorage.setItem('tok','1');}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{err.textContent='使用碼不正確';err.style.color='var(--rose)';err.style.display='block';}}
@@ -117,12 +139,12 @@ async function go(){
   document.getElementById('err').style.display='none';
   try{
     const proc=await processImage(file);
-    const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:PROMPT});
+    const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
     if(j.error)throw new Error(j.error);
     let o=null;
     try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
     if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
-    showResult(o);
+    (mode==='invest'?showInvestResult(o):showResult(o));
   }catch(e){showErr('分析失敗：'+zhErr(e&&e.message?e.message:e));}
 }
 function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;white-space:pre-line;${e?'color:#d6d3d1':''}">${e?'圖面未標示':esc(v)}</span></div>`;}
@@ -155,8 +177,8 @@ function showResult(o){
   let analysisCard='';
   if(pros||cons){
     let inner='';
-    if(pros){const h=Math.max(10,Math.ceil(pros.length*2/3));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,h)}</p></div>`;}
-    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,18)}</p></div>`;}
+    if(pros){const h=Math.max(16,Math.ceil(pros.length*0.82));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,h)}</p></div>`;}
+    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,Math.max(24,Math.ceil(cons.length*0.7)))}</p></div>`;}
     inner+=`<div class="locktip">🔒想了解完整優缺點分析？<br><a href="${LINE}" target="_blank" rel='noopener'>加周周 LINE</a>，我幫你把這個物件詳細看一遍+分析。</div>`;
     analysisCard=`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${inner}</div>`;
   }
@@ -173,6 +195,47 @@ ${supCard}
 <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯僅供參考，可能會有誤差<br>圖片不夠清楚也可能造成判讀錯誤<br>實際條件務必以原始資料與周周再次確認喔！</p></div>
 <div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
   const R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
+function setMode(m){mode=m;var bs=document.querySelectorAll('.modesel .mode');for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-mode')===m);}var h=document.getElementById('modehint');if(h)h.textContent=(m==='invest'?'投資（收租）物件：利回、年間賃料、戶數、入居狀況、建物構造等，並幫你推估實質利回。':'住宅自住物件：格局、面積、管理費、周邊生活機能等。');}
+function pctNum(s){var m=String(s||'').match(/(\d+(?:\.\d+)?)\s*%/);return m?parseFloat(m[1]):null;}
+function mapHTML(addr,name){addr=String(addr||'');name=String(name||'');var addrOk=addr.trim()&&addr.indexOf('未標示')<0;var nameOk=name.trim()&&name.indexOf('未標示')<0;var mapQ=addrOk?addr:(nameOk?name:'');var byName=!addrOk&&nameOk;if(!mapQ)return '';return `<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500" rel='noopener'>📍 在 Google 地圖開啟這個位置 →</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」找的位置，':'地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`;}
+function showInvestResult(o){
+  o=o||{};var m=o.金額||{},li=o.利回||{},inc=o.收益資訊||{},info=o.物件資訊||{};var t=String(o.物件類型||'');
+  var surfN=pctNum(li.表面利回);
+  var realActual=String(li.實質利回||'').trim();var realOk=realActual&&realActual.indexOf('未標示')<0;
+  var realEst=(surfN!=null)?(Math.round(surfN*0.7944*10)/10)+'%（估）':'';
+  var realShow=realOk?li.實質利回:realEst;
+  var realLabel=realOk?'實質利回（淨）':'實質利回（估）';
+  var payback=(surfN!=null&&surfN>0)?(Math.round(100/surfN*10)/10)+' 年':'';
+  var stats=statf('表面利回',li.表面利回,true)+statf(realLabel,realShow)+statf('總戶數',inc.總戶數);
+  var ybox=function(k,v,big){var e=!v||!String(v).trim();return `<div class="ybox${big?' big':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':esc(v)}</div></div>`;};
+  var yieldCard=`<div class="ycard"><h3>📈 利回（投報率）</h3><div class="ygrid">${ybox('表面利回（毛）',li.表面利回,true)}${ybox(realLabel,realShow)}${ybox('現況利回',li.現況利回)}${ybox('滿室想定利回',li.滿室想定利回)}${ybox('表面回收年數（毛）',payback)}</div><p style="font-size:12px;color:var(--mut);margin-top:10px;line-height:1.6">※「實質利回（估）」以經費率15%、購入諸費用7%推估（約表面的0.79倍），僅供參考、非保證；表面利回未扣管理／修繕／空室／稅金，實際到手會更低。請以原始資料與周周確認。</p></div>`;
+  var money=rowf('販售價格',m.販售價格)+rowf('年間賃料收入',m.年間賃料收入)+rowf('月額賃料收入',m.月額賃料收入)+rowf('管理／營運支出',m.管理營運支出);
+  var income=rowf('入居狀況',inc.入居狀況)+rowf('格局構成',inc.格局構成)+rowf('建物構造／材料',inc.建物構造)+rowf('建築年月',inc.建築年月)+rowf('土地面積',inc.土地面積)+rowf('建物面積',inc.建物面積);
+  var detail=rowf('地址',info.地址)+rowf('交通／車站',info.交通)+rowf('用途地域',info.用途地域)+rowf('建蔽率／容積率',info.建蔽率容積率)+rowf('管理狀況',info.管理狀況);
+  var an=o.分析||{};var ya=String(an.利回分析||'').trim(),pros=String(an.優點||'').trim(),cons=String(an.缺點||'').trim();
+  var analysisCard='';
+  if(ya||pros||cons){
+    var inner='';
+    if(ya){var hy=Math.max(20,Math.ceil(ya.length*0.8));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--rose-d);font-size:14px;margin-bottom:4px">📊 利回分析</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(ya,hy)}</p></div>`;}
+    if(pros){var hp=Math.max(16,Math.ceil(pros.length*0.82));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,hp)}</p></div>`;}
+    if(cons){var hc=Math.max(24,Math.ceil(cons.length*0.7));inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,hc)}</p></div>`;}
+    inner+=`<div class="locktip">🔒想了解完整投報與收益試算？<br><a href="${LINE}" target="_blank" rel='noopener'>加周周 LINE</a>，我幫你把這個收租物件詳細試算一遍。</div>`;
+    analysisCard=`<div class="tcard"><h3>🔍 投資分析（周周視角）</h3>${inner}</div>`;
+  }
+  var sup=String(o.補充||'').trim();var link=String(o.連結資訊||'').trim();var hasLink=link&&link.indexOf('未標示')<0;
+  var supCard=(sup||hasLink)?`<div class="tcard" style="background:#f5f5f4"><h3>📋 其他補充重點</h3>${sup?`<p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(sup)}</p>`:''}${hasLink?`<p style="font-size:14px;color:#44403c;margin-top:8px">🔗 圖面上的連結／QR／其他資訊：<br>${linkify(link)}</p>`:''}</div>`:'';
+  var html=`${preview?`<div class="tcard" style="padding:12px"><p style="font-size:12px;color:var(--mut);margin:0 4px 8px">你上傳的原始圖面</p><img src="${preview}" style="width:100%;border-radius:12px"></div>`:`<div class="tcard" style="font-size:14px;color:var(--mut)">已上傳檔案：${file?esc(file.name):''}</div>`}
+<div class="tcard">${t?`<span class="badge">${esc(t)}</span><br>`:''}<p style="font-size:12px;color:var(--mut);margin-bottom:4px">物件名稱</p><h2 style="font-size:20px;margin-bottom:6px">${esc(o.物件名稱)||'圖面未標示'}</h2><div class="stats">${stats}</div></div>
+${yieldCard}
+<div class="tcard"><h3>💰 金額・收益</h3>${money}</div>
+<div class="tcard"><h3>🏢 收益資訊</h3>${income}</div>
+<div class="tcard"><h3>📍 物件資訊</h3>${detail}${mapHTML(info.地址,o.物件名稱)}</div>
+${analysisCard}
+${supCard}
+<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
+<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯與利回僅供參考，可能有誤差<br>投報率與收益務必以原始資料與周周再次確認喔！</p></div>
+<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
+  var R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 const dz=document.getElementById('drop');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--rose)';});
 dz.addEventListener('dragleave',()=>dz.style.borderColor='');
