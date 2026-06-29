@@ -1,0 +1,65 @@
+<!-- 周周・买房试算工具（仲介手数料・仲介费试算）。GitHub 上 tool-agent.html 整份取代。 -->
+<meta charset="utf-8">
+<script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","字级调整");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>日本买房仲介费试算（仲介手数料上限）｜周周・日本房仲</title>
+<meta name="description" content="输入房价，依日本法定分级距公式自动算出仲介手数料（仲介费）上限，含 10% 消费税。">
+<link rel="canonical" href="https://chouchouinjapan.com/tool-agent-cn.html">
+<meta property="og:title" content="日本买房仲介费试算｜周周"><meta property="og:description" content="输入房价，自动算出日本买房仲介手数料上限（含税）。"><meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.sbar{background:#fff;border-bottom:1px solid var(--line)}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}a{color:inherit}
+.toolmain{zoom:var(--fs,1.1)}.toolmain img{zoom:calc(1/var(--fs,1.1))}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
+.top{text-align:center;margin-bottom:16px}.top h1{font-size:24px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
+.toolnav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.toolnav a{font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.toolnav a:hover{border-color:var(--rose);color:var(--rose)}
+.toolnav a.act{background:var(--rose);color:#fff;border-color:var(--rose)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.card h2{font-size:19px;margin-bottom:4px}.card .sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.f{margin-bottom:13px}.f label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:5px}
+.f .inp{display:flex;align-items:center;gap:8px;background:#f5f5f4;border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.f .inp:focus-within{border-color:var(--rose);background:#fff}
+.f input{flex:1;border:none;background:transparent;font-size:17px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);width:100%;outline:none}
+.f .unit{color:var(--mut);font-size:14px;flex:0 0 auto}
+.out{background:#fff1f2;border:1px solid #fecdd3;border-radius:14px;padding:16px 18px;margin-top:6px}
+.out .big{font-size:13px;color:var(--rose-d);font-weight:600}.out .num{font-size:30px;font-weight:800;color:var(--rose);margin:2px 0 10px;line-height:1.1}
+.orow{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-top:1px dashed #fde0e4}.orow .v{font-weight:700}
+.tiers{background:#f5f5f4;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13.5px;line-height:1.9}
+.tiers b{color:var(--ink)}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:13px;line-height:1.7}
+.cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-bottom:18px}.cta p{margin-bottom:12px;font-size:15px}
+.cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px;line-height:1.8}
+html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
+html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
+html[data-theme="dark"] .f .inp,html[data-theme="dark"] .tiers{background:#0f0d0c}
+html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
+@media(max-width:480px){.out .num{font-size:25px}}</style>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
+<div class="wrap toolmain">
+  <a class="back" href="index-cn.html">← 回首页</a>
+  <div class="top"><h1>🤝 仲介费（仲介手数料）试算</h1><p>输入房价，依日本法定分级距公式自动算出仲介手数料上限（含 10% 消费税）。</p></div>
+  <div class="toolnav"><a href="tool-loan-cn.html">🏦 房贷试算</a><a href="tool-cost-cn.html">💴 总费用</a><a href="tool-agent-cn.html" class="act">🤝 仲介费</a><a href="tool-yield-cn.html">📈 投报率</a><a href="tool-fx-cn.html">💱 即时汇率</a><a href="tool-area-cn.html">📐 坪数・帖</a></div>
+  <div class="card"><h2>🤝 仲介手数料上限试算</h2><p class="sub">日本仲介费依房价「分级距」计算，这里用速算公式算出法定上限（含税）。</p>
+    <div class="f"><label>房屋总价</label><div class="inp"><input id="a_price" type="number" inputmode="decimal" value="6000"><span class="unit">万日圆</span></div></div>
+    <div class="out"><div class="big">仲介手数料上限（含税）</div><div class="num" id="a_fee">—</div>
+      <div class="orow"><span>税前金额</span><span class="v" id="a_base">—</span></div>
+      <div class="orow"><span>消费税（10%）</span><span class="v" id="a_tax">—</span></div>
+      <div class="orow"><span>适用级距</span><span class="v" id="a_tier">—</span></div>
+    </div>
+    <div class="tiers"><b>📐 分级距公式（需另计 10% 消费税）</b><br>・房价 <b>200 万日圆以下</b>：房价 × 5%<br>・房价 <b>200～400 万日圆</b>：房价 × 4% ＋ 2 万日圆<br>・房价 <b>超过 400 万日圆</b>：房价 × 3% ＋ 6 万日圆</div>
+    <div class="note">⚠️ 此为法定「上限」，实际以契约为准；金额四舍五入概算。新成屋／建商直售等情况仲介费可能不同。<br><b style="color:#b45309">本试算仅为「自动概算」、仅供参考，不可作为实际或法律依据；一切务必以仲介／司法书士等专业人士的判断为主。</b></div>
+  </div>
+  <div class="cta"><p>算完想找适合的物件，或想确认这笔仲介费？<br>把结果直接传给周周 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div>
+  <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以契约、各银行与最新法规为准。</p>
+</div>
+<script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200万以下（5%）";if(price<=4e6)return "200～400万（4%＋2万）";return "超过400万（3%＋6万）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=yfmt(fee);$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
