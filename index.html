@@ -282,7 +282,7 @@ const ART=[{"id":"a28","cat":"live","date":"2026-01-21","title":"日本經營管
 const PROCESS=[["初步諮詢需求","先聊聊你的目標、預算與時間，確認方向。"],["預算與貸款可能性確認","評估自備款與可貸條件，抓出實際可買的範圍。"],["物件篩選","依你的條件挑選適合的物件，過濾掉地雷。"],["內見／線上看房","人在台灣也能線上看房，實際確認屋況。"],["提出購買申請","看中後送出購入申込書，開始議價。"],["貸款事前審查","向銀行送件做事前審查，確認可貸成數。"],["契約與重要事項說明","由宅建士說明法律與權利重點，全程幫你翻譯確認。"],["貸款本審","通過銀行正式審查，確定貸款條件。"],["決済交屋","支付尾款、完成交屋，拿到鑰匙。"],["登記與後續管理","完成產權登記，協助你安排後續管理。"]];
 const LIVE=["在日本工作，想從租屋改成買房","預計長期留在日本","想買東京或神奈川自住房","想確認自己能不能貸款","不知道預算可以買哪裡","擔心日文契約看不懂"];
 const INV=["租金行情","投報率","空室風險","管理費與修繕積立金","區域出租需求","未來轉售性","物件是否適合長期持有","非居住者購買與匯款注意事項"];
-const FAQ=[["外國人可以買日本房嗎？","可以，外國人原則上可以購買日本不動產，但貸款、匯款、稅務與持有目的需要另外確認。"],["買日本房可以拿簽證嗎？","買房本身通常不等於取得日本簽證或移民資格。如果目標是長期居住，需要另外確認適合的在留資格。"],["非日本居住者可以貸款嗎？","有機會，但條件會比日本居住者嚴格，實際成數和條件要依銀行審查。"],["我可以先丟物件給你看嗎？","可以，看到喜歡的物件可以直接貼給周周，我會先幫你看基本條件和需要注意的地方。"]];
+const FAQ=[["外國人可以買日本房嗎？","可以，外國人原則上可以購買日本不動產，但貸款、匯款、稅務與持有目的需要另外確認。"],["買日本房可以拿簽證嗎？","買房本身通常不等於取得日本簽證或移民資格。如果目標是長期居住，需要另外確認適合的在留資格。"],["非日本居住者可以貸款嗎？","有機會，但條件會比日本居住者嚴格，實際成數和條件要依銀行審查。"],["我可以先丟物件給你看嗎？","可以，看到喜歡的物件可以直接貼給周周，我會先幫你看基本條件和需要注意的地方。"],["人在台灣，可以遠端買日本房嗎？","可以，許多海外買家是透過委任與郵寄文件完成簽約；部分文件可能需要在台灣辦理署名（簽名）證明等，實際要求以宅建士、司法書士為準。"],["從看房到交屋大約要多久？","現金交易通常較快、貸款會多一些審查時間，常見大約一到兩個月不等。實際時程依個案、貸款審查與相關手續安排為準。"],["買房除了房價，還要多準備多少費用？","通常會有仲介費、登記與司法書士費、印紙稅、不動產取得稅、火災保險等「諸費用」，常見抓房價的約 6～9%（依物件與貸款而異）。實際金額請以各項報價與稅理士、司法書士確認為準。"],["屋齡高的中古屋可以買、可以貸款嗎？","可以，但屋齡會影響貸款年限與成數，重點其實是管理與維護狀況，不是只看屋齡。實際可貸條件依銀行審查為準。"],["持有日本房子每年要繳什麼？","主要有固定資產稅與都市計畫稅；若是公寓大樓還有每月的管理費與修繕積立金，出租則另有所得稅申報。實際稅額請由稅理士確認。"],["不會日文也能買嗎？周周能幫什麼？","可以，周周全程用中文協助溝通、看物件、對接日方仲介與司法書士等；簽約與法律文件仍由日方專業人士（宅建士、司法書士）確認，語言的部分不用擔心。"]];
 const NAV=[["home","首頁"],["services","服務項目"],["translate","房產翻譯機"],["videos","🎬 影片"],["process","買房流程"],["live","自住服務"],["invest","投資服務"],["faq","常見問題"],["about","關於我們"],["feedback","💬 意見回饋"]];
 
 let curCat=null;
@@ -316,7 +316,7 @@ document.getElementById('bio').innerHTML=S.bio.map(p=>`<p style="margin-bottom:1
 document.getElementById('lineId').textContent=S.lineId;
 document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(S.line);
 const c=S.company;const ci=(l,v)=>`<div class="ci"><span class="cl">${l}</span><span class="cv">${v}</span></div>`;document.getElementById('company').innerHTML=ci('公司','株式会社アンドプラス（株式會社ANDPLUS）')+ci('日本不動產顧問','周 欣妤 ／ Syu ShinYu ／ シュウ シンユウ')+ci('宅建業免許',c.license)+ci('地址',c.addr)+ci('手機',`<a href="tel:${c.mobile.replace(/[^0-9]/g,'')}">${c.mobile}</a>`)+ci('公司電話',`<a href="tel:${c.tel.replace(/[^0-9]/g,'')}">${c.tel}</a>`)+ci('傳真',c.fax)+ci('信箱',`<a href="mailto:${c.email}">${c.email}</a>`)+ci('公司官網',`<a href="${c.hp}" target="_blank" rel='noopener'>${c.hp}</a>`);
-document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+c.name;
+document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.brand;
 document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>`<div class="step"><span class="n">${i+1}</span><div><h3>${s[0]}</h3><p style="color:var(--mut);font-size:14px">${s[1]}</p></div></div>`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>`<div class="it"><span class="ck">✓</span>${t}</div>`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>`<div class="it"><span class="ck">✓</span>${t}</div>`).join("");

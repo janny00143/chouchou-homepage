@@ -109,7 +109,7 @@ ${STYLE}
 <div id="rp"></div>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
 <main class="wrap" style="max-width:760px;padding-top:18px">
-<a class="back" href="index.html">← 回周周首頁</a>
+<a class="back" href="index.html">← 回首頁</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
 ${a.coverFit === "contain" ? `<img src="${cover}" alt="${esc(a.title)}" loading="lazy" style="width:100%;border-radius:18px;display:block;margin-bottom:20px">` : `<div class="acov" style="${bg}"><span>${c.name}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
