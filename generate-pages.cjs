@@ -91,6 +91,7 @@ function page(a) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${t}</title>
 <meta name="description" content="${d}">
+<meta name="keywords" content="${(a.tags||[]).join(",")},日本買房,日本不動產,台灣房仲,日本台灣房仲,台湾人仲介,中国語不動産仲介,華語房仲">
 <link rel="canonical" href="${url}">${cover ? `
 <link rel="preload" as="image" href="${cover}">` : ""}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
