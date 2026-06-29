@@ -152,6 +152,7 @@ for (const a of ART) {
   else if (SLUG[a.id]) { urls.push({ loc: BASE + SLUG[a.id] + ".html", lm: a.date, pr: "0.8" }); }
 }
 urls.push({ loc: BASE + "translate.html", pr: "0.6" });
+urls.push({ loc: BASE + "ja.html", pr: "0.7" });
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `<url><loc>${u.loc}</loc>${u.lm ? `<lastmod>${u.lm}</lastmod>` : ""}${u.cf ? `<changefreq>${u.cf}</changefreq>` : ""}<priority>${u.pr}</priority></url>`).join("\n") +
   `\n</urlset>\n`;
