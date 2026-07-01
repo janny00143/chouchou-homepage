@@ -1,17 +1,23 @@
-<!-- 周周・日本房產翻譯機。GitHub 上 translate.html 整份取代。 -->
+<!-- 周周・日本房產翻譯機 日文版(介面日文化,AI輸出維持繁中,因服務對象為中文客戶)。GitHub 上 translate-ja.html 整份取代。 -->
 <meta charset="utf-8">
 <!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
-<script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","字級調整");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
+<script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","文字サイズ");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>日本房產翻譯機 | 周周</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<title>日本不動産資料翻訳ツール | 周周</title>
+<meta name="description" content="日本語の物件資料をアップロードすると、中国語（繁体字）に翻訳して要点を整理します。中国語圏のお客様への物件説明にご活用いただけます。">
+<link rel="canonical" href="https://chouchouinjapan.com/translate-ja.html">
+<link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/translate-ja.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/translate.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://chouchouinjapan.com/translate-cn.html">
+<meta property="og:locale" content="ja_JP">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--line:#e7e5e4}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px;font-size:16px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans JP',system-ui,sans-serif;background:#fafaf9;color:var(--ink);line-height:1.6;padding:20px;font-size:16px}
 .wrap{max-width:640px;margin:0 auto}a{color:inherit}
 .btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;font-family:inherit}
 .btn-line{background:var(--green);color:#fff}.btn-line:hover{background:var(--green-d)}
@@ -37,27 +43,27 @@
 .fzoom{zoom:var(--fs,1.1)}.fzoom img{zoom:calc(1/var(--fs,1.1))}</style>
 
 <div class="wrap fzoom">
-  <a class="back" href="index.html">← 回首頁</a>
-  <div class="top"><h1>🏠 日本房產翻譯機</h1><p>把日文販售圖面丟進來，幫你翻成中文並整理重點<br><span style="font-size:13px">約 3 分鐘可以自動翻譯出一張，如果檔案太大會跑不出來喔~<br>圖片不夠清楚或太小，也可能會導致分析錯誤喔！</span></p></div>
+  <a class="back" href="ja.html">← ホームに戻る</a>
+  <div class="top"><h1>🏠 日本不動産資料翻訳ツール</h1><p>日本語の物件資料をアップロードすると、中国語（繁体字）に翻訳して要点を整理します<br><span style="font-size:13px">※ このツールは中国語圏のお客様向けに、物件資料を中国語（繁体字）へ翻訳するためのものです。解析結果は中国語で表示されます。<br>自動処理には約3分かかります。ファイルサイズが大きいと失敗する場合があります。<br>画像が不鮮明・小さすぎる場合、解析エラーの原因になることがあります。</span></p></div>
 
   <div class="card gate" id="gate">
     <div class="lock">🔒</div>
-    <h2 style="margin-bottom:8px">本工具限周周的 LINE 好友使用</h2>
-    <p style="color:var(--mut);font-size:14px;margin-bottom:18px">加入周周 LINE 後會自動傳給你「使用碼」，輸入即可解鎖。</p>
-    <a class="btn btn-line" id="lineGate" target="_blank" style="margin-bottom:16px" rel='noopener'>加 LINE 取得使用碼</a><br>
-    <div style="display:inline-flex;gap:8px;margin-top:6px"><input id="code" placeholder="輸入使用碼" onkeydown="if(event.key==='Enter')unlock()"><button class="btn" style="background:var(--ink);color:#fff" onclick="unlock()">解鎖</button></div>
-    <p id="codeErr" style="display:none;color:var(--rose);font-size:14px;margin-top:8px">使用碼不正確</p>
+    <h2 style="margin-bottom:8px">本ツールは周周のLINE友だち限定でご利用いただけます</h2>
+    <p style="color:var(--mut);font-size:14px;margin-bottom:18px">周周をLINEで友だち追加すると「利用コード」が自動送信されます。入力するとロック解除されます。</p>
+    <a class="btn btn-line" id="lineGate" target="_blank" style="margin-bottom:16px" rel='noopener'>LINEで利用コードを取得</a><br>
+    <div style="display:inline-flex;gap:8px;margin-top:6px"><input id="code" placeholder="利用コードを入力" onkeydown="if(event.key==='Enter')unlock()"><button class="btn" style="background:var(--ink);color:#fff" onclick="unlock()">ロック解除</button></div>
+    <p id="codeErr" style="display:none;color:var(--rose);font-size:14px;margin-top:8px">利用コードが正しくありません</p>
   </div>
 
   <div id="upload" style="display:none">
     <div class="modesel" id="modesel">
-      <button type="button" class="mode on" data-mode="home" onclick="setMode('home')">🏠 住宅物件</button>
-      <button type="button" class="mode" data-mode="invest" onclick="setMode('invest')">📈 投資物件（一棟・收租）</button>
+      <button type="button" class="mode on" data-mode="home" onclick="setMode('home')">🏠 居住用物件</button>
+      <button type="button" class="mode" data-mode="invest" onclick="setMode('invest')">📈 投資用物件（一棟・収益）</button>
     </div>
-    <p id="modehint" style="text-align:center;color:var(--mut);font-size:13px;margin:8px 0 14px">住宅自住物件：格局、面積、管理費、周邊生活機能等。</p>
+    <p id="modehint" style="text-align:center;color:var(--mut);font-size:13px;margin:8px 0 14px">居住用物件：間取り、面積、管理費、周辺環境など。</p>
     <div class="drop" id="drop" onclick="document.getElementById('fileIn').click()">
       <input type="file" id="fileIn" accept="image/*" style="display:none" onchange="pick(this.files[0])">
-      <div id="dropEmpty"><div style="font-size:34px;margin-bottom:8px">📤</div><b>點此上傳，或把檔案拖進來</b><p style="color:var(--mut);font-size:14px;margin-top:4px">支援 JPG／PNG 圖片</p></div>
+      <div id="dropEmpty"><div style="font-size:34px;margin-bottom:8px">📤</div><b>クリックしてアップロード、またはファイルをドラッグ＆ドロップ</b><p style="color:var(--mut);font-size:14px;margin-top:4px">JPG／PNG画像に対応</p></div>
       <div id="dropFile" style="display:none"></div>
     </div>
     <p class="err" id="err"></p>
@@ -115,28 +121,28 @@ document.getElementById('lineGate').href=LINE;
 let file=null,preview=null,mode='home';
 function esc(s){s=String(s==null?'':s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 async function _sha(t){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
-async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='請輸入使用碼';err.style.color='var(--rose)';err.style.display='block';return;}var ok=false;try{ok=(await _sha(code))===UNLOCK_HASH;}catch(e){ok=false;}if(ok){try{sessionStorage.setItem('tok','1');}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{err.textContent='使用碼不正確';err.style.color='var(--rose)';err.style.display='block';}}
+async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='利用コードを入力してください';err.style.color='var(--rose)';err.style.display='block';return;}var ok=false;try{ok=(await _sha(code))===UNLOCK_HASH;}catch(e){ok=false;}if(ok){try{sessionStorage.setItem('tok','1');}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{err.textContent='利用コードが正しくありません';err.style.color='var(--rose)';err.style.display='block';}}
 try{if(sessionStorage.getItem('tok')==='1'){var _g=document.getElementById('gate'),_u=document.getElementById('upload');if(_g&&_u){_g.style.display='none';_u.style.display='block';}}}catch(e){}
 function b64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
 function processImage(file){return new Promise((res)=>{if(!file.type.startsWith('image/')){b64(file).then(d=>res({data:d,mediaType:file.type||'application/pdf'}));return;}const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const max=2000;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s);}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);try{const u=cv.toDataURL('image/jpeg',0.82);res({data:u.split(',')[1],mediaType:'image/jpeg'});}catch(e){b64(file).then(d=>res({data:d,mediaType:file.type}));}};img.onerror=()=>{b64(file).then(d=>res({data:d,mediaType:file.type}));};img.src=URL.createObjectURL(file);});}
-function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${esc(f.name)}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
+function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${esc(f.name)}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">解析を開始</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">別のファイルを選ぶ</button>`;}
 function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
-function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
+function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='解析を開始';}}
 function zhErr(msg){const s=String(msg||'');
-  if(/high demand|overload|try again later|UNAVAILABLE|503/i.test(s))return 'Gemini 現在使用量較大，請等幾秒再按一次「開始翻譯分析」';
-  if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '免費額度暫時達到上限（連續太快會這樣），請等 1~2 分鐘再按一次';
-  if(/API.?key|invalid|PERMISSION/i.test(s))return '後端金鑰設定有誤，請確認 Cloudflare 設定';
-  if(/fetch|network|Failed to/i.test(s))return '連線不穩，請再按一次「開始翻譯分析」';
-  if(/截斷|Unterminated|token|JSON/i.test(s))return 'AI 回答被截斷，請再按一次重試';
+  if(/high demand|overload|try again later|UNAVAILABLE|503/i.test(s))return '現在アクセスが集中しています。数秒後に「解析を開始」をもう一度押してください';
+  if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '無料枠の上限に一時的に達しました（連続実行時に発生します）。1〜2分後に再度お試しください';
+  if(/API.?key|invalid|PERMISSION/i.test(s))return 'サーバー側の設定に問題があります。Cloudflareの設定をご確認ください';
+  if(/fetch|network|Failed to/i.test(s))return '通信が不安定です。「解析を開始」をもう一度押してください';
+  if(/截斷|Unterminated|token|JSON/i.test(s))return 'AIの応答が途中で切れました。もう一度お試しください';
   if(/格式/.test(s))return s;
-  return '發生錯誤，請再試一次（'+s+'）';}
+  return 'エラーが発生しました。もう一度お試しください（'+s+'）';}
 function delay(ms){return new Promise(s=>setTimeout(s,ms));}
 function linkify(t){return esc(String(t)).replace(/(https?:\/\/[^\s，、）)<]+)/g,'<a href="$1" target="_blank" rel="noopener" style="color:var(--rose);word-break:break-all">$1</a>');}
 function teaser(text,headLen){text=String(text||'').trim();if(!text)return'';if(text.length<=headLen)return esc(text)+'<span class="blurtxt">　　　　詳細分析請洽周周喔</span>';return esc(text.slice(0,headLen))+'<span class="blurtxt">'+esc(text.slice(headLen))+'</span>';}
 async function callWorker(body){let last;for(let i=0;i<4;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(j&&j.error&&/high demand|overload|unavailable|503|resource_exhausted|429|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(2500*(i+1));continue;}return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 async function go(){
   if(!file)return;
-  const b=document.getElementById('goBtn');if(b){b.disabled=true;b.textContent='分析中…';}
+  const b=document.getElementById('goBtn');if(b){b.disabled=true;b.textContent='解析中…';}
   document.getElementById('err').style.display='none';
   try{
     const proc=await processImage(file);
@@ -146,7 +152,7 @@ async function go(){
     try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
     if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
     (mode==='invest'?showInvestResult(o):showResult(o));
-  }catch(e){showErr('分析失敗：'+zhErr(e&&e.message?e.message:e));}
+  }catch(e){showErr('解析に失敗しました：'+zhErr(e&&e.message?e.message:e));}
 }
 function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;white-space:pre-line;${e?'color:#d6d3d1':''}">${e?'圖面未標示':esc(v)}</span></div>`;}
 function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':esc(v)}</div></div>`;}
@@ -192,11 +198,11 @@ function showResult(o){
 ${renoCard}
 ${analysisCard}
 ${supCard}
-<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
-<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯僅供參考，可能會有誤差<br>圖片不夠清楚也可能造成判讀錯誤<br>實際條件務必以原始資料與周周再次確認喔！</p></div>
-<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
+<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 別の資料を解析する</button>
+<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI翻訳は参考情報であり、誤差が生じる場合があります<br>画像が不鮮明な場合も判読エラーの原因になります<br>実際の条件は必ず原本資料と周周にご確認ください！</p></div>
+<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本ツール制作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">会社：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>ご相談はこちら</a></div>`;
   const R=document.getElementById('result');R.innerHTML=html;R.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
-function setMode(m){mode=m;var bs=document.querySelectorAll('.modesel .mode');for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-mode')===m);}var h=document.getElementById('modehint');if(h)h.textContent=(m==='invest'?'投資（收租）物件：抓出表面利回並推估實質利回，收益與物件資訊有寫才顯示。':'住宅自住物件：格局、面積、管理費、周邊生活機能等。');}
+function setMode(m){mode=m;var bs=document.querySelectorAll('.modesel .mode');for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-mode')===m);}var h=document.getElementById('modehint');if(h)h.textContent=(m==='invest'?'投資用（収益）物件：表面利回りを抽出し、実質利回りを推定します。収益・物件情報は記載がある場合のみ表示されます。':'居住用物件：間取り、面積、管理費、周辺環境など。');}
 function pctNum(s){var m=String(s||'').match(/(\d+(?:\.\d+)?)\s*%/);return m?parseFloat(m[1]):null;}
 function mapHTML(addr,name){addr=String(addr||'');name=String(name||'');var addrOk=addr.trim()&&addr.indexOf('未標示')<0;var nameOk=name.trim()&&name.indexOf('未標示')<0;var mapQ=addrOk?addr:(nameOk?name:'');var byName=!addrOk&&nameOk;if(!mapQ)return '';return `<div style="margin-top:14px"><div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)"><iframe width="100%" height="200" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&output=embed"></iframe></div><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ)}" target="_blank" style="display:inline-block;margin-top:8px;font-size:13px;color:var(--rose);font-weight:500" rel='noopener'>📍 在 Google 地圖開啟這個位置 →</a><p style="font-size:12px;color:var(--mut);margin-top:4px">※ ${byName?'圖面找不到地址，這是用「物件名稱」找的位置，':'地圖位置由 AI 依圖面地址自動判讀，'}可能有誤，請以原始資料為準。</p></div>`;}
 function showInvestResult(o){
@@ -238,9 +244,9 @@ ${incomeCard}
 ${detailCard}
 ${analysisCard}
 ${supCard}
-<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 分析另一份圖面</button>
-<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI 翻譯與利回僅供參考，可能有誤差<br>投報率與收益務必以原始資料與周周再次確認喔！</p></div>
-<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本工具製作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">公司：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>想要諮詢？點此聯繫周周</a></div>`;
+<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:14px" onclick="reset()">↺ 別の資料を解析する</button>
+<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:14px;text-align:center"><p style="font-size:15px;color:#b45309;font-weight:700;line-height:1.7">※ AI翻訳・利回りは参考情報であり、誤差が生じる場合があります<br>投資利回りと収益は必ず原本資料と周周にご確認ください！</p></div>
+<div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px;text-align:center"><p style="font-size:14px">本ツール制作者：<b>周欣妤（周周）</b></p><p style="font-size:14px;color:var(--mut)">会社：株式会社アンドプラス</p><a class="btn btn-line" href="${LINE}" target="_blank" style="margin-top:12px" rel='noopener'>ご相談はこちら</a></div>`;
   var R2=document.getElementById('result');R2.innerHTML=html;R2.style.display='block';document.getElementById('upload').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 const dz=document.getElementById('drop');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--rose)';});
@@ -248,4 +254,4 @@ dz.addEventListener('dragleave',()=>dz.style.borderColor='');
 dz.addEventListener('drop',e=>{e.preventDefault();dz.style.borderColor='';pick(e.dataTransfer.files[0]);});
 </script>
 
-<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref=isJa?'ja.html':(isCn?p.slice(0,-8)+'-ja.html':p.slice(0,-5)+'-ja.html');var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref='ja.html';var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 言語';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>

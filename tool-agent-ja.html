@@ -1,0 +1,71 @@
+<!-- 周周・買房試算工具（仲介手數料試算器）日文版。GitHub 上 tool-agent-ja.html 整份取代。 -->
+<meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
+<script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","文字サイズ");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>仲介手数料シミュレーター（上限額）｜周周・日本の不動産</title>
+<meta name="description" content="物件価格を入力すると、日本の法定の段階式計算式に基づいて仲介手数料（消費税10%込）の上限額を自動計算します。">
+<link rel="canonical" href="https://chouchouinjapan.com/tool-agent-ja.html">
+<link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/tool-agent-ja.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/tool-agent.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://chouchouinjapan.com/tool-agent-cn.html">
+<meta property="og:title" content="仲介手数料シミュレーター｜周周"><meta property="og:description" content="物件価格から仲介手数料の上限額を自動計算します（税込）。"><meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans JP',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.sbar{background:#fff;border-bottom:1px solid var(--line)}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}a{color:inherit}
+.toolmain{zoom:var(--fs,1.1)}.toolmain img{zoom:calc(1/var(--fs,1.1))}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
+.top{text-align:center;margin-bottom:16px}.top h1{font-size:24px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
+.toolnav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.toolnav a{font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.toolnav a:hover{border-color:var(--rose);color:var(--rose)}
+.toolnav a.act{background:var(--rose);color:#fff;border-color:var(--rose)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.card h2{font-size:19px;margin-bottom:4px}.card .sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.f{margin-bottom:13px}.f label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:5px}
+.f .inp{display:flex;align-items:center;gap:8px;background:#f5f5f4;border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.f .inp:focus-within{border-color:var(--rose);background:#fff}
+.f input{flex:1;border:none;background:transparent;font-size:17px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);width:100%;outline:none}
+.f .unit{color:var(--mut);font-size:14px;flex:0 0 auto}
+.out{background:#fff1f2;border:1px solid #fecdd3;border-radius:14px;padding:16px 18px;margin-top:6px}
+.out .big{font-size:13px;color:var(--rose-d);font-weight:600}.out .num{font-size:30px;font-weight:800;color:var(--rose);margin:2px 0 10px;line-height:1.1}
+.orow{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-top:1px dashed #fde0e4}.orow .v{font-weight:700}
+.tiers{background:#f5f5f4;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13.5px;line-height:1.9}
+.tiers b{color:var(--ink)}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:13px;line-height:1.7}
+.cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-bottom:18px}.cta p{margin-bottom:12px;font-size:15px}
+.cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px;line-height:1.8}
+html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
+html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
+html[data-theme="dark"] .f .inp,html[data-theme="dark"] .tiers{background:#0f0d0c}
+html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
+@media(max-width:480px){.out .num{font-size:25px}}</style>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本の不動産</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div></div>
+<div class="wrap toolmain">
+  <a class="back" href="ja.html">← ホームに戻る</a>
+  <div class="top"><h1>🤝 仲介手数料シミュレーター</h1><p>物件価格を入力すると、日本の法定の段階式計算式に基づいて仲介手数料の上限額（消費税10%込）を自動計算します。</p></div>
+  <div class="toolnav"><a href="tool-loan-ja.html">🏦 ローン試算</a><a href="tool-cost-ja.html">💴 諸費用</a><a href="tool-agent-ja.html" class="act">🤝 仲介手数料</a><a href="tool-yield-ja.html">📈 利回り</a><a href="tool-fx-ja.html">💱 為替レート</a><a href="tool-area-ja.html">📐 坪・畳換算</a></div>
+  <div class="card"><h2>🤝 仲介手数料上限額の試算</h2><p class="sub">日本の仲介手数料は物件価格の「段階式」で計算されます。速算式で法定上限額（税込）を算出します。</p>
+    <div class="f"><label>物件価格</label><div class="inp"><input id="a_price" type="number" inputmode="decimal" value="6000"><span class="unit">万円</span></div></div>
+    <div class="out"><div class="big">仲介手数料上限額（税込）</div><div class="num" id="a_fee">—</div>
+      <div class="orow"><span>税抜金額</span><span class="v" id="a_base">—</span></div>
+      <div class="orow"><span>消費税（10%）</span><span class="v" id="a_tax">—</span></div>
+      <div class="orow"><span>適用区分</span><span class="v" id="a_tier">—</span></div>
+    </div>
+    <div class="tiers"><b>📐 段階式計算式（別途消費税10%）</b><br>・物件価格 <b>200万円以下</b>：価格 × 5%<br>・物件価格 <b>200万円～400万円</b>：価格 × 4% ＋ 2万円<br>・物件価格 <b>400万円超</b>：価格 × 3% ＋ 6万円</div>
+    <div class="note">⚠️ これは法定「上限額」であり、実際の金額は契約内容によります。金額は概算です。新築・売主直販などの場合、仲介手数料の扱いが異なる場合があります。<br><b style="color:#b45309">本試算はあくまで自動概算であり、実際の金額や法的根拠となるものではありません。必ず仲介会社・司法書士など専門家の判断を優先してください。</b></div>
+  </div>
+  <div class="cta"><p>試算結果をもとに物件を探したい方、この仲介手数料が妥当か確認したい方は<br>試算結果をそのまま周周にお送りください 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 LINEで相談する</a></div>
+  <p class="foot">本ページの試算は概念的な参考情報であり、融資・税務・投資に関する助言を構成するものではありません。<br>実際の数字は各金融機関・税理士・司法書士および最新の法令をご確認ください。</p>
+</div>
+<script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億円";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万円";return Math.round(yen).toLocaleString()+" 円";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200万円以下（5%）";if(price<=4e6)return "200万円～400万円（4%＋2万円）";return "400万円超（3%＋6万円）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=yfmt(fee);$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref='ja.html';var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 言語';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
