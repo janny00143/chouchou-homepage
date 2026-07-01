@@ -62,7 +62,8 @@ const made = internal.map(convertFile);
 // 7) 更新 sitemap：加入 -cn 內容頁
 let sm = fs.readFileSync(ROOT + "/sitemap.xml", "utf8");
 if (!sm.includes("index-cn.html")) {
-  const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), "minpaku-cn.html"]
+  const cnStatic = staticPages.filter(f => f !== "index.html").map(cn);
+  const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), ...cnStatic]
     .map(u => `<url><loc>${BASE}${u}</loc><priority>0.6</priority></url>`).join("\n");
   sm = sm.replace("</urlset>", extra + "\n</urlset>");
   fs.writeFileSync(ROOT + "/sitemap.xml", sm);

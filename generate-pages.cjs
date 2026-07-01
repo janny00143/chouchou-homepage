@@ -164,6 +164,12 @@ for (const a of ART) {
   if (SLUG[a.id]) urls.push({ loc: BASE + SLUG[a.id] + "-ja.html", lm: a.date, pr: "0.7" });
 }
 urls.push({ loc: BASE + "minpaku-ja.html", pr: "0.6" });
+const STATIC_TOOLS = ["tools", "videos", "feedback", "tool-agent", "tool-area", "tool-convert", "tool-cost", "tool-fx", "tool-loan", "tool-yield"];
+for (const p of STATIC_TOOLS) {
+  urls.push({ loc: BASE + p + ".html", pr: "0.6" });
+  urls.push({ loc: BASE + p + "-ja.html", pr: "0.6" });
+}
+urls.push({ loc: BASE + "translate-ja.html", pr: "0.6" });
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `<url><loc>${u.loc}</loc>${u.lm ? `<lastmod>${u.lm}</lastmod>` : ""}${u.cf ? `<changefreq>${u.cf}</changefreq>` : ""}<priority>${u.pr}</priority></url>`).join("\n") +
   `\n</urlset>\n`;
