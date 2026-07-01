@@ -51,7 +51,7 @@ function convertFile(file) {
   // 6b) og:locale zh_TW -> zh_CN
   s = s.split('content="zh_TW"').join('content="zh_CN"');
   // 6) lang 設為簡體
-  s = s.replace(/lang="zh-Hant-TW"/g, 'lang="zh-Hans"').replace(/lang="zh-Hant"/g, 'lang="zh-Hans"');
+  s = s.replace(/<html lang="zh-Hant-TW">/g, '<html lang="zh-Hans">').replace(/<html lang="zh-Hant">/g, '<html lang="zh-Hans">');
 
   fs.writeFileSync(ROOT + "/" + cn(file), s);
   return cn(file);
