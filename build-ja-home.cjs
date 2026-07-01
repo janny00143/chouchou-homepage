@@ -72,7 +72,7 @@ const FAQ_JA = [
   ["台湾（海外）在住ですが、購入資金はどのように日本へ送金すればよいですか？", "日本での不動産購入では、売主や司法書士など複数の相手に個別送金する必要があり、海外から一件ずつ送金するのは手間がかかります。周周では送金をまとめて代行するサービスもご用意しており、複数回の海外送金の手間を減らすことができます。具体的な送金方法・流れ・費用については、LINEで周周までお気軽にご確認ください。"]
 ];
 const BIO_JA = [
-  "周周と申します。日本の不動産の現場で日々物件を担当している台湾出身のエージェントです。東京を中心に、神奈川・千葉・横浜周辺でも対応しております。お客様の多くは、日本でマイホームの購入や投資用物件をお探しの中国語圏の方々です。",
+  "周周と申します。日本の不動産の現場で日々物件を担当している台湾出身のエージェントです。東京を中心に、神奈川・千葉・横浜周辺でも対応しております。中国語（繁体字）・台湾語はネイティブレベル、日本語も日々の業務で問題なく対応しておりますので、どちらの言語でも安心してご相談いただけます。お客様の多くは、日本でマイホームの購入や投資用物件をお探しの中国語圏の方々です。",
   "日本での購入の流れ、ローン、税金、契約は台湾とは大きく異なり、初めての方はつまずきやすいものです。私の仕事は物件をご案内するだけでなく、ご予算・通勤・生活環境・ローン・将来の売却のしやすさまで、一緒に確認していくことです。",
   "日本の不動産は、価格の安さや利回りの高さだけで判断するものではありません。安定して貸せるか、将来売りやすいかのほうが、より大切なポイントです。"
 ];
@@ -89,7 +89,7 @@ const JA_UI = {
   brand: "周周・日本の不動産",
   lineBtn: "LINE で相談する",
   heroTitle: "こんにちは、周周です 👋",
-  heroBody: "東京を拠点に活動する台湾出身の不動産エージェントです。中国語で、日本での物件購入・自宅探し・投資・ご契約までサポートしています。<br>物件探しやローン、ご契約のことなど、どんなことでもお気軽にご相談ください！",
+  heroBody: "東京を拠点に活動する台湾出身の不動産エージェントです。中国語（繁体字）・台湾語はもちろん、日本語でのご相談も完全に対応いたします。物件購入・自宅探し・投資・ご契約までトータルにサポートしています。<br>物件探しやローン、ご契約のことなど、どんなことでもお気軽にご相談ください！",
   heroLinkServices: "→ 周周にできることを見る",
   heroArea: "📍 東京23区を中心に、横浜・神奈川・千葉エリアにも対応しております！",
   altSakura: "東京の桜の季節",
@@ -105,7 +105,7 @@ const JA_UI = {
   reviewsNote: "💛 お客様からよくいただくお声：中国語でのフルサポート、電気・ガス・水道や携帯電話、管理会社、鍵交換まで対応するアフターサービス、遠方でも自ら足を運ぶ姿勢。物件購入はゴールではなく、安心して暮らせることが本当に大切なポイントです。",
   homeCta: { title: "日本の不動産購入について知りたい方へ", body: "ご自宅用でも投資用でも、まずはLINEで周周にお気軽にご相談ください。気になる物件があれば、そのまま送っていただいても構いません。" },
   servicesTitle: "周周にできること",
-  servicesSub: "物件探し、内見、価格交渉から、ローン、契約、引き渡し、アフターサポートまで、日本の不動産購入に関わることを周周が中国語で全てサポートします。",
+  servicesSub: "物件探し、内見、価格交渉から、ローン、契約、引き渡し、アフターサポートまで、日本の不動産購入に関わることを周周が中国語・台湾語・日本語で全てサポートします。",
   servicePanels: [
     { h: "🏠 日本の不動産売買", items: ["新築・中古住宅", "マンション・タワーマンション・一戸建て", "土地売買", "投資用不動産", "自宅・別荘・資産形成のご相談"] },
     { h: "📝 購入全プロセスサポート", items: ["ご予算・ご希望条件のヒアリング", "物件の選定・ご提案・市場調査", "オンライン内見・現地内見の手配", "買付価格のご提案・交渉・購入申込", "銀行融資のご相談・お申し込みサポート", "契約書類の中国語翻訳・重要事項のご説明", "ご契約・海外送金・引き渡しまでの調整", "日本の税金・保有コストのご説明", "司法書士・火災保険・リフォーム業者のご紹介", "ご購入後の管理・アフターサポート"] },
@@ -142,7 +142,7 @@ const JA_UI = {
   companyLabels: { company: "会社名", advisor: "日本不動産アドバイザー", license: "宅建業免許", addr: "所在地", mobile: "携帯", tel: "会社電話", fax: "FAX", email: "メール", hp: "公式サイト" },
   footerArea: "東京23区を中心に、横浜・神奈川・千葉近郊エリアにも対応しております",
   footerNav: { feedback: "💬 ご意見・ご要望", tools: "🧮 計算ツール", videos: "🎬 動画", translate: "🏠 不動産資料翻訳ツール" },
-  footerSeo: "周周（シュウ・シンユウ）は東京を拠点に活動する台湾出身の不動産エージェントです。中国語（繁体字・台湾）対応で、日本での不動産購入・自宅探し・投資・住宅ローン・契約までトータルにサポートしています。対応エリアは東京23区を中心に、横浜・神奈川・千葉近郊。日本の不動産購入や住み替えを検討している中国語圏のお客様は、お気軽にLINEでご相談ください。",
+  footerSeo: "周周（シュウ・シンユウ）は東京を拠点に活動する台湾出身の不動産エージェントです。中国語（繁体字）・台湾語・日本語のトリリンガルで、日本での不動産購入・自宅探し・投資・住宅ローン・契約までトータルにサポートしています。対応エリアは東京23区を中心に、横浜・神奈川・千葉近郊。日本の不動産購入や住み替えを検討している中国語圏のお客様はもちろん、日本語でのご相談も安心です。お気軽にLINEでご相談ください。",
   backToList: "← 記事一覧に戻る",
   byline: "執筆者：周周",
   articleHelpful: "この記事はお役に立ちましたか？ご質問はお気軽にどうぞ",
@@ -166,9 +166,9 @@ const head = `<!-- 周周・日本語ランディングページ（完整版 SPA
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f43f5e">
-<title>中国語対応の不動産エージェント｜東京で日本の住まい探しをサポート｜周周</title>
-<meta name="description" content="東京を拠点に、中国語（繁体字・台湾）対応で日本の不動産購入・住み替え・投資・住宅ローン・契約をサポート。台湾出身のスタッフが在日・海外の中国語圏のお客様をお手伝いします。お気軽に LINE でご相談ください。">
-<meta name="keywords" content="中国語対応 不動産,台湾人 不動産,中国語 不動産仲介,東京 不動産 中国語,繁体字 不動産,華語 不動産,台湾 不動産 東京,中国語対応 住宅購入,中国語 賃貸 購入 東京">
+<title>中国語・台湾語・日本語対応の不動産エージェント｜東京で日本の住まい探しをサポート｜周周</title>
+<meta name="description" content="東京を拠点に、中国語（繁体字）・台湾語・日本語のトリリンガルで日本の不動産購入・住み替え・投資・住宅ローン・契約をサポート。台湾出身のスタッフが日本語での対応も完全に問題なく行えるため、中国語圏のお客様はもちろん、日本語でのご相談も安心です。お気軽に LINE でご相談ください。">
+<meta name="keywords" content="中国語対応 不動産,台湾語 対応 不動産,バイリンガル 不動産エージェント,台湾人 不動産,中国語 不動産仲介,東京 不動産 中国語,繁体字 不動産,華語 不動産,台湾 不動産 東京,中国語対応 住宅購入,中国語 賃貸 購入 東京">
 <link rel="canonical" href="https://chouchouinjapan.com/ja.html">
 <link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/ja.html">
 <link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/">
@@ -183,7 +183,7 @@ const head = `<!-- 周周・日本語ランディングページ（完整版 SPA
 <script type="application/ld+json">${JSON.stringify({
   "@context": "https://schema.org", "@type": "RealEstateAgent", "name": "周周・日本の不動産", "url": "https://chouchouinjapan.com/ja.html",
   "image": "https://chouchouinjapan.com/pexels-jakubzerdzicki-29521542.jpg",
-  "description": "東京を拠点に活動する台湾出身の不動産エージェント。中国語で日本の不動産購入・自宅探し・投資・住宅ローン・ご契約までサポートしています。",
+  "description": "東京を拠点に活動する台湾出身の不動産エージェント。中国語（繁体字）・台湾語・日本語のトリリンガルで、日本の不動産購入・自宅探し・投資・住宅ローン・ご契約までサポートしています。",
   "areaServed": ["東京", "神奈川", "千葉", "横浜"], "telephone": "03-6451-2540", "email": "s-syu@and-p.jp",
   "address": { "@type": "PostalAddress", "streetAddress": "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号", "addressCountry": "JP" },
   "founder": { "@type": "Person", "name": "周欣妤（周周）", "jobTitle": "住宅営業・不動産エージェント", "worksFor": "株式会社アンドプラス 住宅営業部" },
@@ -365,7 +365,7 @@ document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.b
 document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
-document.getElementById('faqs').innerHTML=FAQ.map(q=>\`<details class="faq"><summary>\${q[0]}</summary><p>\${q[1]}</p></details>\`).join("");
+document.getElementById('faqs').innerHTML=FAQ.map(q=>\`<details class="faq"><summary>Q：\${q[0]}</summary><p>A：\${q[1]}</p></details>\`).join("");
 render();
 </script>
 
