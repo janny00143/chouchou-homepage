@@ -33,8 +33,6 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}.logo .mark{width:34px;height:34px;border-radius:10px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
 nav.main{display:flex;gap:2px}nav.main a{padding:6px 9px;border-radius:8px;font-size:13.5px;color:var(--mut)}nav.main a:hover{background:#f5f5f4}nav.main a.on{color:var(--rose);font-weight:500}
 .hd-right{display:flex;align-items:center;gap:8px}.burger{display:none;background:none;border:none;cursor:pointer;padding:2px 8px;font-size:30px;line-height:1;color:var(--ink)}
-.catbar{position:sticky;top:60px;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
-.catbar .row{display:flex;gap:8px;overflow-x:auto;white-space:nowrap;padding:9px 0;font-size:14px;align-items:center}
 .chip{padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--mut);background:#fff;cursor:pointer;flex:0 0 auto}.chip:hover{background:#f5f5f4}.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .chip.line{border-color:var(--green);color:var(--green-d)}.chip.tool{border-color:var(--rose);color:var(--rose);font-weight:500}
 .catsel{padding:7px 12px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:14px;background:#fff;color:var(--ink);cursor:pointer;flex:0 0 auto}
@@ -92,8 +90,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <div class="mnav" id="mnav"></div>
 </header>
 
-<div class="catbar"><div class="wrap row" id="catbar"></div></div>
-
 <main class="wrap">
   <section class="view on" id="v-home">
     <div class="intro intro-cover">
@@ -114,12 +110,14 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
       </div>
       </div>
     </div>
-    <a href="tool-loan-cn.html" style="text-decoration:none"><div style="cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b style="font-size:18px">🧮 买房试算工具</b><p style="font-size:14px;color:var(--mut);margin-top:2px">房贷月付、总费用、投报率、日圆台币换算，一次算清楚</p></div><span class="btn" style="background:var(--rose);color:#fff">开始试算 →</span></div></a><a href="translate-cn.html" style="text-decoration:none"><div style="cursor:pointer;background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:20px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:22px">
+    <a href="tool-loan-cn.html" style="text-decoration:none;flex:1;min-width:260px"><div style="cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;height:100%;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b style="font-size:18px">🧮 买房试算工具</b><p style="font-size:14px;color:var(--mut);margin-top:2px">房贷月付、总费用、投报率、日圆台币换算，一次算清楚</p></div><span class="btn" style="background:var(--rose);color:#fff">开始试算 →</span></div></a><a href="translate-cn.html" style="text-decoration:none;flex:1;min-width:260px"><div style="cursor:pointer;background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:20px;height:100%;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
       <div><b style="font-size:18px">🏠 日本房产翻译机</b><p style="font-size:14px;opacity:.95;margin-top:2px">看不懂日文图面？上传 JPG 图片，马上翻成中文整理重点</p></div>
       <span class="btn" style="background:#fff;color:var(--rose)">立即使用 →</span>
     </div></a>
+    </div>
     <div class="listbanner"><img src="步道.jpg" alt="日本街区步道" loading="lazy"><div class="lb-cap"><span class="lb-t">周周的日本买房笔记</span><span class="lb-s">买房・自住・投资・贷款・区域，用中文一篇篇说清楚</span></div></div>
-    <div class="search"><input id="q" placeholder="搜寻文章…" oninput="render()"></div>
+    <div class="search" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:560px"><input id="q" placeholder="搜寻文章…" oninput="render()" style="width:auto;flex:1;min-width:180px"><span id="catbar"></span></div>
     <div class="grid" id="grid"></div>
     <div class="reviews">
       <h2 class="rev-t">客户怎么说 💬</h2>
@@ -316,7 +314,7 @@ document.getElementById('mainnav').innerHTML=`<a data-v="home" onclick="show('ho
 themeIcon();
 document.getElementById('mnav').innerHTML=`<a onclick="show('home');return false">首页</a><span class="mlabel">服务</span><a onclick="show('services');return false">　服务项目</a><a onclick="show('process');return false">　买房流程</a><a onclick="show('live');return false">　自住服务</a><a onclick="show('invest');return false">　投资服务</a><span class="mlabel">工具</span><a href="tool-loan-cn.html">　🏦 房贷试算</a><a href="tool-cost-cn.html">　💴 购屋费用</a><a href="tool-yield-cn.html">　📈 投报率</a><a href="tool-fx-cn.html">　💱 即时汇率</a><a href="tool-area-cn.html">　📐 坪数・帖</a><a onclick="show('translate');return false">房产翻译机</a><a onclick="show('videos');return false">影片</a><a onclick="show('faq');return false">常见问题</a><a onclick="show('about');return false">关于我们</a><a href="feedback-cn.html">意见回馈</a><a href="${S.line}" target="_blank" style="color:var(--green-d)" rel='noopener'>加 LINE 咨询</a>`;
 document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ytf');if(f&&!f.dataset.l){f.dataset.l=1;f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.id+'?autoplay=1" title="周周的影片" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe>';}});
-document.getElementById('catbar').innerHTML=`<select class="catsel" id="catSelect" onchange="setCat(this.value||null)"><option value="">📚 全部文章</option>`+CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")+`</select><a class="chip tool" href="translate-cn.html" style="margin-left:auto">🏠 房产翻译机</a>`;
+document.getElementById('catbar').innerHTML=`<select class="catsel" id="catSelect" onchange="setCat(this.value||null)"><option value="">📚 全部文章</option>`+CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")+`</select>`;
 ['lineTop','lineIntro','lineHome','lineP','lineL','lineI','lineA','lineFoot','lineSvc','lineFloat'].forEach(i=>{const e=document.getElementById(i);if(e)e.href=S.line;});
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
 document.getElementById('introSocs').innerHTML=socHTML();document.getElementById('aboutSocs').innerHTML=socHTML();document.getElementById('footSocs').innerHTML=socHTML();
