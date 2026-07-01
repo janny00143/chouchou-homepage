@@ -95,6 +95,8 @@
    - **同一天、另一個對話視窗**（很可能是不同連線方式，例如 claude.ai 網頁版內建的 GitHub 連接器，只用 GitHub App／API 這條路，沒有 git 層級的存取）測到「`git push` 403、GitHub API 建立分支也 403、沒有 `ghreal` remote、`GH_TOKEN` 只是佔位字串」——這跟上面 GitHub MCP 那條路 403 是同一個現象（GitHub App 唯讀），只是它沒有 git 這條路可以繞過去。
    - **結論**：這個 repo 本身的寫入權限**不是單一開關**，同一個對話裡可能「git 能寫、API 不能寫」同時成立，因為兩者用不同的憑證/管道。**每次接手都先各自測試兩條路**：(1) 有沒有可用的 git remote 可以 push（`git remote -v` 看有沒有指向真正 github.com 的 remote，試著 commit + push 一個小改動）；(2) GitHub MCP 工具寫入是否會 403。哪條路通就用哪條路；兩條都 403 就照舊流程「改好 → 提供完整可下載檔 → 周周自行上傳」。不要照抄這份文件某次寫的結論。
    - 若用 git push，push 前記得 `git config --global --unset-all "url.http://local_proxy@127.0.0.1:41729/git/.insteadof"`（proxy 設定在某些環境會被重新注入，每次 push 前清一次再試）。
+   - **2026-07-01 補充實測（重要，已排除的方向）**：周周在 GitHub 網站 `Settings → Applications` 三個分頁都查過——「Installed GitHub Apps」裡**根本沒有 Claude 相關項目**（只有 ChatGPT Codex Connector、Railway App）；Claude／Claude Github MCP Connector 只出現在「Authorized GitHub Apps」，這種授權方式**沒有 repo 層級的讀寫權限開關可以調**。**結論：這個寫入權限不是 GitHub 網站設定能控制或修好的東西**，之後不要再叫周周去 GitHub 帳號設定找開關，那邊沒有。
+   - **能寫入的這個 session，差別在於是用「Claude Code on the web」這種帶遠端執行環境的介面開的對話**（本檔一開始的環境資訊會寫明「You are running Claude Code in a managed remote execution environment」），不是一般 claude.ai 聊天視窗＋GitHub 連接器那種。目前推測：**要讓下一個對話也拿到跟這次一樣的寫入能力，關鍵是用同一種產品介面開新對話**——到 `code.claude.com`（或 claude.ai 裡選 Claude Code／建立新的 coding session），選擇／連接 `janny00143/chouchou-homepage` 這個 repo 來開新的 session，而不是在一般聊天框裡貼網址請它讀 repo。實際操作介面可能會變動，正確流程請參考官方文件 `https://code.claude.com/docs/en/claude-code-on-the-web`。開新 session 後，一樣要先照本節第一條做寫入能力測試，不要假設一定會通。
 4. **不要重做已完成的部分**（見第 2、3 節現況）。
 5. 預設繁體中文（台灣用語），簡中/日文版本要跟繁中同步更新，日文要自然商務日文。
 6. 貸款／稅務／簽證不亂保證；保護客戶個資，不寫進 commit 或公開頁面。
