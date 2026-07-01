@@ -41,7 +41,11 @@ const SLUG = {
   a27: "japan-property-contract-documents",
   a28: "japan-business-manager-visa",
   a29: "japan-property-purchase-costs",
-  a30: "japan-real-estate-agent-fee"
+  a30: "japan-real-estate-agent-fee",
+  a31: "japan-investment-property-whole-building-vs-unit",
+  a32: "tokyo-minpaku-popular-location-layout",
+  a33: "japan-utilities-setup-guide",
+  a34: "japan-phone-sim-no-visa-guide"
 };
 
 const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
