@@ -48,6 +48,8 @@ function convertFile(file) {
     s = s.split('property="og:url" content="' + u + '"').join('property="og:url" content="' + ucn + '"');
   }
 
+  // 6b) og:locale zh_TW -> zh_CN
+  s = s.split('content="zh_TW"').join('content="zh_CN"');
   // 6) lang 設為簡體
   s = s.replace(/lang="zh-Hant-TW"/g, 'lang="zh-Hans"').replace(/lang="zh-Hant"/g, 'lang="zh-Hans"');
 
