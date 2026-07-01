@@ -28,8 +28,9 @@
 **三語站（2026-06～07 完成的最大工程）**
 - **繁體中文**：全部原生內容，`index.html` 為主體
 - **簡體中文**：所有頁面都有對應 `-cn.html`（用 `build-cn.cjs` 以 OpenCC 繁→簡自動產生，含圖檔名保護、內部連結改寫、canonical/og/hreflang/`<html lang>` 調整）
-- **日文**：`ja.html` 為日文首頁（含 29 篇文章列表），**29 篇文章 + minpaku + 11 個工具頁全部有 `-ja.html` 版本**，達成與簡體版完全對等（周周明確要求「跟簡體的一模一樣」）
-  - 文章的日文版由 `build-ja.cjs` 讀 `ja-content.json`（人工整理的翻譯內容，來源是多個 sub-agent 平行翻譯＋人工校對成自然商務日文）自動產生
+- **日文**：`ja.html` 是**完整版 SPA 日文首頁**（2026-07-01 重建，之前只是簡化過的單頁摘要，缺服務項目/買房流程/自住/投資/FAQ子頁面跟圖片，周周指出「要跟簡體繁體都一樣」後重做），架構、CSS、圖片跟 `index.html`/`index-cn.html` 完全一致，只是內容翻成自然商務日文；含服務項目、買房流程10步驟、自住/投資服務、11題FAQ、客戶評價、關於我們（公司資訊/LINE QR）、30篇文章卡片（封面圖+影片標籤，搜尋/分類篩選功能）。**30 篇文章 + minpaku + 11 個工具頁全部有 `-ja.html` 版本**，達成與簡體版完全對等（周周明確要求「跟簡體的一模一樣」）
+  - `ja.html` 由 **`build-ja-home.cjs`** 產生：讀 `index.html` 的 STYLE/ART/SLUG/CATS，套用腳本內建的日文 UI 文案（服務項目、流程步驟、FAQ、客戶評價等都寫死在腳本裡），輸出完整 SPA。**若 `index.html` 的服務項目/流程/FAQ/自住/投資這些靜態文案有改，`build-ja-home.cjs` 裡對應的日文也要手動跟著改，再重跑**（不會自動同步，因為是意譯不是機械轉換）。文章卡片的 title/ex/tags 讀 `ja-content.json`，跟文章獨立頁共用同一份翻譯來源。
+  - 文章的日文獨立頁（`<slug>-ja.html`）由 `build-ja.cjs` 讀 `ja-content.json`（人工整理的翻譯內容，來源是多個 sub-agent 平行翻譯＋人工校對成自然商務日文）自動產生
   - 11 個工具頁（`tool-loan` / `tool-cost` / `tool-agent` / `tool-yield` / `tool-fx` / `tool-area` / `tool-convert` / `tools` / `translate` / `feedback` / `videos`）的日文版是**手寫**（Write 工具直接寫檔，因為內容偏 UI／短文字而非長文），已逐一比對繁體版原始邏輯（尤其是計算類頁面的公式）確保一致
   - `translate-ja.html` 特別注意：AI prompt 常數（`PROMPT`/`INVEST_PROMPT`）與結果渲染函式**維持繁體中文不變**（因為翻譯機本身的功能就是「把日文房產資料翻成中文給華語客戶看」，這些常數翻成日文會讓功能失效），只翻譯了頁面外殼（標題、上鎖畫面、上傳畫面、錯誤訊息）
 - **語言切換器**：右上角 🌐 按鈕，下拉選單三個選項（繁體中文／简体中文／日本語），連結會 `target="_blank"` 開新分頁；每篇文章／工具頁點「日本語」會導到**對應頁面的日文版**（不是通用的 ja.html 首頁）
@@ -127,14 +128,15 @@
 |---|---|
 | `index.html` | 首頁＋全部頁面＋30 篇文章（`ART` 陣列）＋`SLUG` 對照表。網站主體。 |
 | `index-cn.html` | 首頁簡體版（`build-cn.cjs` 自動產生，勿手改）。 |
-| `ja.html` | 首頁日文版，含 29 篇文章列表（手寫維護）。 |
+| `ja.html` | 首頁日文版，**完整版 SPA**（跟 `index.html` 同架構），由 `build-ja-home.cjs` 產生，**勿手改**——要改內容請改 `build-ja-home.cjs` 裡的 `JA_UI`/`PROCESS_JA`/`FAQ_JA` 等常數再重跑。 |
 | `<slug>.html` / `<slug>-cn.html` / `<slug>-ja.html` | 每篇文章的三語獨立 SEO 頁（`generate-pages.cjs`/`build-cn.cjs`/`build-ja.cjs` 自動產生，**勿手改**）。 |
 | `translate.html` / `translate-cn.html` / `translate-ja.html` | 房產圖面翻譯機三語版（`-ja.html` 為手寫，AI prompt 常數維持中文）。 |
 | `minpaku.html` / `minpaku-cn.html` / `minpaku-ja.html` | 民宿（民泊）法規獨立頁三語版。 |
 | `tool-loan/tool-cost/tool-agent/tool-yield/tool-fx/tool-area/tool-convert/tools/feedback/videos` (+`-cn`/`-ja`) | 各工具頁三語版，工具頁的 `-ja.html` 為手寫，需注意計算公式要跟繁中版本邏輯完全一致。 |
 | `generate-pages.cjs` | 繁中文章獨立頁／`sitemap.xml`／`robots.txt` 產生器，內含 `SLUG` 對照表。 |
 | `build-cn.cjs` | 簡體頁產生器（OpenCC 繁→簡＋連結改寫＋hreflang/og/lang 調整）。 |
-| `build-ja.cjs` | 日文文章頁產生器，讀 `ja-content.json`。 |
+| `build-ja.cjs` | 日文文章獨立頁產生器，讀 `ja-content.json`。 |
+| `build-ja-home.cjs` | 日文首頁（`ja.html`）產生器，讀 `index.html` 的 STYLE/ART/SLUG/CATS，套用腳本內建的日文 UI 文案（服務項目/流程/FAQ/客戶評價等）產生完整 SPA。**這些日文 UI 文案是意譯、不是機械轉換，`index.html` 對應內容改了要手動同步改這支腳本再重跑，不會自動更新。** |
 | `ja-content.json` | 29 篇文章的日文翻譯內容（title/ex/tags/body），`build-ja.cjs` 的資料來源。 |
 | `sitemap.xml` / `robots.txt` | 給搜尋引擎用，由產生器產出，勿手改。 |
 | `cover-*.jpg` / `pexels-*.jpg` | 文章封面與版面圖，全放 root。 |
