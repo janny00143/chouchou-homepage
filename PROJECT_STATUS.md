@@ -88,7 +88,13 @@
 
 1. **改檔前一定先讀 repo 線上最新版**，不可憑記憶或舊版改。
 2. **不可擅自更改原本架構**（純靜態站 + `ART` 陣列 + JS 渲染，無框架無建置工具）。
-3. **交付方式**：目前 GitHub 連接器**已有寫入權限**，可直接在 `deploy` 分支 commit 後 `git push ghreal deploy:main`（不再是唯讀 403 的舊狀態，這點跟舊版本文件寫的不一樣，已更新）。push 前記得 `git config --global --unset-all "url.http://local_proxy@127.0.0.1:41729/git/.insteadof"`（proxy 設定會被重新注入，每次 push 前清一次）。
+3. **交付方式：寫入權限「因連線環境／管道而異」，不要預設任何一種，動手前先自己測試**。
+   - 2026-07-01 在**這個當下的 Claude Code 遠端執行環境**實測出：同一個 session 裡，**git push 這條路能寫、GitHub MCP 工具（`create_or_update_file`/`push_files`/`create_branch` 等）這條路不能寫**——
+     - `git push`（本機 remote 指到 `https://github.com/...`，走 `local_proxy:41729`）**成功**，且用完全獨立、不經過 git/proxy 的管道（GitHub MCP 的 `get_file_contents`，即 REST API 讀取）讀回內容與 SHA 都對得上，證實不是本機假象，是真的寫進遠端 GitHub 了。
+     - 但同一個 session 再用 GitHub MCP 的 `create_or_update_file` 直接寫同一個檔案，回傳 `403 Resource not accessible by integration`——這個 GitHub App／整合本身的權杖對這個 repo 只有讀權限，寫入被擋。
+   - **同一天、另一個對話視窗**（很可能是不同連線方式，例如 claude.ai 網頁版內建的 GitHub 連接器，只用 GitHub App／API 這條路，沒有 git 層級的存取）測到「`git push` 403、GitHub API 建立分支也 403、沒有 `ghreal` remote、`GH_TOKEN` 只是佔位字串」——這跟上面 GitHub MCP 那條路 403 是同一個現象（GitHub App 唯讀），只是它沒有 git 這條路可以繞過去。
+   - **結論**：這個 repo 本身的寫入權限**不是單一開關**，同一個對話裡可能「git 能寫、API 不能寫」同時成立，因為兩者用不同的憑證/管道。**每次接手都先各自測試兩條路**：(1) 有沒有可用的 git remote 可以 push（`git remote -v` 看有沒有指向真正 github.com 的 remote，試著 commit + push 一個小改動）；(2) GitHub MCP 工具寫入是否會 403。哪條路通就用哪條路；兩條都 403 就照舊流程「改好 → 提供完整可下載檔 → 周周自行上傳」。不要照抄這份文件某次寫的結論。
+   - 若用 git push，push 前記得 `git config --global --unset-all "url.http://local_proxy@127.0.0.1:41729/git/.insteadof"`（proxy 設定在某些環境會被重新注入，每次 push 前清一次再試）。
 4. **不要重做已完成的部分**（見第 2、3 節現況）。
 5. 預設繁體中文（台灣用語），簡中/日文版本要跟繁中同步更新，日文要自然商務日文。
 6. 貸款／稅務／簽證不亂保證；保護客戶個資，不寫進 commit 或公開頁面。
@@ -144,7 +150,7 @@
 ## 10. 部署／上線狀態
 
 - **已上線**：`https://chouchouinjapan.com/`（自訂網域，GitHub Pages 代管）。
-- 部署方式：本機 `deploy` 分支 → `git push ghreal deploy:main` → GitHub Pages 從 `main` 自動更新。**目前有直接寫入權限，非唯讀。**
+- 部署方式：本機 `deploy` 分支 → push 到 `main` → GitHub Pages 從 `main` 自動更新。**寫入權限因連線環境而異，見第 6.3 節，動手前先自己測試，不要預設。**
 - 三語站（繁中/簡中/日文）全部上線，語言切換器運作正常。
 - 128 個 HTML 檔（2026-07-01 統計）全部通過語法與連結完整性檢查，0 錯誤。
 
