@@ -151,8 +151,7 @@ const JA_UI = {
   navddSvc: "サービス ▾", navddTool: "ツール ▾",
   tools: [["🏦 住宅ローン試算", "tool-loan-ja.html"], ["💴 購入費用", "tool-cost-ja.html"], ["🤝 仲介手数料", "tool-agent-ja.html"], ["📈 利回り試算", "tool-yield-ja.html"], ["💱 為替レート", "tool-fx-ja.html"], ["📐 坪・畳換算", "tool-area-ja.html"]],
   mobileLabels: { services: "サービス", tools: "ツール" },
-  catAll: "📚 すべての記事",
-  catTranslateChip: "🏠 不動産資料翻訳"
+  catAll: "📚 すべての記事"
 };
 
 const escJs = s => String(s).replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
@@ -201,8 +200,6 @@ const body = `<header>
   <div class="mnav" id="mnav"></div>
 </header>
 
-<div class="catbar"><div class="wrap row" id="catbar"></div></div>
-
 <main class="wrap">
   <section class="view on" id="v-home">
     <div class="intro intro-cover">
@@ -223,12 +220,14 @@ const body = `<header>
       </div>
       </div>
     </div>
-    <a href="tool-loan-ja.html" style="text-decoration:none"><div style="cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b style="font-size:18px">${JA_UI.toolCard.title}</b><p style="font-size:14px;color:var(--mut);margin-top:2px">${JA_UI.toolCard.desc}</p></div><span class="btn" style="background:var(--rose);color:#fff">${JA_UI.toolCard.cta}</span></div></a><a href="translate-ja.html" style="text-decoration:none"><div style="cursor:pointer;background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:20px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:22px">
+    <a href="tool-loan-ja.html" style="text-decoration:none;flex:1;min-width:260px"><div style="cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;height:100%;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b style="font-size:18px">${JA_UI.toolCard.title}</b><p style="font-size:14px;color:var(--mut);margin-top:2px">${JA_UI.toolCard.desc}</p></div><span class="btn" style="background:var(--rose);color:#fff">${JA_UI.toolCard.cta}</span></div></a><a href="translate-ja.html" style="text-decoration:none;flex:1;min-width:260px"><div style="cursor:pointer;background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:20px;height:100%;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
       <div><b style="font-size:18px">${JA_UI.translateCard.title}</b><p style="font-size:14px;opacity:.95;margin-top:2px">${JA_UI.translateCard.desc}</p></div>
       <span class="btn" style="background:#fff;color:var(--rose)">${JA_UI.translateCard.cta}</span>
     </div></a>
+    </div>
     <div class="listbanner"><img src="步道.jpg" alt="${JA_UI.altStreet}" loading="lazy"><div class="lb-cap"><span class="lb-t">${JA_UI.listBanner.title}</span><span class="lb-s">${JA_UI.listBanner.sub}</span></div></div>
-    <div class="search"><input id="q" placeholder="${JA_UI.searchPlaceholder}" oninput="render()"></div>
+    <div class="search" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:560px"><input id="q" placeholder="${JA_UI.searchPlaceholder}" oninput="render()" style="width:auto;flex:1;min-width:180px"><span id="catbar"></span></div>
     <div class="grid" id="grid"></div>
     <div class="reviews">
       <h2 class="rev-t">${JA_UI.reviewsTitle}</h2>
@@ -353,7 +352,7 @@ const SVCDD=\`<div class="navdd"><button class="navdd-b">${JA_UI.navddSvc}</butt
 document.getElementById('mainnav').innerHTML=\`<a data-v="home" onclick="show('home');return false">${JA_UI.nav.home}</a>\${SVCDD}\${TOOLDD}<a onclick="show('translate');return false">${JA_UI.nav.translate}</a><a onclick="show('videos');return false">${JA_UI.nav.videos}</a><a data-v="faq" onclick="show('faq');return false">${JA_UI.nav.faq}</a><a data-v="about" onclick="show('about');return false">${JA_UI.nav.about}</a><a onclick="show('feedback');return false">${JA_UI.nav.feedback}</a>\`;
 document.getElementById('mnav').innerHTML=\`<a onclick="show('home');return false">${JA_UI.nav.home}</a><span class="mlabel">${JA_UI.mobileLabels.services}</span><a onclick="show('services');return false">　${JA_UI.nav.services}</a><a onclick="show('process');return false">　${JA_UI.nav.process}</a><a onclick="show('live');return false">　${JA_UI.nav.live}</a><a onclick="show('invest');return false">　${JA_UI.nav.invest}</a><span class="mlabel">${JA_UI.mobileLabels.tools}</span>\`+${JSON.stringify(JA_UI.tools)}.map(function(t){return '<a href="'+t[1]+'">　'+t[0]+'</a>';}).join("")+\`<a onclick="show('translate');return false">${JA_UI.nav.translate}</a><a onclick="show('videos');return false">${JA_UI.nav.videos}</a><a onclick="show('faq');return false">${JA_UI.nav.faq}</a><a onclick="show('about');return false">${JA_UI.nav.about}</a><a href="feedback-ja.html">${JA_UI.nav.feedback}</a><a href="\${S.line}" target="_blank" style="color:var(--green-d)" rel='noopener'>${JA_UI.lineBtn}</a>\`;
 document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ytf');if(f&&!f.dataset.l){f.dataset.l=1;f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.id+'?autoplay=1" title="${JA_UI.altVideo}" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe>';}});
-document.getElementById('catbar').innerHTML=\`<select class="catsel" id="catSelect" onchange="setCat(this.value||null)"><option value="">${JA_UI.catAll}</option>\`+CATS.map(c=>\`<option value="\${c.id}">\${c.name}</option>\`).join("")+\`</select><a class="chip tool" href="translate-ja.html" style="margin-left:auto">${JA_UI.catTranslateChip}</a>\`;
+document.getElementById('catbar').innerHTML=\`<select class="catsel" id="catSelect" onchange="setCat(this.value||null)"><option value="">${JA_UI.catAll}</option>\`+CATS.map(c=>\`<option value="\${c.id}">\${c.name}</option>\`).join("")+\`</select>\`;
 ['lineTop','lineIntro','lineHome','lineP','lineL','lineI','lineA','lineFoot','lineSvc','lineFloat'].forEach(i=>{const e=document.getElementById(i);if(e)e.href=S.line;});
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});
 document.getElementById('introSocs').innerHTML=socHTML();document.getElementById('aboutSocs').innerHTML=socHTML();document.getElementById('footSocs').innerHTML=socHTML();
