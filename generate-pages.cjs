@@ -123,7 +123,7 @@ ${STYLE}
 <main class="wrap" style="max-width:760px;padding-top:18px">
 <a class="back" href="index.html">← 回首頁</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
-${a.coverFit === "contain" ? `<img src="${cover}" alt="${esc(a.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:300px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${c.name}</span></div>`}
+${a.coverFit === "contain" ? `<img src="${cover}" alt="${esc(a.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:150px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${c.name}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
 <div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:16px"><span>撰寫者：周周</span><span>${a.date}</span></div>
 <div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f 分享</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(a.title+" "+url)}" target="_blank" rel="noopener">Threads 分享</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(a.title)}" target="_blank" rel="noopener">𝕏 分享</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ 已複製';return false">🔗 複製連結</a></div>
