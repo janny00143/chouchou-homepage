@@ -236,6 +236,7 @@ const body = `<header>
         ${REVIEWS_JA.map(r => `<div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">「${r.text}」</p><p class="rev-who">— ${r.who}</p></div>`).join("\n        ")}
       </div>
       <div class="note" style="background:#fffbeb;border:2px solid #f59e0b;max-width:none;margin-top:16px">${JA_UI.reviewsNote}</div>
+      <div style="text-align:center;margin-top:18px"><p style="font-size:14px;color:var(--mut);margin-bottom:10px">周周に内見やご購入をご依頼いただいた方へ。ご感想もぜひお聞かせください ♡</p><a href="feedback-ja.html" style="display:inline-block;background:#fff;border:2px solid var(--rose);color:var(--rose);font-weight:700;padding:10px 22px;border-radius:999px;text-decoration:none">✍️ 内見・購入のご感想を投稿する</a></div>
     </div>
     <div class="cta"><h2>${JA_UI.homeCta.title}</h2><p>${JA_UI.homeCta.body}</p><a class="btn btn-line big" id="lineHome" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
   </section>
