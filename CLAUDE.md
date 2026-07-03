@@ -69,7 +69,7 @@
 - **封面圖／內文插圖都不要放太大。**
 - **照片類**（一般實景照）→ 封面用 260px 固定橫幅（`.acov`，比照仲介費文章）。
 - **合成圖／資訊圖／含文字的圖**（如「日本門號」SIM 卡圖、防震三工法對照圖）→ **整張顯示不可裁切**（`coverFit:"contain"`），但要限制最大高度、置中，不可撐滿寬度變超大。
-- **內文插圖**（body 內的 `<img>`）用 `class='artimg'`（響應式）：手機填滿寬度、電腦以 `max-height`（現 170px）限制，整張顯示、置中；`.artimg` 定義在 `index.html` 的 `<style>`（會被產生器複製到各文章頁）。
+- **內文插圖**（body 內的 `<img>`）用 `class='artimg'`（響應式）：手機填滿寬度、電腦以 `max-height`（現 280px）限制，整張顯示、置中；`.artimg` 定義在 `index.html` 的 `<style>`（會被產生器複製到各文章頁）。
 - **封面三種模式**：一般照片→省略 coverFit，用 `.acov` 210px 橫幅（背景裁切）；資訊圖（如防震對照圖 a26）→ `coverFit:"contain"`，整張顯示、max-height 210px 置中不撐滿；橫幅式合成圖（如門號 a34）→ `coverFit:"full"`，滿版 `width:100%` 整張顯示、填滿欄寬跟照片封面一致。
 - 尺寸樣式集中在 `generate-pages.cjs`／`build-ja.cjs` 的 contain 封面模板，以及 `index.html` ART／`ja-content.json` 的內文 `<img>` style；改完重跑產生器並三語同步。
 
