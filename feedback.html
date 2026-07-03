@@ -39,11 +39,11 @@
   <div class="top"><h1>💬 意見回饋・客戶心得</h1><p>網站、文章或服務有任何想法、建議，或想分享你的<b>看房／買房心得</b>，都歡迎告訴周周<br>—可以匿名，我們一起把這裡做得更好♡</p></div>
   <div class="card">
     <form onsubmit="return sendFb(event)">
-      <div class="f"><label>回饋類型</label><select id="fb_type"><option>看房心得</option><option>買房心得</option><option>買房／看房回饋</option><option>網站／使用建議</option><option>文章內容回饋</option><option>找房／買房諮詢</option><option>合作邀約</option><option>其他</option></select></div>
+      <div class="f"><label>意見回饋類型</label><select id="fb_type" onchange="toggleType()"><option>看房心得</option><option>買房心得</option><option>買房／看房回饋</option><option>網站／使用建議</option><option>文章內容回饋</option><option>找房／買房諮詢</option><option>合作邀約</option><option>其他</option></select></div>
       <div class="f"><label>你的稱呼（選填）</label><input id="fb_name" type="text" placeholder="例如：台灣 T 先生（首次購屋）"></div>
       <div class="f"><label>聯絡方式（選填・可匿名）</label><input id="fb_contact" type="text" placeholder="LINE ID／Email／電話（可不填）"><p style="font-size:12px;color:var(--mut);margin-top:5px">不留也沒關係，可以匿名 🙂 若留下有效的聯絡方式，周周才方便回覆你。</p></div>
       <div class="f"><label>回饋內容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="想說的話都可以寫在這裡…看房或買房的過程、周周幫上什麼忙，都歡迎分享 ♡" required></textarea></div>
-      <div class="f" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:14px 15px">
+      <div class="f" id="consentBox" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:14px 15px">
         <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:14px;color:var(--ink);font-weight:500;margin:0">
           <input type="checkbox" id="fb_pub" onchange="togglePub()" style="width:auto;margin-top:3px;flex:0 0 auto">
           <span>我同意把這則心得<b>公開分享在網站首頁</b>，給其他正在考慮的客戶參考。</span>
@@ -67,6 +67,8 @@
 </div>
 <script>
 function togglePub(){document.getElementById('pubOpts').style.display=document.getElementById('fb_pub').checked?'block':'none';}
+function toggleType(){var t=document.getElementById('fb_type').value;var isRev=(t==='看房心得'||t==='買房心得'||t==='買房／看房回饋');document.getElementById('consentBox').style.display=isRev?'block':'none';if(!isRev){document.getElementById('fb_pub').checked=false;togglePub();}}
+toggleType();
 async function sendFb(e){e.preventDefault();
   var form=e.target,btn=form.querySelector('.submit'),status=document.getElementById('fbStatus');
   var type=document.getElementById('fb_type').value;

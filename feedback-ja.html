@@ -43,11 +43,11 @@
   <div class="top"><h1>💬 ご意見・お客様の声</h1><p>サイトや記事、サービスへのご意見や、<b>内見・ご購入のご感想</b>もお気軽にお寄せください<br>—匿名でも構いません。一緒により良いサイトにしていきましょう♡</p></div>
   <div class="card">
     <form onsubmit="return sendFb(event)">
-      <div class="f"><label>ご意見の種類</label><select id="fb_type"><option>内見のご感想</option><option>ご購入のご感想</option><option>購入・内見のご感想</option><option>サイト・使い方について</option><option>記事内容について</option><option>物件・購入のご相談</option><option>お仕事のご依頼</option><option>その他</option></select></div>
+      <div class="f"><label>ご意見の種類</label><select id="fb_type" onchange="toggleType()"><option>内見のご感想</option><option>ご購入のご感想</option><option>購入・内見のご感想</option><option>サイト・使い方について</option><option>記事内容について</option><option>物件・購入のご相談</option><option>お仕事のご依頼</option><option>その他</option></select></div>
       <div class="f"><label>お名前（任意）</label><input id="fb_name" type="text" placeholder="例：台湾のTさん（初めてのご購入）"></div>
       <div class="f"><label>ご連絡先（任意・匿名可）</label><input id="fb_contact" type="text" placeholder="LINE ID／メール／電話（未記入可）"><p style="font-size:12px;color:var(--mut);margin-top:5px">未記入でも問題ありません、匿名で構いません 🙂 ご連絡先をご記入いただければ、周周から返信いたします。</p></div>
       <div class="f"><label>ご意見の内容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="ご自由にお書きください…内見やご購入の過程、周周がお役に立てたことなど、ぜひお聞かせください ♡" required></textarea></div>
-      <div class="f" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:14px 15px">
+      <div class="f" id="consentBox" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:14px 15px">
         <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:14px;color:var(--ink);font-weight:500;margin:0">
           <input type="checkbox" id="fb_pub" onchange="togglePub()" style="width:auto;margin-top:3px;flex:0 0 auto">
           <span>このご感想を周周がサイトのトップページで<b>公開・共有すること</b>に同意します（周周をご検討中の他のお客様の参考のため）。</span>
@@ -71,6 +71,8 @@
 </div>
 <script>
 function togglePub(){document.getElementById('pubOpts').style.display=document.getElementById('fb_pub').checked?'block':'none';}
+function toggleType(){var t=document.getElementById('fb_type').value;var isRev=(t==='内見のご感想'||t==='ご購入のご感想'||t==='購入・内見のご感想');document.getElementById('consentBox').style.display=isRev?'block':'none';if(!isRev){document.getElementById('fb_pub').checked=false;togglePub();}}
+toggleType();
 async function sendFb(e){e.preventDefault();
   var form=e.target,btn=form.querySelector('.submit'),status=document.getElementById('fbStatus');
   var type=document.getElementById('fb_type').value;
