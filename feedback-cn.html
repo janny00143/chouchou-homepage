@@ -36,13 +36,25 @@
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap fzoom">
   <a class="back" href="index-cn.html">← 回首页</a>
-  <div class="top"><h1>💬 意见回馈</h1><p>网站、文章或服务有任何想法、建议，都欢迎告诉周周<br>—可以匿名，我们一起把这里做得更好♡</p></div>
+  <div class="top"><h1>💬 意见回馈・客户心得</h1><p>网站、文章或服务有任何想法、建议，或想分享你的<b>看房／买房心得</b>，都欢迎告诉周周<br>—可以匿名，我们一起把这里做得更好♡</p></div>
   <div class="card">
     <form onsubmit="return sendFb(event)">
-      <div class="f"><label>回馈类型</label><select id="fb_type"><option>网站／使用建议</option><option>文章内容回馈</option><option>找房／买房咨询</option><option>合作邀约</option><option>其他</option></select></div>
-      <div class="f"><label>你的称呼（选填）</label><input id="fb_name" type="text" placeholder="怎么称呼你？"></div>
+      <div class="f"><label>回馈类型</label><select id="fb_type"><option>看房心得</option><option>买房心得</option><option>买房／看房回馈</option><option>网站／使用建议</option><option>文章内容回馈</option><option>找房／买房咨询</option><option>合作邀约</option><option>其他</option></select></div>
+      <div class="f"><label>你的称呼（选填）</label><input id="fb_name" type="text" placeholder="例如：台湾 T 先生（首次购屋）"></div>
       <div class="f"><label>联络方式（选填・可匿名）</label><input id="fb_contact" type="text" placeholder="LINE ID／Email／电话（可不填）"><p style="font-size:12px;color:var(--mut);margin-top:5px">不留也没关系，可以匿名 🙂 若留下有效的联络方式，周周才方便回复你。</p></div>
-      <div class="f"><label>回馈内容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="想说的话都可以写在这里…" required></textarea></div>
+      <div class="f"><label>回馈内容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="想说的话都可以写在这里…看房或买房的过程、周周帮上什么忙，都欢迎分享 ♡" required></textarea></div>
+      <div class="f" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:14px 15px">
+        <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:14px;color:var(--ink);font-weight:500;margin:0">
+          <input type="checkbox" id="fb_pub" onchange="togglePub()" style="width:auto;margin-top:3px;flex:0 0 auto">
+          <span>我同意周周把这则心得<b>公开分享在网站首页</b>（给其他考虑找周周的客户参考）。</span>
+        </label>
+        <div id="pubOpts" style="display:none;margin-top:12px;padding-left:27px">
+          <p style="font-size:13px;color:var(--mut);margin-bottom:8px;font-weight:600">公开时，我的名字要怎么显示？</p>
+          <label style="display:block;font-size:14px;margin-bottom:7px;cursor:pointer"><input type="radio" name="pubname" value="show" checked style="width:auto;margin-right:6px">显示我上面填的称呼</label>
+          <label style="display:block;font-size:14px;cursor:pointer"><input type="radio" name="pubname" value="anon" style="width:auto;margin-right:6px">用「匿名客户」显示，不公开名字</label>
+          <p style="font-size:12px;color:var(--mut);margin-top:10px;line-height:1.7">💡 就算你勾了同意，周周还是会<b>先跟你确认、由周周决定</b>要不要放上去；你随时都可以反悔取下。不勾选的话，这则只会私下给周周看，不会公开。</p>
+        </div>
+      </div>
       <input type="text" id="fb_hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="submit" type="submit">📨 送出回馈</button>
     </form>
@@ -54,6 +66,7 @@
   <p class="foot">© 2026 周周・日本房仲</p>
 </div>
 <script>
+function togglePub(){document.getElementById('pubOpts').style.display=document.getElementById('fb_pub').checked?'block':'none';}
 async function sendFb(e){e.preventDefault();
   var form=e.target,btn=form.querySelector('.submit'),status=document.getElementById('fbStatus');
   var type=document.getElementById('fb_type').value;
@@ -61,9 +74,13 @@ async function sendFb(e){e.preventDefault();
   var contact=document.getElementById('fb_contact').value.trim()||'未提供';
   var msg=document.getElementById('fb_msg').value.trim();
   if(!msg){alert('请填写回馈内容');return false;}
+  var pub=document.getElementById('fb_pub').checked;
+  var nameMode=(document.querySelector('input[name=pubname]:checked')||{}).value;
+  var pubText=pub?'✅ 同意公开在网站':'❌ 不公开（仅私下给周周看）';
+  var pubName=pub?(nameMode==='anon'?'匿名客户（客户要求不具名）':('具名显示：'+name)):'—';
   if(document.getElementById('fb_hp').value){form.style.display='none';status.style.display='block';status.innerHTML='✅ 已送出，谢谢你的回馈！周周会看到 ❤️';return false;}
   btn.disabled=true;btn.textContent='传送中…';
-  var data={access_key:'d1ac2743-8999-4270-abe8-9896caaf693b',subject:'【网站意见回馈】'+type,from_name:name,'回馈类型':type,'称呼':name,'联络方式':contact,'内容':msg};
+  var data={access_key:'d1ac2743-8999-4270-abe8-9896caaf693b',subject:'【网站意见回馈】'+type,from_name:name,'回馈类型':type,'称呼':name,'联络方式':contact,'内容':msg,'是否同意公开':pubText,'公开时署名':pubName};
   try{
     var r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
     var j=await r.json();

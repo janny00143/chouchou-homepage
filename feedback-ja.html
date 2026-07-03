@@ -40,13 +40,25 @@
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本の不動産</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div></div>
 <div class="wrap fzoom">
   <a class="back" href="ja.html">← ホームに戻る</a>
-  <div class="top"><h1>💬 ご意見・ご感想</h1><p>サイトや記事、サービスについてのご意見・ご感想をお気軽にお寄せください<br>—匿名でも構いません。一緒により良いサイトにしていきましょう♡</p></div>
+  <div class="top"><h1>💬 ご意見・お客様の声</h1><p>サイトや記事、サービスへのご意見や、<b>内見・ご購入のご感想</b>もお気軽にお寄せください<br>—匿名でも構いません。一緒により良いサイトにしていきましょう♡</p></div>
   <div class="card">
     <form onsubmit="return sendFb(event)">
-      <div class="f"><label>ご意見の種類</label><select id="fb_type"><option>サイト・使い方について</option><option>記事内容について</option><option>物件・購入のご相談</option><option>お仕事のご依頼</option><option>その他</option></select></div>
-      <div class="f"><label>お名前（任意）</label><input id="fb_name" type="text" placeholder="どのようにお呼びすればよいですか？"></div>
+      <div class="f"><label>ご意見の種類</label><select id="fb_type"><option>内見のご感想</option><option>ご購入のご感想</option><option>購入・内見のご感想</option><option>サイト・使い方について</option><option>記事内容について</option><option>物件・購入のご相談</option><option>お仕事のご依頼</option><option>その他</option></select></div>
+      <div class="f"><label>お名前（任意）</label><input id="fb_name" type="text" placeholder="例：台湾のTさん（初めてのご購入）"></div>
       <div class="f"><label>ご連絡先（任意・匿名可）</label><input id="fb_contact" type="text" placeholder="LINE ID／メール／電話（未記入可）"><p style="font-size:12px;color:var(--mut);margin-top:5px">未記入でも問題ありません、匿名で構いません 🙂 ご連絡先をご記入いただければ、周周から返信いたします。</p></div>
-      <div class="f"><label>ご意見の内容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="ご自由にお書きください…" required></textarea></div>
+      <div class="f"><label>ご意見の内容 <span class="req">*</span></label><textarea id="fb_msg" placeholder="ご自由にお書きください…内見やご購入の過程、周周がお役に立てたことなど、ぜひお聞かせください ♡" required></textarea></div>
+      <div class="f" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:14px 15px">
+        <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:14px;color:var(--ink);font-weight:500;margin:0">
+          <input type="checkbox" id="fb_pub" onchange="togglePub()" style="width:auto;margin-top:3px;flex:0 0 auto">
+          <span>このご感想を周周がサイトのトップページで<b>公開・共有すること</b>に同意します（周周をご検討中の他のお客様の参考のため）。</span>
+        </label>
+        <div id="pubOpts" style="display:none;margin-top:12px;padding-left:27px">
+          <p style="font-size:13px;color:var(--mut);margin-bottom:8px;font-weight:600">公開時、お名前の表示方法は？</p>
+          <label style="display:block;font-size:14px;margin-bottom:7px;cursor:pointer"><input type="radio" name="pubname" value="show" checked style="width:auto;margin-right:6px">上記のお名前を表示する</label>
+          <label style="display:block;font-size:14px;cursor:pointer"><input type="radio" name="pubname" value="anon" style="width:auto;margin-right:6px">「匿名のお客様」として表示し、名前は公開しない</label>
+          <p style="font-size:12px;color:var(--mut);margin-top:10px;line-height:1.7">💡 同意された場合も、周周が<b>事前に確認のうえ掲載を判断</b>します。いつでも取り下げ可能です。チェックされない場合は、周周のみが拝見し公開されません。</p>
+        </div>
+      </div>
       <input type="text" id="fb_hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="submit" type="submit">📨 送信する</button>
     </form>
@@ -58,6 +70,7 @@
   <p class="foot">© 2026 周周・日本の不動産</p>
 </div>
 <script>
+function togglePub(){document.getElementById('pubOpts').style.display=document.getElementById('fb_pub').checked?'block':'none';}
 async function sendFb(e){e.preventDefault();
   var form=e.target,btn=form.querySelector('.submit'),status=document.getElementById('fbStatus');
   var type=document.getElementById('fb_type').value;
@@ -65,9 +78,13 @@ async function sendFb(e){e.preventDefault();
   var contact=document.getElementById('fb_contact').value.trim()||'未提供';
   var msg=document.getElementById('fb_msg').value.trim();
   if(!msg){alert('内容をご記入ください');return false;}
+  var pub=document.getElementById('fb_pub').checked;
+  var nameMode=(document.querySelector('input[name=pubname]:checked')||{}).value;
+  var pubText=pub?'✅ 公開に同意':'❌ 非公開（周周のみ確認）';
+  var pubName=pub?(nameMode==='anon'?'匿名希望（お客様のご希望により名前非公開）':('実名表示：'+name)):'—';
   if(document.getElementById('fb_hp').value){form.style.display='none';status.style.display='block';status.innerHTML='✅ 送信しました。ご意見ありがとうございます！周周が確認いたします ❤️';return false;}
   btn.disabled=true;btn.textContent='送信中…';
-  var data={access_key:'d1ac2743-8999-4270-abe8-9896caaf693b',subject:'【サイトへのご意見】'+type,from_name:name,'種類':type,'お名前':name,'ご連絡先':contact,'内容':msg};
+  var data={access_key:'d1ac2743-8999-4270-abe8-9896caaf693b',subject:'【サイトへのご意見】'+type,from_name:name,'種類':type,'お名前':name,'ご連絡先':contact,'内容':msg,'公開の可否':pubText,'公開時の表示名':pubName};
   try{
     var r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
     var j=await r.json();

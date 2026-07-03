@@ -46,7 +46,11 @@
 - **要做彩色框／圖表**：讓字串**以 `<div` 開頭**，這樣會原樣輸出。inline style 用單引號 `'`，外層字串用雙引號 `"`（參考 a2 的寫法）。
 
 ### 其他內容陣列
-`S`（站台設定／品牌／LINE／社群／公司資訊）、`CATS`（分類）、`PROCESS`、`LIVE`、`INV`、`FAQ`、`NAV`。
+`S`（站台設定／品牌／LINE／社群／公司資訊）、`CATS`（分類）、`PROCESS`、`LIVE`、`INV`、`FAQ`、`NAV`、`REVIEWS`（首頁客戶回饋）。
+
+### 客戶回饋／心得（REVIEWS）與投稿
+- 首頁「客戶怎麼說」區塊由 `index.html` 的 **`REVIEWS` 陣列**（`{who, text}`）渲染；`ja.html` 由 `build-ja-home.cjs` 的 `REVIEWS_JA` 渲染；`index-cn.html` 由 build-cn 自動轉。
+- 客戶在 `feedback.html`（意見回饋頁，Web3Forms 送到周周信箱）投稿，可勾選「同意公開」並選擇**具名或匿名**；周周收到信、**確認同意後**才由 AI／周周把該則加進 `REVIEWS`（具名用客戶稱呼、匿名用「匿名客戶」），重跑產生器三語同步後刊出。**未經同意不得公開任何客戶回饋或姓名。**
 
 ---
 
