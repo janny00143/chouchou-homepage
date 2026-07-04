@@ -146,6 +146,9 @@ footer a{color:#d6d3d1;text-decoration:none}
     spec+=row("格局",p.layout);
     spec+=row("面積",p.size);
     spec+=row("屋齡",p.age);
+    spec+=row("朝向",p.facing);
+    spec+=row("管理",p.mgmt);
+    spec+=row("權利",p.right);
     spec+=row("投報",p.yield);
     var note=p.note?'<div class="note">💬 '+esc(p.note)+'</div>':"";
     return '<article class="card">'
