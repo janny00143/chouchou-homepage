@@ -196,12 +196,27 @@ function setVal(k,v){$("i_"+k).value=v||"";}
 function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show");},1600);}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 
+/* 日文房產用語 → 道地繁體中文（長詞在前，避免被短詞先吃掉）。只做「詞彙」轉換，
+   完整句子的自然翻譯仍建議把日文丟給周周的 AI。 */
+var JP2TW=[
+  ["中古マンション","中古公寓大樓"],["新築マンション","新成屋（公寓大樓）"],["タワーマンション","超高層住宅大樓"],
+  ["マンション","公寓大樓"],["アパート","木造公寓"],["一戸建て","一戶建（透天）"],["一戸建","一戶建（透天）"],
+  ["戸建て","一戶建（透天）"],["戸建","一戶建（透天）"],["テラスハウス","連棟透天"],
+  ["ワンルーム","套房"],["オーナーチェンジ","現況出租（附租約）"],["リフォーム済","已翻修"],
+  ["リノベーション済","已翻新"],["リノベーション","翻新"],["リフォーム","翻修"],
+  ["角部屋","邊間"],["最上階","頂樓"],["南向き","朝南"],["東南向き","朝東南"],["南東向き","朝東南"],
+  ["所有権","所有權"],["借地権","借地權"],["専有面積","專有面積"],["土地面積","土地面積"],
+  ["建物面積","建物面積"],["最寄駅","最近車站"],["徒歩","徒步"],["駅","站"],
+  ["東京メトロ","東京Metro"],["メトロ","Metro"],["区","區"],["向き","向"]
+];
+function jpToTw(s){ if(!s)return s; for(var i=0;i<JP2TW.length;i++){ s=s.split(JP2TW[i][0]).join(JP2TW[i][1]); } return s; }
+
 /* ---------- 自動辨識 ---------- */
 function autoParse(){
   var t=$("raw").value;
   if(!t.trim()){toast("請先貼上物件資料");return;}
   var hits=[];
-  function mark(k,v){ if(v){ setVal(k,v); $("f_"+k).classList.add("hit"); hits.push(k);} }
+  function mark(k,v){ if(v){ v=jpToTw(v); setVal(k,v); $("f_"+k).classList.add("hit"); hits.push(k);} }
 
   // 價格：xxx万円 / xxxx萬 / 億
   var mPrice=t.match(/([0-9,]+(?:\.[0-9]+)?)\s*万円/)||t.match(/([0-9,]+)\s*萬/);
