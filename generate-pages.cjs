@@ -100,7 +100,8 @@ function page(a) {
 <link rel="canonical" href="${url}">
 <link rel="alternate" hreflang="zh-Hant" href="${url}">
 <link rel="alternate" hreflang="zh-Hans" href="${url.replace(/\.html$/,"-cn.html")}">
-<link rel="alternate" hreflang="ja" href="${url.replace(/\.html$/,"-ja.html")}">${cover ? `
+<link rel="alternate" hreflang="ja" href="${url.replace(/\.html$/,"-ja.html")}">
+<link rel="alternate" hreflang="x-default" href="${url}">${cover ? `
 <link rel="preload" as="image" href="${cover}">` : ""}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="robots" content="index,follow">

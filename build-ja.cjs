@@ -73,6 +73,7 @@ function pageJa(a, j) {
 <link rel="canonical" href="${url}">
 <link rel="alternate" hreflang="ja" href="${url}">
 <link rel="alternate" hreflang="zh-Hant" href="${twUrl}">
+<link rel="alternate" hreflang="x-default" href="${twUrl}">
 <link rel="alternate" hreflang="zh-Hans" href="${cnUrl}">${cover ? `
 <link rel="preload" as="image" href="${cover}">` : ""}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
