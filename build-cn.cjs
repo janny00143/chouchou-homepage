@@ -12,7 +12,7 @@ const slugMatch = idx.match(/SLUG=\{([^}]*)\}/);
 const slugs = [...slugMatch[1].matchAll(/"a\d+":"([^"]+)"/g)].map(m => m[1]);
 
 // 需要產生 -cn 的內部頁面（會被互相連結的都要做，否則 404）
-const staticPages = ["index.html","minpaku.html","translate.html","feedback.html","videos.html","tools.html",
+const staticPages = ["index.html","properties.html","minpaku.html","translate.html","feedback.html","videos.html","tools.html",
   "tool-loan.html","tool-cost.html","tool-agent.html","tool-yield.html","tool-fx.html","tool-area.html","tool-convert.html"];
 const internal = [...staticPages, ...slugs.map(s => s + ".html")].filter(f => fs.existsSync(ROOT + "/" + f));
 const cn = f => f.replace(/\.html$/, "-cn.html");
