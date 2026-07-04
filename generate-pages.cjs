@@ -169,7 +169,7 @@ for (const a of ART) {
   if (SLUG[a.id]) urls.push({ loc: BASE + SLUG[a.id] + "-ja.html", lm: a.date, pr: "0.7" });
 }
 urls.push({ loc: BASE + "minpaku-ja.html", pr: "0.6" });
-const STATIC_TOOLS = ["tools", "videos", "feedback", "tool-agent", "tool-area", "tool-convert", "tool-cost", "tool-fx", "tool-loan", "tool-yield"];
+const STATIC_TOOLS = ["properties", "tools", "videos", "feedback", "tool-agent", "tool-area", "tool-convert", "tool-cost", "tool-fx", "tool-loan", "tool-yield"];
 for (const p of STATIC_TOOLS) {
   urls.push({ loc: BASE + p + ".html", pr: "0.6" });
   urls.push({ loc: BASE + p + "-ja.html", pr: "0.6" });
