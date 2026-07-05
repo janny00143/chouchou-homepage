@@ -133,7 +133,12 @@ function zhErr(msg){const s=String(msg||'');
 function delay(ms){return new Promise(s=>setTimeout(s,ms));}
 function linkify(t){return esc(String(t)).replace(/(https?:\/\/[^\s，、）)<]+)/g,'<a href="$1" target="_blank" rel="noopener" style="color:var(--rose);word-break:break-all">$1</a>');}
 function teaser(text,headLen){text=String(text||'').trim();if(!text)return'';if(text.length<=headLen)return esc(text)+'<span class="blurtxt">　　　　詳細分析請洽周周喔</span>';return esc(text.slice(0,headLen))+'<span class="blurtxt">'+esc(text.slice(headLen))+'</span>';}
-async function callWorker(body){let last;for(let i=0;i<4;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(j&&j.error&&/high demand|overload|unavailable|503|resource_exhausted|429|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(2500*(i+1));continue;}return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
+async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();
+      // 額度/限流錯誤：不要重試！重試只會在一分鐘內再多打幾次，反而更快撞上每分鐘上限。直接回傳讓使用者稍等。
+      if(j&&j.error&&/quota|resource_exhausted|429|exceed/i.test(j.error))return j;
+      // 只有「伺服器暫時忙線」(503/overload) 才重試，且間隔拉長、次數減少。
+      if(j&&j.error&&/high demand|overload|unavailable|503|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(3000*(i+1));continue;}
+      return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 async function go(){
   if(!file)return;
   const b=document.getElementById('goBtn');if(b){b.disabled=true;b.textContent='分析中…';}
