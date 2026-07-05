@@ -182,7 +182,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 fs.writeFileSync(ROOT + "/sitemap.xml", sitemap);
 
 // robots
-fs.writeFileSync(ROOT + "/robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${BASE}sitemap.xml\n`);
+fs.writeFileSync(ROOT + "/robots.txt", `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /property-admin.html\n\nSitemap: ${BASE}sitemap.xml\n`);
 
 console.log("產生文章頁:", made.length, "篇");
 console.log(made.join("\n"));
