@@ -139,10 +139,26 @@ async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await 
       // 只有「伺服器暫時忙線」(503/overload) 才重試，且間隔拉長、次數減少。
       if(j&&j.error&&/high demand|overload|unavailable|503|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(3000*(i+1));continue;}
       return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
+// 防亂按／防刷量（看不出來是被擋）：每次至少間隔 MIN_GAP，且 10 分鐘內最多 WINDOW_MAX 次。
+const THROTTLE_KEY='tzz_calls';
+const MIN_GAP=12000;      // 兩次翻譯最短間隔（毫秒），太快就偽裝成「分析中…」壓住
+const WINDOW_MAX=10;      // 近 10 分鐘最多幾次
+function _thGet(){try{return JSON.parse(localStorage.getItem(THROTTLE_KEY)||'[]');}catch(e){return[];}}
+function _thSet(a){try{localStorage.setItem(THROTTLE_KEY,JSON.stringify(a));}catch(e){}}
 async function go(){
   if(!file)return;
-  const b=document.getElementById('goBtn');if(b){b.disabled=true;b.textContent='分析中…';}
+  const now=Date.now();
+  let times=_thGet().filter(t=>now-t<600000); // 只看近 10 分鐘
+  const b=document.getElementById('goBtn');
+  // 超過總量：偽裝成「系統忙碌」並順勢導 LINE，不明說是限制
+  if(times.length>=WINDOW_MAX){showErr('系統整理中，請過幾分鐘再試～ 想更快的話，直接把圖傳到周周 LINE，我幫你看更快 💬');return;}
+  if(b){b.disabled=true;b.textContent='分析中…';}
   document.getElementById('err').style.display='none';
+  // 距離上次太近：先靜靜等一下（畫面停在「分析中…」，看起來只是還在處理）
+  const lastT=times.length?times[times.length-1]:0;
+  const wait=Math.max(0,MIN_GAP-(now-lastT));
+  if(wait>0)await delay(wait);
+  times.push(Date.now());_thSet(times);
   try{
     const proc=await processImage(file);
     const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
