@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
 
 Sitemap: https://chouchouinjapan.com/sitemap.xml
