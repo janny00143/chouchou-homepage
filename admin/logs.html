@@ -47,9 +47,9 @@ td.wrap-cell{white-space:normal;min-width:180px;max-width:280px}
     <span class="stat" id="stat">載入中…</span>
   </div>
   <div class="tablewrap"><table id="tbl"><thead><tr>
-    <th>時間</th><th>語言</th><th>模式</th><th>類型</th><th>物件名稱</th><th>地址</th><th>交通</th><th>價格</th><th>利回</th>
-  </tr></thead><tbody id="rows"><tr><td colspan="9" class="msg">載入中…</td></tr></tbody></table></div>
-  <p class="stat" style="margin-top:12px">※ 只記錄物件重點資料（他們翻了哪些物件），不含上傳的原圖。資料存在你的 Cloudflare，僅此後台頁看得到。</p>
+    <th>時間</th><th>原圖</th><th>語言</th><th>模式</th><th>類型</th><th>物件名稱</th><th>地址</th><th>交通</th><th>價格</th><th>利回</th>
+  </tr></thead><tbody id="rows"><tr><td colspan="10" class="msg">載入中…</td></tr></tbody></table></div>
+  <p class="stat" style="margin-top:12px">※ 記錄物件重點資料＋上傳的原圖（點縮圖看大圖）。資料存在你的 Cloudflare，僅此後台頁看得到。</p>
 </div>
 <script>
 var WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
@@ -57,12 +57,14 @@ var TOKEN="zzlog_7fQk29Xb4mR8vT";
 var DATA=[];
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function fmtTime(t){try{var d=new Date(t);if(isNaN(d))return esc(t);return d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate()+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}catch(e){return esc(t);}}
+function imgUrl(id){return WORKER_URL+"?img="+encodeURIComponent(id)+"&token="+encodeURIComponent(TOKEN);}
 function render(){
   var rows=document.getElementById("rows");
-  if(!DATA.length){rows.innerHTML='<tr><td colspan="9" class="msg">目前還沒有紀錄。<br>（要先在 Cloudflare 綁好 KV 並更新 Worker；之後有人用翻譯機就會出現）</td></tr>';document.getElementById("stat").textContent="共 0 筆";return;}
+  if(!DATA.length){rows.innerHTML='<tr><td colspan="10" class="msg">目前還沒有紀錄。<br>（要先在 Cloudflare 綁好 KV 並更新 Worker；之後有人用翻譯機就會出現）</td></tr>';document.getElementById("stat").textContent="共 0 筆";return;}
   DATA.sort(function(a,b){return (b.time||"").localeCompare(a.time||"");});
   rows.innerHTML=DATA.map(function(r){
-    return '<tr><td>'+fmtTime(r.time)+'</td><td>'+esc(r.lang)+'</td><td>'+esc(r.mode)+'</td>'
+    var img=(r.img&&r.id)?'<a href="'+imgUrl(r.id)+'" target="_blank" rel="noopener"><img src="'+imgUrl(r.id)+'" loading="lazy" style="height:54px;border-radius:6px;border:1px solid #e7e5e4"></a>':'—';
+    return '<tr><td>'+fmtTime(r.time)+'</td><td>'+img+'</td><td>'+esc(r.lang)+'</td><td>'+esc(r.mode)+'</td>'
       +'<td><span class="tag">'+esc(r.type||"—")+'</span></td>'
       +'<td class="wrap-cell">'+esc(r.name)+'</td><td class="wrap-cell">'+esc(r.addr)+'</td>'
       +'<td class="wrap-cell">'+esc(r.traffic)+'</td><td>'+esc(r.price)+'</td><td>'+esc(r.yield)+'</td></tr>';
@@ -81,9 +83,9 @@ function load(){
 function csvCell(s){s=String(s==null?"":s);return '"'+s.replace(/"/g,'""')+'"';}
 function downloadCSV(){
   if(!DATA.length){alert("目前沒有資料");return;}
-  var head=["時間","語言","模式","類型","物件名稱","地址","交通","價格","利回"];
+  var head=["時間","語言","模式","類型","物件名稱","地址","交通","價格","利回","原圖網址"];
   var lines=[head.map(csvCell).join(",")];
-  DATA.forEach(function(r){lines.push([fmtTime(r.time),r.lang,r.mode,r.type,r.name,r.addr,r.traffic,r.price,r.yield].map(csvCell).join(","));});
+  DATA.forEach(function(r){lines.push([fmtTime(r.time),r.lang,r.mode,r.type,r.name,r.addr,r.traffic,r.price,r.yield,(r.img&&r.id?imgUrl(r.id):"")].map(csvCell).join(","));});
   var blob=new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
   var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="翻譯機紀錄.csv";a.click();
   setTimeout(function(){URL.revokeObjectURL(a.href);},500);
