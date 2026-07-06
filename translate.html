@@ -196,7 +196,7 @@ async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await 
       return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 // 統整「大家用翻譯機看了哪些物件」→ 記到 Cloudflare(Worker+KV)，周周在 /admin/ 後台看得到。
 // 需要周周在 Cloudflare 幫 Worker 綁一個 KV(名稱 LOGS) 並更新 Worker 程式碼；沒綁好前這裡的 POST 無害。
-function logUpload(o){
+function logUpload(o,proc){
   if(!o)return;
   try{
     var p=(location.pathname.split('/').pop()||'');
@@ -207,6 +207,7 @@ function logUpload(o){
       "地址":String(info.地址||''), "交通":String(info.交通||''),
       "價格":String(money.販售價格||money.年間賃料收入||''),
       "利回":String((o.利回&&o.利回.表面利回)||'')};
+    if(proc&&proc.data){payload.img=proc.data;payload.imgType=proc.mediaType||'image/jpeg';} // 原圖(已壓縮)一起存
     fetch(WORKER_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
   }catch(_){}
 }
@@ -261,7 +262,7 @@ async function go(){
     if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
     var _nm=o.物件名稱; o=deepClean(o); if(_nm!=null)o.物件名稱=_nm; // 清洗殘留日文；物件名稱刻意保留日文原文＋(中文)
     if(typeof gtag==='function'){try{gtag('event','translate_done',{mode:mode,ptype:String(o.物件類型||'')});}catch(_){}}
-    logUpload(o); // 統整到 Google 試算表（若已設定 LOG_URL）
+    logUpload(o,proc); // 統整到 Cloudflare(含原圖)，周周後台 /admin/logs.html 看得到
     (mode==='invest'?showInvestResult(o):showResult(o));
   }catch(e){
     var raw=(e&&e.message)?e.message:String(e);
