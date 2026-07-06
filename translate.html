@@ -186,6 +186,7 @@ function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.cre
 function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
 function showErr(m){showLoad(false);const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
 function zhErr(msg){const s=String(msg||'');
+  if(/上限|暫停|已達|已滿|每人每日|請聯繫周周|加\s*LINE/.test(s))return s; // Worker 的中文上限訊息直接顯示
   if(/high demand|overload|try again later|UNAVAILABLE|503/i.test(s))return 'Gemini 現在使用量較大，請等幾秒再按一次「開始翻譯分析」';
   if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '免費額度暫時達到上限（連續太快會這樣），請等 1~2 分鐘再按一次';
   if(/API.?key|invalid|PERMISSION/i.test(s))return '後端金鑰設定有誤，請確認 Cloudflare 設定';

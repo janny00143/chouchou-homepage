@@ -44,6 +44,8 @@ td.wrap-cell{white-space:normal;min-width:180px;max-width:280px}
   <div class="bar">
     <button class="btn btn-rose" onclick="load()">🔄 重新整理</button>
     <button class="btn btn-green" onclick="downloadCSV()">⬇️ 下載 CSV</button>
+    <button class="btn btn-ghost" onclick="resetUsage()">🔁 加值（用量歸零）</button>
+    <span class="stat" id="usage"></span>
     <span class="stat" id="stat">載入中…</span>
   </div>
   <div class="tablewrap"><table id="tbl"><thead><tr>
@@ -71,10 +73,20 @@ function render(){
   }).join("");
   document.getElementById("stat").innerHTML="共 <b>"+DATA.length+"</b> 筆";
 }
+function showUsage(total,cap){
+  var u=document.getElementById("usage");
+  if(total==null){u.textContent="";return;}
+  var pct=cap?Math.round(total/cap*100):0;
+  u.innerHTML="用量 <b>"+total+" / "+cap+"</b>"+(total>=cap?" ⚠️ <span style='color:#e11d48'>已達上限、已暫停</span>":(pct>=80?" <span style='color:#b45309'>("+pct+"%)</span>":""));
+}
+function resetUsage(){
+  if(!confirm("確定要把「用量」歸零嗎？（等於加值一次，讓翻譯機可以繼續用到下一個 "+"上限）"))return;
+  fetch(WORKER_URL+"?reset=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(){load();}).catch(function(){alert("重設失敗，Worker 可能還沒更新");});
+}
 function load(){
   document.getElementById("stat").textContent="載入中…";
   fetch(WORKER_URL+"?logs=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(j){
-    DATA=(j&&j.logs)?j.logs:[];render();
+    DATA=(j&&j.logs)?j.logs:[];showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);render();
   }).catch(function(e){
     document.getElementById("rows").innerHTML='<tr><td colspan="9" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（Worker 可能還沒更新，或 KV 尚未綁定）</td></tr>';
     document.getElementById("stat").textContent="讀取失敗";
