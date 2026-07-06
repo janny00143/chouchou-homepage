@@ -116,6 +116,13 @@ let file=null,preview=null,mode='home';
 function esc(s){s=String(s==null?'':s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 /* ===== 殘留日文自動清洗：①日文詞字典 ②日文漢字→繁體 ③片假名店名→羅馬拼音（保證畫面不再出現假名）===== */
 var TERM=[
+ ["ケースバイケース","視情況而定"],["金利タイプ","利率類型"],["タイプ","類型"],["ケース","情況"],["サービス","服務"],
+ ["スペース","空間"],["バルコニー","陽台"],["ルーフバルコニー","屋頂陽台"],["エレベーター","電梯"],["オートロック","自動門鎖"],
+ ["メリット","優點"],["デメリット","缺點"],["により","依"],["となります","為"],["になります",""],["となる","為"],["になる",""],
+ ["別途","另外"],["台分","台份"],["仕様","規格"],["外壁","外牆"],["その他","其他"],["予定","預定"],["込み","含"],["程度","左右"],["金利","利率"],
+ ["ました",""],["でした",""],["です",""],["ます",""],["及び","及"],["並びに","及"],["又は","或"],["若しくは","或"],
+ ["における","的"],["に関する","相關"],["について","關於"],["場合","情況"],["など","等"],["なお","另"],["また","另外"],
+ ["は",""],["が",""],["を",""],["に",""],["へ",""],
  ["引渡し","交屋"],["引渡","交屋"],["現況","目前狀況"],["更地","空地"],["空室","空屋"],["満室","滿租"],
  ["私道負担","私設道路分攤"],["本下水","公共下水道"],["都市ガス","都市瓦斯"],["プロパンガス","桶裝瓦斯"],
  ["駐車スペース","停車位"],["駐車場","停車場"],["相談","面議(可洽談)"],["即入居可","可立即入住"],
@@ -132,7 +139,7 @@ var TERM=[
  ["ココカラファイン","Cocokara Fine藥妝店"],["ドン・キホーテ","唐吉訶德"],["ニトリ","宜得利"],
  ["パルム","Palm"],["エトモ","etomo"],["アトレ","atré"],["ルミネ","LUMINE"]
 ];
-var JPCHAR={"区":"區","専":"專","駅":"站","沢":"澤","満":"滿","実":"實","号":"號","売":"賣","増":"增","歩":"步","図":"圖","転":"轉","県":"縣","済":"濟","関":"關","営":"營","価":"價","総":"總","対":"對","経":"經","続":"續","検":"檢","広":"廣","芸":"藝","黒":"黑","気":"氣","応":"應","権":"權","会":"會","学":"學","医":"醫","両":"兩","当":"當","戸":"戶","様":"樣","歳":"歲","児":"兒","写":"寫","単":"單","団":"團","囲":"圍","国":"國","圏":"圈","覧":"覽","蔵":"藏","巣":"巢","湾":"灣","豊":"豐","駆":"驅"};
+var JPCHAR={"区":"區","専":"專","駅":"站","沢":"澤","満":"滿","実":"實","号":"號","売":"賣","増":"增","歩":"步","図":"圖","転":"轉","県":"縣","済":"濟","関":"關","営":"營","価":"價","総":"總","対":"對","経":"經","続":"續","検":"檢","広":"廣","芸":"藝","黒":"黑","気":"氣","応":"應","権":"權","会":"會","学":"學","医":"醫","両":"兩","当":"當","戸":"戶","様":"樣","歳":"歲","児":"兒","写":"寫","単":"單","団":"團","囲":"圍","国":"國","圏":"圈","覧":"覽","蔵":"藏","巣":"巢","湾":"灣","豊":"豐","駆":"驅","変":"變","齢":"齡","状":"狀","産":"產","験":"驗","帰":"歸","発":"發","労":"勞","断":"斷","帯":"帶","収":"收","従":"從","双":"雙","覚":"覺","静":"靜","歴":"歷","賛":"贊","隣":"鄰","税":"稅","窓":"窗","歩":"步","勧":"勸","覧":"覽"};
 var HK={"きゃ":"kya","きゅ":"kyu","きょ":"kyo","しゃ":"sha","しゅ":"shu","しょ":"sho","ちゃ":"cha","ちゅ":"chu","ちょ":"cho","にゃ":"nya","にゅ":"nyu","にょ":"nyo","ひゃ":"hya","ひゅ":"hyu","ひょ":"hyo","みゃ":"mya","みゅ":"myu","みょ":"myo","りゃ":"rya","りゅ":"ryu","りょ":"ryo","ぎゃ":"gya","ぎゅ":"gyu","ぎょ":"gyo","じゃ":"ja","じゅ":"ju","じょ":"jo","びゃ":"bya","びゅ":"byu","びょ":"byo","ぴゃ":"pya","ぴゅ":"pyu","ぴょ":"pyo","ふぁ":"fa","ふぃ":"fi","ふぇ":"fe","ふぉ":"fo","てぃ":"ti","でぃ":"di","うぃ":"wi","うぇ":"we","じぇ":"je","ちぇ":"che","しぇ":"she","ゔぁ":"va","ゔぃ":"vi","ゔぇ":"ve","ゔぉ":"vo",
 "あ":"a","い":"i","う":"u","え":"e","お":"o","か":"ka","き":"ki","く":"ku","け":"ke","こ":"ko","が":"ga","ぎ":"gi","ぐ":"gu","げ":"ge","ご":"go","さ":"sa","し":"shi","す":"su","せ":"se","そ":"so","ざ":"za","じ":"ji","ず":"zu","ぜ":"ze","ぞ":"zo","た":"ta","ち":"chi","つ":"tsu","て":"te","と":"to","だ":"da","ぢ":"ji","づ":"zu","で":"de","ど":"do","な":"na","に":"ni","ぬ":"nu","ね":"ne","の":"no","は":"ha","ひ":"hi","ふ":"fu","へ":"he","ほ":"ho","ば":"ba","び":"bi","ぶ":"bu","べ":"be","ぼ":"bo","ぱ":"pa","ぴ":"pi","ぷ":"pu","ぺ":"pe","ぽ":"po","ま":"ma","み":"mi","む":"mu","め":"me","も":"mo","や":"ya","ゆ":"yu","よ":"yo","ら":"ra","り":"ri","る":"ru","れ":"re","ろ":"ro","わ":"wa","を":"wo","ん":"n","ゔ":"vu","ぁ":"a","ぃ":"i","ぅ":"u","ぇ":"e","ぉ":"o","ゃ":"ya","ゅ":"yu","ょ":"yo"};
 function kata2romaji(run){
@@ -153,8 +160,7 @@ function jaClean(s){
   for(var i=0;i<TERM.length;i++){if(s.indexOf(TERM[i][0])>=0)s=s.split(TERM[i][0]).join(TERM[i][1]);}
   s=s.replace(/[一-鿿]/g,function(c){return JPCHAR[c]||c;});
   s=s.replace(/の/g,'之').replace(/[ヶヵ]/g,''); // 地名常見連接假名（林試の森→林試之森、梅ヶ丘→梅丘）
-  s=s.replace(/[ぁ-んァ-ヶー]+/g,function(r){return kata2romaji(r);}); // 片假名店名＋任何殘留假名→羅馬拼音，保證畫面無日文
-  return s;
+  return s; // 不做羅馬拼音：字典沒收錄的少數詞保留原樣（真日文），不硬轉成怪英文
 }
 function deepClean(o){
   if(typeof o==='string')return jaClean(o);
@@ -195,14 +201,23 @@ function _thGet(){try{return JSON.parse(localStorage.getItem(THROTTLE_KEY)||'[]'
 function _thSet(a){try{localStorage.setItem(THROTTLE_KEY,JSON.stringify(a));}catch(e){}}
 // 分析中的等候提示（含周周 LINE 小連結）
 function showLoad(on){
+  var df=document.getElementById('dropFile');
   var el=document.getElementById('loadHint');
   if(!el){
     el=document.createElement('div');el.id='loadHint';
-    el.style.cssText='margin-top:14px;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:15px 16px;text-align:center;font-size:14.5px;color:var(--rose-d);line-height:1.8';
+    el.style.cssText='margin-top:8px;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px;text-align:center;font-size:14.5px;color:var(--rose-d);line-height:1.8';
     el.innerHTML='⏳ 分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
-    var up=document.getElementById('upload');(up||document.body).appendChild(el);
   }
-  el.style.display=on?'block':'none';
+  if(on){
+    if(df){ // 蓋在「開始翻譯分析」按鈕的位置，並把按鈕藏起來避免亂點
+      var bs=df.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].style.display='none';
+      df.appendChild(el);
+    }else{(document.getElementById('upload')||document.body).appendChild(el);}
+    el.style.display='block';
+  }else{
+    el.style.display='none';
+    if(df){var b2=df.querySelectorAll('button');for(var j=0;j<b2.length;j++)b2[j].style.display='';}
+  }
 }
 async function go(){
   if(!file)return;
