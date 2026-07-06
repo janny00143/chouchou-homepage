@@ -167,7 +167,13 @@ async function go(){
     try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
     if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
     (mode==='invest'?showInvestResult(o):showResult(o));
-  }catch(e){showErr('分析失敗：'+zhErr(e&&e.message?e.message:e));}
+  }catch(e){
+    var raw=(e&&e.message)?e.message:String(e);
+    try{console.log('[translate error]',raw);}catch(_){}
+    var msg='分析失敗：'+zhErr(raw);
+    if(/debug/i.test(location.search+location.hash))msg+='　〔debug｜原始錯誤：'+raw+'〕';
+    showErr(msg);
+  }
 }
 function rowf(k,v){const e=!v||!String(v).trim();return `<div class="row"><span class="k">${k}</span><span style="flex:1;white-space:pre-line;${e?'color:#d6d3d1':''}">${e?'圖面未標示':esc(v)}</span></div>`;}
 function statf(k,v,a){const e=!v||!String(v).trim();return `<div class="stat${a?' acc':''}"><div class="k">${k}</div><div class="v"${e?' style="color:#d6d3d1;font-size:14px"':''}>${e?'未標示':esc(v)}</div></div>`;}
