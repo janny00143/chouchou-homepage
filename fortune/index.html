@@ -1,0 +1,640 @@
+<!-- ============================================================
+     星語命理・算命品牌網站範本（可販售 / 可改品牌）
+     單檔即可運作：直接用瀏覽器開，或上傳到任何靜態主機（GitHub Pages / Netlify / 自己的空間）。
+     ★★ 要換成客戶的品牌：只改下面 <script id="config"> 裡的 CONFIG 一個地方就好。★★
+     ============================================================ -->
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1a1030">
+<title>算喵｜LINE 算命貓・八字・塔羅・每日運勢</title>
+<meta name="description" content="算喵是你的專屬 LINE 算命貓，八字、塔羅、生肖運勢、每日一籤通通會算。加 LINE 就能開始，用最療癒的方式陪你看懂運勢。">
+<meta property="og:title" content="算喵｜你的 LINE 算命貓">
+<meta property="og:description" content="加 LINE 就能算命的療癒算命貓。八字・塔羅・每日運勢，喵喵幫你看。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%90%B1%3C/text%3E%3C/svg%3E">
+
+<!-- ============================================================
+     CONFIG：整站品牌設定，賣給不同客戶時「只改這一塊」
+     ============================================================ -->
+<script id="config">
+const CONFIG = {
+  /* ── 品牌 ── */
+  brand:   "算喵",                  // 網站／品牌名稱
+  slogan:  "加 LINE 就能算命的療癒算命貓，喵喵幫你看運勢",
+  masterName: "算喵",                // 這裡填算命貓的名字
+  masterTitle: "你的 LINE 專屬算命貓",
+  // 「關於算喵」介紹（每個字串一段）
+  masterBio: [
+    "喵～我是算喵，一隻住在 LINE 裡的算命貓。八字、塔羅、生肖運勢、每日一籤，通通問我就對了。",
+    "算命不用很嚴肅，也不用怕被嚇。我會用最療癒、最好懂的方式，陪你把運勢看清楚。",
+    "不管是感情卡關、工作猶豫，還是只是想知道今天適不適合出門，加我 LINE，隨時都能算一下喵。"
+  ],
+
+  /* ── 聯絡方式（換成客戶自己的）── */
+  line:    "https://line.me/R/ti/p/@yourid",   // ★ 算喵的 LINE 加好友連結（換成真正的）
+  lineId:  "@yourid",                          // ★ 算喵的 LINE ID（顯示用）
+  ig:      "",                                 // Instagram（沒有就留空字串 ""）
+  fb:      "",                                 // Facebook 粉專（沒有就留 ""）
+  email:   "",                                 // Email（沒有就留 ""）
+
+  /* ── 主色（想換色系改這裡；金色/紫色為預設）── */
+  gold:    "#e8c66b",
+  purple:  "#8b5cf6",
+
+  /* ── 算喵會算什麼（可自由增減；price 留空字串 "" 就不顯示價格）── */
+  services: [
+    { icon:"🐱", name:"每日運勢", desc:"每天問算喵一次，今天的整體運、幸運色、幸運數字，喵喵一次告訴你。", price:"" },
+    { icon:"🔮", name:"八字簡批", desc:"報上你的出生年月日時，算喵幫你看性格、事業、感情的大方向。", price:"" },
+    { icon:"🃏", name:"塔羅占卜", desc:"心裡想一個問題，讓算喵幫你抽牌，給你當下最需要的指引。", price:"" },
+    { icon:"🐲", name:"生肖運勢", desc:"你的生肖今天、這個月運勢如何？算喵隨時幫你查。", price:"" },
+    { icon:"🎋", name:"每日一籤", desc:"誠心問一支今日籤，算喵陪你解籤，給你一句暖心提醒。", price:"" },
+    { icon:"💗", name:"感情速配", desc:"想知道你跟他合不合？報上兩個人的資料，算喵幫你看看緣分。", price:"" }
+  ],
+
+  /* ── 怎麼開始（流程）── */
+  process: [
+    { step:"1", title:"加算喵 LINE", desc:"點下方按鈕，把算喵加為 LINE 好友。" },
+    { step:"2", title:"打聲招呼", desc:"傳訊息跟算喵說你想算什麼（運勢、八字、塔羅…）。" },
+    { step:"3", title:"提供資料", desc:"依項目報上出生年月日時或你的問題。" },
+    { step:"4", title:"馬上看結果", desc:"算喵立刻回你，隨時想算就算，超方便。" }
+  ],
+
+  /* ── 用戶好評（要放真實好評請先徵得對方同意）── */
+  reviews: [
+    { who:"台北 L 小姐", text:"算喵超可愛又很準！每天早上都會問一下今天運勢，變成我的習慣了，療癒又實用。" },
+    { who:"高雄 陳先生", text:"半夜睡不著想算個塔羅，隨時都能問算喵，回得又快又有溫度，比想像中準。" },
+    { who:"台中 匿名用戶", text:"本來只是覺得貓咪算命很有趣，結果八字簡批講得蠻中的，朋友都被我推坑加算喵了。" },
+    { who:"新竹 王小姐", text:"跟另一半吵架的時候抽了張牌，算喵的解釋讓我冷靜下來，真的很暖心。" }
+  ],
+
+  /* ── 常見問題 ── */
+  faq: [
+    ["算喵怎麼用？要收費嗎？","加算喵 LINE 好友就能開始聊。收費方式與各項服務內容，加 LINE 後算喵會跟你說明。"],
+    ["沒有出生時辰可以算嗎？","八字最好有出生時辰會更準；如果不知道，也可以改問生肖運勢、每日運勢或塔羅占卜。"],
+    ["算喵算得準嗎？","算喵會依你的資料與問題給你參考方向。命理是幫你看清趨勢、給你力量，最後怎麼走還是你決定喵。"],
+    ["我的資料會外流嗎？","不會，你提供的資料只用於算命，會妥善保密，請安心。"],
+    ["半夜也能算嗎？","可以喵！算喵住在 LINE 裡，隨時想算就算，不用預約等時間。"]
+  ],
+
+  /* 底部聲明 */
+  disclaimer: "算喵的算命內容與本站小工具僅供參考與娛樂，重大決定仍請理性判斷。"
+};
+</script>
+
+<style>
+:root{
+  --gold:#e8c66b; --purple:#8b5cf6;
+  --bg:#140c26; --bg2:#1d1236; --card:#241640; --line:#3a2a5e;
+  --ink:#f3ecff; --sub:#c3b6df; --muted:#9a8dc0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.85; overflow-x:hidden;
+}
+h1,h2,h3,.serif{font-family:"Noto Serif TC","Songti TC","STSong",serif;font-weight:700}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.gold{color:var(--gold)}
+b{color:var(--gold);font-weight:700}
+
+/* 星空背景 */
+.stars{position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 80% -10%,rgba(139,92,246,.25),transparent),
+    radial-gradient(900px 500px at 0% 20%,rgba(232,198,107,.10),transparent),
+    linear-gradient(180deg,#140c26,#0f0a1f 60%,#140c26)}
+.stars::after{content:"";position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(1px 1px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 60% 70%,#fff,transparent),radial-gradient(1px 1px at 80% 20%,#fff,transparent),radial-gradient(1px 1px at 35% 80%,#fff,transparent),radial-gradient(1px 1px at 90% 60%,#fff,transparent),radial-gradient(1px 1px at 10% 60%,#fff,transparent);
+  background-size:cover;animation:tw 6s ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.25}to{opacity:.6}}
+
+/* 導覽列 */
+header{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);
+  background:rgba(20,12,38,.82);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-size:20px;font-weight:700;letter-spacing:1px}
+.logo .dot{color:var(--gold)}
+.menu{display:flex;gap:22px;align-items:center}
+.menu a{color:var(--sub);font-size:15px;transition:.2s}
+.menu a:hover{color:var(--gold)}
+.navline{background:linear-gradient(135deg,var(--gold),#c9a13f);color:#231a08 !important;
+  padding:8px 16px;border-radius:999px;font-weight:700;font-size:14px}
+.burger{display:none;background:none;border:none;color:var(--ink);font-size:26px;cursor:pointer}
+@media(max-width:820px){
+  .menu{position:fixed;inset:62px 0 auto 0;flex-direction:column;gap:0;background:var(--bg2);
+    border-bottom:1px solid var(--line);padding:8px 0;transform:translateY(-140%);transition:.3s;max-height:80vh;overflow:auto}
+  .menu.open{transform:translateY(0)}
+  .menu a{width:100%;padding:13px 24px}
+  .menu .navline{margin:8px 24px;text-align:center}
+  .burger{display:block}
+}
+
+/* Hero */
+.hero{text-align:center;padding:90px 0 70px}
+.hero .moon{font-size:64px;filter:drop-shadow(0 0 24px rgba(232,198,107,.6));margin-bottom:14px}
+.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.3;margin-bottom:18px}
+.hero p{color:var(--sub);font-size:clamp(16px,2.4vw,20px);max-width:620px;margin:0 auto 30px}
+.cta{display:inline-flex;gap:10px;align-items:center;background:linear-gradient(135deg,var(--gold),#c9a13f);
+  color:#231a08;font-weight:700;padding:15px 30px;border-radius:999px;font-size:17px;
+  box-shadow:0 10px 30px rgba(232,198,107,.28);transition:.2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(232,198,107,.42)}
+.cta.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold);box-shadow:none;margin-left:10px}
+.hero .sub{margin-top:16px;color:var(--muted);font-size:14px}
+
+/* section */
+section{padding:64px 0;position:relative}
+.stitle{text-align:center;margin-bottom:12px;font-size:clamp(24px,4vw,34px)}
+.slead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 42px}
+.eyebrow{display:block;text-align:center;color:var(--gold);letter-spacing:4px;font-size:13px;margin-bottom:8px}
+
+/* 服務卡 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;transition:.25s}
+.svc:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.svc .ic{font-size:38px;margin-bottom:10px}
+.svc h3{font-size:21px;margin-bottom:8px}
+.svc p{color:var(--sub);font-size:15px;margin-bottom:14px}
+.svc .price{color:var(--gold);font-weight:700;font-size:15px}
+
+/* 工具 */
+.tools{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.tab{background:var(--card);border:1px solid var(--line);color:var(--sub);padding:10px 20px;border-radius:999px;
+  cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;transition:.2s}
+.tab.on{background:linear-gradient(135deg,var(--gold),#c9a13f);color:#231a08;border-color:transparent}
+.panel{display:none;max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line);
+  border-radius:20px;padding:30px 26px;text-align:center}
+.panel.on{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.panel h3{font-size:22px;margin-bottom:6px}
+.panel .hint{color:var(--muted);font-size:14px;margin-bottom:20px}
+.zgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:18px}
+@media(max-width:520px){.zgrid{grid-template-columns:repeat(4,1fr)}}
+.zbtn{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 4px;cursor:pointer;
+  font-family:inherit;color:var(--ink);font-size:15px;transition:.15s}
+.zbtn:hover{border-color:var(--gold)}
+.zbtn.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.result{margin-top:8px;padding:22px;border-radius:16px;background:linear-gradient(160deg,#2a1a4e,#1d1236);
+  border:1px solid var(--line);text-align:left;display:none}
+.result.show{display:block;animation:fade .4s}
+.result .big{font-size:19px;font-weight:700;color:var(--gold);margin-bottom:8px}
+.result .stars5{color:var(--gold);letter-spacing:3px;font-size:20px;margin:4px 0 12px}
+.result .row{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0;font-size:14px;color:var(--sub)}
+.result .row b{display:block;color:var(--ink)}
+.btn{background:linear-gradient(135deg,var(--gold),#c9a13f);color:#231a08;border:none;font-family:inherit;
+  font-weight:700;padding:13px 28px;border-radius:999px;font-size:16px;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.field{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--ink);
+  padding:13px 16px;border-radius:12px;font-family:inherit;font-size:16px;margin-bottom:14px}
+.field::placeholder{color:var(--muted)}
+/* 塔羅卡 */
+.card3d{width:150px;height:230px;margin:0 auto 18px;perspective:1000px;cursor:pointer}
+.card3d .inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card3d.flip .inner{transform:rotateY(180deg)}
+.card3d .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:flex;
+  align-items:center;justify-content:center;flex-direction:column;border:2px solid var(--gold)}
+.card3d .back{background:radial-gradient(circle at 50% 40%,#2e1d57,#150d2b);font-size:44px}
+.card3d .front{background:linear-gradient(160deg,#3a2760,#1d1236);transform:rotateY(180deg);padding:14px}
+.card3d .front .em{font-size:44px}
+.card3d .front .nm{color:var(--gold);font-weight:700;margin-top:8px;font-size:15px}
+.tnote{color:var(--sub);font-size:15px;max-width:420px;margin:0 auto}
+
+/* 流程 */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.stp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;text-align:center;position:relative}
+.stp .n{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c9a13f);
+  color:#231a08;font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.stp h4{font-size:18px;margin-bottom:6px}
+.stp p{color:var(--sub);font-size:14px}
+
+/* about */
+.about{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center}
+@media(max-width:760px){.about{grid-template-columns:1fr;text-align:center}}
+.avatar{width:240px;height:240px;border-radius:24px;margin:0 auto;background:
+  radial-gradient(circle at 50% 35%,#3a2760,#150d2b);border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:96px}
+.about p{color:var(--sub);margin-bottom:14px}
+
+/* reviews */
+.rev{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.rev .q{color:var(--gold);font-size:30px;line-height:0;font-family:serif}
+.rev p{color:var(--ink);margin:10px 0 12px;font-size:15px}
+.rev .who{color:var(--muted);font-size:14px}
+
+/* faq */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.faq summary{padding:18px 22px;cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--gold)}
+.faq details[open] summary::after{content:"－"}
+.faq p{padding:0 22px 20px;color:var(--sub)}
+
+/* 文章 */
+.arts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.art{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:.25s}
+.art:hover{transform:translateY(-4px);border-color:var(--gold)}
+.art .top{height:120px;display:flex;align-items:center;justify-content:center;font-size:52px;
+  background:linear-gradient(160deg,#2e1d57,#1d1236)}
+.art .bd{padding:18px}
+.art .cat{color:var(--gold);font-size:12px;letter-spacing:1px}
+.art h4{font-size:18px;margin:6px 0}
+.art .ex{color:var(--sub);font-size:14px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(10,6,20,.8);backdrop-filter:blur(4px);
+  display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow:auto}
+.modal.open{display:flex}
+.mbox{background:var(--bg2);border:1px solid var(--line);border-radius:20px;max-width:720px;width:100%;padding:34px 30px}
+.mbox .cat{color:var(--gold);letter-spacing:1px;font-size:13px}
+.mbox h2{font-size:26px;margin:8px 0 18px}
+.mbox p{color:var(--sub);margin-bottom:14px}
+.mclose{float:right;background:none;border:1px solid var(--line);color:var(--ink);width:38px;height:38px;
+  border-radius:50%;cursor:pointer;font-size:20px}
+
+/* CTA 區 */
+.final{text-align:center;background:linear-gradient(160deg,#2a1a4e,#150d2b);border-top:1px solid var(--line)}
+.final h2{font-size:clamp(24px,4vw,34px);margin-bottom:14px}
+.final p{color:var(--sub);margin-bottom:26px}
+
+/* footer */
+footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--muted);font-size:14px}
+footer .soc{display:flex;gap:18px;justify-content:center;margin:14px 0}
+footer .soc a{color:var(--sub);transition:.2s}
+footer .soc a:hover{color:var(--gold)}
+footer .disc{font-size:12px;margin-top:14px;color:#6f6294;max-width:600px;margin-inline:auto}
+
+/* 浮動 LINE */
+.fab{position:fixed;right:18px;bottom:18px;z-index:50;background:#06c755;color:#fff;padding:13px 20px;
+  border-radius:999px;font-weight:700;box-shadow:0 8px 24px rgba(6,199,85,.4);display:flex;gap:8px;align-items:center}
+.fab:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo" id="logo">星語<span class="dot">命理</span></div>
+    <button class="burger" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <nav class="menu" id="menu">
+      <a href="#services">算喵會算</a>
+      <a href="#tools">免費占卜</a>
+      <a href="#process">怎麼開始</a>
+      <a href="#about">關於算喵</a>
+      <a href="#articles">命理文章</a>
+      <a href="#faq">常見問題</a>
+      <a class="navline" id="nav-line" href="#" target="_blank" rel="noopener">加算喵 LINE</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero wrap">
+  <div class="moon">🐱</div>
+  <h1 id="h-title">加 LINE 就能算命的<br>療癒算命貓</h1>
+  <p id="h-slogan"></p>
+  <div>
+    <a class="cta" id="hero-line" href="#" target="_blank" rel="noopener">✨ 加算喵 LINE 開始算</a>
+    <a class="cta ghost" href="#tools">先玩免費占卜</a>
+  </div>
+  <div class="sub">每日運勢・八字・塔羅・生肖・每日一籤・感情速配</div>
+</div>
+
+<!-- 服務 -->
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow">WHAT I CAN DO</span>
+    <h2 class="stitle">算喵會算什麼</h2>
+    <p class="slead">感情、工作、每日運勢，還是只是想被療癒一下，算喵都陪你。</p>
+    <div class="grid" id="svc-grid"></div>
+  </div>
+</section>
+
+<!-- 免費占卜工具 -->
+<section id="tools" class="tools">
+  <div class="wrap">
+    <span class="eyebrow">FREE READING</span>
+    <h2 class="stitle">免費線上占卜</h2>
+    <p class="slead">先玩玩看，想深入了解再加算喵 LINE。以下小工具僅供參考娛樂。</p>
+    <div class="tabs">
+      <button class="tab on" data-p="zodiac">🐲 生肖今日運勢</button>
+      <button class="tab" data-p="tarot">🃏 塔羅單張抽牌</button>
+      <button class="tab" data-p="omikuji">🎋 每日運勢籤</button>
+    </div>
+
+    <!-- 生肖 -->
+    <div class="panel on" id="p-zodiac">
+      <h3>生肖今日運勢</h3>
+      <div class="hint">選出你的生肖，看看今天的運勢</div>
+      <div class="zgrid" id="zgrid"></div>
+      <div class="result" id="z-result"></div>
+    </div>
+
+    <!-- 塔羅 -->
+    <div class="panel" id="p-tarot">
+      <h3>塔羅單張抽牌</h3>
+      <div class="hint">心裡默想一個問題，點卡片翻牌</div>
+      <div class="card3d" id="tcard" onclick="drawTarot()">
+        <div class="inner">
+          <div class="face back">🔮</div>
+          <div class="face front"><div class="em" id="t-em">✨</div><div class="nm" id="t-nm"></div></div>
+        </div>
+      </div>
+      <p class="tnote" id="t-note">點一下卡片，抽出你的今日指引。</p>
+      <div style="margin-top:16px"><button class="btn" onclick="resetTarot()">重新抽一張</button></div>
+    </div>
+
+    <!-- 運勢籤 -->
+    <div class="panel" id="p-omikuji">
+      <h3>每日運勢籤</h3>
+      <div class="hint">靜下心，誠心求一支今日籤</div>
+      <div style="font-size:60px;margin:6px 0 16px">🎋</div>
+      <button class="btn" onclick="drawOmikuji()">求 籤</button>
+      <div class="result" id="o-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 流程 -->
+<section id="process">
+  <div class="wrap">
+    <span class="eyebrow">HOW IT WORKS</span>
+    <h2 class="stitle">怎麼開始</h2>
+    <p class="slead">四個步驟，在 LINE 上就能完成，隨時想算就算。</p>
+    <div class="steps" id="steps"></div>
+  </div>
+</section>
+
+<!-- 關於算喵 -->
+<section id="about" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap about">
+    <div class="avatar">🐱</div>
+    <div>
+      <span class="eyebrow" style="text-align:left">ABOUT</span>
+      <h2 class="stitle" style="text-align:left" id="about-name">關於算喵</h2>
+      <div id="about-bio"></div>
+      <a class="cta" id="about-line" href="#" target="_blank" rel="noopener" style="margin-top:8px">✨ 加算喵 LINE</a>
+    </div>
+  </div>
+</section>
+
+<!-- 好評 -->
+<section id="reviews">
+  <div class="wrap">
+    <span class="eyebrow">TESTIMONIALS</span>
+    <h2 class="stitle">客戶怎麼說</h2>
+    <p class="slead">謝謝每一位願意分享的朋友（經同意後刊登）。</p>
+    <div class="grid" id="rev-grid"></div>
+  </div>
+</section>
+
+<!-- 文章 -->
+<section id="articles" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <span class="eyebrow">JOURNAL</span>
+    <h2 class="stitle">命理文章</h2>
+    <p class="slead">用生活化的方式，帶你認識命理。</p>
+    <div class="arts" id="art-grid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap" style="max-width:760px">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="stitle">常見問題</h2>
+    <div class="faq" id="faq-list" style="margin-top:36px"></div>
+  </div>
+</section>
+
+<!-- 最終 CTA -->
+<section class="final">
+  <div class="wrap">
+    <div style="font-size:44px;margin-bottom:10px">🐾</div>
+    <h2>準備好讓算喵幫你算了嗎？</h2>
+    <p>加算喵 LINE，跟牠說你想算什麼，馬上開始。</p>
+    <a class="cta" id="final-line" href="#" target="_blank" rel="noopener">✨ 立即加算喵 LINE</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="justify-content:center" id="foot-brand">星語命理</div>
+    <div class="soc" id="foot-soc"></div>
+    <div id="foot-id"></div>
+    <div class="disc" id="foot-disc"></div>
+    <div style="margin-top:14px;font-size:12px;color:#5a4f7d">© <span id="year"></span> <span class="footbrand"></span>. All rights reserved.</div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">💬 LINE 諮詢</a>
+
+<!-- modal -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="mbox">
+    <button class="mclose" onclick="closeModal()">×</button>
+    <div class="cat" id="m-cat"></div>
+    <h2 id="m-title"></h2>
+    <div id="m-body"></div>
+    <a class="cta" id="m-line" href="#" target="_blank" rel="noopener" style="margin-top:10px">✨ 想更了解？加算喵 LINE</a>
+  </div>
+</div>
+
+<script>
+/* ===== 命理文章資料（可自由增改；body 每個字串一段）===== */
+const ARTICLES = [
+  { id:"a1", cat:"八字入門", emoji:"🔮", title:"八字到底在看什麼？", ex:"用最白話的方式，帶你認識自己的命盤。",
+    body:[
+      "很多人一聽到「八字」就覺得很玄，其實八字就是把你出生的<b>年、月、日、時</b>換成天干地支，總共八個字，所以叫八字。",
+      "這八個字像是一張你出生當下的能量快照，能看出你的性格傾向、擅長什麼、容易在哪些地方卡關，以及不同年份的運勢起伏。",
+      "重點是——八字不是要告訴你「命定如此、無法改變」，而是幫你看清楚：哪些時機適合往前衝，哪些時候先穩住。知道趨勢，你就能做更好的安排。",
+      "如果你正在猶豫換工作、結婚、置產這種大決定，八字可以給你一個參考的方向。想深入了解自己的命盤，歡迎加 LINE 找老師聊聊。"
+    ]},
+  { id:"a2", cat:"紫微斗數", emoji:"⭐", title:"紫微斗數和八字有什麼不同？", ex:"兩個都很準，差別在看事情的角度。",
+    body:[
+      "常有人問：八字和紫微斗數要選哪一個？其實兩套系統都很成熟，只是<b>看事情的角度不同</b>。",
+      "八字像是看你整體的「氣候與體質」，適合看大方向、性格與流年運勢；紫微斗數則像一張<b>十二宮位的地圖</b>，把事業、感情、財帛、健康、家庭等面向分開來看，細節很豐富。",
+      "如果你想要一個總覽，八字很適合；如果你想針對某個人生面向（例如感情或事業）深入分析，紫微斗數會給你更立體的畫面。",
+      "當然，兩者也可以搭配著看。想知道哪一種適合你，加 LINE 跟老師說你想問的方向就可以。"
+    ]},
+  { id:"a3", cat:"塔羅占卜", emoji:"🃏", title:"塔羅牌準不準？該怎麼問問題？", ex:"問對問題，塔羅才能給你有用的指引。",
+    body:[
+      "塔羅牌不是用來預言「未來一定會怎樣」，而是幫你看清楚<b>當下的狀態與可能的走向</b>，給你一個思考的方向。",
+      "想讓占卜更有幫助，問題盡量<b>具體、聚焦</b>。比起「我未來好不好？」，「如果我這個月換工作，會遇到什麼？」這種問法，牌能給你的資訊會清楚很多。",
+      "占卜的時候，心裡誠心默想你的問題，保持放鬆，答案往往比你想的更貼近你心裡已經有的感覺。",
+      "上面的「塔羅單張抽牌」可以先玩玩看；想針對真正在意的問題深入解讀，加 LINE 預約老師的塔羅諮詢。"
+    ]},
+  { id:"a4", cat:"開運生活", emoji:"🏠", title:"居家風水，先做這三件事就有感", ex:"不用大動工，簡單調整就能改善氣場。",
+    body:[
+      "說到風水，很多人以為要花大錢改格局，其實日常生活裡有幾個小地方，<b>先顧好就很有感</b>。",
+      "第一，<b>玄關保持乾淨明亮</b>。玄關是家的門面與氣的入口，鞋子收好、燈光足夠，整個家的感覺都會不一樣。",
+      "第二，<b>臥室別堆太多雜物</b>，尤其床底下。睡眠品質跟情緒、運勢都有關係，環境清爽，人也會比較安定。",
+      "第三，<b>讓家裡有流動的生氣</b>，例如一盆好照顧的綠植、適度通風採光。這些都是不用大動工就能做的調整。",
+      "想針對你家的格局與方位做更完整的建議，可以預約老師的居家風水諮詢。"
+    ]},
+  { id:"a5", cat:"開運生活", emoji:"📅", title:"為什麼結婚、搬家要挑好日子？", ex:"擇日不是迷信，是給重要的事一個好開始。",
+    body:[
+      "結婚、搬家、開店、動土……這些人生大事，很多人會想「挑個好日子」。擇日的意義，其實是<b>替重要的事情選一個能量順的時間點</b>。",
+      "好的日子不是隨便翻農民曆就好，還要<b>對照當事人的八字</b>，避開沖煞、選擇相合的時機，這樣才是真正「適合你」的好日子。",
+      "挑對日子不代表一切保證順利，但它給你一個好的開始，也讓你心裡更安定——這份安心本身就很有價值。",
+      "有結婚、搬家、開幕等需要擇日的規劃，歡迎提早加 LINE 跟老師預約，越早安排選擇越多。"
+    ]}
+];
+
+/* ===== 塔羅牌（大阿爾克那簡化）===== */
+const TAROT = [
+  {em:"🃏",nm:"愚者",up:"新的開始、勇敢踏出、保持初心。"},
+  {em:"🎩",nm:"魔術師",up:"你有實現目標的能力，主動一點會有機會。"},
+  {em:"🌙",nm:"女祭司",up:"相信直覺，答案在你心裡，別急著下決定。"},
+  {em:"👑",nm:"皇后",up:"豐盛與滋養，好好照顧自己與身邊的人。"},
+  {em:"⚡",nm:"高塔",up:"舊的結構鬆動，是重新來過的契機，別怕改變。"},
+  {em:"⭐",nm:"星星",up:"希望與療癒，最壞的過去了，保持信心。"},
+  {em:"☀️",nm:"太陽",up:"順利、成功與喜悅，大膽去做吧。"},
+  {em:"🌘",nm:"月亮",up:"有些不明朗，先別被情緒帶著走，看清楚再說。"},
+  {em:"❤️",nm:"戀人",up:"關於選擇與關係，順從真心會有好結果。"},
+  {em:"🎡",nm:"命運之輪",up:"轉機來臨，順勢而為，好運正在靠近。"},
+  {em:"⚖️",nm:"正義",up:"公平與因果，誠實面對就會得到該有的結果。"},
+  {em:"🕊️",nm:"節制",up:"平衡與耐心，別走極端，慢慢來比較快。"}
+];
+
+/* ===== 運勢籤 ===== */
+const OMIKUJI = [
+  {lv:"大吉",po:"雲開見月正當時，萬事順心莫遲疑。",tx:"時機正好，想做的事可以大膽往前，貴人也在身邊。"},
+  {lv:"中吉",po:"春風化雨潤無聲，穩中求進步步成。",tx:"整體平順，別急著求快，穩穩累積會有好結果。"},
+  {lv:"小吉",po:"溪水緩流終入海，耐心等待自然來。",tx:"小有阻礙但無大礙，保持耐心，好事會慢慢靠近。"},
+  {lv:"吉",po:"花開有時果有期，用心耕耘莫心急。",tx:"付出會被看見，維持現在的節奏就對了。"},
+  {lv:"末吉",po:"烏雲漸散日將明，守得雲開見月明。",tx:"目前稍有波折，撐過去就會漸入佳境，別放棄。"},
+  {lv:"平",po:"平湖秋水靜無波，順其自然莫強求。",tx:"平穩的一天，適合休養與整理，別勉強做重大決定。"}
+];
+
+/* ===== 套用 CONFIG ===== */
+const C = CONFIG;
+document.documentElement.style.setProperty('--gold', C.gold);
+document.documentElement.style.setProperty('--purple', C.purple);
+function esc(s){return s;}
+// 品牌
+document.getElementById('logo').innerHTML = C.brand.slice(0,-1)+'<span class="dot">'+C.brand.slice(-1)+'</span>';
+document.getElementById('h-slogan').textContent = C.slogan;
+document.querySelectorAll('.footbrand,#foot-brand').forEach(e=>e.textContent=C.brand);
+document.getElementById('foot-brand').textContent = C.brand;
+document.getElementById('foot-disc').textContent = C.disclaimer;
+document.getElementById('foot-id').innerHTML = C.lineId ? 'LINE：'+C.lineId : '';
+document.getElementById('year').textContent = '2025';
+document.title = C.brand + '｜八字・紫微・塔羅・姓名學・開運諮詢';
+// LINE 連結
+['nav-line','hero-line','about-line','final-line','m-line','fab'].forEach(id=>{
+  var e=document.getElementById(id); if(e) e.href=C.line;
+});
+// about
+document.getElementById('about-name').textContent = '關於'+C.masterName;
+document.getElementById('about-bio').innerHTML = C.masterBio.map(p=>'<p>'+p+'</p>').join('');
+// 服務
+document.getElementById('svc-grid').innerHTML = C.services.map(s=>
+  '<div class="svc"><div class="ic">'+s.icon+'</div><h3>'+s.name+'</h3><p>'+s.desc+'</p>'+
+  (s.price?'<div class="price">'+s.price+'</div>':'')+'</div>').join('');
+// 流程
+document.getElementById('steps').innerHTML = C.process.map(p=>
+  '<div class="stp"><div class="n">'+p.step+'</div><h4>'+p.title+'</h4><p>'+p.desc+'</p></div>').join('');
+// 好評
+document.getElementById('rev-grid').innerHTML = C.reviews.map(r=>
+  '<div class="rev"><div class="q">“</div><p>'+r.text+'</p><div class="who">— '+r.who+'</div></div>').join('');
+// FAQ
+document.getElementById('faq-list').innerHTML = C.faq.map(f=>
+  '<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>').join('');
+// 社群 footer
+var soc=[];
+if(C.line) soc.push('<a href="'+C.line+'" target="_blank" rel="noopener">LINE</a>');
+if(C.ig) soc.push('<a href="'+C.ig+'" target="_blank" rel="noopener">Instagram</a>');
+if(C.fb) soc.push('<a href="'+C.fb+'" target="_blank" rel="noopener">Facebook</a>');
+if(C.email) soc.push('<a href="mailto:'+C.email+'">Email</a>');
+document.getElementById('foot-soc').innerHTML = soc.join('');
+// 文章
+document.getElementById('art-grid').innerHTML = ARTICLES.map(a=>
+  '<div class="art" onclick="openArt(\''+a.id+'\')"><div class="top">'+a.emoji+'</div>'+
+  '<div class="bd"><div class="cat">'+a.cat+'</div><h4>'+a.title+'</h4><div class="ex">'+a.ex+'</div></div></div>').join('');
+
+/* ===== 文章 modal ===== */
+function openArt(id){
+  var a=ARTICLES.find(x=>x.id===id); if(!a)return;
+  document.getElementById('m-cat').textContent=a.cat;
+  document.getElementById('m-title').textContent=a.title;
+  document.getElementById('m-body').innerHTML=a.body.map(p=>'<p>'+p+'</p>').join('');
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+
+/* ===== tabs ===== */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=function(){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');
+  document.getElementById('p-'+t.dataset.p).classList.add('on');
+});
+
+/* ===== 生肖 ===== */
+const ZOD=[["🐭","鼠"],["🐮","牛"],["🐯","虎"],["🐰","兔"],["🐲","龍"],["🐍","蛇"],["🐴","馬"],["🐑","羊"],["🐵","猴"],["🐔","雞"],["🐶","狗"],["🐷","豬"]];
+const COLORS=["正紅色","金黃色","天空藍","森林綠","純淨白","神秘紫","溫暖橘","玫瑰粉"];
+const ZTIPS=[
+  "今天適合主動出擊，把握機會別猶豫。","多聽少說，貴人就在身邊。","財運不錯，但別衝動消費。",
+  "感情運上升，主動關心會有回應。","工作上會有小挑戰，穩住就能過關。","適合休息與整理，別把自己逼太緊。",
+  "溝通是今天的關鍵，把話說清楚。","保持好心情，好運自然來。"];
+function hashDay(s){var d=new Date();var k=s+'-'+d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();var h=0;for(var i=0;i<k.length;i++){h=(h*31+k.charCodeAt(i))>>>0;}return h;}
+document.getElementById('zgrid').innerHTML = ZOD.map((z,i)=>
+  '<button class="zbtn" data-i="'+i+'">'+z[0]+'<br>'+z[1]+'</button>').join('');
+document.querySelectorAll('#zgrid .zbtn').forEach(b=>b.onclick=function(){
+  document.querySelectorAll('#zgrid .zbtn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  var i=+b.dataset.i, h=hashDay('z'+i);
+  var score=3+(h%3); // 3~5 顆星
+  var stars='★★★★★'.slice(0,score)+'☆☆☆☆☆'.slice(0,5-score);
+  var color=COLORS[(h>>3)%COLORS.length];
+  var num=(h>>6)%9+1;
+  var tip=ZTIPS[(h>>9)%ZTIPS.length];
+  var r=document.getElementById('z-result');
+  r.innerHTML='<div class="big">'+ZOD[i][0]+' 屬'+ZOD[i][1]+'・今日運勢</div>'+
+    '<div class="stars5">'+stars+'</div>'+
+    '<div class="row"><span>幸運色<b>'+color+'</b></span><span>幸運數字<b>'+num+'</b></span></div>'+
+    '<p style="color:var(--sub);font-size:15px">'+tip+'</p>';
+  r.classList.add('show');
+});
+
+/* ===== 塔羅 ===== */
+var tDrawn=false;
+function drawTarot(){
+  if(tDrawn)return;
+  var c=TAROT[Math.floor(Math.random()*TAROT.length)];
+  document.getElementById('t-em').textContent=c.em;
+  document.getElementById('t-nm').textContent=c.nm;
+  document.getElementById('tcard').classList.add('flip');
+  document.getElementById('t-note').innerHTML='<b>'+c.nm+'</b>：'+c.up;
+  tDrawn=true;
+}
+function resetTarot(){
+  tDrawn=false;
+  document.getElementById('tcard').classList.remove('flip');
+  document.getElementById('t-note').textContent='點一下卡片，抽出你的今日指引。';
+}
+
+/* ===== 運勢籤 ===== */
+function drawOmikuji(){
+  var o=OMIKUJI[Math.floor(Math.random()*OMIKUJI.length)];
+  var r=document.getElementById('o-result');
+  r.innerHTML='<div class="big" style="font-size:24px">🎋 '+o.lv+'</div>'+
+    '<p class="serif" style="color:var(--gold);font-size:18px;margin:8px 0">「'+o.po+'」</p>'+
+    '<p style="color:var(--sub);font-size:15px">'+o.tx+'</p>';
+  r.classList.add('show');
+}
+
+/* 手機點連結收合選單 */
+document.querySelectorAll('#menu a').forEach(a=>a.onclick=()=>document.getElementById('menu').classList.remove('open'));
+</script>
+</body>
+</html>
