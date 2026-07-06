@@ -121,7 +121,7 @@ function b64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload
 function processImage(file){return new Promise((res)=>{if(!file.type.startsWith('image/')){b64(file).then(d=>res({data:d,mediaType:file.type||'application/pdf'}));return;}const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const max=1536;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s);}const cv=document.createElement('canvas');cv.width=w;cv.height=h;const ctx=cv.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);try{const u=cv.toDataURL('image/jpeg',0.82);res({data:u.split(',')[1],mediaType:'image/jpeg'});}catch(e){b64(file).then(d=>res({data:d,mediaType:file.type}));}};img.onerror=()=>{b64(file).then(d=>res({data:d,mediaType:file.type}));};img.src=URL.createObjectURL(file);});}
 function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${esc(f.name)}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">開始翻譯分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">換一張</button>`;}
 function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
-function showErr(m){const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
+function showErr(m){showLoad(false);const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='開始翻譯分析';}}
 function zhErr(msg){const s=String(msg||'');
   if(/high demand|overload|try again later|UNAVAILABLE|503/i.test(s))return 'Gemini 現在使用量較大，請等幾秒再按一次「開始翻譯分析」';
   if(/quota|RESOURCE_EXHAUSTED|429|exceed/i.test(s))return '免費額度暫時達到上限（連續太快會這樣），請等 1~2 分鐘再按一次';
@@ -145,6 +145,17 @@ const MIN_GAP=12000;      // 兩次翻譯最短間隔（毫秒），太快就偽
 const WINDOW_MAX=10;      // 近 10 分鐘最多幾次
 function _thGet(){try{return JSON.parse(localStorage.getItem(THROTTLE_KEY)||'[]');}catch(e){return[];}}
 function _thSet(a){try{localStorage.setItem(THROTTLE_KEY,JSON.stringify(a));}catch(e){}}
+// 分析中的等候提示（含周周 LINE 小連結）
+function showLoad(on){
+  var el=document.getElementById('loadHint');
+  if(!el){
+    el=document.createElement('div');el.id='loadHint';
+    el.style.cssText='margin-top:14px;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:15px 16px;text-align:center;font-size:14.5px;color:var(--rose-d);line-height:1.8';
+    el.innerHTML='⏳ 分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
+    var up=document.getElementById('upload');(up||document.body).appendChild(el);
+  }
+  el.style.display=on?'block':'none';
+}
 async function go(){
   if(!file)return;
   const now=Date.now();
@@ -153,6 +164,7 @@ async function go(){
   // 超過總量：偽裝成「系統忙碌」並順勢導 LINE，不明說是限制
   if(times.length>=WINDOW_MAX){showErr('系統整理中，請過幾分鐘再試～ 想更快的話，直接把圖傳到周周 LINE，我幫你看更快 💬');return;}
   if(b){b.disabled=true;b.textContent='分析中…';}
+  showLoad(true);
   document.getElementById('err').style.display='none';
   // 距離上次太近：先靜靜等一下（畫面停在「分析中…」，看起來只是還在處理）
   const lastT=times.length?times[times.length-1]:0;
