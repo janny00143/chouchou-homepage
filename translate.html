@@ -232,7 +232,8 @@ function showLoad(on){
   if(!el){
     el=document.createElement('div');el.id='loadHint';
     el.style.cssText='margin-top:8px;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px;text-align:center;font-size:14.5px;color:var(--rose-d);line-height:1.8';
-    el.innerHTML='⏳ 分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
+    el.innerHTML='⏳ 努力分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
+    el.onclick=function(e){e.stopPropagation();}; // 避免點到提示框時觸發上傳框的「選檔案」，讓私訊連結能正常點
   }
   if(on){
     if(df){ // 蓋在「開始翻譯分析」按鈕的位置，並把按鈕藏起來避免亂點
@@ -252,7 +253,7 @@ async function go(){
   const b=document.getElementById('goBtn');
   // 超過總量：偽裝成「系統忙碌」並順勢導 LINE，不明說是限制
   if(times.length>=WINDOW_MAX){showErr('系統整理中，請過幾分鐘再試～ 想更快的話，直接把圖傳到周周 LINE，我幫你看更快 💬');return;}
-  if(b){b.disabled=true;b.textContent='分析中…';}
+  if(b){b.disabled=true;b.textContent='努力分析中…';}
   showLoad(true);
   document.getElementById('err').style.display='none';
   // 距離上次太近：先靜靜等一下（畫面停在「分析中…」，看起來只是還在處理）
