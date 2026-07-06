@@ -221,8 +221,8 @@ function logUpload(o,proc){
 }
 // 防亂按／防刷量（看不出來是被擋）：每次至少間隔 MIN_GAP，且 10 分鐘內最多 WINDOW_MAX 次。
 const THROTTLE_KEY='tzz_calls';
-const MIN_GAP=12000;      // 兩次翻譯最短間隔（毫秒），太快就偽裝成「分析中…」壓住
-const WINDOW_MAX=10;      // 近 10 分鐘最多幾次
+const MIN_GAP=4000;       // 兩次翻譯最短間隔（毫秒）；放寬讓連續翻更順，仍擋狂點
+const WINDOW_MAX=20;      // 近 10 分鐘最多幾次（防單一使用者刷量/爆帳）
 function _thGet(){try{return JSON.parse(localStorage.getItem(THROTTLE_KEY)||'[]');}catch(e){return[];}}
 function _thSet(a){try{localStorage.setItem(THROTTLE_KEY,JSON.stringify(a));}catch(e){}}
 // 分析中的等候提示（含周周 LINE 小連結）
