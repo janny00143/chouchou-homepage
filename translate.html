@@ -233,6 +233,7 @@ function showLoad(on){
     el=document.createElement('div');el.id='loadHint';
     el.style.cssText='margin-top:8px;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px;text-align:center;font-size:14.5px;color:var(--rose-d);line-height:1.8';
     el.innerHTML='⏳ 分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
+    el.onclick=function(e){e.stopPropagation();}; // 避免點到提示框時觸發上傳框的「選檔案」，讓私訊連結能正常點
   }
   if(on){
     if(df){ // 蓋在「開始翻譯分析」按鈕的位置，並把按鈕藏起來避免亂點
