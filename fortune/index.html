@@ -9,10 +9,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#1a1030">
-<title>算喵｜LINE 算命貓・八字・塔羅・每日運勢</title>
-<meta name="description" content="算喵是你的專屬 LINE 算命貓，八字、塔羅、生肖運勢、每日一籤通通會算。加 LINE 就能開始，用最療癒的方式陪你看懂運勢。">
-<meta property="og:title" content="算喵｜你的 LINE 算命貓">
-<meta property="og:description" content="加 LINE 就能算命的療癒算命貓。八字・塔羅・每日運勢，喵喵幫你看。">
+<title>算喵｜紫微斗數 LINE 算命貓・命盤・流年・感情</title>
+<meta name="description" content="算喵是你的紫微斗數 LINE 算命貓，排你的命盤看性格、事業、感情、財運與流年運勢。加 LINE 就能開始，用最療癒的方式陪你看懂人生這張命盤。">
+<meta property="og:title" content="算喵｜你的紫微斗數 LINE 算命貓">
+<meta property="og:description" content="加 LINE 就能算命的療癒算命貓，用紫微斗數幫你看命盤、流年、感情與事業。">
 <meta property="og:type" content="website">
 <meta property="og:image" content="avatar.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,24 +26,25 @@
 const CONFIG = {
   /* ── 品牌 ── */
   brand:   "算喵",                  // 網站／品牌名稱
-  slogan:  "加 LINE 就能算命的療癒算命貓，喵喵幫你看運勢",
+  slogan:  "用紫微斗數，算出你說不出口的答案——算喵 AI，即時、秒回",
   masterName: "算喵",                // 這裡填算命貓的名字
-  masterTitle: "你的 LINE 專屬算命貓",
+  masterTitle: "你的紫微斗數算命貓・親算 1000+",
+  statLine: "紫微斗數 ・ 親算 1000+ ・ LINE 即時秒回",  // 招牌下方小字（留 "" 就不顯示）
   // 「關於算喵」介紹（每個字串一段）
   masterBio: [
-    "喵～我是算喵，一隻住在 LINE 裡的算命貓。八字、塔羅、生肖運勢、每日一籤，通通問我就對了。",
-    "算命不用很嚴肅，也不用怕被嚇。我會用最療癒、最好懂的方式，陪你把運勢看清楚。",
-    "不管是感情卡關、工作猶豫，還是只是想知道今天適不適合出門，加我 LINE，隨時都能算一下喵。"
+    "喵～我是算喵，一隻專攻紫微斗數的算命貓，已經親算超過 1000 位客人。",
+    "我只說別人沒講過的紫斗角度——你的命宮、夫妻宮、財帛宮，藏著很多你自己都還沒發現的答案。",
+    "算喵 AI 就住在 LINE 裡，即時、秒回。感情、事業、財運、流年，想到就問，越算越懂你喵。"
   ],
 
-  /* ── 聯絡方式（樣本用算喵的連結；買家日後換成自己的即可）── */
-  line:    "https://line.me/R/ti/p/@132mweqa",  // ★ 買家請換成自己的 LINE 加好友連結
-  lineId:  "@132mweqa",                         // ★ 買家請換成自己的 LINE ID（顯示用）
-  // 第二組「個人 LINE」（選填）：想讓訪客也能加個人 LINE、由真人／AI 在 LINE 裡對話時填。
-  // 沒有就把兩個都留成空字串 ""，相關按鈕會自動隱藏。
-  personalLine:   "https://line.me/ti/p/~legendary30911",  // 個人 LINE 加好友連結
-  personalLineId: "legendary30911",                        // 個人 LINE ID（顯示用）
-  personalLineLabel: "加老師個人 LINE",                     // 按鈕文字
+  /* ── 聯絡方式（樣本用算喵的真連結；買家日後換成自己的即可）── */
+  line:    "https://url.linkgoods.com/wdtLTL",  // ★ 主 LINE 入口（算喵宇宙）；買家換成自己的
+  lineId:  "",                                  // 短連結無公開 @id，留空就不顯示（有 @id 再填）
+  // 第二組 LINE 入口（選填）：想多一個入口（例如真人／另一個帳號）時填。
+  // 沒有就把 personalLine 留成空字串 ""，相關按鈕會自動隱藏。
+  personalLine:   "https://reurl.cc/EmkeMn",    // 第二入口（找我算命）
+  personalLineId: "",                           // 顯示用 ID（沒有就留 ""）
+  personalLineLabel: "找我算命",                 // 按鈕文字
   ig:      "",                                 // Instagram（沒有就留空字串 ""）
   fb:      "",                                 // Facebook 粉專（沒有就留 ""）
   email:   "",                                 // Email（沒有就留 ""）
@@ -56,37 +57,37 @@ const CONFIG = {
   gold:    "#e8c66b",
   purple:  "#8b5cf6",
 
-  /* ── 算喵會算什麼（可自由增減；price 留空字串 "" 就不顯示價格）── */
+  /* ── 算喵會算什麼（紫微斗數為核心；price 留空字串 "" 就不顯示價格）── */
   services: [
-    { icon:"🐱", name:"每日運勢", desc:"每天問算喵一次，今天的整體運、幸運色、幸運數字，喵喵一次告訴你。", price:"" },
-    { icon:"🔮", name:"八字簡批", desc:"報上你的出生年月日時，算喵幫你看性格、事業、感情的大方向。", price:"" },
-    { icon:"🃏", name:"塔羅占卜", desc:"心裡想一個問題，讓算喵幫你抽牌，給你當下最需要的指引。", price:"" },
-    { icon:"🐲", name:"生肖運勢", desc:"你的生肖今天、這個月運勢如何？算喵隨時幫你查。", price:"" },
-    { icon:"🎋", name:"每日一籤", desc:"誠心問一支今日籤，算喵陪你解籤，給你一句暖心提醒。", price:"" },
-    { icon:"💗", name:"感情速配", desc:"想知道你跟他合不合？報上兩個人的資料，算喵幫你看看緣分。", price:"" }
+    { icon:"🔮", name:"紫微命盤", desc:"報上出生年月日時，算喵幫你排紫微命盤，看你的性格、天賦與這輩子的主旋律。", price:"" },
+    { icon:"💗", name:"感情・夫妻宮", desc:"你為什麼總被同一種人吸引？夫妻宮藏著你自己都說不出口的答案。", price:"" },
+    { icon:"💼", name:"事業・財運", desc:"官祿宮、財帛宮怎麼走？看你適合的方向，還有賺錢與衝刺的節奏。", price:"" },
+    { icon:"🌙", name:"流年運勢", desc:"今年的運勢重點、該衝的月份、該緩的時候，一次幫你看清楚。", price:"" },
+    { icon:"🧲", name:"命定吸引類型", desc:"測測看你命中註定會吸引、也會被吸引的，是哪一型的人。", price:"" },
+    { icon:"🐱", name:"算喵 AI 即時算", desc:"24 小時住在 LINE，即時、秒回，想到就問，越算越懂你。", price:"" }
   ],
 
   /* ── 怎麼開始（流程）── */
   process: [
     { step:"1", title:"加算喵 LINE", desc:"點下方按鈕，把算喵加為 LINE 好友。" },
-    { step:"2", title:"打聲招呼", desc:"傳訊息跟算喵說你想算什麼（運勢、八字、塔羅…）。" },
-    { step:"3", title:"提供資料", desc:"依項目報上出生年月日時或你的問題。" },
-    { step:"4", title:"馬上看結果", desc:"算喵立刻回你，隨時想算就算，超方便。" }
+    { step:"2", title:"報上你的生辰", desc:"提供出生年月日時，算喵才能幫你排紫微命盤（越完整越準）。" },
+    { step:"3", title:"說你想問的", desc:"感情、事業、財運、流年，或想測命定吸引的類型都可以。" },
+    { step:"4", title:"算喵 AI 即時回", desc:"算喵秒回你的紫斗解析，隨時想算就算，超方便。" }
   ],
 
   /* ── 用戶好評（要放真實好評請先徵得對方同意）── */
   reviews: [
-    { who:"台北 L 小姐", text:"算喵超可愛又很準！每天早上都會問一下今天運勢，變成我的習慣了，療癒又實用。" },
-    { who:"高雄 陳先生", text:"半夜睡不著想算個塔羅，隨時都能問算喵，回得又快又有溫度，比想像中準。" },
-    { who:"台中 匿名用戶", text:"本來只是覺得貓咪算命很有趣，結果八字簡批講得蠻中的，朋友都被我推坑加算喵了。" },
-    { who:"新竹 王小姐", text:"跟另一半吵架的時候抽了張牌，算喵的解釋讓我冷靜下來，真的很暖心。" }
+    { who:"台北 L 小姐", text:"算喵超可愛又很準！用紫微幫我看感情，把我夫妻宮的狀況講得超中，聽完好療癒。" },
+    { who:"高雄 陳先生", text:"算喵 AI 半夜也秒回，問事業運馬上給我方向，紫斗的角度講得跟別人很不一樣。" },
+    { who:"台中 匿名用戶", text:"本來只是覺得貓咪算命很有趣，結果紫微命盤講超準，命定吸引的類型完全戳中我。" },
+    { who:"新竹 王小姐", text:"跟另一半卡關的時候問算喵，牠從夫妻宮幫我看，講得又暖又中肯，朋友都被我推坑了。" }
   ],
 
   /* ── 常見問題 ── */
   faq: [
     ["算喵怎麼用？要收費嗎？","加算喵 LINE 好友就能開始聊。收費方式與各項服務內容，加 LINE 後算喵會跟你說明。"],
     ["沒有出生時辰可以算嗎？","八字最好有出生時辰會更準；如果不知道，也可以改問生肖運勢、每日運勢或塔羅占卜。"],
-    ["算喵算得準嗎？","算喵會依你的資料與問題給你參考方向。命理是幫你看清趨勢、給你力量，最後怎麼走還是你決定喵。"],
+    ["算喵算得準嗎？","算喵專攻紫微斗數、已親算 1000+ 人，會依你的命盤與問題給你參考方向。命理是幫你看清趨勢、給你力量，最後怎麼走還是你決定喵。"],
     ["我的資料會外流嗎？","不會，你提供的資料只用於算命，會妥善保密，請安心。"],
     ["半夜也能算嗎？","可以喵！算喵住在 LINE 裡，隨時想算就算，不用預約等時間。"]
   ],
@@ -312,13 +313,13 @@ footer .disc{font-size:12px;margin-top:14px;color:#6f6294;max-width:600px;margin
 <!-- Hero -->
 <div class="hero wrap">
   <div class="moon" id="hero-avatar">🐱</div>
-  <h1 id="h-title">加 LINE 就能算命的<br>療癒算命貓</h1>
+  <h1 id="h-title">用紫微斗數<br>算出你說不出口的答案</h1>
   <p id="h-slogan"></p>
   <div>
     <a class="cta" id="hero-line" href="#" target="_blank" rel="noopener">✨ 加算喵 LINE 開始算</a>
     <a class="cta ghost" href="#tools">先玩免費占卜</a>
   </div>
-  <div class="sub">每日運勢・八字・塔羅・生肖・每日一籤・感情速配</div>
+  <div class="sub" id="h-stat">🐱 你的療癒系紫微斗數算命貓</div>
 </div>
 
 <!-- 服務 -->
@@ -537,6 +538,7 @@ function esc(s){return s;}
 // 品牌
 document.getElementById('logo').innerHTML = C.brand.slice(0,-1)+'<span class="dot">'+C.brand.slice(-1)+'</span>';
 document.getElementById('h-slogan').textContent = C.slogan;
+if(C.statLine){ document.getElementById('h-stat').textContent = C.statLine; }
 document.querySelectorAll('.footbrand,#foot-brand').forEach(e=>e.textContent=C.brand);
 document.getElementById('foot-brand').textContent = C.brand;
 document.getElementById('foot-disc').textContent = C.disclaimer;
