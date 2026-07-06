@@ -194,6 +194,25 @@ async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await 
       // 只有「伺服器暫時忙線」(503/overload) 才重試，且間隔拉長、次數減少。
       if(j&&j.error&&/high demand|overload|unavailable|503|try again|busy/i.test(j.error)){last=new Error(j.error);await delay(3000*(i+1));continue;}
       return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
+// 統整「大家用翻譯機看了哪些物件」到周周自己的 Google 試算表。
+// 設定：把你的 Google Apps Script 網址貼到 LOG_URL（見周周的說明）；留空就不記錄。
+const LOG_URL="";
+function logUpload(o){
+  if(!LOG_URL||!o)return;
+  try{
+    var p=(location.pathname.split('/').pop()||'');
+    var lang=/-cn\./.test(p)?'簡中':(/-ja\./.test(p)?'日文':'繁中');
+    var info=o.物件資訊||{},money=o.金額||{};
+    var payload={
+      mode:(mode==='invest'?'投資物件':'住宅物件'), lang:lang,
+      類型:String(o.物件類型||''), 物件名稱:String(o.物件名稱||''),
+      地址:String(info.地址||''), 交通:String(info.交通||''),
+      價格:String(money.販售價格||money.年間賃料收入||''),
+      利回:String((o.利回&&o.利回.表面利回)||'')
+    };
+    fetch(LOG_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  }catch(_){}
+}
 // 防亂按／防刷量（看不出來是被擋）：每次至少間隔 MIN_GAP，且 10 分鐘內最多 WINDOW_MAX 次。
 const THROTTLE_KEY='tzz_calls';
 const MIN_GAP=12000;      // 兩次翻譯最短間隔（毫秒），太快就偽裝成「分析中…」壓住
@@ -235,6 +254,7 @@ async function go(){
   const wait=Math.max(0,MIN_GAP-(now-lastT));
   if(wait>0)await delay(wait);
   times.push(Date.now());_thSet(times);
+  if(typeof gtag==='function'){try{gtag('event','translate_start',{mode:mode});}catch(_){}}
   try{
     const proc=await processImage(file);
     const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
@@ -243,6 +263,8 @@ async function go(){
     try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
     if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
     var _nm=o.物件名稱; o=deepClean(o); if(_nm!=null)o.物件名稱=_nm; // 清洗殘留日文；物件名稱刻意保留日文原文＋(中文)
+    if(typeof gtag==='function'){try{gtag('event','translate_done',{mode:mode,ptype:String(o.物件類型||'')});}catch(_){}}
+    logUpload(o); // 統整到 Google 試算表（若已設定 LOG_URL）
     (mode==='invest'?showInvestResult(o):showResult(o));
   }catch(e){
     var raw=(e&&e.message)?e.message:String(e);
