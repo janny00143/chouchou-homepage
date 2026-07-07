@@ -74,6 +74,7 @@ const LINE="https://lin.ee/RscRWCp";
 const PROMPT=`你是協助台灣客戶看懂日本房地產販售圖面的專家。閱讀這份日文物件資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","房間格局":"","專有面積":"","陽台面積":"","土地面積":"","建物面積":"","周邊環境":"","翻新":"","金額":{"販售價格":"","管理費":"","修繕基金":"","其他費用":""},"物件資訊":{"地址":"","建築年月":"","交通":"","建築構造":"","管理型態":"","管理公司":"","總戶數":""},"分析":{"優點":"","缺點":""},"補充":"","連結資訊":""}
 規則：
 - 【第一步・最優先判斷】先確認這張圖是不是「日本房地產販售圖面／マイソク」（畫面上有物件販售資料文字，例如價格、格局、面積、地址、交通、管理費等）。如果**不是**（例如只是房間實景照、外觀照、風景、人物、菜單、地圖截圖或其他無關圖片，或整張圖幾乎沒有可判讀的物件販售資料文字），**絕對不要編造任何內容、不要填 ○○ 或猜測**，直接只輸出這個 JSON 就結束：{"not_property": true}
+- 【第二步判斷】如果這其實是「投資／収益物件」（整棟收租、有表面利回／年間賃料／オーナーチェンジ／収益還原 等收益資料），不要用住宅格式，直接只輸出 {"switch_to":"invest"} 就結束（系統會自動改用投資格式重新分析，避免放錯）。
 - 【最高優先・務必遵守】除了「物件名稱」（見下一條）外，所有欄位內容一律用繁體中文（台灣用語）。**絕對禁止出現日文假名（平假名／片假名），也絕對禁止用英文或羅馬拼音代替**。日文漢字詞換成台灣看得懂的說法。輸出前逐欄自我檢查，發現假名或英文就改成中文。特別注意「周邊環境」「翻新」「補充」最常殘留，務必全部中文化。
 - 物件名稱（唯一例外）：**保留日文原文，後面用（）附上中文翻譯或讀音**。例如：オークプレス目黒行人坂（歐克普雷斯目黑行人坂）／ザ・パークハウス目黒（The Parkhouse 目黑）。
 - 【地名/車站/建物名一律用中文漢字，嚴禁英文化/羅馬拼音】：小山台 就寫「小山台」不可寫 Koyama-dai；品川区→品川區；恵比寿→惠比壽；○○駅→○○站。**不要輸出英文句子，也不要在中文後面用括號再重複一次英文**。
@@ -102,6 +103,7 @@ JR山手線・JR京濱東北線・東急目黑線「惠比壽」站 徒步12分
 const INVEST_PROMPT=`你是協助台灣客戶看懂日本「投資（收租）物件」販售圖面（マイソク・収益物件資料）的專家。這類物件通常是一整棟公寓（一棟マンション／アパート）或收租用不動產，重點在「利回（投報率）」與收益狀況。閱讀這份日文資料，整理成繁體中文。只輸出 JSON：{"物件類型":"","物件名稱":"","金額":{"販售價格":"","年間賃料收入":"","月額賃料收入":"","管理營運支出":""},"利回":{"表面利回":"","實質利回":"","現況利回":"","滿室想定利回":""},"收益資訊":{"總戶數":"","入居狀況":"","格局構成":"","建物構造":"","建築年月":"","土地面積":"","建物面積":""},"物件資訊":{"地址":"","交通":"","用途地域":"","建蔽率容積率":"","管理狀況":""},"分析":{"利回分析":"","優點":"","缺點":""},"補充":"","連結資訊":""}
 規則：
 - 【第一步・最優先判斷】先確認這張圖是不是「日本房地產（收益／販售）圖面／マイソク」（有物件販售或收益資料文字，如價格、利回、格局、面積、地址等）。如果**不是**（只是房間照、外觀照、風景、人物或其他無關圖片，或幾乎無可判讀的物件資料），**不要編造、不要填 ○○**，直接只輸出：{"not_property": true}
+- 【第二步判斷】如果這其實是「自住／住宅物件」（單戶自住、沒有收益／利回資料），不要用投資格式，直接只輸出 {"switch_to":"home"} 就結束（系統會自動改用住宅格式重新分析）。
 - 【最高優先】除「物件名稱」外，所有欄位一律繁體中文（台灣用語），絕對禁止出現任何日文假名（平假名／片假名）；日文漢字詞也要換成台灣看得懂的說法。輸出前逐欄自我檢查，發現假名就改成中文再輸出。
 - 物件名稱（唯一例外）：保留日文原文，後面用（）附上中文翻譯或讀音。
 - 物件類型：判斷為「一棟公寓大樓（鋼筋混凝土）」「一棟公寓（木造／輕量鋼骨）」「整棟商業大樓」「區分（單戶收租）」「土地」或「其他」，用中文寫，不要用日文假名。
@@ -267,12 +269,17 @@ async function go(){
   if(typeof gtag==='function'){try{gtag('event','translate_start',{mode:mode});}catch(_){}}
   try{
     const proc=await processImage(file);
-    const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
-    if(j.error)throw new Error(j.error);
-    let o=null;
-    try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
-    if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
-    if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（マイソク，上面有價格、格局、面積那種）；房間照片、風景照、外觀照沒辦法分析～'); return; }
+    let o=null,switched=false;
+    for(let attempt=0;attempt<2;attempt++){
+      const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
+      if(j.error)throw new Error(j.error);
+      try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
+      if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
+      if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（マイソク，上面有價格、格局、面積那種）；房間照片、風景照、外觀照沒辦法分析～'); return; }
+      // 自動判斷：若其實是另一種物件類型，切換模式重新分析一次（避免客戶選錯模式放錯回覆）
+      if(!switched && (o.switch_to==='invest'||o.switch_to==='home') && o.switch_to!==mode){ mode=o.switch_to; setMode(mode); switched=true; continue; }
+      break;
+    }
     var _nm=o.物件名稱; o=deepClean(o); if(_nm!=null)o.物件名稱=_nm; // 清洗殘留日文；物件名稱刻意保留日文原文＋(中文)
     if(typeof gtag==='function'){try{gtag('event','translate_done',{mode:mode,ptype:String(o.物件類型||'')});}catch(_){}}
     logUpload(o,proc); // 統整到 Cloudflare(含原圖)，周周後台 /admin/logs.html 看得到
