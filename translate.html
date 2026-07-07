@@ -209,13 +209,13 @@ async function callWorker(body){let last;for(let i=0;i<3;i++){try{const r=await 
       return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 // 統整「大家用翻譯機看了哪些物件」→ 記到 Cloudflare(Worker+KV)，周周在 /admin/ 後台看得到。
 // 需要周周在 Cloudflare 幫 Worker 綁一個 KV(名稱 LOGS) 並更新 Worker 程式碼；沒綁好前這裡的 POST 無害。
-function logUpload(o,proc){
+function logUpload(o,proc,paid,cost){
   if(!o)return;
   try{
     var p=(location.pathname.split('/').pop()||'');
     var lang=/-cn\./.test(p)?'簡中':(/-ja\./.test(p)?'日文':'繁中');
     var info=o.物件資訊||{},money=o.金額||{};
-    var payload={log:1, mode:(mode==='invest'?'投資物件':'住宅物件'), lang:lang,
+    var payload={log:1, paid:(paid?1:0), cost:(+cost||0), mode:(mode==='invest'?'投資物件':'住宅物件'), lang:lang,
       "類型":String(o.物件類型||''), "物件名稱":String(o.物件名稱||''),
       "地址":String(info.地址||''), "交通":String(info.交通||''),
       "價格":String(money.販售價格||money.年間賃料收入||''),
@@ -269,10 +269,12 @@ async function go(){
   if(typeof gtag==='function'){try{gtag('event','translate_start',{mode:mode});}catch(_){}}
   try{
     const proc=await processImage(file);
-    let o=null,switched=false;
+    let o=null,switched=false,paidFlag=0,costVal=0;
     for(let attempt=0;attempt<2;attempt++){
       const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
       if(j.error)throw new Error(j.error);
+      paidFlag=j.paid?1:0; // 後端回傳：這張有沒有用到付費金鑰（免費爆量才會=1）
+      costVal=j.cost||0;   // 這張的實際花費(美元，依 token 計)
       try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
       if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
       if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（マイソク，上面有價格、格局、面積那種）；房間照片、風景照、外觀照沒辦法分析～'); return; }
@@ -282,7 +284,7 @@ async function go(){
     }
     var _nm=o.物件名稱; o=deepClean(o); if(_nm!=null)o.物件名稱=_nm; // 清洗殘留日文；物件名稱刻意保留日文原文＋(中文)
     if(typeof gtag==='function'){try{gtag('event','translate_done',{mode:mode,ptype:String(o.物件類型||'')});}catch(_){}}
-    logUpload(o,proc); // 統整到 Cloudflare(含原圖)，周周後台 /admin/logs.html 看得到
+    logUpload(o,proc,paidFlag,costVal); // 統整到 Cloudflare(含原圖)，周周後台 /admin/logs.html 看得到
     (mode==='invest'?showInvestResult(o):showResult(o));
   }catch(e){
     var raw=(e&&e.message)?e.message:String(e);
