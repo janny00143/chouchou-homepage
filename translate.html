@@ -290,7 +290,7 @@ async function go(){
         let cc=null; try{cc=JSON.parse(String(cj.text||'').replace(/```json|```/g,'').trim());}catch(_){}
         if(cc&&cc.is_property===false){
           if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}}
-          showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（マイソク，上面有價格、格局、面積那種）；房間照片、風景照、外觀照沒辦法分析～');
+          showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（就是上面有印價格、格局、面積那種的販售圖）；房間照片、風景照、外觀照沒辦法分析～');
           return;
         }
       }
@@ -303,7 +303,7 @@ async function go(){
       costVal=j.cost||0;   // 這張的實際花費(美元，依 token 計)
       try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
       if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
-      if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（マイソク，上面有價格、格局、面積那種）；房間照片、風景照、外觀照沒辦法分析～'); return; }
+      if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（就是上面有印價格、格局、面積那種的販售圖）；房間照片、風景照、外觀照沒辦法分析～'); return; }
       // 自動判斷：若其實是另一種物件類型，切換模式重新分析一次（避免客戶選錯模式放錯回覆）
       if(!switched && (o.switch_to==='invest'||o.switch_to==='home') && o.switch_to!==mode){ mode=o.switch_to; setMode(mode); switched=true; continue; }
       break;
