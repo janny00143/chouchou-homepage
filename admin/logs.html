@@ -57,6 +57,9 @@ td.wrap-cell{white-space:normal;min-width:180px;max-width:280px}
 var WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
 var TOKEN="zzlog_7fQk29Xb4mR8vT";
 var DATA=[];
+// 付費金鑰充值的起始額度（估算餘額用；真正餘額以 Google 帳單頁為準）。之後再充值就把金額加上去。
+var PREPAID_JPY=2000;     // 目前充值 ¥2000
+var JPY_PER_USD=155;      // 粗略匯率（估算用；只影響「餘額估算」顯示）
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function fmtTime(t){try{var d=new Date(t);if(isNaN(d))return esc(t);return d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate()+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}catch(e){return esc(t);}}
 function imgUrl(id){return WORKER_URL+"?img="+encodeURIComponent(id)+"&token="+encodeURIComponent(TOKEN);}
@@ -78,7 +81,8 @@ function render(){
       +'<td class="wrap-cell">'+esc(r.name)+'</td><td class="wrap-cell">'+esc(r.addr)+'</td>'
       +'<td class="wrap-cell">'+esc(r.traffic)+'</td><td>'+esc(r.price)+'</td><td>'+esc(r.yield)+'</td></tr>';
   }).join("");
-  document.getElementById("stat").innerHTML="共 <b>"+DATA.length+"</b> 筆　（💳 付費 <b style='color:#b45309'>"+paidCnt+"</b> 筆、免費 "+(DATA.length-paidCnt)+" 筆）　實際花費約 <b style='color:#b45309'>"+usd(paidCost)+"</b>";
+  var spentJpy=paidCost*JPY_PER_USD, leftJpy=Math.max(0,PREPAID_JPY-spentJpy);
+  document.getElementById("stat").innerHTML="共 <b>"+DATA.length+"</b> 筆　（💳 付費 <b style='color:#b45309'>"+paidCnt+"</b> 筆、免費 "+(DATA.length-paidCnt)+" 筆）　實際花費約 <b style='color:#b45309'>"+usd(paidCost)+"</b>（約 ¥"+Math.round(spentJpy)+"）　餘額估算 <b style='color:#059669'>約 ¥"+Math.round(leftJpy)+"</b> <span style='color:#a8a29e;font-size:12px'>/ ¥"+PREPAID_JPY+"（Google 帳單為準）</span>";
 }
 function showUsage(total,cap){
   var u=document.getElementById("usage");
