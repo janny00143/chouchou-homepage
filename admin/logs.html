@@ -49,8 +49,8 @@ td.wrap-cell{white-space:normal;min-width:180px;max-width:280px}
     <span class="stat" id="stat">載入中…</span>
   </div>
   <div class="tablewrap"><table id="tbl"><thead><tr>
-    <th>時間</th><th>原圖</th><th>語言</th><th>模式</th><th>類型</th><th>物件名稱</th><th>地址</th><th>交通</th><th>價格</th><th>利回</th>
-  </tr></thead><tbody id="rows"><tr><td colspan="10" class="msg">載入中…</td></tr></tbody></table></div>
+    <th>時間</th><th>金鑰</th><th>花費</th><th>原圖</th><th>語言</th><th>模式</th><th>類型</th><th>物件名稱</th><th>地址</th><th>交通</th><th>價格</th><th>利回</th>
+  </tr></thead><tbody id="rows"><tr><td colspan="12" class="msg">載入中…</td></tr></tbody></table></div>
   <p class="stat" style="margin-top:12px">※ 記錄物件重點資料＋上傳的原圖（點縮圖看大圖）。資料存在你的 Cloudflare，僅此後台頁看得到。</p>
 </div>
 <script>
@@ -60,18 +60,25 @@ var DATA=[];
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function fmtTime(t){try{var d=new Date(t);if(isNaN(d))return esc(t);return d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate()+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}catch(e){return esc(t);}}
 function imgUrl(id){return WORKER_URL+"?img="+encodeURIComponent(id)+"&token="+encodeURIComponent(TOKEN);}
+function usd(n){n=Number(n)||0;if(n===0)return"$0";if(n<0.01)return"$"+n.toFixed(4);return"$"+n.toFixed(2);}
 function render(){
   var rows=document.getElementById("rows");
-  if(!DATA.length){rows.innerHTML='<tr><td colspan="10" class="msg">目前還沒有紀錄。<br>（要先在 Cloudflare 綁好 KV 並更新 Worker；之後有人用翻譯機就會出現）</td></tr>';document.getElementById("stat").textContent="共 0 筆";return;}
+  if(!DATA.length){rows.innerHTML='<tr><td colspan="12" class="msg">目前還沒有紀錄。<br>（要先在 Cloudflare 綁好 KV 並更新 Worker；之後有人用翻譯機就會出現）</td></tr>';document.getElementById("stat").textContent="共 0 筆";return;}
   DATA.sort(function(a,b){return (b.time||"").localeCompare(a.time||"");});
+  var paidCnt=0,paidCost=0;
   rows.innerHTML=DATA.map(function(r){
     var img=(r.img&&r.id)?'<a href="'+imgUrl(r.id)+'" target="_blank" rel="noopener"><img src="'+imgUrl(r.id)+'" loading="lazy" style="height:54px;border-radius:6px;border:1px solid #e7e5e4"></a>':'—';
-    return '<tr><td>'+fmtTime(r.time)+'</td><td>'+img+'</td><td>'+esc(r.lang)+'</td><td>'+esc(r.mode)+'</td>'
+    var isPaid=(r.paid==1||r.paid==="1"||r.paid===true);if(isPaid)paidCnt++;
+    var cost=parseFloat(r.cost)||0; // 這張的實際花費(美元)；免費金鑰=0
+    var realCost=isPaid?cost:0; if(isPaid)paidCost+=realCost;
+    var keyTag=isPaid?'<span class="tag" style="background:#fef3c7;color:#b45309">💳 付費</span>':'<span class="tag" style="background:#dcfce7;color:#059669">免費</span>';
+    var costCell=isPaid?('<b style="color:#b45309">'+usd(realCost)+'</b>'):'<span style="color:#a8a29e">$0</span>';
+    return '<tr><td>'+fmtTime(r.time)+'</td><td>'+keyTag+'</td><td>'+costCell+'</td><td>'+img+'</td><td>'+esc(r.lang)+'</td><td>'+esc(r.mode)+'</td>'
       +'<td><span class="tag">'+esc(r.type||"—")+'</span></td>'
       +'<td class="wrap-cell">'+esc(r.name)+'</td><td class="wrap-cell">'+esc(r.addr)+'</td>'
       +'<td class="wrap-cell">'+esc(r.traffic)+'</td><td>'+esc(r.price)+'</td><td>'+esc(r.yield)+'</td></tr>';
   }).join("");
-  document.getElementById("stat").innerHTML="共 <b>"+DATA.length+"</b> 筆";
+  document.getElementById("stat").innerHTML="共 <b>"+DATA.length+"</b> 筆　（💳 付費 <b style='color:#b45309'>"+paidCnt+"</b> 筆、免費 "+(DATA.length-paidCnt)+" 筆）　實際花費約 <b style='color:#b45309'>"+usd(paidCost)+"</b>";
 }
 function showUsage(total,cap){
   var u=document.getElementById("usage");
@@ -88,16 +95,16 @@ function load(){
   fetch(WORKER_URL+"?logs=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(j){
     DATA=(j&&j.logs)?j.logs:[];showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);render();
   }).catch(function(e){
-    document.getElementById("rows").innerHTML='<tr><td colspan="9" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（Worker 可能還沒更新，或 KV 尚未綁定）</td></tr>';
+    document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（Worker 可能還沒更新，或 KV 尚未綁定）</td></tr>';
     document.getElementById("stat").textContent="讀取失敗";
   });
 }
 function csvCell(s){s=String(s==null?"":s);return '"'+s.replace(/"/g,'""')+'"';}
 function downloadCSV(){
   if(!DATA.length){alert("目前沒有資料");return;}
-  var head=["時間","語言","模式","類型","物件名稱","地址","交通","價格","利回","原圖網址"];
+  var head=["時間","金鑰","花費(USD)","語言","模式","類型","物件名稱","地址","交通","價格","利回","原圖網址"];
   var lines=[head.map(csvCell).join(",")];
-  DATA.forEach(function(r){lines.push([fmtTime(r.time),r.lang,r.mode,r.type,r.name,r.addr,r.traffic,r.price,r.yield,(r.img&&r.id?imgUrl(r.id):"")].map(csvCell).join(","));});
+  DATA.forEach(function(r){var isPaid=(r.paid==1||r.paid==="1"||r.paid===true);var realCost=isPaid?(parseFloat(r.cost)||0):0;lines.push([fmtTime(r.time),(isPaid?"付費":"免費"),realCost.toFixed(6),r.lang,r.mode,r.type,r.name,r.addr,r.traffic,r.price,r.yield,(r.img&&r.id?imgUrl(r.id):"")].map(csvCell).join(","));});
   var blob=new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
   var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="翻譯機紀錄.csv";a.click();
   setTimeout(function(){URL.revokeObjectURL(a.href);},500);
