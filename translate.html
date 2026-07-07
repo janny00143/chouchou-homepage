@@ -285,7 +285,7 @@ async function go(){
     const proc=await processImage(file);
     // 【把關】翻譯前先做一道獨立、嚴格的判斷：不是物件販售圖面（純照片等）就直接擋，不進翻譯、不瞎掰。
     try{
-      const cj=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:CLASSIFY_PROMPT});
+      const cj=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:CLASSIFY_PROMPT,gate:1});
       if(cj&&!cj.error){
         let cc=null; try{cc=JSON.parse(String(cj.text||'').replace(/```json|```/g,'').trim());}catch(_){}
         if(cc&&cc.is_property===false){
