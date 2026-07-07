@@ -223,6 +223,17 @@ async function callWorker(body){if(OWNER)body.owner=OWNER;let last;for(let i=0;i
       return j;}catch(e){last=e;await delay(1500);}}return{error:(last&&last.message)?last.message:'伺服器忙線，請稍後再試'};}
 // 統整「大家用翻譯機看了哪些物件」→ 記到 Cloudflare(Worker+KV)，周周在 /admin/ 後台看得到。
 // 需要周周在 Cloudflare 幫 Worker 綁一個 KV(名稱 LOGS) 並更新 Worker 程式碼；沒綁好前這裡的 POST 無害。
+// 不論結果如何都記錄「這次上傳」（含原圖）——被擋的非物件圖、失敗的，周周後台也都看得到。
+function logRaw(proc,label){
+  try{
+    var p=(location.pathname.split('/').pop()||'');
+    var lang=/-cn\./.test(p)?'簡中':(/-ja\./.test(p)?'日文':'繁中');
+    var payload={log:1, paid:0, cost:0, mode:(mode==='invest'?'投資物件':'住宅物件'), lang:lang,
+      "類型":String(label||'上傳'), "物件名稱":'', "地址":'', "交通":'', "價格":'', "利回":''};
+    if(proc&&proc.data){payload.img=proc.data;payload.imgType=proc.mediaType||'image/jpeg';}
+    fetch(WORKER_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  }catch(_){}
+}
 function logUpload(o,proc,paid,cost){
   if(!o)return;
   try{
@@ -281,8 +292,9 @@ async function go(){
   if(wait>0)await delay(wait);
   times.push(Date.now());_thSet(times);
   if(typeof gtag==='function'){try{gtag('event','translate_start',{mode:mode});}catch(_){}}
+  let proc=null;
   try{
-    const proc=await processImage(file);
+    proc=await processImage(file);
     // 【把關】翻譯前先做一道獨立、嚴格的判斷：不是物件販售圖面（純照片等）就直接擋，不進翻譯、不瞎掰。
     try{
       const cj=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:CLASSIFY_PROMPT,gate:1});
@@ -290,6 +302,7 @@ async function go(){
         let cc=null; try{cc=JSON.parse(String(cj.text||'').replace(/```json|```/g,'').trim());}catch(_){}
         if(cc&&cc.is_property===false){
           if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}}
+          logRaw(proc,'🙈 非物件圖(擋下)'); // 被擋的也記進後台，含原圖
           showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（就是上面有印價格、格局、面積那種的販售圖）；房間照片、風景照、外觀照沒辦法分析～');
           return;
         }
@@ -303,7 +316,7 @@ async function go(){
       costVal=j.cost||0;   // 這張的實際花費(美元，依 token 計)
       try{o=JSON.parse(String(j.text||'').replace(/```json|```/g,'').trim());}catch(pe){throw new Error('截斷');}
       if(!o||typeof o!=='object')throw new Error('回傳格式異常，請重試');
-      if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（就是上面有印價格、格局、面積那種的販售圖）；房間照片、風景照、外觀照沒辦法分析～'); return; }
+      if(o.not_property){ if(typeof gtag==='function'){try{gtag('event','translate_notproperty');}catch(_){}} logRaw(proc,'🙈 非物件圖(擋下)'); showErr('🙈 這看起來不是「物件販售圖面」喔！請上傳日文的物件販賣資料圖（就是上面有印價格、格局、面積那種的販售圖）；房間照片、風景照、外觀照沒辦法分析～'); return; }
       // 自動判斷：若其實是另一種物件類型，切換模式重新分析一次（避免客戶選錯模式放錯回覆）
       if(!switched && (o.switch_to==='invest'||o.switch_to==='home') && o.switch_to!==mode){ mode=o.switch_to; setMode(mode); switched=true; continue; }
       break;
@@ -317,6 +330,7 @@ async function go(){
     try{console.log('[translate error]',raw);}catch(_){}
     var msg='分析失敗：'+zhErr(raw);
     if(/debug/i.test(location.search+location.hash))msg+='　〔debug｜原始錯誤：'+raw+'〕';
+    logRaw(proc,'⚠️ 分析失敗:'+String(zhErr(raw)).slice(0,20)); // 失敗的上傳也記進後台，含原圖
     showErr(msg);
   }
 }
