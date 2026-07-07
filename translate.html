@@ -35,7 +35,12 @@
 .locktip{margin-top:12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:10px;padding:10px 12px;font-size:13px;color:var(--rose-d);text-align:center;line-height:1.6}
 .locktip a{color:var(--rose-d);font-weight:700;text-decoration:underline}
 .modesel{display:flex;gap:8px;margin-bottom:4px}.modesel .mode{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 8px;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer;font-family:inherit;line-height:1.3}.modesel .mode.on{background:var(--rose);color:#fff;border-color:var(--rose)}.ycard{background:#fff1f2;border:1px solid #fecdd3;border-radius:18px;padding:20px;margin-top:14px}.ycard h3{font-size:16px;margin-bottom:10px;color:var(--rose-d)}.ygrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.ybox{background:#fff;border-radius:12px;padding:12px;text-align:center}.ybox.big{grid-column:1/-1;background:var(--rose);color:#fff}.ybox .k{font-size:12px;color:var(--mut);margin-bottom:3px}.ybox.big .k{color:#ffe4e6}.ybox .v{font-weight:700;font-size:17px}.ybox.big .v{font-size:24px}
-.fzoom{zoom:var(--fs,1.1)}.fzoom img{zoom:calc(1/var(--fs,1.1))}</style>
+.fzoom{zoom:var(--fs,1.1)}.fzoom img{zoom:calc(1/var(--fs,1.1))}
+/* 分析中動畫：旋轉圈圈＋翻轉沙漏，讓大家知道有在跑不是卡住 */
+.zzspin{width:34px;height:34px;margin:0 auto 10px;border:4px solid #fecdd3;border-top-color:var(--rose);border-radius:50%;animation:zzspin .8s linear infinite}
+@keyframes zzspin{to{transform:rotate(360deg)}}
+.zzhg{display:inline-block;animation:zzflip 1.8s ease-in-out infinite;transform-origin:center}
+@keyframes zzflip{0%,35%{transform:rotate(0)}55%,100%{transform:rotate(180deg)}}</style>
 
 <div class="wrap fzoom">
   <a class="back" href="index.html">← 回首頁</a>
@@ -262,7 +267,7 @@ function showLoad(on){
   if(!el){
     el=document.createElement('div');el.id='loadHint';
     el.style.cssText='margin-top:8px;background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:16px;text-align:center;font-size:14.5px;color:var(--rose-d);line-height:1.8';
-    el.innerHTML='⏳ 努力分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
+    el.innerHTML='<div class="zzspin"></div><span class="zzhg">⏳</span> 努力分析中，<b>請耐心等候</b>～ 結果很快就出來了！<br><span style="font-size:13px;color:var(--mut)">如果急，也可以直接私訊周周 </span><a href="'+LINE+'" target="_blank" rel="noopener" style="font-size:13px;color:var(--green-d);font-weight:700;text-decoration:underline">💬 私訊周周</a>';
     el.onclick=function(e){e.stopPropagation();}; // 避免點到提示框時觸發上傳框的「選檔案」，讓私訊連結能正常點
   }
   if(on){
