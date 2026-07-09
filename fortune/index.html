@@ -14,8 +14,11 @@
 <meta property="og:title" content="算喵｜你的紫微斗數 LINE 算命貓">
 <meta property="og:description" content="加 LINE 就能算命的療癒算命貓，用紫微斗數幫你看命盤、流年、感情與事業。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="avatar.jpg">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og-image.jpg">
 <meta property="og:locale" content="zh_TW">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%90%B1%3C/text%3E%3C/svg%3E">
 
@@ -52,6 +55,12 @@ const CONFIG = {
   personalLine:   "https://reurl.cc/EmkeMn",    // 第二入口（找我算命）
   personalLineId: "",                           // 顯示用 ID（沒有就留 ""）
   personalLineLabel: "找我算命",                 // 按鈕文字
+
+  /* ── SEO / 分析（上線後再填，沒填就自動略過）── */
+  siteUrl:      "",   // 正式網址，例：https://suanmiao.com/（填了才輸出 canonical / og:url / 結構化資料網址）
+  gaId:         "",   // Google Analytics 4 ID，例：G-XXXXXXXXXX（免費、可看流量來源）
+  googleVerify: "",   // Google Search Console 驗證碼（HTML 標記法的 content 值）
+  keywords:     "算喵,紫微斗數,線上算命,LINE 算命,紫微命盤,夫妻宮,感情算命,命定吸引類型,算命推薦",
   ig:      "",                                 // Instagram（沒有就留空字串 ""）
   fb:      "",                                 // Facebook 粉專（沒有就留 ""）
   email:   "",                                 // Email（沒有就留 ""）
@@ -66,12 +75,12 @@ const CONFIG = {
 
   /* ── 算喵會算什麼（紫微斗數為核心；price 留空字串 "" 就不顯示價格）── */
   services: [
-    { icon:"🔮", name:"紫微命盤", desc:"報上出生年月日時，算喵幫你排紫微命盤，看你的性格、天賦與這輩子的主旋律。", price:"" },
-    { icon:"💗", name:"感情・夫妻宮", desc:"你為什麼總被同一種人吸引？夫妻宮藏著你自己都說不出口的答案。", price:"" },
-    { icon:"💼", name:"事業・財運", desc:"官祿宮、財帛宮怎麼走？看你適合的方向，還有賺錢與衝刺的節奏。", price:"" },
-    { icon:"🌙", name:"流年運勢", desc:"今年的運勢重點、該衝的月份、該緩的時候，一次幫你看清楚。", price:"" },
-    { icon:"🧲", name:"命定吸引類型", desc:"測測看你命中註定會吸引、也會被吸引的，是哪一型的人。", price:"" },
-    { icon:"🐱", name:"算喵 AI 即時算", desc:"24 小時住在 LINE，即時、秒回，想到就問，越算越懂你。", price:"" }
+    { icon:"🔮", name:"我是怎樣的人？", desc:"你天生擅長什麼、地雷在哪、適合走哪條路？算喵把你的命盤講成你聽得懂的話（紫微命盤）。", price:"" },
+    { icon:"💗", name:"感情老是卡關？", desc:"為什麼總遇到同一種人、喜歡的都不對盤？感情的結，算喵幫你解開（夫妻宮）。", price:"" },
+    { icon:"💼", name:"該上班還是創業？", desc:"適合穩定領薪還是自己拚？錢怎麼賺比較順？幫你找到最適合你的方向（事業・財運）。", price:"" },
+    { icon:"🌙", name:"今年運勢如何？", desc:"今年適合衝還是先穩住？該注意哪幾個月？幫你抓對時機、少走冤枉路（流年）。", price:"" },
+    { icon:"🧲", name:"你會愛上哪一型？", desc:"你天生會吸引、也會愛上哪一種人？測完超有感，也更懂自己要什麼。", price:"" },
+    { icon:"🐱", name:"隨時想算就算", desc:"不用預約、不用等，算喵 24 小時住在 LINE，想到什麼隨時問，秒回你。", price:"" }
   ],
 
   /* ── 怎麼開始（流程）── */
@@ -483,7 +492,8 @@ const ARTICLES = [
   { id:"a1", cat:"紫微入門", emoji:"🔮", title:"紫微斗數是什麼？三分鐘看懂", ex:"用最白話的方式，帶你認識自己的命盤。",
     body:[
       "很多人一聽到「紫微斗數」就覺得很玄，其實它是一套用你的<b>出生年月日時</b>來分析人生的命理學，被稱為「<b>帝王學</b>」，在華人世界流傳很久。",
-      "算法是把你的生辰換算成農曆，再把<b>十四顆主星</b>和許多輔星，一顆一顆安進命盤的<b>十二個宮位</b>裡。排好之後，就是一張只屬於你的人生地圖。",
+      "你可以把它想成一份你天生的「<b>出廠說明書</b>」——你的個性、擅長什麼、要注意什麼、感情和金錢的慣性，都寫在裡面。",
+      "算法是把你的生辰換算成農曆，再把<b>十四顆主星</b>安進命盤的<b>十二個格子（宮位）</b>裡。你不用懂這些步驟，算喵會直接把重點翻成白話講給你聽。",
       "從這張盤，可以看出你的<b>性格、天賦、感情、事業、財運、健康、家庭</b>，還有不同年份的運勢起伏——面向非常完整，這也是紫微最迷人的地方。",
       "重點是：紫微<b>不是要你認命</b>，而是幫你看清楚自己是怎樣的人、哪些時機適合衝、哪些時候先穩住，讓你把力氣花在對的地方。",
       "想知道自己的命盤長怎樣？報上出生年月日時，加算喵 LINE 就能幫你排盤。"
@@ -498,7 +508,7 @@ const ARTICLES = [
     ]},
   { id:"a3", cat:"命盤", emoji:"🗺️", title:"紫微十二宮總覽：你的人生 12 個面向", ex:"命宮、夫妻宮、財帛宮……一次看懂每一宮。",
     body:[
-      "紫微命盤最核心的，就是<b>十二個宮位</b>，每一宮代表你人生的一個面向。先認識它們，看自己的盤就不再霧煞煞。",
+      "紫微命盤最核心的，就是<b>十二個宮位</b>。你可以把它想成人生的<b>12 個抽屜</b>，每個抽屜裝著你一個面向的事——感情放一個、錢放一個、工作放一個……先認識它們，看自己的盤就不再霧煞煞。",
       "<b>命宮</b>：你是怎樣的人，個性、天賦與人生基調，是全盤的核心。",
       "<b>兄弟宮</b>：手足、同事、合作夥伴的緣分與相處。",
       "<b>夫妻宮</b>：感情、婚姻、另一半的類型，以及你被什麼吸引。",
@@ -598,6 +608,31 @@ const OMIKUJI = [
 const C = CONFIG;
 document.documentElement.style.setProperty('--gold', C.gold);
 document.documentElement.style.setProperty('--purple', C.purple);
+
+/* ===== SEO / 分析：有填才輸出，沒填自動略過 ===== */
+(function(){
+  var head=document.head;
+  function meta(n,c,isProp){var m=document.createElement('meta');m.setAttribute(isProp?'property':'name',n);m.content=c;head.appendChild(m);}
+  if(C.keywords) meta('keywords',C.keywords);
+  if(C.googleVerify) meta('google-site-verification',C.googleVerify);
+  if(C.siteUrl){
+    var ln=document.createElement('link');ln.rel='canonical';ln.href=C.siteUrl;head.appendChild(ln);
+    meta('og:url',C.siteUrl,true);
+  }
+  // 結構化資料（Google 的信任訊號，有助於搜尋顯示）
+  var ld={"@context":"https://schema.org","@type":"ProfessionalService","name":C.brand,
+    "description":C.slogan,"image":(C.siteUrl||"")+"og-image.jpg","priceRange":"$$",
+    "areaServed":"TW","knowsAbout":["紫微斗數","命理","占卜","感情諮詢"]};
+  if(C.siteUrl) ld.url=C.siteUrl;
+  var sa=[]; if(C.line)sa.push(C.line); if(C.personalLine)sa.push(C.personalLine);
+  if(sa.length) ld.sameAs=sa;
+  var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(ld);head.appendChild(s);
+  // Google Analytics 4
+  if(C.gaId){
+    var g=document.createElement('script');g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id='+C.gaId;head.appendChild(g);
+    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',C.gaId);
+  }
+})();
 function esc(s){return s;}
 // 品牌
 document.getElementById('logo').innerHTML = C.brand.slice(0,-1)+'<span class="dot">'+C.brand.slice(-1)+'</span>';

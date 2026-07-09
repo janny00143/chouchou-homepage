@@ -108,4 +108,28 @@ GitHub → Settings → Applications 取消。
 
 ---
 
+## 五、怎麼讓 Google 找到你（SEO）
+
+網站要被 Google 收錄、帶來免費客源，做這幾步（都不難）：
+
+1. **先讓網站有一個真實網址**（用下面「怎麼上線」的方法）。Google 找不到只放在預覽連結上的網站。
+2. 打開 `index.html` 的 CONFIG，填三個欄位：
+   - `siteUrl`：你的正式網址（例如 `https://suanmiao.com/`）。
+   - `gaId`：Google Analytics 4 的 ID（`G-XXXX…`），免費，可看有多少人來、從哪來。
+   - `googleVerify`：Google Search Console 的驗證碼。
+3. 把 `robots.txt` 和 `sitemap.xml` 裡的 `YOUR-DOMAIN` 換成你的正式網址。
+4. 到 **Google Search Console** 驗證你的網站，並提交 `sitemap.xml`。
+5. 之後多在脆／IG 貼文，把網址放上去，累積越多連結，排名會慢慢往上。
+
+> 網站已內建：專屬 `title`／`description`／關鍵字、Open Graph 分享縮圖（`og-image.jpg`）、
+> 結構化資料（JSON-LD）。這些都是搜尋引擎與分享時的「信任訊號」，會自動套用。
+
+## 六、怎麼上線（免費，任選一種）
+
+- **GitHub Pages**：把這個資料夾的檔案放進一個 public repo，開啟 Pages，就有網址。
+- **Netlify / Vercel**：把資料夾直接拖上去，幾秒就有網址；要接自己的網域也很簡單。
+- 想要好記的網址（例如 `suanmiao.com`），去網域商買一個，指到上面的空間即可。
+
+---
+
 有需要我再幫你：換色系範例、多做一頁、或把預設內容直接改成客戶的正式文案，跟我說即可。
