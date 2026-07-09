@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# 上線後把下面網址換成你的正式網址
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://janny00143.github.io/suanmiao-site/sitemap.xml

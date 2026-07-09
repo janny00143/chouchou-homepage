@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 上線後把 YOUR-DOMAIN 換成你的正式網址，再到 Google Search Console 提交這個 sitemap -->
+<!-- 換自訂網域後，把下方網址改成新網域，再到 Google Search Console 重新提交 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR-DOMAIN/</loc>
+    <loc>https://janny00143.github.io/suanmiao-site/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

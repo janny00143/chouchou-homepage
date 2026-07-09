@@ -57,7 +57,7 @@ const CONFIG = {
   personalLineLabel: "找我算命",                 // 按鈕文字
 
   /* ── SEO / 分析（上線後再填，沒填就自動略過）── */
-  siteUrl:      "",   // 正式網址，例：https://suanmiao.com/（填了才輸出 canonical / og:url / 結構化資料網址）
+  siteUrl:      "https://janny00143.github.io/suanmiao-site/",   // 正式網址（換自訂網域後改這裡）
   gaId:         "",   // Google Analytics 4 ID，例：G-XXXXXXXXXX（免費、可看流量來源）
   googleVerify: "",   // Google Search Console 驗證碼（HTML 標記法的 content 值）
   keywords:     "算喵,紫微斗數,線上算命,LINE 算命,紫微命盤,夫妻宮,感情算命,命定吸引類型,算命推薦",
@@ -317,7 +317,7 @@ footer .disc{font-size:12px;margin-top:14px;color:#6f6294;max-width:600px;margin
 <header>
   <div class="wrap nav">
     <div class="logo" id="logo">算<span class="dot">喵</span></div>
-    <button class="burger" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <button class="burger" id="burger" aria-label="選單">☰</button>
     <nav class="menu" id="menu">
       <a href="#services">算喵會算</a>
       <a href="#tools">免費小測</a>
@@ -379,14 +379,14 @@ footer .disc{font-size:12px;margin-top:14px;color:#6f6294;max-width:600px;margin
     <div class="panel" id="p-tarot">
       <h3>命定吸引類型</h3>
       <div class="hint">心裡想著感情，點卡片翻開你命定會吸引的那一型</div>
-      <div class="card3d" id="tcard" onclick="drawTarot()">
+      <div class="card3d" id="tcard">
         <div class="inner">
           <div class="face back">🔮</div>
           <div class="face front"><div class="em" id="t-em">✨</div><div class="nm" id="t-nm"></div></div>
         </div>
       </div>
       <p class="tnote" id="t-note">點一下卡片，翻開你命定吸引的類型。</p>
-      <div style="margin-top:16px"><button class="btn" onclick="resetTarot()">重新測一次</button></div>
+      <div style="margin-top:16px"><button class="btn" id="t-reset">重新測一次</button></div>
     </div>
 
     <!-- 紫微十二宮 -->
@@ -394,7 +394,7 @@ footer .disc{font-size:12px;margin-top:14px;color:#6f6294;max-width:600px;margin
       <h3>紫微十二宮・今日提示</h3>
       <div class="hint">誠心想著你在意的事，抽出今天要留意的宮位</div>
       <div style="font-size:60px;margin:6px 0 16px">🔮</div>
-      <button class="btn" onclick="drawOmikuji()">抽一宮</button>
+      <button class="btn" id="o-draw">抽一宮</button>
       <div class="result" id="o-result"></div>
     </div>
   </div>
@@ -476,9 +476,9 @@ footer .disc{font-size:12px;margin-top:14px;color:#6f6294;max-width:600px;margin
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener">💬 LINE 諮詢</a>
 
 <!-- modal -->
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="modal" id="modal">
   <div class="mbox">
-    <button class="mclose" onclick="closeModal()">×</button>
+    <button class="mclose" id="m-close">×</button>
     <div class="cat" id="m-cat"></div>
     <h2 id="m-title"></h2>
     <div id="m-body"></div>
@@ -690,7 +690,7 @@ if(C.email) soc.push('<a href="mailto:'+C.email+'">Email</a>');
 document.getElementById('foot-soc').innerHTML = soc.join('');
 // 文章
 document.getElementById('art-grid').innerHTML = ARTICLES.map(a=>
-  '<div class="art" onclick="openArt(\''+a.id+'\')"><div class="top">'+a.emoji+'</div>'+
+  '<div class="art" data-id="'+a.id+'"><div class="top">'+a.emoji+'</div>'+
   '<div class="bd"><div class="cat">'+a.cat+'</div><h4>'+a.title+'</h4><div class="ex">'+a.ex+'</div></div></div>').join('');
 
 /* ===== 文章 modal ===== */
@@ -766,8 +766,17 @@ function drawOmikuji(){
   r.classList.add('show');
 }
 
+/* ===== 事件綁定（改用 addEventListener，避免 inline onclick 被 CSP 擋掉）===== */
+document.getElementById('burger').addEventListener('click',function(){document.getElementById('menu').classList.toggle('open');});
+document.getElementById('tcard').addEventListener('click',drawTarot);
+document.getElementById('t-reset').addEventListener('click',resetTarot);
+document.getElementById('o-draw').addEventListener('click',drawOmikuji);
+document.getElementById('m-close').addEventListener('click',closeModal);
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.getElementById('art-grid').addEventListener('click',function(e){var c=e.target.closest('.art');if(c&&c.dataset.id)openArt(c.dataset.id);});
+
 /* 手機點連結收合選單 */
-document.querySelectorAll('#menu a').forEach(a=>a.onclick=()=>document.getElementById('menu').classList.remove('open'));
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',function(){document.getElementById('menu').classList.remove('open');}));
 </script>
 </body>
 </html>
