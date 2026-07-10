@@ -18,6 +18,63 @@
 window.PROPERTIES = [
 
   {
+    id: "togoshi701",
+    status: "在售",
+    cat: "live",
+    title: "ジェイパーク戸越公園アーキテクト 701（品川・戶越公園 2LDK+DEN・三面採光角戶）",
+    price: "12,998万円",
+    location: "東京都品川區戶越6-19-14",
+    station: "大井町線「戶越公園」站 徒步3分／大井町線・淺草線「中延」站 徒步5分／池上線「荏原中延」站 徒步7分／橫須賀線・湘南新宿線「西大井」站 徒步9分",
+    layout: "2LDK+DEN+W",
+    size: "76.00㎡（約22.99坪）",
+    age: "築26年（2000年8月）",
+    facing: "角住戶・三面採光（10樓建的7樓）",
+    mgmt: "管理費17,330円＋修繕積立金25,300円／月",
+    right: "所有權",
+    yield: "",
+    photos: ["prop-togoshi701-1.jpg","prop-togoshi701-2.jpg","prop-togoshi701-3.jpg","prop-togoshi701-4.jpg","prop-togoshi701-5.jpg","prop-togoshi701-6.jpg"],
+    note: "2026年6月剛完成全室翻新的三面採光角戶，約16.5帖的大客廳加獨立DEN，還有兩面Roof Balcony、視野開闊。戶越公園站徒步3分、戶越銀座商店街就在生活圈，買菜吃飯都方便，可帶寵物（依管理規約）、附監視器自動鎖與宅配箱。這種地段＋格局的組合不常見，想看房加LINE我幫你安排（可貸成數依銀行審查為準）。"
+  },
+
+  {
+    id: "yotsuya115",
+    status: "在售",
+    cat: "live",
+    title: "ルート四谷三丁目 115（新宿・四谷 1LDK・南向角戶・全新翻新）",
+    price: "6,498万円",
+    location: "東京都新宿區大京町19",
+    station: "丸之內線「四谷三丁目」站 徒步7分／總武中央線「信濃町」站 徒步10分／大江戶線「國立競技場」站 徒步10分",
+    layout: "1LDK+W",
+    size: "41.40㎡（約12.52坪）",
+    age: "築27年（1999年3月）",
+    facing: "南向・角住戶",
+    mgmt: "管理費10,300円＋修繕積立金6,200円／月",
+    right: "所有權",
+    yield: "",
+    photos: ["prop-yotsuya115-1.jpg","prop-yotsuya115-2.jpg","prop-yotsuya115-3.jpg","prop-yotsuya115-4.jpg","prop-yotsuya115-5.jpg","prop-yotsuya115-6.jpg"],
+    note: "新宿區大京町、離新宿通一條巷子的閑靜住宅區，南向角戶每個房間都有開窗、通風採光好。全新翻新含大容量WIC、食洗機、浴室乾燥機，超市徒步1分。四谷三丁目生活圈兼顧便利與安靜，很適合都心自住（此戶寵物不可；大樓修繕與管理費用以最新公告為準）。想了解詳情加LINE聊聊。"
+  },
+
+  {
+    id: "kameido209",
+    status: "在售",
+    cat: "live",
+    title: "ハイネス亀戸 209（江東・龜戶 2LDK・全新翻新）",
+    price: "3,480万円",
+    location: "東京都江東區龜戶7-39-26",
+    station: "總武中央線・東武龜戶線「龜戶」站 徒步13分／都營新宿線「大島」站 徒步14分",
+    layout: "2LDK+W",
+    size: "49.61㎡（約15.01坪）",
+    age: "築47年（1979年9月）",
+    facing: "",
+    mgmt: "管理費12,200円＋修繕積立金7,340円／月",
+    right: "所有權",
+    yield: "",
+    photos: ["prop-kameido209-1.jpg","prop-kameido209-2.jpg","prop-kameido209-3.jpg","prop-kameido209-4.jpg","prop-kameido209-5.jpg","prop-kameido209-6.jpg"],
+    note: "3千萬円出頭就能入手的東京2LDK翻新宅：北歐風木質內裝、對面式廚房加新設WIC，食洗機、浴室乾燥、追焚都有。OK超市徒步1分，龜戶中央公園等綠地就在附近。屋齡雖較長，但修繕紀錄扎實、內裝全面換新（此戶寵物不可）。預算有限又想在東京買自住房的話，這戶很值得看，加LINE我帶你評估（可貸成數依銀行審查為準）。"
+  },
+
+  {
     id: "suginami308",
     status: "在售",
     cat: "live",
