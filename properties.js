@@ -181,7 +181,7 @@ window.PROPERTIES = [
     age: "築55年（1971年）",
     facing: "", mgmt: "管理費20,400円＋修繕積立金28,200円／月", right: "所有權",
     yield: "表面6.42%（現況出租中）",
-    photos: [],
+    photos: ["prop-koenji102-1.jpg","prop-koenji102-2.jpg"],
     note: "青梅街道旁的1樓路面店、3站3線，現況出租中（附租約），表面利回6.42%。表面利回是未扣稅費、管理費前的毛數字，實際到手依租況與費用而定，投資有風險、不保證報酬。想看租約與收支明細，加LINE我幫你確認。"
   },
   {
@@ -195,7 +195,7 @@ window.PROPERTIES = [
     age: "築37年（1989年）",
     facing: "", mgmt: "管理費8,600円＋修繕積立金5,800円／月", right: "所有權",
     yield: "表面4.87%（現況出租中）",
-    photos: [],
+    photos: ["prop-kagurazaka101-1.jpg","prop-kagurazaka101-2.jpg"],
     note: "神樂坂區域、可做餐飲的店舗，現況出租中，表面利回4.87%。表面利回未扣費用，實際依租況而定、不保證報酬。想了解租約與周邊行情，加LINE我幫你評估。"
   },
   {
@@ -209,7 +209,7 @@ window.PROPERTIES = [
     age: "築44年（1982年）",
     facing: "", mgmt: "管理費11,320円＋修繕積立金16,980円／月（兩戶合計）", right: "所有權",
     yield: "表面6.04%（現況出租中）",
-    photos: [],
+    photos: ["prop-kitasenju106-1.jpg","prop-kitasenju106-2.jpg"],
     note: "北千住徒步7分的1樓路面店（兩戶一起賣），2015年起長期出租中（照護事業承租），表面利回6.04%。表面利回未扣費用、依租況而定、不保證報酬。想看租約細節加LINE。"
   },
   {
@@ -223,7 +223,7 @@ window.PROPERTIES = [
     age: "築41年（1985年）",
     facing: "", mgmt: "管理費10,400円＋修繕積立金18,480円／月", right: "所有權",
     yield: "表面7.02%（現況出租中）",
-    photos: [],
+    photos: ["prop-nishiarai101-1.jpg","prop-nishiarai101-2.jpg"],
     note: "巴士通旁的1樓路面店，現況出租中（照護事務所承租），此案表面利回較高、7.02%。表面利回未扣費用、依租況而定、不保證報酬；想看租約與收支加LINE。"
   },
   {
@@ -237,7 +237,7 @@ window.PROPERTIES = [
     age: "築25年（2001年）",
     facing: "", mgmt: "管理費7,500円＋修繕積立金11,830円／月", right: "所有權",
     yield: "表面5.40%（現況出租中）",
-    photos: [],
+    photos: ["prop-asakusa104-1.jpg","prop-asakusa104-2.jpg"],
     note: "緊鄰「淺草花屋敷」的觀光地1樓路面店，人潮多、可輕餐飲，現況出租中（皮件販售承租），表面利回5.40%。表面利回未扣費用、依租況而定、不保證報酬。想看租約加LINE。"
   },
   {
@@ -251,7 +251,7 @@ window.PROPERTIES = [
     age: "築31年（1995年）",
     facing: "", mgmt: "管理費9,900円＋修繕積立金8,530円／月", right: "所有權",
     yield: "表面5.41%／實質4.59%（現況出租中）",
-    photos: [],
+    photos: ["prop-okachimachi101-1.jpg","prop-okachimachi101-2.jpg"],
     note: "御徒町珠寶批發街、阿美橫町徒步圈的1樓路面店，現況出租中，表面利回5.41%（實質約4.59%）。表面利回未扣費用、依租況而定、不保證報酬。想看租約與費用明細加LINE。"
   },
   {
@@ -265,7 +265,7 @@ window.PROPERTIES = [
     age: "築42年（1984年）",
     facing: "", mgmt: "管理費28,200円＋修繕積立金29,400円／月", right: "所有權",
     yield: "表面6.00%（現況出租中）",
-    photos: [],
+    photos: ["prop-sendaizaka201-1.jpg","prop-sendaizaka201-2.jpg"],
     note: "再開發中的大井町、3線可用，店舗事務所可併用，現況出租中，表面利回6.00%。新耐震標準。表面利回未扣費用、依租況而定、不保證報酬。想看租約細節加LINE。"
   },
   {
@@ -279,7 +279,7 @@ window.PROPERTIES = [
     age: "築40年（1986年・新耐震）",
     facing: "", mgmt: "管理費53,000円＋修繕積立金108,030円／月", right: "所有權",
     yield: "表面7.30%（現況出租中）",
-    photos: [],
+    photos: ["prop-honancho101-1.jpg","prop-honancho101-2.jpg"],
     note: "方南通旁、大面寬玻璃帷幕的1樓大型店舗事務所（約100坪），現況出租中，表面利回7.30%。表面利回未扣費用、依租況而定、不保證報酬。大型收益物件，想看租約與收支加LINE我幫你把關。"
   },
   {
@@ -293,7 +293,7 @@ window.PROPERTIES = [
     age: "築40年（1986年）",
     facing: "", mgmt: "管理費39,000円＋修繕積立金48,590円／月", right: "所有權",
     yield: "表面5.29%（2026年8月起約5.65%・現況出租中）",
-    photos: [],
+    photos: ["prop-toyocho102-1.jpg","prop-toyocho102-2.jpg"],
     note: "永代通旁的大型1樓店舗，現況出租中（認可幼兒園承租），表面利回5.29%，2026年8月起租金調升後約5.65%。表面利回未扣費用、依租況而定、不保證報酬。想看租約加LINE。"
   },
   {
@@ -307,7 +307,7 @@ window.PROPERTIES = [
     age: "築44年（1982年）",
     facing: "", mgmt: "管理費8,710円＋修繕積立金9,045円／月", right: "所有權",
     yield: "想定表面5.02%（現況空室）",
-    photos: [],
+    photos: ["prop-shinjuku101-1.jpg","prop-shinjuku101-2.jpg","prop-shinjuku101-3.jpg"],
     note: "東新宿徒步4分的1樓路面店，可重餐飲，現況空室，投資出租或自己使用都可以，想定表面利回5.02%。想定利回為假設出租下的毛數字、不保證實現。想看現場或談用途加LINE。"
   }
 
