@@ -77,18 +77,42 @@ footer{background:#1c1917;color:#d6d3d1;margin-top:44px;padding:30px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;font-size:13px}
 footer a{color:#d6d3d1;text-decoration:none}
 @media(max-width:600px){.hero h1{font-size:24px}.hnav .hide-sm{display:none}.card .ph{height:170px}}
-/* 照片相簿（燈箱） */
-.card .ph.multi{cursor:pointer}
+/* 精簡卡片：只顯示 名稱＋價格＋車站，整張可點開詳細 */
+.card{cursor:pointer}
 .card .ph .cnt{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
-.lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:20px}
-.lb.on{display:flex}
-.lb img{max-width:94vw;max-height:82vh;object-fit:contain;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
-.lb .cap{position:absolute;bottom:20px;left:0;right:0;color:#fff;font-size:14px;text-align:center;padding:0 16px;text-shadow:0 1px 3px rgba(0,0,0,.8)}
-.lb .x{position:absolute;top:14px;right:18px;color:#fff;font-size:30px;font-weight:700;cursor:pointer;line-height:1;background:none;border:none;font-family:inherit}
-.lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:44px;cursor:pointer;background:none;border:none;padding:10px 16px;line-height:1;font-family:inherit}
-.lb .nav.prev{left:1vw}.lb .nav.next{right:1vw}
-.lb .nav:hover,.lb .x:hover{opacity:.7}
-@media(max-width:600px){.lb .nav{font-size:32px;padding:8px 10px}}
+.card .body{padding:15px 16px 17px;gap:3px}
+.card h3{min-height:2.7em;font-size:16px}
+.card .price{margin:6px 0 8px}
+.card .station{font-size:12.8px;color:var(--mut);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.5}
+.card .station b{font-weight:500;color:#a8a29e;margin-right:5px}
+/* 詳細視窗 */
+.detail{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.62);display:none;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto}
+.detail.on{display:flex}
+.dbox{background:#fff;border-radius:18px;max-width:940px;width:100%;margin:auto;display:flex;flex-wrap:wrap;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+.dx{position:absolute;top:10px;right:12px;z-index:6;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:none;font-size:22px;cursor:pointer;line-height:1;font-family:inherit}
+.dx:hover{background:rgba(0,0,0,.8)}
+.dgal{flex:1 1 440px;min-width:0;background:#f5f5f4}
+.dmain{position:relative;height:360px;background:#1c1917;display:flex;align-items:center;justify-content:center}
+.dmain img{max-width:100%;max-height:100%;object-fit:contain}
+.dmain .dnav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.42);color:#fff;border:none;font-size:28px;cursor:pointer;padding:8px 13px;line-height:1;font-family:inherit;border-radius:10px}
+.dmain .dnav:hover{background:rgba(0,0,0,.7)}
+.dmain .dnav.prev{left:10px}.dmain .dnav.next{right:10px}
+.dmain .dcnt{position:absolute;bottom:9px;right:11px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:2px 9px;border-radius:999px}
+.dthumbs{display:flex;gap:6px;padding:8px 10px;overflow-x:auto}
+.dthumbs img{width:58px;height:44px;object-fit:cover;border-radius:6px;cursor:pointer;opacity:.5;flex-shrink:0;border:2px solid transparent}
+.dthumbs img.on{opacity:1;border-color:var(--rose)}
+.dinfo{flex:1 1 330px;min-width:0;padding:22px 24px 24px;display:flex;flex-direction:column}
+.dinfo h2{font-size:19px;font-weight:700;line-height:1.4;padding-right:28px}
+.dbadges{display:flex;gap:8px;margin:10px 0 4px}
+.dbadges span{font-size:12px;font-weight:700;padding:3px 11px;border-radius:999px}
+.dbadges .db{color:#fff;background:var(--green)}.dbadges .db.s2{background:#f59e0b}.dbadges .db.s3{background:#9ca3af}
+.dbadges .dt{background:#fff1f2;color:var(--rose-d)}
+.dinfo .dprice{font-size:26px;font-weight:900;color:var(--rose-d);margin:8px 0 12px}
+.dinfo .spec{border-top:1px dashed var(--line);padding-top:12px}
+.dinfo .ask{margin-top:18px;text-align:center;display:block;background:var(--green);color:#fff;font-weight:700;padding:13px;border-radius:999px;text-decoration:none;font-size:15px}
+.dinfo .ask:hover{background:var(--green-d)}
+body.noscroll{overflow:hidden}
+@media(max-width:640px){.dmain{height:250px}.dgal{flex-basis:100%}.dinfo{flex-basis:100%}.dinfo h2{font-size:17px}}
 </style>
 </head>
 <body>
@@ -156,6 +180,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   var conv=function(s){return s;};
   function C(s){return esc(conv(s==null?"":String(s)));}
 
+  // 卡片：只顯示 封面＋名稱＋價格＋車站，整張點開看詳細
   function card(p,i){
     var multi=p.photos&&p.photos.length>1;
     var photo=(p.photos&&p.photos.length)
@@ -164,26 +189,13 @@ footer a{color:#d6d3d1;text-decoration:none}
     var st=conv(p.status||"在售");
     var badge='<span class="badge '+(SCLS[st]||SCLS[p.status]||"")+'">'+esc(st)+'</span>';
     var tag=CAT[p.cat]?'<span class="tag">'+CAT[p.cat]+'</span>':"";
-    var spec="";
-    function row(l,v){return v?'<li><b>'+l+'</b><span>'+C(v)+'</span></li>':"";}
-    spec+=row("地點",p.location);
-    spec+=row("車站",p.station);
-    spec+=row("格局",p.layout);
-    spec+=row("面積",p.size);
-    spec+=row("屋齡",p.age);
-    spec+=row("朝向",p.facing);
-    spec+=row("管理",p.mgmt);
-    spec+=row("權利",p.right);
-    spec+=row("投報",p.yield);
-    var note=p.note?'<div class="note">💬 '+C(p.note)+'</div>':"";
-    return '<article class="card">'
-      +'<div class="ph'+(multi?' multi':'')+'" data-i="'+i+'">'+photo+badge+tag+'</div>'
+    var station=p.station?'<div class="station"><b>🚉</b>'+C(p.station)+'</div>':"";
+    return '<article class="card" data-i="'+i+'">'
+      +'<div class="ph">'+photo+badge+tag+'</div>'
       +'<div class="body">'
       +'<h3>'+C(p.title)+'</h3>'
       +'<div class="price">'+C(p.price||"價格請洽詢")+'</div>'
-      +'<ul class="spec">'+spec+'</ul>'
-      +note
-      +'<a class="ask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 詢問這間</a>'
+      +station
       +'</div></article>';
   }
 
@@ -202,32 +214,60 @@ footer a{color:#d6d3d1;text-decoration:none}
     grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
   }
 
-  // 照片相簿（燈箱）：點卡片封面可滑看該物件全部照片
-  var lb=null,lbImg,lbCap,lbPhotos=[],lbI=0,lbTitle="";
-  function buildLB(){
-    lb=document.createElement("div"); lb.className="lb";
-    lb.innerHTML='<button class="x" aria-label="關閉">×</button>'
-      +'<button class="nav prev" aria-label="上一張">‹</button>'
-      +'<img alt=""><div class="cap"></div>'
-      +'<button class="nav next" aria-label="下一張">›</button>';
-    document.body.appendChild(lb);
-    lbImg=lb.querySelector("img"); lbCap=lb.querySelector(".cap");
-    lb.querySelector(".x").onclick=closeLB;
-    lb.querySelector(".prev").onclick=function(e){e.stopPropagation();stepLB(-1);};
-    lb.querySelector(".next").onclick=function(e){e.stopPropagation();stepLB(1);};
-    lb.onclick=function(e){ if(e.target===lb)closeLB(); };
+  // 詳細視窗：點卡片開啟，含大圖相簿（上一張/下一張＋縮圖）＋完整規格＋周周推薦＋加LINE
+  var dt=null,dImg,dCnt,dThumbs,dInfo,dPhotos=[],dI=0;
+  function buildDetail(){
+    dt=document.createElement("div"); dt.className="detail";
+    dt.innerHTML='<div class="dbox">'
+      +'<button class="dx" aria-label="關閉">×</button>'
+      +'<div class="dgal"><div class="dmain"><img alt=""><button class="dnav prev" aria-label="上一張">‹</button><button class="dnav next" aria-label="下一張">›</button><span class="dcnt"></span></div><div class="dthumbs"></div></div>'
+      +'<div class="dinfo"></div>'
+      +'</div>';
+    document.body.appendChild(dt);
+    dImg=dt.querySelector(".dmain img"); dCnt=dt.querySelector(".dcnt"); dThumbs=dt.querySelector(".dthumbs"); dInfo=dt.querySelector(".dinfo");
+    dt.querySelector(".dx").onclick=closeDetail;
+    dt.querySelector(".dnav.prev").onclick=function(e){e.stopPropagation();stepD(-1);};
+    dt.querySelector(".dnav.next").onclick=function(e){e.stopPropagation();stepD(1);};
+    dThumbs.addEventListener("click",function(e){var t=e.target.closest("img[data-i]"); if(t){dI=+t.getAttribute("data-i");showD();}});
+    dt.onclick=function(e){ if(e.target===dt)closeDetail(); };
     document.addEventListener("keydown",function(e){
-      if(!lb||!lb.classList.contains("on"))return;
-      if(e.key==="Escape")closeLB(); else if(e.key==="ArrowLeft")stepLB(-1); else if(e.key==="ArrowRight")stepLB(1);
+      if(!dt||!dt.classList.contains("on"))return;
+      if(e.key==="Escape")closeDetail(); else if(e.key==="ArrowLeft")stepD(-1); else if(e.key==="ArrowRight")stepD(1);
     });
   }
-  function showLB(){ lbImg.src=lbPhotos[lbI]; lbCap.textContent=(lbTitle?lbTitle+"　":"")+"（"+(lbI+1)+" / "+lbPhotos.length+" 張）"; }
-  function stepLB(d){ lbI=(lbI+d+lbPhotos.length)%lbPhotos.length; showLB(); }
-  function closeLB(){ if(lb)lb.classList.remove("on"); }
+  function showD(){
+    dImg.src=dPhotos[dI]||""; dCnt.textContent=(dI+1)+" / "+dPhotos.length;
+    Array.prototype.forEach.call(dThumbs.children,function(t,idx){t.classList.toggle("on",idx===dI);});
+    var at=dThumbs.children[dI]; if(at&&at.scrollIntoView)at.scrollIntoView({inline:"nearest",block:"nearest"});
+  }
+  function stepD(d){ if(!dPhotos.length)return; dI=(dI+d+dPhotos.length)%dPhotos.length; showD(); }
+  function closeDetail(){ if(dt){dt.classList.remove("on");document.body.classList.remove("noscroll");} }
+  function openDetail(p){
+    if(!dt)buildDetail();
+    dPhotos=(p.photos&&p.photos.length)?p.photos.slice():[];
+    var gal=dt.querySelector(".dgal"), hasMulti=dPhotos.length>1;
+    if(dPhotos.length){
+      gal.style.display="";
+      dThumbs.innerHTML=dPhotos.map(function(src,idx){return '<img src="'+esc(src)+'" data-i="'+idx+'" alt="">';}).join("");
+      dThumbs.style.display=hasMulti?"":"none";
+      dt.querySelector(".dnav.prev").style.display=hasMulti?"":"none";
+      dt.querySelector(".dnav.next").style.display=hasMulti?"":"none";
+      dCnt.style.display=hasMulti?"":"none";
+      dI=0; showD();
+    } else { gal.style.display="none"; }
+    var st=conv(p.status||"在售");
+    var badges='<div class="dbadges"><span class="db '+(SCLS[st]||SCLS[p.status]||"")+'">'+esc(st)+'</span>'+(CAT[p.cat]?'<span class="dt">'+CAT[p.cat]+'</span>':"")+'</div>';
+    function row(l,v){return v?'<li><b>'+l+'</b><span>'+C(v)+'</span></li>':"";}
+    var spec='<ul class="spec">'+row("地點",p.location)+row("車站",p.station)+row("格局",p.layout)+row("面積",p.size)
+      +row("屋齡",p.age)+row("朝向",p.facing)+row("管理",p.mgmt)+row("權利",p.right)+row("投報",p.yield)+'</ul>';
+    var note=p.note?'<div class="note">💬 '+C(p.note)+'</div>':"";
+    dInfo.innerHTML='<h2>'+C(p.title)+'</h2>'+badges+'<div class="dprice">'+C(p.price||"價格請洽詢")+'</div>'
+      +spec+note+'<a class="ask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 詢問這間</a>';
+    dt.classList.add("on"); document.body.classList.add("noscroll"); dt.scrollTop=0;
+  }
   grid.addEventListener("click",function(e){
-    var ph=e.target.closest&&e.target.closest(".ph.multi"); if(!ph)return;
-    var p=shown[+ph.getAttribute("data-i")];
-    if(p&&p.photos&&p.photos.length){ if(!lb)buildLB(); lbPhotos=p.photos.slice(); lbI=0; lbTitle=conv(p.title); showLB(); lb.classList.add("on"); }
+    var c=e.target.closest&&e.target.closest(".card"); if(!c)return;
+    var p=shown[+c.getAttribute("data-i")]; if(p)openDetail(p);
   });
 
   document.getElementById("tabs").addEventListener("click",function(e){
