@@ -94,7 +94,7 @@ ${STYLE.replace(/font-family:'Noto Sans TC'/g, "font-family:'Noto Sans JP'")}
 </head>
 <body>
 <div id="rp"></div>
-<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本の不動産</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div></div>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.png" alt="" style="height:28px;width:auto;display:block">周周・日本の不動産</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div></div>
 <main class="wrap" style="max-width:760px;padding-top:18px">
 <a class="back" href="ja.html">← ホームに戻る</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="ja.html" style="color:var(--mut)">ホーム</a> › ${catName}</p>

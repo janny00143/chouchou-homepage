@@ -195,7 +195,7 @@ ${STYLE}`;
 
 const body = `<header>
   <div class="wrap hd">
-    <a class="logo" href="#" onclick="show('home');return false"><span class="mark">周</span><span id="brand">${JA_UI.brand}</span></a>
+    <a class="logo" href="#" onclick="show('home');return false"><img class="logo-emblem" src="logo-mark.png" alt="${JA_UI.brand}"><span id="brand">${JA_UI.brand}</span></a>
     <nav class="main" id="mainnav"></nav>
     <div class="hd-right"><a class="btn btn-line" id="lineTop" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a><button class="burger" onclick="document.getElementById('mnav').style.display=document.getElementById('mnav').style.display==='block'?'none':'block'">☰</button></div>
   </div>
