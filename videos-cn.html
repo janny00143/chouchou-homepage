@@ -48,7 +48,7 @@ html[data-theme="dark"] .sbar{background:#1c1917}
 </div>
 <script>
 // 要新增影片：把 YouTube 影片 ID 加进这个阵列即可（网址 youtube.com/watch?v=XXXX 或 shorts/XXXX 的 XXXX）
-const VIDEOS=["IVBNhY7N0Ac","z3fE68ir-6E","hTtulzKgjzM","fAizcxutacY","8fY3ioHl8a0","FIK0Ol9uEXc","-8bCGb_-WiM"];
+const VIDEOS=["bQGr-Cm3Umw","PPI5b5W-l4k","IVBNhY7N0Ac","z3fE68ir-6E","hTtulzKgjzM","fAizcxutacY","8fY3ioHl8a0","FIK0Ol9uEXc","-8bCGb_-WiM"];
 function scrollVids(d){var el=document.getElementById('vidwall');el.scrollBy({left:d*el.clientWidth*0.85,behavior:'smooth'});}
 var w=document.getElementById('vidwall');
 w.innerHTML=VIDEOS.length?VIDEOS.map(function(id){return '<div class="vw"><div class="ytf" data-id="'+id+'"><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg\'" alt="影片缩图" loading="lazy"><span class="pbtn">▶</span></div></div>';}).join(''):'<div class="empty">影片陆续上架中，先到 YouTube 频道看看吧！</div>';
