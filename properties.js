@@ -9,8 +9,8 @@
 
    ▍欄位
      id / status(在售·洽談中·已成約) / cat(invest投資收租·live自住·house一戶建·land土地)
-     title / price / location / station / layout / size / age / facing / mgmt / right
-     yield(投資物件才填) / photos([...]) / note(周周的一句話推薦)
+     title(日文物件名) / title_cn(中文譯名，一覽頁顯示這個) / price / location / station
+     layout / size / age / facing / mgmt / right / yield(投資才填) / photos([...]) / note(周周推薦)
 
    ▍最省事：用「物件登錄小工具」後台 chouchouinjapan.com/admin/ 貼資料自動辨識、產生這個檔。
    ============================================================ */
@@ -177,9 +177,10 @@ window.PROPERTIES = [
     note: "這幾間裡屋齡最新（2018年）的2LDK，總戶數少、管理單純，可帶貓狗（共2隻）。位於山手線圈內、鶯谷站徒步6分，離上野很近。格局方正、屋況新，適合想要新一點的自住買家。想看房或評估貸款，加LINE我幫你安排（可貸條件依個案、依銀行審查為準）。"
   },
 
-  /* ===== 以下為投資（收益）物件：1樓店舗/事務所，現況多為出租中 ===== */
   {
-    id: "kameido2", status: "在售", cat: "invest",
+    id: "kameido2",
+    status: "在售",
+    cat: "invest",
     title: "（仮称）亀戸2丁目 新築マンション（一棟）",
     title_cn: "龜戶2丁目 新築整棟收益公寓",
     price: "4億4,000万円",
@@ -188,160 +189,51 @@ window.PROPERTIES = [
     layout: "整棟7層（3～7F 1LDK×5戶＋1F・2F 店舗×2）",
     size: "土地66.26㎡（約20.04坪）／延床335.61㎡（約101.52坪）",
     age: "2026年6月完工（新築）",
-    facing: "", mgmt: "", right: "土地・建物 所有權",
+    facing: "",
+    mgmt: "",
+    right: "土地・建物 所有權",
     yield: "表面約4.61%（滿租試算・年租金約2,028万円）",
     photos: ["prop-kameido2-1.jpg","prop-kameido2-2.jpg","prop-kameido2-3.jpg"],
     note: "蔵前橋通旁、龜戶天神商圈的新築整棟收益物件（RC造7層）：1～2樓店舗＋3～7樓1LDK共7戶，2026年6月完工，附電梯、自動鎖、宅配箱。表面利回約4.61%為滿租試算、未扣稅費與空置，實際到手依租況與費用而定、不保證報酬。整棟持有、土地建物皆所有權，適合想要一整棟收益宅的買家（第一張為建築完工示意圖）。要詳細租金表、收支與貸款試算，加LINE我幫你把關（可貸成數依銀行審查為準）。"
   },
-  {
-    id: "koenji102", status: "在售", cat: "invest",
-    title: "シャンボール新高円寺 102",
-    title_cn: "Chambord 新高圓寺 102",
-    price: "3,080万円",
-    location: "東京都杉並區高圓寺南2-1-4",
-    station: "東京Metro丸之內線「東高圓寺」站 徒步5分／「新高圓寺」站 徒步6分",
-    layout: "店舗（1樓路面店）",
-    size: "64.83㎡（登記）",
-    age: "築55年（1971年）",
-    facing: "", mgmt: "管理費20,400円＋修繕積立金28,200円／月", right: "所有權",
-    yield: "表面6.42%（現況出租中）",
-    photos: ["prop-koenji102-1.jpg","prop-koenji102-2.jpg"],
-    note: "青梅街道旁的1樓路面店、3站3線，現況出租中（附租約），表面利回6.42%。表面利回是未扣稅費、管理費前的毛數字，實際到手依租況與費用而定，投資有風險、不保證報酬。想看租約與收支明細，加LINE我幫你確認。"
-  },
-  {
-    id: "kagurazaka101", status: "在售", cat: "invest",
-    title: "ウィンコート神楽坂 B-101",
-    title_cn: "Wincourt 神樂坂 B-101",
-    price: "3,080万円",
-    location: "東京都新宿區南山伏町3-5",
-    station: "都營大江戶線「牛込柳町」站 徒步5分／「牛込神樂坂」站 徒步6分",
-    layout: "店舗・事務所（地下1樓）",
-    size: "30.61㎡（登記）",
-    age: "築37年（1989年）",
-    facing: "", mgmt: "管理費8,600円＋修繕積立金5,800円／月", right: "所有權",
-    yield: "表面4.87%（現況出租中）",
-    photos: ["prop-kagurazaka101-1.jpg","prop-kagurazaka101-2.jpg"],
-    note: "神樂坂區域、可做餐飲的店舗，現況出租中，表面利回4.87%。表面利回未扣費用，實際依租況而定、不保證報酬。想了解租約與周邊行情，加LINE我幫你評估。"
-  },
-  {
-    id: "kitasenju106", status: "在售", cat: "invest",
-    title: "北千住第三ダイヤモンドマンション 106・107",
-    title_cn: "北千住第三 Diamond Mansion 106・107",
-    price: "2,780万円",
-    location: "東京都足立區日之出町39-13",
-    station: "JR常磐線「北千住」站 徒步7分",
-    layout: "店舗（106・107 兩戶一併）",
-    size: "46.18㎡（合計・登記）",
-    age: "築44年（1982年）",
-    facing: "", mgmt: "管理費11,320円＋修繕積立金16,980円／月（兩戶合計）", right: "所有權",
-    yield: "表面6.04%（現況出租中）",
-    photos: ["prop-kitasenju106-1.jpg","prop-kitasenju106-2.jpg"],
-    note: "北千住徒步7分的1樓路面店（兩戶一起賣），2015年起長期出租中（照護事業承租），表面利回6.04%。表面利回未扣費用、依租況而定、不保證報酬。想看租約細節加LINE。"
-  },
-  {
-    id: "nishiarai101", status: "在售", cat: "invest",
-    title: "セントラルマンション西新井 101",
-    title_cn: "Central Mansion 西新井 101",
-    price: "2,350万円",
-    location: "東京都足立區西新井本町2-8-14",
-    station: "日暮里舍人線「江北」站 徒步6分／東武大師線「大師前」站 徒步10分",
-    layout: "店舗（1樓路面店）",
-    size: "55.39㎡（登記）",
-    age: "築41年（1985年）",
-    facing: "", mgmt: "管理費10,400円＋修繕積立金18,480円／月", right: "所有權",
-    yield: "表面7.02%（現況出租中）",
-    photos: ["prop-nishiarai101-1.jpg","prop-nishiarai101-2.jpg"],
-    note: "巴士通旁的1樓路面店，現況出租中（照護事務所承租），此案表面利回較高、7.02%。表面利回未扣費用、依租況而定、不保證報酬；想看租約與收支加LINE。"
-  },
-  {
-    id: "asakusa104", status: "在售", cat: "invest",
-    title: "ドムール浅草 II 104",
-    title_cn: "Demeure 淺草 II 104",
-    price: "6,880万円",
-    location: "東京都台東區淺草2-16-7",
-    station: "筑波快線「淺草」站 徒步3分／東武伊勢崎線「淺草」站 徒步10分",
-    layout: "店舗（1樓路面店）",
-    size: "38.39㎡（登記）",
-    age: "築25年（2001年）",
-    facing: "", mgmt: "管理費7,500円＋修繕積立金11,830円／月", right: "所有權",
-    yield: "表面5.40%（現況出租中）",
-    photos: ["prop-asakusa104-1.jpg","prop-asakusa104-2.jpg"],
-    note: "緊鄰「淺草花屋敷」的觀光地1樓路面店，人潮多、可輕餐飲，現況出租中（皮件販售承租），表面利回5.40%。表面利回未扣費用、依租況而定、不保證報酬。想看租約加LINE。"
-  },
-  {
-    id: "okachimachi101", status: "在售", cat: "invest",
-    title: "ダイアパレス御徒町 V 101",
-    title_cn: "Dia Palace 御徒町 V 101",
-    price: "8,780万円",
-    location: "東京都台東區台東3-17-1",
-    station: "東京Metro日比谷線「仲御徒町」站 徒步3分／JR「御徒町」站 徒步7分",
-    layout: "店舗（1樓路面店）",
-    size: "36.16㎡（登記）",
-    age: "築31年（1995年）",
-    facing: "", mgmt: "管理費9,900円＋修繕積立金8,530円／月", right: "所有權",
-    yield: "表面5.41%／實質4.59%（現況出租中）",
-    photos: ["prop-okachimachi101-1.jpg","prop-okachimachi101-2.jpg"],
-    note: "御徒町珠寶批發街、阿美橫町徒步圈的1樓路面店，現況出租中，表面利回5.41%（實質約4.59%）。表面利回未扣費用、依租況而定、不保證報酬。想看租約與費用明細加LINE。"
-  },
-  {
-    id: "sendaizaka201", status: "在售", cat: "invest",
-    title: "ソレール仙台坂 201・202",
-    title_cn: "Soleil 仙台坂 201・202",
-    price: "1億2,300万円",
-    location: "東京都品川區東大井5-26-26",
-    station: "京急本線「青物橫丁」站 徒步7分／JR・東急・臨海線「大井町」站 徒步6分",
-    layout: "店舗・事務所（201・202 兩戶）",
-    size: "150.07㎡（合計・登記）",
-    age: "築42年（1984年）",
-    facing: "", mgmt: "管理費28,200円＋修繕積立金29,400円／月", right: "所有權",
-    yield: "表面6.00%（現況出租中）",
-    photos: ["prop-sendaizaka201-1.jpg","prop-sendaizaka201-2.jpg"],
-    note: "再開發中的大井町、3線可用，店舗事務所可併用，現況出租中，表面利回6.00%。新耐震標準。表面利回未扣費用、依租況而定、不保證報酬。想看租約細節加LINE。"
-  },
-  {
-    id: "honancho101", status: "在售", cat: "invest",
-    title: "エヴェナール方南町 101",
-    title_cn: "Evenard 方南町 101",
-    price: "2億9,800万円",
-    location: "東京都杉並區堀之內1-10-5",
-    station: "東京Metro丸之內線「方南町」站 徒步7分（直達新宿11分）",
-    layout: "店舗・事務所（1樓・約100坪）",
-    size: "331.86㎡（公簿・約100.38坪）",
-    age: "築40年（1986年・新耐震）",
-    facing: "", mgmt: "管理費53,000円＋修繕積立金108,030円／月", right: "所有權",
-    yield: "表面7.30%（現況出租中）",
-    photos: ["prop-honancho101-1.jpg","prop-honancho101-2.jpg"],
-    note: "方南通旁、大面寬玻璃帷幕的1樓大型店舗事務所（約100坪），現況出租中，表面利回7.30%。表面利回未扣費用、依租況而定、不保證報酬。大型收益物件，想看租約與收支加LINE我幫你把關。"
-  },
-  {
-    id: "toyocho102", status: "在售", cat: "invest",
-    title: "ライオンズマンション東陽町第3 -102",
-    title_cn: "Lions Mansion 東陽町第3 102",
-    price: "2億9,900万円",
-    location: "東京都江東區南砂2-2-11",
-    station: "東京Metro東西線「東陽町」站 徒步6分／「南砂町」站 徒步7分",
-    layout: "店舗（1樓・約94坪）",
-    size: "311.76㎡（公簿・約94.30坪）",
-    age: "築40年（1986年）",
-    facing: "", mgmt: "管理費39,000円＋修繕積立金48,590円／月", right: "所有權",
-    yield: "表面5.29%（2026年8月起約5.65%・現況出租中）",
-    photos: ["prop-toyocho102-1.jpg","prop-toyocho102-2.jpg"],
-    note: "永代通旁的大型1樓店舗，現況出租中（認可幼兒園承租），表面利回5.29%，2026年8月起租金調升後約5.65%。表面利回未扣費用、依租況而定、不保證報酬。想看租約加LINE。"
-  },
-  {
-    id: "shinjuku101", status: "在售", cat: "invest",
-    title: "フォルム新宿 101",
-    title_cn: "Forme 新宿 101",
-    price: "3,680万円",
-    location: "東京都新宿區新宿7-12-5",
-    station: "東京Metro副都心線・都營大江戶線「東新宿」站 徒步4分",
-    layout: "店舗・事務所（1樓路面店）",
-    size: "20.17㎡（含地下室約3.9㎡）",
-    age: "築44年（1982年）",
-    facing: "", mgmt: "管理費8,710円＋修繕積立金9,045円／月", right: "所有權",
-    yield: "想定表面5.02%（現況空室）",
-    photos: ["prop-shinjuku101-1.jpg","prop-shinjuku101-2.jpg","prop-shinjuku101-3.jpg"],
-    note: "東新宿徒步4分的1樓路面店，可重餐飲，現況空室，投資出租或自己使用都可以，想定表面利回5.02%。想定利回為假設出租下的毛數字、不保證實現。想看現場或談用途加LINE。"
-  }
 
+  {
+    id: "ryogoku2",
+    status: "在售",
+    cat: "invest",
+    title: "両国二丁目ビル（一棟）",
+    title_cn: "兩國二丁目大樓 一棟收益",
+    price: "3億1,580万円",
+    location: "東京都墨田區兩國二丁目6-9",
+    station: "JR總武中央線・都營大江戶線「兩國」站 徒步8分",
+    layout: "整棟5層（1F 洗衣店・2～5F 旅館4戶）",
+    size: "土地58.97㎡（約17.84坪）／延床240.41㎡",
+    age: "築38年（1988年1月・已整修）",
+    facing: "",
+    mgmt: "",
+    right: "土地・建物 所有權",
+    yield: "想定約12.41%（含旅館＋店舗、滿租試算）",
+    photos: ["prop-ryogoku-1.jpg","prop-ryogoku-2.jpg","prop-ryogoku-3.jpg","prop-ryogoku-4.jpg","prop-ryogoku-5.jpg","prop-ryogoku-6.jpg"],
+    note: "兩國站徒步8分的整棟收益大樓（RC造5層）：1樓為出租中的自助洗衣店（月租16.5万円），2～5樓為旅館4戶（旅館業許可申請中、附旅館業管理契約）。外牆與防水已重做、內裝全面翻新。想定年收益約3,919万円、想定利回約12.41%（含旅館營運試算、未保證，實際依營運與空置而定）。整棟土地建物皆所有權，適合想要一棟旅館型收益的買家。詳細營運試算與貸款，加LINE我幫你評估（可貸成數依銀行審查為準）。"
+  },
+
+  {
+    id: "asakusa3",
+    status: "在售",
+    cat: "invest",
+    title: "浅草三丁目 旅館一棟（SunRiseStay）",
+    title_cn: "淺草雷門通 旅館一棟",
+    price: "3億円",
+    location: "東京都台東區淺草三丁目（雷門通り商圈）",
+    station: "淺草站徒步圈（雷門通り商業街）",
+    layout: "旅館一棟（客室數層，含1樓事務所）",
+    size: "（詳細坪數請洽詢）",
+    age: "已整修完成・旅館牌照申請中",
+    facing: "",
+    mgmt: "",
+    right: "所有權",
+    yield: "想定約11%／實質約6%（自營民泊試算）",
+    photos: ["prop-asakusa3-1.jpg","prop-asakusa3-2.jpg","prop-asakusa3-3.jpg"],
+    note: "淺草雷門通商圈、已在營運的旅館（民泊）一棟：賣方自社物件、內部裝修完成、旅館牌照申請中，買下可直接接手營運，後續大額支出少。想定利回約11%、實質約6%（含1樓事務所收入，依實際營運與空置而定、不保證報酬）。檢查済、將來轉售或貸款較容易（賣方評估可再貸約一半）。附2年瑕疵保證（由賣方承擔）。目前為平面圖與試算，室內實景照與影片可加LINE索取。詳細營運數字與貸款試算，加LINE我幫你把關（可貸成數依銀行審查為準）。"
+  }
 ];
