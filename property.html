@@ -90,6 +90,15 @@ footer a{color:#d6d3d1;text-decoration:none}
 .zoom .znav:hover,.zoom .zx:hover{opacity:.7}
 body.noscroll{overflow:hidden}
 @media(max-width:600px){.hnav .hide-sm{display:none}.pmain{height:300px}.ptitle{font-size:20px}.pprice{font-size:27px}.zoom .znav{font-size:34px;padding:8px 10px}}
+/* 加 LINE 按鈕字白色（避免被 .hnav a 蓋成灰） */
+.hnav .btn-line{color:#fff}
+/* 浮動加 LINE 鈕：滑到哪都看得到，脈動動畫 */
+.line-float{position:fixed;right:20px;bottom:20px;z-index:110;display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:13px 20px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 6px 20px rgba(16,185,129,.45);transition:transform .15s,background .15s}
+.line-float:hover{transform:translateY(-2px);background:var(--green-d)}
+.line-float .ic{font-size:18px;line-height:1}
+.line-float::before{content:"";position:absolute;inset:0;border-radius:999px;animation:lfpulse 2.4s infinite;pointer-events:none}
+@keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+@media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -232,6 +241,7 @@ body.noscroll{overflow:hidden}
   } else { boot(); }
 })();
 </script>
+<a class="line-float" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener"><span class="ic">💬</span>加 LINE 諮詢</a>
 <!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'property.html';var q=location.search||'';var isCn=(p.slice(-8)==='-cn.html');var twHref,cnHref;if(isCn){twHref=p.slice(0,-8)+'.html'+q;cnHref=p+q;}else{twHref=p+q;cnHref=p.slice(0,-5)+'-cn.html'+q;}var cur=isCn?'cn':'tw';function mk(label,href,key){var a=document.createElement('a');a.href=href;a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);var hnav=document.querySelector('header .hnav');if(hnav){var line=hnav.querySelector('.btn-line');if(line){hnav.insertBefore(wrap,line);}else{hnav.appendChild(wrap);}return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
 </body>
 </html>
