@@ -41,6 +41,16 @@ nav.main{display:flex;gap:2px}nav.main a{padding:6px 9px;border-radius:8px;font-
 main{padding:26px 0}.view{display:none}#v-services,#v-process,#v-live,#v-invest,#v-faq,#v-about{padding-top:18px}.view.on{display:block}
 .intro{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:22px}
 #brand{white-space:nowrap}.ytf{position:relative;cursor:pointer;width:100%;height:100%;background:#000;display:block}.ytf img{width:100%;height:100%;object-fit:cover;display:block}.ytf .pbtn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;padding-left:3px;pointer-events:none}.ytf:hover .pbtn{background:var(--rose)}.vid .ytf{position:absolute;inset:0}.logo{flex-shrink:0}.intro-cover{padding:0;overflow:hidden}.intro-cover .cover{height:130px;background:#fbeff2}.intro-cover .cover img{width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block}.intro-cover .intro-body{padding:24px}
+.herob{position:relative;border-radius:20px;overflow:hidden;margin-bottom:18px;background-image:linear-gradient(100deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.78) 46%,rgba(255,250,251,.35) 78%,rgba(255,244,247,.15) 100%),url('東京鐵塔3.jpg');background-size:cover;background-position:70% 22%}
+.herob .in{padding:36px 42px;max-width:660px}
+.herob .lock{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.herob .lock img{height:94px;width:auto;display:block}
+.herob .wm .n{font-size:30px;font-weight:800;color:#3a2a1f;letter-spacing:2px;line-height:1.15}
+.herob .wm .e{font-size:12.5px;font-weight:700;color:#b48a2e;letter-spacing:5px;margin-top:5px}
+.herob h1{font-size:24px;color:#3a2a1f;font-weight:800;margin:4px 0 9px}
+.herob .sub{font-size:14px;color:#8a7c6e;letter-spacing:3px;margin-bottom:20px}
+.herob .cta{display:inline-block;background:linear-gradient(135deg,#fb7185,#f43f5e);color:#fff;font-weight:700;font-size:15px;padding:11px 32px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(244,63,94,.32);cursor:pointer}
+@media(max-width:640px){.herob{background-position:78% 22%}.herob .in{padding:26px 22px;max-width:100%}.herob .lock img{height:66px}.herob .wm .n{font-size:22px}.herob .wm .e{letter-spacing:3px}.herob h1{font-size:19px}.herob .sub{font-size:13px}}
 .listbanner{position:relative;border-radius:18px;overflow:hidden;margin-bottom:18px;height:160px}.listbanner img{width:100%;height:100%;object-fit:cover;display:block}.listbanner .lb-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 28px;background:linear-gradient(90deg,rgba(40,12,20,.6),rgba(40,12,20,.12));color:#fff}.listbanner .lb-t{font-size:23px;font-weight:800;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.3)}.listbanner .lb-s{font-size:14px;opacity:.96;text-shadow:0 1px 6px rgba(0,0,0,.3)}
 @media(max-width:480px){.listbanner{height:120px}.listbanner .lb-t{font-size:19px}.listbanner .lb-s{font-size:12.5px}}
 .intro .area{color:var(--rose);font-size:14px}
@@ -92,9 +102,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </header>
 
 <main class="wrap">
-  <section class="view on" id="v-home">
-    <div class="intro intro-cover">
-      <div class="cover"><img src="櫻花.jpg" alt="东京的樱花季" loading="lazy"></div>
+  <section class="view on" id="v-home"><div class="herob"><div class="in">
+  <div class="lock"><img src="logo-mark.png" alt="周周・日本房仲"><div class="wm"><div class="n">周周・日本房仲</div><div class="e">CHOU CHOU IN JAPAN</div></div></div>
+  <h1>在日本・找到属于你的家</h1>
+  <div class="sub">专业・亲切・懂日本也懂你</div>
+  <a class="cta" onclick="show('services');return false">了解更多 →</a>
+</div></div>
+    <div class="intro">
       <div class="intro-body" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
       <div style="flex:1;min-width:240px">
         <h2 style="font-size:22px;margin-bottom:8px">嗨，我是周周 👋</h2>
