@@ -205,10 +205,10 @@ const body = `<header>
 <main class="wrap">
   <section class="view on" id="v-home">
     <div class="herob"><div class="in">
-  <div class="lock"><img src="logo-mark.png" alt="${JA_UI.brand}"><div class="wm"><div class="n">${JA_UI.brand}</div><div class="e">CHOU CHOU IN JAPAN</div></div></div>
+  <div class="lock"><img src="logo-mark.png" alt="${JA_UI.brand}"><div class="wm"><div class="n">${JA_UI.brand}</div><div class="e">— CHOU CHOU IN JAPAN —</div></div></div>
   <h1>日本で、あなたの住まいを見つけよう</h1>
-  <div class="sub">専門性 ・ 親身なサポート ・ 日本もあなたも理解する</div>
-  <a class="cta" onclick="show('services');return false">詳しく見る →</a>
+  <div class="sub">— 専門性 ・ 親身なサポート ・ 日本もあなたも理解する —</div>
+  <a class="cta" onclick="show('services');return false">詳しく見る</a>
 </div></div>
     <div class="intro">
       <div class="intro-body" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">

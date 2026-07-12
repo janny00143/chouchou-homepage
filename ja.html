@@ -42,16 +42,17 @@ nav.main{display:flex;gap:2px}nav.main a{padding:6px 9px;border-radius:8px;font-
 main{padding:26px 0}.view{display:none}#v-services,#v-process,#v-live,#v-invest,#v-faq,#v-about{padding-top:18px}.view.on{display:block}
 .intro{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:22px}
 #brand{white-space:nowrap}.ytf{position:relative;cursor:pointer;width:100%;height:100%;background:#000;display:block}.ytf img{width:100%;height:100%;object-fit:cover;display:block}.ytf .pbtn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;padding-left:3px;pointer-events:none}.ytf:hover .pbtn{background:var(--rose)}.vid .ytf{position:absolute;inset:0}.logo{flex-shrink:0}.intro-cover{padding:0;overflow:hidden}.intro-cover .cover{height:130px;background:#fbeff2}.intro-cover .cover img{width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block}.intro-cover .intro-body{padding:24px}
-.herob{position:relative;border-radius:20px;overflow:hidden;margin-bottom:18px;background-image:linear-gradient(100deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.78) 46%,rgba(255,250,251,.35) 78%,rgba(255,244,247,.15) 100%),url('東京鐵塔3.jpg');background-size:cover;background-position:70% 22%}
-.herob .in{padding:36px 42px;max-width:660px}
-.herob .lock{display:flex;align-items:center;gap:16px;margin-bottom:14px}
-.herob .lock img{height:94px;width:auto;display:block}
-.herob .wm .n{font-size:30px;font-weight:800;color:#3a2a1f;letter-spacing:2px;line-height:1.15}
-.herob .wm .e{font-size:12.5px;font-weight:700;color:#b48a2e;letter-spacing:5px;margin-top:5px}
-.herob h1{font-size:24px;color:#3a2a1f;font-weight:800;margin:4px 0 9px}
-.herob .sub{font-size:14px;color:#8a7c6e;letter-spacing:3px;margin-bottom:20px}
-.herob .cta{display:inline-block;background:linear-gradient(135deg,#fb7185,#f43f5e);color:#fff;font-weight:700;font-size:15px;padding:11px 32px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(244,63,94,.32);cursor:pointer}
-@media(max-width:640px){.herob{background-position:78% 22%}.herob .in{padding:26px 22px;max-width:100%}.herob .lock img{height:66px}.herob .wm .n{font-size:22px}.herob .wm .e{letter-spacing:3px}.herob h1{font-size:19px}.herob .sub{font-size:13px}}
+.herob{position:relative;border-radius:20px;overflow:hidden;margin-bottom:18px;background-image:radial-gradient(135% 92% at 50% 44%,rgba(255,255,255,.52) 0%,rgba(255,255,255,.24) 52%,rgba(255,255,255,.06) 100%),url('hero-tokyo.jpg');background-size:cover;background-position:center 48%}
+.herob .in{padding:54px 24px 48px;text-align:center}
+.herob .lock{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:14px}
+.herob .lock img{height:120px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.08))}
+.herob .wm{text-align:center}
+.herob .wm .n{font-size:38px;font-weight:800;color:#2b2b2b;letter-spacing:3px;line-height:1.1}
+.herob .wm .e{font-size:14px;font-weight:700;color:#b3892c;letter-spacing:5px;margin-top:7px}
+.herob h1{font-size:31px;color:#2b2b2b;font-weight:800;margin:8px 0 10px;letter-spacing:2px}
+.herob .sub{font-size:16px;color:#8a6f4e;letter-spacing:2px;margin-bottom:26px}
+.herob .cta{display:inline-block;background:linear-gradient(135deg,#f4939d,#ef7f8e);color:#fff;font-weight:700;font-size:17px;padding:14px 50px;border-radius:999px;text-decoration:none;box-shadow:0 8px 22px rgba(239,127,142,.42);cursor:pointer;letter-spacing:3px}
+@media(max-width:640px){.herob .in{padding:34px 16px 30px}.herob .lock{gap:11px;margin-bottom:10px}.herob .lock img{height:76px}.herob .wm .n{font-size:24px;letter-spacing:2px}.herob .wm .e{font-size:11px;letter-spacing:3px}.herob h1{font-size:21px}.herob .sub{font-size:13px}.herob .cta{font-size:15px;padding:12px 40px}}
 .listbanner{position:relative;border-radius:18px;overflow:hidden;margin-bottom:18px;height:160px}.listbanner img{width:100%;height:100%;object-fit:cover;display:block}.listbanner .lb-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 28px;background:linear-gradient(90deg,rgba(40,12,20,.6),rgba(40,12,20,.12));color:#fff}.listbanner .lb-t{font-size:23px;font-weight:800;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.3)}.listbanner .lb-s{font-size:14px;opacity:.96;text-shadow:0 1px 6px rgba(0,0,0,.3)}
 @media(max-width:480px){.listbanner{height:120px}.listbanner .lb-t{font-size:19px}.listbanner .lb-s{font-size:12.5px}}
 .intro .area{color:var(--rose);font-size:14px}
@@ -104,10 +105,10 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <main class="wrap">
   <section class="view on" id="v-home">
     <div class="herob"><div class="in">
-  <div class="lock"><img src="logo-mark.png" alt="周周・日本の不動産"><div class="wm"><div class="n">周周・日本の不動産</div><div class="e">CHOU CHOU IN JAPAN</div></div></div>
+  <div class="lock"><img src="logo-mark.png" alt="周周・日本の不動産"><div class="wm"><div class="n">周周・日本の不動産</div><div class="e">— CHOU CHOU IN JAPAN —</div></div></div>
   <h1>日本で、あなたの住まいを見つけよう</h1>
-  <div class="sub">専門性 ・ 親身なサポート ・ 日本もあなたも理解する</div>
-  <a class="cta" onclick="show('services');return false">詳しく見る →</a>
+  <div class="sub">— 専門性 ・ 親身なサポート ・ 日本もあなたも理解する —</div>
+  <a class="cta" onclick="show('services');return false">詳しく見る</a>
 </div></div>
     <div class="intro">
       <div class="intro-body" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
