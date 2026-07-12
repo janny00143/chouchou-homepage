@@ -39,8 +39,8 @@ main{padding:22px 0 10px}
 /* 詳細版面 */
 .pdetail{display:flex;gap:38px;flex-wrap:wrap;align-items:flex-start}
 .pgal{flex:1 1 540px;min-width:0}
-.pmain{position:relative;background:#1c1917;border-radius:16px;overflow:hidden;height:460px;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
-.pmain img{max-width:100%;max-height:100%;object-fit:contain}
+.pmain{position:relative;background:#f5f5f4;border-radius:16px;overflow:hidden;height:clamp(320px,54vh,560px);cursor:zoom-in}
+.pmain img{width:100%;height:100%;object-fit:cover;display:block}
 .pmain .pnav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.42);color:#fff;border:none;font-size:30px;cursor:pointer;padding:8px 14px;line-height:1;font-family:inherit;border-radius:10px}
 .pmain .pnav:hover{background:rgba(0,0,0,.72)}
 .pmain .pnav.prev{left:12px}.pmain .pnav.next{right:12px}
@@ -60,10 +60,16 @@ main{padding:22px 0 10px}
 .pbadges .b{color:#fff;background:var(--green)}.pbadges .b.s2{background:#f59e0b}.pbadges .b.s3{background:#9ca3af}
 .pbadges .t{background:#fff1f2;color:var(--rose-d)}
 .pprice{font-size:32px;font-weight:900;color:var(--rose-d);margin:14px 0 20px}
+.pfacts{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 20px}
+.pfacts span{background:#f8f7f6;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;color:#44403c;line-height:1.4}
+.pfacts span b{display:block;color:#a8a29e;font-weight:500;font-size:11px;margin-bottom:2px}
 .pspec{list-style:none;border-top:1px solid var(--line)}
 .pspec li{display:flex;gap:18px;align-items:flex-start;padding:14px 2px;border-bottom:1px solid #f5f5f4;font-size:14.5px;color:#44403c;line-height:1.75}
 .pspec li b{min-width:60px;color:#a8a29e;font-weight:500;flex-shrink:0}
+.pmap{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:#57534e;text-decoration:none}
+.pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
+.pnote .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:7px;font-size:14.5px}
 .pask{margin-top:22px;text-align:center;display:block;background:var(--green);color:#fff;font-weight:700;padding:15px;border-radius:999px;text-decoration:none;font-size:15.5px}
 .pask:hover{background:var(--green-d)}
 .pnotfound{text-align:center;padding:70px 20px;color:var(--mut)}
@@ -156,15 +162,19 @@ body.noscroll{overflow:hidden}
     var badges='<div class="pbadges"><span class="b '+(SCLS[st]||SCLS[p.status]||"")+'">'+esc(st)+'</span>'+(CAT[p.cat]?'<span class="t">'+CAT[p.cat]+'</span>':"")+'</div>';
     var cn=p.title_cn?'<span class="cn">'+C(p.title_cn)+'</span>':"";
     function row(l,v){return v?'<li><b>'+l+'</b><span>'+C(v)+'</span></li>':"";}
+    function chip(l,v){return v?'<span><b>'+l+'</b>'+C(v)+'</span>':"";}
+    var facts='<div class="pfacts">'+chip("格局",p.layout)+chip("面積",p.size)+chip("屋齡",p.age)+chip("投報",p.yield)+'</div>';
     var spec='<ul class="pspec">'
       +row("地點",p.location)+row("車站",p.station)+row("格局",p.layout)+row("面積",p.size)
       +row("屋齡",p.age)+row("朝向",p.facing)+row("管理",p.mgmt)+row("權利",p.right)+row("投報",p.yield)+'</ul>';
-    var note=p.note?'<div class="pnote">💬 '+C(p.note)+'</div>':"";
+    var mapBtn=p.location?'<a class="pmap" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.location)+'" target="_blank" rel="noopener">📍 在 Google 地圖看位置</a>':"";
+    var note=p.note?'<div class="pnote"><span class="nh">💬 周周的看法</span>'+C(p.note)+'</div>':"";
     var body='<div class="pbody">'
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
       +'<div class="pprice">'+C(p.price||"價格請洽詢")+'</div>'
-      +spec+note
+      +facts
+      +spec+mapBtn+note
       +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 詢問這間</a>'
       +'</div>';
     app.innerHTML='<div class="pdetail">'+gal+body+'</div>';
