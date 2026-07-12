@@ -2,14 +2,13 @@
    物件專區 資料檔  —  周周可以自己編輯這個檔案
    ------------------------------------------------------------
    ▍怎麼新增一個物件？
-     1. 複製一整段（從 { 到 }, ），貼到 window.PROPERTIES = [ 的正下方
-     2. 把每個欄位冒號後面的內容換成你的物件資料
-     3. 物件照片上傳到網站根目錄，photos 填檔名（第一張=封面，其餘會進相簿）
-     4. 存檔上傳，物件就會自動出現在「物件專區」頁（繁中／簡中自動同步）
+     複製一整段（從大括號開始到結束逗號），貼到陣列的正下方，
+     把每個欄位冒號後面的內容換成你的物件資料；照片上傳到網站根目錄、
+     photos 填檔名（第一張=封面，其餘會進相簿）。存檔上傳即自動出現。
 
    ▍欄位
      id / status(在售·洽談中·已成約) / cat(invest投資收租·live自住·house一戶建·land土地)
-     title(日文物件名) / title_cn(中文譯名，一覽頁顯示這個) / price / location / station
+     title(日文物件名) / title_cn(中文名，一覽頁顯示這個) / price / location / station
      layout / size / age / facing / mgmt / right / yield(投資才填) / photos([...]) / note(周周推薦)
 
    ▍最省事：用「物件登錄小工具」後台 chouchouinjapan.com/admin/ 貼資料自動辨識、產生這個檔。
@@ -22,7 +21,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "ジェイパーク戸越公園アーキテクト 701",
-    title_cn: "J-PARK 戶越公園 Architect 701",
+    title_cn: "戶越公園 三面採光角戶",
     price: "12,998万円",
     location: "東京都品川區戶越6-19-14",
     station: "大井町線「戶越公園」站 徒步3分／大井町線・淺草線「中延」站 徒步5分／池上線「荏原中延」站 徒步7分／橫須賀線・湘南新宿線「西大井」站 徒步9分",
@@ -42,7 +41,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "ルート四谷三丁目 115",
-    title_cn: "Route 四谷三丁目 115",
+    title_cn: "四谷三丁目 南向角戶",
     price: "6,498万円",
     location: "東京都新宿區大京町19",
     station: "丸之內線「四谷三丁目」站 徒步7分／總武中央線「信濃町」站 徒步10分／大江戶線「國立競技場」站 徒步10分",
@@ -62,7 +61,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "ハイネス亀戸 209",
-    title_cn: "Highness 龜戶 209",
+    title_cn: "龜戶 北歐風翻新兩房",
     price: "3,480万円",
     location: "東京都江東區龜戶7-39-26",
     station: "總武中央線・東武龜戶線「龜戶」站 徒步13分／都營新宿線「大島」站 徒步14分",
@@ -82,7 +81,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "イニシアイオ杉並和泉 308",
-    title_cn: "Initia io 杉並和泉 308",
+    title_cn: "杉並和泉 翻新一房",
     price: "6,999万円",
     location: "東京都杉並區和泉2-27-1",
     station: "京王線「代田橋」站 徒步5分／京王線・井之頭線「明大前」站 徒步12分",
@@ -102,7 +101,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "日神パレステージ西池袋 1101",
-    title_cn: "日神 Palestage 西池袋 1101",
+    title_cn: "西池袋 頂樓角戶",
     price: "5,199万円",
     location: "東京都豐島區西池袋2-43-5",
     station: "「池袋」站 徒步3分（JR各線）／東京Metro丸之內・有樂町・副都心線 徒步5分",
@@ -122,7 +121,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "ルモンド南麻布 205",
-    title_cn: "Le Monde 南麻布 205",
+    title_cn: "南麻布 精華翻新宅",
     price: "7,699万円",
     location: "東京都港區南麻布2-2-4",
     station: "「麻布十番」站 徒步7分（大江戶線・南北線）／「白金高輪」站 徒步10分（三田線）",
@@ -142,7 +141,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "スカーラ台東根岸 703",
-    title_cn: "Scala 台東根岸 703",
+    title_cn: "台東根岸 大空間三房",
     price: "7,499万円",
     location: "東京都台東區根岸5-25-11",
     station: "日比谷線「三之輪」站 徒步2分／「南千住」站 徒步10分（常磐線・筑波快線）",
@@ -162,7 +161,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "live",
     title: "ラ・グラース日暮里 403",
-    title_cn: "La Grace 日暮里 403",
+    title_cn: "東日暮里 築淺兩房",
     price: "7,299万円",
     location: "東京都荒川區東日暮里4-36-27",
     station: "「鶯谷」站 徒步6分（山手線・京濱東北線）／「入谷」站 徒步10分（日比谷線）",
@@ -182,7 +181,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "invest",
     title: "（仮称）亀戸2丁目 新築マンション（一棟）",
-    title_cn: "龜戶2丁目 新築整棟收益公寓",
+    title_cn: "龜戶2丁目 新築整棟收益",
     price: "4億4,000万円",
     location: "東京都江東區龜戶2丁目44-4",
     station: "JR中央總武線・東武龜戶線「龜戶」站 徒步7分",
@@ -202,7 +201,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "invest",
     title: "両国二丁目ビル（一棟）",
-    title_cn: "兩國二丁目大樓 一棟收益",
+    title_cn: "兩國 整棟旅館收益",
     price: "3億1,580万円",
     location: "東京都墨田區兩國二丁目6-9",
     station: "JR總武中央線・都營大江戶線「兩國」站 徒步8分",
@@ -233,7 +232,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "想定約11%／實質約6%（自營民泊試算）",
-    photos: ["prop-asakusa3-1.jpg","prop-asakusa3-2.jpg","prop-asakusa3-3.jpg"],
-    note: "淺草雷門通商圈、已在營運的旅館（民泊）一棟：賣方自社物件、內部裝修完成、旅館牌照申請中，買下可直接接手營運，後續大額支出少。想定利回約11%、實質約6%（含1樓事務所收入，依實際營運與空置而定、不保證報酬）。檢查済、將來轉售或貸款較容易（賣方評估可再貸約一半）。附2年瑕疵保證（由賣方承擔）。目前為平面圖與試算，室內實景照與影片可加LINE索取。詳細營運數字與貸款試算，加LINE我幫你把關（可貸成數依銀行審查為準）。"
+    photos: ["prop-asakusa3-1.jpg","prop-asakusa3-2.jpg","prop-asakusa3-3.jpg","prop-asakusa3-4.jpg","prop-asakusa3-5.jpg","prop-asakusa3-6.jpg"],
+    note: "淺草雷門通商圈、已在營運的旅館（民泊）一棟：賣方自社物件、內部裝修完成、旅館牌照申請中，買下可直接接手營運，後續大額支出少。想定利回約11%、實質約6%（含1樓事務所收入，依實際營運與空置而定、不保證報酬）。檢查済、將來轉售或貸款較容易（賣方評估可再貸約一半）。附2年瑕疵保證（由賣方承擔）。詳細營運數字與貸款試算，加LINE我幫你把關（可貸成數依銀行審查為準）。"
   }
 ];
