@@ -39,7 +39,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.wrap{max-
 .btn-line{background:var(--green);color:#fff}.btn-line:hover{background:var(--green-d)}.btn-line.big{padding:13px 26px;font-size:16px}
 header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .hd{height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}.logo .mark{width:34px;height:34px;border-radius:10px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}.logo .mark{width:34px;height:34px;border-radius:10px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}.logo-emblem{height:40px;width:auto;display:block;flex-shrink:0}
 nav.main{display:flex;gap:2px}nav.main a{padding:6px 9px;border-radius:8px;font-size:13.5px;color:var(--mut)}nav.main a:hover{background:#f5f5f4}nav.main a.on{color:var(--rose);font-weight:500}
 .hd-right{display:flex;align-items:center;gap:8px}.burger{display:none;background:none;border:none;cursor:pointer;padding:2px 8px;font-size:30px;line-height:1;color:var(--ink)}
 .chip{padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--mut);background:#fff;cursor:pointer;flex:0 0 auto}.chip:hover{background:#f5f5f4}.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -49,6 +49,61 @@ nav.main{display:flex;gap:2px}nav.main a{padding:6px 9px;border-radius:8px;font-
 main{padding:26px 0}.view{display:none}#v-services,#v-process,#v-live,#v-invest,#v-faq,#v-about{padding-top:18px}.view.on{display:block}
 .intro{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:22px}
 #brand{white-space:nowrap}.ytf{position:relative;cursor:pointer;width:100%;height:100%;background:#000;display:block}.ytf img{width:100%;height:100%;object-fit:cover;display:block}.ytf .pbtn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;padding-left:3px;pointer-events:none}.ytf:hover .pbtn{background:var(--rose)}.vid .ytf{position:absolute;inset:0}.logo{flex-shrink:0}.intro-cover{padding:0;overflow:hidden}.intro-cover .cover{height:130px;background:#fbeff2}.intro-cover .cover img{width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block}.intro-cover .intro-body{padding:24px}
+.herob{position:relative;border-radius:20px 20px 0 0;overflow:hidden;min-height:clamp(340px,40vw,510px);display:flex;align-items:center;background-image:linear-gradient(90deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.52) 42%,rgba(255,255,255,.3) 68%,rgba(255,255,255,.06) 88%,rgba(255,255,255,0) 100%),url('hero-tokyo.jpg');background-size:cover;background-position:center 40%}
+.herob .in{margin-left:clamp(16px,27%,470px);max-width:min(62%,540px);padding:clamp(18px,2.4vw,34px) 8px}
+.herob h1{font-size:clamp(27px,4.3vw,50px);font-weight:800;color:#2b2b2b;line-height:1.24;letter-spacing:1px;margin-bottom:clamp(10px,1.5vw,16px)}
+.herob h1 .hl{color:#f4547a}
+.herob .sub{font-size:clamp(14px,1.7vw,18px);color:#6f6152;letter-spacing:2px;margin-bottom:clamp(16px,2vw,22px)}
+.herob .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(18px,2.4vw,26px)}
+.herob .chip{display:inline-flex;align-items:center;gap:7px;font-size:clamp(13px,1.35vw,15px);color:#40403f;font-weight:600;background:rgba(255,255,255,.82);border:1px solid #f0dbe1;border-radius:999px;padding:8px 15px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.herob .chip svg{width:18px;height:18px;color:#f4547a;flex-shrink:0}
+.herob .hbtns{display:flex;flex-wrap:wrap;gap:13px}
+.herob .b-line{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:clamp(14px,1.5vw,16px);padding:clamp(11px,1.3vw,14px) clamp(22px,2.6vw,30px);border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(6,199,85,.32)}
+.herob .b-case{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.92);color:#ef5f7e;border:2px solid #f6adbe;font-weight:700;font-size:clamp(14px,1.5vw,16px);padding:clamp(10px,1.2vw,13px) clamp(20px,2.4vw,28px);border-radius:999px;text-decoration:none;cursor:pointer}
+.herob .b-line svg,.herob .b-case svg{width:18px;height:18px;flex-shrink:0}
+.trustbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2vw,22px) clamp(14px,2vw,24px);margin:clamp(-46px,-3.4vw,-32px) 16px 22px;position:relative;z-index:3;box-shadow:0 10px 26px rgba(200,120,140,.12)}
+.trustbar .tb{display:flex;align-items:center;gap:11px}
+.trustbar .tb .ti{flex-shrink:0;line-height:1;color:#f4547a}
+.trustbar .tb .ti svg{width:27px;height:27px}
+.trustbar .tb b{display:block;font-size:clamp(13px,1.25vw,15px);color:#2b2b2b;line-height:1.3}
+.trustbar .tb span{display:block;font-size:clamp(11px,1.05vw,13px);color:var(--mut);line-height:1.3}
+.hlp{margin:8px 16px 6px}
+.hlp-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.hlp-head h2{font-size:clamp(21px,2.5vw,28px);font-weight:800;color:#2b2b2b;text-align:center;flex:1;position:relative}
+.hlp-head h2::after{content:"";display:block;width:46px;height:3px;background:#f4547a;border-radius:2px;margin:8px auto 0}
+.hlp-sp{width:130px;flex-shrink:0}
+.hlp-more{color:#ef5f7e;font-weight:700;font-size:14px;text-decoration:none;border:1.5px solid #f6adbe;padding:8px 16px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+.hlp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.hlp-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 14px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s;text-decoration:none;display:block}
+.hlp-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(244,84,122,.15)}
+.hlp-card .si{width:54px;height:54px;margin:0 auto 12px;border-radius:15px;background:linear-gradient(135deg,#fff1f4,#ffe0e8);display:flex;align-items:center;justify-content:center;color:#f4547a}
+.hlp-card .si svg{width:28px;height:28px}
+.hlp-card b{display:block;font-size:16px;color:#2b2b2b;margin-bottom:6px}
+.hlp-card p{font-size:12.5px;color:var(--mut);line-height:1.65;margin:0}
+.toolsec{display:grid;grid-template-columns:1fr 1.35fr;gap:18px;margin:8px 16px 22px;align-items:stretch}
+.trbox{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(150deg,#fff2f6,#ffe5ee);border:1px solid #fbd4e0;border-radius:18px;padding:26px 24px;text-decoration:none;box-shadow:0 4px 14px rgba(244,84,122,.08)}
+.trbox .tr-ic{width:52px;height:52px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;color:#f4547a;margin-bottom:13px;box-shadow:0 3px 8px rgba(244,84,122,.12)}
+.trbox .tr-ic svg{width:28px;height:28px}
+.trbox b{font-size:20px;color:#e84c78;margin-bottom:7px}
+.trbox p{font-size:13.5px;color:#7b5a64;line-height:1.75;margin:0 0 16px}
+.trbox .tr-btn{align-self:flex-start;background:#f4547a;color:#fff;font-weight:700;font-size:14px;padding:10px 24px;border-radius:999px}
+.toolgrid-wrap{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+.tg-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.tg-head h3{font-size:19px;font-weight:800;color:#2b2b2b}
+.tg-head a{font-size:13px;color:#ef5f7e;font-weight:700;text-decoration:none;white-space:nowrap}
+.toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toolgrid a{display:flex;align-items:center;gap:12px;background:#fff9fb;border:1px solid #f3e2e8;border-radius:14px;padding:13px 14px;text-decoration:none;transition:background .15s,border-color .15s}
+.toolgrid a:hover{background:#fff0f5;border-color:#f6c9d5}
+.toolgrid .tgi{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#fff1f4,#ffe0e8);display:flex;align-items:center;justify-content:center;color:#f4547a;flex-shrink:0}
+.toolgrid .tgi svg{width:22px;height:22px}
+.toolgrid .tgt b{display:block;font-size:14.5px;color:#2b2b2b}
+.toolgrid .tgt span{display:block;font-size:11.5px;color:var(--mut);margin-top:2px}
+@media(max-width:820px){.toolsec{grid-template-columns:1fr}}
+@media(max-width:430px){.toolgrid{grid-template-columns:1fr}}
+@media(max-width:900px){.hlp-grid{grid-template-columns:repeat(3,1fr)}.hlp-sp{width:0}}
+@media(max-width:560px){.hlp-grid{grid-template-columns:repeat(2,1fr);gap:10px}.hlp-card{padding:18px 10px}.hlp-head h2{font-size:20px}.hlp-more{font-size:12px;padding:7px 12px}}
+@media(max-width:820px){.herob .in{margin-left:clamp(16px,20%,320px);max-width:72%}.trustbar{grid-template-columns:repeat(2,1fr);gap:14px 10px}}
+@media(max-width:600px){.herob{display:block;min-height:0;border-radius:16px 16px 0 0;background:#fff url('hero-tokyo.jpg') top center/100% auto no-repeat;padding-top:53.5vw}.herob .in{margin-left:0;max-width:100%;padding:10px 20px 6px}.herob h1{font-size:28px;margin-bottom:13px}.herob .sub{font-size:14px;margin-bottom:20px}.herob .chips{gap:10px;margin-bottom:22px}.herob .chip{padding:9px 16px;font-size:14px}.herob .hbtns{gap:12px;flex-direction:column;align-items:stretch}.herob .b-line,.herob .b-case{justify-content:center;font-size:15px;padding:14px}.trustbar{grid-template-columns:1fr;gap:17px;margin:16px 0 20px;padding:20px 22px}}
 .listbanner{position:relative;border-radius:18px;overflow:hidden;margin-bottom:18px;height:160px}.listbanner img{width:100%;height:100%;object-fit:cover;display:block}.listbanner .lb-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 28px;background:linear-gradient(90deg,rgba(40,12,20,.6),rgba(40,12,20,.12));color:#fff}.listbanner .lb-t{font-size:23px;font-weight:800;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.3)}.listbanner .lb-s{font-size:14px;opacity:.96;text-shadow:0 1px 6px rgba(0,0,0,.3)}
 @media(max-width:480px){.listbanner{height:120px}.listbanner .lb-t{font-size:19px}.listbanner .lb-s{font-size:12.5px}}
 .intro .area{color:var(--rose);font-size:14px}
@@ -92,7 +147,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </head>
 <body>
 <div id="rp"></div>
-<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本の不動産</a><a class="btn btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div></div>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.png" alt="" style="height:28px;width:auto;display:block">周周・日本の不動産</a><a class="btn btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div></div>
 <main class="wrap" style="max-width:760px;padding-top:18px">
 <a class="back" href="ja.html">← ホームに戻る</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="ja.html" style="color:var(--mut)">ホーム</a> › ローン・税金</p>
