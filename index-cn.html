@@ -44,7 +44,7 @@ main{padding:26px 0}.view{display:none}#v-services,#v-process,#v-live,#v-invest,
 .herob{position:relative;border-radius:20px 20px 0 0;overflow:hidden;min-height:clamp(340px,40vw,510px);display:flex;align-items:center;background-image:linear-gradient(90deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.52) 42%,rgba(255,255,255,.3) 68%,rgba(255,255,255,.06) 88%,rgba(255,255,255,0) 100%),url('hero-tokyo.jpg');background-size:cover;background-position:center 40%}
 .herob .in{margin-left:clamp(16px,27%,470px);max-width:min(62%,540px);padding:clamp(18px,2.4vw,34px) 8px}
 .herob h1{font-size:clamp(27px,4.3vw,50px);font-weight:800;color:#2b2b2b;line-height:1.24;letter-spacing:1px;margin-bottom:clamp(10px,1.5vw,16px)}
-.herob h1 .hl{color:#f4547a}
+.herob h1 .hl{color:#f4547a}@keyframes heroFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}.herob h1{animation:heroFade .7s ease-out both}.herob .sub{animation:heroFade .7s ease-out .18s both}.herob .chips{animation:heroFade .7s ease-out .34s both}.herob .hbtns{animation:heroFade .7s ease-out .5s both}@media(prefers-reduced-motion:reduce){.herob h1,.herob .sub,.herob .chips,.herob .hbtns{animation:none}}
 .herob .sub{font-size:clamp(14px,1.7vw,18px);color:#6f6152;letter-spacing:2px;margin-bottom:clamp(16px,2vw,22px)}
 .herob .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(18px,2.4vw,26px)}
 .herob .chip{display:inline-flex;align-items:center;gap:7px;font-size:clamp(13px,1.35vw,15px);color:#40403f;font-weight:600;background:rgba(255,255,255,.82);border:1px solid #f0dbe1;border-radius:999px;padding:8px 15px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
@@ -400,7 +400,7 @@ document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>`<div class="step"
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>`<div class="it"><span class="ck">✓</span>${t}</div>`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>`<div class="it"><span class="ck">✓</span>${t}</div>`).join("");
 document.getElementById('faqs').innerHTML=FAQ.map(q=>`<details class="faq"><summary>Q：${q[0]}</summary><p>A：${q[1]}</p></details>`).join("");
-(function(){var rc=function(r,i){return '<div class="rev-card'+(i>=3?' rev-hidden':'')+'">'+'<div class="rev-stars">★★★★★'+(r.date?'<span class="rev-date">'+r.date+'</span>':'')+'</div><p class="rev-text">「'+r.text+'」</p><p class="rev-who">— '+r.who+'</p>'+(r.reply?'<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周 回复</p><p class="rev-reply-text">'+r.reply+'</p></div>':'')+'</div>';};var rv=REVIEWS.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');}).slice(0,6);document.getElementById('revGrid').innerHTML=rv.map(rc).join('');})();
+(function(){var rc=function(r,i){return '<div class="rev-card'+(i>=3?' rev-hidden':'')+'">'+'<div class="rev-stars">★★★★★'+(r.date?'<span class="rev-date">'+r.date+'</span>':'')+'</div><p class="rev-text">「'+r.text+'」</p><p class="rev-who">— '+r.who+'</p>'+(r.reply?'<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周 回复</p><p class="rev-reply-text">'+r.reply+'</p></div>':'')+'</div>';};var rv=REVIEWS.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');}).slice(0,8);document.getElementById('revGrid').innerHTML=rv.map(rc).join('');})();
 render();
 </script>
 
