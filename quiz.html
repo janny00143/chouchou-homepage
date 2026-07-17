@@ -307,7 +307,7 @@ var QUESTIONS = [
       {ic:"🛡️", t:"最重視耐震、隔音，願意多花一點預算", add:{mansion_new:1, tower:1}, structure:"rc"},
       {ic:"🌲", t:"喜歡木造的溫暖質感（日本木造技術成熟）", add:{shinchiku_kodate:1}, structure:"wood"},
       {ic:"💴", t:"預算優先，木造也完全可以", add:{}, structure:"wood"},
-      {ic:"🏢", t:"想要 RC／SRC 高樓的穩固感", add:{mansion_new:1, tower:2}, structure:"rc", tower:true},
+      {ic:"🏢", t:"想要 RC／SRC 高樓的穩固感", add:{mansion_new:1, tower:2}, structure:"rc"},
       {ic:"🙋", t:"不太懂，想聽周周的專業建議", add:{}, structure:"ask"}
     ]
   }
@@ -382,6 +382,11 @@ function finish(){
       Object.keys(add).forEach(function(k){ score[k]+=add[k]; });
     });
   });
+  // 沒有任何投資意圖（純自住）就不推投資型物件——避免「自住卻叫你買店鋪/民宿」的矛盾
+  // Q1：1=收租、2=自住兼出租、3=民宿、4=店鋪；Q3：5=看投報
+  var invGoal = state.answers[0].some(function(i){ return [1,2,3,4].indexOf(i)>=0; }) || state.answers[2][0]===5;
+  if(!invGoal){ score.invest_rent=0; score.invest_hotel=0; score.invest_biz=0; }
+
   // 塔樓幾乎都要 1 億日圓以上；預算未到 1 億（非最高預算級距）就改推公寓
   var budgetIdx = state.answers[2][0];
   if(budgetIdx!==4 && score.tower>0){
@@ -392,9 +397,9 @@ function finish(){
   var ranked = Object.keys(score).sort(function(a,b){ return score[b]-score[a]; });
   var top = ranked[0], topScore = score[top];
   var also = ranked.slice(1).filter(function(k){ return score[k]>0 && score[k] >= topScore*0.7; }).slice(0,2);
-  // 很有堅持(注文宅高分) 或 很多房型分數都接近(什麼都想要/難分) → 建議注文宅
+  // 只有「很有堅持」(Q5 第1項) 或 很多房型分數都接近(什麼都想要/難分) 才建議注文宅
   var closeCount = ranked.filter(function(k){ return score[k]>0 && score[k] >= topScore*0.85; }).length;
-  var strict = (score.chumon>=4) || (closeCount>=4);
+  var strict = (state.answers[4].indexOf(0)>=0) || (closeCount>=4);
   showResult(top, also, strict, score, ranked);
 }
 
@@ -493,8 +498,8 @@ function showResult(top, also, strict, score, ranked){
   if(isMansion && state.structure==='wood') h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 你偏好木造的溫暖感，不過公寓大樓與塔樓幾乎都是 RC／SRC 鋼筋結構、沒有木造喔；想要木造的話，會比較適合看透天。</p>';
   h += '</div></div>';
 
-  /* ---- 塔樓需 1 億以上的說明 ---- */
-  if(state.towerBlocked){
+  /* ---- 塔樓需 1 億以上的說明（只對自住方向） ---- */
+  if(state.towerBlocked && top.indexOf('invest')!==0){
     h += '<div class="reality"><p><b>🏙️ 關於塔樓：</b>你嚮往塔樓（高樓層公寓），不過塔樓在東京多半要 <b>1 億日圓以上</b>的預算才比較買得到。以你目前設定的預算，會建議先從<b>全新／大型公寓大樓</b>入手，一樣有管理員、機能好、又保值。</p><p class="cta-line"><b>如果真的很想要塔樓，也可以私訊周周，我幫你看看有沒有適合的中古塔樓或方案！</b></p></div>';
   }
 
@@ -524,7 +529,7 @@ function showResult(top, also, strict, score, ranked){
     h += '</div>';
   }
 
-  if(strict && top!=='chumon'){
+  if(strict && top!=='chumon' && top.indexOf('invest')!==0){
     h += '<div class="strict"><p><b>🎨 想得很細、每種都有堅持？</b>你的答案分布蠻分散、對細節也很有想法——這種情況，市售現成的房子可能都會差你一點。真的很講究的話，可以考慮<b>注文宅（買地自己設計）</b>，蓋一間完全照你想法的房子；不過要提醒你，注文宅比較花心力、預算通常也會高一些喔。要不要走這條路，周周可以幫你評估預算再決定。</p></div>';
   }
 
