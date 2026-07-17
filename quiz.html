@@ -131,8 +131,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
   <section id="intro" class="hero">
     <span class="kick">🏠 1 分鐘小測驗</span>
     <h1>測測你適合買<br>日本<span>什麼樣的房子</span>？</h1>
-    <p>先分「自住」還是「投資」，再一步步幫你縮小範圍。<br>透天、公寓、塔樓、注文宅，或收租、民宿、整棟…周周幫你分析。</p>
-    <div class="meta">先選方向，各有專屬題目 · 部分可複選 · 結果附契合度分析</div>
+    <p>不用先懂房型，只要照你的生活跟想法回答，<br>周周幫你分析出最適合的方向。</p>
+    <div class="meta">先選自住或投資，各有專屬題目 · 部分可複選 · 結果附契合度分析</div>
     <button class="startbtn" onclick="start()">開始測驗 →</button>
   </section>
 
@@ -148,7 +148,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 <script>
 /* =========================================================
    結果類型（RESULTS）：自住 6 種 + 投資 4 種
-   short = 契合度長條圖短名；fit = 分析用一句話
+   選項一律「不直接講出結果」，靠生活/性格題去推導
    ========================================================= */
 var RESULTS = {
   /* ---- 自住 ---- */
@@ -230,7 +230,7 @@ var INVEST_KEYS = ['invest_rent','invest_biz','invest_hotel','invest_ittou'];
 
 /* =========================================================
    題目：先 FORK，再依方向走 LIVE_Q 或 INVEST_Q
-   選項刻意由「大方向 → 細節」「低 → 高」循序漸進
+   全部用「生活感受 / 性格 / 情境」間接問，讓程式去推導房型
    ========================================================= */
 var FORK = {
   q:"先問一個大方向：你買房是要自住，還是投資？",
@@ -242,73 +242,72 @@ var FORK = {
   ]
 };
 
-var DIMS_LIVE = ["想要的家","預算","屋況新舊","客製化","偏好地點","耐震建材"];
+var DIMS_LIVE = ["理想生活","最受不了","家庭情境","預算","屋況","地點"];
 var LIVE_Q = [
-  { q:"你想要的「家」比較接近哪一種？", hint:"先抓大類型，後面再往下細分。可以複選。", multi:true, opts:[
-    {ic:"🌳", t:"獨棟透天 — 有自己的土地、獨門獨戶", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
-    {ic:"🏢", t:"公寓大樓 — 有管理員、生活方便", add:{mansion_new:3, mansion_used:2}},
-    {ic:"🌆", t:"高樓塔樓 — 景觀好、公設齊全", add:{tower:4}, tower:true},
-    {ic:"🧭", t:"還不確定，想看分析結果", add:{shinchiku_kodate:1, mansion_new:1, mansion_used:1}}
+  { role:'life', q:"你最嚮往哪一種生活感？", hint:"想像你理想中的日常。可以複選。", multi:true, opts:[
+    {ic:"🌳", t:"有自己的院子或車庫，可以養寵物、種點東西", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
+    {ic:"🛎️", t:"一樓有管理員、下樓就有生活機能", add:{mansion_new:3, mansion_used:2}},
+    {ic:"🌃", t:"高樓層看夜景、社區有健身房交誼廳", add:{tower:4}, tower:true},
+    {ic:"🤫", t:"安靜、不跟鄰居共牆，有完全自己的天地", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}}
   ]},
-  { q:"你的購屋預算大概落在？", hint:"抓總價的大概區間就好（由低到高）。", multi:false, opts:[
-    {ic:"🪙", t:"2,000 萬日圓以下", add:{mansion_used:2, chuko_kodate:1}},
-    {ic:"💴", t:"2,000 ～ 4,000 萬日圓", add:{mansion_used:2, chuko_kodate:2}},
-    {ic:"💵", t:"4,000 ～ 6,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
-    {ic:"💰", t:"6,000 萬 ～ 1 億日圓", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
+  { role:'pain', q:"下面哪一個你「最受不了」？", hint:"最在意的痛點，往往決定你適合哪一種。", multi:false, opts:[
+    {ic:"🔊", t:"跟鄰居共牆、聽到隔壁或樓上的聲音", add:{shinchiku_kodate:2, chuko_kodate:2}, soundproof:true},
+    {ic:"🧹", t:"要自己顧外牆、除草、修繕一堆雜事", add:{mansion_new:2, mansion_used:2, tower:1}},
+    {ic:"🚃", t:"通勤太久、離車站遠、生活不方便", add:{mansion_new:2, mansion_used:2, tower:1}},
+    {ic:"😐", t:"房子跟別人長得一模一樣、沒有自己的個性", add:{chumon:3}, picky:true}
+  ]},
+  { role:'household', q:"哪一種狀況比較像你？", hint:"家庭組成和生活方式也會影響。", multi:false, opts:[
+    {ic:"🚗", t:"有車、有寵物、東西多，需要空間", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:1}},
+    {ic:"👫", t:"單身或兩人，重視方便、好整理", add:{mansion_used:2, mansion_new:1, tower:1}},
+    {ic:"👨‍👩‍👧", t:"有小孩，想要學區、公園、好的鄰里", add:{shinchiku_kodate:2, mansion_new:1, chuko_kodate:1}},
+    {ic:"🧳", t:"常出差或兩地跑，房子要好管理", add:{mansion_new:2, mansion_used:1, tower:1}}
+  ]},
+  { role:'budget', q:"你的購屋預算大概落在？", hint:"抓總價的大概區間就好（由低到高）。", multi:false, opts:[
+    {ic:"🪙", t:"3,000 萬日圓以下", add:{mansion_used:2, chuko_kodate:1}},
+    {ic:"💴", t:"3,000 ～ 5,000 萬日圓", add:{mansion_used:2, chuko_kodate:2}},
+    {ic:"💵", t:"5,000 ～ 7,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
+    {ic:"💰", t:"7,000 萬 ～ 1 億日圓", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
     {ic:"💎", t:"1 億日圓以上", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1}}
   ]},
-  { q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，可以複選。", multi:true, opts:[
-    {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}},
-    {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1, tower:1}},
+  { role:'condition', q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，可以複選。", multi:true, opts:[
+    {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}, newish:true},
+    {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1, tower:1}, newish:true},
     {ic:"🔧", t:"中古，但要已經翻修好、可直接住", add:{chuko_kodate:2, mansion_used:2}, used:true},
     {ic:"🏗️", t:"中古，社區已完成大規模修繕、體質健康", add:{mansion_used:2, chuko_kodate:1}, used:true},
     {ic:"🛠️", t:"中古、屋況普通沒關係，我自己找人翻修", add:{chuko_kodate:2, mansion_used:1}, used:true}
   ]},
-  { q:"你想要多少「自己作主」的空間？", hint:"從現成到完全客製。", multi:false, opts:[
-    {ic:"📦", t:"直接住現成配好的新成屋就好", add:{mansion_new:2, shinchiku_kodate:2, tower:1}},
-    {ic:"🖊️", t:"有些想法，市售挑一挑可以接受", add:{shinchiku_kodate:2, chuko_kodate:1}},
-    {ic:"🎨", t:"很有堅持，想自己設計（注文宅）", add:{chumon:4}}
-  ]},
-  { q:"你偏好的地點？", hint:"由都心往外，可以複選。", multi:true, opts:[
+  { role:'place', q:"你偏好的地點？", hint:"由都心往外，可以複選。", multi:true, opts:[
     {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, tower:2}},
     {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, tower:1}},
     {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2, chumon:1}},
     {ic:"⛵", t:"神奈川、橫濱一帶", add:{shinchiku_kodate:2, chuko_kodate:1, mansion_used:1}},
     {ic:"🌾", t:"千葉、埼玉", add:{chuko_kodate:2, chumon:2, shinchiku_kodate:1}},
     {ic:"🏡", t:"安靜的純住宅區", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}}
-  ]},
-  { q:"最後，關於「耐震・隔音・建材」？", hint:"這題會幫你判斷偏木造還是 RC（鋼筋混凝土）。", multi:false, opts:[
-    {ic:"🛡️", t:"最重視耐震、隔音，願意多花預算", add:{mansion_new:1, tower:1}, structure:"rc"},
-    {ic:"🌲", t:"喜歡木造的溫暖質感", add:{shinchiku_kodate:1}, structure:"wood"},
-    {ic:"💴", t:"預算優先，木造也完全可以", add:{}, structure:"wood"},
-    {ic:"🏢", t:"想要 RC／SRC 高樓的穩固感", add:{mansion_new:1, tower:2}, structure:"rc"},
-    {ic:"🙋", t:"不太懂，想聽周周的專業建議", add:{}, structure:"ask"}
   ]}
 ];
 
-var DIMS_INVEST = ["投資方式","最在意","投資預算","物件地點"];
+var DIMS_INVEST = ["最想要","經營心力","投資預算","物件地點"];
 var INVEST_Q = [
-  { q:"你想用哪一種方式投資？", hint:"不同方式的報酬和風險差很多，可以複選。", multi:true, opts:[
-    {ic:"🏠", t:"租給一般人／家庭 — 穩定，報酬一般", add:{invest_rent:3}},
-    {ic:"🏢", t:"租給店鋪／辦公室 — 相對穩定、報酬中上", add:{invest_biz:3}},
-    {ic:"🏨", t:"經營民宿／旅館 — 報酬高，但要整棟、風險高", add:{invest_hotel:3}},
-    {ic:"🏗️", t:"買一整棟、彈性運用 — 破億起、最自由", add:{invest_ittou:3}},
-    {ic:"🧭", t:"還不確定，想看分析比較", add:{invest_rent:1, invest_biz:1}}
+  { role:'igoal', q:"投資這件事，你最想要的是？", hint:"先抓你的投資性格。", multi:false, opts:[
+    {ic:"🛡️", t:"穩穩收租、風險越低越好", add:{invest_rent:3, invest_biz:1}},
+    {ic:"📈", t:"回報率越高越好，能接受相對高的風險", add:{invest_hotel:3, invest_ittou:1}},
+    {ic:"🎛️", t:"想要一個能彈性運用的大資產", add:{invest_ittou:3}},
+    {ic:"💧", t:"資金有限，想先小額入門", add:{invest_rent:3}}
   ]},
-  { q:"投資這件事，你最在意的是？", hint:"穩定、報酬、彈性，取捨一下。", multi:false, opts:[
-    {ic:"🛡️", t:"穩定、風險低最重要", add:{invest_rent:2, invest_biz:2}},
-    {ic:"📈", t:"回報率高，能接受相對高的風險", add:{invest_hotel:3, invest_ittou:1}},
-    {ic:"🎛️", t:"使用自由、可以彈性運用", add:{invest_ittou:3}},
-    {ic:"💧", t:"入手門檻低、好開始最重要", add:{invest_rent:3}}
+  { role:'effort', q:"你願意花多少心力去「經營」？", hint:"想被動收租，還是願意經營一門生意？", multi:false, opts:[
+    {ic:"😌", t:"越被動越好，穩穩收租金就好", add:{invest_rent:3, invest_biz:1}},
+    {ic:"🤝", t:"想租給店家或公司，簽長約、省事又穩", add:{invest_biz:3}},
+    {ic:"🧑‍💼", t:"願意花心力經營，像旅宿那樣賺觀光財", add:{invest_hotel:3}},
+    {ic:"🏢", t:"想一次擁有一整棟，怎麼運用都行", add:{invest_ittou:3, invest_biz:1}}
   ]},
-  { q:"你的投資預算大概？", hint:"由低到高。民宿/旅館約 7,000 萬起、整棟多半破億。", multi:false, opts:[
+  { role:'budget', q:"你的投資預算大概？", hint:"由低到高。經營型旅宿約 7,000 萬起、整棟多半破億。", multi:false, opts:[
     {ic:"🪙", t:"2,000 萬日圓以下", add:{invest_rent:2}},
     {ic:"💴", t:"2,000 ～ 5,000 萬日圓", add:{invest_rent:2, invest_biz:1}},
     {ic:"💵", t:"5,000 ～ 7,000 萬日圓", add:{invest_biz:2, invest_rent:1}},
     {ic:"💰", t:"7,000 萬 ～ 1 億日圓", add:{invest_hotel:2, invest_biz:1}},
     {ic:"💎", t:"1 億日圓以上", add:{invest_ittou:3, invest_hotel:2, invest_biz:1}}
   ]},
-  { q:"物件想放在哪一帶？", hint:"地點決定租客和投報，可以複選。", multi:true, opts:[
+  { role:'place', q:"物件想放在哪一帶？", hint:"地點決定租客和投報，可以複選。", multi:true, opts:[
     {ic:"🗼", t:"東京都心 23 區 — 好租、抗跌", add:{invest_rent:2, invest_biz:2}},
     {ic:"🚉", t:"車站徒步近 — 租客需求高", add:{invest_rent:2, invest_biz:1, invest_hotel:1}},
     {ic:"🏬", t:"觀光區／熱鬧商圈 — 適合旅宿、店鋪", add:{invest_hotel:3, invest_biz:2}},
@@ -323,6 +322,10 @@ var state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false, 
 
 function branchOf(){ return (state.answers[0] && state.answers[0][0]===1) ? 'invest' : 'live'; }
 function activeQ(){ return [FORK].concat(branchOf()==='invest' ? INVEST_Q : LIVE_Q); }
+function ansOf(role){ var qs=activeQ(); for(var i=0;i<qs.length;i++){ if(qs[i].role===role) return state.answers[i]||[]; } return []; }
+function budgetIdxOf(){ var a=ansOf('budget'); return a.length?a[0]:undefined; }
+function flagPicked(flag){ var qs=activeQ(); for(var i=0;i<qs.length;i++){ var a=state.answers[i]; if(!a)continue; for(var j=0;j<a.length;j++){ var o=qs[i].opts[a[j]]; if(o&&o[flag]) return true; } } return false; }
+function txtOf(role){ var qs=activeQ(); for(var i=0;i<qs.length;i++){ if(qs[i].role===role){ var a=state.answers[i]||[]; return a.map(function(x){ return qs[i].opts[x].t.split(' —')[0]; }).join('、'); } } return ''; }
 
 function start(){
   state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false, towerBlocked:false };
@@ -390,15 +393,13 @@ function finish(){
       var o = qs[qi].opts[idx]; if(!o) return;
       if(o.tower) state.wantTower = true;
       if(o.used) state.wantUsed = true;
-      if(o.structure) state.structure = o.structure;
       var add = o.add || {};
       Object.keys(add).forEach(function(k){ if(k in score) score[k]+=add[k]; });
     });
   });
 
-  // 自住：塔樓幾乎都要 1 億以上，預算未達最高級距就改推公寓
   if(branch==='live'){
-    var bIdx = state.answers[2] ? state.answers[2][0] : undefined;
+    var bIdx = budgetIdxOf();
     if(bIdx!==4 && score.tower>0){
       score.mansion_new += score.tower; score.tower = 0;
       if(state.wantTower) state.towerBlocked = true;
@@ -409,15 +410,20 @@ function finish(){
   var top = ranked[0], topScore = score[top]||0;
   var also = ranked.slice(1).filter(function(k){ return score[k]>0 && score[k] >= topScore*0.7; }).slice(0,2);
   var closeCount = ranked.filter(function(k){ return score[k]>0 && score[k] >= topScore*0.85; }).length;
-  // 只有自住、且「很有堅持(客製第3項)」或「多房型難分」才建議注文宅
-  var strict = (branch==='live') && ((state.answers[4] && state.answers[4].indexOf(2)>=0) || closeCount>=4);
+  var strict = (branch==='live') && (flagPicked('picky') || closeCount>=4);
+
+  // 推導木造 / RC（只對自住的透天類；公寓塔樓固定 RC，注文宅自由）
+  if(branch==='live'){
+    if(top==='chumon') state.structure = 'ask';
+    else if(top==='shinchiku_kodate' || top==='chuko_kodate') state.structure = flagPicked('soundproof') ? 'rc' : 'wood';
+  }
   showResult(branch, top, also, strict, score, ranked);
 }
 
 function structLabel(){
-  if(state.structure==='rc') return {t:"建議偏 RC（鋼筋混凝土）", why:"你重視耐震與隔音，RC 造隔音好、耐震表現穩定，適合你。"};
-  if(state.structure==='wood') return {t:"木造也很適合你", why:"日本木造工法成熟、造價親民、冬暖，預算優先的話很划算。"};
-  return {t:"木造 / RC 由周周依情況建議", why:"這部分可以看你的預算、地點跟需求，周周再幫你分析哪種划算。"};
+  if(state.structure==='rc') return {t:"建議偏 RC（鋼筋混凝土）", why:"你最受不了聽到鄰居的聲音，RC 造隔音好、耐震也穩，適合你。"};
+  if(state.structure==='wood') return {t:"木造也很適合你", why:"日本木造工法成熟、造價親民、冬暖，透天用木造很常見也划算。"};
+  return {t:"木造 / RC 由周周依情況建議", why:"注文宅木造或 RC 都能蓋，可以看你的預算、需求，周周再幫你分析。"};
 }
 
 function recapHTML(branch){
@@ -444,21 +450,17 @@ function barsHTML(score, ranked){
 }
 
 function whyHTML(branch, top){
-  var qs = activeQ(), a = state.answers;
   if(branch==='invest'){
-    var way = (a[1]||[]).map(function(i){ return qs[1].opts[i].t.split(' —')[0]; }).join('、');
-    var bud = (a[3]&&a[3].length) ? qs[3].opts[a[3][0]].t : '';
+    var want = txtOf('igoal'), bud = txtOf('budget');
     var s = '你選擇<b>投資</b>方向';
-    if(way) s += '、想要<b>'+way+'</b>';
+    if(want) s += '、最想要<b>'+want+'</b>';
     if(bud) s += '、預算<b>'+bud+'</b>';
     s += '。'+RESULTS[top].fit+' 綜合起來，最適合你的是 <b>'+RESULTS[top].name+'</b>。';
     return s;
   }
-  var home = (a[1]||[]).map(function(i){ return qs[1].opts[i].t.split(' —')[0]; }).join('、');
-  var bud2 = (a[2]&&a[2].length) ? qs[2].opts[a[2][0]].t : '';
-  var place = (a[5]||[]).map(function(i){ return qs[5].opts[i].t; }).join('、');
+  var life = txtOf('life'), bud2 = txtOf('budget'), place = txtOf('place');
   var s2 = '你選擇<b>自住</b>方向';
-  if(home) s2 += '、偏好<b>'+home+'</b>';
+  if(life) s2 += '、嚮往<b>'+life+'</b>';
   if(bud2) s2 += '、預算<b>'+bud2+'</b>';
   if(place) s2 += '、地點<b>'+place+'</b>';
   s2 += '。'+RESULTS[top].fit+' 綜合起來，最貼近你的是 <b>'+RESULTS[top].name+'</b>。';
@@ -471,7 +473,7 @@ function ctaBox(head, body){
 
 function budgetNote(branch, top){
   if(branch==='invest'){
-    var ib = state.answers[3] ? state.answers[3][0] : undefined;
+    var ib = budgetIdxOf();
     if(ib===undefined) return '';
     if(top==='invest_hotel' && ib<3)
       return ctaBox('🏨 關於民宿/旅館預算：','民宿／旅館基本上要買<b>一整棟</b>，物件<b>大約 7,000 萬日圓起跳</b>，你目前設定的預算可能還不太夠，且經營風險比一般租賃高。可以先從住宅租賃或商用起步。');
@@ -479,15 +481,13 @@ function budgetNote(branch, top){
       return ctaBox('🏗️ 關於整棟預算：','整棟收購通常<b>破億日圓</b>起跳，你目前設定的預算可能還不太夠。可以先從區分（一間）或商用物件起步，慢慢往整棟走。');
     return '';
   }
-  var bi = state.answers[2] ? state.answers[2][0] : undefined;
+  var bi = budgetIdxOf();
   if(bi===undefined) return '';
   if(top==='chumon'){
     if(bi>2) return '';
     return ctaBox('🏗️ 關於注文宅預算：','注文宅是「買地＋蓋房」，土地加建築成本，總預算通常偏高。用你目前的預算會比較吃緊，建議先跟周周聊聊地點與預算怎麼配置。');
   }
-  var wantsNew = ['shinchiku_kodate','mansion_new','tower'].indexOf(top)>=0
-      || (state.answers[3] && (state.answers[3].indexOf(0)>=0 || state.answers[3].indexOf(1)>=0))
-      || (state.answers[4] && state.answers[4].indexOf(0)>=0);
+  var wantsNew = ['shinchiku_kodate','mansion_new','tower'].indexOf(top)>=0 || flagPicked('newish');
   var msg='', retake=false;
   if(bi===0){ msg='老實說，用這個預算在東京都內幾乎碰不到新屋——多半是屋齡較高的中古小宅，或要往比較遠的郊區、甚至東京都以外才有機會。如果你想要新一點、地點又方便的房子，建議把預算或條件再放寬一點喔。'; retake=true; }
   else if(bi===1){ msg='跟你說個實話，用這個預算在東京主要販售區域通常還是以中古為主，全新的選擇很少。想要又新、地點又好，多半得再往上抓一點預算，或先從中古入手。'; }
@@ -524,11 +524,10 @@ function showResult(branch, top, also, strict, score, ranked){
   h += '</div>';
   h += '<p class="desc">'+R.desc+'</p>';
   if(isHouse) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
-  if(isMansion && state.structure==='wood') h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 你偏好木造的溫暖感，不過公寓大樓與塔樓幾乎都是 RC／SRC 鋼筋結構、沒有木造喔；想要木造的話，會比較適合看透天。</p>';
   h += '</div></div>';
 
   if(branch==='live' && state.towerBlocked){
-    h += '<div class="reality"><p><b>🏙️ 關於塔樓：</b>你嚮往塔樓（高樓層公寓），不過塔樓在東京多半要 <b>1 億日圓以上</b>的預算才比較買得到。以你目前設定的預算，會建議先從<b>全新／大型公寓大樓</b>入手，一樣有管理員、機能好、又保值。</p><p class="cta-line"><b>如果真的很想要塔樓，也可以私訊周周，我幫你看看有沒有適合的中古塔樓或方案！</b></p></div>';
+    h += '<div class="reality"><p><b>🏙️ 關於塔樓：</b>你嚮往高樓層的塔樓生活，不過塔樓在東京多半要 <b>1 億日圓以上</b>的預算才比較買得到。以你目前設定的預算，會建議先從<b>全新／大型公寓大樓</b>入手，一樣有管理員、機能好、又保值。</p><p class="cta-line"><b>如果真的很想要塔樓，也可以私訊周周，我幫你看看有沒有適合的中古塔樓或方案！</b></p></div>';
   }
 
   h += budgetNote(branch, top);
@@ -536,7 +535,7 @@ function showResult(branch, top, also, strict, score, ranked){
   /* ---- 分析 ---- */
   h += '<div class="an">';
   h += '<h3>🔍 周周的分析</h3>';
-  h += '<div class="sub">根據你的選擇，幫你整理出方向</div>';
+  h += '<div class="sub">根據你的選擇，幫你推導出方向</div>';
   h += barsHTML(score, ranked);
   h += '<div class="an-why">'+whyHTML(branch, top)+'</div>';
   h += '<div class="an-recap">'+recapHTML(branch)+'</div>';
