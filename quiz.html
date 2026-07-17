@@ -39,6 +39,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .q-title{font-size:21px;font-weight:700;margin:8px 0 4px;line-height:1.4}
 .q-hint{font-size:13.5px;color:var(--mut);margin-bottom:6px}
 .multi-tag{font-size:12.5px;color:var(--rose-d);background:var(--rose-l);font-weight:600;padding:3px 10px;border-radius:999px;display:inline-block;margin:4px 0 14px}
+.multi-tag.single{color:#2563eb;background:#eff6ff}
 .opts{display:flex;flex-direction:column;gap:11px}
 .opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1.6px solid var(--line);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:15.5px;color:var(--ink);cursor:pointer;transition:.13s;line-height:1.45}
 .opt:hover{border-color:#fbb6c4;background:var(--rose-l)}
@@ -93,6 +94,9 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .r-also .mini img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
 .r-also .mini b{font-size:15px}
 .r-also .mini p{font-size:13px;color:var(--mut);margin-top:2px}
+.reality{background:#fffbeb;border:1.6px solid #fcd34d;border-radius:14px;padding:15px 17px;margin-top:14px}
+.reality b{color:#b45309}
+.reality p{font-size:14px;color:#44403c;line-height:1.9;margin:0}
 .strict{background:#fffbeb;border:1.6px solid #fbbf24;border-radius:14px;padding:15px 17px;margin-top:16px}
 .strict b{color:#b45309}
 .strict p{font-size:14px;color:#44403c;line-height:1.85;margin:0}
@@ -169,7 +173,7 @@ var RESULTS = {
     name:"全新／大型公寓大樓", short:"全新公寓", img:"prop-minamiazabu205-1.jpg",
     tags:["生活機能佳","有管理員","保值好轉手"],
     fit:"你想要方便、有管理、好轉手的都會生活，偏好新一點、省心的屋況。",
-    desc:"你想要方便、輕鬆、有管理的生活。都心的全新或大型公寓大樓（マンション）機能好、有管理員代收包裹跟維護公設，地點好的很保值。",
+    desc:"你想要方便、輕鬆、有管理的生活。都心的全新或大型公寓大樓機能好、有管理員代收包裹跟維護公設，地點好的很保值。",
     note:"公寓要看的是管理狀況跟管理費/修繕基金合不合理——這比裝潢重要多了。周周會幫你確認社區體質，避免買到管理鬆散、將來難轉手的物件。"
   },
   mansion_used: {
@@ -180,25 +184,25 @@ var RESULTS = {
     note:"中古公寓的關鍵在屋齡、耐震基準跟社區管理。周周會幫你篩掉那些管理費偏高、修繕金不足的物件，也能順便估貸款成數（依個案、依銀行審查為準）。"
   },
   tower: {
-    name:"塔樓（タワーマンション）", short:"塔樓", img:"晴空塔.jpg",
+    name:"塔樓（高樓層公寓）", short:"塔樓", img:"晴空塔.jpg",
     tags:["高樓景觀","氣派門廳","公設齊全"],
     fit:"你嚮往高樓景觀、氣派門廳跟齊全公設的都會生活。",
-    desc:"你嚮往高樓層的景觀、氣派的大廳與豐富公設（健身房、交誼廳、禮賓等）。塔樓（タワマン）多在都心與灣岸，能見度高、生活便利。想省一點也有<b>中古塔樓</b>可選，同地段通常比全新划算。",
+    desc:"你嚮往高樓層的景觀、氣派的大廳與豐富公設（健身房、交誼廳、禮賓等）。塔樓多在都心與灣岸區，能見度高、生活便利。想省一點也有<b>中古塔樓</b>可選，同地段通常比全新划算。",
     note:"塔樓的管理費、修繕基金通常較高，高樓層與棟距、風壓、電梯尖峰也要一起看；轉售時樓層與座向差很多。周周會幫你比全新與中古塔樓的實際持有成本，挑到真正划算的那一戶。"
   },
   invest_rent: {
     name:"投資收租物件（區分／整棟）", short:"收租物件", img:"prop-togoshi701-1.jpg",
     tags:["看投報率","被動收入","資產配置"],
     fit:"你的重點是報酬與資產配置，不一定要自己住。",
-    desc:"你的重點是報酬，不一定要自己住。可以從一間區分套房（區分マンション）開始，資金充裕也能考慮整棟收租（一棟）。看的是投報率、租客穩定度跟地點人流。",
-    note:"網站標的都是表面投報率（表面利回り），沒扣管理、修繕、稅金跟空租風險。周周會幫你算實質投報率（実質利回り），把真實的數字攤給你看，不會只看漂亮的表面數字。"
+    desc:"你的重點是報酬，不一定要自己住。可以從一間單間套房（區分）開始，資金充裕也能考慮整棟收租。看的是投報率、租客穩定度跟地點人流。",
+    note:"網站標示的都是表面投報率，沒扣管理、修繕、稅金跟空租風險。周周會幫你算實質投報率，把真實的數字攤給你看，不會只看漂亮的表面數字。"
   },
   invest_hotel: {
     name:"民宿・旅館（旅宿經營）", short:"民宿旅館", img:"prop-asakusa3-1.jpg",
     tags:["觀光財","經營收益","法規合規"],
-    fit:"你想在觀光區靠人流經營民宿（民泊）或旅館。",
-    desc:"你想的是「用房子做旅宿生意」——在觀光區經營民宿（民泊）或旅館，賺觀光財。收益空間大，但牌照、法規、營運也更講究。",
-    note:"民宿/旅館牽涉住宅宿泊事業法、旅館業許可、用途地域跟消防等法規，很吃合規。周周有實際在處理旅館物件（例如淺草的旅館案），能幫你看牌照與可行性，實際仍以主管機關最新規定為準。"
+    fit:"你想在觀光區靠人流經營民宿或旅館。",
+    desc:"你想的是「用房子做旅宿生意」——在觀光區經營民宿或旅館，賺觀光財。收益空間大，但牌照、法規、營運也更講究。",
+    note:"民宿/旅館牽涉住宅宿泊事業法、旅館業許可、土地用途分區跟消防等法規，很吃合規。周周有實際在處理旅館物件（例如淺草的旅館案），能幫你看牌照與可行性，實際仍以主管機關最新規定為準。"
   },
   invest_biz: {
     name:"店鋪・辦公室（商用收益）", short:"店鋪辦公室", img:"東京鐵塔夜.jpg",
@@ -261,9 +265,9 @@ var QUESTIONS = [
     opts:[
       {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}},
       {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1, tower:1}},
-      {ic:"🔧", t:"中古，但要「已翻修（リフォーム済）」", add:{chuko_kodate:2, mansion_used:2}, used:true},
-      {ic:"🏗️", t:"中古，社區已完成大規模修繕（大規模修繕済）", add:{mansion_used:2, invest_rent:1}, used:true},
-      {ic:"🛠️", t:"中古毛胚沒差，我自己整修", add:{chuko_kodate:2, mansion_used:1, invest_rent:1}, used:true},
+      {ic:"🔧", t:"中古，但要已經翻修好、可直接住的", add:{chuko_kodate:2, mansion_used:2}, used:true},
+      {ic:"🏗️", t:"中古，社區已完成大規模修繕、體質健康", add:{mansion_used:2, invest_rent:1}, used:true},
+      {ic:"🛠️", t:"中古、屋況普通沒關係，我打算自己找人翻修", add:{chuko_kodate:2, mansion_used:1, invest_rent:1}, used:true},
       {ic:"🧮", t:"老屋沒差，看地點跟數字就好", add:{invest_rent:2, invest_hotel:1, invest_biz:2}, used:true}
     ]
   },
@@ -327,7 +331,7 @@ function render(){
   h += '<div class="q-no">Q'+(state.i+1)+'</div>';
   h += '<div class="q-title">'+Q.q+'</div>';
   h += '<div class="q-hint">'+Q.hint+'</div>';
-  if(Q.multi) h += '<span class="multi-tag">✔ 可複選</span>';
+  h += Q.multi ? '<span class="multi-tag">✔ 可複選</span>' : '<span class="multi-tag single">◉ 單選題</span>';
   h += '<div class="opts">';
   Q.opts.forEach(function(o,idx){
     var on = sel.indexOf(idx)>=0;
@@ -422,6 +426,23 @@ function whyHTML(top){
   return s;
 }
 
+function budgetNote(top){
+  var bi = state.answers[2][0];
+  if(bi===undefined || bi===5) return '';   // 「看投報、預算彈性」不提醒
+  var wantsNew = ['shinchiku_kodate','mansion_new','tower','chumon'].indexOf(top)>=0
+      || state.answers[3].indexOf(0)>=0 || state.answers[3].indexOf(1)>=0
+      || state.answers[4].indexOf(2)>=0;
+  var msg='';
+  if(bi===0){
+    msg='老實說，<b>2,000 萬日圓以下</b>在東京都內幾乎碰不到新屋——多半是屋齡較高的中古小宅，或要往比較遠的郊區、甚至東京都以外才有機會。如果你心裡想的是新一點、地點又方便的房子，這個預算可能要再往上一些，或以中古為主。';
+  } else if(bi===1){
+    msg='跟你說個實話，<b>2,000～4,000 萬日圓</b>在東京主要販售區域通常還是以中古為主，全新的選擇很少。想要又新、地點又好，多半得再拉高一點預算，或先從中古入手。';
+  } else if(bi===2 && wantsNew){
+    msg='偷偷跟你說，想在這些精華地段、用<b>6,000 萬日圓以內</b>買到「全新」，其實不太容易哦😅（你的標準有一點點高～）。同樣的預算換成中古、或稍微外圍一點，選擇會多很多。';
+  } else return '';
+  return '<div class="reality"><p><b>🏷️ 關於預算：</b>'+msg+' <b>想知道你的預算實際能買到什麼樣的房子，直接私訊周周，我幫你抓真實行情！</b></p></div>';
+}
+
 function showResult(top, also, strict, score, ranked){
   var R = RESULTS[top];
   var st = structLabel();
@@ -445,6 +466,9 @@ function showResult(top, also, strict, score, ranked){
   h += '<p class="desc">'+R.desc+'</p>';
   if(isHouse) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
   h += '</div></div>';
+
+  /* ---- 預算現實提醒 ---- */
+  h += budgetNote(top);
 
   /* ---- 分析 ---- */
   h += '<div class="an">';
