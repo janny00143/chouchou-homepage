@@ -31,7 +31,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .hero .kick{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:14px}
 .hero h1{font-size:30px;font-weight:900;letter-spacing:.5px;line-height:1.3}
 .hero h1 span{color:var(--rose)}
-.hero p{color:var(--mut);margin:14px auto 0;max-width:460px}
+.hero p{color:var(--mut);margin:14px auto 0;max-width:470px}
 .hero .meta{margin-top:14px;font-size:13px;color:var(--mut)}
 .startbtn{display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;font-weight:700;font-size:17px;padding:15px 40px;border-radius:999px;border:none;cursor:pointer;margin-top:24px;box-shadow:0 8px 22px rgba(244,63,94,.28);transition:.15s}
 .startbtn:hover{background:var(--rose-d);transform:translateY(-1px)}
@@ -40,19 +40,21 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 6px 22px rgba(0,0,0,.05);margin-top:16px}
 .q-no{font-size:13px;font-weight:700;color:var(--rose);letter-spacing:1px}
 .q-title{font-size:21px;font-weight:700;margin:8px 0 4px;line-height:1.4}
-.q-hint{font-size:13.5px;color:var(--mut);margin-bottom:16px}
+.q-hint{font-size:13.5px;color:var(--mut);margin-bottom:6px}
+.multi-tag{font-size:12.5px;color:var(--rose-d);background:var(--rose-l);font-weight:600;padding:3px 10px;border-radius:999px;display:inline-block;margin:4px 0 14px}
 .opts{display:flex;flex-direction:column;gap:11px}
-.opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1.6px solid var(--line);border-radius:14px;padding:15px 16px;font-family:inherit;font-size:15.5px;color:var(--ink);cursor:pointer;transition:.13s;line-height:1.45}
+.opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1.6px solid var(--line);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:15.5px;color:var(--ink);cursor:pointer;transition:.13s;line-height:1.45}
 .opt:hover{border-color:#fbb6c4;background:var(--rose-l)}
 .opt .ic{width:38px;height:38px;flex:0 0 auto;border-radius:11px;background:var(--rose-l);display:flex;align-items:center;justify-content:center;font-size:20px}
-.opt.multi.sel{border-color:var(--rose);background:var(--rose-l)}
-.opt.multi.sel .ic{background:var(--rose);color:#fff}
+.opt.sel{border-color:var(--rose);background:var(--rose-l)}
+.opt.sel .ic{background:var(--rose);color:#fff}
+.opt .ck{margin-left:auto;width:22px;height:22px;flex:0 0 auto;border-radius:50%;border:1.8px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+.opt.sel .ck{background:var(--rose);border-color:var(--rose)}
 .q-actions{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
 .q-actions .prev{background:none;border:none;color:var(--mut);font-family:inherit;font-size:14px;cursor:pointer;padding:8px 6px}
 .q-actions .prev:hover{color:var(--ink)}
 .q-actions .next{background:var(--rose);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:11px 30px;border-radius:999px;cursor:pointer}
-.q-actions .next:disabled{opacity:.4;cursor:not-allowed}
-.multi-tag{font-size:12.5px;color:var(--rose-d);background:var(--rose-l);font-weight:600;padding:3px 10px;border-radius:999px;display:inline-block;margin-bottom:14px}
+.q-actions .next:disabled{opacity:.35;cursor:not-allowed}
 
 /* ---- 結果 ---- */
 .result{margin-top:16px}
@@ -83,11 +85,12 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .cta a.line:hover{background:var(--green-d)}
 .cta .re{display:block;margin-top:14px;background:none;border:none;color:var(--mut);font-family:inherit;font-size:14px;cursor:pointer;width:100%;padding:6px}
 .cta .re:hover{color:var(--ink)}
-.disc{font-size:12px;color:var(--mut);text-align:center;margin:26px 0 40px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto}
+.disc{font-size:12px;color:var(--mut);text-align:center;margin:26px 0 40px;line-height:1.8;max-width:540px;margin-left:auto;margin-right:auto}
 @media(max-width:600px){
   .hero h1{font-size:25px}
   .q-title{font-size:19px}
-  .opt{font-size:14.5px;padding:13px 13px}
+  .opt{font-size:14.5px;padding:12px 13px;gap:11px}
+  .opt .ic{width:34px;height:34px;font-size:18px}
   .r-body h2{font-size:21px}
 }
 </style>
@@ -105,25 +108,23 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <span class="kick">🏠 1 分鐘小測驗</span>
     <h1>測測你適合買<br>日本<span>什麼樣的房子</span>？</h1>
     <p>透天？公寓？塔樓？還是買地自己蓋、或當投資收租？<br>回答幾個問題，周周幫你把方向抓出來。</p>
-    <div class="meta">共 7 題 · 沒有標準答案 · 結果僅供參考方向</div>
+    <div class="meta">共 7 題 · 部分可複選 · 沒有標準答案 · 結果僅供參考方向</div>
     <button class="startbtn" onclick="start()">開始測驗 →</button>
   </section>
 
-  <!-- 進度 + 題目容器 -->
   <div id="quiz" style="display:none">
     <div class="pbar"><i id="pfill" style="width:0"></i></div>
     <div class="pnum" id="pnum"></div>
     <div id="qhost"></div>
   </div>
 
-  <!-- 結果容器 -->
   <div id="resultHost" style="display:none"></div>
 </div>
 
 <script>
 /* =========================================================
-   結果類型（RESULTS）— 每個 key 是一種房型方向
-   img 目前用站上現成圖當示意，之後可換
+   結果類型（RESULTS）
+   img 目前用站上現成的物件實照／示意圖，之後可換成雲端物件照
    ========================================================= */
 var RESULTS = {
   shinchiku_kodate: {
@@ -149,7 +150,7 @@ var RESULTS = {
   },
   mansion_new: {
     name:"全新／大型公寓大樓（含塔樓）",
-    img:"晴空塔.jpg",
+    img:"prop-minamiazabu205-1.jpg",
     tags:["生活機能佳","有管理員","保值好轉手"],
     desc:"你想要方便、輕鬆、有管理的生活。都心的全新或大型公寓大樓（マンション）機能好、有管理員代收包裹跟維護公設，地點好的很保值。想要高樓景觀跟氣派門廳，就往塔樓（タワマン）看。",
     note:"公寓要看的是管理狀況跟管理費/修繕基金合不合理——這比裝潢重要多了。周周會幫你確認社區體質，避免買到管理鬆散、將來難轉手的物件。"
@@ -179,80 +180,96 @@ var RESULTS = {
 
 /* =========================================================
    題目（QUESTIONS）
-   每個選項的 add 物件 = 這個選項會替哪些結果加幾分
-   single = 單選；multi = 可複選（例如「都可以」的情境）
+   multi:true → 可複選，需按「下一題」；否則單選、選了就跳下一題
+   每個選項 add = 替哪些結果加分；structure = 木造/RC 判斷（不加房型分）
+   tower:true = 這個選項代表想要高樓/塔樓
    ========================================================= */
 var QUESTIONS = [
   {
     q:"你買房最主要的目的是？",
-    hint:"先抓大方向：自住還是投資。",
-    type:"single",
+    hint:"先抓大方向。可以複選（例如自住＋以後想出租）。",
+    multi:true,
     opts:[
       {ic:"🏡", t:"自己住，想要一個長久的家", add:{shinchiku_kodate:2, chuko_kodate:2, mansion_new:2, mansion_used:2}},
-      {ic:"💰", t:"投資收租、看報酬為主", add:{invest_rent:3, invest_biz:1}},
-      {ic:"🔁", t:"又想住、未來可能出租或轉手", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
-      {ic:"🏪", t:"做生意／經營民宿旅館", add:{invest_biz:3}}
+      {ic:"💰", t:"投資收租、看報酬為主", add:{invest_rent:3}},
+      {ic:"🔁", t:"自住，但未來可能出租或轉手", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
+      {ic:"🏨", t:"經營民宿（民泊）或旅館", add:{invest_biz:3}},
+      {ic:"🏪", t:"店鋪、辦公室出租收益", add:{invest_biz:3}},
+      {ic:"👨‍👩‍👧", t:"幫家人／子女準備一間", add:{mansion_new:2, mansion_used:2, shinchiku_kodate:1}}
     ]
   },
   {
     q:"你理想中的居住型態比較接近？",
-    hint:"想像一下你每天回家的樣子。",
-    type:"single",
+    hint:"想像一下你每天回家的樣子。可以複選。",
+    multi:true,
     opts:[
       {ic:"🌳", t:"獨門獨戶、有自己的土地，能停車、養寵物", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
-      {ic:"🛎️", t:"生活方便、有管理員、維護輕鬆", add:{mansion_new:3, mansion_used:2}},
-      {ic:"🌆", t:"高樓景觀、氣派門廳、公設齊全", add:{mansion_new:3}},
-      {ic:"🤔", t:"都可以，看 CP 值決定", add:{chuko_kodate:2, mansion_used:2}}
+      {ic:"🛎️", t:"有管理員、公設維護輕鬆", add:{mansion_new:3, mansion_used:2}},
+      {ic:"🌆", t:"高樓景觀、氣派門廳的塔樓", add:{mansion_new:3}, tower:true},
+      {ic:"🍃", t:"安靜住宅區、近郊換更大空間", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:2}},
+      {ic:"🏙️", t:"都心小宅，單身或兩人剛剛好", add:{mansion_used:3}}
     ]
   },
   {
-    q:"你的預算心態比較偏向？",
-    hint:"沒有要問你金額，只是想了解你的取向。",
-    type:"single",
+    q:"你的購屋預算大概落在？",
+    hint:"抓總價的大概區間就好（由低到高）。",
+    multi:false,
     opts:[
-      {ic:"✨", t:"預算充足，想要新的、最好的", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
-      {ic:"⚖️", t:"中等，最重視 CP 值", add:{chuko_kodate:2, mansion_used:2}},
-      {ic:"🎯", t:"想用有限預算進場、看報酬", add:{mansion_used:2, invest_rent:2}},
-      {ic:"📈", t:"資金充裕，想擴大資產配置", add:{invest_rent:2, invest_biz:2}}
+      {ic:"🪙", t:"2,000 萬日圓以下", add:{mansion_used:2, invest_rent:2, chuko_kodate:1}},
+      {ic:"💴", t:"2,000 ～ 4,000 萬日圓", add:{mansion_used:2, chuko_kodate:2, invest_rent:1}},
+      {ic:"💵", t:"4,000 ～ 6,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
+      {ic:"💰", t:"6,000 ～ 8,000 萬日圓", add:{shinchiku_kodate:2, mansion_new:2}},
+      {ic:"💎", t:"8,000 萬～ 1 億日圓以上", add:{chumon:2, mansion_new:2, shinchiku_kodate:1, invest_biz:1}},
+      {ic:"📊", t:"主要看投報、預算彈性", add:{invest_rent:2, invest_biz:2}}
     ]
   },
   {
     q:"對「屋齡與屋況」你的接受度是？",
-    hint:"新屋省心但貴，中古便宜但要顧屋況。",
-    type:"single",
+    hint:"新屋省心但貴，中古便宜但要顧屋況。可以複選。",
+    multi:true,
     opts:[
-      {ic:"🆕", t:"一定要新的，不想煩惱修繕", add:{shinchiku_kodate:2, mansion_new:2}},
-      {ic:"🔧", t:"可以接受中古，願意小整修換低價", add:{chuko_kodate:2, mansion_used:2, invest_rent:1}},
+      {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2}},
+      {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1}},
+      {ic:"🔧", t:"中古，但要「已翻修（リフォーム済）」", add:{chuko_kodate:2, mansion_used:2}},
+      {ic:"🏗️", t:"中古，社區已完成大規模修繕（大規模修繕済）", add:{mansion_used:2, invest_rent:1}},
+      {ic:"🛠️", t:"中古毛胚沒差，我自己整修", add:{chuko_kodate:2, mansion_used:1, invest_rent:1}},
       {ic:"🧮", t:"老屋沒差，看地點跟數字就好", add:{invest_rent:2, invest_biz:2}}
     ]
   },
   {
     q:"你想要多少「自己作主」的空間？",
     hint:"指格局、建材、風格的客製化程度。",
-    type:"single",
+    multi:false,
     opts:[
       {ic:"🎨", t:"我很有堅持，市售的都不夠滿意", add:{chumon:4}},
       {ic:"🖊️", t:"有想法，但市售挑一挑可以接受", add:{shinchiku_kodate:2, chuko_kodate:1}},
+      {ic:"📦", t:"想要現成配好的新成屋，直接住", add:{shinchiku_kodate:2, mansion_new:2}},
       {ic:"👌", t:"沒特別堅持，能住／能收租就好", add:{mansion_used:2, invest_rent:1}}
     ]
   },
   {
     q:"你偏好的地點是？",
-    hint:"地點會影響價格、生活跟轉手。",
-    type:"single",
+    hint:"地點會影響價格、生活跟轉手。可以複選。",
+    multi:true,
     opts:[
-      {ic:"🍃", t:"近郊，想要更大空間、有庭院", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:2}},
-      {ic:"🚉", t:"都心、車站近，方便又保值", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
-      {ic:"🏬", t:"商圈／觀光區，靠人流帶收益", add:{invest_biz:3}}
+      {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
+      {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2}},
+      {ic:"⛵", t:"神奈川、橫濱一帶", add:{shinchiku_kodate:2, mansion_used:1, chuko_kodate:1}},
+      {ic:"🌾", t:"千葉、埼玉", add:{chuko_kodate:2, chumon:2, shinchiku_kodate:1}},
+      {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
+      {ic:"🏬", t:"觀光區、熱鬧商圈", add:{invest_biz:3}},
+      {ic:"🏡", t:"安靜的純住宅區", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}}
     ]
   },
   {
     q:"最後，關於「耐震・隔音・建材」你的想法？",
     hint:"這題會幫你判斷偏木造還是 RC（鋼筋混凝土）。",
-    type:"single",
+    multi:false,
     opts:[
-      {ic:"🛡️", t:"很重視耐震隔音，願意多花一點預算", add:{}, structure:"rc"},
-      {ic:"🌲", t:"預算優先，木造也很好（日本木造技術成熟）", add:{}, structure:"wood"},
+      {ic:"🛡️", t:"最重視耐震、隔音，願意多花一點預算", add:{mansion_new:1}, structure:"rc"},
+      {ic:"🌲", t:"喜歡木造的溫暖質感（日本木造技術成熟）", add:{shinchiku_kodate:1}, structure:"wood"},
+      {ic:"💴", t:"預算優先，木造也完全可以", add:{}, structure:"wood"},
+      {ic:"🏢", t:"想要 RC／SRC 高樓的穩固感", add:{mansion_new:1}, structure:"rc", tower:true},
       {ic:"🙋", t:"不太懂，想聽周周的專業建議", add:{}, structure:"ask"}
     ]
   }
@@ -261,10 +278,11 @@ var QUESTIONS = [
 /* =========================================================
    邏輯
    ========================================================= */
-var state = { i:0, answers:[], structure:null };
+var state = { i:0, answers:[], structure:null, wantTower:false };
 
 function start(){
-  state = { i:0, answers:[], structure:null };
+  state = { i:0, answers:[], structure:null, wantTower:false };
+  QUESTIONS.forEach(function(){ state.answers.push([]); });
   document.getElementById('intro').style.display='none';
   document.getElementById('resultHost').style.display='none';
   document.getElementById('quiz').style.display='block';
@@ -276,59 +294,79 @@ function render(){
   var total = QUESTIONS.length;
   document.getElementById('pfill').style.width = ((state.i)/total*100)+'%';
   document.getElementById('pnum').textContent = '第 '+(state.i+1)+' / '+total+' 題';
-  var chosen = state.answers[state.i];
-  var html = '<div class="card">';
-  html += '<div class="q-no">Q'+(state.i+1)+'</div>';
-  html += '<div class="q-title">'+Q.q+'</div>';
-  html += '<div class="q-hint">'+Q.hint+'</div>';
-  html += '<div class="opts">';
+  var sel = state.answers[state.i];
+  var h = '<div class="card">';
+  h += '<div class="q-no">Q'+(state.i+1)+'</div>';
+  h += '<div class="q-title">'+Q.q+'</div>';
+  h += '<div class="q-hint">'+Q.hint+'</div>';
+  if(Q.multi) h += '<span class="multi-tag">✔ 可複選</span>';
+  h += '<div class="opts">';
   Q.opts.forEach(function(o,idx){
-    var sel = (chosen===idx);
-    html += '<button class="opt" onclick="pick('+idx+')" style="'+(sel?'border-color:var(--rose);background:var(--rose-l)':'')+'"><span class="ic">'+o.ic+'</span><span>'+o.t+'</span></button>';
+    var on = sel.indexOf(idx)>=0;
+    h += '<button class="opt'+(on?' sel':'')+'" onclick="tap('+idx+')"><span class="ic">'+o.ic+'</span><span>'+o.t+'</span>'+(Q.multi?'<span class="ck">'+(on?'✓':'')+'</span>':'')+'</button>';
   });
-  html += '</div>';
-  html += '<div class="q-actions">';
-  html += '<button class="prev" onclick="back()">'+(state.i>0?'← 上一題':'')+'</button>';
-  html += '</div></div>';
-  document.getElementById('qhost').innerHTML = html;
+  h += '</div>';
+  h += '<div class="q-actions">';
+  h += '<button class="prev" onclick="back()">'+(state.i>0?'← 上一題':'')+'</button>';
+  if(Q.multi){
+    var last = (state.i===total-1);
+    h += '<button class="next" onclick="nextQ()"'+(sel.length?'':' disabled')+'>'+(last?'看結果 →':'下一題 →')+'</button>';
+  }
+  h += '</div></div>';
+  document.getElementById('qhost').innerHTML = h;
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function pick(idx){
-  state.answers[state.i] = idx;
+function tap(idx){
   var Q = QUESTIONS[state.i];
-  if(Q.opts[idx].structure) state.structure = Q.opts[idx].structure;
-  // 選了就自動進下一題（最後一題進結果）
-  if(state.i < QUESTIONS.length-1){ state.i++; render(); }
-  else{ finish(); }
+  var sel = state.answers[state.i];
+  if(Q.multi){
+    var p = sel.indexOf(idx);
+    if(p>=0) sel.splice(p,1); else sel.push(idx);
+    render();
+  } else {
+    state.answers[state.i] = [idx];
+    if(Q.opts[idx].structure) state.structure = Q.opts[idx].structure;
+    advance();
+  }
 }
 
-function back(){
-  if(state.i>0){ state.i--; render(); }
+function nextQ(){
+  if(!state.answers[state.i].length) return;
+  advance();
 }
+
+function advance(){
+  if(state.i < QUESTIONS.length-1){ state.i++; render(); }
+  else finish();
+}
+
+function back(){ if(state.i>0){ state.i--; render(); } }
 
 function finish(){
-  // 計分
   var score = {};
   Object.keys(RESULTS).forEach(function(k){ score[k]=0; });
-  state.answers.forEach(function(ans,qi){
-    var add = QUESTIONS[qi].opts[ans].add || {};
-    Object.keys(add).forEach(function(k){ score[k]+=add[k]; });
+  state.wantTower = false;
+  state.answers.forEach(function(sel,qi){
+    sel.forEach(function(idx){
+      var o = QUESTIONS[qi].opts[idx];
+      if(o.tower) state.wantTower = true;
+      if(o.structure) state.structure = o.structure;
+      var add = o.add || {};
+      Object.keys(add).forEach(function(k){ score[k]+=add[k]; });
+    });
   });
-  // 排序
   var ranked = Object.keys(score).sort(function(a,b){ return score[b]-score[a]; });
   var top = ranked[0], topScore = score[top];
-  // 多重適合：分數 >= 最高分的 70% 且 >0 的其他類型
   var also = ranked.slice(1).filter(function(k){ return score[k]>0 && score[k] >= topScore*0.7; }).slice(0,2);
-  // 嚴格 → 注文宅：如果客製化題選了「很有堅持」(chumon 拿到 4)，或分數很分散（最高分很低）
   var strict = (score.chumon>=4) || (topScore<=4);
   showResult(top, also, strict, score);
 }
 
 function structLabel(){
-  if(state.structure==='rc') return {t:"建議偏 RC（鋼筋混凝土）", cls:"st", why:"你重視耐震與隔音，RC 造隔音好、耐震表現穩定，適合你。"};
-  if(state.structure==='wood') return {t:"木造也很適合你", cls:"st", why:"日本木造工法成熟、造價親民、冬暖，預算優先的話很划算。"};
-  return {t:"木造 / RC 由周周依情況建議", cls:"st", why:"這部分可以看你的預算、地點跟需求，周周再幫你分析哪種划算。"};
+  if(state.structure==='rc') return {t:"建議偏 RC（鋼筋混凝土）", why:"你重視耐震與隔音，RC 造隔音好、耐震表現穩定，適合你。"};
+  if(state.structure==='wood') return {t:"木造也很適合你", why:"日本木造工法成熟、造價親民、冬暖，預算優先的話很划算。"};
+  return {t:"木造 / RC 由周周依情況建議", why:"這部分可以看你的預算、地點跟需求，周周再幫你分析哪種划算。"};
 }
 
 function showResult(top, also, strict, score){
@@ -349,12 +387,12 @@ function showResult(top, also, strict, score){
   h += '<div class="tags">';
   R.tags.forEach(function(t){ h+='<span class="tag">'+t+'</span>'; });
   if(showStruct) h += '<span class="tag st">'+st.t+'</span>';
+  if((top==='mansion_new') && state.wantTower) h += '<span class="tag st">可鎖定塔樓（タワマン）</span>';
   h += '</div>';
   h += '<p class="desc">'+R.desc+'</p>';
   if(showStruct) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
   h += '<div class="r-note"><p><b>💡 周周的提醒：</b>'+R.note+'</p></div>';
 
-  // 多重適合
   if(also.length){
     h += '<div class="r-also"><div class="h">你其實也蠻適合這些方向 👇</div>';
     also.forEach(function(k){
@@ -364,7 +402,6 @@ function showResult(top, also, strict, score){
     h += '</div>';
   }
 
-  // 嚴格 → 注文宅
   if(strict && top!=='chumon'){
     h += '<div class="strict"><p><b>🎨 想得很細、每種都有堅持？</b>你的答案分布蠻分散、對細節也很有想法——這種情況，市售現成的房子可能都會差你一點。真的很講究的話，可以考慮<b>注文宅（買地自己設計）</b>，蓋一間完全照你想法的房子；不過要提醒你，注文宅比較花心力、預算通常也會高一些喔。要不要走這條路，周周可以幫你評估預算再決定。</p></div>';
   }
