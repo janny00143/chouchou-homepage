@@ -229,7 +229,7 @@ var QUESTIONS = [
     multi:true,
     opts:[
       {ic:"🏡", t:"自己住，想要一個長久的家", add:{shinchiku_kodate:2, chuko_kodate:2, mansion_new:2, mansion_used:2}},
-      {ic:"💰", t:"投資收租、看報酬為主", add:{invest_rent:3}},
+      {ic:"💰", t:"投資收租、看報酬為主", add:{invest_rent:3, invest_hotel:2, invest_biz:1}},
       {ic:"🔁", t:"自住，但未來可能出租或轉手", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
       {ic:"🏨", t:"經營民宿（民泊）或旅館", add:{invest_hotel:4}},
       {ic:"🏪", t:"店鋪、辦公室出租收益", add:{invest_biz:4}},
@@ -254,10 +254,10 @@ var QUESTIONS = [
     multi:false,
     opts:[
       {ic:"🪙", t:"2,000 萬日圓以下", add:{mansion_used:2, invest_rent:2, chuko_kodate:1}},
-      {ic:"💴", t:"2,000 ～ 4,000 萬日圓", add:{mansion_used:2, chuko_kodate:2, invest_rent:1, tower:1}},
-      {ic:"💵", t:"4,000 ～ 6,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1, tower:1}},
-      {ic:"💰", t:"6,000 ～ 8,000 萬日圓", add:{shinchiku_kodate:2, mansion_new:2, tower:1}},
-      {ic:"💎", t:"8,000 萬～ 1 億日圓以上", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1, invest_biz:1}},
+      {ic:"💴", t:"2,000 ～ 4,000 萬日圓", add:{mansion_used:2, chuko_kodate:2, invest_rent:1}},
+      {ic:"💵", t:"4,000 ～ 6,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
+      {ic:"💰", t:"6,000 萬 ～ 1 億日圓", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
+      {ic:"💎", t:"1 億日圓以上", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1, invest_biz:1}},
       {ic:"📊", t:"主要看投報、預算彈性", add:{invest_rent:2, invest_hotel:2, invest_biz:2}}
     ]
   },
@@ -291,7 +291,7 @@ var QUESTIONS = [
     multi:true,
     opts:[
       {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, invest_rent:2, tower:2}},
-      {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2}},
+      {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2, chumon:1}},
       {ic:"⛵", t:"神奈川、橫濱一帶", add:{shinchiku_kodate:2, mansion_used:1, chuko_kodate:1}},
       {ic:"🌾", t:"千葉、埼玉", add:{chuko_kodate:2, chumon:2, shinchiku_kodate:1}},
       {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, invest_rent:2, tower:1}},
@@ -392,7 +392,9 @@ function finish(){
   var ranked = Object.keys(score).sort(function(a,b){ return score[b]-score[a]; });
   var top = ranked[0], topScore = score[top];
   var also = ranked.slice(1).filter(function(k){ return score[k]>0 && score[k] >= topScore*0.7; }).slice(0,2);
-  var strict = (score.chumon>=4) || (topScore<=4);
+  // 很有堅持(注文宅高分) 或 很多房型分數都接近(什麼都想要/難分) → 建議注文宅
+  var closeCount = ranked.filter(function(k){ return score[k]>0 && score[k] >= topScore*0.85; }).length;
+  var strict = (score.chumon>=4) || (closeCount>=4);
   showResult(top, also, strict, score, ranked);
 }
 
@@ -437,9 +439,15 @@ function whyHTML(top){
 }
 
 function budgetNote(top){
+  if(top.indexOf('invest')===0) return '';   // 投資型不套「自住新屋」邏輯
   var bi = state.answers[2][0];
   if(bi===undefined || bi===5) return '';   // 「看投報、預算彈性」不提醒
-  var wantsNew = ['shinchiku_kodate','mansion_new','tower','chumon'].indexOf(top)>=0
+  // 注文宅：買地＋自建，總價偏高，低預算時提醒
+  if(top==='chumon'){
+    if(bi>2) return '';
+    return '<div class="reality"><p><b>🏗️ 關於注文宅預算：</b>注文宅是「買地＋蓋房」，土地加上建築成本，總預算通常會偏高。用你目前設定的預算來做注文宅可能會比較吃緊，建議先跟周周聊聊，看地點與預算怎麼配置比較實際。</p><p class="cta-line"><b>想知道你的預算做得起什麼樣的房子？私訊周周幫你抓！</b></p></div>';
+  }
+  var wantsNew = ['shinchiku_kodate','mansion_new','tower'].indexOf(top)>=0
       || state.answers[3].indexOf(0)>=0 || state.answers[3].indexOf(1)>=0
       || state.answers[4].indexOf(2)>=0;
   var msg='', retake=false;
