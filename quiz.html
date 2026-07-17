@@ -21,12 +21,10 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .hd a.back{font-size:13.5px;color:var(--mut);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
 .hd a.back:hover{background:#f5f5f4}
 
-/* ---- 進度 ---- */
 .pbar{height:6px;background:#f0eeec;border-radius:999px;overflow:hidden;margin:22px 0 6px}
 .pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--rose),#fb7185);border-radius:999px;transition:width .35s ease}
 .pnum{font-size:13px;color:var(--mut);font-weight:600;text-align:right}
 
-/* ---- 開場 ---- */
 .hero{text-align:center;padding:34px 0 6px}
 .hero .kick{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:14px}
 .hero h1{font-size:30px;font-weight:900;letter-spacing:.5px;line-height:1.3}
@@ -36,7 +34,6 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .startbtn{display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;font-weight:700;font-size:17px;padding:15px 40px;border-radius:999px;border:none;cursor:pointer;margin-top:24px;box-shadow:0 8px 22px rgba(244,63,94,.28);transition:.15s}
 .startbtn:hover{background:var(--rose-d);transform:translateY(-1px)}
 
-/* ---- 題目 ---- */
 .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 6px 22px rgba(0,0,0,.05);margin-top:16px}
 .q-no{font-size:13px;font-weight:700;color:var(--rose);letter-spacing:1px}
 .q-title{font-size:21px;font-weight:700;margin:8px 0 4px;line-height:1.4}
@@ -56,7 +53,6 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .q-actions .next{background:var(--rose);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:11px 30px;border-radius:999px;cursor:pointer}
 .q-actions .next:disabled{opacity:.35;cursor:not-allowed}
 
-/* ---- 結果 ---- */
 .result{margin-top:16px}
 .r-lead{text-align:center;margin-bottom:6px}
 .r-lead .k{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px}
@@ -68,6 +64,26 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .r-body .tag{font-size:12.5px;font-weight:600;color:var(--rose-d);background:var(--rose-l);padding:4px 11px;border-radius:999px}
 .r-body .tag.st{color:#2563eb;background:#eff6ff}
 .r-body p.desc{color:#44403c;font-size:15px;margin-top:6px}
+
+/* ---- 分析 ---- */
+.an{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:14px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.an h3{font-size:17px;font-weight:900;display:flex;align-items:center;gap:7px}
+.an .sub{font-size:13px;color:var(--mut);margin:2px 0 14px}
+.an-recap{border-top:1px dashed var(--line);padding-top:14px;margin-top:4px}
+.an-row{display:flex;gap:10px;padding:7px 0;font-size:14px;align-items:baseline}
+.an-row .dim{flex:0 0 82px;color:var(--mut);font-weight:600}
+.an-row .val{flex:1;color:var(--ink);font-weight:500}
+.an-why{background:var(--rose-l);border-radius:12px;padding:13px 15px;margin-top:14px;font-size:14px;line-height:1.85;color:#44403c}
+.an-why b{color:var(--rose-d)}
+.bars{margin-top:16px}
+.bars .bt{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:9px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:7px 0}
+.bar-name{flex:0 0 96px;font-size:13px;font-weight:600}
+.bar-track{flex:1;height:11px;background:#f0eeec;border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--rose),#fb7185);border-radius:999px;transition:width .6s ease}
+.bar-fill.dim{background:#d6d3d1}
+.bar-pct{flex:0 0 42px;text-align:right;font-size:12.5px;font-weight:700;color:var(--rose-d)}
+
 .r-note{background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.6px solid #fb7185;border-radius:14px;padding:15px 17px;margin-top:16px}
 .r-note b{color:var(--rose-d)}
 .r-note p{font-size:14px;color:#44403c;line-height:1.85;margin:0}
@@ -92,6 +108,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
   .opt{font-size:14.5px;padding:12px 13px;gap:11px}
   .opt .ic{width:34px;height:34px;font-size:18px}
   .r-body h2{font-size:21px}
+  .an-row .dim{flex-basis:74px}
+  .bar-name{flex-basis:80px}
 }
 </style>
 
@@ -103,12 +121,11 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 </header>
 
 <div class="wrap">
-  <!-- 開場 -->
   <section id="intro" class="hero">
     <span class="kick">🏠 1 分鐘小測驗</span>
     <h1>測測你適合買<br>日本<span>什麼樣的房子</span>？</h1>
-    <p>透天？公寓？塔樓？還是買地自己蓋、或當投資收租？<br>回答幾個問題，周周幫你把方向抓出來。</p>
-    <div class="meta">共 7 題 · 部分可複選 · 沒有標準答案 · 結果僅供參考方向</div>
+    <p>透天？公寓？塔樓？還是買地自己蓋、或當投資收租？<br>回答幾個問題，周周幫你分析出方向。</p>
+    <div class="meta">共 7 題 · 部分可複選 · 結果附契合度分析 · 僅供參考方向</div>
     <button class="startbtn" onclick="start()">開始測驗 →</button>
   </section>
 
@@ -124,66 +141,80 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 <script>
 /* =========================================================
    結果類型（RESULTS）
-   img 目前用站上現成的物件實照／示意圖，之後可換成雲端物件照
+   short = 分析長條圖用的短名；fit = 分析用的一句話
    ========================================================= */
 var RESULTS = {
   shinchiku_kodate: {
-    name:"新築一戶建（全新透天）",
-    img:"pexels-pixabay-271649.jpg",
+    name:"新築一戶建（全新透天）", short:"新築透天", img:"quiz-shinchiku.jpg",
     tags:["獨門獨戶","有土地","可停車/養寵物"],
+    fit:"你重視自己的空間與土地，又想要免整修、直接入住的新屋。",
     desc:"你重視自己的空間、想要一個完整屬於自己的家。全新透天格局方正、屋況新、幾乎免整修就能入住，還能保有土地。近郊會比都心好入手。",
     note:"周周會幫你看基地形狀、日照、道路條件跟建商品質，這幾點會直接影響住起來舒不舒服、以後好不好轉手。"
   },
   chuko_kodate: {
-    name:"中古一戶建（中古透天）",
-    img:"pexels-pixabay-280471.jpg",
+    name:"中古一戶建（中古透天）", short:"中古透天", img:"pexels-pixabay-280471.jpg",
     tags:["CP 值高","有土地","可翻修"],
+    fit:"你想要透天的自由，又很在意 CP 值，願意用整修換到更好的地點或空間。",
     desc:"你想要透天的自由，又在意 CP 值。中古透天單價親民、同預算能換更大空間或更好地點，屋況可以靠整修慢慢養。",
     note:"中古屋最怕買到屋況地雷。周周會幫你把關屋齡、耐震基準、白蟻/漏水這些看不到的重點，必要時安排驗屋，別只看照片就下手。"
   },
   chumon: {
-    name:"買土地自己設計（注文宅／訂製宅）",
-    img:"pexels-pixabay-271655.jpg",
+    name:"買土地自己設計（注文宅／訂製宅）", short:"注文宅", img:"pexels-pixabay-271655.jpg",
     tags:["完全客製","從土地開始","自由度最高"],
+    fit:"你對格局、建材、風格很有主見，市售現成的總覺得差一點。",
     desc:"你對格局、建材、風格有很多堅持，市面上現成的房子總覺得差一點。那就直接買地、找建築師蓋一間完全照你想法的房子。",
     note:"注文宅自由度最高，但也最花心力、預算通常較高、工期較長。周周會協助你找地、對接建商/建築師、算總預算，讓你清楚知道要投入多少再決定。"
   },
   mansion_new: {
-    name:"全新／大型公寓大樓（含塔樓）",
-    img:"prop-minamiazabu205-1.jpg",
+    name:"全新／大型公寓大樓", short:"全新公寓", img:"prop-minamiazabu205-1.jpg",
     tags:["生活機能佳","有管理員","保值好轉手"],
-    desc:"你想要方便、輕鬆、有管理的生活。都心的全新或大型公寓大樓（マンション）機能好、有管理員代收包裹跟維護公設，地點好的很保值。想要高樓景觀跟氣派門廳，就往塔樓（タワマン）看。",
+    fit:"你想要方便、有管理、好轉手的都會生活，偏好新一點、省心的屋況。",
+    desc:"你想要方便、輕鬆、有管理的生活。都心的全新或大型公寓大樓（マンション）機能好、有管理員代收包裹跟維護公設，地點好的很保值。",
     note:"公寓要看的是管理狀況跟管理費/修繕基金合不合理——這比裝潢重要多了。周周會幫你確認社區體質，避免買到管理鬆散、將來難轉手的物件。"
   },
   mansion_used: {
-    name:"中古公寓（小資首選）",
-    img:"物件-客廳.jpg",
+    name:"中古公寓（小資首選）", short:"中古公寓", img:"物件-客廳.jpg",
     tags:["入門門檻低","地點好挑","可自住可出租"],
+    fit:"你想用相對輕的預算在都心進場，重視地點更勝於全新。",
     desc:"想用相對輕的預算在都心進場，中古公寓是很實際的選擇。同樣地段，中古比全新便宜不少，還能挑到車站近的好位置，自住、之後出租都靈活。",
     note:"中古公寓的關鍵在屋齡、耐震基準跟社區管理。周周會幫你篩掉那些管理費偏高、修繕金不足的物件，也能順便估貸款成數（依個案、依銀行審查為準）。"
   },
+  tower: {
+    name:"塔樓（タワーマンション）", short:"塔樓", img:"晴空塔.jpg",
+    tags:["高樓景觀","氣派門廳","公設齊全"],
+    fit:"你嚮往高樓景觀、氣派門廳跟齊全公設的都會生活。",
+    desc:"你嚮往高樓層的景觀、氣派的大廳與豐富公設（健身房、交誼廳、禮賓等）。塔樓（タワマン）多在都心與灣岸，能見度高、生活便利。想省一點也有<b>中古塔樓</b>可選，同地段通常比全新划算。",
+    note:"塔樓的管理費、修繕基金通常較高，高樓層與棟距、風壓、電梯尖峰也要一起看；轉售時樓層與座向差很多。周周會幫你比全新與中古塔樓的實際持有成本，挑到真正划算的那一戶。"
+  },
   invest_rent: {
-    name:"投資收租物件（區分套房／整棟）",
-    img:"prop-togoshi701-1.jpg",
+    name:"投資收租物件（區分／整棟）", short:"收租物件", img:"prop-togoshi701-1.jpg",
     tags:["看投報率","被動收入","資產配置"],
+    fit:"你的重點是報酬與資產配置，不一定要自己住。",
     desc:"你的重點是報酬，不一定要自己住。可以從一間區分套房（區分マンション）開始，資金充裕也能考慮整棟收租（一棟）。看的是投報率、租客穩定度跟地點人流。",
     note:"網站標的都是表面投報率（表面利回り），沒扣管理、修繕、稅金跟空租風險。周周會幫你算實質投報率（実質利回り），把真實的數字攤給你看，不會只看漂亮的表面數字。"
   },
-  invest_biz: {
-    name:"商用／旅宿型投資（店鋪・辦公室・民宿・旅館）",
-    img:"prop-asakusa3-1.jpg",
-    tags:["事業經營","觀光財","收益空間大"],
-    desc:"你想的是「用不動產經營事業」——店鋪、辦公室出租，或在觀光區做民宿（民泊）、旅館。收益空間大，但牌照、法規、營運也更複雜。",
+  invest_hotel: {
+    name:"民宿・旅館（旅宿經營）", short:"民宿旅館", img:"prop-asakusa3-1.jpg",
+    tags:["觀光財","經營收益","法規合規"],
+    fit:"你想在觀光區靠人流經營民宿（民泊）或旅館。",
+    desc:"你想的是「用房子做旅宿生意」——在觀光區經營民宿（民泊）或旅館，賺觀光財。收益空間大，但牌照、法規、營運也更講究。",
     note:"民宿/旅館牽涉住宅宿泊事業法、旅館業許可、用途地域跟消防等法規，很吃合規。周周有實際在處理旅館物件（例如淺草的旅館案），能幫你看牌照與可行性，實際仍以主管機關最新規定為準。"
+  },
+  invest_biz: {
+    name:"店鋪・辦公室（商用收益）", short:"店鋪辦公室", img:"東京鐵塔夜.jpg",
+    tags:["商用收益","長租穩定","資產配置"],
+    fit:"你想收店鋪或辦公室的租金，作為較穩定的商用收益。",
+    desc:"你想的是收店鋪或辦公室的租金。商用租約通常較長、收益穩定，但空租期、承租戶產業、地段人流與商圈變化都要評估。",
+    note:"商用物件的貸款條件、租約型態（定期借家等）跟稅務跟住宅不太一樣。周周會幫你看租約穩定度與地段體質，實際貸款與稅務仍依個案、並由銀行與稅理士確認為準。"
   }
 };
 
 /* =========================================================
    題目（QUESTIONS）
-   multi:true → 可複選，需按「下一題」；否則單選、選了就跳下一題
-   每個選項 add = 替哪些結果加分；structure = 木造/RC 判斷（不加房型分）
-   tower:true = 這個選項代表想要高樓/塔樓
+   multi:true → 可複選（勾選＋下一題）；否則單選、選了自動跳
+   add = 加分；structure = 木造/RC；tower = 想要塔樓；used = 偏好中古
    ========================================================= */
+var DIMS = ["買房目的","想要的生活","預算","屋況接受度","客製化程度","偏好地點","建材偏好"];
 var QUESTIONS = [
   {
     q:"你買房最主要的目的是？",
@@ -193,8 +224,8 @@ var QUESTIONS = [
       {ic:"🏡", t:"自己住，想要一個長久的家", add:{shinchiku_kodate:2, chuko_kodate:2, mansion_new:2, mansion_used:2}},
       {ic:"💰", t:"投資收租、看報酬為主", add:{invest_rent:3}},
       {ic:"🔁", t:"自住，但未來可能出租或轉手", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
-      {ic:"🏨", t:"經營民宿（民泊）或旅館", add:{invest_biz:3}},
-      {ic:"🏪", t:"店鋪、辦公室出租收益", add:{invest_biz:3}},
+      {ic:"🏨", t:"經營民宿（民泊）或旅館", add:{invest_hotel:4}},
+      {ic:"🏪", t:"店鋪、辦公室出租收益", add:{invest_biz:4}},
       {ic:"👨‍👩‍👧", t:"幫家人／子女準備一間", add:{mansion_new:2, mansion_used:2, shinchiku_kodate:1}}
     ]
   },
@@ -205,9 +236,9 @@ var QUESTIONS = [
     opts:[
       {ic:"🌳", t:"獨門獨戶、有自己的土地，能停車、養寵物", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
       {ic:"🛎️", t:"有管理員、公設維護輕鬆", add:{mansion_new:3, mansion_used:2}},
-      {ic:"🌆", t:"高樓景觀、氣派門廳的塔樓", add:{mansion_new:3}, tower:true},
+      {ic:"🌆", t:"高樓景觀、氣派門廳的塔樓", add:{tower:4}, tower:true},
       {ic:"🍃", t:"安靜住宅區、近郊換更大空間", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:2}},
-      {ic:"🏙️", t:"都心小宅，單身或兩人剛剛好", add:{mansion_used:3}}
+      {ic:"🏙️", t:"都心小宅，單身或兩人剛剛好", add:{mansion_used:3, tower:1}}
     ]
   },
   {
@@ -216,11 +247,11 @@ var QUESTIONS = [
     multi:false,
     opts:[
       {ic:"🪙", t:"2,000 萬日圓以下", add:{mansion_used:2, invest_rent:2, chuko_kodate:1}},
-      {ic:"💴", t:"2,000 ～ 4,000 萬日圓", add:{mansion_used:2, chuko_kodate:2, invest_rent:1}},
-      {ic:"💵", t:"4,000 ～ 6,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
-      {ic:"💰", t:"6,000 ～ 8,000 萬日圓", add:{shinchiku_kodate:2, mansion_new:2}},
-      {ic:"💎", t:"8,000 萬～ 1 億日圓以上", add:{chumon:2, mansion_new:2, shinchiku_kodate:1, invest_biz:1}},
-      {ic:"📊", t:"主要看投報、預算彈性", add:{invest_rent:2, invest_biz:2}}
+      {ic:"💴", t:"2,000 ～ 4,000 萬日圓", add:{mansion_used:2, chuko_kodate:2, invest_rent:1, tower:1}},
+      {ic:"💵", t:"4,000 ～ 6,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1, tower:1}},
+      {ic:"💰", t:"6,000 ～ 8,000 萬日圓", add:{shinchiku_kodate:2, mansion_new:2, tower:1}},
+      {ic:"💎", t:"8,000 萬～ 1 億日圓以上", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1, invest_biz:1}},
+      {ic:"📊", t:"主要看投報、預算彈性", add:{invest_rent:2, invest_hotel:2, invest_biz:2}}
     ]
   },
   {
@@ -228,12 +259,12 @@ var QUESTIONS = [
     hint:"新屋省心但貴，中古便宜但要顧屋況。可以複選。",
     multi:true,
     opts:[
-      {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2}},
-      {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1}},
-      {ic:"🔧", t:"中古，但要「已翻修（リフォーム済）」", add:{chuko_kodate:2, mansion_used:2}},
-      {ic:"🏗️", t:"中古，社區已完成大規模修繕（大規模修繕済）", add:{mansion_used:2, invest_rent:1}},
-      {ic:"🛠️", t:"中古毛胚沒差，我自己整修", add:{chuko_kodate:2, mansion_used:1, invest_rent:1}},
-      {ic:"🧮", t:"老屋沒差，看地點跟數字就好", add:{invest_rent:2, invest_biz:2}}
+      {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}},
+      {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1, tower:1}},
+      {ic:"🔧", t:"中古，但要「已翻修（リフォーム済）」", add:{chuko_kodate:2, mansion_used:2}, used:true},
+      {ic:"🏗️", t:"中古，社區已完成大規模修繕（大規模修繕済）", add:{mansion_used:2, invest_rent:1}, used:true},
+      {ic:"🛠️", t:"中古毛胚沒差，我自己整修", add:{chuko_kodate:2, mansion_used:1, invest_rent:1}, used:true},
+      {ic:"🧮", t:"老屋沒差，看地點跟數字就好", add:{invest_rent:2, invest_hotel:1, invest_biz:2}, used:true}
     ]
   },
   {
@@ -243,7 +274,7 @@ var QUESTIONS = [
     opts:[
       {ic:"🎨", t:"我很有堅持，市售的都不夠滿意", add:{chumon:4}},
       {ic:"🖊️", t:"有想法，但市售挑一挑可以接受", add:{shinchiku_kodate:2, chuko_kodate:1}},
-      {ic:"📦", t:"想要現成配好的新成屋，直接住", add:{shinchiku_kodate:2, mansion_new:2}},
+      {ic:"📦", t:"想要現成配好的新成屋，直接住", add:{shinchiku_kodate:2, mansion_new:2, tower:1}},
       {ic:"👌", t:"沒特別堅持，能住／能收租就好", add:{mansion_used:2, invest_rent:1}}
     ]
   },
@@ -252,12 +283,12 @@ var QUESTIONS = [
     hint:"地點會影響價格、生活跟轉手。可以複選。",
     multi:true,
     opts:[
-      {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
+      {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, invest_rent:2, tower:2}},
       {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2}},
       {ic:"⛵", t:"神奈川、橫濱一帶", add:{shinchiku_kodate:2, mansion_used:1, chuko_kodate:1}},
       {ic:"🌾", t:"千葉、埼玉", add:{chuko_kodate:2, chumon:2, shinchiku_kodate:1}},
-      {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
-      {ic:"🏬", t:"觀光區、熱鬧商圈", add:{invest_biz:3}},
+      {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, invest_rent:2, tower:1}},
+      {ic:"🏬", t:"觀光區、熱鬧商圈", add:{invest_hotel:3, invest_biz:2}},
       {ic:"🏡", t:"安靜的純住宅區", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}}
     ]
   },
@@ -266,22 +297,19 @@ var QUESTIONS = [
     hint:"這題會幫你判斷偏木造還是 RC（鋼筋混凝土）。",
     multi:false,
     opts:[
-      {ic:"🛡️", t:"最重視耐震、隔音，願意多花一點預算", add:{mansion_new:1}, structure:"rc"},
+      {ic:"🛡️", t:"最重視耐震、隔音，願意多花一點預算", add:{mansion_new:1, tower:1}, structure:"rc"},
       {ic:"🌲", t:"喜歡木造的溫暖質感（日本木造技術成熟）", add:{shinchiku_kodate:1}, structure:"wood"},
       {ic:"💴", t:"預算優先，木造也完全可以", add:{}, structure:"wood"},
-      {ic:"🏢", t:"想要 RC／SRC 高樓的穩固感", add:{mansion_new:1}, structure:"rc", tower:true},
+      {ic:"🏢", t:"想要 RC／SRC 高樓的穩固感", add:{mansion_new:1, tower:2}, structure:"rc", tower:true},
       {ic:"🙋", t:"不太懂，想聽周周的專業建議", add:{}, structure:"ask"}
     ]
   }
 ];
 
-/* =========================================================
-   邏輯
-   ========================================================= */
-var state = { i:0, answers:[], structure:null, wantTower:false };
+var state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false };
 
 function start(){
-  state = { i:0, answers:[], structure:null, wantTower:false };
+  state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false };
   QUESTIONS.forEach(function(){ state.answers.push([]); });
   document.getElementById('intro').style.display='none';
   document.getElementById('resultHost').style.display='none';
@@ -326,31 +354,22 @@ function tap(idx){
     render();
   } else {
     state.answers[state.i] = [idx];
-    if(Q.opts[idx].structure) state.structure = Q.opts[idx].structure;
     advance();
   }
 }
-
-function nextQ(){
-  if(!state.answers[state.i].length) return;
-  advance();
-}
-
-function advance(){
-  if(state.i < QUESTIONS.length-1){ state.i++; render(); }
-  else finish();
-}
-
+function nextQ(){ if(state.answers[state.i].length) advance(); }
+function advance(){ if(state.i < QUESTIONS.length-1){ state.i++; render(); } else finish(); }
 function back(){ if(state.i>0){ state.i--; render(); } }
 
 function finish(){
   var score = {};
   Object.keys(RESULTS).forEach(function(k){ score[k]=0; });
-  state.wantTower = false;
+  state.wantTower = false; state.wantUsed = false;
   state.answers.forEach(function(sel,qi){
     sel.forEach(function(idx){
       var o = QUESTIONS[qi].opts[idx];
       if(o.tower) state.wantTower = true;
+      if(o.used) state.wantUsed = true;
       if(o.structure) state.structure = o.structure;
       var add = o.add || {};
       Object.keys(add).forEach(function(k){ score[k]+=add[k]; });
@@ -360,7 +379,7 @@ function finish(){
   var top = ranked[0], topScore = score[top];
   var also = ranked.slice(1).filter(function(k){ return score[k]>0 && score[k] >= topScore*0.7; }).slice(0,2);
   var strict = (score.chumon>=4) || (topScore<=4);
-  showResult(top, also, strict, score);
+  showResult(top, also, strict, score, ranked);
 }
 
 function structLabel(){
@@ -369,14 +388,48 @@ function structLabel(){
   return {t:"木造 / RC 由周周依情況建議", why:"這部分可以看你的預算、地點跟需求，周周再幫你分析哪種划算。"};
 }
 
-function showResult(top, also, strict, score){
+function recapHTML(){
+  var rows = '';
+  state.answers.forEach(function(sel,qi){
+    if(!sel.length) return;
+    var txt = sel.map(function(idx){ return QUESTIONS[qi].opts[idx].t; }).join('、');
+    rows += '<div class="an-row"><span class="dim">'+DIMS[qi]+'</span><span class="val">'+txt+'</span></div>';
+  });
+  return rows;
+}
+
+function barsHTML(score, ranked){
+  var topScore = score[ranked[0]] || 1;
+  var list = ranked.filter(function(k){ return score[k]>0; }).slice(0,5);
+  var h = '<div class="bars"><div class="bt">📊 各房型契合度</div>';
+  list.forEach(function(k,i){
+    var pct = Math.round(score[k]/topScore*100);
+    h += '<div class="bar-row"><span class="bar-name">'+RESULTS[k].short+'</span><span class="bar-track"><span class="bar-fill'+(i===0?'':' dim')+'" style="width:'+pct+'%"></span></span><span class="bar-pct">'+pct+'%</span></div>';
+  });
+  h += '</div>';
+  return h;
+}
+
+function whyHTML(top){
+  var a = state.answers;
+  var goal = a[0].map(function(i){ return QUESTIONS[0].opts[i].t; }).join('、');
+  var budget = a[2].length ? QUESTIONS[2].opts[a[2][0]].t : '';
+  var place = a[5].map(function(i){ return QUESTIONS[5].opts[i].t; }).join('、');
+  var s = '你在「目的」選了<b>'+(goal||'—')+'</b>';
+  if(budget) s += '、預算落在<b>'+budget+'</b>';
+  if(place) s += '、偏好<b>'+place+'</b>';
+  s += '。'+RESULTS[top].fit+' 綜合起來，最貼近你的是 <b>'+RESULTS[top].name+'</b>。';
+  return s;
+}
+
+function showResult(top, also, strict, score, ranked){
   var R = RESULTS[top];
   var st = structLabel();
   var host = document.getElementById('resultHost');
   document.getElementById('quiz').style.display='none';
   document.getElementById('pfill').style.width='100%';
 
-  var showStruct = (top==='shinchiku_kodate'||top==='chuko_kodate'||top==='chumon');
+  var isHouse = (top==='shinchiku_kodate'||top==='chuko_kodate'||top==='chumon');
 
   var h = '<div class="result">';
   h += '<div class="r-lead"><span class="k">✨ 你的測驗結果</span></div>';
@@ -386,11 +439,25 @@ function showResult(top, also, strict, score){
   h += '<h2>你比較適合：'+R.name+'</h2>';
   h += '<div class="tags">';
   R.tags.forEach(function(t){ h+='<span class="tag">'+t+'</span>'; });
-  if(showStruct) h += '<span class="tag st">'+st.t+'</span>';
-  if((top==='mansion_new') && state.wantTower) h += '<span class="tag st">可鎖定塔樓（タワマン）</span>';
+  if(isHouse) h += '<span class="tag st">'+st.t+'</span>';
+  if(top==='tower' && state.wantUsed) h += '<span class="tag st">中古塔樓 CP 值更高</span>';
   h += '</div>';
   h += '<p class="desc">'+R.desc+'</p>';
-  if(showStruct) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
+  if(isHouse) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
+  h += '</div></div>';
+
+  /* ---- 分析 ---- */
+  h += '<div class="an">';
+  h += '<h3>🔍 周周的分析</h3>';
+  h += '<div class="sub">根據你這 7 題的選擇，幫你整理出方向</div>';
+  h += barsHTML(score, ranked);
+  h += '<div class="an-why">'+whyHTML(top)+'</div>';
+  h += '<div class="an-recap">';
+  h += recapHTML();
+  h += '</div>';
+  h += '</div>';
+
+  /* ---- 周周提醒 ---- */
   h += '<div class="r-note"><p><b>💡 周周的提醒：</b>'+R.note+'</p></div>';
 
   if(also.length){
@@ -410,7 +477,6 @@ function showResult(top, also, strict, score){
   h += '<a class="line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 問周周這個方向</a>';
   h += '<button class="re" onclick="start()">↺ 重新測一次</button>';
   h += '</div>';
-  h += '</div></div>';
 
   h += '<p class="disc">＊本測驗僅為協助釐清方向的趣味參考，非投資或購屋建議。實際適合的房型、貸款成數、投報率與稅務等，仍需依個案評估，並由宅建士／司法書士／稅理士確認為準。</p>';
   h += '</div>';
