@@ -1,0 +1,385 @@
+<!-- 周周・買房測驗（樣板）。存成 quiz.html。純靜態，直接用瀏覽器開得起來。 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>測測你適合買日本什麼樣的房子？｜周周・日本房仲</title>
+<meta name="description" content="花 1 分鐘做個小測驗，看看你適合日本的透天、公寓、塔樓、注文宅還是投資物件。周周幫你把方向抓出來。">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--rose-l:#fff1f2;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{max-width:1100px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}
+.logo-emblem{height:40px;width:auto;display:block;flex-shrink:0}
+.hd a.back{font-size:13.5px;color:var(--mut);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.hd a.back:hover{background:#f5f5f4}
+
+/* ---- 進度 ---- */
+.pbar{height:6px;background:#f0eeec;border-radius:999px;overflow:hidden;margin:22px 0 6px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--rose),#fb7185);border-radius:999px;transition:width .35s ease}
+.pnum{font-size:13px;color:var(--mut);font-weight:600;text-align:right}
+
+/* ---- 開場 ---- */
+.hero{text-align:center;padding:34px 0 6px}
+.hero .kick{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:30px;font-weight:900;letter-spacing:.5px;line-height:1.3}
+.hero h1 span{color:var(--rose)}
+.hero p{color:var(--mut);margin:14px auto 0;max-width:460px}
+.hero .meta{margin-top:14px;font-size:13px;color:var(--mut)}
+.startbtn{display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;font-weight:700;font-size:17px;padding:15px 40px;border-radius:999px;border:none;cursor:pointer;margin-top:24px;box-shadow:0 8px 22px rgba(244,63,94,.28);transition:.15s}
+.startbtn:hover{background:var(--rose-d);transform:translateY(-1px)}
+
+/* ---- 題目 ---- */
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 6px 22px rgba(0,0,0,.05);margin-top:16px}
+.q-no{font-size:13px;font-weight:700;color:var(--rose);letter-spacing:1px}
+.q-title{font-size:21px;font-weight:700;margin:8px 0 4px;line-height:1.4}
+.q-hint{font-size:13.5px;color:var(--mut);margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1.6px solid var(--line);border-radius:14px;padding:15px 16px;font-family:inherit;font-size:15.5px;color:var(--ink);cursor:pointer;transition:.13s;line-height:1.45}
+.opt:hover{border-color:#fbb6c4;background:var(--rose-l)}
+.opt .ic{width:38px;height:38px;flex:0 0 auto;border-radius:11px;background:var(--rose-l);display:flex;align-items:center;justify-content:center;font-size:20px}
+.opt.multi.sel{border-color:var(--rose);background:var(--rose-l)}
+.opt.multi.sel .ic{background:var(--rose);color:#fff}
+.q-actions{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
+.q-actions .prev{background:none;border:none;color:var(--mut);font-family:inherit;font-size:14px;cursor:pointer;padding:8px 6px}
+.q-actions .prev:hover{color:var(--ink)}
+.q-actions .next{background:var(--rose);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:11px 30px;border-radius:999px;cursor:pointer}
+.q-actions .next:disabled{opacity:.4;cursor:not-allowed}
+.multi-tag{font-size:12.5px;color:var(--rose-d);background:var(--rose-l);font-weight:600;padding:3px 10px;border-radius:999px;display:inline-block;margin-bottom:14px}
+
+/* ---- 結果 ---- */
+.result{margin-top:16px}
+.r-lead{text-align:center;margin-bottom:6px}
+.r-lead .k{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px}
+.r-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.06);margin-top:14px}
+.r-card .cov{width:100%;height:210px;object-fit:cover;background:#eee}
+.r-body{padding:22px}
+.r-body h2{font-size:24px;font-weight:900;line-height:1.35}
+.r-body .tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.r-body .tag{font-size:12.5px;font-weight:600;color:var(--rose-d);background:var(--rose-l);padding:4px 11px;border-radius:999px}
+.r-body .tag.st{color:#2563eb;background:#eff6ff}
+.r-body p.desc{color:#44403c;font-size:15px;margin-top:6px}
+.r-note{background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.6px solid #fb7185;border-radius:14px;padding:15px 17px;margin-top:16px}
+.r-note b{color:var(--rose-d)}
+.r-note p{font-size:14px;color:#44403c;line-height:1.85;margin:0}
+.r-also{margin-top:18px}
+.r-also .h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.r-also .mini{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:9px}
+.r-also .mini img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
+.r-also .mini b{font-size:15px}
+.r-also .mini p{font-size:13px;color:var(--mut);margin-top:2px}
+.strict{background:#fffbeb;border:1.6px solid #fbbf24;border-radius:14px;padding:15px 17px;margin-top:16px}
+.strict b{color:#b45309}
+.strict p{font-size:14px;color:#44403c;line-height:1.85;margin:0}
+.cta{text-align:center;margin-top:22px}
+.cta a.line{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:700;font-size:17px;padding:15px 38px;border-radius:999px;box-shadow:0 8px 22px rgba(16,185,129,.28)}
+.cta a.line:hover{background:var(--green-d)}
+.cta .re{display:block;margin-top:14px;background:none;border:none;color:var(--mut);font-family:inherit;font-size:14px;cursor:pointer;width:100%;padding:6px}
+.cta .re:hover{color:var(--ink)}
+.disc{font-size:12px;color:var(--mut);text-align:center;margin:26px 0 40px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto}
+@media(max-width:600px){
+  .hero h1{font-size:25px}
+  .q-title{font-size:19px}
+  .opt{font-size:14.5px;padding:13px 13px}
+  .r-body h2{font-size:21px}
+}
+</style>
+
+<header>
+  <div class="hd">
+    <a class="logo" href="index.html"><img class="logo-emblem" src="logo-mark.png" alt="周周・日本房仲"><span>周周・日本房仲</span></a>
+    <a class="back" href="index.html">← 回首頁</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- 開場 -->
+  <section id="intro" class="hero">
+    <span class="kick">🏠 1 分鐘小測驗</span>
+    <h1>測測你適合買<br>日本<span>什麼樣的房子</span>？</h1>
+    <p>透天？公寓？塔樓？還是買地自己蓋、或當投資收租？<br>回答幾個問題，周周幫你把方向抓出來。</p>
+    <div class="meta">共 7 題 · 沒有標準答案 · 結果僅供參考方向</div>
+    <button class="startbtn" onclick="start()">開始測驗 →</button>
+  </section>
+
+  <!-- 進度 + 題目容器 -->
+  <div id="quiz" style="display:none">
+    <div class="pbar"><i id="pfill" style="width:0"></i></div>
+    <div class="pnum" id="pnum"></div>
+    <div id="qhost"></div>
+  </div>
+
+  <!-- 結果容器 -->
+  <div id="resultHost" style="display:none"></div>
+</div>
+
+<script>
+/* =========================================================
+   結果類型（RESULTS）— 每個 key 是一種房型方向
+   img 目前用站上現成圖當示意，之後可換
+   ========================================================= */
+var RESULTS = {
+  shinchiku_kodate: {
+    name:"新築一戶建（全新透天）",
+    img:"pexels-pixabay-271649.jpg",
+    tags:["獨門獨戶","有土地","可停車/養寵物"],
+    desc:"你重視自己的空間、想要一個完整屬於自己的家。全新透天格局方正、屋況新、幾乎免整修就能入住，還能保有土地。近郊會比都心好入手。",
+    note:"周周會幫你看基地形狀、日照、道路條件跟建商品質，這幾點會直接影響住起來舒不舒服、以後好不好轉手。"
+  },
+  chuko_kodate: {
+    name:"中古一戶建（中古透天）",
+    img:"pexels-pixabay-280471.jpg",
+    tags:["CP 值高","有土地","可翻修"],
+    desc:"你想要透天的自由，又在意 CP 值。中古透天單價親民、同預算能換更大空間或更好地點，屋況可以靠整修慢慢養。",
+    note:"中古屋最怕買到屋況地雷。周周會幫你把關屋齡、耐震基準、白蟻/漏水這些看不到的重點，必要時安排驗屋，別只看照片就下手。"
+  },
+  chumon: {
+    name:"買土地自己設計（注文宅／訂製宅）",
+    img:"pexels-pixabay-271655.jpg",
+    tags:["完全客製","從土地開始","自由度最高"],
+    desc:"你對格局、建材、風格有很多堅持，市面上現成的房子總覺得差一點。那就直接買地、找建築師蓋一間完全照你想法的房子。",
+    note:"注文宅自由度最高，但也最花心力、預算通常較高、工期較長。周周會協助你找地、對接建商/建築師、算總預算，讓你清楚知道要投入多少再決定。"
+  },
+  mansion_new: {
+    name:"全新／大型公寓大樓（含塔樓）",
+    img:"晴空塔.jpg",
+    tags:["生活機能佳","有管理員","保值好轉手"],
+    desc:"你想要方便、輕鬆、有管理的生活。都心的全新或大型公寓大樓（マンション）機能好、有管理員代收包裹跟維護公設，地點好的很保值。想要高樓景觀跟氣派門廳，就往塔樓（タワマン）看。",
+    note:"公寓要看的是管理狀況跟管理費/修繕基金合不合理——這比裝潢重要多了。周周會幫你確認社區體質，避免買到管理鬆散、將來難轉手的物件。"
+  },
+  mansion_used: {
+    name:"中古公寓（小資首選）",
+    img:"物件-客廳.jpg",
+    tags:["入門門檻低","地點好挑","可自住可出租"],
+    desc:"想用相對輕的預算在都心進場，中古公寓是很實際的選擇。同樣地段，中古比全新便宜不少，還能挑到車站近的好位置，自住、之後出租都靈活。",
+    note:"中古公寓的關鍵在屋齡、耐震基準跟社區管理。周周會幫你篩掉那些管理費偏高、修繕金不足的物件，也能順便估貸款成數（依個案、依銀行審查為準）。"
+  },
+  invest_rent: {
+    name:"投資收租物件（區分套房／整棟）",
+    img:"prop-togoshi701-1.jpg",
+    tags:["看投報率","被動收入","資產配置"],
+    desc:"你的重點是報酬，不一定要自己住。可以從一間區分套房（區分マンション）開始，資金充裕也能考慮整棟收租（一棟）。看的是投報率、租客穩定度跟地點人流。",
+    note:"網站標的都是表面投報率（表面利回り），沒扣管理、修繕、稅金跟空租風險。周周會幫你算實質投報率（実質利回り），把真實的數字攤給你看，不會只看漂亮的表面數字。"
+  },
+  invest_biz: {
+    name:"商用／旅宿型投資（店鋪・辦公室・民宿・旅館）",
+    img:"prop-asakusa3-1.jpg",
+    tags:["事業經營","觀光財","收益空間大"],
+    desc:"你想的是「用不動產經營事業」——店鋪、辦公室出租，或在觀光區做民宿（民泊）、旅館。收益空間大，但牌照、法規、營運也更複雜。",
+    note:"民宿/旅館牽涉住宅宿泊事業法、旅館業許可、用途地域跟消防等法規，很吃合規。周周有實際在處理旅館物件（例如淺草的旅館案），能幫你看牌照與可行性，實際仍以主管機關最新規定為準。"
+  }
+};
+
+/* =========================================================
+   題目（QUESTIONS）
+   每個選項的 add 物件 = 這個選項會替哪些結果加幾分
+   single = 單選；multi = 可複選（例如「都可以」的情境）
+   ========================================================= */
+var QUESTIONS = [
+  {
+    q:"你買房最主要的目的是？",
+    hint:"先抓大方向：自住還是投資。",
+    type:"single",
+    opts:[
+      {ic:"🏡", t:"自己住，想要一個長久的家", add:{shinchiku_kodate:2, chuko_kodate:2, mansion_new:2, mansion_used:2}},
+      {ic:"💰", t:"投資收租、看報酬為主", add:{invest_rent:3, invest_biz:1}},
+      {ic:"🔁", t:"又想住、未來可能出租或轉手", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
+      {ic:"🏪", t:"做生意／經營民宿旅館", add:{invest_biz:3}}
+    ]
+  },
+  {
+    q:"你理想中的居住型態比較接近？",
+    hint:"想像一下你每天回家的樣子。",
+    type:"single",
+    opts:[
+      {ic:"🌳", t:"獨門獨戶、有自己的土地，能停車、養寵物", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
+      {ic:"🛎️", t:"生活方便、有管理員、維護輕鬆", add:{mansion_new:3, mansion_used:2}},
+      {ic:"🌆", t:"高樓景觀、氣派門廳、公設齊全", add:{mansion_new:3}},
+      {ic:"🤔", t:"都可以，看 CP 值決定", add:{chuko_kodate:2, mansion_used:2}}
+    ]
+  },
+  {
+    q:"你的預算心態比較偏向？",
+    hint:"沒有要問你金額，只是想了解你的取向。",
+    type:"single",
+    opts:[
+      {ic:"✨", t:"預算充足，想要新的、最好的", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
+      {ic:"⚖️", t:"中等，最重視 CP 值", add:{chuko_kodate:2, mansion_used:2}},
+      {ic:"🎯", t:"想用有限預算進場、看報酬", add:{mansion_used:2, invest_rent:2}},
+      {ic:"📈", t:"資金充裕，想擴大資產配置", add:{invest_rent:2, invest_biz:2}}
+    ]
+  },
+  {
+    q:"對「屋齡與屋況」你的接受度是？",
+    hint:"新屋省心但貴，中古便宜但要顧屋況。",
+    type:"single",
+    opts:[
+      {ic:"🆕", t:"一定要新的，不想煩惱修繕", add:{shinchiku_kodate:2, mansion_new:2}},
+      {ic:"🔧", t:"可以接受中古，願意小整修換低價", add:{chuko_kodate:2, mansion_used:2, invest_rent:1}},
+      {ic:"🧮", t:"老屋沒差，看地點跟數字就好", add:{invest_rent:2, invest_biz:2}}
+    ]
+  },
+  {
+    q:"你想要多少「自己作主」的空間？",
+    hint:"指格局、建材、風格的客製化程度。",
+    type:"single",
+    opts:[
+      {ic:"🎨", t:"我很有堅持，市售的都不夠滿意", add:{chumon:4}},
+      {ic:"🖊️", t:"有想法，但市售挑一挑可以接受", add:{shinchiku_kodate:2, chuko_kodate:1}},
+      {ic:"👌", t:"沒特別堅持，能住／能收租就好", add:{mansion_used:2, invest_rent:1}}
+    ]
+  },
+  {
+    q:"你偏好的地點是？",
+    hint:"地點會影響價格、生活跟轉手。",
+    type:"single",
+    opts:[
+      {ic:"🍃", t:"近郊，想要更大空間、有庭院", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:2}},
+      {ic:"🚉", t:"都心、車站近，方便又保值", add:{mansion_new:2, mansion_used:2, invest_rent:2}},
+      {ic:"🏬", t:"商圈／觀光區，靠人流帶收益", add:{invest_biz:3}}
+    ]
+  },
+  {
+    q:"最後，關於「耐震・隔音・建材」你的想法？",
+    hint:"這題會幫你判斷偏木造還是 RC（鋼筋混凝土）。",
+    type:"single",
+    opts:[
+      {ic:"🛡️", t:"很重視耐震隔音，願意多花一點預算", add:{}, structure:"rc"},
+      {ic:"🌲", t:"預算優先，木造也很好（日本木造技術成熟）", add:{}, structure:"wood"},
+      {ic:"🙋", t:"不太懂，想聽周周的專業建議", add:{}, structure:"ask"}
+    ]
+  }
+];
+
+/* =========================================================
+   邏輯
+   ========================================================= */
+var state = { i:0, answers:[], structure:null };
+
+function start(){
+  state = { i:0, answers:[], structure:null };
+  document.getElementById('intro').style.display='none';
+  document.getElementById('resultHost').style.display='none';
+  document.getElementById('quiz').style.display='block';
+  render();
+}
+
+function render(){
+  var Q = QUESTIONS[state.i];
+  var total = QUESTIONS.length;
+  document.getElementById('pfill').style.width = ((state.i)/total*100)+'%';
+  document.getElementById('pnum').textContent = '第 '+(state.i+1)+' / '+total+' 題';
+  var chosen = state.answers[state.i];
+  var html = '<div class="card">';
+  html += '<div class="q-no">Q'+(state.i+1)+'</div>';
+  html += '<div class="q-title">'+Q.q+'</div>';
+  html += '<div class="q-hint">'+Q.hint+'</div>';
+  html += '<div class="opts">';
+  Q.opts.forEach(function(o,idx){
+    var sel = (chosen===idx);
+    html += '<button class="opt" onclick="pick('+idx+')" style="'+(sel?'border-color:var(--rose);background:var(--rose-l)':'')+'"><span class="ic">'+o.ic+'</span><span>'+o.t+'</span></button>';
+  });
+  html += '</div>';
+  html += '<div class="q-actions">';
+  html += '<button class="prev" onclick="back()">'+(state.i>0?'← 上一題':'')+'</button>';
+  html += '</div></div>';
+  document.getElementById('qhost').innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function pick(idx){
+  state.answers[state.i] = idx;
+  var Q = QUESTIONS[state.i];
+  if(Q.opts[idx].structure) state.structure = Q.opts[idx].structure;
+  // 選了就自動進下一題（最後一題進結果）
+  if(state.i < QUESTIONS.length-1){ state.i++; render(); }
+  else{ finish(); }
+}
+
+function back(){
+  if(state.i>0){ state.i--; render(); }
+}
+
+function finish(){
+  // 計分
+  var score = {};
+  Object.keys(RESULTS).forEach(function(k){ score[k]=0; });
+  state.answers.forEach(function(ans,qi){
+    var add = QUESTIONS[qi].opts[ans].add || {};
+    Object.keys(add).forEach(function(k){ score[k]+=add[k]; });
+  });
+  // 排序
+  var ranked = Object.keys(score).sort(function(a,b){ return score[b]-score[a]; });
+  var top = ranked[0], topScore = score[top];
+  // 多重適合：分數 >= 最高分的 70% 且 >0 的其他類型
+  var also = ranked.slice(1).filter(function(k){ return score[k]>0 && score[k] >= topScore*0.7; }).slice(0,2);
+  // 嚴格 → 注文宅：如果客製化題選了「很有堅持」(chumon 拿到 4)，或分數很分散（最高分很低）
+  var strict = (score.chumon>=4) || (topScore<=4);
+  showResult(top, also, strict, score);
+}
+
+function structLabel(){
+  if(state.structure==='rc') return {t:"建議偏 RC（鋼筋混凝土）", cls:"st", why:"你重視耐震與隔音，RC 造隔音好、耐震表現穩定，適合你。"};
+  if(state.structure==='wood') return {t:"木造也很適合你", cls:"st", why:"日本木造工法成熟、造價親民、冬暖，預算優先的話很划算。"};
+  return {t:"木造 / RC 由周周依情況建議", cls:"st", why:"這部分可以看你的預算、地點跟需求，周周再幫你分析哪種划算。"};
+}
+
+function showResult(top, also, strict, score){
+  var R = RESULTS[top];
+  var st = structLabel();
+  var host = document.getElementById('resultHost');
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('pfill').style.width='100%';
+
+  var showStruct = (top==='shinchiku_kodate'||top==='chuko_kodate'||top==='chumon');
+
+  var h = '<div class="result">';
+  h += '<div class="r-lead"><span class="k">✨ 你的測驗結果</span></div>';
+  h += '<div class="r-card">';
+  h += '<img class="cov" src="'+R.img+'" alt="'+R.name+'">';
+  h += '<div class="r-body">';
+  h += '<h2>你比較適合：'+R.name+'</h2>';
+  h += '<div class="tags">';
+  R.tags.forEach(function(t){ h+='<span class="tag">'+t+'</span>'; });
+  if(showStruct) h += '<span class="tag st">'+st.t+'</span>';
+  h += '</div>';
+  h += '<p class="desc">'+R.desc+'</p>';
+  if(showStruct) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
+  h += '<div class="r-note"><p><b>💡 周周的提醒：</b>'+R.note+'</p></div>';
+
+  // 多重適合
+  if(also.length){
+    h += '<div class="r-also"><div class="h">你其實也蠻適合這些方向 👇</div>';
+    also.forEach(function(k){
+      var A = RESULTS[k];
+      h += '<div class="mini"><img src="'+A.img+'" alt="'+A.name+'"><div><b>'+A.name+'</b><p>'+A.tags.join('・')+'</p></div></div>';
+    });
+    h += '</div>';
+  }
+
+  // 嚴格 → 注文宅
+  if(strict && top!=='chumon'){
+    h += '<div class="strict"><p><b>🎨 想得很細、每種都有堅持？</b>你的答案分布蠻分散、對細節也很有想法——這種情況，市售現成的房子可能都會差你一點。真的很講究的話，可以考慮<b>注文宅（買地自己設計）</b>，蓋一間完全照你想法的房子；不過要提醒你，注文宅比較花心力、預算通常也會高一些喔。要不要走這條路，周周可以幫你評估預算再決定。</p></div>';
+  }
+
+  h += '<div class="cta">';
+  h += '<a class="line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 問周周這個方向</a>';
+  h += '<button class="re" onclick="start()">↺ 重新測一次</button>';
+  h += '</div>';
+  h += '</div></div>';
+
+  h += '<p class="disc">＊本測驗僅為協助釐清方向的趣味參考，非投資或購屋建議。實際適合的房型、貸款成數、投報率與稅務等，仍需依個案評估，並由宅建士／司法書士／稅理士確認為準。</p>';
+  h += '</div>';
+
+  host.innerHTML = h;
+  host.style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
