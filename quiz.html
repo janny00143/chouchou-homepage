@@ -94,9 +94,12 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .r-also .mini img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
 .r-also .mini b{font-size:15px}
 .r-also .mini p{font-size:13px;color:var(--mut);margin-top:2px}
-.reality{background:#fffbeb;border:1.6px solid #fcd34d;border-radius:14px;padding:15px 17px;margin-top:14px}
+.reality{background:#fffbeb;border:2px solid #fbbf24;border-radius:14px;padding:18px 19px;margin-top:14px}
 .reality b{color:#b45309}
-.reality p{font-size:14px;color:#44403c;line-height:1.9;margin:0}
+.reality p{font-size:16px;color:#3f3a2f;line-height:1.95;margin:0;font-weight:500}
+.reality .cta-line{margin-top:11px;font-size:16px;color:var(--rose-d)}
+.reality .re-btn{margin-top:14px;background:#fff;border:1.8px solid #f6adbe;color:#ef5f7e;font-family:inherit;font-weight:700;font-size:14.5px;padding:11px 24px;border-radius:999px;cursor:pointer}
+.reality .re-btn:hover{background:#fff1f5}
 .strict{background:#fffbeb;border:1.6px solid #fbbf24;border-radius:14px;padding:15px 17px;margin-top:16px}
 .strict b{color:#b45309}
 .strict p{font-size:14px;color:#44403c;line-height:1.85;margin:0}
@@ -432,15 +435,20 @@ function budgetNote(top){
   var wantsNew = ['shinchiku_kodate','mansion_new','tower','chumon'].indexOf(top)>=0
       || state.answers[3].indexOf(0)>=0 || state.answers[3].indexOf(1)>=0
       || state.answers[4].indexOf(2)>=0;
-  var msg='';
+  var msg='', retake=false;
   if(bi===0){
-    msg='老實說，<b>2,000 萬日圓以下</b>在東京都內幾乎碰不到新屋——多半是屋齡較高的中古小宅，或要往比較遠的郊區、甚至東京都以外才有機會。如果你心裡想的是新一點、地點又方便的房子，這個預算可能要再往上一些，或以中古為主。';
+    msg='老實說，用這個預算在東京都內幾乎碰不到新屋——多半是屋齡較高的中古小宅，或要往比較遠的郊區、甚至東京都以外才有機會。如果你心裡想的是新一點、地點又方便的房子，建議把預算或條件再放寬一點喔。';
+    retake=true;
   } else if(bi===1){
-    msg='跟你說個實話，<b>2,000～4,000 萬日圓</b>在東京主要販售區域通常還是以中古為主，全新的選擇很少。想要又新、地點又好，多半得再拉高一點預算，或先從中古入手。';
+    msg='跟你說個實話，用這個預算在東京主要販售區域通常還是以中古為主，全新的選擇很少。想要又新、地點又好，多半得再往上抓一點預算，或先從中古入手。';
   } else if(bi===2 && wantsNew){
-    msg='偷偷跟你說，想在這些精華地段、用<b>6,000 萬日圓以內</b>買到「全新」，其實不太容易哦😅（你的標準有一點點高～）。同樣的預算換成中古、或稍微外圍一點，選擇會多很多。';
+    msg='偷偷跟你說，想在這些精華地段、用這個預算買到「全新」，其實不太容易哦😅（你的標準有一點點高～）。同樣的預算換成中古、或稍微外圍一點，選擇會多很多。';
   } else return '';
-  return '<div class="reality"><p><b>🏷️ 關於預算：</b>'+msg+' <b>想知道你的預算實際能買到什麼樣的房子，直接私訊周周，我幫你抓真實行情！</b></p></div>';
+  var h = '<div class="reality"><p><b>🏷️ 關於預算：</b>'+msg+'</p>';
+  h += '<p class="cta-line"><b>想知道你的預算實際能買到什麼樣的房子？直接私訊周周，我幫你抓真實行情！</b></p>';
+  if(retake) h += '<button class="re-btn" onclick="start()">↺ 放寬條件，再測一次</button>';
+  h += '</div>';
+  return h;
 }
 
 function showResult(top, also, strict, score, ranked){
