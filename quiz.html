@@ -65,6 +65,12 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .r-body .tag{font-size:12.5px;font-weight:600;color:var(--rose-d);background:var(--rose-l);padding:4px 11px;border-radius:999px}
 .r-body .tag.st{color:#2563eb;background:#eff6ff}
 .r-body p.desc{color:#44403c;font-size:15px;margin-top:6px}
+.p-lead{font-size:12.5px;font-weight:800;color:var(--rose-d);letter-spacing:2px}
+.p-type{font-size:27px;font-weight:900;margin:3px 0 2px;line-height:1.25}
+.p-desc{font-size:15px;color:#44403c;line-height:1.9;margin-top:10px}
+.p-div{height:1px;background:var(--line);margin:18px 0}
+.r-match{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:1px}
+.r-mname{font-size:20px;font-weight:900;margin:3px 0 2px}
 
 /* ---- 分析 ---- */
 .an{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:14px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
@@ -147,10 +153,10 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
 <div class="wrap">
   <section id="intro" class="hero">
-    <span class="kick">🏠 1 分鐘小測驗</span>
-    <h1>測測你適合買<br>日本<span>什麼樣的房子</span>？</h1>
-    <p>不用先懂房型，只要照你的生活跟想法回答，<br>周周幫你分析出最適合的方向。</p>
-    <div class="meta">先選自住或投資，各有專屬題目 · 部分可複選 · 結果附契合度分析</div>
+    <span class="kick">🔮 買房人格測驗</span>
+    <h1>測出你的<br><span>買房人格</span></h1>
+    <p>不用先懂房型，照你的生活與直覺回答，<br>看看你是 10 種買房人格的哪一種，周周再幫你分析最適合的物件。</p>
+    <div class="meta">先選自住或投資，各有專屬題目 · 部分可複選 · 結果附人格分析</div>
     <button class="startbtn" onclick="start()">開始測驗 →</button>
   </section>
 
@@ -315,8 +321,8 @@ var TYPE_DETAIL = {
    全部用「生活感受 / 性格 / 情境」間接問，讓程式去推導房型
    ========================================================= */
 var FORK = {
-  q:"先問一個大方向：你買房是要自住，還是投資？",
-  hint:"自住和投資的挑法完全不同，先分開，後面的分析才會準。",
+  q:"第一題，先看你的心：買房是想給自己一個家，還是讓錢替你工作？",
+  hint:"自住和投資是兩種完全不同的人格，先分開，後面才測得準。",
   multi:false,
   opts:[
     {ic:"🏡", t:"自住 — 自己或家人要住", branch:"live"},
@@ -402,6 +408,20 @@ var INVEST_Q = [
 /* =========================================================
    邏輯
    ========================================================= */
+/* 買房人格（心理測驗感）：測完先揭曉人格，再帶到物件 */
+var PERSONA = {
+  shinchiku_kodate:{emoji:"🌿",type:"築巢守護者",keys:["重視家人","嚮往自由","長期主義"],desc:"對你來說，家是一塊完全屬於自己的天地。你重視隱私、空間與家人的生活，願意為了一個能長長久久的家投入心力——有院子、有車庫、有屬於你們的日常。"},
+  chuko_kodate:{emoji:"🛠️",type:"務實生活家",keys:["精打細算","重視實質","動手派"],desc:"你懂生活、也懂算盤。比起全新的光鮮，你更在意空間、地段與 CP 值，願意花點心思整理、翻新，把每一分預算都花在刀口上。"},
+  chumon:{emoji:"🎨",type:"理想建築師",keys:["很有主見","講究細節","完美主義"],desc:"你對「家」有自己的一套想像，市售現成的永遠差那麼一點。你想要的是完全照你想法打造的空間——從一塊地開始，蓋出真正屬於你的理想。"},
+  mansion_new:{emoji:"🏙️",type:"都會品味派",keys:["講究質感","愛省心","重視便利"],desc:"你喜歡輕鬆、體面又方便的都會生活。有管理員、有門禁、下樓就有機能，讓你把時間留給真正重要的事——質感與省心，你都想要。"},
+  mansion_used:{emoji:"🎯",type:"聰明進場家",keys:["重視地段","靈活務實","懂性價比"],desc:"你很清楚自己要什麼：好地段、好價格、進可攻退可守。你懂得用有限的預算卡到都心的好位置，自住、出租都靈活。"},
+  tower:{emoji:"✨",type:"高空嚮往者",keys:["嚮往景觀","享受生活","都會控"],desc:"你嚮往站在城市之上的生活感——高樓的景觀、氣派的大廳、齊全的公設。你享受被便利與質感包圍，也在意這份生活的獨特性。"},
+  invest_rent:{emoji:"🛡️",type:"穩健收租派",keys:["求穩不求快","重視現金流","長期持有"],desc:"你是穩紮穩打型的投資人。比起一夕致富，你更喜歡看得到、算得出的安心現金流，願意用時間換取穩定的累積。"},
+  invest_biz:{emoji:"📈",type:"精算包租公",keys:["重視報酬","要穩定","會算帳"],desc:"你想要比住宅租賃更好一點的報酬，又不想承擔太高的風險。你懂得用商用租約與地段體質，把資產經營得穩穩當當。"},
+  invest_hotel:{emoji:"🔥",type:"觀光創業家",keys:["敢冒險","願意經營","衝勁十足"],desc:"你不只想收租，更想把房子變成一門生意。你願意投入心力經營、也敢承擔波動，把觀光人流變成實實在在的收益。"},
+  invest_ittou:{emoji:"👑",type:"資產布局家",keys:["格局大","資金到位","一次到位"],desc:"你想的是整體布局。資金到位、眼光放遠，你偏好一次擁有一整棟、彈性運用的大資產，讓每一層樓都替你創造價值。"}
+};
+
 var state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false, towerBlocked:false };
 
 function branchOf(){ return (state.answers[0] && state.answers[0][0]===1) ? 'invest' : 'live'; }
@@ -610,12 +630,22 @@ function showResult(branch, top, also, strict, score, ranked){
   var isHouse = (top==='shinchiku_kodate'||top==='chuko_kodate'||top==='chumon');
   var isMansion = (top==='mansion_new'||top==='mansion_used'||top==='tower');
 
+  var P = PERSONA[top] || {emoji:"🏠",type:R.name,keys:R.tags,desc:R.fit};
+
   var h = '<div class="result">';
-  h += '<div class="r-lead"><span class="k">✨ 你的測驗結果</span></div>';
+  h += '<div class="r-lead"><span class="k">✨ 測驗結果揭曉</span></div>';
   h += '<div class="r-card">';
   h += '<img class="cov" src="'+R.img+'" alt="'+R.name+'">';
   h += '<div class="r-body">';
-  h += '<h2>你比較適合：'+R.name+'</h2>';
+  h += '<div class="p-lead">你的買房人格是</div>';
+  h += '<h2 class="p-type">'+P.emoji+' '+P.type+'</h2>';
+  h += '<div class="tags">';
+  P.keys.forEach(function(t){ h+='<span class="tag">#'+t+'</span>'; });
+  h += '</div>';
+  h += '<p class="p-desc">'+P.desc+'</p>';
+  h += '<div class="p-div"></div>';
+  h += '<div class="r-match">🏠 最適合你的物件方向</div>';
+  h += '<h3 class="r-mname">'+R.name+'</h3>';
   h += '<div class="tags">';
   R.tags.forEach(function(t){ h+='<span class="tag">'+t+'</span>'; });
   if(isHouse) h += '<span class="tag st">'+st.t+'</span>';
