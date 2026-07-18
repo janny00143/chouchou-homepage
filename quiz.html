@@ -349,7 +349,9 @@ var LIVE_Q = [
     {ic:"💴", t:"3,000 ～ 5,000 萬日圓", add:{mansion_used:2, chuko_kodate:2}},
     {ic:"💵", t:"5,000 ～ 7,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
     {ic:"💰", t:"7,000 萬 ～ 1 億日圓", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
-    {ic:"💎", t:"1 億日圓以上", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1}}
+    {ic:"💎", t:"1 億 ～ 1.5 億日圓", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1}},
+    {ic:"👑", t:"1.5 億 ～ 2 億日圓", add:{chumon:2, mansion_new:2, tower:3, shinchiku_kodate:1}},
+    {ic:"🏆", t:"2 億日圓以上", add:{chumon:2, tower:3, mansion_new:1, shinchiku_kodate:1}}
   ]},
   { role:'condition', q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，可以複選。", multi:true, opts:[
     {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}, newish:true},
@@ -482,7 +484,7 @@ function finish(){
 
   if(branch==='live'){
     var bIdx = budgetIdxOf();
-    if(bIdx!==4 && score.tower>0){
+    if((bIdx===undefined || bIdx<4) && score.tower>0){  // 塔樓需 1 億以上（第 5 檔起）
       score.mansion_new += score.tower; score.tower = 0;
       if(state.wantTower) state.towerBlocked = true;
     }
