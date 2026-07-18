@@ -344,14 +344,14 @@ var LIVE_Q = [
     {ic:"👨‍👩‍👧", t:"有小孩，想要學區、公園、好的鄰里", add:{shinchiku_kodate:2, mansion_new:1, chuko_kodate:1}},
     {ic:"🧳", t:"常出差或兩地跑，房子要好管理", add:{mansion_new:2, mansion_used:1, tower:1}}
   ]},
-  { role:'budget', q:"你的購屋預算大概落在？", hint:"抓總價的大概區間就好（由低到高）。", multi:false, opts:[
-    {ic:"🪙", t:"3,000 萬日圓以下", add:{mansion_used:2, chuko_kodate:1}},
-    {ic:"💴", t:"3,000 ～ 5,000 萬日圓", add:{mansion_used:2, chuko_kodate:2}},
-    {ic:"💵", t:"5,000 ～ 7,000 萬日圓", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
-    {ic:"💰", t:"7,000 萬 ～ 1 億日圓", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
-    {ic:"💎", t:"1 億 ～ 1.5 億日圓", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1}},
-    {ic:"👑", t:"1.5 億 ～ 2 億日圓", add:{chumon:2, mansion_new:2, tower:3, shinchiku_kodate:1}},
-    {ic:"🏆", t:"2 億日圓以上", add:{chumon:2, tower:3, mansion_new:1, shinchiku_kodate:1}}
+  { role:'budget', q:"你的購屋預算比較接近哪一種？", hint:"不用寫確切金額，選最接近你的感覺就好（由低到高）。", multi:false, opts:[
+    {ic:"🪙", t:"精打細算，想找入門總價", add:{mansion_used:2, chuko_kodate:1}},
+    {ic:"💴", t:"小資預算，穩紮穩打", add:{mansion_used:2, chuko_kodate:2}},
+    {ic:"💵", t:"一般家庭的購屋預算", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
+    {ic:"💰", t:"預算比較寬裕", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
+    {ic:"💎", t:"預算充足，想買好一點的", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1}},
+    {ic:"👑", t:"高預算，鎖定精華或高階物件", add:{chumon:2, mansion_new:2, tower:3, shinchiku_kodate:1}},
+    {ic:"🏆", t:"頂級預算，想一次到位", add:{chumon:2, tower:3, mansion_new:1, shinchiku_kodate:1}}
   ]},
   { role:'condition', q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，可以複選。", multi:true, opts:[
     {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}, newish:true},
@@ -384,12 +384,12 @@ var INVEST_Q = [
     {ic:"🧑‍💼", t:"願意花心力經營，像旅宿那樣賺觀光財", add:{invest_hotel:3}},
     {ic:"🏢", t:"想一次擁有一整棟，怎麼運用都行", add:{invest_ittou:3, invest_biz:1}}
   ]},
-  { role:'budget', q:"你的投資預算大概？", hint:"由低到高。經營型旅宿約 7,000 萬起、整棟多半破億。", multi:false, opts:[
-    {ic:"🪙", t:"2,000 萬日圓以下", add:{invest_rent:2}},
-    {ic:"💴", t:"2,000 ～ 5,000 萬日圓", add:{invest_rent:2, invest_biz:1}},
-    {ic:"💵", t:"5,000 ～ 7,000 萬日圓", add:{invest_biz:2, invest_rent:1}},
-    {ic:"💰", t:"7,000 萬 ～ 1 億日圓", add:{invest_hotel:2, invest_biz:1}},
-    {ic:"💎", t:"1 億日圓以上", add:{invest_ittou:3, invest_hotel:2, invest_biz:1}}
+  { role:'budget', q:"你的投資預算比較接近哪一種？", hint:"不用寫確切金額，選最接近的感覺就好（由低到高）。經營型旅宿、整棟的門檻較高。", multi:false, opts:[
+    {ic:"🪙", t:"小額入門，先試水溫", add:{invest_rent:2}},
+    {ic:"💴", t:"一般小資投資", add:{invest_rent:2, invest_biz:1}},
+    {ic:"💵", t:"中等投資預算", add:{invest_biz:2, invest_rent:1}},
+    {ic:"💰", t:"較高預算，可以考慮經營型", add:{invest_hotel:2, invest_biz:1}},
+    {ic:"💎", t:"大資金，想做大型物件", add:{invest_ittou:3, invest_hotel:2, invest_biz:1}}
   ]},
   { role:'place', q:"物件想放在哪一帶？", hint:"地點決定租客和投報，可以複選。", multi:true, opts:[
     {ic:"🗼", t:"東京都心 23 區 — 好租、抗跌", add:{invest_rent:2, invest_biz:2}},
