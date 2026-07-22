@@ -71,6 +71,9 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .p-div{height:1px;background:var(--line);margin:18px 0}
 .r-match{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:1px}
 .r-mname{font-size:20px;font-weight:900;margin:3px 0 2px}
+.pcard-full{width:100%;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.12);margin-top:14px;display:block}
+.pcard-share{text-align:center;font-size:13px;color:var(--mut);margin-top:10px}
+.pcard-note{font-size:14px;color:#1d4ed8;margin-top:11px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:11px 14px;line-height:1.7}
 
 /* ---- 分析 ---- */
 .an{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:14px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
@@ -422,6 +425,13 @@ var PERSONA = {
   invest_ittou:{emoji:"👑",type:"資產布局家",keys:["格局大","資金到位","一次到位"],desc:"你想的是整體布局。資金到位、眼光放遠，你偏好一次擁有一整棟、彈性運用的大資產，讓每一層樓都替你創造價值。"}
 };
 
+/* 人格卡圖（周周自製）：男女穿插各半，奇數男、偶數女 */
+var PERSONA_IMG = {
+  shinchiku_kodate:"persona-1.png", chuko_kodate:"persona-2f.jpg", chumon:"persona-3.png",
+  mansion_new:"persona-4f.png", mansion_used:"persona-5.png", tower:"persona-6f.png",
+  invest_rent:"persona-7.png", invest_biz:"persona-8f.jpg", invest_hotel:"persona-9.png", invest_ittou:"persona-10f.png"
+};
+
 var state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false, towerBlocked:false };
 
 function branchOf(){ return (state.answers[0] && state.answers[0][0]===1) ? 'invest' : 'live'; }
@@ -634,27 +644,10 @@ function showResult(branch, top, also, strict, score, ranked){
 
   var h = '<div class="result">';
   h += '<div class="r-lead"><span class="k">✨ 測驗結果揭曉</span></div>';
-  h += '<div class="r-card">';
-  h += '<img class="cov" src="'+R.img+'" alt="'+R.name+'">';
-  h += '<div class="r-body">';
-  h += '<div class="p-lead">你的買房人格是</div>';
-  h += '<h2 class="p-type">'+P.emoji+' '+P.type+'</h2>';
-  h += '<div class="tags">';
-  P.keys.forEach(function(t){ h+='<span class="tag">#'+t+'</span>'; });
-  h += '</div>';
-  h += '<p class="p-desc">'+P.desc+'</p>';
-  h += '<div class="p-div"></div>';
-  h += '<div class="r-match">🏠 最適合你的物件方向</div>';
-  h += '<h3 class="r-mname">'+R.name+'</h3>';
-  h += '<div class="tags">';
-  R.tags.forEach(function(t){ h+='<span class="tag">'+t+'</span>'; });
-  if(isHouse) h += '<span class="tag st">'+st.t+'</span>';
-  if(isMansion) h += '<span class="tag st">RC／SRC 造</span>';
-  if(top==='tower' && state.wantUsed) h += '<span class="tag st">中古塔樓 CP 值更高</span>';
-  h += '</div>';
-  h += '<p class="desc">'+R.desc+'</p>';
-  if(isHouse) h += '<p class="desc" style="margin-top:10px;color:#2563eb">🧱 '+st.why+'</p>';
-  h += '</div></div>';
+  h += '<img class="pcard-full" src="'+(PERSONA_IMG[top]||R.img)+'" alt="'+P.type+'・買房人格卡">';
+  h += '<p class="pcard-share">長按或截圖，存下你的買房人格卡分享給朋友 ✨</p>';
+  if(isHouse) h += '<p class="pcard-note">🧱 '+st.why+'</p>';
+  if(top==='tower' && state.wantUsed) h += '<p class="pcard-note">✨ 你偏好中古 → 同地段的<b>中古塔樓</b>通常比全新划算，周周可以幫你比。</p>';
 
   if(branch==='live' && state.towerBlocked){
     h += '<div class="reality"><p><b>🏙️ 關於塔樓：</b>你嚮往高樓層的塔樓生活，不過塔樓在東京多半要 <b>1 億日圓以上</b>的預算才比較買得到。以你目前設定的預算，會建議先從<b>全新／大型公寓大樓</b>入手，一樣有管理員、機能好、又保值。</p><p class="cta-line"><b>如果真的很想要塔樓，也可以私訊周周，我幫你看看有沒有適合的中古塔樓或方案！</b></p></div>';
