@@ -353,11 +353,11 @@ var LIVE_Q = [
   { role:'household', q:"哪一種狀況比較像你？", hint:"家庭組成和生活方式也會影響。", multi:false, opts:[
     {ic:"🚗", t:"有車、有寵物、東西多，需要空間", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:1}},
     {ic:"👫", t:"單身或兩人，重視方便、好整理", add:{mansion_used:3, mansion_new:1, tower:1}},
-    {ic:"👨‍👩‍👧", t:"有小孩，想要學區、公園、好的鄰里", add:{shinchiku_kodate:2, mansion_new:1, chuko_kodate:1}},
+    {ic:"👪", t:"有小孩，想要學區、公園、好的鄰里", add:{shinchiku_kodate:2, mansion_new:1, chuko_kodate:1}},
     {ic:"🧳", t:"常出差或兩地跑，房子要好管理", add:{mansion_new:1, mansion_used:2, tower:1}}
   ]},
   { role:'budget', q:"你的購屋預算比較接近哪一種？", hint:"不用寫確切金額，選最接近你的感覺就好（由低到高）。", multi:false, opts:[
-    {ic:"🪙", t:"精打細算，想找入門總價", add:{mansion_used:2, chuko_kodate:1}},
+    {ic:"🐷", t:"精打細算，想找入門總價", add:{mansion_used:2, chuko_kodate:1}},
     {ic:"💴", t:"小資預算，穩紮穩打", add:{mansion_used:2, chuko_kodate:2}},
     {ic:"💵", t:"一般家庭的購屋預算", add:{chuko_kodate:2, mansion_used:1, shinchiku_kodate:1}},
     {ic:"💰", t:"預算比較寬裕", add:{shinchiku_kodate:2, mansion_new:1, chumon:1}},
@@ -393,11 +393,11 @@ var INVEST_Q = [
   { role:'effort', q:"你願意花多少心力去「經營」？", hint:"想被動收租，還是願意經營一門生意？", multi:false, opts:[
     {ic:"😌", t:"越被動越好，穩穩收租金就好", add:{invest_rent:3, invest_biz:1}},
     {ic:"🤝", t:"想租給店家或公司，簽長約、省事又穩", add:{invest_biz:3}},
-    {ic:"🧑‍💼", t:"願意花心力經營，像旅宿那樣賺觀光財", add:{invest_hotel:3}},
+    {ic:"💼", t:"願意花心力經營，像旅宿那樣賺觀光財", add:{invest_hotel:3}},
     {ic:"🏢", t:"想一次擁有一整棟，怎麼運用都行", add:{invest_ittou:3, invest_biz:1}}
   ]},
   { role:'budget', q:"你的投資預算比較接近哪一種？", hint:"不用寫確切金額，選最接近的感覺就好（由低到高）。經營型旅宿、整棟的門檻較高。", multi:false, opts:[
-    {ic:"🪙", t:"小額入門，先試水溫", add:{invest_rent:2}},
+    {ic:"🌱", t:"小額入門，先試水溫", add:{invest_rent:2}},
     {ic:"💴", t:"一般小資投資", add:{invest_rent:2, invest_biz:1}},
     {ic:"💵", t:"中等投資預算", add:{invest_biz:2, invest_rent:1}},
     {ic:"💰", t:"較高預算，可以考慮經營型", add:{invest_hotel:2, invest_biz:1}},
