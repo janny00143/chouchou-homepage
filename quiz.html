@@ -342,10 +342,10 @@ var LIVE_Q = [
     {ic:"🌳", t:"有自己的院子或車庫，可以養寵物、種點東西", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
     {ic:"🛎️", t:"一樓有管理員、下樓就有生活機能", add:{mansion_new:3, mansion_used:2}},
     {ic:"🌃", t:"高樓層看夜景、社區有健身房交誼廳", add:{tower:4}, tower:true},
-    {ic:"🤫", t:"安靜、不跟鄰居共牆，有完全自己的天地", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}}
+    {ic:"🤫", t:"安靜、不跟鄰居共牆，有完全自己的天地", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}, nowall:true}
   ]},
   { role:'pain', q:"下面哪一個你「最受不了」？", hint:"最在意的痛點，往往決定你適合哪一種。", multi:false, opts:[
-    {ic:"🔊", t:"跟鄰居共牆、聽到隔壁或樓上的聲音", add:{shinchiku_kodate:2, chuko_kodate:2}, soundproof:true},
+    {ic:"🔊", t:"跟鄰居共牆、聽到隔壁或樓上的聲音", add:{shinchiku_kodate:2, chuko_kodate:2}, soundproof:true, nowall:true},
     {ic:"🧹", t:"要自己顧外牆、除草、修繕一堆雜事", add:{mansion_new:2, mansion_used:2, tower:1}},
     {ic:"🚃", t:"通勤太久、離車站遠、生活不方便", add:{mansion_new:2, mansion_used:2, tower:1}},
     {ic:"😐", t:"房子跟別人長得一模一樣、沒有自己的個性", add:{chumon:3}, picky:true}
@@ -531,6 +531,9 @@ function finish(){
   });
 
   if(branch==='live'){
+    // 不跟鄰居共牆 → 一定不是公寓/塔樓（共牆建物），只留一戶建/注文宅
+    if(flagPicked('nowall')){ score.mansion_new=0; score.mansion_used=0; score.tower=0; }
+
     var bIdx = budgetIdxOf();
     if((bIdx===undefined || bIdx<4) && score.tower>0){  // 塔樓需 1 億以上（第 5 檔起）
       score.mansion_new += score.tower; score.tower = 0;
