@@ -340,43 +340,43 @@ var DIMS_LIVE = ["理想生活","最受不了","家庭情境","預算","屋況",
 var LIVE_Q = [
   { role:'life', q:"你最嚮往哪一種生活感？", hint:"想像你理想中的日常，選最貼近的。", multi:false, opts:[
     {ic:"🌳", t:"有自己的院子或車庫，可以養寵物、種點東西", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
-    {ic:"🛎️", t:"一樓有管理員、下樓就有生活機能", add:{mansion_new:3, mansion_used:2}},
+    {ic:"🛎️", t:"一樓有管理員、下樓就有生活機能", add:{mansion_new:2, mansion_used:3}},
     {ic:"🌃", t:"高樓層看夜景、社區有健身房交誼廳", add:{tower:4}, tower:true},
     {ic:"🤫", t:"安靜、不跟鄰居共牆，有完全自己的天地", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}, nowall:true}
   ]},
   { role:'pain', q:"下面哪一個你「最受不了」？", hint:"最在意的痛點，往往決定你適合哪一種。", multi:false, opts:[
     {ic:"🔊", t:"跟鄰居共牆、聽到隔壁或樓上的聲音", add:{shinchiku_kodate:2, chuko_kodate:2}, soundproof:true, nowall:true},
-    {ic:"🧹", t:"要自己顧外牆、除草、修繕一堆雜事", add:{mansion_new:2, mansion_used:2, tower:1}},
-    {ic:"🚃", t:"通勤太久、離車站遠、生活不方便", add:{mansion_new:2, mansion_used:2, tower:1}},
+    {ic:"🧹", t:"要自己顧外牆、除草、修繕一堆雜事", add:{mansion_new:1, mansion_used:3, tower:1}},
+    {ic:"🚃", t:"通勤太久、離車站遠、生活不方便", add:{mansion_new:1, mansion_used:3, tower:1}},
     {ic:"😐", t:"房子跟別人長得一模一樣、沒有自己的個性", add:{chumon:3}, picky:true}
   ]},
   { role:'household', q:"哪一種狀況比較像你？", hint:"家庭組成和生活方式也會影響。", multi:false, opts:[
     {ic:"🚗", t:"有車、有寵物、東西多，需要空間", add:{shinchiku_kodate:2, chuko_kodate:2, chumon:1}},
-    {ic:"👫", t:"單身或兩人，重視方便、好整理", add:{mansion_used:2, mansion_new:1, tower:1}},
+    {ic:"👫", t:"單身或兩人，重視方便、好整理", add:{mansion_used:3, mansion_new:1, tower:1}},
     {ic:"👨‍👩‍👧", t:"有小孩，想要學區、公園、好的鄰里", add:{shinchiku_kodate:2, mansion_new:1, chuko_kodate:1}},
-    {ic:"🧳", t:"常出差或兩地跑，房子要好管理", add:{mansion_new:2, mansion_used:1, tower:1}}
+    {ic:"🧳", t:"常出差或兩地跑，房子要好管理", add:{mansion_new:1, mansion_used:2, tower:1}}
   ]},
   { role:'budget', q:"你的購屋預算比較接近哪一種？", hint:"不用寫確切金額，選最接近你的感覺就好（由低到高）。", multi:false, opts:[
     {ic:"🪙", t:"精打細算，想找入門總價", add:{mansion_used:2, chuko_kodate:1}},
     {ic:"💴", t:"小資預算，穩紮穩打", add:{mansion_used:2, chuko_kodate:2}},
-    {ic:"💵", t:"一般家庭的購屋預算", add:{chuko_kodate:2, mansion_new:1, shinchiku_kodate:1}},
-    {ic:"💰", t:"預算比較寬裕", add:{shinchiku_kodate:2, mansion_new:2, chumon:1}},
-    {ic:"💎", t:"預算充足，想買好一點的", add:{chumon:2, mansion_new:2, tower:2, shinchiku_kodate:1}},
-    {ic:"👑", t:"高預算，鎖定精華或高階物件", add:{chumon:2, mansion_new:2, tower:3, shinchiku_kodate:1}},
-    {ic:"🏆", t:"頂級預算，想一次到位", add:{chumon:2, tower:3, mansion_new:1, shinchiku_kodate:1}}
+    {ic:"💵", t:"一般家庭的購屋預算", add:{chuko_kodate:2, mansion_used:1, shinchiku_kodate:1}},
+    {ic:"💰", t:"預算比較寬裕", add:{shinchiku_kodate:2, mansion_new:1, chumon:1}},
+    {ic:"💎", t:"預算充足，想買好一點的", add:{chumon:2, mansion_new:1, tower:2, shinchiku_kodate:1}},
+    {ic:"👑", t:"高預算，鎖定精華或高階物件", add:{chumon:2, mansion_new:1, tower:3, shinchiku_kodate:1}},
+    {ic:"🏆", t:"頂級預算，想一次到位", add:{chumon:2, tower:3, shinchiku_kodate:1}}
   ]},
   { role:'condition', q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，選最貼近的。", multi:false, opts:[
-    {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}, newish:true},
-    {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1, tower:1}, newish:true},
+    {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:3, tower:1}, newish:true},
+    {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:3, shinchiku_kodate:1, tower:1}, newish:true},
     {ic:"🔧", t:"中古，但要已經翻修好、可直接住", add:{chuko_kodate:2, mansion_used:2}, used:true},
     {ic:"🏗️", t:"中古，社區已完成大規模修繕、體質健康", add:{mansion_used:2, chuko_kodate:1}, used:true},
     {ic:"🛠️", t:"中古、屋況普通沒關係，我自己找人翻修", add:{chuko_kodate:2, mansion_used:1}, used:true}
   ]},
   { role:'place', q:"你偏好的地點？", hint:"由都心往外，選最想要的。", multi:false, opts:[
-    {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, tower:2}},
-    {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, tower:1}},
+    {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:1, mansion_used:3, tower:2}},
+    {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:1, mansion_used:3, tower:1}},
     {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2, chumon:1}},
-    {ic:"⛵", t:"神奈川、橫濱一帶", add:{shinchiku_kodate:2, chuko_kodate:1, mansion_used:1}},
+    {ic:"⛵", t:"神奈川、橫濱一帶", add:{shinchiku_kodate:2, chuko_kodate:1, mansion_used:2}},
     {ic:"🌾", t:"千葉、埼玉", add:{chuko_kodate:2, chumon:2, shinchiku_kodate:1}},
     {ic:"🏡", t:"安靜的純住宅區", add:{shinchiku_kodate:2, chumon:2, chuko_kodate:1}}
   ]}
