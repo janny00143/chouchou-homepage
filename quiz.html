@@ -71,7 +71,10 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .p-div{height:1px;background:var(--line);margin:18px 0}
 .r-match{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:1px}
 .r-mname{font-size:20px;font-weight:900;margin:3px 0 2px}
-.pcard-full{width:100%;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.12);margin-top:14px;display:block}
+.gender-tog{display:flex;gap:9px;justify-content:center;margin-top:14px}
+.gender-tog .gt{background:#fff;border:1.7px solid var(--line);color:var(--mut);font-family:inherit;font-weight:700;font-size:14px;padding:9px 20px;border-radius:999px;cursor:pointer;transition:.13s}
+.gender-tog .gt.on{background:var(--rose);border-color:var(--rose);color:#fff}
+.pcard-full{width:100%;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.12);margin-top:12px;display:block}
 .pcard-share{text-align:center;font-size:13px;color:var(--mut);margin-top:10px}
 .pcard-note{font-size:14px;color:#1d4ed8;margin-top:11px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:11px 14px;line-height:1.7}
 
@@ -159,7 +162,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <span class="kick">🔮 買房人格測驗</span>
     <h1>測出你的<br><span>買房人格</span></h1>
     <p>不用先懂房型，照你的生活與直覺回答，<br>看看你是 10 種買房人格的哪一種，周周再幫你分析最適合的物件。</p>
-    <div class="meta">先選自住或投資，各有專屬題目 · 部分可複選 · 結果附人格分析</div>
+    <div class="meta">先選自住或投資，各有專屬題目 · 選了自動跳下一題 · 結果附人格分析</div>
     <button class="startbtn" onclick="start()">開始測驗 →</button>
   </section>
 
@@ -335,7 +338,7 @@ var FORK = {
 
 var DIMS_LIVE = ["理想生活","最受不了","家庭情境","預算","屋況","地點"];
 var LIVE_Q = [
-  { role:'life', q:"你最嚮往哪一種生活感？", hint:"想像你理想中的日常。可以複選。", multi:true, opts:[
+  { role:'life', q:"你最嚮往哪一種生活感？", hint:"想像你理想中的日常，選最貼近的。", multi:false, opts:[
     {ic:"🌳", t:"有自己的院子或車庫，可以養寵物、種點東西", add:{shinchiku_kodate:3, chuko_kodate:2, chumon:2}},
     {ic:"🛎️", t:"一樓有管理員、下樓就有生活機能", add:{mansion_new:3, mansion_used:2}},
     {ic:"🌃", t:"高樓層看夜景、社區有健身房交誼廳", add:{tower:4}, tower:true},
@@ -362,14 +365,14 @@ var LIVE_Q = [
     {ic:"👑", t:"高預算，鎖定精華或高階物件", add:{chumon:2, mansion_new:2, tower:3, shinchiku_kodate:1}},
     {ic:"🏆", t:"頂級預算，想一次到位", add:{chumon:2, tower:3, mansion_new:1, shinchiku_kodate:1}}
   ]},
-  { role:'condition', q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，可以複選。", multi:true, opts:[
+  { role:'condition', q:"屋齡與屋況，你的接受度是？", hint:"由新到舊，選最貼近的。", multi:false, opts:[
     {ic:"🆕", t:"一定要全新的", add:{shinchiku_kodate:2, mansion_new:2, tower:1}, newish:true},
     {ic:"✨", t:"屋齡淺、接近全新就好", add:{mansion_new:2, shinchiku_kodate:1, tower:1}, newish:true},
     {ic:"🔧", t:"中古，但要已經翻修好、可直接住", add:{chuko_kodate:2, mansion_used:2}, used:true},
     {ic:"🏗️", t:"中古，社區已完成大規模修繕、體質健康", add:{mansion_used:2, chuko_kodate:1}, used:true},
     {ic:"🛠️", t:"中古、屋況普通沒關係，我自己找人翻修", add:{chuko_kodate:2, mansion_used:1}, used:true}
   ]},
-  { role:'place', q:"你偏好的地點？", hint:"由都心往外，可以複選。", multi:true, opts:[
+  { role:'place', q:"你偏好的地點？", hint:"由都心往外，選最想要的。", multi:false, opts:[
     {ic:"🗼", t:"東京都心 23 區精華地段", add:{mansion_new:2, mansion_used:2, tower:2}},
     {ic:"🚉", t:"車站徒步 5 分鐘內最重要", add:{mansion_new:2, mansion_used:2, tower:1}},
     {ic:"🌲", t:"東京近郊、多摩地區", add:{chuko_kodate:2, shinchiku_kodate:2, chumon:1}},
@@ -400,7 +403,7 @@ var INVEST_Q = [
     {ic:"💰", t:"較高預算，可以考慮經營型", add:{invest_hotel:2, invest_biz:1}},
     {ic:"💎", t:"大資金，想做大型物件", add:{invest_ittou:3, invest_hotel:2, invest_biz:1}}
   ]},
-  { role:'place', q:"物件想放在哪一帶？", hint:"地點決定租客和投報，可以複選。", multi:true, opts:[
+  { role:'place', q:"物件想放在哪一帶？", hint:"地點決定租客和投報，選最想放的。", multi:false, opts:[
     {ic:"🗼", t:"東京都心 23 區 — 好租、抗跌", add:{invest_rent:2, invest_biz:2}},
     {ic:"🚉", t:"車站徒步近 — 租客需求高", add:{invest_rent:2, invest_biz:1, invest_hotel:1}},
     {ic:"🏬", t:"觀光區／熱鬧商圈 — 適合旅宿、店鋪", add:{invest_hotel:3, invest_biz:2}},
@@ -425,12 +428,27 @@ var PERSONA = {
   invest_ittou:{emoji:"👑",type:"資產布局家",keys:["格局大","資金到位","一次到位"],desc:"你想的是整體布局。資金到位、眼光放遠，你偏好一次擁有一整棟、彈性運用的大資產，讓每一層樓都替你創造價值。"}
 };
 
-/* 人格卡圖（周周自製）：男女穿插各半，奇數男、偶數女 */
+/* 人格卡圖（周周自製）：每種人格男女各一張，結果頁可自由切換 */
 var PERSONA_IMG = {
-  shinchiku_kodate:"persona-1.png", chuko_kodate:"persona-2f.jpg", chumon:"persona-3.png",
-  mansion_new:"persona-4f.png", mansion_used:"persona-5.png", tower:"persona-6f.png",
-  invest_rent:"persona-7.png", invest_biz:"persona-8f.jpg", invest_hotel:"persona-9.png", invest_ittou:"persona-10f.png"
+  shinchiku_kodate:{m:"persona-1-m.png", f:"persona-1-f.png"},
+  chuko_kodate:{m:"persona-2-m.png", f:"persona-2-f.jpg"},
+  chumon:{m:"persona-3-m.png", f:"persona-3-f.jpg"},
+  mansion_new:{m:"persona-4-m.png", f:"persona-4-f.png"},
+  mansion_used:{m:"persona-5-m.png", f:"persona-5-f.jpg"},
+  tower:{m:"persona-6-m.png", f:"persona-6-f.png"},
+  invest_rent:{m:"persona-7-m.png", f:"persona-7-f.jpg"},
+  invest_biz:{m:"persona-8-m.png", f:"persona-8-f.jpg"},
+  invest_hotel:{m:"persona-9-m.png", f:"persona-9-f.jpg"},
+  invest_ittou:{m:"persona-10-m.png", f:"persona-10-f.png"}
 };
+var G = 'f';           // 目前選的性別版本（可切換）
+var lastTop = null;
+function setGender(g){
+  G = g; var im = document.getElementById('pcardImg');
+  if(im && lastTop && PERSONA_IMG[lastTop]) im.src = PERSONA_IMG[lastTop][g];
+  var bs = document.querySelectorAll('.gt');
+  for(var i=0;i<bs.length;i++){ bs[i].className = 'gt'+(bs[i].getAttribute('data-g')===g?' on':''); }
+}
 
 var state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false, towerBlocked:false };
 
@@ -545,7 +563,8 @@ function recapHTML(branch){
   var qs = activeQ(), rows = '';
   state.answers.forEach(function(sel,qi){
     if(!sel || !sel.length || qi>=qs.length) return;
-    var txt = sel.map(function(idx){ return qs[qi].opts[idx].t; }).join('、');
+    var txt = sel.map(function(idx){ return qs[qi].opts[idx] ? qs[qi].opts[idx].t : ''; }).filter(Boolean).join('、');
+    if(!txt) return;
     rows += '<div class="an-row"><span class="dim">'+(dims[qi]||'')+'</span><span class="val">'+txt+'</span></div>';
   });
   return rows;
@@ -642,10 +661,16 @@ function showResult(branch, top, also, strict, score, ranked){
 
   var P = PERSONA[top] || {emoji:"🏠",type:R.name,keys:R.tags,desc:R.fit};
 
+  lastTop = top;
+  var pim = PERSONA_IMG[top] ? PERSONA_IMG[top][G] : R.img;
+
   var h = '<div class="result">';
   h += '<div class="r-lead"><span class="k">✨ 測驗結果揭曉</span></div>';
-  h += '<img class="pcard-full" src="'+(PERSONA_IMG[top]||R.img)+'" alt="'+P.type+'・買房人格卡">';
-  h += '<p class="pcard-share">長按或截圖，存下你的買房人格卡分享給朋友 ✨</p>';
+  if(PERSONA_IMG[top]){
+    h += '<div class="gender-tog"><button class="gt'+(G==='f'?' on':'')+'" data-g="f" onclick="setGender(\'f\')">👧 女生版</button><button class="gt'+(G==='m'?' on':'')+'" data-g="m" onclick="setGender(\'m\')">👦 男生版</button></div>';
+  }
+  h += '<img id="pcardImg" class="pcard-full" src="'+pim+'" alt="'+P.type+'・買房人格卡">';
+  h += '<p class="pcard-share">切換男生／女生版本，長按或截圖存下你的買房人格卡分享 ✨</p>';
   if(isHouse) h += '<p class="pcard-note">🧱 '+st.why+'</p>';
   if(top==='tower' && state.wantUsed) h += '<p class="pcard-note">✨ 你偏好中古 → 同地段的<b>中古塔樓</b>通常比全新划算，周周可以幫你比。</p>';
 
