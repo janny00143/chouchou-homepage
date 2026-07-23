@@ -8,10 +8,29 @@
 <meta property="og:image" content="https://chouchouinjapan.com/og-image.jpg">
 <meta property="og:url" content="https://chouchouinjapan.com/shop/">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/shop/style.css"></head><body><div class="wrap">
+<link rel="stylesheet" href="/shop/style.css"></head><body>
+<script>
+/* ===== 店主設定：填好這裡就能開賣（其餘不用動）=====
+   1) line：你的官方 LINE 連結（例：https://lin.ee/xxxxx）
+   2) gumroad：各書在 Gumroad 上架後的購買連結
+   填了連結，對應的「購買」鈕就會自動連過去；沒填則指向「如何購買」。 */
+window.SHOP = {
+  line: "",                       // ← 貼上你的官方 LINE 連結
+  gumroad: {
+    buy: "",                      // 外國人在日本買房完全指南
+    life: "",                     // 在日本生活完全指南
+    japanese: "",                 // 從零到能用的日語學習法
+    agent: "",                    // 在日本當房仲的真實筆記
+    workplace: "",                // 日本職場生存手冊
+    tools: "",                    // 在日工作的AI與工具效率手冊
+    bundle: ""                    // 6 本組合包
+  }
+};
+</script>
+<div class="wrap">
 <nav class="topnav"><a class="home" href="/"><span class="m">✦</span> 周周在日本</a><div class="links"><a href="/life/">文章</a><a href="/shop/">電子書店</a></div></nav>
 
-<div class="hero"><h1><span class="m">✦</span> 周周的電子書店</h1><p>把在日本最常卡關的事，整理成一本本可以照做的指南。PDF 下載，手機電腦都能看。</p></div>
+<div class="hero"><h1><span class="m">✦</span> 周周的電子書店</h1><p>把在日本最常卡關的事，整理成一本本可以照做的指南。<strong>付款後 PDF 立即寄到你的信箱。</strong></p><div style="margin-top:14px"><a class="btn ghost" id="lineBtn" href="#order">💬 加官方 LINE 諮詢</a></div></div>
 
 <div class="bundle">
   <div class="bl"><span class="tag">最超值 · 6 本組合包</span><h2>周周全系列 6 本組合包</h2><p>買房完全指南＋生活＋日語＋房仲＋職場＋工具，一次擁有。約 260 頁精華，從置產到生活全覆蓋。</p><a class="btn" href="#order" data-book="bundle">購買組合包</a></div>
@@ -72,15 +91,15 @@
 <h2 class="sec-title" id="order">如何購買</h2>
 <div class="how">
   <ol>
-    <li>選擇你要的單本或組合包。</li>
-    <li>透過下方方式聯絡下單、完成付款。</li>
-    <li>我會把 PDF 電子書寄給你，立即開始閱讀。</li>
+    <li>點選你要的書或組合包的「<strong>購買</strong>」。</li>
+    <li>在付款頁用信用卡等方式完成付款（人在日本、海外皆可）。</li>
+    <li>付款後，<strong>PDF 電子書會自動寄到你填的 Email 信箱</strong>，立即開始閱讀。</li>
+    <li>有任何問題，加下面的<strong>官方 LINE</strong>直接找周周。</li>
   </ol>
   <div class="contact">
-    <strong>下單 / 聯絡方式：</strong><br>
-    · 官方網站：<a href="/">chouchouinjapan.com</a><br>
-    · LINE / Email：（請店主填入）<br>
-    <span class="note" style="text-align:left">＊付款與交付方式可依店主設定（LINE 轉帳、綠界、Gumroad、Stripe 連結等）。</span>
+    <strong>還想先問問題？加官方 LINE 聊聊：</strong><br>
+    <a class="btn" id="lineBtn2" href="#" style="margin-top:10px">💬 加周周官方 LINE</a>
+    <span class="note" style="text-align:left;display:block;margin-top:10px">＊付款與自動寄件由 Gumroad 處理（賣家可於日本收款）。買家的收據與電子書會寄到付款時填寫的 Email。</span>
   </div>
 </div>
 
@@ -92,5 +111,16 @@
   <details><summary>可以先諮詢再買嗎？</summary><p>當然。想在日本買房、或有在日生活的問題，都可以先透過官網聯絡周周諮詢。</p></details>
 </div>
 
-<footer class="foot">© 周周在日本 · <a href="/">首頁</a> · <a href="/life/">文章</a> · <a href="/shop/">電子書店</a><div class="note">※ 售價為預設建議，可自行調整。購買鈕目前指向「如何購買」，接上金流後可改為付款連結。</div></footer>
-</div></body></html>
+<footer class="foot">© 周周在日本 · <a href="/">首頁</a> · <a href="/life/">文章</a> · <a href="/shop/">電子書店</a><div class="note">※ 付款後 PDF 由 Gumroad 自動寄到買家信箱。售價與連結由店主於頁面上方設定區調整。</div></footer>
+</div>
+<script>
+(function(){
+  var S=window.SHOP||{gumroad:{}};
+  document.querySelectorAll('[data-book]').forEach(function(a){
+    var u=(S.gumroad||{})[a.getAttribute('data-book')];
+    if(u){a.href=u;a.target='_blank';a.rel='noopener';}
+  });
+  if(S.line){['lineBtn','lineBtn2'].forEach(function(id){var e=document.getElementById(id);if(e){e.setAttribute('href',S.line);e.target='_blank';e.rel='noopener';}});}
+})();
+</script>
+</body></html>
