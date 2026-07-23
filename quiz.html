@@ -121,7 +121,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .r-also{margin-top:18px}
 .r-also .h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px}
 .r-also .mini{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:9px}
-.r-also .mini img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
+.r-also .mini img{width:64px;height:64px;border-radius:10px;object-fit:cover;object-position:center 48%;flex:0 0 auto}
 .r-also .mini .mini-ic{width:64px;height:64px;border-radius:12px;background:var(--rose-l);color:var(--rose);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .r-also .mini .mini-ic svg{width:34px;height:34px}
 .r-also .mini b{font-size:15px}
@@ -359,7 +359,7 @@ var LIVE_Q = [
     {ic:"🧳", t:"常出差或兩地跑，房子要好管理", add:{mansion_new:1, mansion_used:2, tower:1}}
   ]},
   { role:'budget', q:"你的購屋預算比較接近哪一種？", hint:"不用寫確切金額，選最接近你的感覺就好（由低到高）。", multi:false, opts:[
-    {ic:"🐷", t:"精打細算，想找入門總價", add:{mansion_used:2, chuko_kodate:1}},
+    {ic:"🏷️", t:"精打細算，想找入門總價", add:{mansion_used:2, chuko_kodate:1}},
     {ic:"💴", t:"小資預算，穩紮穩打", add:{mansion_used:2, chuko_kodate:2}},
     {ic:"💵", t:"一般家庭的購屋預算", add:{chuko_kodate:2, mansion_used:1, shinchiku_kodate:1}},
     {ic:"💰", t:"預算比較寬裕", add:{shinchiku_kodate:2, mansion_new:1, chumon:1}},
@@ -448,6 +448,8 @@ var lastTop = null;
 function setGender(g){
   G = g; var im = document.getElementById('pcardImg');
   if(im && lastTop && PERSONA_IMG[lastTop]) im.src = PERSONA_IMG[lastTop][g];
+  var ts = document.querySelectorAll('.mini-thumb');
+  for(var t=0;t<ts.length;t++){ var kk = ts[t].getAttribute('data-key'); if(PERSONA_IMG[kk]) ts[t].src = PERSONA_IMG[kk][g]; }
   var bs = document.querySelectorAll('.gt');
   for(var i=0;i<bs.length;i++){ bs[i].className = 'gt'+(bs[i].getAttribute('data-g')===g?' on':''); }
 }
@@ -718,7 +720,8 @@ function showResult(branch, top, also, strict, score, ranked){
     h += '<div class="r-also"><div class="h">你其實也蠻適合這些方向 👇</div>';
     also.forEach(function(k){
       var A = RESULTS[k];
-      h += '<div class="mini"><span class="mini-ic">'+resIcon(k)+'</span><div><b>'+A.name+'</b><p>'+A.tags.join('・')+'</p></div></div>';
+      var athumb = PERSONA_IMG[k] ? PERSONA_IMG[k][G] : (A.img || pim);
+      h += '<div class="mini"><img class="mini-thumb" data-key="'+k+'" src="'+athumb+'" alt="'+A.name+'・人格卡"><div><b>'+A.name+'</b><p>'+A.tags.join('・')+'</p></div></div>';
     });
     h += '</div>';
   }
