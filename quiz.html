@@ -122,6 +122,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .r-also .h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px}
 .r-also .mini{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:9px}
 .r-also .mini img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
+.r-also .mini .mini-ic{width:64px;height:64px;border-radius:12px;background:var(--rose-l);color:var(--rose);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.r-also .mini .mini-ic svg{width:34px;height:34px}
 .r-also .mini b{font-size:15px}
 .r-also .mini p{font-size:13px;color:var(--mut);margin-top:2px}
 .reality{background:#fffbeb;border:2px solid #fbbf24;border-radius:14px;padding:18px 19px;margin-top:14px}
@@ -603,6 +605,21 @@ function whyHTML(branch, top){
   return s2;
 }
 
+/* 「你也適合」小插圖（線條圖示） */
+function _sv(p){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'; }
+var ICON = {
+  house:_sv('<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.7V21h14V9.7"/><path d="M9.5 21v-6h5v6"/>'),
+  design:_sv('<path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/><path d="M4.5 15.5l4 4"/>'),
+  building:_sv('<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7h1.5M9 11h1.5M13.5 11h1.5M9 15h1.5M13.5 15h1.5"/><path d="M10.5 21v-3h3v3"/>'),
+  tower:_sv('<rect x="8" y="2.5" width="8" height="19" rx="1"/><path d="M11 6h.6M13 6h.6M11 9h.6M13 9h.6M11 12h.6M13 12h.6M11 15h.6M13 15h.6"/><path d="M10.5 21.5v-3h3v3"/>'),
+  rent:_sv('<rect x="3.5" y="7" width="10" height="14" rx="1"/><path d="M6.5 11H8M10 11h1.5M6.5 15H8M10 15h1.5"/><circle cx="17.5" cy="15.5" r="3.4"/><path d="M17.5 14v3M16.4 15.5h2.2"/>'),
+  shop:_sv('<path d="M4 9l1.2-4h13.6L20 9"/><path d="M5 9v11h14V9"/><path d="M4 9h16"/><path d="M9.5 20v-5h5v5"/>'),
+  hotel:_sv('<path d="M3 18v-9"/><path d="M3 13h13a4 4 0 0 1 4 4v1"/><path d="M6.5 12v-2.2h4V12"/><path d="M20 18v-1.5"/>'),
+  stack:_sv('<rect x="3" y="8.5" width="8.5" height="12.5" rx="1"/><rect x="11.5" y="4" width="9.5" height="17" rx="1"/><path d="M5.5 12h1M8 12h1M5.5 16h1M8 16h1M14.5 8h1.2M17.5 8h1.2M14.5 12h1.2M17.5 12h1.2M14.5 16h1.2M17.5 16h1.2"/>')
+};
+var ICON_MAP = {shinchiku_kodate:'house',chuko_kodate:'house',chumon:'design',mansion_new:'building',mansion_used:'building',tower:'tower',invest_rent:'rent',invest_biz:'shop',invest_hotel:'hotel',invest_ittou:'stack'};
+function resIcon(k){ return ICON[ICON_MAP[k]] || ICON.house; }
+
 function blk(cls,head,arr){
   var h='<div class="blk '+cls+'"><div class="bh">'+head+'</div><ul>';
   arr.forEach(function(x){ h+='<li>'+x+'</li>'; });
@@ -701,7 +718,7 @@ function showResult(branch, top, also, strict, score, ranked){
     h += '<div class="r-also"><div class="h">你其實也蠻適合這些方向 👇</div>';
     also.forEach(function(k){
       var A = RESULTS[k];
-      h += '<div class="mini"><img src="'+A.img+'" alt="'+A.name+'"><div><b>'+A.name+'</b><p>'+A.tags.join('・')+'</p></div></div>';
+      h += '<div class="mini"><span class="mini-ic">'+resIcon(k)+'</span><div><b>'+A.name+'</b><p>'+A.tags.join('・')+'</p></div></div>';
     });
     h += '</div>';
   }
