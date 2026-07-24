@@ -2,6 +2,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f43f5e">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
 <title>測測你適合買日本什麼樣的房子？｜周周・日本房仲</title>
 <meta name="description" content="花 1 分鐘做個小測驗，看看你適合日本的透天、公寓、塔樓、注文宅還是投資物件。周周幫你把方向抓出來。">
 <meta name="robots" content="noindex,follow">
@@ -468,6 +471,7 @@ function start(){
   document.getElementById('intro').style.display='none';
   document.getElementById('resultHost').style.display='none';
   document.getElementById('quiz').style.display='block';
+  if(window.gtag)gtag('event','quiz_start',{page:location.pathname});
   render();
 }
 
@@ -677,6 +681,7 @@ function showResult(branch, top, also, strict, score, ranked){
   var host = document.getElementById('resultHost');
   document.getElementById('quiz').style.display='none';
   document.getElementById('pfill').style.width='100%';
+  if(window.gtag)gtag('event','quiz_complete',{branch:branch,persona:top,persona_name:(PERSONA[top]&&PERSONA[top].type)||R.name});
 
   var isHouse = (top==='shinchiku_kodate'||top==='chuko_kodate'||top==='chumon');
   var isMansion = (top==='mansion_new'||top==='mansion_used'||top==='tower');
