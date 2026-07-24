@@ -1,5 +1,6 @@
 <!-- 周周・徵求台灣／海外不動產合作夥伴。存成 partners.html。純靜態，直接用瀏覽器開得起來。 -->
 <meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f43f5e">
 <title>徵求台灣・海外不動產合作夥伴｜日本東京買房一條龍｜周周・日本房仲</title>
@@ -22,6 +23,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .hd{max-width:1100px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}
 .logo-emblem{height:40px;width:auto;display:block;flex-shrink:0}
+.hd .hd-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
 .hd a.back{font-size:13.5px;color:var(--mut);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
 .hd a.back:hover{background:#f5f5f4}
 
@@ -96,7 +98,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 <header>
   <div class="hd">
     <a class="logo" href="index.html"><img class="logo-emblem" src="logo-mark.png" alt="周周・日本房仲"><span>周周・日本房仲</span></a>
-    <a class="back" href="index.html">← 回首頁</a>
+    <div class="hd-right"><a class="back" href="index.html">← 回首頁</a></div>
   </div>
 </header>
 
@@ -171,3 +173,4 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
   <p class="disc">＊本頁為合作夥伴招募說明，非投資或購屋建議，也非公開招募資金。實際物件的可購買性、貸款成數、投報率、法規與稅務等，仍需依個案評估，並由宅建士／司法書士／稅理士確認為準。合作分潤與條件依個案另行協議。法規與制度可能調整，請以官方最新公告為準。</p>
 </div>
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref=isJa?'ja.html':(isCn?p.slice(0,-8)+'-ja.html':p.slice(0,-5)+'-ja.html');var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
