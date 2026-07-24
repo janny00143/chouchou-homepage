@@ -79,6 +79,12 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .gender-tog .gt.on{background:var(--rose);border-color:var(--rose);color:#fff}
 .pcard-full{width:100%;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.12);margin-top:12px;display:block}
 .pcard-share{text-align:center;font-size:13px;color:var(--mut);margin-top:10px}
+.share-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;background:var(--rose);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:15.5px;padding:13px 20px;border-radius:999px;cursor:pointer;box-shadow:0 6px 18px rgba(244,63,94,.28);transition:.13s}
+.share-btn:hover{background:var(--rose-d)}
+.share-btn:active{transform:translateY(1px)}
+.share-btn svg{width:19px;height:19px}
+.zztoast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(12px);background:#292524;color:#fff;font-size:14px;font-weight:600;padding:12px 20px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.24);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:9999;max-width:88vw;text-align:center}
+.zztoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .pcard-note{font-size:14px;color:#1d4ed8;margin-top:11px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:11px 14px;line-height:1.7}
 
 /* ---- 分析 ---- */
@@ -457,6 +463,31 @@ function setGender(g){
   for(var i=0;i<bs.length;i++){ bs[i].className = 'gt'+(bs[i].getAttribute('data-g')===g?' on':''); }
 }
 
+function zzToast(msg){
+  var t = document.createElement('div'); t.className='zztoast'; t.textContent=msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(function(){ t.classList.add('show'); });
+  setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); }, 300); }, 2200);
+}
+function copyLink(url){
+  if(navigator.clipboard && navigator.clipboard.writeText){ return navigator.clipboard.writeText(url); }
+  try{ var ta=document.createElement('textarea'); ta.value=url; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }catch(e){}
+  return Promise.resolve();
+}
+function shareQuiz(){
+  var url = 'https://chouchouinjapan.com/quiz.html';
+  var pname = (lastTop && PERSONA[lastTop] && PERSONA[lastTop].type) ? PERSONA[lastTop].type : '';
+  var text = pname ? ('我是「'+pname+'」！測測看你適合買日本什麼樣的房子🏠✨') : '測測看你適合買日本什麼樣的房子🏠✨';
+  if(window.gtag) gtag('event','quiz_share',{persona:lastTop||''});
+  copyLink(url).then(function(){
+    if(navigator.share){
+      navigator.share({ title:'買房人格測驗', text:text, url:url }).catch(function(){});
+    } else {
+      zzToast('已複製測驗連結，貼上就能分享給朋友！');
+    }
+  });
+}
+
 var state = { i:0, answers:[], structure:null, wantTower:false, wantUsed:false, towerBlocked:false };
 
 function branchOf(){ return (state.answers[0] && state.answers[0][0]===1) ? 'invest' : 'live'; }
@@ -697,6 +728,7 @@ function showResult(branch, top, also, strict, score, ranked){
     h += '<div class="gender-tog"><button class="gt'+(G==='f'?' on':'')+'" data-g="f" onclick="setGender(\'f\')">👧 女生版</button><button class="gt'+(G==='m'?' on':'')+'" data-g="m" onclick="setGender(\'m\')">👦 男生版</button></div>';
   }
   h += '<img id="pcardImg" class="pcard-full" src="'+pim+'" alt="'+P.type+'・買房人格卡">';
+  h += '<button type="button" class="share-btn" onclick="shareQuiz()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5 15.4 6.5M8.6 13.5 15.4 17.5"/></svg>分享測驗給朋友</button>';
   h += '<p class="pcard-share">切換男生／女生版本，長按或截圖存下你的買房人格卡分享 ✨</p>';
   if(isHouse) h += '<p class="pcard-note">🧱 '+st.why+'</p>';
   if(top==='tower' && state.wantUsed) h += '<p class="pcard-note">✨ 你偏好中古 → 同地段的<b>中古塔樓</b>通常比全新划算，周周可以幫你比。</p>';
