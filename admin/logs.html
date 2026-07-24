@@ -55,7 +55,9 @@ td.wrap-cell{white-space:normal;min-width:180px;max-width:280px}
 </div>
 <script>
 var WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
-var TOKEN="zzlog_7fQk29Xb4mR8vT";
+var LS_TOK="zz_logtoken";
+var TOKEN="";try{TOKEN=localStorage.getItem(LS_TOK)||"";}catch(e){}
+function askToken(force){var t=prompt("請輸入翻譯機後台使用碼（token）：",force?"":TOKEN);if(t!=null){TOKEN=t.trim();try{localStorage.setItem(LS_TOK,TOKEN);}catch(e){}}return TOKEN;}
 var DATA=[];
 // 付費金鑰充值的起始額度（估算餘額用；真正餘額以 Google 帳單頁為準）。之後再充值就把金額加上去。
 var PREPAID_JPY=2000;     // 目前充值 ¥2000
@@ -99,7 +101,7 @@ function load(){
   fetch(WORKER_URL+"?logs=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(j){
     DATA=(j&&j.logs)?j.logs:[];showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);render();
   }).catch(function(e){
-    document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（Worker 可能還沒更新，或 KV 尚未綁定）</td></tr>';
+    document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（可能是使用碼不正確，或 Worker 還沒更新／KV 尚未綁定）<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700">重新輸入使用碼</a></td></tr>';
     document.getElementById("stat").textContent="讀取失敗";
   });
 }
@@ -113,6 +115,7 @@ function downloadCSV(){
   var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="翻譯機紀錄.csv";a.click();
   setTimeout(function(){URL.revokeObjectURL(a.href);},500);
 }
+if(!TOKEN)askToken();
 load();
 </script>
 </body>
