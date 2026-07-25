@@ -30,9 +30,9 @@ const A4_JA = {
 
 const ART_JA = ART.map(a => {
   const j = a.id === "a4" ? A4_JA : jaContent[a.id];
-  if (!j) throw new Error("缺少日文翻譯內容: " + a.id);
+  if (!j) { console.warn("日文翻譯內容尚未提供，略過此文章: " + a.id); return null; }
   return { id: a.id, cat: a.cat, date: a.date, title: j.title, tags: j.tags, cover: a.cover, video: a.video, ex: j.ex, url: a.url, body: [j.ex] };
-});
+}).filter(Boolean);
 
 const PROCESS_JA = [
   ["初回ヒアリング", "まずはご希望や予算、スケジュールをお伺いし、方向性を確認します。"],
@@ -206,7 +206,7 @@ const body = `<header>
 <main class="wrap">
   <section class="view on" id="v-home">
     <div class="herob"><div class="in">
-  <h1>日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを見つけよう</h1>
+  <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
   <div class="sub">専門性 ・ 親身な対応 ・ 日本もあなたも理解する</div>
   <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.7V21h14V9.7"/><path d="M9.5 21v-6h5v6"/></svg>自宅購入</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7h1.5M9 11h1.5M13.5 11h1.5M9 15h1.5M13.5 15h1.5"/><path d="M10.5 21v-3h3v3"/></svg>投資物件</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3" rx="0.5"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg>ローン相談</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>日本語対応</span></div>
   <div class="hbtns"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>無料LINE相談</a><a class="b-case" onclick="var r=document.querySelector('.reviews');if(r)r.scrollIntoView({behavior:'smooth'});return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z" fill="currentColor" stroke="none"/></svg>実績を見る</a></div>
