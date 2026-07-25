@@ -198,7 +198,7 @@ const body = `<header>
   <div class="wrap hd">
     <a class="logo" href="#" onclick="show('home');return false"><img class="logo-emblem" src="logo-mark.png" alt="${JA_UI.brand}"><span id="brand">${JA_UI.brand}</span></a>
     <nav class="main" id="mainnav"></nav>
-    <div class="hd-right"><a class="btn btn-line" id="lineTop" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a><button class="burger" onclick="document.getElementById('mnav').style.display=document.getElementById('mnav').style.display==='block'?'none':'block'">☰</button></div>
+    <div class="hd-right" style="flex:0 0 auto"><a class="btn btn-line" id="lineTop" target="_blank" rel='noopener' style="white-space:nowrap;flex:0 0 auto">${JA_UI.lineBtn}</a><button class="burger" onclick="document.getElementById('mnav').style.display=document.getElementById('mnav').style.display==='block'?'none':'block'">☰</button></div>
   </div>
   <div class="mnav" id="mnav"></div>
 </header>
