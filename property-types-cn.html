@@ -1,0 +1,209 @@
+<!-- 周周・物件类型介绍。存成 property-types.html。纯静态，直接用浏览器开得起来。 -->
+<meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split(String.fromCharCode(47)).pop()||"index.html";if(p!=="ja.html"&&p.slice(-8)!=="-ja.html"){var isCn=p.slice(-8)==="-cn.html";var L=localStorage.getItem("lang");if(L==="cn"&&!isCn){location.replace(p.slice(0,-5)+"-cn.html");return;}if(L==="tw"&&isCn){location.replace(p.slice(0,-8)+".html");return;}}}catch(e){}document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-lang]");if(!a)return;var l=a.getAttribute("data-lang");if(l==="tw"||l==="cn"){try{localStorage.setItem("lang",l);}catch(_){}}},true);})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>日本买房物件类型介绍｜自住・投资物件一次看懂｜周周・日本房仲</title>
+<meta name="description" content="日本买房有哪些物件类型？新筑/中古一户建、新筑/中古公寓、塔楼、买地自建、自用办公楼，以及民宿旅馆、店铺、办公室、整栋商业大楼等投资物件的定义、特征、优点与注意事项，周周一次帮你整理清楚。">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--rose-l:#fff1f2;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{max-width:1100px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}
+.logo-emblem{height:40px;width:auto;display:block;flex-shrink:0}
+.hd .hd-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.hd a.back{font-size:13.5px;color:var(--mut);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.hd a.back:hover{background:#f5f5f4}
+
+.hero{text-align:center;padding:36px 0 8px}
+.hero .kick{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:28px;font-weight:900;line-height:1.35}
+.hero h1 span{color:var(--rose)}
+.hero p{color:var(--mut);margin:12px auto 0;max-width:560px;font-size:15px}
+
+.sech{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sech .n{width:30px;height:30px;border-radius:9px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex:0 0 auto}
+.sech h2{font-size:20px;font-weight:900}
+.secintro{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#334155;line-height:1.85;margin-bottom:8px}
+.secintro b{color:#1d4ed8}
+
+.acc{background:#fff;border:1px solid var(--line);border-radius:16px;margin-top:11px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.acc-h{display:flex;align-items:center;gap:13px;padding:16px 18px;cursor:pointer;user-select:none}
+.acc-h:hover{background:#fafafa}
+.acc-h .ic{width:40px;height:40px;flex:0 0 auto;border-radius:11px;background:var(--rose-l);display:flex;align-items:center;justify-content:center;font-size:21px}
+.acc-h .tt{flex:1}
+.acc-h .tt b{font-size:16.5px;font-weight:800;display:block}
+.acc-h .tt span{font-size:12.5px;color:var(--mut)}
+.acc-h .arw{color:var(--mut);font-size:15px;transition:transform .25s;flex:0 0 auto}
+.acc.open .acc-h .arw{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 18px 20px;border-top:1px solid var(--line)}
+.acc.open .acc-body{display:block}
+.def{font-size:14.5px;color:#44403c;background:#faf9f7;border-radius:10px;padding:12px 14px;margin:16px 0 4px}
+.blk{margin-top:15px}
+.blk .bh{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800;margin-bottom:7px}
+.blk ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.blk li{position:relative;padding-left:19px;font-size:14px;color:#44403c;line-height:1.75}
+.blk li::before{position:absolute;left:2px;top:1px;font-size:12px}
+.blk.feat .bh{color:#2563eb}.blk.feat li::before{content:"◆";color:#93c5fd}
+.blk.pro .bh{color:var(--green-d)}.blk.pro li::before{content:"✔";color:#6ee7b7}
+.blk.warn .bh{color:#b45309}.blk.warn li::before{content:"!";color:#fbbf24;font-weight:900}
+.blk.fit .bh{color:var(--rose-d)}.blk.fit li::before{content:"♥";color:#fca5b8}
+.blk.fit{background:var(--rose-l);border-radius:10px;padding:12px 14px}
+
+.cta{text-align:center;margin:34px 0 12px;background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.6px solid #fb7185;border-radius:16px;padding:22px 18px}
+.cta p{font-size:15px;color:#44403c;margin-bottom:14px}
+.cta a.line{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:13px 32px;border-radius:999px;box-shadow:0 8px 22px rgba(16,185,129,.28)}
+.cta a.line:hover{background:var(--green-d)}
+.cta a.quiz{display:inline-block;margin-top:12px;font-size:14px;color:var(--rose-d);font-weight:700}
+.disc{font-size:12px;color:var(--mut);text-align:center;margin:22px 0 44px;line-height:1.8}
+@media(max-width:600px){.hero h1{font-size:23px}.acc-h .tt b{font-size:15px}}
+</style>
+
+<header>
+  <div class="hd">
+    <a class="logo" href="index-cn.html"><img class="logo-emblem" src="logo-mark.png" alt="周周・日本房仲"><span>周周・日本房仲</span></a>
+    <div class="hd-right"><a class="back" href="index-cn.html">← 回首页</a></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <span class="kick">🏠 买房前先搞懂</span>
+    <h1>日本买房，<span>物件类型</span>一次看懂</h1>
+    <p>日本的房子分成好多种，自住跟投资的挑法也完全不同。周周把每一类的定义、特征、优点跟注意事项整理清楚，让你先有概念，再一起找适合你的物件。</p>
+  </section>
+
+  <div id="host"></div>
+
+  <div class="cta">
+    <p>看完还是不确定自己适合哪一种？<br>直接把想法或喜欢的物件贴给周周，我帮你分析、把关！</p>
+    <a class="line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 问周周</a>
+    <div><a class="quiz" href="quiz-cn.html">或先做「你适合买什么房」小测验 →</a></div>
+  </div>
+
+  <p class="disc">＊本页为一般性的类型说明，非投资或购屋建议。实际物件的可购买性、贷款成数、投报率、法规与税务等，仍需依个案评估，并由宅建士／司法书士／税理士确认为准。法规与制度可能调整，请以官方最新公告为准。</p>
+</div>
+
+<script>
+var CATS = [
+  { n:"1", title:"自住／自用物件", intro:"", items:[
+    { ic:"🏡", name:"新筑一户建", sub:"全新透天（独栋住宅）",
+      def:"新建完成、尚未有人入住的独立住宅，通常包含土地与建物所有权。日本市场上的新筑一户建主要分为「建売住宅」与「注文住宅」。",
+      feat:["拥有自己的土地及独立建物","不必缴纳公寓管理费及修缮基金","设备新颖，通常符合现行耐震及节能标准","隐私性较高，适合家庭长期居住","通常会有停车位及较充足的收纳空间"],
+      pro:["入住后短期内较少需要大型维修","新筑住宅通常享有建物瑕疵担保","格局及设备符合现代生活需求","部分物件可享住宅贷款减税等优惠"],
+      warn:["新筑物件价格通常包含较高的开发商利润","入住后即转为中古物件，短期出售可能产生价差","距离车站较近的新筑一户建，土地及室内面积可能偏小","未来须自行负担外墙、屋顶及设备维修费用"],
+      fit:["重视隐私、空间及家庭生活的人","有小孩、宠物或需要停车位的家庭","希望长期持有土地资产的人"] },
+    { ic:"🏘️", name:"中古一户建", sub:"中古透天（独栋住宅）",
+      def:"曾经有人居住或已经完成超过一定期间的独立住宅，通常也是土地与建物一起交易。",
+      feat:["同一地区、相同预算下，通常比新筑拥有更大的土地或室内空间","可以实际确认采光、通风、邻居及周边环境","选择数量多，市中心或成熟住宅区也较容易找到","可透过翻新打造符合自己喜好的住宅"],
+      pro:["价格通常比同区域新筑住宅低","房屋价值已经历部分折旧，价格较接近土地与实际市场价值","有机会购买到土地条件较好的物件","装修后可能提升居住品质及资产价值"],
+      warn:["必须确认建筑年份、耐震标准及建物状况","可能需要支付屋顶、外墙、水管及设备更新费用","部分物件可能有违建、未登记增建或与现行法规不符的问题","老屋可能较难取得理想的住宅贷款条件","应确认是否属于「再建筑不可」物件"],
+      fit:["希望控制预算，同时拥有较大空间的人","愿意进行装修或翻新的人","重视土地价值多于建物新旧的人"] },
+    { ic:"🏢", name:"新筑公寓", sub:"新筑マンション（分售公寓）",
+      def:"尚未有人入住的新建分售公寓，在日本通常称为「新筑マンション」。购买人拥有室内专有部分，以及土地与公共区域的共有持分。",
+      feat:["建物、公共设施及室内设备均为全新","通常配有自动门禁、宅配箱、防盗设备及垃圾集中区","建物管理及公共区域维护由管理公司负责","新建物通常具有较好的耐震、隔热及节能性能"],
+      pro:["入住初期的修缮需求较少","格局、厨房、浴室等设备较符合现代需求","保全及管理制度通常较完整","部分物件可在完工前选择室内颜色或设备方案"],
+      warn:["价格通常包含广告费、样品屋及开发成本","每月须支付管理费及修缮基金","新筑初期的修缮基金可能偏低，未来可能调涨","预售物件无法事先确认实际采光、景观及噪音","可使用面积通常比相同总价的一户建小"],
+      fit:["重视新设备、门禁及管理品质的人","不希望自行处理外墙或公共设备维修的人","希望住在车站附近、生活机能完善地区的人"] },
+    { ic:"🏬", name:"中古公寓", sub:"东京市场选择最多的自住类型之一",
+      def:"已经有人居住或完成一定期间的分售公寓，是东京市场上选择最多的自住物件类型之一。",
+      feat:["物件数量多，从套房到家庭型住宅都有","可以实际确认管理状况、住户环境及公共区域","同一地区通常比新筑公寓价格低","许多物件经过整体翻新后出售"],
+      pro:["预算相同时，通常能选择更好的地段或更大的面积","可确认实际采光、景观、噪音及管理品质","价格通常已反映部分折旧，市场行情较容易比较","优质地段及管理良好的中古公寓，仍具有一定保值性"],
+      warn:["须确认 1981 年以后的新耐震标准，以及实际确认年月","应检查长期修缮计划、修缮基金余额及是否有欠缴","需确认是否即将进行大型修缮，或修缮基金是否可能调涨","屋内翻新不代表水管、电梯及公共设备也已更新","部分老公寓可能有贷款年限、面积或管理方面的限制"],
+      fit:["希望兼顾地段、价格及生活便利性的人","可接受中古屋或希望自行装修的人","希望在东京市区控制总预算的人"] },
+    { ic:"🌆", name:"塔楼住宅", sub:"タワーマンション（高楼层公寓）",
+      def:"一般指高楼层的大型公寓，在日本通常称为「タワーマンション」。市场上没有完全统一的定义，常见为高度超过 60 公尺、约 20 层以上的住宅大楼。",
+      feat:["常位于市中心、湾岸、车站或大型再开发区","高楼层通常具有较好的采光、通风及景观","可能设有门卫、大厅、交谊厅、健身房、访客房等公共设施","楼层、朝向及景观会明显影响价格"],
+      pro:["保全、门禁及管理制度通常较完善","部分物件与车站、商场或办公设施直接连接","优质地段及稀有景观具有一定市场吸引力","公共设施丰富，居住便利性较高","热门塔楼在转售及出租市场上较容易受到关注"],
+      warn:["管理费及修缮基金通常较高","电梯、机械停车场及大型设备的长期维修成本较高","未来的大型修缮工程较复杂","高楼层在地震时可能感受到较长时间的摇晃","停电或灾害发生时，电梯及供水可能受到影响","景观可能因周边新建工程而改变","同栋不同楼层及朝向的资产价值差距可能很大"],
+      fit:["重视景观、保全、设施及市中心生活的人","希望兼顾自住品质与未来转售性的人","能接受较高固定管理成本的人"] },
+    { ic:"📐", name:"购买土地自建", sub:"土地购入＋注文住宅",
+      def:"先购买土地，再委托建筑公司、工务店或住宅品牌设计及施工，在日本称为「土地购入＋注文住宅」。",
+      feat:["可依照家庭需求规划格局、外观、设备及建材","土地与建筑契约通常分开进行","从选地、设计、申请到完工需要较长时间","总成本包括土地、建筑、设计、地盘及各项附带工程"],
+      pro:["可自由设计房间数量、收纳、动线及设备","可规划二代住宅、工作室、停车场或无障碍空间","能自行选择耐震、隔热、太阳能及节能规格","适合有特殊居住需求或希望打造长期住宅的人"],
+      warn:["必须确认土地用途地域、建蔽率、容积率、高度限制及斜线限制","须确认是否具备合法接道及能否重新建筑","土地价格以外，还可能产生地盘改良、拆除、挡土墙、上下水道接管等费用","建筑预算容易因追加工程而增加","土地贷款及建筑贷款的资金安排较为复杂","从购地到入住，通常需要较长的规划及施工时间"],
+      fit:["对格局、设备及生活方式有明确要求的人","希望打造二代住宅或住办合一空间的人","有充足预算及时间规划住宅的人"] },
+    { ic:"🏙️", name:"自用整栋办公楼", sub:"买一整栋给自己公司用",
+      def:"购买一整栋建物作为自己公司营业、办公、展示、仓储或员工使用，不以出租收益为主要目的。",
+      feat:["土地及整栋建物由公司或个人持有","可依照企业需求安排办公室、会议室、仓库及接待空间","不受一般办公室租约及房东限制","可能同时兼具企业据点与资产持有功能"],
+      pro:["不必长期支付办公室租金","可自由装修、设置招牌及调整空间配置","公司搬迁或扩张时具有较高弹性","若有多余楼层，也可视条件对外出租","土地及建物可作为企业资产"],
+      warn:["必须确认用途地域及建物用途是否符合公司的业务内容","需确认消防、避难、电力、电梯及无障碍设备","住宅改作办公室或店铺，可能需要办理用途变更","公司贷款的条件与住宅贷款不同","空调、外墙、屋顶及电梯等维护均由所有权人负责","购买前要评估企业未来的人员规模与现金流"],
+      fit:["已有稳定营运及长期据点需求的公司","需要仓储、展示、接待或特殊设备空间的企业","希望将租金支出转为企业资产的人"] }
+  ]},
+  { n:"2", title:"投资物件", intro:"「收益物件」是以取得租金收入为目的的不动产<b>总称</b>，不是单一建物类型——民宿、办公楼、店铺、办公室其实都属于收益物件。所以下面用比较清楚的方式分类：住宅收益物件、民宿／旅馆、店铺、办公室、整栋商业大楼、其他事业用收益物件。", items:[
+    { ic:"🏠", name:"住宅收益物件", sub:"出租给一般人／家庭的收租物件",
+      def:"以取得租金收入为目的的住宅型不动产，常见类型包括：一室套房投资、家庭型出租公寓、整栋公寓、整栋住宅大楼等。可分为单户投资与整栋投资。",
+      feat:["主要目的为赚取租金及未来出售价差","判断重点包括租金、空置率、管理成本及资产价值","可分为单户投资与整栋投资","不同用途的收益、风险及融资方式差异很大"],
+      pro:["可建立每月租金收入","能使用贷款放大投资规模","租金可能协助偿还贷款","优质地段的物件可兼顾收益及资产保值","可依投资策略选择稳定型或增值型物件"],
+      warn:["广告上的「表面收益率」未扣除管理费、修缮费、税金及空置损失","应以实际租金及支出计算「实质收益率」","必须确认目前租约、租金行情、欠租及退租风险","出租中的物件通常无法事先查看室内","修缮、设备故障及原状恢复会影响实际收入","地段、人口变化及租赁需求会影响长期收益","海外投资人还需考虑管理、汇款、报税及税务代理安排"],
+      fit:["希望建立稳定租金收入的人","能以中长期角度持有不动产的人","愿意仔细分析现金流、修缮及空置风险的人"] },
+    { ic:"🏨", name:"民宿／旅馆", sub:"短期住宿经营（民泊・旅馆业）",
+      def:"购买或经营住宅、整栋建物或住宿设施，透过短期住宿取得收入。依营业方式，可能适用住宅宿泊事业法、旅馆业法或特区民泊制度。",
+      feat:["收入主要来自每日或短期住宿费","营收会受到地点、旅游需求、季节及住房率影响","需要处理预约、清洁、入住、客诉及设施管理","法规及营业许可比一般长期出租更复杂"],
+      pro:["经营良好时，收益可能高于一般长期出租","房价可以依旺季、周末及活动期间调整","可透过装修、品牌及服务提高住宿单价","热门观光区、机场周边及交通便利地区较具需求"],
+      warn:["并非所有住宅都可以合法经营民宿","必须确认用途地域、消防设备、管理规约及地方政府条例","公寓管理规约可能明确禁止民宿","住宅宿泊事业法原则上有每年 180 天的营业上限","旅馆业许可通常对用途、消防、柜台及建筑条件有较高要求","营收波动较大，管理及清洁成本也较高","海外投资人仍需安排日本国内的管理及紧急联络体制"],
+      fit:["愿意投入实际经营与管理的人","熟悉观光市场、住宿平台及行销的人","能承受营收波动并准备充足营运资金的人"] },
+    { ic:"🏪", name:"店铺", sub:"一楼路面店・小型商业空间",
+      def:"购买一楼店面、商场内店铺或小型商业空间，出租给餐饮、零售、美容及其他服务业者。",
+      feat:["租金与人流、可见度、临路状况及商圈密切相关","一楼路面店通常比楼上店铺具有更高的租金及需求","不同业种对排烟、排水、电力及消防条件的要求不同","租约期限通常较住宅长，但退租后重新招租可能需要时间"],
+      pro:["优质地段的店铺可能拥有较高租金单价","租户通常会自行负担部分室内装修","稳定经营的店家可能长期承租","店铺用途明确，容易依商圈分析市场需求"],
+      warn:["餐饮店可能涉及油烟、噪音、排水及邻居纠纷","租户经营失败时可能出现欠租或退租","特殊装修可能增加恢复原状及重新招租的难度","必须确认管理规约是否限制餐饮或特定业种","应确认招牌设置、营业时间及消防设备规定","店铺空置时通常不容易立即转作住宅使用"],
+      fit:["熟悉当地商圈及店铺租赁市场的人","希望以较小规模投资商业不动产的人","能承受一定空置期及租户更替风险的人"] },
+    { ic:"🏢", name:"办公室", sub:"区分所有办公室（买一间/一层）",
+      def:"购买大楼中的一间或一个楼层作为区分所有办公室，再出租给公司或个人事业者。与整栋办公楼相比，投资金额通常较低。",
+      feat:["只持有大楼中的部分专有空间","公共区域及建物设备由管理组合或管理公司负责","租户可能是公司、士业事务所、诊所或个人工作室","收益主要取决于交通、商圈、楼层及办公规格"],
+      pro:["购入门槛通常低于整栋办公楼","公共区域及大型设备不必由单一所有权人独立管理","市中心小型办公室可能有稳定的中小企业需求","管理工作通常少于整栋物件"],
+      warn:["每月需要支付管理费及修缮基金","无法单独决定整栋大楼的修缮及营运方式","单一租户退租时，租金收入可能完全中断","需确认管理规约允许的业种、营业时间及招牌规定","办公室贷款的成数与利率通常不同于住宅贷款","老旧办公大楼的出售流动性可能较低"],
+      fit:["初次接触商业不动产的投资人","预算不足以购买整栋办公楼的人","希望投资市中心小型办公需求的人"] },
+    { ic:"🏬", name:"整栋商业大楼", sub:"整栋办公楼（一栋）投资",
+      def:"购买一整栋办公用途建物，将各楼层或各区域出租给企业，取得租金收益。",
+      feat:["租户通常为公司、事务所或法人","租金收入可能来自多个楼层或多个承租人","收益与办公商圈、车站距离、建物规格及招租能力密切相关","投资金额及维修责任通常较大"],
+      pro:["可统一管理整栋建物","可透过翻新大厅、外墙及办公设备提升租金","多租户型物件可分散单一租户退租的风险","土地占比较高的物件可能具有长期资产价值","可依市场状况整栋出售、分层出租或部分自用"],
+      warn:["企业退租后，空置期间可能较长","办公室装修及恢复原状费用可能很高","电梯、空调、消防及外墙的维修成本较大","老旧办公楼可能不符合现代企业对网路、耐震及节能的需求","应详细调查租户契约、押金、租金纪录及欠租情况","利率上升及景气变化可能影响办公需求与融资成本"],
+      fit:["资金规模较大、重视中长期收益的投资人","具备法人租赁及建物管理能力的人","希望透过改造提高租金与资产价值的人"] },
+    { ic:"📦", name:"其他事业用收益物件", sub:"仓库・停车场・店铺住宅复合等",
+      def:"除了上述类型外，收益物件还包括仓库、停车场、店铺住宅复合型建物（店铺付住宅）及其他事业用物件，适合有特定用途或想分散配置的投资人。",
+      feat:["用途多元，收益结构与一般住宅出租不同","部分类型管理相对单纯（如停车场）","店铺住宅复合型可同时收商用与住宅租金","需求与地段、产业及周边机能高度相关"],
+      pro:["可依策略选择管理轻松或收益较高的类型","部分物件单价较低、入门门槛较弹性","能与住宅、商用物件搭配做资产配置"],
+      warn:["不同用途的法规、贷款与税务差异大","部分事业用物件的租赁需求较集中、流动性较低","应确认用途地域与建物用途是否相符","空置或产业变化可能较难短期填补"],
+      fit:["想分散资产配置的投资人","对特定用途（仓储、停车、店住复合）有想法的人","愿意依用途评估收益与风险的人"] }
+  ]}
+];
+
+function esc(s){return s;}
+function render(){
+  var host = document.getElementById('host'), html='';
+  CATS.forEach(function(c){
+    html += '<div class="sech"><span class="n">'+c.n+'</span><h2>'+c.title+'</h2></div>';
+    if(c.intro) html += '<div class="secintro">💡 '+c.intro+'</div>';
+    c.items.forEach(function(it,i){
+      var id='acc-'+c.n+'-'+i;
+      html += '<div class="acc" id="'+id+'"><div class="acc-h" onclick="document.getElementById(\''+id+'\').classList.toggle(\'open\')">'
+        + '<span class="ic">'+it.ic+'</span><span class="tt"><b>'+it.name+'</b><span>'+it.sub+'</span></span><span class="arw">▼</span></div>'
+        + '<div class="acc-body">'
+        + '<div class="def">'+it.def+'</div>'
+        + blk('feat','🔎 特征', it.feat)
+        + blk('pro','✔ 主要优点', it.pro)
+        + blk('warn','⚠ 注意事项', it.warn)
+        + blk('fit','♥ 适合', it.fit)
+        + '</div></div>';
+    });
+  });
+  host.innerHTML = html;
+}
+function blk(cls,head,arr){
+  var h='<div class="blk '+cls+'"><div class="bh">'+head+'</div><ul>';
+  arr.forEach(function(x){ h+='<li>'+x+'</li>'; });
+  return h+'</ul></div>';
+}
+render();
+</script>
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isCn=p.slice(-8)==='-cn.html';var twHref=isCn?p.slice(0,-8)+'.html':p;var cnHref=isCn?p:p.slice(0,-5)+'-cn.html';var cur=isCn?'cn':'tw';function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 语言';btn.setAttribute('aria-label','切换语言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁体中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);var hdRight=document.querySelector('header .hd-right');if(hdRight){hdRight.appendChild(wrap);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
