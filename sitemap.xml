@@ -99,6 +99,11 @@
 <url><loc>https://chouchouinjapan.com/tool-yield.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-yield-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/translate-ja.html</loc><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/quiz.html</loc><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/quiz-cn.html</loc><priority>0.5</priority></url>
+<url><loc>https://chouchouinjapan.com/partners.html</loc><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/partners-cn.html</loc><priority>0.5</priority></url>
+<url><loc>https://chouchouinjapan.com/partners-ja.html</loc><priority>0.5</priority></url>
 <url><loc>https://chouchouinjapan.com/index-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/japan-property-buying-guide-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/japan-property-search-websites-cn.html</loc><priority>0.6</priority></url>
@@ -143,6 +148,9 @@
 <url><loc>https://chouchouinjapan.com/feedback-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/videos-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tools-cn.html</loc><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/partners-cn.html</loc><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/quiz-cn.html</loc><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/property-types-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-loan-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-cost-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-agent-cn.html</loc><priority>0.6</priority></url>
