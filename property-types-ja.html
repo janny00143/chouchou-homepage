@@ -1,0 +1,207 @@
+<!-- 周周・物件タイプ紹介。property-types-ja.html。純静的、そのままブラウザで開けます。 -->
+<meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'&&p.slice(-8)!=='-ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>日本の不動産・物件タイプ完全ガイド｜自宅・投資物件をまるごと理解｜周周・日本の不動産</title>
+<meta name="description" content="日本の不動産にはどんな物件タイプがある？新築／中古の戸建て、新築／中古マンション、タワーマンション、土地購入＋注文住宅、自社利用ビル、そして民泊・旅館、店舗、オフィス、一棟ビルなどの投資物件の定義・特徴・メリット・注意点を、周周が分かりやすく整理します。">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--rose-l:#fff1f2;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{max-width:1100px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}
+.logo-emblem{height:40px;width:auto;display:block;flex-shrink:0}
+.hd .hd-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.hd a.back{font-size:13.5px;color:var(--mut);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.hd a.back:hover{background:#f5f5f4}
+
+.hero{text-align:center;padding:36px 0 8px}
+.hero .kick{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:28px;font-weight:900;line-height:1.35}
+.hero h1 span{color:var(--rose)}
+.hero p{color:var(--mut);margin:12px auto 0;max-width:560px;font-size:15px}
+
+.sech{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sech .n{width:30px;height:30px;border-radius:9px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex:0 0 auto}
+.sech h2{font-size:20px;font-weight:900}
+.secintro{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#334155;line-height:1.85;margin-bottom:8px}
+.secintro b{color:#1d4ed8}
+
+.acc{background:#fff;border:1px solid var(--line);border-radius:16px;margin-top:11px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.acc-h{display:flex;align-items:center;gap:13px;padding:16px 18px;cursor:pointer;user-select:none}
+.acc-h:hover{background:#fafafa}
+.acc-h .ic{width:40px;height:40px;flex:0 0 auto;border-radius:11px;background:var(--rose-l);display:flex;align-items:center;justify-content:center;font-size:21px}
+.acc-h .tt{flex:1}
+.acc-h .tt b{font-size:16.5px;font-weight:800;display:block}
+.acc-h .tt span{font-size:12.5px;color:var(--mut)}
+.acc-h .arw{color:var(--mut);font-size:15px;transition:transform .25s;flex:0 0 auto}
+.acc.open .acc-h .arw{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 18px 20px;border-top:1px solid var(--line)}
+.acc.open .acc-body{display:block}
+.def{font-size:14.5px;color:#44403c;background:#faf9f7;border-radius:10px;padding:12px 14px;margin:16px 0 4px}
+.blk{margin-top:15px}
+.blk .bh{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800;margin-bottom:7px}
+.blk ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.blk li{position:relative;padding-left:19px;font-size:14px;color:#44403c;line-height:1.75}
+.blk li::before{position:absolute;left:2px;top:1px;font-size:12px}
+.blk.feat .bh{color:#2563eb}.blk.feat li::before{content:"◆";color:#93c5fd}
+.blk.pro .bh{color:var(--green-d)}.blk.pro li::before{content:"✔";color:#6ee7b7}
+.blk.warn .bh{color:#b45309}.blk.warn li::before{content:"!";color:#fbbf24;font-weight:900}
+.blk.fit .bh{color:var(--rose-d)}.blk.fit li::before{content:"♥";color:#fca5b8}
+.blk.fit{background:var(--rose-l);border-radius:10px;padding:12px 14px}
+
+.cta{text-align:center;margin:34px 0 12px;background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.6px solid #fb7185;border-radius:16px;padding:22px 18px}
+.cta p{font-size:15px;color:#44403c;margin-bottom:14px}
+.cta a.line{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:13px 32px;border-radius:999px;box-shadow:0 8px 22px rgba(16,185,129,.28)}
+.cta a.line:hover{background:var(--green-d)}
+.disc{font-size:12px;color:var(--mut);text-align:center;margin:22px 0 44px;line-height:1.8}
+@media(max-width:600px){.hero h1{font-size:23px}.acc-h .tt b{font-size:15px}}
+</style>
+
+<header>
+  <div class="hd">
+    <a class="logo" href="ja.html"><img class="logo-emblem" src="logo-mark.png" alt="周周・日本の不動産"><span>周周・日本の不動産</span></a>
+    <div class="hd-right"><a class="back" href="ja.html">← ホームに戻る</a></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <span class="kick">🏠 買う前にまず理解</span>
+    <h1>日本の不動産、<span>物件タイプ</span>をまるごと理解</h1>
+    <p>日本の住まいは種類が豊富で、自宅用と投資用では選び方も大きく異なります。周周が各タイプの定義・特徴・メリット・注意点を整理しました。まずは全体像をつかんで、一緒にあなたに合う物件を見つけましょう。</p>
+  </section>
+
+  <div id="host"></div>
+
+  <div class="cta">
+    <p>読んでも自分に合うタイプが分からない？<br>気になる物件や考えをそのまま周周に送ってください。分析して、しっかりサポートします！</p>
+    <a class="line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 LINEで周周に相談</a>
+  </div>
+
+  <p class="disc">＊本ページは一般的なタイプ説明であり、投資や購入の助言ではありません。実際の物件の購入可否、住宅ローンの借入割合、利回り、法規制や税務などは個別に評価が必要で、宅地建物取引士／司法書士／税理士の確認を前提とします。法規制や制度は変わる可能性があるため、公式の最新公告をご確認ください。</p>
+</div>
+
+<script>
+var CATS = [
+  { n:"1", title:"自宅・自己利用の物件", intro:"", items:[
+    { ic:"🏡", name:"新築一戸建て", sub:"新築の戸建て住宅",
+      def:"新築が完成し、まだ誰も入居していない独立した住宅で、通常は土地と建物の所有権を含みます。日本市場の新築一戸建ては、主に「建売住宅」と「注文住宅」に分かれます。",
+      feat:["自分の土地と独立した建物を所有できる","マンションの管理費や修繕積立金が不要","設備が新しく、通常は現行の耐震・省エネ基準に適合","プライバシー性が高く、家族での長期居住に向く","駐車場や十分な収納スペースを備えることが多い"],
+      pro:["入居後しばらくは大規模な修繕が少ない","新築住宅には通常、契約不適合責任（瑕疵担保）がある","間取りや設備が現代の暮らしに合っている","一部の物件は住宅ローン減税などの優遇を受けられる"],
+      warn:["新築は開発業者の利益が価格に含まれることが多い","入居した時点で中古物件となり、短期売却では差損が出やすい","駅に近い新築一戸建ては、土地や室内面積が小さくなりがち","将来的に外壁・屋根・設備の修繕費を自分で負担する必要がある"],
+      fit:["プライバシー・空間・家族の暮らしを重視する方","子どもやペット、駐車場が必要なご家庭","土地資産を長期保有したい方"] },
+    { ic:"🏘️", name:"中古一戸建て", sub:"中古の戸建て住宅",
+      def:"かつて人が住んでいた、または一定期間が経過した独立住宅で、通常は土地と建物をまとめて取引します。",
+      feat:["同じエリア・同じ予算なら、新築より広い土地や室内空間が得られることが多い","採光・通風・隣近所・周辺環境を実際に確認できる","選択肢が多く、都心部や成熟した住宅街でも見つけやすい","リフォームで自分好みの住まいに仕上げられる"],
+      pro:["価格は同エリアの新築より抑えられることが多い","建物価値が一定程度償却済みで、土地や実勢価格に近い","土地条件の良い物件を購入できる可能性がある","リフォームで住み心地や資産価値を高められる場合がある"],
+      warn:["築年数・耐震基準・建物の状態を必ず確認する必要がある","屋根・外壁・配管・設備の更新費用がかかる場合がある","違法建築、未登記の増築、現行法規に適合しない箇所があることも","古い住宅は希望する住宅ローン条件を得にくい場合がある","「再建築不可」物件かどうかを確認すべき"],
+      fit:["予算を抑えつつ広い空間を確保したい方","リフォームや改修に前向きな方","建物の新旧より土地の価値を重視する方"] },
+    { ic:"🏢", name:"新築マンション", sub:"新築の分譲マンション",
+      def:"まだ誰も入居していない新築の分譲マンションです。購入者は室内の専有部分と、土地・共用部の共有持分を所有します。",
+      feat:["建物・共用施設・室内設備がすべて新品","オートロック・宅配ボックス・防犯設備・ゴミ集積所を備えることが多い","建物管理や共用部の維持は管理会社が担当","新しい建物は耐震・断熱・省エネ性能が高い傾向"],
+      pro:["入居初期は修繕の必要が少ない","間取り・キッチン・浴室などの設備が現代のニーズに合う","警備や管理体制が整っていることが多い","一部の物件は完成前に室内の色や設備プランを選べる"],
+      warn:["価格には広告費・モデルルーム・開発コストが含まれることが多い","毎月、管理費と修繕積立金の支払いが必要","新築初期の修繕積立金は低めで、将来値上がりの可能性がある","青田買いでは実際の採光・眺望・騒音を事前に確認できない","同じ総額の一戸建てより専有面積は小さくなりがち"],
+      fit:["新しい設備・セキュリティ・管理品質を重視する方","外壁や共用設備の修繕を自分で扱いたくない方","駅近で生活利便性の高いエリアに住みたい方"] },
+    { ic:"🏬", name:"中古マンション", sub:"東京で最も選択肢の多い自宅タイプの一つ",
+      def:"すでに人が住んでいた、または一定期間が経過した分譲マンションで、東京市場で最も選択肢の多い自宅物件タイプの一つです。",
+      feat:["物件数が多く、ワンルームからファミリー向けまで揃う","管理状況・住民環境・共用部を実際に確認できる","同エリアなら新築マンションより価格が低いことが多い","フルリノベーション後に売り出される物件も多い"],
+      pro:["同じ予算なら、より良い立地や広い面積を選べることが多い","実際の採光・眺望・騒音・管理品質を確認できる","価格に償却が反映済みで、相場を比較しやすい","好立地・管理良好な中古マンションは一定の資産価値を保つ"],
+      warn:["1981年以降の新耐震基準か、実際の建築年月を確認すべき","長期修繕計画・修繕積立金の残高・滞納の有無を確認すべき","大規模修繕が近いか、積立金が値上がりしないか要確認","室内リノベ済みでも配管・エレベーター・共用設備は別問題","古いマンションはローン年数・面積・管理面で制限がある場合も"],
+      fit:["立地・価格・利便性のバランスを取りたい方","中古やリフォーム前提で構わない方","東京都心部で総予算を抑えたい方"] },
+    { ic:"🌆", name:"タワーマンション", sub:"高層階の大型マンション",
+      def:"一般に高層階の大型マンションを指します。完全に統一された定義はありませんが、高さ60m超・20階以上程度の住宅棟が一般的です。",
+      feat:["都心・湾岸・駅前・大規模再開発エリアに立地することが多い","高層階は採光・通風・眺望が良い傾向","コンシェルジュ・ラウンジ・ジム・ゲストルームなどの共用施設を備えることも","階数・向き・眺望が価格に大きく影響する"],
+      pro:["警備・セキュリティ・管理体制が整っていることが多い","駅・商業施設・オフィスと直結する物件もある","好立地・希少な眺望は一定の市場性がある","共用施設が充実し、住み心地の利便性が高い","人気タワーは転売・賃貸市場でも注目されやすい"],
+      warn:["管理費・修繕積立金が高めになりやすい","エレベーター・機械式駐車場・大型設備の長期修繕コストが大きい","将来の大規模修繕工事は複雑になりやすい","高層階は地震時に長い揺れを感じることがある","停電や災害時にエレベーターや給水が影響を受ける可能性","周辺の新築工事で眺望が変わる可能性がある","同じ棟でも階数・向きで資産価値の差が大きくなり得る"],
+      fit:["眺望・セキュリティ・施設・都心生活を重視する方","自宅の質と将来の転売性を両立したい方","高めの固定管理コストを受け入れられる方"] },
+    { ic:"📐", name:"土地を購入して建てる", sub:"土地購入＋注文住宅",
+      def:"先に土地を購入し、建築会社・工務店・住宅メーカーに設計と施工を依頼する方式で、「土地購入＋注文住宅」と呼ばれます。",
+      feat:["家族のニーズに合わせて間取り・外観・設備・建材を計画できる","土地契約と建築契約は通常別々に進む","土地選び・設計・申請・完成まで比較的長い時間がかかる","総コストは土地・建築・設計・地盤・各種付帯工事を含む"],
+      pro:["部屋数・収納・動線・設備を自由に設計できる","二世帯住宅・書斎・駐車場・バリアフリー空間も計画できる","耐震・断熱・太陽光・省エネ仕様を自分で選べる","特別な住環境ニーズや長期居住向けの家を建てたい方に向く"],
+      warn:["用途地域・建蔽率・容積率・高さ制限・斜線制限を確認する必要がある","合法的な接道があるか、再建築が可能かを確認すべき","土地代以外に地盤改良・解体・擁壁・上下水道引込などの費用が生じることも","追加工事で建築予算が膨らみやすい","土地ローンと建築ローンの資金計画が複雑になりやすい","購入から入居まで、計画・施工に長い期間が必要"],
+      fit:["間取り・設備・暮らし方に明確なこだわりがある方","二世帯住宅や職住一体の空間を実現したい方","十分な予算と時間をかけて住まいを計画できる方"] },
+    { ic:"🏙️", name:"自社利用の一棟ビル", sub:"一棟を自社用に購入",
+      def:"一棟の建物を購入し、自社の営業・オフィス・展示・倉庫・従業員用として使い、賃貸収益を主目的としないケースです。",
+      feat:["土地と一棟の建物を会社または個人が保有","企業ニーズに応じてオフィス・会議室・倉庫・受付を配置できる","一般的なオフィス賃貸契約や貸主の制約を受けない","企業拠点と資産保有の機能を兼ねられる場合がある"],
+      pro:["長期的なオフィス賃料の支払いが不要","内装・看板設置・レイアウト変更を自由に行える","移転や拡張の際の柔軟性が高い","余剰フロアがあれば条件次第で外部に賃貸も可能","土地・建物を企業資産にできる"],
+      warn:["用途地域や建物用途が業務内容に適合するか確認が必要","消防・避難・電力・エレベーター・バリアフリー設備を確認すべき","住宅をオフィスや店舗に転用する場合、用途変更が必要なことも","法人向け融資は住宅ローンと条件が異なる","空調・外壁・屋根・エレベーターなどの維持は所有者負担","購入前に将来の人員規模とキャッシュフローを評価すべき"],
+      fit:["安定経営と長期拠点のニーズがある会社","倉庫・展示・受付・特殊設備の空間が必要な企業","賃料支出を企業資産に変えたい方"] }
+  ]},
+  { n:"2", title:"投資物件", intro:"「収益物件」とは、家賃収入を得ることを目的とした不動産の<b>総称</b>で、単一の建物タイプではありません——民泊・オフィスビル・店舗・オフィスも収益物件に含まれます。そこで以下では、より分かりやすく分類しました：住宅系収益物件、民泊／旅館、店舗、オフィス、一棟商業ビル、その他の事業用収益物件。", items:[
+    { ic:"🏠", name:"住宅系収益物件", sub:"一般の方・家庭に貸す賃貸物件",
+      def:"家賃収入を目的とした住宅型の不動産で、代表的なタイプにはワンルーム投資、ファミリー向け賃貸マンション、一棟アパート、一棟マンションなどがあります。区分（一室）投資と一棟投資に分かれます。",
+      feat:["主目的は家賃収入と将来の売却益","判断のポイントは家賃・空室率・管理コスト・資産価値","区分（一室）投資と一棟投資に分けられる","用途によって収益・リスク・融資方法が大きく異なる"],
+      pro:["毎月の家賃収入を築ける","ローンを使って投資規模を拡大できる","家賃がローン返済を助ける可能性がある","好立地の物件は収益と資産保全を両立できる","戦略に応じて安定型・値上がり型の物件を選べる"],
+      warn:["広告の「表面利回り」は管理費・修繕費・税金・空室損失を差し引いていない","実際の家賃と支出で計算する「実質利回り」を見るべき","現在の賃貸借契約・家賃相場・滞納・退去リスクを確認する必要がある","賃貸中の物件は室内を事前に見られないことが多い","修繕・設備故障・原状回復が実際の収入に影響する","立地・人口変化・賃貸需要が長期収益に影響する","海外投資家は管理・送金・確定申告・税務代理の手配も必要"],
+      fit:["安定した家賃収入を築きたい方","中長期の視点で不動産を保有できる方","キャッシュフロー・修繕・空室リスクを丁寧に分析できる方"] },
+    { ic:"🏨", name:"民泊／旅館", sub:"短期宿泊の運営（民泊・旅館業）",
+      def:"住宅・一棟の建物・宿泊施設を購入または運営し、短期宿泊で収入を得るものです。営業方式により、住宅宿泊事業法・旅館業法・特区民泊制度のいずれかが適用されます。",
+      feat:["収入は主に1泊または短期の宿泊料","売上は立地・観光需要・季節・稼働率に左右される","予約・清掃・チェックイン・クレーム・設備管理への対応が必要","法規制や営業許可は一般の長期賃貸より複雑"],
+      pro:["運営が良好なら、一般的な長期賃貸より収益が高い場合がある","繁忙期・週末・イベント期に料金を調整できる","内装・ブランド・サービスで宿泊単価を高められる","人気観光地・空港周辺・交通至便なエリアは需要がある"],
+      warn:["すべての住宅で合法的に民泊を運営できるわけではない","用途地域・消防設備・管理規約・自治体条例を確認する必要がある","マンションの管理規約が民泊を明確に禁止している場合がある","住宅宿泊事業法では原則、年間180日の営業上限がある","旅館業許可は用途・消防・フロント・建築条件の要件が高い","売上の変動が大きく、管理・清掃コストも高め","海外投資家は日本国内の管理・緊急連絡体制の手配が必要"],
+      fit:["実際の運営・管理に取り組む意欲のある方","観光市場・宿泊プラットフォーム・集客に詳しい方","売上変動に耐え、十分な運営資金を用意できる方"] },
+    { ic:"🏪", name:"店舗", sub:"1階の路面店・小型商業スペース",
+      def:"1階の店舗、商業施設内の店舗、小型商業スペースを購入し、飲食・小売・美容・その他サービス業者に貸すものです。",
+      feat:["家賃は人通り・視認性・接道・商圏と密接に関わる","1階の路面店は上階の店舗より家賃・需要が高い傾向","業種により排煙・排水・電力・消防の要件が異なる","賃貸借契約は住宅より長めだが、退去後の再募集に時間がかかることも"],
+      pro:["好立地の店舗は高い賃料単価が期待できる","借主が室内内装の一部を自己負担することが多い","安定経営の店は長期入居する可能性がある","用途が明確で、商圏分析から需要を捉えやすい"],
+      warn:["飲食店は油煙・騒音・排水・近隣トラブルに関わることがある","借主の経営不振で滞納や退去が起きる可能性","特殊な内装は原状回復や再募集の難度を上げる","管理規約が飲食や特定業種を制限していないか確認が必要","看板設置・営業時間・消防設備の規定を確認すべき","店舗が空くと、すぐに住宅転用できないことが多い"],
+      fit:["地元の商圏や店舗賃貸市場に詳しい方","小規模から商業不動産に投資したい方","一定の空室期間や借主交代リスクに耐えられる方"] },
+    { ic:"🏢", name:"オフィス", sub:"区分所有オフィス（1室／1フロア購入）",
+      def:"ビルの中の1室または1フロアを区分所有オフィスとして購入し、企業や個人事業者に貸すものです。一棟オフィスビルに比べて投資額は通常低めです。",
+      feat:["ビルの中の専有部分のみを保有","共用部や建物設備は管理組合・管理会社が担当","借主は会社・士業事務所・クリニック・個人事務所など","収益は主に交通・商圏・階数・オフィス仕様で決まる"],
+      pro:["購入のハードルは一棟オフィスビルより低いことが多い","共用部や大型設備を単独所有者で管理しなくてよい","都心の小型オフィスは中小企業の安定需要があることも","管理業務は一棟物件より少ないのが一般的"],
+      warn:["毎月、管理費と修繕積立金の支払いが必要","一棟ビルの修繕や運営を単独では決められない","単一借主の退去で家賃収入が完全に途切れることがある","管理規約が認める業種・営業時間・看板規定を確認すべき","オフィス向け融資は借入割合・金利が住宅ローンと異なる","古いオフィスビルは売却の流動性が低い場合がある"],
+      fit:["初めて商業不動産に触れる投資家","一棟オフィスビルを買う予算がない方","都心の小型オフィス需要に投資したい方"] },
+    { ic:"🏬", name:"一棟商業ビル", sub:"一棟オフィスビルへの投資",
+      def:"オフィス用途の建物を一棟購入し、各フロアや各区画を企業に貸して家賃収益を得るものです。",
+      feat:["借主は通常、会社・事務所・法人","家賃収入は複数フロアや複数テナントから得られる","収益はオフィス商圏・駅距離・建物仕様・募集力と密接に関わる","投資額と修繕責任は通常大きい"],
+      pro:["一棟をまとめて管理できる","エントランス・外壁・オフィス設備の刷新で賃料を高められる","複数テナント型は単一退去のリスクを分散できる","土地比率の高い物件は長期の資産価値が期待できる","市況に応じて一棟売却・フロア賃貸・一部自己利用を選べる"],
+      warn:["企業の退去後、空室期間が長くなることがある","オフィス内装や原状回復の費用が高額になり得る","エレベーター・空調・消防・外壁の修繕コストが大きい","古いオフィスビルは通信・耐震・省エネの現代ニーズに合わないことも","テナント契約・敷金・家賃履歴・滞納状況を詳細に調査すべき","金利上昇や景気変動がオフィス需要と融資コストに影響する"],
+      fit:["資金規模が大きく、中長期収益を重視する投資家","法人賃貸や建物管理の能力を備える方","改修で賃料と資産価値を高めたい方"] },
+    { ic:"📦", name:"その他の事業用収益物件", sub:"倉庫・駐車場・店舗併用住宅など",
+      def:"上記以外にも、収益物件には倉庫、駐車場、店舗併用住宅（店舗付き住宅）、その他の事業用物件があり、特定の用途や分散配置を考える投資家に向いています。",
+      feat:["用途が多様で、収益構造は一般的な住宅賃貸と異なる","一部のタイプは管理が比較的シンプル（駐車場など）","店舗併用住宅は商用と住宅の家賃を同時に得られる","需要は立地・産業・周辺機能と高く関わる"],
+      pro:["戦略に応じて、管理が楽なタイプや収益の高いタイプを選べる","単価が低く、参入ハードルが柔軟な物件もある","住宅・商用物件と組み合わせて資産配分ができる"],
+      warn:["用途により法規制・融資・税務の差が大きい","一部の事業用物件は賃貸需要が集中し、流動性が低い","用途地域と建物用途が合致するか確認すべき","空室や産業変化があると短期の穴埋めが難しいことも"],
+      fit:["資産配分を分散したい投資家","特定用途（倉庫・駐車・店住併用）に構想がある方","用途ごとに収益とリスクを評価できる方"] }
+  ]}
+];
+
+function esc(s){return s;}
+function render(){
+  var host = document.getElementById('host'), html='';
+  CATS.forEach(function(c){
+    html += '<div class="sech"><span class="n">'+c.n+'</span><h2>'+c.title+'</h2></div>';
+    if(c.intro) html += '<div class="secintro">💡 '+c.intro+'</div>';
+    c.items.forEach(function(it,i){
+      var id='acc-'+c.n+'-'+i;
+      html += '<div class="acc" id="'+id+'"><div class="acc-h" onclick="document.getElementById(\''+id+'\').classList.toggle(\'open\')">'
+        + '<span class="ic">'+it.ic+'</span><span class="tt"><b>'+it.name+'</b><span>'+it.sub+'</span></span><span class="arw">▼</span></div>'
+        + '<div class="acc-body">'
+        + '<div class="def">'+it.def+'</div>'
+        + blk('feat','🔎 特徴', it.feat)
+        + blk('pro','✔ 主なメリット', it.pro)
+        + blk('warn','⚠ 注意点', it.warn)
+        + blk('fit','♥ 向いている方', it.fit)
+        + '</div></div>';
+    });
+  });
+  host.innerHTML = html;
+}
+function blk(cls,head,arr){
+  var h='<div class="blk '+cls+'"><div class="bh">'+head+'</div><ul>';
+  arr.forEach(function(x){ h+='<li>'+x+'</li>'; });
+  return h+'</ul></div>';
+}
+render();
+</script>
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p.slice(-8)==='-ja.html'||p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref,jaHref;if(p.slice(-8)==='-ja.html'){var base=p.slice(0,-8);twHref=base+'.html';cnHref=base+'-cn.html';jaHref=p;}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;jaHref=p.slice(0,-8)+'-ja.html';}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';jaHref=p.slice(0,-5)+'-ja.html';}var cur=(p.slice(-8)==='-ja.html')?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 言語';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);var hdRight=document.querySelector('header .hd-right');if(hdRight){hdRight.appendChild(wrap);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
