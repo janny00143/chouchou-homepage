@@ -76,10 +76,9 @@
 const WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
 const UNLOCK_HASH="e053a3efc19c3e80c7b58bc096a1a2cdeba2ca03aa5d0297bba4e7d32b4586ec"; // SHA-256("ZHOUZHOU")：周周本人測試碼，無限次
 const FREE_HASH="19f1fa5ec989d121d8d2714dbed4db965eaaa6eef40df756c8a2526cedcbd0a3";   // SHA-256("FREE")：一般人免費碼
-const FREE_DAY_LIMIT=3;  // 免費碼 FREE：每日上限（隔天重置）
-const ZZ_DAY_LIMIT=15;   // 會員碼 ZHOUZHOU：每日上限（隔天重置）
-const ZZ_HOUR_LIMIT=10;  // 會員碼 ZHOUZHOU：每小時上限
-// 前端 localStorage 即時擋；真 IP 計次由 Worker 後端把關（防清紀錄/無痕/換瀏覽器）
+const FREE_DAY_LIMIT=3;   // 免費碼 FREE：每日上限（隔天重置）
+const ZZ_DAY_LIMIT=20;    // 會員碼 ZHOUZHOU：每日上限（隔天重置）；時段(先10/每2h+5)由後端真 IP 把關
+// 前端 localStorage 只做「當日總量」即時擋；真正的每 IP 計次與時段開放由 Worker 後端把關（防清紀錄/無痕/換瀏覽器）
 const LINE="https://lin.ee/RscRWCp";
 // 周周本人模式：用 ?owner=<後台token> 進來即記住，之後不受每日上限/停損、也不計次（只有帶對 token 才生效）。?owner=off 關閉。
 var OWNER='';
@@ -234,8 +233,7 @@ function limitBlocked(){
   if(OWNER)return false; // 周周後台 super：完全不受限
   if(TIER==='free'){ if(_cntGet('zz_free',_today())>=FREE_DAY_LIMIT){showFreeCap();return true;} }
   else if(TIER==='member'){
-    if(_cntGet('zz_hour',_hourStamp())>=ZZ_HOUR_LIMIT){showZzCap('hour');return true;}
-    if(_cntGet('zz_day',_today())>=ZZ_DAY_LIMIT){showZzCap('day');return true;}
+    if(_cntGet('zz_day',_today())>=ZZ_DAY_LIMIT){showZzCap('day');return true;} // 時段限制交給後端(showZzCap('hour') 由後端 {limit:'hour'} 觸發)
   }
   return false;
 }
@@ -260,10 +258,10 @@ function showZzCap(kind){
   var inner=(kind==='hour')
     ? '<h2 style="font-size:20px;color:var(--rose-d);margin-bottom:12px">目前使用人數較多</h2>'
       +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:8px">本時段的翻譯次數已達上限，<br>約 <b>2 小時後</b>會再開放～</p>'
-      +'<p style="font-size:14px;color:var(--mut);line-height:1.9;margin-bottom:14px">（每日上限 <b>15 張</b>，隔天會重新開放）</p>'
+      +'<p style="font-size:14px;color:var(--mut);line-height:1.9;margin-bottom:14px">（每日上限 <b>20 張</b>，隔天會重新開放）</p>'
       +'<p style="font-size:14px;color:#44403c;margin-bottom:16px">想要<b>更快速</b>，直接加 LINE 找周周，我幫你看更快！</p>'
     : '<h2 style="font-size:20px;color:var(--rose-d);margin-bottom:12px">今日次數已用完</h2>'
-      +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:8px">今天的翻譯已達<b>每日上限 15 張</b>，<br>隔天會重新開放～</p>'
+      +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:8px">今天的翻譯已達<b>每日上限 20 張</b>，<br>隔天會重新開放～</p>'
       +'<p style="font-size:14px;color:#44403c;margin-bottom:16px">想要<b>更快速</b>，直接加 LINE 找周周，我幫你看更快！</p>';
   _capCard(kind==='hour'?'⏳':'🌙',inner);
 }
