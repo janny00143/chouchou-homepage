@@ -69,7 +69,7 @@ function imgUrl(id){return WORKER_URL+"?img="+encodeURIComponent(id)+"&token="+e
 function usd(n){n=Number(n)||0;if(n===0)return"$0";if(n<0.01)return"$"+n.toFixed(4);return"$"+n.toFixed(2);}
 function render(){
   var rows=document.getElementById("rows");
-  if(!DATA.length){rows.innerHTML='<tr><td colspan="12" class="msg">目前還沒有紀錄。<br>（要先在 Cloudflare 綁好 KV 並更新 Worker；之後有人用翻譯機就會出現）</td></tr>';document.getElementById("stat").textContent="共 0 筆";return;}
+  if(!DATA.length){rows.innerHTML='<tr><td colspan="12" class="msg">目前顯示 <b>0 筆</b>。<br>若你確定有紀錄卻看不到，<b>多半是使用碼(token)不對</b> →<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700;font-size:15px">🔑 點此重新輸入使用碼</a><br><span style="font-size:12px;color:#a8a29e">（若 Cloudflare KV／Worker 尚未綁定，也會顯示 0）</span></td></tr>';document.getElementById("stat").textContent="共 0 筆";return;}
   DATA.sort(function(a,b){return (b.time||"").localeCompare(a.time||"");});
   var paidCnt=0,paidCost=0;
   rows.innerHTML=DATA.map(function(r){
@@ -100,6 +100,7 @@ function resetUsage(){
 function load(){
   document.getElementById("stat").textContent="載入中…";
   fetch(WORKER_URL+"?logs=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(j){
+    if(j&&j.error){document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(j.error)+'<br>多半是<b>使用碼(token)不對</b> →<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700;font-size:15px">🔑 點此重新輸入使用碼</a></td></tr>';document.getElementById("stat").textContent="讀取失敗";return;}
     DATA=(j&&j.logs)?j.logs:[];showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);render();
   }).catch(function(e){
     document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（可能是使用碼不正確，或 Worker 還沒更新／KV 尚未綁定）<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700">重新輸入使用碼</a></td></tr>';
