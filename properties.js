@@ -33,7 +33,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "",
     video: "drive:1rt0FKwznpMkXJEuGFb1mc8iM_IHO6T9S",
-    photos: ["prop-yaraicho-b-1.jpg","prop-yaraicho-b-2.jpg","prop-yaraicho-b-3.jpg","prop-yaraicho-b-4.jpg","prop-yaraicho-b-5.jpg","prop-yaraicho-b-6.jpg","prop-yaraicho-b-7.jpg","prop-yaraicho-b-8.jpg","prop-yaraicho-b-9.jpg"],
+    photos: ["prop-yaraicho-b-1.jpg","prop-yaraicho-b-2.jpg","prop-yaraicho-b-3.jpg","prop-yaraicho-b-4.jpg","prop-yaraicho-b-5.jpg","prop-yaraicho-b-6.jpg","prop-yaraicho-b-7.jpg","prop-yaraicho-b-8.jpg","prop-yaraicho-b-9.jpg","prop-yaraicho-b-10.jpg","prop-yaraicho-b-11.jpg"],
     note: "新宿區矢来町、神楽坂站徒步5分的全新三層戸建（自社物件）！亮點是約25.7帖超大LDK、防犯性高的Built-in Garage（車庫可直接進屋）、下雨也安心的室內陽台，還有貼心的衛浴動線與多個WIC收納。由一級建築士事務所一棟一棟原創設計，2026年7月下旬交屋、預計取得Flat 35S適合證明；學區為市谷小學、牛込第一中學。神楽坂生活圈安靜又有味道、離飯田橋也近。可以直接看影片逛一圈實景喔！想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；此為建築中物件，實際以現況與重要事項說明書為準）。"
   },
 
