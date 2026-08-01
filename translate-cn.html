@@ -74,7 +74,11 @@
 
 <script>
 const WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
-const UNLOCK_HASH="e053a3efc19c3e80c7b58bc096a1a2cdeba2ca03aa5d0297bba4e7d32b4586ec";
+const UNLOCK_HASH="e053a3efc19c3e80c7b58bc096a1a2cdeba2ca03aa5d0297bba4e7d32b4586ec"; // SHA-256("ZHOUZHOU")：周周本人测试码，无限次
+const FREE_HASH="19f1fa5ec989d121d8d2714dbed4db965eaaa6eef40df756c8a2526cedcbd0a3";   // SHA-256("FREE")：一般人免费码
+const FREE_DAY_LIMIT=3;   // 免费码 FREE：每日上限（隔天重置）
+const ZZ_DAY_LIMIT=20;    // 会员码 ZHOUZHOU：每日上限（隔天重置）；时段(先10/每2h+5)由后端真 IP 把关
+// 前端 localStorage 只做「当日总量」即时挡；真正的每 IP 计次与时段开放由 Worker 后端把关（防清纪录/无痕/换浏览器）
 const LINE="https://lin.ee/RscRWCp";
 // 周周本人模式：用 ?owner=<后台token> 进来即记住，之后不受每日上限/停损、也不计次（只有带对 token 才生效）。?owner=off 关闭。
 var OWNER='';
@@ -141,6 +145,7 @@ const CLASSIFY_PROMPT=`你是严格的图片分类器。只判断这张图是不
 - 【严禁】不可凭印象、记忆或「看起来像某建案」判断；只看图上实际印出的文字。看不到贩售文字就 false。`;
 document.getElementById('lineGate').href=LINE;
 let file=null,preview=null,mode='home';
+var TIER=''; // 'member'=ZHOUZHOU（每日15+每小时10）；'free'=FREE（每日3）；?owner=token 另由 OWNER 变数处理(不受限)
 function esc(s){s=String(s==null?'':s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 /* ===== 残留日文自动清洗：①日文词字典 ②日文汉字→繁体 ③片假名店名→罗马拼音（保证画面不再出现假名）===== */
 var TERM=[
@@ -210,12 +215,60 @@ function deepClean(o){
   return o;
 }
 async function _sha(t){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
-async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='请输入使用码';err.style.color='var(--rose)';err.style.display='block';return;}var ok=false;try{ok=(await _sha(code))===UNLOCK_HASH;}catch(e){ok=false;}if(ok){try{sessionStorage.setItem('tok','1');}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';}else{err.textContent='使用码不正确';err.style.color='var(--rose)';err.style.display='block';}}
-try{if(sessionStorage.getItem('tok')==='1'){var _g=document.getElementById('gate'),_u=document.getElementById('upload');if(_g&&_u){_g.style.display='none';_u.style.display='block';}}}catch(e){}
+async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='请输入使用码';err.style.color='var(--rose)';err.style.display='block';return;}var hash='';try{hash=await _sha(code);}catch(e){hash='';}var tier=(hash===UNLOCK_HASH)?'member':(hash===FREE_HASH?'free':'');if(tier){TIER=tier;try{sessionStorage.setItem('tok','1');sessionStorage.setItem('tier',tier);}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';limitBlocked();}else{err.textContent='使用码不正确';err.style.color='var(--rose)';err.style.display='block';}}
+try{if(sessionStorage.getItem('tok')==='1'){TIER=sessionStorage.getItem('tier')||'';var _g=document.getElementById('gate'),_u=document.getElementById('upload');if(_g&&_u){_g.style.display='none';_u.style.display='block';}limitBlocked();}}catch(e){}
+// ===== 使用额度：FREE 每日 3 张(隔天重置)；ZHOUZHOU 每日 15 张＋每小时 10 张；?owner=token 完全不受限 =====
+function _today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function _hourStamp(){var d=new Date();return _today()+'@'+d.getHours();}
+function _cntGet(key,stamp){try{var o=JSON.parse(localStorage.getItem(key)||'{}');return o.s===stamp?(o.n||0):0;}catch(e){return 0;}}
+function _cntInc(key,stamp){try{var o=JSON.parse(localStorage.getItem(key)||'{}');var n=(o.s===stamp?(o.n||0):0)+1;localStorage.setItem(key,JSON.stringify({s:stamp,n:n}));return n;}catch(e){return 0;}}
+function _cntMax(key,stamp,max){try{localStorage.setItem(key,JSON.stringify({s:stamp,n:max}));}catch(e){}}
+function freeInc(){return _cntInc('zz_free',_today());}
+function freeSetMax(){_cntMax('zz_free',_today(),FREE_DAY_LIMIT);}
+function zzInc(){_cntInc('zz_hour',_hourStamp());_cntInc('zz_day',_today());}
+function zzSetHourMax(){_cntMax('zz_hour',_hourStamp(),ZZ_HOUR_LIMIT);}
+function zzSetDayMax(){_cntMax('zz_day',_today(),ZZ_DAY_LIMIT);}
+// 回传 true=已挡下并显示画面；false=可继续翻译
+function limitBlocked(){
+  if(OWNER)return false; // 周周后台 super：完全不受限
+  if(TIER==='free'){ if(_cntGet('zz_free',_today())>=FREE_DAY_LIMIT){showFreeCap();return true;} }
+  else if(TIER==='member'){
+    if(_cntGet('zz_day',_today())>=ZZ_DAY_LIMIT){showZzCap('day');return true;} // 时段限制交给后端(showZzCap('hour') 由后端 {limit:'hour'} 触发)
+  }
+  return false;
+}
+function _capCard(icon,inner){
+  var up=document.getElementById('upload');if(up)up.style.display='none';
+  var R=document.getElementById('result');if(!R)return;
+  R.innerHTML='<div class="tcard" style="text-align:center;background:#fff1f2;border-color:#fecdd3"><div style="font-size:42px;margin-bottom:6px">'+icon+'</div>'+inner
+    +'<a class="btn btn-line" href="'+LINE+'" target="_blank" rel="noopener" style="width:100%;justify-content:center;font-size:16px;padding:14px;margin-top:2px">💬 加入周周 LINE</a></div>';
+  R.style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+// 免费码(FREE)用完当日 3 张 → 导 LINE 填表拿更多额度
+function showFreeCap(){
+  if(typeof gtag==='function'){try{gtag('event','free_limit_reached');}catch(_){}}
+  _capCard('🎁',
+    '<h2 style="font-size:20px;color:var(--rose-d);margin-bottom:12px">免费翻译次数已用完</h2>'
+    +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:10px">免费功能已到达上限。<br>想要了解更多，欢迎加入<b>周周的 LINE</b>，<br>填写表单后即可取得<b>更多免费翻译额度</b>！</p>'
+    +'<p style="font-size:13px;color:var(--mut);margin-bottom:16px">加入好友后也可以直接把图传给周周，我帮你看更详细 💬</p>');
+}
+// 会员码(ZHOUZHOU)撞到每小时 10 / 每日 15 上限 → 提示稍后 & 导 LINE
+function showZzCap(kind){
+  if(typeof gtag==='function'){try{gtag('event','zz_limit_reached',{kind:kind});}catch(_){}}
+  var inner=(kind==='hour')
+    ? '<h2 style="font-size:20px;color:var(--rose-d);margin-bottom:12px">目前使用人数较多</h2>'
+      +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:8px">本时段的翻译次数已达上限，<br>约 <b>2 小时后</b>会再开放～</p>'
+      +'<p style="font-size:14px;color:var(--mut);line-height:1.9;margin-bottom:14px">（每日上限 <b>20 张</b>，隔天会重新开放）</p>'
+      +'<p style="font-size:14px;color:#44403c;margin-bottom:16px">想要<b>更快速</b>，直接加 LINE 找周周，我帮你看更快！</p>'
+    : '<h2 style="font-size:20px;color:var(--rose-d);margin-bottom:12px">今日次数已用完</h2>'
+      +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:8px">今天的翻译已达<b>每日上限 20 张</b>，<br>隔天会重新开放～</p>'
+      +'<p style="font-size:14px;color:#44403c;margin-bottom:16px">想要<b>更快速</b>，直接加 LINE 找周周，我帮你看更快！</p>';
+  _capCard(kind==='hour'?'⏳':'🌙',inner);
+}
 function b64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});}
 function processImage(file){return new Promise((res)=>{if(!file.type.startsWith('image/')){b64(file).then(d=>res({data:d,mediaType:file.type||'application/pdf'}));return;}const img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;const max=1536;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s);}const cv=document.createElement('canvas');cv.width=w;cv.height=h;const ctx=cv.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);try{const u=cv.toDataURL('image/jpeg',0.82);res({data:u.split(',')[1],mediaType:'image/jpeg'});}catch(e){b64(file).then(d=>res({data:d,mediaType:file.type}));}};img.onerror=()=>{b64(file).then(d=>res({data:d,mediaType:file.type}));};img.src=URL.createObjectURL(file);});}
 function pick(f){if(!f)return;file=f;preview=f.type.startsWith('image/')?URL.createObjectURL(f):null;document.getElementById('err').style.display='none';document.getElementById('dropEmpty').style.display='none';const d=document.getElementById('dropFile');d.style.display='block';d.innerHTML=(preview?`<img src="${preview}" style="max-height:200px;margin:0 auto 12px;border-radius:12px">`:`<div style="font-size:30px;margin-bottom:8px">📄</div>`)+`<p style="font-size:14px;color:var(--mut);margin-bottom:14px">${esc(f.name)}</p><button class="btn btn-rose" id="goBtn" onclick="event.stopPropagation();go()">开始翻译分析</button> <button class="btn btn-g" onclick="event.stopPropagation();reset()">换一张</button>`;}
-function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
+function reset(){file=null;preview=null;const fi=document.getElementById('fileIn');if(fi)fi.value='';document.getElementById('dropEmpty').style.display='block';const df=document.getElementById('dropFile');df.style.display='none';df.innerHTML='';const R=document.getElementById('result');R.style.display='none';R.innerHTML='';document.getElementById('upload').style.display='block';document.getElementById('err').style.display='none';if(limitBlocked())return;window.scrollTo({top:0,behavior:'smooth'});}
 function showErr(m){showLoad(false);const e=document.getElementById('err');e.style.display='block';e.textContent=m;const b=document.getElementById('goBtn');if(b){b.disabled=false;b.textContent='开始翻译分析';}}
 function zhErr(msg){const s=String(msg||'');
   if(/上限|暂停|已达|已满|每人每日|请联系周周|加\s*LINE/.test(s))return s; // Worker 的中文上限讯息直接显示
@@ -292,6 +345,8 @@ function showLoad(on){
 }
 async function go(){
   if(!file)return;
+  // 额度把关（FREE 每日3；ZHOUZHOU 每小时10‧每日15；owner 不受限）→ 已满就跳对应画面
+  if(limitBlocked())return;
   const now=Date.now();
   let times=_thGet().filter(t=>now-t<600000); // 只看近 10 分钟
   const b=document.getElementById('goBtn');
@@ -324,7 +379,13 @@ async function go(){
     }catch(_){}
     let o=null,switched=false,paidFlag=0,costVal=0;
     for(let attempt=0;attempt<2;attempt++){
-      const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT)});
+      const j=await callWorker({data:proc.data,mediaType:proc.mediaType,prompt:(mode==='invest'?INVEST_PROMPT:PROMPT),tier:TIER});
+      // 后端(Worker)用真 IP 判定额度已满 → 同步前端计数并跳对应画面（无痕/换浏览器也挡得住）
+      if(j&&j.limit){showLoad(false);
+        if(j.limit==='hour'){zzSetHourMax();showZzCap('hour');}
+        else if(j.limit==='day'){zzSetDayMax();showZzCap('day');}
+        else{freeSetMax();showFreeCap();}
+        return;}
       if(j.error)throw new Error(j.error);
       paidFlag=j.paid?1:0; // 后端回传：这张有没有用到付费金钥（免费爆量才会=1）
       costVal=j.cost||0;   // 这张的实际花费(美元，依 token 计)
@@ -338,6 +399,7 @@ async function go(){
     var _nm=o.物件名称; o=deepClean(o); if(_nm!=null)o.物件名称=String(_nm).replace(/[一-鿿]/g,function(c){return JPCHAR[c]||c;}); // 物件名称保留原文，但把日文汉字(区→区等)换成繁体，不动片假名建案名
     if(typeof gtag==='function'){try{gtag('event','translate_done',{mode:mode,ptype:String(o.物件类型||'')});}catch(_){}}
     logUpload(o,proc,paidFlag,costVal); // 统整到 Cloudflare(含原图)，周周后台 /admin/logs.html 看得到
+    if(TIER==='free')freeInc(); else if(TIER==='member')zzInc(); // 成功翻出一张才计次（被挡的非物件图/失败的不算）
     (mode==='invest'?showInvestResult(o):showResult(o));
   }catch(e){
     var raw=(e&&e.message)?e.message:String(e);
