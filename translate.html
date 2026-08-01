@@ -48,7 +48,8 @@
 
   <div class="card gate" id="gate">
     <div class="lock">🔒</div>
-    <h2 style="margin-bottom:18px">本工具限周周的 LINE 好友使用</h2>
+    <h2 style="margin-bottom:8px">本工具限周周的 LINE 好友使用</h2>
+    <p style="color:var(--mut);font-size:14px;margin-bottom:18px">輸入使用碼，或是加 LINE 好友取得更多使用次數。</p>
     <a class="btn btn-line" id="lineGate" target="_blank" style="margin-bottom:16px" rel='noopener'>加 LINE 取得使用碼</a><br>
     <div style="display:inline-flex;gap:8px;margin-top:6px"><input id="code" placeholder="輸入使用碼" onkeydown="if(event.key==='Enter')unlock()"><button class="btn" style="background:var(--ink);color:#fff" onclick="unlock()">解鎖</button></div>
     <p id="codeErr" style="display:none;color:var(--rose);font-size:14px;margin-top:8px">使用碼不正確</p>
