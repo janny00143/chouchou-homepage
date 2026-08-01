@@ -110,7 +110,14 @@ function load(){
   document.getElementById("stat").textContent="載入中…";
   fetch(WORKER_URL+"?logs=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(j){
     if(j&&j.error){document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(j.error)+'<br>多半是<b>使用碼(token)不對</b> →<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700;font-size:15px">🔑 點此重新輸入使用碼</a></td></tr>';document.getElementById("stat").textContent="讀取失敗";return;}
-    DATA=(j&&j.logs)?j.logs:[];showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);showUnlocks(j&&j.unlocks?j.unlocks:null);render();
+    var all=(j&&j.logs)?j.logs:[];
+    var uc={FREE:0,ZHOUZHOU:0};
+    DATA=all.filter(function(r){
+      if(r&&r.mode==='__unlock__'){var t=String(r.type||'').toUpperCase();if(t==='FREE')uc.FREE++;else if(t==='ZHOUZHOU')uc.ZHOUZHOU++;return false;}
+      return true;
+    });
+    if(j&&j.unlocks){uc.FREE=Math.max(uc.FREE,Number(j.unlocks.FREE)||0);uc.ZHOUZHOU=Math.max(uc.ZHOUZHOU,Number(j.unlocks.ZHOUZHOU)||0);}
+    showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);showUnlocks(uc);render();
   }).catch(function(e){
     document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（可能是使用碼不正確，或 Worker 還沒更新／KV 尚未綁定）<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700">重新輸入使用碼</a></td></tr>';
     document.getElementById("stat").textContent="讀取失敗";
