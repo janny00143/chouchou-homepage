@@ -70,7 +70,7 @@ main{padding:22px 0 10px}
 .pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
 .pnote .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:7px;font-size:14.5px}
-.pvideo{margin:20px 0 6px}
+.pvideo{max-width:860px;margin:30px auto 10px}
 .pvideo .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:8px;font-size:14.5px}
 .pvwrap{position:relative;padding-bottom:56.25%;height:0;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
 .pvwrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
@@ -189,11 +189,10 @@ body.noscroll{overflow:hidden}
       +badges
       +'<div class="pprice">'+C(p.price||"价格请洽询")+'</div>'
       +facts
-      +vid
       +spec+mapBtn+note
       +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 询问这间</a>'
       +'</div>';
-    app.innerHTML='<div class="pdetail">'+gal+body+'</div>';
+    app.innerHTML='<div class="pdetail">'+gal+body+'</div>'+vid;
 
     if(photos.length){
       pImg=document.getElementById("pimg"); pCnt=document.getElementById("pcnt"); pThumbs=document.getElementById("pthumbs");
