@@ -70,6 +70,10 @@ main{padding:22px 0 10px}
 .pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
 .pnote .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:7px;font-size:14.5px}
+.pvideo{margin:20px 0 6px}
+.pvideo .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:8px;font-size:14.5px}
+.pvwrap{position:relative;padding-bottom:56.25%;height:0;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.pvwrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .pask{margin-top:22px;text-align:center;display:block;background:var(--green);color:#fff;font-weight:700;padding:15px;border-radius:999px;text-decoration:none;font-size:15.5px}
 .pask:hover{background:var(--green-d)}
 .pnotfound{text-align:center;padding:70px 20px;color:var(--mut)}
@@ -178,11 +182,14 @@ body.noscroll{overflow:hidden}
       +row("屋龄",p.age)+row("朝向",p.facing)+row("管理",p.mgmt)+row("权利",p.right)+row("投报",p.yield)+'</ul>';
     var mapBtn=p.location?'<a class="pmap" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.location)+'" target="_blank" rel="noopener">📍 在 Google 地图看位置</a>':"";
     var note=p.note?'<div class="pnote"><span class="nh">💬 周周的看法</span>'+C(p.note)+'</div>':"";
+    var vid="";
+    if(p.video){var _vs=(p.video.slice(0,6)==="drive:")?("https://drive.google.com/file/d/"+p.video.slice(6)+"/preview"):("https://www.youtube.com/embed/"+p.video);vid='<div class="pvideo"><span class="nh">🎬 物件影片</span><div class="pvwrap"><iframe src="'+_vs+'" allow="fullscreen" allowfullscreen loading="lazy" title="物件影片"></iframe></div></div>';}
     var body='<div class="pbody">'
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
       +'<div class="pprice">'+C(p.price||"价格请洽询")+'</div>'
       +facts
+      +vid
       +spec+mapBtn+note
       +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 询问这间</a>'
       +'</div>';
