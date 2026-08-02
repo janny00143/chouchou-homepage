@@ -88,13 +88,19 @@ function render(){
   var spentJpy=paidCost*JPY_PER_USD, leftJpy=Math.max(0,PREPAID_JPY-spentJpy);
   document.getElementById("stat").innerHTML="共 <b>"+DATA.length+"</b> 筆　（💳 付費 <b style='color:#b45309'>"+paidCnt+"</b> 筆、免費 "+(DATA.length-paidCnt)+" 筆）　實際花費約 <b style='color:#b45309'>"+usd(paidCost)+"</b>（約 ¥"+Math.round(spentJpy)+"）　餘額估算 <b style='color:#059669'>約 ¥"+Math.round(leftJpy)+"</b> <span style='color:#a8a29e;font-size:12px'>/ ¥"+PREPAID_JPY+"（Google 帳單為準）</span>";
 }
-function showUnlocks(u){
+function fmtDay(t){try{var d=new Date(t);if(isNaN(d))return"";return (d.getMonth()+1)+"/"+d.getDate();}catch(e){return"";}}
+function showUnlocks(u,t0,transSince){
   var el=document.getElementById("unlockStat");if(!el)return;
   if(!u){el.textContent="";return;}
   var f=Number(u.FREE)||0, z=Number(u.ZHOUZHOU)||0, tot=f+z;
-  if(!tot){el.innerHTML="🔓 解鎖 <b>0</b>";return;}
-  var fp=Math.round(f/tot*100), zp=100-fp;
-  el.innerHTML="🔓 解鎖：FREE <b style='color:#059669'>"+f+"</b>（"+fp+"%）・ZHOUZHOU <b style='color:#e11d48'>"+z+"</b>（"+zp+"%）";
+  if(!tot){el.innerHTML="🔓 解鎖 <b>0</b> 人次";return;}
+  transSince=Number(transSince)||0;
+  var s="🔓 解鎖 <b>"+tot+"</b> 人次（FREE <b style='color:#059669'>"+f+"</b>・ZHOUZHOU <b style='color:#e11d48'>"+z+"</b>）"
+       +"　📝 同期翻譯 <b>"+transSince+"</b> 張";
+  if(transSince<=tot){ s+="　🎯 <b>"+Math.round(transSince/tot*100)+"%</b> 有動手翻"; }
+  else { s+="　🎯 平均每次解鎖翻 <b>"+(transSince/tot).toFixed(1)+"</b> 張"; }
+  if(t0){ s+=" <span style='color:#a8a29e;font-size:12px'>（解鎖統計自 "+fmtDay(t0)+" 起）</span>"; }
+  el.innerHTML=s;
 }
 function showUsage(total,cap){
   var u=document.getElementById("usage");
@@ -111,13 +117,15 @@ function load(){
   fetch(WORKER_URL+"?logs=1&token="+encodeURIComponent(TOKEN)).then(function(r){return r.json();}).then(function(j){
     if(j&&j.error){document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(j.error)+'<br>多半是<b>使用碼(token)不對</b> →<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700;font-size:15px">🔑 點此重新輸入使用碼</a></td></tr>';document.getElementById("stat").textContent="讀取失敗";return;}
     var all=(j&&j.logs)?j.logs:[];
-    var uc={FREE:0,ZHOUZHOU:0};
+    var uc={FREE:0,ZHOUZHOU:0}, unlockTimes=[];
     DATA=all.filter(function(r){
-      if(r&&r.mode==='__unlock__'){var t=String(r.type||'').toUpperCase();if(t==='FREE')uc.FREE++;else if(t==='ZHOUZHOU')uc.ZHOUZHOU++;return false;}
+      if(r&&r.mode==='__unlock__'){var t=String(r.type||'').toUpperCase();if(t==='FREE')uc.FREE++;else if(t==='ZHOUZHOU')uc.ZHOUZHOU++;if(r.time)unlockTimes.push(r.time);return false;}
       return true;
     });
     if(j&&j.unlocks){uc.FREE=Math.max(uc.FREE,Number(j.unlocks.FREE)||0);uc.ZHOUZHOU=Math.max(uc.ZHOUZHOU,Number(j.unlocks.ZHOUZHOU)||0);}
-    showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);showUnlocks(uc);render();
+    var t0=unlockTimes.length?unlockTimes.slice().sort()[0]:null;                       // 最早一次解鎖的時間
+    var transSince=t0?DATA.filter(function(r){return (r.time||'')>=t0;}).length:0;       // 「開始記解鎖之後」的翻譯張數（同期）
+    showUsage(j&&j.total!=null?j.total:null, j&&j.cap?j.cap:0);showUnlocks(uc,t0,transSince);render();
   }).catch(function(e){
     document.getElementById("rows").innerHTML='<tr><td colspan="12" class="msg">讀取失敗：'+esc(e.message||e)+'<br>（可能是使用碼不正確，或 Worker 還沒更新／KV 尚未綁定）<br><a href="#" onclick="askToken(true);load();return false" style="color:#e11d48;font-weight:700">重新輸入使用碼</a></td></tr>';
     document.getElementById("stat").textContent="讀取失敗";
