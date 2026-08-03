@@ -14,6 +14,15 @@
    ▍最省事：用「物件登錄小工具」後台 chouchouinjapan.com/admin/ 貼資料自動辨識、產生這個檔。
    ============================================================ */
 
+/* ── 供應商對照（周周指示：記住每筆是哪家的，方便日後核對在售狀態）──
+   (株)エフステージ： togoshi701・yotsuya115・kameido209・famille309・pearl-baba301
+   (株)未来都市開発： nakameguro702
+   自社／未公開（周周自有）： yaraicho-b・setagaya-house
+   一棟／旅館（自有渠道）： kameido2・ryogoku2・asakusa3
+   「全物件」7/30清單那批（公司名待周周補）： toranomon403・shiba2802・suginami308・ikebukuro1101・minamiazabu205・taito703
+   已成約／下架： nippori403
+   ============================================================ */
+
 window.PROPERTIES = [
 
   {
@@ -203,7 +212,7 @@ window.PROPERTIES = [
     cat: "live",
     title: "ハイネス亀戸 209",
     title_cn: "龜戶 北歐風翻新兩房",
-    price: "3,480万円",
+    price: "3,298万円",
     location: "東京都江東區龜戶7-39-26",
     station: "總武中央線・東武龜戶線「龜戶」站 徒步13分／都營新宿線「大島」站 徒步14分",
     layout: "2LDK+W",
@@ -299,7 +308,7 @@ window.PROPERTIES = [
 
   {
     id: "nippori403",
-    status: "在售",
+    status: "已成約",
     cat: "live",
     title: "ラ・グラース日暮里 403",
     title_cn: "東日暮里 築淺兩房",
