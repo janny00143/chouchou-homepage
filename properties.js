@@ -18,6 +18,9 @@
    (株)エフステージ： togoshi701・yotsuya115・kameido209・famille309・pearl-baba301
    (株)未来都市開発： nakameguro702
    (株)大京穴吹不動産： daikanyama
+   (株)トーセイ： lions-setagaya
+   (株)ジャパンプライムムーバ： classy-shinjuku
+   (株)安海グローバル： shirokane401
    自社／未公開（周周自有）： yaraicho-b・setagaya-house
    一棟／旅館（自有渠道）： kameido2・ryogoku2・asakusa3
    「全物件」7/30清單那批（公司名待周周補）： toranomon403・shiba2802・suginami308・ikebukuro1101・minamiazabu205・taito703
@@ -85,6 +88,66 @@ window.PROPERTIES = [
     yield: "",
     photos: ["prop-daikanyama-1.jpg","prop-daikanyama-2.jpg","prop-daikanyama-3.jpg","prop-daikanyama-4.jpg","prop-daikanyama-5.jpg","prop-daikanyama-6.jpg","prop-daikanyama-7.jpg","prop-daikanyama-8.jpg"],
     note: "代官山超精華地段、代官山站徒步5分，惠比壽（10分）與澀谷（11分）都在生活圈，鬧中取靜。這戶2026年2月剛完成全室翻新——系統廚具、整體衛浴、給湯器、洗面化妝台、全室地板與壁紙、廁所、建具、玄關地坪通通換新，屋況全新可直接入住。南西向、採光通風佳，SRC造附電梯、都市瓦斯，還附食洗機與售後保固（アフターサービス保証付）。現況空屋、可看房。代官山這種地段的翻新2LDK很稀有，想看房或試算貸款加LINE，我幫你把關（能不能貸、可貸成數依個案與銀行審查為準；此為中古翻新物件，實際以現況與重要事項說明書為準）。"
+  },
+
+  {
+    id: "classy-shinjuku",
+    status: "在售",
+    cat: "live",
+    title: "クラッシィタワー新宿御苑 1703",
+    title_cn: "新宿御苑前4分 2024新築塔樓・望新宿夜景2LDK",
+    price: "2億7,500万円",
+    location: "東京都新宿區四谷4-29-3",
+    station: "東京Metro丸之內線「新宿御苑前」站 徒步4分／丸之內線「四谷三丁目」站 徒步6分／都營新宿線「新宿三丁目」站 徒步10分",
+    layout: "2LDK",
+    size: "74.92㎡（約22.66坪・含Trunk Room）・陽台6.5㎡",
+    age: "築2年（2024年10月・新築後未入居）",
+    facing: "RC造35層建的17樓・總戶數280戶・可望新宿御苑綠意與副都心高樓群",
+    mgmt: "管理費38,060円＋修繕積立金10,500円＋網路1,375円／月（全部委託・管理員日勤）",
+    right: "所有權",
+    yield: "",
+    photos: ["prop-classy-shinjuku-1.jpg","prop-classy-shinjuku-2.jpg","prop-classy-shinjuku-3.jpg","prop-classy-shinjuku-4.jpg","prop-classy-shinjuku-5.jpg","prop-classy-shinjuku-6.jpg","prop-classy-shinjuku-7.jpg","prop-classy-shinjuku-8.jpg"],
+    note: "新宿御苑前站徒步4分、2024年10月落成的制震塔樓（鹿島建設施工、住友商事・三菱地所Residence原分譲，共280戶），這戶在17樓、新築後未入居的全新屋！從窗邊就能望見新宿御苑的綠意與副都心的高樓夜景，視野超開闊。大樓等級拉滿：24小時有人管理、Concierge櫃檯、飯店式內廊下設計、各樓層垃圾房、自動鎖與宅配箱。室內於2025年10月完成質感升級（壁面天井造型、玄關全身鏡、埋入式電暖爐、飾り棚、建具、清潔），屋況全新。可帶寵物（1戶2隻內，體長70cm・體高50cm・體重15kg以內），即日可交屋、附售後保固。這種地段＋景觀＋新築的塔樓釋出很稀有，想看房或試算貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
+  },
+
+  {
+    id: "lions-setagaya",
+    status: "在售",
+    cat: "live",
+    title: "ライオンズガーデン世田谷 201",
+    title_cn: "世田谷站5分 全新翻新1LDK",
+    price: "5,980万円",
+    location: "東京都世田谷區世田谷1-31-13",
+    station: "東急世田谷線「世田谷」站 徒步5分",
+    layout: "1LDK",
+    size: "48.71㎡（約14.73坪）・陽台8.08㎡・Alcove1.50㎡",
+    age: "築38年（1988年2月）",
+    facing: "西向・RC造6層建的2樓・總戶數22戶",
+    mgmt: "管理費16,700円＋修繕積立金23,090円／月（合計約39,790円・全部委託・管理員日勤）",
+    right: "所有權",
+    yield: "",
+    photos: ["prop-lions-setagaya-1.jpg","prop-lions-setagaya-2.jpg","prop-lions-setagaya-3.jpg","prop-lions-setagaya-4.jpg","prop-lions-setagaya-5.jpg","prop-lions-setagaya-6.jpg","prop-lions-setagaya-7.jpg","prop-lions-setagaya-8.jpg"],
+    note: "東急世田谷線「世田谷」站徒步5分、閑靜的第一種低層住宅區，這戶2026年6月剛完成全室翻新——廚房（クリナップ・附食洗機與玻璃面爐）、整體衛浴（LIXIL）、洗面台（Panasonic）、廁所、給湯器、專有部給排水管全部換新，玄關貼エコカラット除濕磁磚、全面壁紙與地板重鋪、建具更新、還新裝2台冷氣與照明，屋況全新可直接入住。西向、附電梯、都市瓦斯，現況空屋。世田谷這種安靜又有生活感的地段很受歡迎，想看房或談貸款加LINE，我幫你把關（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
+  },
+
+  {
+    id: "shirokane401",
+    status: "在售",
+    cat: "invest",
+    title: "ロイヤルアメニティ白金 401",
+    title_cn: "白金高輪8分 港區資產型1K（可辦公・想定利回約5.3%）",
+    price: "3,299万円",
+    location: "東京都港區白金3-14-12",
+    station: "都營三田線「白金高輪」站 徒步8分／都營三田線「白金台」站 徒步11分／日比谷線「廣尾」站 徒步14分",
+    layout: "1K",
+    size: "21.95㎡",
+    age: "築26年（1999年5月）",
+    facing: "SRC造10層建的4樓・總戶數27戶",
+    mgmt: "管理費10,450円＋修繕積立金13,390円／月（合計約23,840円・全部委託）",
+    right: "所有權",
+    yield: "想定表面利回約5.3%（事務所賃料想定14.5万円／月・年約174万円；實際依出租條件與市況而定）",
+    photos: ["prop-shirokane401-1.jpg","prop-shirokane401-2.jpg","prop-shirokane401-3.jpg","prop-shirokane401-4.jpg","prop-shirokane401-5.jpg","prop-shirokane401-6.jpg"],
+    note: "港區「白金」精華住址的小資產型物件，白金高輪站徒步8分、超市與便利商店都在徒步3分內。這戶是1K約22㎡，室內乾淨、目前空屋，重點是「可作事務所使用」——自用或投資（收租）都彈性。以事務所賃料想定約14.5万円／月估算，想定表面利回約5.3%（年租約174万円參考；實際租金、利回與出租狀況依市況與個案而定）。港區白金這種總價門檻較低、又能持有精華地段資產的物件不好找（此戶民泊不可）。想評估收租或看房加LINE，我幫你算給你聽（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
   {
