@@ -20,7 +20,7 @@
    自社／未公開（周周自有）： yaraicho-b・setagaya-house
    一棟／旅館（自有渠道）： kameido2・ryogoku2・asakusa3
    「全物件」7/30清單那批（公司名待周周補）： toranomon403・shiba2802・suginami308・ikebukuro1101・minamiazabu205・taito703
-   已成約／下架： nippori403
+   已成約已撤下（不再顯示）： nippori403（ラ・グラース日暮里403）
    ============================================================ */
 
 window.PROPERTIES = [
@@ -304,26 +304,6 @@ window.PROPERTIES = [
     yield: "",
     photos: ["prop-taito703-1.jpg","prop-taito703-2.jpg","prop-taito703-3.jpg","prop-taito703-4.jpg","prop-taito703-5.jpg","prop-taito703-6.jpg"],
     note: "三之輪站徒步2分、少見的1SLDK大空間翻新住宅，多一間可彈性運用的服務房（S房）。位於7樓、採光視野好，屋況全新。生活機能成熟、交通方便，適合想要多一點空間的自住買家。想看房或了解貸款、稅費，加LINE我全程中文幫你把關。"
-  },
-
-  {
-    id: "nippori403",
-    status: "已成約",
-    cat: "live",
-    title: "ラ・グラース日暮里 403",
-    title_cn: "東日暮里 築淺兩房",
-    price: "7,299万円",
-    location: "東京都荒川區東日暮里4-36-27",
-    station: "「鶯谷」站 徒步6分（山手線・京濱東北線）／「入谷」站 徒步10分（日比谷線）",
-    layout: "2LDK",
-    size: "54.28㎡（約16.42坪）",
-    age: "築7年（2018年3月）",
-    facing: "",
-    mgmt: "管理費27,040円＋修繕積立金11,280円／月",
-    right: "所有權",
-    yield: "",
-    photos: ["prop-nippori403-1.jpg","prop-nippori403-2.jpg","prop-nippori403-3.jpg","prop-nippori403-4.jpg","prop-nippori403-5.jpg","prop-nippori403-6.jpg"],
-    note: "這幾間裡屋齡最新（2018年）的2LDK，總戶數少、管理單純，可帶貓狗（共2隻）。位於山手線圈內、鶯谷站徒步6分，離上野很近。格局方正、屋況新，適合想要新一點的自住買家。想看房或評估貸款，加LINE我幫你安排（可貸條件依個案、依銀行審查為準）。"
   },
 
   {
