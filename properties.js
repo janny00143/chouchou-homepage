@@ -66,7 +66,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-higashitamagawa-1.jpg","prop-higashitamagawa-2.jpg","prop-higashitamagawa-3.jpg","prop-higashitamagawa-4.jpg","prop-higashitamagawa-5.jpg"],
+    photos: ["prop-higashitamagawa-1.jpg","prop-higashitamagawa-2.jpg","prop-higashitamagawa-3.jpg","prop-higashitamagawa-4.jpg","prop-higashitamagawa-5.jpg","prop-higashitamagawa-6.jpg","prop-higashitamagawa-7.jpg","prop-higashitamagawa-8.jpg","prop-higashitamagawa-9.jpg","prop-higashitamagawa-10.jpg"],
     note: "世田谷區東玉川、田園調布生活圈的自社新築2層戸建！奥沢與雪が谷大塚兩站都徒步約11分，第一種低層住居專用地域、環境安靜。約19.5帖的開放LDK配半島型廚房、挑高玄關加大容量玄關收納，還有4.7帖的閣樓收納，收納力超強。一級建築士事務所一棟一棟原創設計，已完工、可即時交屋，Flat 35S（A方案）適合證明取得預定；學區為奥沢小學、奥沢中學。想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -107,7 +107,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishioi-a-1.jpg","prop-nishioi-a-2.jpg","prop-nishioi-a-3.jpg","prop-nishioi-a-4.jpg","prop-nishioi-a-5.jpg","prop-nishioi-a-6.jpg","prop-nishioi-a-7.jpg"],
+    photos: ["prop-nishioi-a-1.jpg","prop-nishioi-a-2.jpg","prop-nishioi-a-3.jpg","prop-nishioi-a-4.jpg","prop-nishioi-a-5.jpg","prop-nishioi-a-6.jpg","prop-nishioi-a-7.jpg","prop-nishioi-a-8.jpg","prop-nishioi-a-9.jpg"],
     note: "品川區西大井、西大井站徒步約9分的自社新築3層戸建（B棟已完売、只剩這棟A棟！）。約22.1帖的開放LDK、全室6.1帖以上，收納規劃充足（WIC＋各室收納），2樓水回り集中、家事動線順暢。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立伊藤學園（小中一貫校）。已完工、2026年8月下旬交屋預定。照片為布置後實景，想看房加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
