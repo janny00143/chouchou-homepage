@@ -127,6 +127,8 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   <div class="grid" id="grid"></div>
 
+  <div id="soldSec" style="display:none"><h2 style="font-size:20px;font-weight:900;margin:36px 0 6px">🏆 成約済み物件（販売実績）</h2><p style="color:var(--mut);font-size:14px;margin-bottom:16px">これまでにご成約いただいた物件の一部です。同様の条件の物件をお探しの方は、LINEにてお気軽にご相談ください。</p><div class="grid" id="soldGrid"></div></div>
+
   <div class="compliance">
     <b>物件情報について</b><br>
     本ページの情報は概要であり、物件の状況・価格・条件は<b>予告なく変更または成約となる場合</b>があります。最終的な条件は<b>現況および重要事項説明書</b>をご確認ください。収益・融資・税金は個別の条件や金融機関・税理士等の判断により異なり、本ページはいかなる利回り・収益も保証するものではありません。<br>
@@ -191,9 +193,12 @@ footer a{color:#d6d3d1;text-decoration:none}
       +'</div>';
   }
 
+  var act=list?list.filter(function(p){return !p.sold;}):null;
+  var soldList=list?list.filter(function(p){return p.sold;}):[];
+  function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(function(p,i){return card(p,i);}).join("");ss.style.display="block";}
   function render(cat){
-    if(!list){ grid.innerHTML=emptyMsg(); return; }
-    var items=(cat==="all")?list:list.filter(function(p){return p.cat===cat;});
+    if(!act){ grid.innerHTML=emptyMsg(); return; }
+    var items=(cat==="all")?act:act.filter(function(p){return p.cat===cat;});
     shown=items;
     grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
   }
@@ -205,7 +210,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     render(b.dataset.cat);
   });
 
-  function boot(){ render("all"); }
+  function boot(){ render("all"); renderSold(); }
   // 簡中頁：載入 OpenCC 繁→簡，讓你只維護一份繁中 properties.js，簡中自動同步。
   var isHans=(document.documentElement.lang||"").toLowerCase().indexOf("hans")>-1 || /-cn\.html$/.test(location.pathname);
   if(isHans){

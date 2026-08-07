@@ -21,17 +21,19 @@
    (株)トーセイ： lions-setagaya
    (株)ジャパンプライムムーバ： classy-shinjuku
    (株)安海グローバル： shirokane401
-   自社／未公開（周周自有・グランプラス分譲）： yaraicho-b・setagaya-house・higashitamagawa・fukasawa・nishioi-a・futaba
+   自社／未公開（周周自有・グランプラス分譲）： setagaya-house・higashitamagawa・fukasawa・nishioi-a・futaba
    一棟／旅館（自有渠道）： kameido2・ryogoku2・asakusa3
    「全物件」7/30清單那批（公司名待周周補）： toranomon403・shiba2802・suginami308・ikebukuro1101・minamiazabu205・taito703
    已成約已撤下（不再顯示）： nippori403（ラ・グラース日暮里403）
+   已成約→過去販售區（sold:true）： yaraicho-b（矢来町B棟・自社）
    ============================================================ */
 
 window.PROPERTIES = [
 
   {
     id: "yaraicho-b",
-    status: "在售",
+    status: "已成約",
+    sold: true,
     cat: "house",
     title: "矢来町B棟 新築戸建",
     title_cn: "神楽坂 矢来町 新築三層戸建（自社・附車庫）",
@@ -47,7 +49,7 @@ window.PROPERTIES = [
     yield: "",
     video: "drive:1rt0FKwznpMkXJEuGFb1mc8iM_IHO6T9S",
     photos: ["prop-yaraicho-b-1.jpg","prop-yaraicho-b-2.jpg","prop-yaraicho-b-3.jpg","prop-yaraicho-b-4.jpg","prop-yaraicho-b-5.jpg","prop-yaraicho-b-6.jpg","prop-yaraicho-b-7.jpg","prop-yaraicho-b-8.jpg","prop-yaraicho-b-9.jpg","prop-yaraicho-b-10.jpg","prop-yaraicho-b-11.jpg"],
-    note: "新宿區矢来町、神楽坂站徒步5分的全新三層戸建（自社物件）！亮點是約25.7帖超大LDK、防犯性高的Built-in Garage（車庫可直接進屋）、下雨也安心的室內陽台，還有貼心的衛浴動線與多個WIC收納。由一級建築士事務所一棟一棟原創設計，2026年7月下旬交屋、預計取得Flat 35S適合證明；學區為市谷小學、牛込第一中學。神楽坂生活圈安靜又有味道、離飯田橋也近。可以直接看影片逛一圈實景喔！想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；此為建築中物件，實際以現況與重要事項說明書為準）。"
+    note: "新宿區矢来町、神楽坂站徒步5分的全新三層戸建（自社物件）！亮點是約25.7帖超大LDK、防犯性高的Built-in Garage（車庫可直接進屋）、下雨也安心的室內陽台，還有貼心的衛浴動線與多個WIC收納。由一級建築士事務所一棟一棟原創設計，2026年7月下旬交屋、預計取得Flat 35S適合證明；學區為市谷小學、牛込第一中學。神楽坂生活圈安靜又有味道、離飯田橋也近。本物件已順利成交、感謝關注！想找類似的神楽坂／新宿區新築戸建，歡迎加LINE告訴周周你的需求，我幫你留意最新釋出的自社物件。"
   },
 
   {
@@ -87,7 +89,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "",
     video: "drive:1r4KXMpF2Emsf-Pybm0U852YWHJzxf8X-",
-    photos: ["prop-fukasawa-1.jpg","prop-fukasawa-2.jpg","prop-fukasawa-3.jpg","prop-fukasawa-4.jpg"],
+    photos: ["prop-fukasawa-1.jpg","prop-fukasawa-2.jpg","prop-fukasawa-3.jpg","prop-fukasawa-4.jpg","prop-fukasawa-5.jpg","prop-fukasawa-6.jpg","prop-fukasawa-7.jpg","prop-fukasawa-8.jpg","prop-fukasawa-9.jpg"],
     note: "世田谷區深沢、自由が丘生活圈的自社新築3層戸建，建物約48.9坪、在都內戸建裡相當大器！約23.7帖的超大LDK配半島型廚房與食品庫，鐵骨樓梯設計感十足，室內陽台下雨天也能安心晾曬，4間居室全部6帖以上、還有WIC。一級建築士事務所原創設計，已完工、可即時交屋，Flat 35S（A方案）適合證明取得預定；學區為東深沢小學、東深沢中學。可以直接看影片逛一圈實景！想看房加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -127,7 +129,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-futaba-1.jpg","prop-futaba-2.jpg","prop-futaba-3.jpg","prop-futaba-4.jpg","prop-futaba-5.jpg"],
+    photos: ["prop-futaba-1.jpg","prop-futaba-2.jpg","prop-futaba-3.jpg","prop-futaba-4.jpg","prop-futaba-5.jpg","prop-futaba-6.jpg","prop-futaba-7.jpg","prop-futaba-8.jpg","prop-futaba-9.jpg","prop-futaba-10.jpg"],
     note: "品川區二葉、下神明站徒步約6分、大井町站也在徒步圈的自社新築3層戸建，A・B兩棟可選！A棟LDK約18.1帖＋L型廚房、B棟LDK約19.0帖＋勾配天井，兩棟都附車庫與充足收納。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立豊葉の杜學園（小中一貫校）。已完工、2026年8月中旬交屋預定。想比較兩棟或預約看房，加LINE跟我說，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
