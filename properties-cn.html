@@ -126,6 +126,8 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   <div class="grid" id="grid"></div>
 
+  <div id="soldSec" style="display:none"><h2 style="font-size:20px;font-weight:900;margin:36px 0 6px">🏆 过去贩售物件</h2><p style="color:var(--mut);font-size:14px;margin-bottom:16px">这些物件已顺利成交。想找类似条件的物件，欢迎加 LINE 告诉周周你的需求，我帮你留意最新释出！</p><div class="grid" id="soldGrid"></div></div>
+
   <div class="compliance">
     <b>物件资讯说明</b><br>
     本页物件仅供参考，物件状况、价格与条件<b>可能随时异动或已成约</b>，最终条件请以<b>现况及重要事项说明书</b>为准。物件实际收益、可贷成数与税费依个案、依银行与税理士审查为准，本页不构成任何投资或收益保证。<br>
@@ -187,9 +189,12 @@ footer a{color:#d6d3d1;text-decoration:none}
       +'</div>';
   }
 
+  var act=list?list.filter(function(p){return !p.sold;}):null;
+  var soldList=list?list.filter(function(p){return p.sold;}):[];
+  function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(function(p,i){return card(p,i);}).join("");ss.style.display="block";}
   function render(cat){
-    if(!list){ grid.innerHTML=emptyMsg(); return; }
-    var items=(cat==="all")?list:list.filter(function(p){return p.cat===cat;});
+    if(!act){ grid.innerHTML=emptyMsg(); return; }
+    var items=(cat==="all")?act:act.filter(function(p){return p.cat===cat;});
     shown=items;
     grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
   }
@@ -201,7 +206,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     render(b.dataset.cat);
   });
 
-  function boot(){ render("all"); }
+  function boot(){ render("all"); renderSold(); }
   // 简中页：载入 OpenCC 繁→简，让你只维护一份繁中 properties.js，简中自动同步。
   var isHans=(document.documentElement.lang||"").toLowerCase().indexOf("hans")>-1 || /-cn\.html$/.test(location.pathname);
   if(isHans){
