@@ -32,6 +32,7 @@ window.PROPERTIES = [
 
   {
     id: "yaraicho-b",
+    layoutTag: "2LDK+S",
     status: "已成約",
     sold: true,
     cat: "house",
@@ -54,6 +55,7 @@ window.PROPERTIES = [
 
   {
     id: "higashitamagawa",
+    layoutTag: "3LDK+S",
     status: "在售",
     cat: "house",
     title: "東玉川1丁目 新築戸建",
@@ -74,6 +76,7 @@ window.PROPERTIES = [
 
   {
     id: "fukasawa",
+    layoutTag: "4LDK",
     status: "在售",
     cat: "house",
     title: "深沢3丁目 新築戸建",
@@ -95,6 +98,7 @@ window.PROPERTIES = [
 
   {
     id: "nishioi-a",
+    layoutTag: "2LDK+2S",
     status: "在售",
     cat: "house",
     title: "西大井2丁目 part4 A棟 新築戸建",
@@ -115,6 +119,7 @@ window.PROPERTIES = [
 
   {
     id: "futaba",
+    layoutTag: "2〜3LDK",
     status: "在售",
     cat: "house",
     title: "二葉1丁目 part3 新築戸建（A棟・B棟）",
@@ -218,7 +223,7 @@ window.PROPERTIES = [
     status: "在售",
     cat: "invest",
     title: "ロイヤルアメニティ白金 401",
-    title_cn: "白金高輪8分 港區資產型1K（可辦公・想定利回約5.3%）",
+    title_cn: "白金高輪8分 港區1K（可自住・可辦公・想定利回約5.3%）",
     price: "3,299万円",
     location: "東京都港區白金3-14-12",
     station: "都營三田線「白金高輪」站 徒步8分／都營三田線「白金台」站 徒步11分／日比谷線「廣尾」站 徒步14分",
@@ -230,7 +235,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "想定表面利回約5.3%（事務所賃料想定14.5万円／月・年約174万円；實際依出租條件與市況而定）",
     photos: ["prop-shirokane401-1.jpg","prop-shirokane401-2.jpg","prop-shirokane401-3.jpg","prop-shirokane401-4.jpg","prop-shirokane401-5.jpg","prop-shirokane401-6.jpg"],
-    note: "港區「白金」精華住址的小資產型物件，白金高輪站徒步8分、超市與便利商店都在徒步3分內。這戶是1K約22㎡，室內乾淨、目前空屋，重點是「可作事務所使用」——自用或投資（收租）都彈性。以事務所賃料想定約14.5万円／月估算，想定表面利回約5.3%（年租約174万円參考；實際租金、利回與出租狀況依市況與個案而定）。港區白金這種總價門檻較低、又能持有精華地段資產的物件不好找（此戶民泊不可）。想評估收租或看房加LINE，我幫你算給你聽（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
+    note: "港區「白金」精華住址的小資產型物件，白金高輪站徒步8分、超市與便利商店都在徒步3分內。這戶是1K約22㎡，室內乾淨、目前空屋，重點是用途超彈性——<b>自住、當自己的事務所、或投資收租都可以</b>。一個人住在港區白金、走路8分到車站，或當成投資收租，兩種算盤都打得動。以事務所賃料想定約14.5万円／月估算，想定表面利回約5.3%（年租約174万円參考；實際租金、利回與出租狀況依市況與個案而定）。港區白金這種總價門檻較低、又能持有精華地段資產的物件不好找（此戶民泊不可）。想評估收租或看房加LINE，我幫你算給你聽（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
   {
@@ -275,6 +280,7 @@ window.PROPERTIES = [
 
   {
     id: "toranomon403",
+    thumb: "prop-toranomon403-thumb.jpg",
     status: "在售",
     cat: "live",
     title: "東武ハイライン第2芝虎ノ門 403",
