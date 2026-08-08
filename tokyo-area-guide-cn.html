@@ -1,0 +1,226 @@
+<!-- 周周・东京23区区域行情总览。存成 tokyo-area-guide.html。纯静态，直接用浏览器开得起来。
+     ⚠️ 行情数据更新于 2026年8月，来源见页尾「资料来源」；每季建议回来更新一次数字。 -->
+<meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split(String.fromCharCode(47)).pop()||"index.html";if(p!=="ja.html"&&p.slice(-8)!=="-ja.html"){var isCn=p.slice(-8)==="-cn.html";var L=localStorage.getItem("lang");if(L==="cn"&&!isCn){location.replace(p.slice(0,-5)+"-cn.html");return;}if(L==="tw"&&isCn){location.replace(p.slice(0,-8)+".html");return;}}}catch(e){}document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-lang]");if(!a)return;var l=a.getAttribute("data-lang");if(l==="tw"||l==="cn"){try{localStorage.setItem("lang",l);}catch(_){}}},true);})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>东京23区买房区域行情总览｜哪一区适合自住・投资？｜周周・日本房仲</title>
+<meta name="description" content="东京23区买房该选哪一区？周周用最新市场数据带你看懂：都心3区、城南城西、副都心、城东、城北五大区域的房价行情、租金水准与适合族群，港区、涩谷、世田谷、江东等热门区一次介绍。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://chouchouinjapan.com/tokyo-area-guide-cn.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/tokyo-area-guide.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://chouchouinjapan.com/tokyo-area-guide-cn.html">
+<link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/tokyo-area-guide-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://chouchouinjapan.com/tokyo-area-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="东京23区买房区域行情总览｜周周・日本房仲">
+<meta property="og:description" content="都心3区、城南城西、副都心、城东、城北——五大区域房价行情、租金水准与适合族群，一页看懂东京买房怎么选区。">
+<meta property="og:url" content="https://chouchouinjapan.com/tokyo-area-guide-cn.html">
+<meta property="og:locale" content="zh_CN">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--rose-l:#fff1f2;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{max-width:1100px;margin:0 auto;padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px}
+.logo-emblem{height:40px;width:auto;display:block;flex-shrink:0}
+.hd .hd-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.hd a.back{font-size:13.5px;color:var(--mut);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.hd a.back:hover{background:#f5f5f4}
+.hero{text-align:center;padding:36px 0 8px}
+.hero .kick{display:inline-block;background:var(--rose-l);color:var(--rose-d);font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:28px;font-weight:900;line-height:1.35}
+.hero h1 span{color:var(--rose)}
+.hero p{color:var(--mut);margin:12px auto 0;max-width:600px;font-size:15px}
+.upd{display:inline-block;margin-top:12px;font-size:12px;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.sech{display:flex;align-items:center;gap:10px;margin:34px 0 10px}
+.sech .n{width:30px;height:30px;border-radius:9px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex:0 0 auto}
+.sech h2{font-size:20px;font-weight:900}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.stat .l{font-size:12.5px;color:var(--mut);line-height:1.5}
+.stat .v{font-size:20px;font-weight:900;color:var(--rose-d);margin-top:4px}
+.stat .s{font-size:11px;color:#a8a29e;margin-top:4px}
+.note{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#334155;line-height:1.85;margin-top:12px}
+.note b{color:#1d4ed8}
+.zone{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:12px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.zone .zh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.zone .zh .ic{width:40px;height:40px;border-radius:11px;background:var(--rose-l);display:flex;align-items:center;justify-content:center;font-size:21px;flex:0 0 auto}
+.zone .zh b{font-size:16.5px;font-weight:800}
+.zone .zh .wards{font-size:12.5px;color:var(--mut)}
+.zone .price{margin-top:8px;font-size:13.5px}
+.zone .price b{color:var(--rose-d)}
+.zone p{font-size:14px;color:#44403c;margin-top:8px}
+.zone .fit{margin-top:9px;background:var(--rose-l);border-radius:10px;padding:9px 13px;font-size:13.5px;color:#9f1239}
+.tier{color:var(--rose);letter-spacing:2px}
+.acc{background:#fff;border:1px solid var(--line);border-radius:16px;margin-top:11px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.acc-h{display:flex;align-items:center;gap:13px;padding:15px 18px;cursor:pointer;user-select:none}
+.acc-h:hover{background:#fafafa}
+.acc-h .ic{width:40px;height:40px;flex:0 0 auto;border-radius:11px;background:var(--rose-l);display:flex;align-items:center;justify-content:center;font-size:21px}
+.acc-h .tt{flex:1}
+.acc-h .tt b{font-size:16px;font-weight:800;display:block}
+.acc-h .tt span{font-size:12.5px;color:var(--mut)}
+.acc-h .arw{color:var(--mut);font-size:15px;transition:transform .25s;flex:0 0 auto}
+.acc.open .acc-h .arw{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}
+.acc.open .acc-body{display:block}
+.acc-body p{font-size:14px;color:#44403c;margin-top:13px}
+.acc-body .row{margin-top:11px;font-size:13.5px;line-height:1.8}
+.acc-body .row b.k{color:#2563eb}
+.acc-body .fit{margin-top:12px;background:var(--rose-l);border-radius:10px;padding:10px 14px;font-size:13.5px;color:#9f1239}
+.cta{text-align:center;margin:36px 0 12px;background:linear-gradient(135deg,#fff1f2,#ffe4e6);border:1.6px solid #fb7185;border-radius:16px;padding:22px 18px}
+.cta p{font-size:15px;color:#44403c;margin-bottom:14px}
+.cta a.line{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:13px 32px;border-radius:999px;box-shadow:0 8px 22px rgba(16,185,129,.28)}
+.cta a.line:hover{background:var(--green-d)}
+.cta .xlinks{margin-top:13px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:14px}
+.cta .xlinks a{color:var(--rose-d);font-weight:700}
+.src{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-top:26px;font-size:12.5px;color:var(--mut);line-height:2}
+.src b{color:#44403c;display:block;margin-bottom:4px;font-size:13px}
+.src a{color:#2563eb;word-break:break-all}
+.disc{font-size:12px;color:var(--mut);text-align:center;margin:22px 0 44px;line-height:1.8}
+@media(max-width:600px){.hero h1{font-size:23px}.stat .v{font-size:17px}}
+</style>
+
+<header>
+  <div class="hd">
+    <a class="logo" href="index-cn.html"><img class="logo-emblem" src="logo-mark.png" alt="周周・日本房仲"><span>周周・日本房仲</span></a>
+    <div class="hd-right"><a class="back" href="index-cn.html">← 回首页</a></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <span class="kick">🗺️ 区域行情专页</span>
+    <h1>东京23区买房，<span>行情</span>一次看懂</h1>
+    <p>「我该买在哪一区？」是周周最常被问的问题。这一页用最新的市场数据，带你看懂东京五大区域的房价水准、租金行情跟各区个性，先有大方向，再一起挑物件。</p>
+    <span class="upd">📅 行情数据更新：2026年8月（资料时点见各数字与页尾来源）</span>
+  </section>
+
+  <div class="sech"><div class="n">1</div><h2>先看大局：东京现在多贵？</h2></div>
+  <div class="stats">
+    <div class="stat"><div class="l">23区中古大楼<br>70㎡ 换算「开价」平均</div><div class="v">约 1亿2,400万円</div><div class="s">东京カンテイ月报・2026年4月发布</div></div>
+    <div class="stat"><div class="l">东京都区部中古大楼<br>「实际成交」平均价</div><div class="v">约 7,559万円</div><div class="s">东日本レインズ・2026年6月</div></div>
+    <div class="stat"><div class="l">城东7区<br>实际成交平均价</div><div class="v">约 6,063万円</div><div class="s">㎡单价约101万円・2026年6月</div></div>
+    <div class="stat"><div class="l">23区 1K 出租<br>月租金平均</div><div class="v">约 11.5万円</div><div class="s">民间租屋平台统计・2026年</div></div>
+  </div>
+  <div class="note">💡 <b>「开价」跟「成交价」为什么差这么多？</b>开价平均容易被都心的超高价新案、豪宅拉高，而且卖方普遍开得比较敢；实际成交则包含各种屋龄、大小的物件。看行情时两个都要看：<b>开价看趋势方向，成交价看真实水位</b>。另外中古 1LDK 在23区的行情带大约落在 <b>2,300万〜8,500万円</b>、2LDK 约 <b>3,100万〜1亿7,000万円</b>（2026年，依区域差很大）——同一种格局，选区不同价差可以到 3〜4 倍，这就是「选区」重要的原因。</div>
+
+  <div class="sech"><div class="n">2</div><h2>五大区域总览：你的预算适合哪一带？</h2></div>
+  <div id="zones"></div>
+
+  <div class="sech"><div class="n">3</div><h2>热门区逐区介绍</h2></div>
+  <div class="note">周周帮大家整理台湾客人最常问的 12 个区。价位用 <span class="tier">￥</span> 表示相对高低（<span class="tier">￥￥￥￥￥</span>＝23区最高价带），点开看各区个性。</div>
+  <div id="wards"></div>
+
+  <div class="sech"><div class="n">4</div><h2>周周的选区建议</h2></div>
+  <div class="zone">
+    <p><b>🏠 自住</b>：先想「生活圈」再想投报。通勤路线、超市、学区、医院，比帐面上的增值率更影响每天的幸福感。预算有限时，与其在都心买小，不如往城南、城东挑「大一点、生活机能好」的物件，住起来舒服、将来也好转手。</p>
+    <p><b>📈 投资收租</b>：都心3区保值抗跌但投报率偏低；城东、城北总价亲民、租金需求稳定，表面投报率（表面利回り）相对好看。重点是<b>租得掉比帐面投报率重要</b>——车站距离、屋龄、管理状态，周周都会帮你把关。</p>
+    <p><b>🏮 民宿・旅馆</b>：要先看「这一区能不能合法经营」，台东、墨田等观光带有相对友善的区域，但各区规定差异很大，请先看周周的<a href="minpaku-cn.html" style="color:var(--rose-d);font-weight:700">民宿法规专页</a>再选点。</p>
+    <p style="margin-top:12px">行情每个月都在变，这一页的数字是帮你抓「相对高低」的感觉；实际要出手时，周周会用最新的成交资料帮你比价，不让你买贵。</p>
+  </div>
+
+  <div class="cta">
+    <p>看完有想法了吗？跟周周说你的预算跟目的，<br>我帮你从最新物件里挑出适合的区域跟房子！</p>
+    <a class="line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 问周周</a>
+    <div class="xlinks"><a href="properties-cn.html">🏠 看目前贩售中的物件 →</a><a href="quiz-cn.html">✨ 先做买房人格测验 →</a><a href="property-types-cn.html">🏢 物件类型介绍 →</a></div>
+  </div>
+
+  <div class="src">
+    <b>📚 资料来源（点击可查原始报告）</b>
+    ・东京カンテイ「中古マンション70㎡価格 月别推移」月例报告（2026年发布）：<a href="https://www.kantei.ne.jp/report/category/70m2/" target="_blank" rel="noopener">kantei.ne.jp</a><br>
+    ・东日本不动产流通机构（东日本レインズ）「Market Watch」月报・季报（2026年）：<a href="https://www.reins.or.jp/library/" target="_blank" rel="noopener">reins.or.jp</a><br>
+    ・23区租金行情：民间租屋平台 2026 年公开统计（1K 平均约11.5万円/月）。<br>
+    ・1LDK／2LDK 价格带：HOME4U 中古マンション相场一覧（2026年）。<br>
+    ※ 各数字时点不同，抓「相对高低」用；实际行情以最新成交资料为准。
+  </div>
+
+  <p class="disc">＊本页为一般性的行情整理，非投资建议。房价与租金随市场变动，实际物件价格、可贷成数依个案与银行审查为准；税务请由税理士确认、登记与契约由司法书士／宅建士确认。</p>
+</div>
+
+<script>
+var ZONES=[
+ {ic:"👑",name:"都心3区",wards:"千代田・中央・港",tier:"￥￥￥￥￥",
+  price:"23区最高价带。中古大楼成交价普遍破亿，1LDK 也常见 8,000万円以上。",
+  txt:"日本的政经与豪宅核心，外资、日本企业主、投资客都在这里置产。价格最硬、流动性最好，跌市时也最抗跌，但投报率相对低，买的是「资产保值」跟「地段稀缺性」。",
+  fit:"适合：资产配置、预算充足、重视保值与转手性的买家。"},
+ {ic:"🌿",name:"城南・城西",wards:"涩谷・目黑・品川・世田谷・大田・中野・杉并",tier:"￥￥￥￥",
+  price:"高价带但选择多元。涩谷、目黑接近都心价；世田谷、杉并有较多总价相对合理的选择。",
+  txt:"东京最经典的「质感住宅区」。代官山、中目黑、自由之丘这些台湾人耳熟的地名都在这一带，环境安静、绿意多、生活机能成熟，自住舒适度是23区前段班。",
+  fit:"适合：自住为主、重视环境与生活品质、想长期持有的家庭。"},
+ {ic:"🚉",name:"副都心",wards:"新宿・文京・豊岛",tier:"￥￥￥￥",
+  price:"新宿站周边塔楼价格逼近都心；文京区以文教、医疗资源著称，价格稳定。",
+  txt:"交通枢纽带，山手线、各大私铁与地下铁在此交会。出租需求非常强，单身与学生租客多；文京区则是日本知名的文教区，学区宅需求稳定。",
+  fit:"适合：投资出租（单身房型）、重视交通便利、看重学区的买家。"},
+ {ic:"🏮",name:"城东",wards:"台东・墨田・江东・荒川・葛饰・江户川・足立",tier:"￥￥〜￥￥￥",
+  price:"2026年6月成交平均约 6,063万円、㎡单价约101万円——比23区整体平均亲民一截。",
+  txt:"CP值最高的一带。浅草、晴空塔的观光能量带动台东、墨田；江东区的临海地区有大型再开发。总价亲民、租金需求稳，表面投报率（表面利回り）相对好看，也是民宿题材的热区。",
+  fit:"适合：投资收租入门、民宿旅馆题材、预算 4,000〜6,000万円带的买家。"},
+ {ic:"🏡",name:"城北",wards:"北・板桥・练马",tier:"￥￥",
+  price:"23区内总价最亲民的一带，租金也相对可负担。",
+  txt:"生活感浓厚的住宅区，往池袋、新宿通勤都方便。近年因为「都心买不起」的外溢需求，价格也在缓步垫高，是「用郊区预算住进23区」的务实选择。",
+  fit:"适合：预算有限的自住族、追求投报率的小额投资人。"}
+];
+var WARDS=[
+ {ic:"🗼",name:"港区",sub:"六本木・麻布・白金・虎之门",tier:"￥￥￥￥￥",
+  txt:"东京豪宅的代名词，大使馆、外商总部聚集，国际化程度最高。麻布台之丘、虎之门之丘等大型再开发后，精华地段的稀缺性更明显。",
+  row:"<b class='k'>个性：</b>豪宅、国际化、再开发题材多。<b class='k'>租客：</b>外派高管、企业主，高租金但租客素质好。",
+  fit:"周周物件专区不时有白金、南麻布、虎之门的物件，想看这一带直接跟我说。"},
+ {ic:"🏛️",name:"千代田区",sub:"皇居・大手町・番町",tier:"￥￥￥￥￥",
+  txt:"皇居所在、日本行政与金融中枢，住宅供给极少，番町一带是传统名门住宅区。物件一释出很快被接走，保值性23区顶级。",
+  row:"<b class='k'>个性：</b>稀缺、低调、学区强。<b class='k'>注意：</b>可挑的物件少，遇到合适的要快。",
+  fit:"适合把「保值」放第一位、不急着比价、愿意等好物件的买家。"},
+ {ic:"🌊",name:"中央区",sub:"银座・日本桥・月岛・胜どき",tier:"￥￥￥￥￥",
+  txt:"银座商业能量＋湾岸塔楼聚落。月岛、胜どき一带塔楼林立，配套新、管理好，是华语圈买家最熟悉的塔楼带之一。",
+  row:"<b class='k'>个性：</b>塔楼多、生活机能强。<b class='k'>注意：</b>塔楼要留意管理费与修缮基金（修缮积立金）的长期调涨计划。",
+  fit:"喜欢新大楼、饭店式管理、想要出租好租的买家。"},
+ {ic:"🛍️",name:"涩谷区",sub:"涩谷・代官山・惠比寿・广尾",tier:"￥￥￥￥￥",
+  txt:"年轻与时尚的中心，惠比寿、代官山、广尾则是安静的高级住宅区。IT 企业聚集，租屋需求强劲。",
+  row:"<b class='k'>个性：</b>品牌力强、出租快。<b class='k'>租客：</b>科技业、创意产业的年轻高收入族群。",
+  fit:"周周先前也经手代官山的物件——想住质感老街区、又要都心便利的人很适合这带。"},
+ {ic:"🌆",name:"新宿区",sub:"新宿・神乐坂・四谷・高田马场",tier:"￥￥￥￥",
+  txt:"日本最大转运站的所在区，塔楼、单身房型、学生宅需求都大。神乐坂保留老东京风情，四谷靠近皇居闹中取静。",
+  row:"<b class='k'>个性：</b>交通王者、租客池深。<b class='k'>注意：</b>同一区内闹区与住宅区价差大，选点要细看。",
+  fit:"投资单身房型的首选带之一；周周经手过新宿御苑一带的高级塔楼。"},
+ {ic:"🎓",name:"文京区",sub:"本乡・茗荷谷・后乐园",tier:"￥￥￥￥",
+  txt:"东京大学所在，日本家长心中的「文教第一区」。治安好、坡道多、气质安静，学区宅需求常年稳定。",
+  row:"<b class='k'>个性：</b>文教、医疗（大学医院多）、抗跌。<b class='k'>租客：</b>教职员、医护、陪读家庭。",
+  fit:"重视小孩教育环境、想要「稳」的自住与长期持有买家。"},
+ {ic:"🍶",name:"目黑区",sub:"中目黑・自由之丘・学艺大学",tier:"￥￥￥￥",
+  txt:"目黑川樱花、中目黑的咖啡文化、自由之丘的甜点街——生活风格类杂志的常客，居住品牌力极强。",
+  row:"<b class='k'>个性：</b>质感、绿意、艺文气息。<b class='k'>注意：</b>供给不算多，好物件竞争激烈。",
+  fit:"周周经手过中目黑的物件；想要「住得有风格」的人这区很难不心动。"},
+ {ic:"🚄",name:"品川区",sub:"大崎・五反田・武藏小山・大井町",tier:"￥￥￥￥",
+  txt:"品川站是新干线＋未来磁浮（リニア）题材的大门户，大崎、五反田再开发成熟。武藏小山商店街生活感十足。住宅地公示地价近年涨幅在23区名列前茅。",
+  row:"<b class='k'>个性：</b>交通题材强、通勤族最爱。<b class='k'>租客：</b>上班族家庭与单身通勤族。",
+  fit:"看重「交通题材＋再开发」的自住与投资买家；周周的自社新筑也常落在城南这一带。"},
+ {ic:"🌳",name:"世田谷区",sub:"三轩茶屋・二子玉川・成城・等等力",tier:"￥￥￥",
+  txt:"23区人口最多的住宅大区，公园绿地多、街区安静，是东京人心中「养小孩的好地方」。同样预算能买到比都心大一号的空间。",
+  row:"<b class='k'>个性：</b>家庭友善、环境舒服、选择多。<b class='k'>注意：</b>区域很大，离车站距离对价格与转手影响明显。",
+  fit:"周周有等等力、用贺一带的物件经验，自住家庭想要空间跟环境的，这区是首选带。"},
+ {ic:"⛩️",name:"台东区",sub:"浅草・上野・藏前",tier:"￥￥￥",
+  txt:"浅草寺、上野公园的观光核心，藏前近年变身文青街区。观光能量带动住宿与店铺需求，也是民宿、旅馆题材最常被讨论的区之一。",
+  row:"<b class='k'>个性：</b>观光财、老街人情味。<b class='k'>注意：</b>民宿经营要先确认区域法规，详见周周的民宿专页。",
+  fit:"周周在浅草、台东有一栋物件的实际经验，对观光型投资有兴趣的跟我聊。"},
+ {ic:"🌉",name:"墨田区",sub:"晴空塔・押上・两国",tier:"￥￥￥",
+  txt:"晴空塔开幕后整区能见度大增，押上、锦糸町交通强，两国有相扑与江户文化。价位比隅田川对岸的台东区再亲民一些。",
+  row:"<b class='k'>个性：</b>观光＋在地生活并存、总价亲民。<b class='k'>租客：</b>在地上班族、观光住宿需求。",
+  fit:"周周经手过两国的整栋物件；想用中等预算卡位观光带的买家可以看这区。"},
+ {ic:"🏗️",name:"江东区",sub:"丰洲・门前仲町・亀户・清澄白河",tier:"￥￥￥",
+  txt:"湾岸的丰洲塔楼带＋下町的亀户、清澄白河双面个性。清澄白河咖啡街区文青聚集，亀户生活机能强、总价亲民，4,500〜5,500万円带的物件表面投报率有机会站上 3.5%。",
+  row:"<b class='k'>个性：</b>再开发多、投报相对好。<b class='k'>租客：</b>湾岸家庭、下町上班族，租需稳定。",
+  fit:"投资入门的甜蜜带——总价、租金、增值题材的平衡点，周周常帮客人在这带找收租物件。"}
+];
+function esc(s){return s}
+var zh=document.getElementById("zones");
+zh.innerHTML=ZONES.map(function(z){return "<div class='zone'><div class='zh'><div class='ic'>"+z.ic+"</div><b>"+z.name+"</b><span class='wards'>"+z.wards+"</span><span class='tier'>"+z.tier+"</span></div><div class='price'>💴 "+z.price+"</div><p>"+z.txt+"</p><div class='fit'>"+z.fit+"</div></div>"}).join("");
+var wh=document.getElementById("wards");
+wh.innerHTML=WARDS.map(function(w,i){return "<div class='acc' id='acc"+i+"'><div class='acc-h' onclick=\"document.getElementById('acc"+i+"').classList.toggle('open')\"><div class='ic'>"+w.ic+"</div><div class='tt'><b>"+w.name+"　<span class='tier'>"+w.tier+"</span></b><span>"+w.sub+"</span></div><div class='arw'>▼</div></div><div class='acc-body'><p>"+w.txt+"</p><div class='row'>"+w.row+"</div><div class='fit'>♥ "+w.fit+"</div></div></div>"}).join("");
+</script>
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p.slice(-8)==='-ja.html'||p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref,jaHref;if(p.slice(-8)==='-ja.html'){var base=p.slice(0,-8);twHref=base+'.html';cnHref=base+'-cn.html';jaHref=p;}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;jaHref=p.slice(0,-8)+'-ja.html';}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';jaHref=p.slice(0,-5)+'-ja.html';}var cur=(p.slice(-8)==='-ja.html')?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 语言';btn.setAttribute('aria-label','切换语言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁体中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本语',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);var hdRight=document.querySelector('header .hd-right');if(hdRight){hdRight.appendChild(wrap);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
