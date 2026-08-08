@@ -4,6 +4,11 @@
 > 寫完請把該行改成 ✅ 並補上日期與 slug。周周可以隨時增刪、調整順序（排越前面越早寫）。
 > 寫文規則一律遵守 `CLAUDE.md`：站在周周的商業利益寫、合規語氣、數據要查證附來源、繁中台灣用語、三語同步。
 
+## 封面圖庫（2026-08-08 周周新增，寫新文章時優先從這裡挑、已用過的不要重複）
+
+`pexels-francesco-siani-2150396285-31115437.jpg`（日式庭園水池）／`pexels-freestockpro-12955837.jpg`（木屋模型＋鑰匙＋文件）／`pexels-rdne-7414218.jpg`（圖表＋計算機）／`pexels-towfiqu-barbhuiya-3440682-8732777.jpg`（西裝手持房屋模型＋計算機）／`pexels-fotoaibe-1643383.jpg`（公寓客廳）／`pexels-luis-yanez-57302-206172.jpg`（洋房外觀）／`pexels-phat-tr-ng-1662052981-37785807.jpg`（現代大樓藍天）／`pexels-curtis-adams-1694007-4258277.jpg`（空房間採光）／`pexels-joanie-xie-1306424600-33752181.jpg`（獨棟外觀）
+※ `pexels-pavel-danilyuk-7937717.jpg` 已用於 a40。用前先 grep index.html 確認該檔名未被其他文章使用。
+
 ## 待寫主題（由上往下依序寫）
 
 1. ⬜ 日本買房的錢怎麼匯？海外匯款流程、時間點與匯率注意事項（結尾導向：周周可以協助對接銀行與司法書士）
