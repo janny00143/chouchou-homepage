@@ -170,6 +170,9 @@ for (const a of ART) {
 }
 urls.push({ loc: BASE + "translate.html", pr: "0.6" });
 urls.push({ loc: BASE + "properties.html", pr: "0.7" });
+urls.push({ loc: BASE + "properties-ja.html", pr: "0.7" });
+urls.push({ loc: BASE + "property-types.html", pr: "0.6" });
+urls.push({ loc: BASE + "property-types-ja.html", pr: "0.6" });
 urls.push({ loc: BASE + "ja.html", pr: "0.7" });
 for (const a of ART) {
   if (a.url) continue;
