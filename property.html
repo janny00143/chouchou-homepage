@@ -121,7 +121,7 @@ body.noscroll{overflow:hidden}
   <div id="app"></div>
   <div class="compliance">
     <b>物件資訊說明</b><br>
-    本頁物件僅供參考，物件狀況、價格與條件<b>可能隨時異動或已成約</b>，最終條件請以<b>現況及重要事項說明書</b>為準。物件實際收益、可貸成數與稅費依個案、依銀行與稅理士審查為準，本頁不構成任何投資或收益保證。<br>
+    台幣參考價依即時匯率自動換算（無法取得時以參考匯率概算、標記※），僅供參考，實際交易以日圓計價。<br>本頁物件僅供參考，物件狀況、價格與條件<b>可能隨時異動或已成約</b>，最終條件請以<b>現況及重要事項說明書</b>為準。物件實際收益、可貸成數與稅費依個案、依銀行與稅理士審查為準，本頁不構成任何投資或收益保證。<br>
     <br>
     宅地建物取引業者：<b>株式会社アンドプラス 住宅営業部</b>｜免許番号：<b>東京都知事 (2) 第102938号</b>｜担当：周 欣妤（シュウ シンユウ）｜〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号
   </div>
@@ -142,6 +142,11 @@ body.noscroll{overflow:hidden}
   var LINE="https://lin.ee/RscRWCp";
   var app=document.getElementById("app");
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  var FXCUR="TWD",FXFB=0.21,FXRATE=null;
+  function parseYen(p){var m=String(p||"").match(/(?:(\d+)億)?([\d,]+)万円/);if(!m)return 0;return ((m[1]?parseInt(m[1],10)*1e4:0)+parseInt(m[2].replace(/,/g,""),10))*1e4;}
+  function fxFill(){var r=FXRATE||FXFB;var els=document.querySelectorAll("[data-yen]");for(var i=0;i<els.length;i++){var y=parseFloat(els[i].getAttribute("data-yen"));if(!(y>0))continue;els[i].textContent="約 NT$ "+Math.round(y*r/1e4).toLocaleString()+" 萬台幣"+(FXRATE?"":"※");}}
+  try{fetch("https://open.er-api.com/v6/latest/JPY").then(function(r){return r.json();}).then(function(j){if(j&&j.rates&&j.rates[FXCUR]){FXRATE=j.rates[FXCUR];fxFill();}}).catch(function(){});}catch(e){}
+
   var conv=function(s){return s;};
   function C(s){return esc(conv(s==null?"":String(s)));}
 
@@ -188,11 +193,13 @@ body.noscroll{overflow:hidden}
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
       +'<div class="pprice">'+C(p.price||"價格請洽詢")+'</div>'
+      + (parseYen(p.price)>0?'<div class="fxline" data-yen="'+parseYen(p.price)+'" style="font-size:14px;color:var(--mut);margin:-16px 0 16px"></div>':'')
       +facts
       +spec+mapBtn+note
       +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 詢問這間</a>'
       +'</div>';
     app.innerHTML='<div class="pdetail">'+gal+body+'</div>'+vid;
+    fxFill();
 
     if(photos.length){
       pImg=document.getElementById("pimg"); pCnt=document.getElementById("pcnt"); pThumbs=document.getElementById("pthumbs");

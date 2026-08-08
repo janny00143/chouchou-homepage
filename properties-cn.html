@@ -130,7 +130,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   <div class="compliance">
     <b>物件资讯说明</b><br>
-    本页物件仅供参考，物件状况、价格与条件<b>可能随时异动或已成约</b>，最终条件请以<b>现况及重要事项说明书</b>为准。物件实际收益、可贷成数与税费依个案、依银行与税理士审查为准，本页不构成任何投资或收益保证。<br>
+    人民币参考价依实时汇率自动换算（无法取得时以参考汇率概算、标记※），仅供参考，实际交易以日元计价。<br>本页物件仅供参考，物件状况、价格与条件<b>可能随时异动或已成约</b>，最终条件请以<b>现况及重要事项说明书</b>为准。物件实际收益、可贷成数与税费依个案、依银行与税理士审查为准，本页不构成任何投资或收益保证。<br>
     <br>
     宅地建物取引业者：<b>株式会社アンドプラス 住宅営业部</b>｜免许番号：<b>东京都知事 (2) 第102938号</b>｜担当：周 欣妤（シュウ シンユウ）｜〒150-0032 东京都渋谷区莺谷町3-1 ＳＵビル301号
   </div>
@@ -155,6 +155,11 @@ footer a{color:#d6d3d1;text-decoration:none}
   var shown=[];
 
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  var FXCUR="CNY",FXFB=0.048,FXRATE=null;
+  function parseYen(p){var m=String(p||"").match(/(?:(\d+)億)?([\d,]+)万円/);if(!m)return 0;return ((m[1]?parseInt(m[1],10)*1e4:0)+parseInt(m[2].replace(/,/g,""),10))*1e4;}
+  function fxFill(){var r=FXRATE||FXFB;var els=document.querySelectorAll("[data-yen]");for(var i=0;i<els.length;i++){var y=parseFloat(els[i].getAttribute("data-yen"));if(!(y>0))continue;els[i].textContent="约 ¥ "+Math.round(y*r/1e4).toLocaleString()+" 万人民币"+(FXRATE?"":"※");}}
+  try{fetch("https://open.er-api.com/v6/latest/JPY").then(function(r){return r.json();}).then(function(j){if(j&&j.rates&&j.rates[FXCUR]){FXRATE=j.rates[FXCUR];fxFill();}}).catch(function(){});}catch(e){}
+
 
   // 简中页会在下方载入 OpenCC 后把 conv 换成繁→简转换；其余语言 conv 为原样。
   // 只转「文字内容」，不会动到照片档名（避免中文档名被转而 404）。
@@ -177,6 +182,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       +'<div class="body">'
       +'<h3>'+C(name)+'</h3>'
       +'<div class="price">'+C(p.price||"价格请洽询")+'</div>'
+      + (parseYen(p.price)>0?'<div class="fxline" data-yen="'+parseYen(p.price)+'" style="font-size:12.5px;color:var(--mut);margin:-8px 0 6px"></div>':'')
       +station
       +'</div></a>';
   }
@@ -191,12 +197,13 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   var act=list?list.filter(function(p){return !p.sold;}):null;
   var soldList=list?list.filter(function(p){return p.sold;}):[];
-  function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(function(p,i){return card(p,i);}).join("");ss.style.display="block";}
+  function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(function(p,i){return card(p,i);}).join("");ss.style.display="block";fxFill();}
   function render(cat){
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=(cat==="all")?act:act.filter(function(p){return p.cat===cat;});
     shown=items;
     grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    fxFill();
   }
 
   document.getElementById("tabs").addEventListener("click",function(e){
