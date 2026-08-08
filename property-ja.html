@@ -103,6 +103,7 @@ body.noscroll{overflow:hidden}
 .line-float::before{content:"";position:absolute;inset:0;border-radius:999px;animation:lfpulse 2.4s infinite;pointer-events:none}
 @keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
 @media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.share a{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;cursor:pointer}.share a:hover{border-color:var(--rose);color:var(--rose)}
 </style>
 </head>
 <body>
@@ -185,6 +186,7 @@ body.noscroll{overflow:hidden}
     var note=p.note?'<div class="pnote"><span class="nh">💬 おすすめポイント</span>'+C(p.note)+'</div>':"";
     var vid="";
     if(p.video){var _vs=(p.video.slice(0,6)==="drive:")?("https://drive.google.com/file/d/"+p.video.slice(6)+"/preview"):("https://www.youtube.com/embed/"+p.video);vid='<div class="pvideo"><span class="nh">🎬 物件動画</span><div class="pvwrap"><iframe src="'+_vs+'" allow="fullscreen" allowfullscreen loading="lazy" title="物件動画"></iframe></div></div>';}
+    var _su=location.href.split('#')[0];var _st=(p.title||'')+'｜'+(p.price||'');var share='<div class="share">'+'<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(_su)+'" target="_blank" rel="noopener">f シェア</a>'+'<a href="https://www.threads.net/intent/post?text='+encodeURIComponent(_st+' '+_su)+'" target="_blank" rel="noopener">Threadsでシェア</a>'+'<a href="https://twitter.com/intent/tweet?url='+encodeURIComponent(_su)+'&text='+encodeURIComponent(_st)+'" target="_blank" rel="noopener">𝕏 ポスト</a>'+'<a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href);this.textContent=String.fromCharCode(10003);return false">🔗 リンクをコピー</a>'+'</div>';
     var body='<div class="pbody">'
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
@@ -192,6 +194,7 @@ body.noscroll{overflow:hidden}
       +facts
       +spec+mapBtn+note
       +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ LINEでこの物件について問い合わせる</a>'
+      +share
       +'</div>';
     app.innerHTML='<div class="pdetail">'+gal+body+'</div>'+vid;
 
