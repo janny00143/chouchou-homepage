@@ -197,12 +197,11 @@ body.noscroll{overflow:hidden}
       +badges
       +'<div class="pprice">'+C(p.price||"价格请洽询")+'</div>'
       + (parseYen(p.price)>0?'<div class="fxline" data-yen="'+parseYen(p.price)+'" style="font-size:14px;color:var(--mut);margin:-16px 0 16px"></div>':'')
-      +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 询问这间</a>'
       +share
       +facts
       +spec+mapBtn
       +'</div>';
-    app.innerHTML='<div class="pdetail">'+'<div class="pleft">'+gal+note+vid+'</div>'+body+'</div>';
+    app.innerHTML='<div class="pdetail">'+'<div class="pleft">'+gal+'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 询问这间</a>'+note+vid+'</div>'+body+'</div>';
     fxFill();
 
     if(photos.length){

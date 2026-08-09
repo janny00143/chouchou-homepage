@@ -191,12 +191,11 @@ body.noscroll{overflow:hidden}
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
       +'<div class="pprice">'+C(p.price||"価格はお問い合わせください")+'</div>'
-      +'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ LINEでこの物件について問い合わせる</a>'
       +share
       +facts
       +spec+mapBtn
       +'</div>';
-    app.innerHTML='<div class="pdetail">'+'<div class="pleft">'+gal+note+vid+'</div>'+body+'</div>';
+    app.innerHTML='<div class="pdetail">'+'<div class="pleft">'+gal+'<a class="pask" href="'+LINE+'" target="_blank" rel="noopener">＋ LINEでこの物件について問い合わせる</a>'+note+vid+'</div>'+body+'</div>';
 
     if(photos.length){
       pImg=document.getElementById("pimg"); pCnt=document.getElementById("pcnt"); pThumbs=document.getElementById("pthumbs");
