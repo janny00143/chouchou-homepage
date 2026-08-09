@@ -145,7 +145,7 @@ body.noscroll{overflow:hidden}
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
   var _isCnFx=/-cn\.html$/.test(location.pathname);
   var FXCUR=_isCnFx?"CNY":"TWD",FXFB=_isCnFx?0.048:0.21,FXPRE=_isCnFx?"约 ¥":"約 NT$",FXSUF=_isCnFx?"万人民币":"萬台幣",FXRATE=null;
-  function parseYen(p){var m=String(p||"").match(/(?:(\d+)億)?([\d,]+)万円/);if(!m)return 0;return ((m[1]?parseInt(m[1],10)*1e4:0)+parseInt(m[2].replace(/,/g,""),10))*1e4;}
+  function parseYen(p){var m=String(p||"").match(/(?:([\d.]+)億)?(?:([\d,]+)万)?円/);if(!m||(!m[1]&&!m[2]))return 0;return ((m[1]?parseFloat(m[1])*1e4:0)+(m[2]?parseInt(m[2].replace(/,/g,""),10):0))*1e4;}
   function fxFill(){var r=FXRATE||FXFB;var els=document.querySelectorAll("[data-yen]");for(var i=0;i<els.length;i++){var y=parseFloat(els[i].getAttribute("data-yen"));if(!(y>0))continue;els[i].textContent=FXPRE+" "+Math.round(y*r/1e4).toLocaleString()+" "+FXSUF+(FXRATE?"":"※");}}
   try{fetch("https://open.er-api.com/v6/latest/JPY").then(function(r){return r.json();}).then(function(j){if(j&&j.rates&&j.rates[FXCUR]){FXRATE=j.rates[FXCUR];fxFill();}}).catch(function(){});}catch(e){}
 
