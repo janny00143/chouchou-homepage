@@ -48,6 +48,8 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 20px}
 .tabs button{border:1px solid var(--line);background:#fff;color:var(--mut);font-family:inherit;font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;cursor:pointer}
 .tabs button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.sortrow{margin:-10px 0 18px}
+.sortrow select{font-family:inherit;font-size:14px;font-weight:700;color:var(--mut);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:10px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
@@ -122,9 +124,12 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button class="on" data-cat="all">すべて</button>
     <button data-cat="invest">投資・収益</button>
     <button data-cat="live">居住用</button>
+    <button data-cat="mansion">マンション</button>
     <button data-cat="house">戸建</button>
     <button data-cat="land">土地</button>
   </div>
+  <div class="sortrow"><select id="psort"><option value="default">並び替え：おすすめ順</option><option value="price-asc">価格：安い順</option><option value="price-desc">価格：高い順</option><option value="size-desc">面積：広い順</option><option value="size-asc">面積：狭い順</option></select></div>
+
 
   <div class="grid" id="grid"></div>
 
@@ -200,21 +205,63 @@ footer a{color:#d6d3d1;text-decoration:none}
   var act=list?list.filter(function(p){return !p.sold;}):null;
   var soldList=list?list.filter(function(p){return p.sold;}):[];
   function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(function(p,i){return card(p,i);}).join("");ss.style.display="block";}
-  function render(cat){
+  function fxFill(){}
+  function parseYen(p){var m=String(p||"").match(/(?:([\d.]+)億)?(?:([\d,]+)万)?円/);if(!m||(!m[1]&&!m[2]))return 0;return ((m[1]?parseFloat(m[1])*1e4:0)+(m[2]?parseInt(m[2].replace(/,/g,""),10):0))*1e4;}
+  function ptags(p){
+    var tg={};
+    tg.house=(p.cat==="house");
+    tg.land=(p.cat==="land");
+    var whole=/整棟|鋼骨造整棟/.test(String(p.layout||"")+String(p.title||""));
+    tg.mansion=!tg.house&&!tg.land&&!whole;
+    tg.invest=(p.cat==="invest")||!!(p.yield&&String(p.yield).trim());
+    tg.live=(p.cat==="live")||tg.house||/自住|居住用|ご自宅|自宅/.test(String(p.note||"")+String(p.title_cn||"")+String((p.catch||"")));
+    return tg;
+  }
+  function sizeNum(p){var m=String(p.size||"").match(/([\d.]+)\s*(?:㎡|m)/);return m?parseFloat(m[1]):0;}
+  var selCats=[];
+  var sortMode="default";
+  function render(){
     if(!act){ grid.innerHTML=emptyMsg(); return; }
-    var items=(cat==="all")?act:act.filter(function(p){return p.cat===cat;});
+    var items=act.filter(function(p){
+      if(!selCats.length)return true;
+      var tg=ptags(p);
+      for(var i=0;i<selCats.length;i++){ if(!tg[selCats[i]]) return false; }
+      return true;
+    });
+    if(sortMode!=="default"){
+      items=items.slice();
+      items.sort(function(a,b){
+        if(sortMode==="price-asc")return (parseYen(a.price)||9e15)-(parseYen(b.price)||9e15);
+        if(sortMode==="price-desc")return parseYen(b.price)-parseYen(a.price);
+        if(sortMode==="size-desc")return sizeNum(b)-sizeNum(a);
+        if(sortMode==="size-asc")return (sizeNum(a)||9e15)-(sizeNum(b)||9e15);
+        return 0;
+      });
+    }
     shown=items;
     grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    fxFill();
   }
 
   document.getElementById("tabs").addEventListener("click",function(e){
     var b=e.target.closest("button"); if(!b)return;
-    Array.prototype.forEach.call(this.querySelectorAll("button"),function(x){x.classList.remove("on");});
-    b.classList.add("on");
-    render(b.dataset.cat);
+    var all=this.querySelector('[data-cat="all"]');
+    if(b.dataset.cat==="all"){
+      selCats=[];
+      Array.prototype.forEach.call(this.querySelectorAll("button"),function(x){x.classList.remove("on");});
+      all.classList.add("on");
+    }else{
+      var c=b.dataset.cat, idx=selCats.indexOf(c);
+      if(idx>-1){selCats.splice(idx,1);b.classList.remove("on");}
+      else{selCats.push(c);b.classList.add("on");}
+      all.classList.toggle("on",!selCats.length);
+    }
+    render();
   });
+  var _ps=document.getElementById("psort");
+  if(_ps){_ps.addEventListener("change",function(){sortMode=this.value;render();});}
 
-  function boot(){ render("all"); renderSold(); }
+  function boot(){ render(); renderSold(); }
   // 簡中頁：載入 OpenCC 繁→簡，讓你只維護一份繁中 properties.js，簡中自動同步。
   var isHans=(document.documentElement.lang||"").toLowerCase().indexOf("hans")>-1 || /-cn\.html$/.test(location.pathname);
   if(isHans){
