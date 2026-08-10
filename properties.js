@@ -21,6 +21,7 @@
    (株)トーセイ： lions-setagaya
    (株)ジャパンプライムムーバ： classy-shinjuku
    (株)安海グローバル： shirokane401
+   三井不動産リアルティ(株) 経堂センター： sakurajosui
    自社／未公開（周周自有・グランプラス分譲）： setagaya-house・higashitamagawa・fukasawa・nishioi-a・futaba
    一棟／旅館（自有渠道）： kameido2・ryogoku2・asakusa3
    「全物件」7/30清單那批（公司名待周周補）： toranomon403・shiba2802・suginami308・ikebukuro1101・minamiazabu205・taito703
@@ -29,6 +30,27 @@
    ============================================================ */
 
 window.PROPERTIES = [
+
+  {
+    id: "sakurajosui",
+    layoutTag: "3LDK",
+    status: "在售",
+    cat: "house",
+    title: "桜上水3丁目 戸建",
+    title_cn: "世田谷區 桜上水3丁目 築淺角地戸建（3LDK・附車位）",
+    price: "1億8,900万円",
+    location: "東京都世田谷區桜上水3丁目",
+    station: "小田急線「經堂」站 徒步13分／東急世田谷線「松原」站 徒步10分／京王線「桜上水」站 徒步15分",
+    layout: "3LDK・地上2層（LDK約18.7帖＋洋室9.8帖・5.5帖・4.6帖＋閣樓約4.0帖）",
+    size: "建物98.72㎡（約29.86坪）・土地105.97㎡（約32.05坪）",
+    age: "2023年10月築（築淺）・現況空屋・交屋時期可商議",
+    facing: "南西・南東角地・採光通風良好／建蔽率50%・容積率100%／附車位（依車種）",
+    mgmt: "戸建・無管理費與修繕積立金",
+    right: "所有權",
+    yield: "",
+    photos: ["prop-sakurajosui-1.jpg","prop-sakurajosui-2.jpg","prop-sakurajosui-3.jpg","prop-sakurajosui-4.jpg","prop-sakurajosui-5.jpg","prop-sakurajosui-6.jpg","prop-sakurajosui-7.jpg","prop-sakurajosui-8.jpg"],
+    note: "想在世田谷區安靜的住宅區買一間「不用等、馬上能住」的房子，這間很值得看。2023年10月完工的築淺戸建，TOYOTA HOME（トヨタホーム）施工，位在南西・南東雙面臨路的角地，兩面採光通風，白天幾乎不用開燈。土地約32坪、建物約29.86坪，格局是3LDK＋約4帖閣樓：一樓是約18.7帖的大LDK，二樓三間洋室（9.8帖・5.5帖・4.6帖）加上陽台，一家人住剛剛好。設備也很到位——客廳地暖、系統廚房（含淨水器與洗碗機）、浴室乾燥機、部分電動鐵捲門，還有玄關的Shoes in Closet大收納。所在地是第一種低層住居專用地域，法規上限制了建物高度與密度，所以街廓清爽、不會被大樓包圍，這也是這一帶長期保值的原因。生活機能方面，小七約280m、桜上水のびのび公園約310m、Sundrug約410m、Ozeki松原店約880m；學區為區立松沢小學（約970m）、松沢中學（約990m）。交通更是強項：京王線、小田急線、東急世田谷線三線可用，去新宿、澀谷、下北澤都很快。這種「築淺＋角地＋三線可用」的世田谷戸建不常出現，有興趣想看房或想知道貸款怎麼規劃，加LINE跟周周說一聲，我用中文幫你安排看屋、把重要事項一條一條講清楚（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認）。"
+  },
 
   {
     id: "yaraicho-b",
