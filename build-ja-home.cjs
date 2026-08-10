@@ -198,7 +198,7 @@ const body = `<header>
   <div class="wrap hd">
     <a class="logo" href="#" onclick="show('home');return false"><img class="logo-emblem" src="logo-mark.png" alt="${JA_UI.brand}"><span id="brand">${JA_UI.brand}</span></a>
     <nav class="main" id="mainnav"></nav>
-    <div class="hd-right" style="flex:0 0 auto"><a class="btn btn-line" id="lineTop" target="_blank" rel='noopener' style="white-space:nowrap;flex:0 0 auto">${JA_UI.lineBtn}</a><button class="burger" onclick="document.getElementById('mnav').style.display=document.getElementById('mnav').style.display==='block'?'none':'block'" aria-label="メニュー"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+    <div class="hd-right" style="flex:0 0 auto"><a class="btn btn-line" id="lineTop" target="_blank" rel='noopener' style="white-space:nowrap;flex:0 0 auto">${JA_UI.lineBtn}</a><button class="burger" onclick="document.getElementById('mnav').style.display=document.getElementById('mnav').style.display==='block'?'none':'block'" aria-label="メニュー"><span class="bg-t">メニュー</span><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
   </div>
   <div class="mnav" id="mnav"></div>
 </header>
@@ -207,7 +207,10 @@ const body = `<header>
   <section class="view on" id="v-home">
     <style>.herob .chips{gap:8px;flex-wrap:wrap}.herob .chip{font-size:13px;padding:7px 12px;gap:6px;white-space:nowrap}.herob .chip svg{width:15px;height:15px}@media(min-width:601px){.herob .chips{flex-wrap:nowrap}}
     nav.main a,nav.main .navdd-b{padding:6px 6px;font-size:13px}nav.main .nsep{margin:0}
-    @media(max-width:1210px){nav.main{display:none}.burger{display:block}}</style>
+    @media(max-width:1210px){nav.main{display:none}.burger{display:flex}}
+    .burger .bg-t{font-size:13.5px}
+    @media(max-width:440px){header .logo{font-size:15px}header .logo-emblem{height:34px}}
+    @media(max-width:389px){header .logo{font-size:13.5px}header .logo-emblem{height:30px}.burger .bg-t{font-size:12.5px}}</style>
     <div class="herob"><div class="in">
   <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
   <div class="sub">専門性 ・ 親身な対応 ・ 日本もあなたも理解する</div>
