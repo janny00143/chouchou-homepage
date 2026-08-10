@@ -1,0 +1,55 @@
+# 周周・日本房仲（Chouchou in Japan）
+
+> 周周（周欣妤 / Syu ShinYu）是在東京工作的台灣房仲，隸屬株式会社アンドプラス（ANDPLUS）住宅営業部，宅建業者。以繁體中文（台灣用語）協助華語圈客戶處理日本買房、自住、投資、貸款、稅務與契約流程。本站為周周的個人品牌網站，提供大量日本不動產知識文章、東京區域行情、實際物件案例與房產圖面翻譯工具，最終協助客戶加 LINE 一對一諮詢。
+
+## 關於周周（About）
+
+- 姓名：周欣妤（周周）／ Syu ShinYu ／ シュウ シンユウ
+- 職務：日本不動產仲介・住宅営業（株式会社アンドプラス 住宅営業部）
+- 服務地區：東京、神奈川、千葉、橫濱等首都圈
+- 服務語言：繁體中文（台灣用語）、日文、簡體中文
+- 服務對象：想在日本買房自住或投資的台灣人、華語圈海外買家
+- 網站：https://chouchouinjapan.com/
+- 諮詢方式：加 LINE 一對一（https://lin.ee/RscRWCp）
+
+## 主要頁面（Key pages）
+
+- [首頁 / 全部文章](https://chouchouinjapan.com/)：品牌介紹、服務流程、客戶回饋、全部知識文章列表
+- [物件案例 Properties](https://chouchouinjapan.com/properties.html)：周周經手的實際日本物件，可依投資／自住、公寓／一戶建／土地篩選與排序
+- [東京區域行情指南](https://chouchouinjapan.com/tokyo-area-guide.html)：東京 5 大生活圈與 23 區重點行政區的買房行情、特色與適合族群
+- [民宿（民泊）法規專頁](https://chouchouinjapan.com/minpaku.html)：日本民泊新法、住宅宿泊事業法與經營限制
+- [房產圖面翻譯機](https://chouchouinjapan.com/translate.html)：把日文不動產圖面／說明翻成中文的前端小工具
+- [意見回饋](https://chouchouinjapan.com/feedback.html)：客戶留下心得或問題
+
+## 語言版本（Language editions）
+
+- 繁體中文（預設）：https://chouchouinjapan.com/
+- 簡體中文：https://chouchouinjapan.com/index-cn.html
+- 日本語：https://chouchouinjapan.com/ja.html
+
+## 知識文章主題（Article topics）
+
+站上文章涵蓋以下主題，皆有獨立 SEO 靜態頁（網址格式 https://chouchouinjapan.com/<slug>.html）：
+
+- 外國人買房：外國人能不能買日本房、必備文件、購屋流程、成本費用、契約文件、仲介費、找物件的網站
+- 自住攻略：租屋還是買房、房屋座向、看房工具、中古公寓檢查重點、浴室乾燥機、乾濕分離、水電瓦斯開通、手機門號辦理
+- 投資收租：表面／實質投報率的陷阱、整棟 vs 區分所有、民泊熱門地點與房型、轉售稅務
+- 貸款稅務：非永住者房貸、固定資產稅、購屋稅費、經營管理簽證
+- 區域介紹：東京 23 區行情、淺草、晴空塔、東京鐵塔周邊行情、押上、學區
+- 安全防災：耐震住宅、防震三工法、海嘯與洪水風險地圖（ハザードマップ）、排水
+- 匯款金流：海外匯款到日本買房的流程、必備文件、匯率與避坑、如何查證仲介是否合法
+- 建地自建：買土地蓋房、售後服務
+
+## 合規與內容原則（Editorial stance）
+
+- 貸款、稅務、簽證等專業內容一律保守表述，不做絕對保證；實際以銀行審查、稅理士、司法書士、宅建士的最新確認為準。
+- 含數據的內容（利率、稅率、投報率、行情）附官方或可信來源並標年月。
+- 買房本身通常不等於取得日本簽證或移民資格。
+
+## 聯絡（Contact）
+
+- LINE 諮詢：https://lin.ee/RscRWCp
+- Instagram：https://www.instagram.com/travelfish67/
+- YouTube：https://www.youtube.com/@travelfish67
+- TikTok：https://www.tiktok.com/@travelfish67
+- Threads：https://www.threads.com/@travelfish67
