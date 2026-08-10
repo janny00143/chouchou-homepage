@@ -210,7 +210,9 @@ const body = `<header>
     @media(max-width:1210px){nav.main{display:none}.burger{display:flex}}
     .burger .bg-t{font-size:13.5px}
     @media(max-width:440px){header .logo{font-size:15px}header .logo-emblem{height:34px}}
-    @media(max-width:389px){header .logo{font-size:13.5px}header .logo-emblem{height:30px}.burger .bg-t{font-size:12.5px}}</style>
+    @media(max-width:389px){header .logo{font-size:13.5px}header .logo-emblem{height:30px}.burger .bg-t{font-size:12.5px}}
+    @media(max-width:355px){header .logo{font-size:11.5px;gap:5px}header .logo-emblem{height:26px}.burger .bg-t{font-size:11px}.burger{gap:4px;padding-left:4px}}
+    @media(max-width:335px){header .hd{gap:6px}header .hd-right{gap:4px}header .logo{font-size:10.5px}header .logo-emblem{height:23px}}</style>
     <div class="herob"><div class="in">
   <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
   <div class="sub">専門性 ・ 親身な対応 ・ 日本もあなたも理解する</div>
