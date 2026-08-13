@@ -26,7 +26,7 @@
    一棟／旅館（自有渠道）： kameido2・ryogoku2・asakusa3
    「全物件」7/30清單那批（公司名待周周補）： toranomon403・shiba2802・suginami308・ikebukuro1101・minamiazabu205・taito703
    已成約已撤下（不再顯示）： nippori403（ラ・グラース日暮里403）
-   已成約→過去販售區（sold:true）： yaraicho-b（矢来町B棟・自社）
+   已成約→過去販售區（sold:true）： yaraicho-b（矢来町B棟・自社）・kameido209（ハイネス亀戸209・エフステージ 8/13清單標成約済）
    ============================================================ */
 
 window.PROPERTIES = [
@@ -246,7 +246,7 @@ window.PROPERTIES = [
     cat: "live",
     title: "クラッシィタワー新宿御苑 1703",
     title_cn: "新宿御苑前4分 2024新築塔樓・望新宿夜景2LDK",
-    price: "2億7,500万円",
+    price: "2億7,000万円",
     location: "東京都新宿區四谷4-29-3",
     station: "東京Metro丸之內線「新宿御苑前」站 徒步4分／丸之內線「四谷三丁目」站 徒步6分／都營新宿線「新宿三丁目」站 徒步10分",
     layout: "2LDK",
@@ -306,7 +306,7 @@ window.PROPERTIES = [
     cat: "live",
     title: "ファミール新宿グランスィートタワー 309",
     title_cn: "新宿站2分 塔式住宅 全新翻新1DK",
-    price: "7,099万円",
+    price: "6,998万円",
     location: "東京都渋谷區代々木2-21-8",
     station: "JR山手線等「新宿」站 徒步2分／山手線・總武中央線・大江戶線「代々木」站 徒步8分（周邊共可利用約11條路線）",
     layout: "1DK（DK約7.6帖＋洋室約3.5帖）",
@@ -407,7 +407,7 @@ window.PROPERTIES = [
     cat: "live",
     title: "ジェイパーク戸越公園アーキテクト 701",
     title_cn: "戶越公園 三面採光角戶",
-    price: "12,998万円",
+    price: "1億1,800万円",
     location: "東京都品川區戶越6-19-14",
     station: "大井町線「戶越公園」站 徒步3分／大井町線・淺草線「中延」站 徒步5分／池上線「荏原中延」站 徒步7分／橫須賀線・湘南新宿線「西大井」站 徒步9分",
     layout: "2LDK+DEN+W",
@@ -427,7 +427,7 @@ window.PROPERTIES = [
     cat: "live",
     title: "ルート四谷三丁目 115",
     title_cn: "四谷三丁目 南向角戶",
-    price: "6,498万円",
+    price: "6,298万円",
     location: "東京都新宿區大京町19",
     station: "丸之內線「四谷三丁目」站 徒步7分／總武中央線「信濃町」站 徒步10分／大江戶線「國立競技場」站 徒步10分",
     layout: "1LDK+W",
@@ -443,7 +443,8 @@ window.PROPERTIES = [
 
   {
     id: "kameido209",
-    status: "在售",
+    status: "已成約",
+    sold: true,
     cat: "live",
     title: "ハイネス亀戸 209",
     title_cn: "龜戶 北歐風翻新兩房",
@@ -458,7 +459,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "",
     photos: ["prop-kameido209-1.jpg","prop-kameido209-2.jpg","prop-kameido209-3.jpg","prop-kameido209-4.jpg","prop-kameido209-5.jpg","prop-kameido209-6.jpg"],
-    note: "3千萬円出頭就能入手的東京2LDK翻新宅：北歐風木質內裝、對面式廚房加新設WIC，食洗機、浴室乾燥、追焚都有。OK超市徒步1分，龜戶中央公園等綠地就在附近。屋齡雖較長，但修繕紀錄扎實、內裝全面換新（此戶寵物不可）。預算有限又想在東京買自住房的話，這戶很值得看，加LINE我帶你評估（可貸成數依銀行審查為準）。"
+    note: "3千萬円出頭就能入手的東京2LDK翻新宅：北歐風木質內裝、對面式廚房加新設WIC，食洗機、浴室乾燥、追焚都有。OK超市徒步1分，龜戶中央公園等綠地就在附近。屋齡雖較長，但修繕紀錄扎實、內裝全面換新。本物件已順利成交、感謝關注！想找類似的東京翻新自住宅（3千萬円上下的2LDK），歡迎加LINE告訴周周你的預算與需求，我幫你留意最新釋出的物件。"
   },
 
   {
