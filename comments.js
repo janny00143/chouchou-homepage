@@ -1,0 +1,212 @@
+/* ============================================================
+   文章留言區（Google 登入・即時顯示）
+   ------------------------------------------------------------
+   ▍怎麼用？
+     在文章頁放一個容器：<div id="cmts" data-slug="文章slug" data-lang="tw"></div>
+     再載入：<script type="module" src="comments.js"></script>
+   ▍資料存在 Firebase Firestore 的 comments 集合
+   ▍管理：ADMIN_EMAILS 裡的帳號登入後，每則留言都會出現刪除鈕
+   ============================================================ */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, deleteDoc, doc, query, where, onSnapshot, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAzwbqz1f7PqDifv4GNd6b1v4Y-JK5tli4",
+  authDomain: "chouchou-homepage.firebaseapp.com",
+  projectId: "chouchou-homepage",
+  storageBucket: "chouchou-homepage.firebasestorage.app",
+  messagingSenderId: "487849516915",
+  appId: "1:487849516915:web:62fb4b31c8e358595aef06"
+};
+
+/* 周周的管理帳號（登入後可刪除任何留言）。要改就改這裡。 */
+const ADMIN_EMAILS = ["janny00jou@gmail.com"];
+
+const T = {
+  tw: { title:"留言討論", sub:"用 Google 登入後就能留言，送出後立刻顯示。",
+        login:"使用 Google 登入後留言", logout:"登出", ph:"想問什麼、想補充什麼都可以…",
+        send:"送出留言", sending:"送出中…", empty:"還沒有留言，來當第一個留言的人吧！",
+        del:"刪除", delConfirm:"確定要刪除這則留言嗎？", admin:"周周",
+        err:"送出失敗，請稍後再試。", loginErr:"登入沒有完成，請再試一次。",
+        loading:"載入留言中…", counter:"字", tooLong:"留言請控制在 1000 字以內。" },
+  cn: { title:"留言讨论", sub:"用 Google 登录后就能留言，送出后立刻显示。",
+        login:"使用 Google 登录后留言", logout:"登出", ph:"想问什么、想补充什么都可以…",
+        send:"送出留言", sending:"送出中…", empty:"还没有留言，来当第一个留言的人吧！",
+        del:"删除", delConfirm:"确定要删除这则留言吗？", admin:"周周",
+        err:"送出失败，请稍后再试。", loginErr:"登录没有完成，请再试一次。",
+        loading:"载入留言中…", counter:"字", tooLong:"留言请控制在 1000 字以内。" },
+  ja: { title:"コメント", sub:"Googleでログインするとコメントできます。送信後すぐに表示されます。",
+        login:"Googleでログインしてコメント", logout:"ログアウト", ph:"ご質問・ご感想などお気軽にどうぞ…",
+        send:"送信", sending:"送信中…", empty:"まだコメントはありません。最初のコメントをどうぞ！",
+        del:"削除", delConfirm:"このコメントを削除しますか？", admin:"周周",
+        err:"送信できませんでした。しばらくしてからお試しください。", loginErr:"ログインが完了しませんでした。もう一度お試しください。",
+        loading:"コメントを読み込み中…", counter:"文字", tooLong:"コメントは1000文字以内でお願いします。" }
+};
+
+const CSS = `
+.cmt-wrap{margin:34px 0 10px;padding-top:26px;border-top:1px solid var(--line,#e7e5e4)}
+.cmt-h{font-size:20px;font-weight:800;margin:0 0 4px}
+.cmt-sub{font-size:13.5px;color:var(--mut,#78716c);margin:0 0 18px}
+.cmt-box{background:#fafaf9;border:1px solid var(--line,#e7e5e4);border-radius:16px;padding:16px 18px;margin-bottom:22px}
+.cmt-me{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px}
+.cmt-me img{width:32px;height:32px;border-radius:50%;flex:0 0 auto}
+.cmt-me b{font-weight:700}
+.cmt-out{margin-left:auto;background:none;border:none;color:var(--mut,#78716c);font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
+.cmt-ta{width:100%;box-sizing:border-box;min-height:92px;resize:vertical;border:1px solid var(--line,#e7e5e4);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:15px;line-height:1.8;background:#fff;color:inherit}
+.cmt-ta:focus{outline:none;border-color:#f6adbe}
+.cmt-row{display:flex;align-items:center;gap:12px;margin-top:10px}
+.cmt-cnt{font-size:12.5px;color:var(--mut,#a8a29e);margin-left:auto}
+.cmt-btn{background:var(--rose,#f43f5e);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:14.5px;padding:10px 24px;border-radius:999px;cursor:pointer}
+.cmt-btn:disabled{opacity:.5;cursor:default}
+.cmt-google{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line,#e7e5e4);border-radius:999px;padding:11px 22px;font-family:inherit;font-size:15px;font-weight:700;color:#3c4043;cursor:pointer}
+.cmt-google:hover{border-color:#f6adbe}
+.cmt-google svg{width:19px;height:19px;flex:0 0 auto}
+.cmt-list{display:flex;flex-direction:column;gap:16px}
+.cmt-item{display:flex;gap:12px}
+.cmt-av{width:38px;height:38px;border-radius:50%;flex:0 0 auto;background:#eee}
+.cmt-body{flex:1;min-width:0}
+.cmt-top{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.cmt-name{font-weight:700;font-size:14.5px}
+.cmt-badge{font-size:11.5px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--rose,#f43f5e),#fb923c);padding:2px 9px;border-radius:999px}
+.cmt-time{font-size:12.5px;color:var(--mut,#a8a29e)}
+.cmt-del{background:none;border:none;color:var(--mut,#a8a29e);font-size:12.5px;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0}
+.cmt-del:hover{color:var(--rose,#f43f5e)}
+.cmt-text{font-size:15px;line-height:1.85;margin:5px 0 0;white-space:pre-wrap;word-break:break-word}
+.cmt-note{font-size:13.5px;color:var(--mut,#78716c);margin:0}
+.cmt-err{font-size:13.5px;color:#dc2626;margin:8px 0 0}
+`;
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function ago(d, lang){
+  if(!d) return "";
+  const s = Math.floor((Date.now()-d.getTime())/1000);
+  const U = lang==="ja" ? [[60,"秒前"],[3600,"分前"],[86400,"時間前"],[2592000,"日前"]]
+          : lang==="cn" ? [[60,"秒前"],[3600,"分钟前"],[86400,"小时前"],[2592000,"天前"]]
+          :               [[60,"秒前"],[3600,"分鐘前"],[86400,"小時前"],[2592000,"天前"]];
+  if(s<60) return U[0][1].replace(/^/,s+"");
+  if(s<3600) return Math.floor(s/60)+U[1][1];
+  if(s<86400) return Math.floor(s/3600)+U[2][1];
+  if(s<2592000) return Math.floor(s/86400)+U[3][1];
+  return d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
+}
+
+const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.8 6.1C12.3 13.2 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-2.8-.4-4.1H24v7.4h12.7c-.3 2.1-1.6 5.3-4.7 7.4l7.2 5.6c4.3-4 6.9-9.9 6.9-16.3z"/><path fill="#FBBC05" d="M10.4 28.7c-.5-1.5-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6.1C1 16.3 0 20 0 24s1 7.7 2.6 10.8l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.2-5.6c-2 1.4-4.6 2.3-8.7 2.3-6.3 0-11.7-3.7-13.6-9.3l-7.8 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
+
+(function init(){
+  const el = document.getElementById("cmts");
+  if(!el) return;
+  const slug = el.dataset.slug || location.pathname.split("/").pop().replace(/\.html$/,"") || "index";
+  const f = location.pathname.split("/").pop() || "";
+  const lang = /-cn\.html$/.test(f) ? "cn" : (/-ja\.html$/.test(f) ? "ja" : (T[el.dataset.lang] ? el.dataset.lang : "tw"));
+  const t = T[lang];
+
+  const st = document.createElement("style"); st.textContent = CSS; document.head.appendChild(st);
+
+  el.className = "cmt-wrap";
+  el.innerHTML =
+    '<h2 class="cmt-h">'+esc(t.title)+'</h2>'+
+    '<p class="cmt-sub">'+esc(t.sub)+'</p>'+
+    '<div class="cmt-box" id="cmtBox"></div>'+
+    '<div class="cmt-list" id="cmtList"><p class="cmt-note">'+esc(t.loading)+'</p></div>';
+
+  const box = el.querySelector("#cmtBox"), list = el.querySelector("#cmtList");
+
+  let app, auth, db, provider;
+  try{
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app); db = getFirestore(app);
+    provider = new GoogleAuthProvider();
+  }catch(e){ box.innerHTML = '<p class="cmt-err">'+esc(t.err)+'</p>'; return; }
+
+  let me = null;
+
+  function renderBox(){
+    if(!me){
+      box.innerHTML = '<button class="cmt-google" id="cmtLogin">'+GOOGLE_SVG+esc(t.login)+'</button>';
+      box.querySelector("#cmtLogin").onclick = async () => {
+        try{ await signInWithPopup(auth, provider); }
+        catch(e){
+          if(e && (e.code==="auth/popup-closed-by-user"||e.code==="auth/cancelled-popup-request")) return;
+          const p=document.createElement("p"); p.className="cmt-err"; p.textContent=t.loginErr; box.appendChild(p);
+        }
+      };
+      return;
+    }
+    box.innerHTML =
+      '<div class="cmt-me">'+
+        (me.photoURL?'<img src="'+esc(me.photoURL)+'" alt="" referrerpolicy="no-referrer">':'')+
+        '<b>'+esc(me.displayName||"")+'</b>'+
+        '<button class="cmt-out" id="cmtOut">'+esc(t.logout)+'</button>'+
+      '</div>'+
+      '<textarea class="cmt-ta" id="cmtTa" maxlength="1000" placeholder="'+esc(t.ph)+'"></textarea>'+
+      '<div class="cmt-row"><button class="cmt-btn" id="cmtSend">'+esc(t.send)+'</button>'+
+      '<span class="cmt-cnt" id="cmtCnt">0 / 1000 '+esc(t.counter)+'</span></div>';
+
+    const ta = box.querySelector("#cmtTa"), send = box.querySelector("#cmtSend"), cnt = box.querySelector("#cmtCnt");
+    box.querySelector("#cmtOut").onclick = () => signOut(auth);
+    ta.oninput = () => { cnt.textContent = ta.value.length+" / 1000 "+t.counter; };
+    send.onclick = async () => {
+      const text = ta.value.trim();
+      if(!text) return;
+      if(text.length>1000){ alert(t.tooLong); return; }
+      send.disabled = true; send.textContent = t.sending;
+      try{
+        await addDoc(collection(db,"comments"), {
+          slug, text, uid: me.uid,
+          name: me.displayName || "", photo: me.photoURL || "",
+          admin: ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1,
+          createdAt: serverTimestamp()
+        });
+        ta.value = ""; cnt.textContent = "0 / 1000 "+t.counter;
+      }catch(e){
+        const p=document.createElement("p"); p.className="cmt-err"; p.textContent=t.err; box.appendChild(p);
+      }finally{ send.disabled=false; send.textContent=t.send; }
+    };
+  }
+
+  function renderList(rows){
+    if(!rows.length){ list.innerHTML = '<p class="cmt-note">'+esc(t.empty)+'</p>'; return; }
+    const isAdmin = me && ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1;
+    list.innerHTML = rows.map(r=>{
+      const canDel = me && (me.uid===r.uid || isAdmin);
+      const badge = r.admin ? '<span class="cmt-badge">'+esc(t.admin)+'</span>' : '';
+      return '<div class="cmt-item">'+
+        (r.photo?'<img class="cmt-av" src="'+esc(r.photo)+'" alt="" referrerpolicy="no-referrer">':'<span class="cmt-av"></span>')+
+        '<div class="cmt-body">'+
+          '<div class="cmt-top"><span class="cmt-name">'+esc(r.name)+'</span>'+badge+
+          '<span class="cmt-time">'+esc(ago(r.createdAt,lang))+'</span>'+
+          (canDel?'<button class="cmt-del" data-id="'+esc(r.id)+'">'+esc(t.del)+'</button>':'')+
+          '</div>'+
+          '<p class="cmt-text">'+esc(r.text)+'</p>'+
+        '</div></div>';
+    }).join("");
+    list.querySelectorAll(".cmt-del").forEach(b=>{
+      b.onclick = async () => {
+        if(!confirm(t.delConfirm)) return;
+        try{ await deleteDoc(doc(db,"comments",b.dataset.id)); }catch(e){ alert(t.err); }
+      };
+    });
+  }
+
+  let rows = [];
+  onAuthStateChanged(auth, u => { me = u; renderBox(); renderList(rows); });
+
+  onSnapshot(
+    query(collection(db,"comments"), where("slug","==",slug)),
+    snap => {
+      rows = snap.docs.map(d=>{
+        const v = d.data();
+        return { id:d.id, text:v.text||"", name:v.name||"", photo:v.photo||"", uid:v.uid||"", admin:!!v.admin,
+                 createdAt: v.createdAt && v.createdAt.toDate ? v.createdAt.toDate() : null };
+      });
+      rows.sort((a,b)=>(b.createdAt?b.createdAt.getTime():0)-(a.createdAt?a.createdAt.getTime():0));
+      renderList(rows);
+    },
+    () => { list.innerHTML = '<p class="cmt-note">'+esc(t.empty)+'</p>'; }
+  );
+})();
