@@ -27,7 +27,7 @@ const firebaseConfig = {
 
 /* App Check（防機器人）：把 Firebase 後台給的 reCAPTCHA v3 網站金鑰填進來就會自動啟用；
    留空則不啟用，功能照常運作。 */
-const RECAPTCHA_SITE_KEY = "";
+const RECAPTCHA_SITE_KEY = "6Lf0joMtAAAAANfTspfN91tDC5pWQ-oG6fzfgLb2";
 
 /* 同一個人兩則留言之間至少要間隔幾秒（防洗版） */
 const COOLDOWN_SEC = 30;
