@@ -13,6 +13,8 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChang
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, collection, addDoc, deleteDoc, doc, query, where, onSnapshot, serverTimestamp }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { initializeAppCheck, ReCaptchaV3Provider }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAzwbqz1f7PqDifv4GNd6b1v4Y-JK5tli4",
@@ -22,6 +24,13 @@ const firebaseConfig = {
   messagingSenderId: "487849516915",
   appId: "1:487849516915:web:62fb4b31c8e358595aef06"
 };
+
+/* App Check（防機器人）：把 Firebase 後台給的 reCAPTCHA v3 網站金鑰填進來就會自動啟用；
+   留空則不啟用，功能照常運作。 */
+const RECAPTCHA_SITE_KEY = "";
+
+/* 同一個人兩則留言之間至少要間隔幾秒（防洗版） */
+const COOLDOWN_SEC = 30;
 
 /* 周周的管理帳號（登入後可刪除任何留言）。要改就改這裡。 */
 const ADMIN_EMAILS = ["janny00jou@gmail.com"];
@@ -46,19 +55,19 @@ const T = {
         send:"送出留言", sending:"送出中…", empty:"還沒有留言，來當第一個留言的人吧！",
         del:"刪除", delConfirm:"確定要刪除這則留言嗎？", admin:"周周",
         err:"送出失敗，請稍後再試。", loginErr:"登入沒有完成，請再試一次。",
-        loading:"載入留言中…", counter:"字", tooLong:"留言請控制在 1000 字以內。", errLink:"為了避免廣告，留言不能包含網址或 LINE ID 喔。", errAbuse:"留言含有不當用字，請修改後再送出。", errScam:"留言含有疑似詐騙或招攬內容，無法送出。" },
+        loading:"載入留言中…", counter:"字", tooLong:"留言請控制在 1000 字以內。", errLink:"為了避免廣告，留言不能包含網址或 LINE ID 喔。", errAbuse:"留言含有不當用字，請修改後再送出。", errScam:"留言含有疑似詐騙或招攬內容，無法送出。", errWait:"留言太頻繁了，請等 {s} 秒後再送出。" },
   cn: { title:"留言讨论", sub:"用 Google 登录后就能留言，送出后立刻显示。",
         login:"使用 Google 登录后留言", logout:"登出", ph:"想问什么、想补充什么都可以…",
         send:"送出留言", sending:"送出中…", empty:"还没有留言，来当第一个留言的人吧！",
         del:"删除", delConfirm:"确定要删除这则留言吗？", admin:"周周",
         err:"送出失败，请稍后再试。", loginErr:"登录没有完成，请再试一次。",
-        loading:"载入留言中…", counter:"字", tooLong:"留言请控制在 1000 字以内。", errLink:"为了避免广告，留言不能包含网址或 LINE ID 喔。", errAbuse:"留言含有不当用字，请修改后再送出。", errScam:"留言含有疑似诈骗或招揽内容，无法送出。" },
+        loading:"载入留言中…", counter:"字", tooLong:"留言请控制在 1000 字以内。", errLink:"为了避免广告，留言不能包含网址或 LINE ID 喔。", errAbuse:"留言含有不当用字，请修改后再送出。", errScam:"留言含有疑似诈骗或招揽内容，无法送出。", errWait:"留言太频繁了，请等 {s} 秒后再送出。" },
   ja: { title:"コメント", sub:"Googleでログインするとコメントできます。送信後すぐに表示されます。",
         login:"Googleでログインしてコメント", logout:"ログアウト", ph:"ご質問・ご感想などお気軽にどうぞ…",
         send:"送信", sending:"送信中…", empty:"まだコメントはありません。最初のコメントをどうぞ！",
         del:"削除", delConfirm:"このコメントを削除しますか？", admin:"周周",
         err:"送信できませんでした。しばらくしてからお試しください。", loginErr:"ログインが完了しませんでした。もう一度お試しください。",
-        loading:"コメントを読み込み中…", counter:"文字", tooLong:"コメントは1000文字以内でお願いします。", errLink:"広告防止のため、URLやLINE IDを含むコメントは投稿できません。", errAbuse:"不適切な表現が含まれています。修正のうえ送信してください。", errScam:"勧誘・詐欺と思われる内容が含まれるため送信できません。" }
+        loading:"コメントを読み込み中…", counter:"文字", tooLong:"コメントは1000文字以内でお願いします。", errLink:"広告防止のため、URLやLINE IDを含むコメントは投稿できません。", errAbuse:"不適切な表現が含まれています。修正のうえ送信してください。", errScam:"勧誘・詐欺と思われる内容が含まれるため送信できません。", errWait:"投稿が頻繁すぎます。{s}秒後にお試しください。" }
 };
 
 const CSS = `
@@ -133,6 +142,9 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
   let app, auth, db, provider;
   try{
     app = initializeApp(firebaseConfig);
+    if(RECAPTCHA_SITE_KEY){
+      try{ initializeAppCheck(app, { provider: new ReCaptchaV3Provider(RECAPTCHA_SITE_KEY), isTokenAutoRefreshEnabled: true }); }catch(e){}
+    }
     auth = getAuth(app); db = getFirestore(app);
     provider = new GoogleAuthProvider();
   }catch(e){ box.innerHTML = '<p class="cmt-err">'+esc(t.err)+'</p>'; return; }
@@ -168,8 +180,14 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
       const text = ta.value.trim();
       if(!text) return;
       if(text.length>1000){ alert(t.tooLong); return; }
-      const bad = checkText(text, ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1);
+      const isAdm = ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1;
+      const bad = checkText(text, isAdm);
       if(bad){ alert(bad==="link"?t.errLink:(bad==="abuse"?t.errAbuse:t.errScam)); return; }
+      if(!isAdm){
+        let last=0; try{ last=parseInt(localStorage.getItem("cmtLast")||"0",10)||0; }catch(e){}
+        const wait = COOLDOWN_SEC - Math.floor((Date.now()-last)/1000);
+        if(last && wait>0){ alert(t.errWait.replace("{s}", wait)); return; }
+      }
       send.disabled = true; send.textContent = t.sending;
       try{
         await addDoc(collection(db,"comments"), {
@@ -179,6 +197,7 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
           createdAt: serverTimestamp()
         });
         ta.value = ""; cnt.textContent = "0 / 1000 "+t.counter;
+        try{ localStorage.setItem("cmtLast", String(Date.now())); }catch(e){}
       }catch(e){
         const p=document.createElement("p"); p.className="cmt-err"; p.textContent=t.err; box.appendChild(p);
       }finally{ send.disabled=false; send.textContent=t.send; }
