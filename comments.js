@@ -26,25 +26,39 @@ const firebaseConfig = {
 /* 周周的管理帳號（登入後可刪除任何留言）。要改就改這裡。 */
 const ADMIN_EMAILS = ["janny00jou@gmail.com"];
 
+/* ── 留言過濾（周周指示：禁連結、禁謾罵、禁詐騙）──
+   周周本人（ADMIN_EMAILS）不受連結限制，方便回覆時貼 LINE。 */
+const RE_LINK = /(https?:\/\/|www\.|[a-z0-9-]{2,}\.(com|net|org|jp|tw|cn|io|me|co|xyz|top|shop|link|site|online|vip|info|ru|biz|club)\b|[@＠]line|line\s*id|賴\s*id|加\s*賴)/i;
+const WORDS_ABUSE = ["幹你娘","幹妳娘","操你","去死","白痴","白癡","智障","腦殘","脑残","廢物","废物","王八蛋","混蛋","神經病","神经病","婊子","賤人","贱人","他媽的","他妈的","媽的","妈的","fuck","shit","bitch","asshole","死ね","バカ","アホ","クソ","キチガイ"];
+const WORDS_SCAM = ["保證獲利","保证获利","穩賺","稳赚","包賺","包赚","日賺","日赚","月入十萬","躺著賺","躺着赚","博弈","娛樂城","娱乐城","彩金","刷單","刷单","代操","帶單","带单","報明牌","内线消息","內線消息","私訊我加","私讯我加","加我賴","加我赖","高薪兼職","高薪兼职","無需經驗日領","無息借貸","无息借贷","貸款代辦","贷款代办","代辦貸款","代办贷款","洗錢","洗钱","虛擬貨幣投資","虚拟货币投资","保證過件","保证过件"];
+function checkText(txt, isAdmin){
+  const low = txt.toLowerCase();
+  if(!isAdmin && RE_LINK.test(txt)) return "link";
+  for(const w of WORDS_ABUSE) if(low.indexOf(w.toLowerCase())>-1) return "abuse";
+  for(const w of WORDS_SCAM)  if(low.indexOf(w.toLowerCase())>-1) return "scam";
+  return "";
+}
+
+
 const T = {
   tw: { title:"留言討論", sub:"用 Google 登入後就能留言，送出後立刻顯示。",
         login:"使用 Google 登入後留言", logout:"登出", ph:"想問什麼、想補充什麼都可以…",
         send:"送出留言", sending:"送出中…", empty:"還沒有留言，來當第一個留言的人吧！",
         del:"刪除", delConfirm:"確定要刪除這則留言嗎？", admin:"周周",
         err:"送出失敗，請稍後再試。", loginErr:"登入沒有完成，請再試一次。",
-        loading:"載入留言中…", counter:"字", tooLong:"留言請控制在 1000 字以內。" },
+        loading:"載入留言中…", counter:"字", tooLong:"留言請控制在 1000 字以內。", errLink:"為了避免廣告，留言不能包含網址或 LINE ID 喔。", errAbuse:"留言含有不當用字，請修改後再送出。", errScam:"留言含有疑似詐騙或招攬內容，無法送出。" },
   cn: { title:"留言讨论", sub:"用 Google 登录后就能留言，送出后立刻显示。",
         login:"使用 Google 登录后留言", logout:"登出", ph:"想问什么、想补充什么都可以…",
         send:"送出留言", sending:"送出中…", empty:"还没有留言，来当第一个留言的人吧！",
         del:"删除", delConfirm:"确定要删除这则留言吗？", admin:"周周",
         err:"送出失败，请稍后再试。", loginErr:"登录没有完成，请再试一次。",
-        loading:"载入留言中…", counter:"字", tooLong:"留言请控制在 1000 字以内。" },
+        loading:"载入留言中…", counter:"字", tooLong:"留言请控制在 1000 字以内。", errLink:"为了避免广告，留言不能包含网址或 LINE ID 喔。", errAbuse:"留言含有不当用字，请修改后再送出。", errScam:"留言含有疑似诈骗或招揽内容，无法送出。" },
   ja: { title:"コメント", sub:"Googleでログインするとコメントできます。送信後すぐに表示されます。",
         login:"Googleでログインしてコメント", logout:"ログアウト", ph:"ご質問・ご感想などお気軽にどうぞ…",
         send:"送信", sending:"送信中…", empty:"まだコメントはありません。最初のコメントをどうぞ！",
         del:"削除", delConfirm:"このコメントを削除しますか？", admin:"周周",
         err:"送信できませんでした。しばらくしてからお試しください。", loginErr:"ログインが完了しませんでした。もう一度お試しください。",
-        loading:"コメントを読み込み中…", counter:"文字", tooLong:"コメントは1000文字以内でお願いします。" }
+        loading:"コメントを読み込み中…", counter:"文字", tooLong:"コメントは1000文字以内でお願いします。", errLink:"広告防止のため、URLやLINE IDを含むコメントは投稿できません。", errAbuse:"不適切な表現が含まれています。修正のうえ送信してください。", errScam:"勧誘・詐欺と思われる内容が含まれるため送信できません。" }
 };
 
 const CSS = `
@@ -154,6 +168,8 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
       const text = ta.value.trim();
       if(!text) return;
       if(text.length>1000){ alert(t.tooLong); return; }
+      const bad = checkText(text, ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1);
+      if(bad){ alert(bad==="link"?t.errLink:(bad==="abuse"?t.errAbuse:t.errScam)); return; }
       send.disabled = true; send.textContent = t.sending;
       try{
         await addDoc(collection(db,"comments"), {
