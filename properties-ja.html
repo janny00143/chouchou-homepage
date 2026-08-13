@@ -65,6 +65,7 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .card .body{padding:16px 17px 18px;display:flex;flex-direction:column;flex:1}
 .card h3{font-size:16.5px;font-weight:700;line-height:1.45;min-height:2.9em}
 .card .laytag{display:inline-block;font-size:12px;color:#e11d48;font-weight:700;background:#fff1f2;border:1px solid #fecdd3;border-radius:7px;padding:0 7px;margin-left:7px;vertical-align:2px;white-space:nowrap}
+.card .price2{display:block;font-size:13.5px;font-weight:700;color:var(--mut);margin-top:3px;line-height:1.45}
 .card .price{font-size:23px;font-weight:900;color:var(--rose-d);margin:8px 0 12px}
 .card .price small{font-size:13px;font-weight:500;color:var(--mut)}
 .spec{list-style:none;font-size:13.5px;color:#57534e;display:grid;grid-template-columns:1fr;gap:5px;border-top:1px dashed var(--line);padding-top:12px}
@@ -170,6 +171,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   // 只轉「文字內容」，不會動到照片檔名（避免中文檔名被轉而 404）。
   var conv=function(s){return s;};
   function C(s){return esc(conv(s==null?"":String(s)));}
+  function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
 
   // 卡片：封面＋名稱（日文＋中文）＋價格＋車站，整張是連到獨立物件頁的連結
   function card(p,i){
@@ -189,7 +191,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       +'<div class="ph">'+photo+badge+tag+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
-      +'<div class="price">'+C(p.price||"価格はお問い合わせください")+'</div>'
+      +PRICEHTML(p.price,'price','価格はお問い合わせください')
       +station
       +'</div></a>';
   }

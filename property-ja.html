@@ -59,6 +59,7 @@ main{padding:22px 0 10px}
 .pbadges span{font-size:12.5px;font-weight:700;padding:4px 13px;border-radius:999px}
 .pbadges .b{color:#fff;background:var(--green)}.pbadges .b.s2{background:#f59e0b}.pbadges .b.s3{background:#9ca3af}
 .pbadges .t{background:#fff1f2;color:var(--rose-d)}
+.pprice .price2{display:block;font-size:15px;font-weight:700;color:var(--mut);margin-top:5px;line-height:1.5}
 .pprice{font-size:32px;font-weight:900;color:var(--rose-d);margin:14px 0 20px}
 .pfacts{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 20px}
 .pfacts span{background:#f8f7f6;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;color:#44403c;line-height:1.4}
@@ -146,6 +147,7 @@ body.noscroll{overflow:hidden}
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
   var conv=function(s){return s;};
   function C(s){return esc(conv(s==null?"":String(s)));}
+  function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
 
   var photos=[],pi=0,pImg,pCnt,pThumbs;
   function getId(){try{return new URLSearchParams(location.search).get("id");}catch(e){var m=location.search.match(/[?&]id=([^&]+)/);return m?decodeURIComponent(m[1]):null;}}
@@ -190,7 +192,7 @@ body.noscroll{overflow:hidden}
     var body='<div class="pbody">'
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
-      +'<div class="pprice">'+C(p.price||"価格はお問い合わせください")+'</div>'
+      +PRICEHTML(p.price,'pprice','価格はお問い合わせください')
       +share
       +facts
       +spec+mapBtn
