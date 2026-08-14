@@ -15,7 +15,7 @@
    ============================================================ */
 
 /* ── 供應商對照（周周指示：記住每筆是哪家的，方便日後核對在售狀態）──
-   (株)エフステージ： togoshi701・yotsuya115・kameido209・famille309・pearl-baba301
+   (株)エフステージ： togoshi701・yotsuya115・kameido209・famille309・pearl-baba301・shibuya1003（テラス渋谷美竹1003・取引形態=売主）
    (株)未来都市開発： nakameguro702
    (株)大京穴吹不動産： daikanyama
    (株)トーセイ： lions-setagaya
