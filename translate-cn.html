@@ -76,10 +76,10 @@
 
 <script>
 const WORKER_URL="https://sparkling-darkness-3cb1.janny00143.workers.dev/";
-const UNLOCK_HASH="e053a3efc19c3e80c7b58bc096a1a2cdeba2ca03aa5d0297bba4e7d32b4586ec"; // SHA-256("ZHOUZHOU")：周周本人测试码，无限次
-const FREE_HASH="19f1fa5ec989d121d8d2714dbed4db965eaaa6eef40df756c8a2526cedcbd0a3";   // SHA-256("FREE")：一般人免费码
+const UNLOCK_HASH="e053a3efc19c3e80c7b58bc096a1a2cdeba2ca03aa5d0297bba4e7d32b4586ec"; // 会员码的杂凑值（码本身不写在这里）
+const FREE_HASH="19f1fa5ec989d121d8d2714dbed4db965eaaa6eef40df756c8a2526cedcbd0a3";   // 免费码的杂凑值（码本身不写在这里）
 const FREE_DAY_LIMIT=3;   // 免费码 FREE：每日上限（隔天重置）
-const ZZ_DAY_LIMIT=20;    // 会员码 ZHOUZHOU：每日上限（隔天重置）；时段(先10/每2h+5)由后端真 IP 把关
+const ZZ_DAY_LIMIT=20;    // 会员码：每日上限（隔天重置）；时段(先10/每2h+5)由后端真 IP 把关
 // 前端 localStorage 只做「当日总量」即时挡；真正的每 IP 计次与时段开放由 Worker 后端把关（防清纪录/无痕/换浏览器）
 const LINE="https://lin.ee/RscRWCp";
 // 周周本人模式：用 ?owner=<后台token> 进来即记住，之后不受每日上限/停损、也不计次（只有带对 token 才生效）。?owner=off 关闭。
@@ -147,7 +147,7 @@ const CLASSIFY_PROMPT=`你是严格的图片分类器。只判断这张图是不
 - 【严禁】不可凭印象、记忆或「看起来像某建案」判断；只看图上实际印出的文字。看不到贩售文字就 false。`;
 document.getElementById('lineGate').href=LINE;
 let file=null,preview=null,mode='home';
-var TIER=''; // 'member'=ZHOUZHOU（每日15+每小时10）；'free'=FREE（每日3）；?owner=token 另由 OWNER 变数处理(不受限)
+var TIER=''; // 'member'=会员码（每日15+每小时10）；'free'=免费码（每日3）；?owner=token 另由 OWNER 变数处理(不受限)
 function esc(s){s=String(s==null?'':s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 /* ===== 残留日文自动清洗：①日文词字典 ②日文汉字→繁体 ③片假名店名→罗马拼音（保证画面不再出现假名）===== */
 var TERM=[
@@ -217,9 +217,9 @@ function deepClean(o){
   return o;
 }
 async function _sha(t){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
-async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='请输入使用码';err.style.color='var(--rose)';err.style.display='block';return;}var hash='';try{hash=await _sha(code);}catch(e){hash='';}var tier=(hash===UNLOCK_HASH)?'member':(hash===FREE_HASH?'free':'');if(tier){TIER=tier;try{fetch(WORKER_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({log:1,paid:0,cost:0,mode:'__unlock__',lang:'',"类型":(hash===UNLOCK_HASH?'ZHOUZHOU':'FREE'),"物件名称":'',"地址":'',"交通":'',"价格":'',"利回":''})});}catch(_){}try{sessionStorage.setItem('tok','1');sessionStorage.setItem('tier',tier);}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';limitBlocked();}else{err.textContent='使用码不正确';err.style.color='var(--rose)';err.style.display='block';}}
+async function unlock(){var code=document.getElementById('code').value.trim().toUpperCase();var err=document.getElementById('codeErr');if(!code){err.textContent='请输入使用码';err.style.color='var(--rose)';err.style.display='block';return;}var hash='';try{hash=await _sha(code);}catch(e){hash='';}var tier=(hash===UNLOCK_HASH)?'member':(hash===FREE_HASH?'free':'');if(tier){TIER=tier;try{fetch(WORKER_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({log:1,paid:0,cost:0,mode:'__unlock__',lang:'',"类型":code,"物件名称":'',"地址":'',"交通":'',"价格":'',"利回":''})});}catch(_){}try{sessionStorage.setItem('tok','1');sessionStorage.setItem('tier',tier);}catch(e){}err.style.display='none';document.getElementById('gate').style.display='none';document.getElementById('upload').style.display='block';limitBlocked();}else{err.textContent='使用码不正确';err.style.color='var(--rose)';err.style.display='block';}}
 try{if(sessionStorage.getItem('tok')==='1'){TIER=sessionStorage.getItem('tier')||'';var _g=document.getElementById('gate'),_u=document.getElementById('upload');if(_g&&_u){_g.style.display='none';_u.style.display='block';}limitBlocked();}}catch(e){}
-// ===== 使用额度：FREE 每日 3 张(隔天重置)；ZHOUZHOU 每日 15 张＋每小时 10 张；?owner=token 完全不受限 =====
+// ===== 使用额度：免费码 每日 3 张(隔天重置)；会员码 每日 15 张＋每小时 10 张；?owner=token 完全不受限 =====
 function _today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
 function _hourStamp(){var d=new Date();return _today()+'@'+d.getHours();}
 function _cntGet(key,stamp){try{var o=JSON.parse(localStorage.getItem(key)||'{}');return o.s===stamp?(o.n||0):0;}catch(e){return 0;}}
@@ -254,7 +254,7 @@ function showFreeCap(){
     +'<p style="font-size:15.5px;color:#44403c;line-height:1.95;margin-bottom:10px">免费功能已到达上限。<br>想要了解更多，欢迎加入<b>周周的 LINE</b>，<br>填写表单后即可取得<b>更多免费翻译额度</b>！</p>'
     +'<p style="font-size:13px;color:var(--mut);margin-bottom:16px">加入好友后也可以直接把图传给周周，我帮你看更详细 💬</p>');
 }
-// 会员码(ZHOUZHOU)撞到每小时 10 / 每日 15 上限 → 提示稍后 & 导 LINE
+// 会员码撞到每小时 10 / 每日 15 上限 → 提示稍后 & 导 LINE
 function showZzCap(kind){
   if(typeof gtag==='function'){try{gtag('event','zz_limit_reached',{kind:kind});}catch(_){}}
   var inner=(kind==='hour')
@@ -347,7 +347,7 @@ function showLoad(on){
 }
 async function go(){
   if(!file)return;
-  // 额度把关（FREE 每日3；ZHOUZHOU 每小时10‧每日15；owner 不受限）→ 已满就跳对应画面
+  // 额度把关（免费码 每日3；会员码 每小时10‧每日15；owner 不受限）→ 已满就跳对应画面
   if(limitBlocked())return;
   const now=Date.now();
   let times=_thGet().filter(t=>now-t<600000); // 只看近 10 分钟
