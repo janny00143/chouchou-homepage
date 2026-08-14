@@ -39,11 +39,11 @@ const ADMIN_EMAILS = ["janny00jou@gmail.com"];
    本來就是公開用的表單 key，不是密碼）。留空字串就會關掉通知功能。 */
 const NOTIFY_KEY = "d1ac2743-8999-4270-abe8-9896caaf693b";
 
-/* ⚠️ 測試用開關（2026-08-14 周周測通知時暫時打開）
-   true  = 連周周自己留言也寄通知（測試用）
-   false = 周周自己留言不寄（正式狀態）
-   測試確認信有進來之後，要改回 false。 */
-const NOTIFY_ADMIN_TOO = true;
+/* 測試用開關（2026-08-14 已測試通過並關回 false）
+   true  = 連周周自己留言也寄通知（只在要自測通知時才暫時打開）
+   false = 周周自己留言不寄通知（正式狀態）← 現在是這個
+   打開後主旨會變成「🧪 通知測試」，方便跟真實留言區分。 */
+const NOTIFY_ADMIN_TOO = false;
 
 /* ── 留言過濾（周周指示：禁連結、禁謾罵、禁詐騙）──
    周周本人（ADMIN_EMAILS）不受連結限制，方便回覆時貼 LINE。 */
