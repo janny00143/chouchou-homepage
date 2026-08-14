@@ -264,12 +264,12 @@ const body = `<header>
       <div class="rev-social" style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px">
         <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0aSWfrgvFtkRPXmsho7kLmQwHiTyySopzWUQWZq6HuBpvneh7urnoArhYakQViTCal&id=100002070697066" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:#1877F2;color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">📘 Facebookのお客様の声</a>
         <a href="https://www.instagram.com/p/DaZoAseTGGd/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">📷 Instagramのお客様の声</a>
+        <a href="feedback-ja.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:2px solid var(--rose);color:var(--rose);font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px;text-decoration:none">✍️ ご感想を投稿</a>
       </div>
       <div class="rev-grid">
         ${REVIEWS_JA.map(r => `<div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">「${r.text}」</p><p class="rev-who">— ${r.who}</p>${r.reply?`<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周より</p><p class="rev-reply-text">${r.reply}</p></div>`:""}</div>`).join("\n        ")}
       </div>
       <div class="note" style="background:#fffbeb;border:2px solid #f59e0b;max-width:none;margin-top:16px">${JA_UI.reviewsNote}</div>
-      <div style="text-align:center;margin-top:18px"><p style="font-size:14px;color:var(--mut);margin-bottom:10px">周周に内見やご購入をご依頼いただいた方へ。ご感想もぜひお聞かせください ♡</p><a href="feedback-ja.html" style="display:inline-block;background:#fff;border:2px solid var(--rose);color:var(--rose);font-weight:700;padding:10px 22px;border-radius:999px;text-decoration:none">✍️ 内見・購入のご感想を投稿する</a></div>
       <div id="cmts" data-slug="home-reviews" data-lang="ja" data-title="ご感想をお聞かせください ♡" data-sub="フォームでなくても大丈夫です。Googleアカウントでログインすれば、この場でそのまま投稿でき、送信後すぐに表示されます。個別のご相談は上のフォームからどうぞ。"></div>
     </div>
     <div class="cta"><h2>${JA_UI.homeCta.title}</h2><p>${JA_UI.homeCta.body}</p><a class="btn btn-line big" id="lineHome" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
