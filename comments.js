@@ -53,19 +53,19 @@ const T = {
   tw: { title:"留言討論", sub:"用 Google 登入後就能留言，送出後立刻顯示。",
         login:"使用 Google 登入後留言", logout:"登出", ph:"想問什麼、想補充什麼都可以…",
         send:"送出留言", sending:"送出中…", empty:"還沒有留言，來當第一個留言的人吧！",
-        del:"刪除", delConfirm:"確定要刪除這則留言嗎？", admin:"周周",
+        del:"刪除", delConfirm:"確定要刪除這則留言嗎？", admin:"管理員-周周",
         err:"送出失敗，請稍後再試。", loginErr:"登入沒有完成，請再試一次。",
         loading:"載入留言中…", counter:"字", tooLong:"留言請控制在 1000 字以內。", errLink:"為了避免廣告，留言不能包含網址或 LINE ID 喔。", errAbuse:"留言含有不當用字，請修改後再送出。", errScam:"留言含有疑似詐騙或招攬內容，無法送出。", errWait:"留言太頻繁了，請等 {s} 秒後再送出。" },
   cn: { title:"留言讨论", sub:"用 Google 登录后就能留言，送出后立刻显示。",
         login:"使用 Google 登录后留言", logout:"登出", ph:"想问什么、想补充什么都可以…",
         send:"送出留言", sending:"送出中…", empty:"还没有留言，来当第一个留言的人吧！",
-        del:"删除", delConfirm:"确定要删除这则留言吗？", admin:"周周",
+        del:"删除", delConfirm:"确定要删除这则留言吗？", admin:"管理员-周周",
         err:"送出失败，请稍后再试。", loginErr:"登录没有完成，请再试一次。",
         loading:"载入留言中…", counter:"字", tooLong:"留言请控制在 1000 字以内。", errLink:"为了避免广告，留言不能包含网址或 LINE ID 喔。", errAbuse:"留言含有不当用字，请修改后再送出。", errScam:"留言含有疑似诈骗或招揽内容，无法送出。", errWait:"留言太频繁了，请等 {s} 秒后再送出。" },
   ja: { title:"コメント", sub:"Googleでログインするとコメントできます。送信後すぐに表示されます。",
         login:"Googleでログインしてコメント", logout:"ログアウト", ph:"ご質問・ご感想などお気軽にどうぞ…",
         send:"送信", sending:"送信中…", empty:"まだコメントはありません。最初のコメントをどうぞ！",
-        del:"削除", delConfirm:"このコメントを削除しますか？", admin:"周周",
+        del:"削除", delConfirm:"このコメントを削除しますか？", admin:"管理者-周欣妤",
         err:"送信できませんでした。しばらくしてからお試しください。", loginErr:"ログインが完了しませんでした。もう一度お試しください。",
         loading:"コメントを読み込み中…", counter:"文字", tooLong:"コメントは1000文字以内でお願いします。", errLink:"広告防止のため、URLやLINE IDを含むコメントは投稿できません。", errAbuse:"不適切な表現が含まれています。修正のうえ送信してください。", errScam:"勧誘・詐欺と思われる内容が含まれるため送信できません。", errWait:"投稿が頻繁すぎます。{s}秒後にお試しください。" }
 };
@@ -94,7 +94,7 @@ const CSS = `
 .cmt-body{flex:1;min-width:0}
 .cmt-top{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
 .cmt-name{font-weight:700;font-size:14.5px}
-.cmt-badge{font-size:11.5px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--rose,#f43f5e),#fb923c);padding:2px 9px;border-radius:999px}
+.cmt-badge{font-size:11.5px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--rose,#f43f5e),#fb923c);padding:2px 9px;border-radius:999px;white-space:nowrap;flex:none}
 .cmt-time{font-size:12.5px;color:var(--mut,#a8a29e)}
 .cmt-del{background:none;border:none;color:var(--mut,#a8a29e);font-size:12.5px;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0}
 .cmt-del:hover{color:var(--rose,#f43f5e)}
