@@ -132,8 +132,8 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
 
   el.className = "cmt-wrap";
   el.innerHTML =
-    '<h2 class="cmt-h">'+esc(t.title)+'</h2>'+
-    '<p class="cmt-sub">'+esc(t.sub)+'</p>'+
+    '<h2 class="cmt-h">'+esc(el.dataset.title || t.title)+'</h2>'+
+    '<p class="cmt-sub">'+esc(el.dataset.sub || t.sub)+'</p>'+
     '<div class="cmt-box" id="cmtBox"></div>'+
     '<div class="cmt-list" id="cmtList"><p class="cmt-note">'+esc(t.loading)+'</p></div>';
 
