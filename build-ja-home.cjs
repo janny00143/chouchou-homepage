@@ -264,7 +264,7 @@ const body = `<header>
       <div class="rev-social" style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px">
         <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0aSWfrgvFtkRPXmsho7kLmQwHiTyySopzWUQWZq6HuBpvneh7urnoArhYakQViTCal&id=100002070697066" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:#1877F2;color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">📘 Facebookのお客様の声</a>
         <a href="https://www.instagram.com/p/DaZoAseTGGd/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">📷 Instagramのお客様の声</a>
-        <a href="feedback-ja.html" style="display:inline-flex;align-items:center;gap:7px;background:var(--rose);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">✍️ ご感想を投稿</a>
+        <a href="feedback-ja.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--rose);box-shadow:inset 0 0 0 2px var(--rose);font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">✍️ ご感想を投稿</a>
       </div>
       <div class="rev-grid">
         ${REVIEWS_JA.map(r => `<div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">「${r.text}」</p><p class="rev-who">— ${r.who}</p>${r.reply?`<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周より</p><p class="rev-reply-text">${r.reply}</p></div>`:""}</div>`).join("\n        ")}
