@@ -1,0 +1,67 @@
+// ─────────────────────────────────────────────────────────────
+// Firestore 安全規則（留言功能 comments 集合）
+//
+// 這份是「參考備份」，不會自動套用。
+// 要生效必須到 Firebase 主控台貼上並按「發布」：
+//   Firebase Console → Firestore Database → 規則 → 全選貼上 → 發布
+//
+// 設計重點：
+//   1. 任何人（不登入）都能「讀」留言 → allow read: if true
+//   2. 只有登入 Google 的人能「新增」，且 uid 必須是自己
+//   3. 留言一旦送出「不能修改」→ allow update: if false
+//   4. 刪除：留言者本人 或 周周（管理員 email）
+//   5. 欄位白名單 + 長度上限，防止有人塞垃圾資料把免費額度撐爆
+//   6. comments 以外的任何路徑一律禁止讀寫
+//
+// 管理員 email 若要更動，請同步改 comments.js 的 ADMIN_EMAILS。
+// ─────────────────────────────────────────────────────────────
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 周周本人（最高權限：可刪任何留言）
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() == 'janny00jou@gmail.com';
+    }
+
+    match /comments/{id} {
+
+      // 讀：完全公開，訪客不用登入也看得到留言
+      allow read: if true;
+
+      // 新增：必須登入，且資料格式完全符合才放行
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(
+             ['slug','text','uid','name','photo','admin','createdAt'])
+        && request.resource.data.slug is string
+        && request.resource.data.slug.size() > 0
+        && request.resource.data.slug.size() <= 120
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 1000
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.photo is string
+        && request.resource.data.photo.size() <= 500
+        && request.resource.data.admin == isAdmin()
+        && request.resource.data.createdAt == request.time;
+
+      // 修改：一律禁止（留言送出後不能被竄改）
+      allow update: if false;
+
+      // 刪除：本人 或 周周
+      allow delete: if request.auth != null
+        && (resource.data.uid == request.auth.uid || isAdmin());
+    }
+
+    // 其餘所有路徑：全部禁止
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
