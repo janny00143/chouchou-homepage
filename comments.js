@@ -35,6 +35,10 @@ const COOLDOWN_SEC = 30;
 /* 周周的管理帳號（登入後可刪除任何留言）。要改就改這裡。 */
 const ADMIN_EMAILS = ["janny00jou@gmail.com"];
 
+/* 有新留言時寄信通知周周用的 Web3Forms key（與意見回饋表單同一組，
+   本來就是公開用的表單 key，不是密碼）。留空字串就會關掉通知功能。 */
+const NOTIFY_KEY = "d1ac2743-8999-4270-abe8-9896caaf693b";
+
 /* ── 留言過濾（周周指示：禁連結、禁謾罵、禁詐騙）──
    周周本人（ADMIN_EMAILS）不受連結限制，方便回覆時貼 LINE。 */
 const RE_LINK = /(https?:\/\/|www\.|[a-z0-9-]{2,}\.(com|net|org|jp|tw|cn|io|me|co|xyz|top|shop|link|site|online|vip|info|ru|biz|club)\b|[@＠]line|line\s*id|賴\s*id|加\s*賴)/i;
@@ -104,6 +108,34 @@ const CSS = `
 `;
 
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+/* ── 有人留言 → 立刻寄信通知周周（用網站原本就在用的 Web3Forms，免費且即時）──
+   ・周周自己留言不通知（不然會一直收到自己的信）
+   ・寄失敗不影響留言本身，留言已經存進 Firestore 了
+   ・刻意不寄留言者的 Email：那是個資，要看名單去 Firebase → Authentication → 用戶 就有 */
+function notifyOwner(text, user, slug){
+  try{
+    if(!NOTIFY_KEY) return;
+    if(user && ADMIN_EMAILS.indexOf((user.email||"").toLowerCase())>-1) return;
+    const title = (document.title||"").replace(/｜.*$/,"").trim() || slug;
+    const url = location.href.split("#")[0] + "#cmts";
+    fetch("https://api.web3forms.com/submit",{
+      method:"POST",
+      headers:{"Content-Type":"application/json",Accept:"application/json"},
+      body:JSON.stringify({
+        access_key: NOTIFY_KEY,
+        subject: "💬 網站有新留言｜" + title.slice(0,50),
+        from_name: "周周網站・留言通知",
+        "留言者": (user && user.displayName) || "（未提供名稱）",
+        "留言內容": text,
+        "文章／頁面": title,
+        "頁面網址": url,
+        "留言時間": new Date().toLocaleString("ja-JP",{timeZone:"Asia/Tokyo"}) + "（日本時間）",
+        "備註": "要刪除這則留言：用 Google 登入後，留言旁邊會出現「刪除」鈕。"
+      })
+    }).catch(function(){});
+  }catch(e){}
+}
 
 function ago(d, lang){
   if(!d) return "";
@@ -198,6 +230,7 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
         });
         ta.value = ""; cnt.textContent = "0 / 1000 "+t.counter;
         try{ localStorage.setItem("cmtLast", String(Date.now())); }catch(e){}
+        notifyOwner(text, me, slug);
       }catch(e){
         const p=document.createElement("p"); p.className="cmt-err"; p.textContent=t.err; box.appendChild(p);
       }finally{ send.disabled=false; send.textContent=t.send; }
