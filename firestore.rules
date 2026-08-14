@@ -48,6 +48,10 @@ service cloud.firestore {
         && request.resource.data.name.size() <= 100
         && request.resource.data.photo is string
         && request.resource.data.photo.size() <= 500
+        // 頭像網址只允許空字串或 Google 帳號圖床，
+        // 防止有人把頭像換成自己的網址來記錄每個讀者的 IP
+        && (request.resource.data.photo == ''
+            || request.resource.data.photo.matches('https://lh[0-9]\\\\.googleusercontent\\\\.com/.*'))
         && request.resource.data.admin == isAdmin()
         && request.resource.data.createdAt == request.time;
 
