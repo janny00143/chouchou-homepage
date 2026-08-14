@@ -39,6 +39,12 @@ const ADMIN_EMAILS = ["janny00jou@gmail.com"];
    本來就是公開用的表單 key，不是密碼）。留空字串就會關掉通知功能。 */
 const NOTIFY_KEY = "d1ac2743-8999-4270-abe8-9896caaf693b";
 
+/* ⚠️ 測試用開關（2026-08-14 周周測通知時暫時打開）
+   true  = 連周周自己留言也寄通知（測試用）
+   false = 周周自己留言不寄（正式狀態）
+   測試確認信有進來之後，要改回 false。 */
+const NOTIFY_ADMIN_TOO = true;
+
 /* ── 留言過濾（周周指示：禁連結、禁謾罵、禁詐騙）──
    周周本人（ADMIN_EMAILS）不受連結限制，方便回覆時貼 LINE。 */
 const RE_LINK = /(https?:\/\/|www\.|[a-z0-9-]{2,}\.(com|net|org|jp|tw|cn|io|me|co|xyz|top|shop|link|site|online|vip|info|ru|biz|club)\b|[@＠]line|line\s*id|賴\s*id|加\s*賴)/i;
@@ -116,7 +122,8 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;",
 function notifyOwner(text, user, slug){
   try{
     if(!NOTIFY_KEY) return;
-    if(user && ADMIN_EMAILS.indexOf((user.email||"").toLowerCase())>-1) return;
+    const isAdm = user && ADMIN_EMAILS.indexOf((user.email||"").toLowerCase())>-1;
+    if(isAdm && !NOTIFY_ADMIN_TOO) return;
     const title = (document.title||"").replace(/｜.*$/,"").trim() || slug;
     const url = location.href.split("#")[0] + "#cmts";
     fetch("https://api.web3forms.com/submit",{
@@ -124,7 +131,7 @@ function notifyOwner(text, user, slug){
       headers:{"Content-Type":"application/json",Accept:"application/json"},
       body:JSON.stringify({
         access_key: NOTIFY_KEY,
-        subject: "💬 網站有新留言｜" + title.slice(0,50),
+        subject: (isAdm ? "🧪 通知測試｜" : "💬 網站有新留言｜") + title.slice(0,50),
         from_name: "周周網站・留言通知",
         "留言者": (user && user.displayName) || "（未提供名稱）",
         "留言內容": text,
