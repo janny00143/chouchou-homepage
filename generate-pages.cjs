@@ -73,7 +73,7 @@ function page(a) {
   const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="影片" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
   const ld = {
     "@context": "https://schema.org", "@type": "Article",
-    headline: a.title, description: a.ex,
+    headline: a.title, description: a.seo || a.ex,
     inLanguage: "zh-Hant",
     datePublished: a.date, dateModified: a.date,
     author: { "@type": "Person", name: "周周（周欣妤）" },
@@ -87,7 +87,7 @@ function page(a) {
     { "@type": "ListItem", position: 3, name: a.title, item: url }
   ] };
   const t = esc(a.title) + "｜周周・日本房仲";
-  const d = esc(a.ex);
+  const d = esc(a.seo || a.ex);   // seo：只給搜尋引擎看的長描述；沒填就用卡片摘要 ex
   const others = ART.filter(r => r.id !== a.id && (r.url || SLUG[r.id]));
   const rel = [...others.filter(r => r.cat === a.cat), ...others.filter(r => r.cat !== a.cat).sort((x, y) => (y.date || "").localeCompare(x.date || ""))].slice(0, 3);
   const relHTML = rel.length ? `<section style="margin-top:32px;border-top:1px solid var(--line);padding-top:18px"><h2 style="font-size:18px;margin-bottom:10px">延伸閱讀</h2>` + rel.map(r => `<a href="${r.url || SLUG[r.id] + ".html"}" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ ${r.title}</a>`).join("") + `</section>` : "";
