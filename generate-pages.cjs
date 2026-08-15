@@ -192,9 +192,9 @@ for (const p of STATIC_TOOLS) {
 }
 urls.push({ loc: BASE + "translate-ja.html", pr: "0.6" });
 urls.push({ loc: BASE + "quiz.html", pr: "0.6" });
-urls.push({ loc: BASE + "quiz-cn.html", pr: "0.5" });
+urls.push({ loc: BASE + "privacy.html", pr: "0.3" });
+urls.push({ loc: BASE + "privacy-ja.html", pr: "0.3" });
 urls.push({ loc: BASE + "partners.html", pr: "0.6" });
-urls.push({ loc: BASE + "partners-cn.html", pr: "0.5" });
 urls.push({ loc: BASE + "partners-ja.html", pr: "0.5" });
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urls.map(u => `<url><loc>${u.loc}</loc>${u.lm ? `<lastmod>${u.lm}</lastmod>` : ""}${u.cf ? `<changefreq>${u.cf}</changefreq>` : ""}<priority>${u.pr}</priority></url>`).join("\n") +
