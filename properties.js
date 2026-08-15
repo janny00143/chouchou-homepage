@@ -469,6 +469,7 @@ window.PROPERTIES = [
 
   {
     id: "shiba2802",
+    video: "g6TzzDSh5NA",
     status: "在售",
     cat: "live",
     title: "クレストプライムタワー芝 2802",
