@@ -41,6 +41,7 @@ main{padding:22px 0 10px}
 .pleft{flex:1 1 540px;min-width:0}.pgal{min-width:0}
 .pmain{position:relative;background:#f5f5f4;border-radius:16px;overflow:hidden;height:clamp(320px,54vh,560px);cursor:zoom-in}
 .pmain img{width:100%;height:100%;object-fit:cover;display:block}
+.pmain .perstag{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.58);color:#fff;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.3px;pointer-events:none}
 .pmain .pnav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.42);color:#fff;border:none;font-size:30px;cursor:pointer;padding:8px 14px;line-height:1;font-family:inherit;border-radius:10px}
 .pmain .pnav:hover{background:rgba(0,0,0,.72)}
 .pmain .pnav.prev{left:12px}.pmain .pnav.next{right:12px}
@@ -244,6 +245,7 @@ body.noscroll{overflow:hidden}
         +(multi?'<button class="pnav prev" id="pprev" aria-label="上一张">‹</button><button class="pnav next" id="pnext" aria-label="下一张">›</button>':'')
         +'<span class="pcnt" id="pcnt">1 / '+photos.length+'</span>'
         +'<span class="pzoom">🔍 点图放大</span>'
+        +'<span class="perstag" id="perstag" style="display:none">完成预想图</span>'
         +'</div>'
         +(multi?'<div class="pthumbs" id="pthumbs">'+photos.map(function(src,idx){return '<img src="'+esc(src)+'" data-i="'+idx+'" alt="">';}).join("")+'</div>':'')
         +'</div>';
@@ -279,6 +281,7 @@ body.noscroll{overflow:hidden}
 
     if(photos.length){
       pImg=document.getElementById("pimg"); pCnt=document.getElementById("pcnt"); pThumbs=document.getElementById("pthumbs");
+      pPers=document.getElementById("perstag"); markPers();
       document.getElementById("pmain").addEventListener("click",function(e){ if(e.target.closest(".pnav"))return; openZoom(); });
       var pv=document.getElementById("pprev"),nx=document.getElementById("pnext");
       if(pv)pv.onclick=function(e){e.stopPropagation();step(-1);};
@@ -286,8 +289,15 @@ body.noscroll{overflow:hidden}
       if(pThumbs)pThumbs.addEventListener("click",function(e){var t=e.target.closest("img[data-i]");if(t){pi=+t.getAttribute("data-i");show();}});
     }
   }
+  /* 完成预想图（パース）必须标示，避免被误认为实景照片 */
+  var pPers=null;
+  function markPers(){
+    if(!pPers)return;
+    pPers.style.display=/-pers\./.test(String(photos[pi]||""))?"":"none";
+  }
   function show(){
     if(!pImg)return;
+    markPers();
     pImg.src=photos[pi]; if(pCnt)pCnt.textContent=(pi+1)+" / "+photos.length;
     if(pThumbs)Array.prototype.forEach.call(pThumbs.children,function(t,idx){t.classList.toggle("on",idx===pi);var a=pThumbs.children[pi];if(a&&a.scrollIntoView)a.scrollIntoView({inline:"nearest",block:"nearest"});});
     if(zImg&&zoom.classList.contains("on")){zImg.src=photos[pi];zCnt.textContent=(pi+1)+" / "+photos.length;}

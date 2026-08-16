@@ -85,7 +85,9 @@ footer a{color:#d6d3d1;text-decoration:none}
 /* 精簡卡片：封面＋名稱（日/中）＋價格＋車站，整張連到獨立物件頁 */
 .card{cursor:pointer;text-decoration:none;color:inherit}
 .card .ph .cnt{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
-.card .ph .vtag{position:absolute;bottom:10px;left:10px;background:rgba(225,29,72,.92);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.3px}
+.card .ph .tagrow{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;max-width:calc(100% - 78px)}
+.card .ph .vtag{background:rgba(225,29,72,.92);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.3px;white-space:nowrap}
+.card .ph .ptag{background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .card .body{padding:16px 17px 18px;gap:2px}
 .card h3{min-height:0;font-size:16.5px;font-weight:700;line-height:1.45}
 .card .price{margin:8px 0 7px}
@@ -187,10 +189,13 @@ footer a{color:#d6d3d1;text-decoration:none}
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
     var laytag=lay?'<span class="laytag">'+esc(lay)+'</span>':'';
     
+    /* 完成預想圖（パース）必須標示，不可讓人誤認為實景照 */
+    var isPers=/-pers\./.test(String((p.photos&&p.photos[0])||""));
+    var ptag=isPers?'<span class="ptag">完成予想図</span>':"";
     var vtag=p.video?'<span class="vtag">🎬 動画あり</span>':"";
     var station=p.station?'<div class="station">🚉 '+C(p.station)+'</div>':"";
     return '<a class="card" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">'
-      +'<div class="ph">'+photo+badge+tag+vtag+'</div>'
+      +'<div class="ph">'+photo+badge+tag+((vtag||ptag)?'<span class="tagrow">'+vtag+ptag+'</span>':"")+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
       +PRICEHTML(p.price,'price','価格はお問い合わせください')
