@@ -84,6 +84,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 /* 精简卡片：封面＋名称（日/中）＋价格＋车站，整张连到独立物件页 */
 .card{cursor:pointer;text-decoration:none;color:inherit}
 .card .ph .cnt{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.card .ph .vtag{position:absolute;bottom:10px;left:10px;background:rgba(225,29,72,.92);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.3px}
 .card .body{padding:16px 17px 18px;gap:2px}
 .card h3{min-height:0;font-size:16.5px;font-weight:700;line-height:1.45}
 .card .price{margin:8px 0 7px}
@@ -128,7 +129,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">一户建</button>
     <button data-cat="land">土地</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="size-asc">面积：小 → 大</option></select></div>
+  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget" style="margin-left:8px"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -164,7 +165,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
   var _isCnFx=/-cn\.html$/.test(location.pathname);
   var FXCUR=_isCnFx?"CNY":"TWD",FXFB=_isCnFx?0.048:0.21,FXPRE=_isCnFx?"约 ¥":"约 NT$",FXSUF=_isCnFx?"万人民币":"万台币",FXRATE=null;
-  function parseYen(p){var m=String(p||"").match(/(?:([\d.]+)亿)?(?:([\d,]+)万)?円/);if(!m||(!m[1]&&!m[2]))return 0;return ((m[1]?parseFloat(m[1])*1e4:0)+(m[2]?parseInt(m[2].replace(/,/g,""),10):0))*1e4;}
+  function parseYen(p){var m=String(p||"").match(/(?:([\d.]+)[\u5104\u4ebf])?(?:([\d,]+)[\u4e07\u842c])?[\u5186]/);if(!m||(!m[1]&&!m[2]))return 0;return ((m[1]?parseFloat(m[1])*1e4:0)+(m[2]?parseInt(m[2].replace(/,/g,""),10):0))*1e4;}
   function fxFill(){var r=FXRATE||FXFB;var els=document.querySelectorAll("[data-yen]");for(var i=0;i<els.length;i++){var y=parseFloat(els[i].getAttribute("data-yen"));if(!(y>0))continue;els[i].textContent=FXPRE+" "+Math.round(y*r/1e4).toLocaleString()+" "+FXSUF+(FXRATE?"":"※");}}
   try{fetch("https://open.er-api.com/v6/latest/JPY").then(function(r){return r.json();}).then(function(j){if(j&&j.rates&&j.rates[FXCUR]){FXRATE=j.rates[FXCUR];fxFill();}}).catch(function(){});}catch(e){}
 
@@ -188,9 +189,10 @@ footer a{color:#d6d3d1;text-decoration:none}
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
     var laytag=lay?'<span class="laytag">'+esc(lay)+'</span>':'';
     
+    var vtag=p.video?'<span class="vtag">🎬 有影片</span>':"";
     var station=p.station?'<div class="station">🚉 '+C(p.station)+'</div>':"";
     return '<a class="card" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">'
-      +'<div class="ph">'+photo+badge+tag+'</div>'
+      +'<div class="ph">'+photo+badge+tag+vtag+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
       +PRICEHTML(p.price,'price','价格请洽询')
@@ -214,22 +216,30 @@ footer a{color:#d6d3d1;text-decoration:none}
     var tg={};
     tg.house=(p.cat==="house");
     tg.land=(p.cat==="land");
-    var whole=/整栋|钢骨造整栋/.test(String(p.layout||"")+String(p.title||""));
+    var whole=/\u6574[\u68df\u680b]/.test(String(p.layout||"")+String(p.title||""));
     tg.mansion=!tg.house&&!tg.land&&!whole;
     tg.invest=(p.cat==="invest")||!!(p.yield&&String(p.yield).trim());
     tg.live=(p.cat==="live")||tg.house||/自住|居住用|ご自宅|自宅/.test(String(p.note||"")+String(p.title_cn||"")+String((p.catch||"")));
     return tg;
   }
   function sizeNum(p){var m=String(p.size||"").match(/([\d.]+)\s*(?:㎡|m)/);return m?parseFloat(m[1]):0;}
-  var selCats=[];
+  var selCat="";  /* 一次只选一个分类，避免同时点两个造成混乱 */
   var sortMode="default";
+  /* 预算区间（单位：日圆）。价格未公开的物件在选了区间之后会先不显示。 */
+  var BUDGET={a:[0,3000e4],b:[3000e4,5000e4],c:[5000e4,8000e4],d:[8000e4,15000e4],e:[15000e4,Infinity]};
+  var budgetMode="all";
+  function inBudget(p){
+    if(budgetMode==="all")return true;
+    var r=BUDGET[budgetMode]; if(!r)return true;
+    var y=parseYen(p.price); if(!(y>0))return false;
+    return y>=r[0] && y<r[1];
+  }
   function render(){
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=act.filter(function(p){
-      if(!selCats.length)return true;
-      var tg=ptags(p);
-      for(var i=0;i<selCats.length;i++){ if(!tg[selCats[i]]) return false; }
-      return true;
+      if(!inBudget(p))return false;
+      if(!selCat)return true;
+      return !!ptags(p)[selCat];
     });
     if(sortMode!=="default"){
       items=items.slice();
@@ -248,21 +258,18 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   document.getElementById("tabs").addEventListener("click",function(e){
     var b=e.target.closest("button"); if(!b)return;
-    var all=this.querySelector('[data-cat="all"]');
-    if(b.dataset.cat==="all"){
-      selCats=[];
-      Array.prototype.forEach.call(this.querySelectorAll("button"),function(x){x.classList.remove("on");});
-      all.classList.add("on");
-    }else{
-      var c=b.dataset.cat, idx=selCats.indexOf(c);
-      if(idx>-1){selCats.splice(idx,1);b.classList.remove("on");}
-      else{selCats.push(c);b.classList.add("on");}
-      all.classList.toggle("on",!selCats.length);
-    }
+    var c=b.dataset.cat;
+    /* 单选：再点一次同一个分类就回到「全部」 */
+    selCat=(c==="all"||c===selCat)?"":c;
+    Array.prototype.forEach.call(this.querySelectorAll("button"),function(x){
+      x.classList.toggle("on", selCat ? (x.dataset.cat===selCat) : (x.dataset.cat==="all"));
+    });
     render();
   });
   var _ps=document.getElementById("psort");
   if(_ps){_ps.addEventListener("change",function(){sortMode=this.value;render();});}
+  var _pb=document.getElementById("pbudget");
+  if(_pb){_pb.addEventListener("change",function(){budgetMode=this.value;render();});}
 
   function boot(){ render(); renderSold(); }
   // 简中页：载入 OpenCC 繁→简，让你只维护一份繁中 properties.js，简中自动同步。

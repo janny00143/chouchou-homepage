@@ -54,7 +54,7 @@ function pageJa(a, j) {
     { "@type": "ListItem", position: 3, name: j.title, item: url }
   ] };
   const t = esc(j.title) + "｜周周・日本の不動産";
-  const d = esc(j.ex);
+  const d = esc(j.seo || j.ex);   // seo：只給搜尋引擎看的長描述；沒填就用卡片摘要 ex
   const others = ART.filter(r => r.id !== a.id && SLUG[r.id] && JA_CONTENT[r.id]);
   const rel = [...others.filter(r => r.cat === a.cat), ...others.filter(r => r.cat !== a.cat).sort((x, y) => (y.date || "").localeCompare(x.date || ""))].slice(0, 3);
   const relHTML = rel.length ? `<section style="margin-top:32px;border-top:1px solid var(--line);padding-top:18px"><h2 style="font-size:18px;margin-bottom:10px">関連記事</h2>` + rel.map(r => `<a href="${jaSlug(SLUG[r.id])}.html" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ ${JA_CONTENT[r.id].title}</a>`).join("") + `</section>` : "";

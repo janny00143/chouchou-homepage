@@ -154,6 +154,12 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .strict b{color:#b45309}
 .strict p{font-size:14px;color:#44403c;line-height:1.85;margin:0}
 .cta{text-align:center;margin-top:22px}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin:0 auto 16px}
+.picks a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#fff;border:1.8px solid #f6adbe;border-radius:14px;padding:14px 12px;text-decoration:none;color:var(--rose-d);font-weight:700;font-size:15px;line-height:1.4}
+.picks a:hover{background:#fff1f5}
+.picks a .pk-i{font-size:22px}
+.picks a small{display:block;font-weight:500;font-size:12.5px;color:var(--mut);line-height:1.6}
+@media(max-width:480px){.picks{grid-template-columns:1fr}}
 .cta a.line{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:700;font-size:17px;padding:15px 38px;border-radius:999px;box-shadow:0 8px 22px rgba(16,185,129,.28)}
 .cta a.line:hover{background:var(--green-d)}
 .cta .re{display:block;margin-top:14px;background:none;border:none;color:var(--mut);font-family:inherit;font-size:14px;cursor:pointer;width:100%;padding:6px}
@@ -777,6 +783,10 @@ function showResult(branch, top, also, strict, score, ranked){
   }
 
   h += '<div class="cta">';
+  h += '<div class="picks">'
+     + '<a href="properties-cn.html"><span class="pk-i">🏠</span>看看周周手上的物件<small>目前在售的东京物件一次看</small></a>'
+     + '<a href="index.html#arts"><span class="pk-i">📖</span>先看文章做功课<small>买房・贷款・税务一篇篇说清楚</small></a>'
+     + '</div>';
   h += '<a class="line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 问周周这个方向</a>';
   h += '<button class="re" onclick="start()">↺ 重新测一次</button>';
   h += '</div>';
