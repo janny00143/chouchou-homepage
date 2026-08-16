@@ -70,7 +70,7 @@ main{padding:22px 0 10px}
 .pmap{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:#57534e;text-decoration:none}
 .pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
-.pnote .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:7px;font-size:14.5px}
+.pnote .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:7px;font-size:14.5px}.pnote .np{margin:0 0 11px;line-height:1.95}.pnote .np:last-child{margin-bottom:0}.pnote .nsub{display:block;font-weight:700;color:var(--rose-d);font-size:14.5px;margin:16px 0 6px;padding-left:9px;border-left:3px solid var(--rose)}.pnote .nsub:first-child{margin-top:0}
 .pvideo{margin:22px 0 6px}
 .pvideo .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:8px;font-size:14.5px}
 .pvwrap{position:relative;padding-bottom:56.25%;height:0;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
@@ -152,6 +152,24 @@ body.noscroll{overflow:hidden}
 
   var conv=function(s){return s;};
   function C(s){return esc(conv(s==null?"":String(s)));}
+  /* 周周的看法：把長段落拆成好讀的區塊
+     ・note 裡用 \n 換行 → 一段一段
+     ・開頭是「■ 」的那行 → 變成粗體小標
+     ・完全沒有換行的舊資料 → 自動每 2~3 句切一段，不會整團糊在一起 */
+  function NOTEHTML(t){
+    t=String(t||"");
+    var lines=t.split("\n").map(function(x){return x.trim();}).filter(Boolean);
+    if(lines.length<2){
+      var sents=[],buf="";
+      for(var k=0;k<t.length;k++){buf+=t[k];if("\u3002\uff01\uff1f".indexOf(t[k])>-1){sents.push(buf);buf="";}}
+      if(buf.trim())sents.push(buf);
+      lines=[];for(var i=0;i<sents.length;i+=3){lines.push(sents.slice(i,i+3).join(""));}
+    }
+    return lines.map(function(l){
+      if(l.slice(0,1)==="\u25a0") return '<b class="nsub">'+C(l.slice(1).trim())+'</b>';
+      return '<p class="np">'+C(l)+'</p>';
+    }).join("");
+  }
   function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
 
   var photos=[],pi=0,pImg,pCnt,pThumbs;
@@ -190,7 +208,7 @@ body.noscroll{overflow:hidden}
       +row("地點",p.location)+row("車站",p.station)+row("格局",p.layout)+row("面積",p.size)
       +row("屋齡",p.age)+row("朝向",p.facing)+row("管理",p.mgmt)+row("權利",p.right)+row("投報",p.yield)+'</ul>';
     var mapBtn=p.location?'<a class="pmap" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.location)+'" target="_blank" rel="noopener">📍 在 Google 地圖看位置</a>':"";
-    var note=p.note?'<div class="pnote"><span class="nh">💬 周周的看法</span>'+C(p.note)+'</div>':"";
+    var note=p.note?'<div class="pnote"><span class="nh">💬 周周的看法</span>'+NOTEHTML(p.note)+'</div>':"";
     var vid="";
     if(p.video){var _vs=(p.video.slice(0,6)==="drive:")?("https://drive.google.com/file/d/"+p.video.slice(6)+"/preview"):("https://www.youtube.com/embed/"+p.video);vid='<div class="pvideo"><span class="nh">🎬 物件影片</span><div class="pvwrap"><iframe src="'+_vs+'" allow="fullscreen" allowfullscreen loading="lazy" title="物件影片"></iframe></div></div>';}
     var _su=location.href.split('#')[0];var _st=(p.title||'')+'｜'+(p.price||'');var share='<div class="share">'+'<a href="https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(_su)+'" target="_blank" rel="noopener">f 分享</a>'+'<a href="https://www.threads.net/intent/post?text='+encodeURIComponent(_st+' '+_su)+'" target="_blank" rel="noopener">Threads 分享</a>'+'<a href="https://twitter.com/intent/tweet?url='+encodeURIComponent(_su)+'&text='+encodeURIComponent(_st)+'" target="_blank" rel="noopener">𝕏 分享</a>'+'<a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href);this.textContent=String.fromCharCode(10003);return false">🔗 複製連結</a>'+'</div>';
