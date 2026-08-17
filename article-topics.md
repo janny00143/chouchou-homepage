@@ -10,13 +10,13 @@
 - 六大分類：`foreign` 外國人買房／`live` 自住攻略／`invest` 投資收租／`minpaku` 民宿法規／`area` 區域介紹／`loan` 貸款稅務。
 - 做法：從下面待寫清單挑「第一個 ⬜ 未寫且屬於目前最少分類」的主題；若最少分類暫時沒有合適待寫題，再往次少的分類挑。
 - 目的：讓六大分類文章數平均，不要某一類（如自住）一直長、某一類（如投資、民宿）長期偏少。
-- 分類現況快照（2026-08-10，僅供參考，每週實際重數）：`invest 投資 2`、`minpaku 民宿 2` 最少 → 優先；其次 `area 區域 4`；`foreign 5`、`loan 5`；`live 自住 9` 最多、暫緩。
+- 分類現況快照（2026-08-17 重數）：`minpaku 民宿 3`、`invest 投資 4`、`area 區域 4` 最少 → 優先；`loan 5`、`foreign 7`；`live 自住 9` 最多、暫緩。
 
 ## 封面圖庫（2026-08-08 周周新增，寫新文章時優先從這裡挑、已用過的不要重複）
 
-`pexels-francesco-siani-2150396285-31115437.jpg`（日式庭園水池）／`pexels-freestockpro-12955837.jpg`（木屋模型＋鑰匙＋文件）／`pexels-rdne-7414218.jpg`（圖表＋計算機・已用於a41）／`pexels-fotoaibe-1643383.jpg`（公寓客廳）／`pexels-luis-yanez-57302-206172.jpg`（洋房外觀）／`pexels-phat-tr-ng-1662052981-37785807.jpg`（現代大樓藍天）／`pexels-curtis-adams-1694007-4258277.jpg`（空房間採光）／`pexels-joanie-xie-1306424600-33752181.jpg`（獨棟外觀）
+`pexels-francesco-siani-2150396285-31115437.jpg`（日式庭園水池）／`pexels-freestockpro-12955837.jpg`（木屋模型＋鑰匙＋文件）／`pexels-rdne-7414218.jpg`（圖表＋計算機・已用於a41）／`pexels-fotoaibe-1643383.jpg`（公寓客廳・已用於a46）／`pexels-luis-yanez-57302-206172.jpg`（洋房外觀）／`pexels-phat-tr-ng-1662052981-37785807.jpg`（現代大樓藍天）／`pexels-curtis-adams-1694007-4258277.jpg`（空房間採光）／`pexels-joanie-xie-1306424600-33752181.jpg`（獨棟外觀）
 `pexels-pavel-danilyuk-7937717.jpg`（交付歐元現金＋平面圖，⚠️鈔票是歐元，日本主題慎用）
-`pexels-towfiqu-barbhuiya-3440682-8732777.jpg`（西裝手持房屋模型＋計算機）
+`pexels-towfiqu-barbhuiya-3440682-8732777.jpg`（西裝手持房屋模型＋計算機・已用於a45）
 ※ `cover-yen-handover.jpg`（交付日圓現金＋平面圖）已用於 a40。用前先 grep index.html 確認該檔名未被其他文章使用。
 
 ## 待寫主題（由上往下依序寫）
@@ -34,7 +34,7 @@
 12. ⬜ 車站距離對房價與轉手性的影響：徒步幾分是分水嶺？
 13. ⬜ 日本房貸提前還款（繰上返済）划算嗎？該還本金還是縮年限
 14. ⬜ 買房收租後的確定申告（報稅）入門：什麼要報、找誰報
-15. ⬜ 民宿 vs 月租公寓（マンスリー）vs 一般出租：三種收益模式比較
+15. ✅ 2026-08-17 minpaku-monthly-rental-comparison 民宿 vs 月租公寓（マンスリー）vs 一般出租：三種收益模式比較（a46・minpaku）
 16. ⬜ 建物檢查（ホームインスペクション）是什麼？中古屋要不要驗屋
 17. ⬜ 外國人持有日本房產的繼承（相続）問題入門（結尾提醒：依司法書士／稅理士確認）
 18. ⬜ 出租時的禮金、敷金、廣告費（AD）行情：房東要付哪些成本
@@ -49,3 +49,5 @@
 
 （完成的主題移到這裡，格式：✅ 2026-08-15 `slug-name` 主題）
 ✅ 2026-08-10 `how-to-transfer-money-japan-property` 日本買房的錢怎麼匯？海外匯款流程、時間點與匯率
+✅ 2026-08-17 `japan-rental-yield-gross-vs-net` 表面利回り vs 実質利回り：外國人買收租房最常誤判的 5 件事（a45・invest）
+✅ 2026-08-17 `minpaku-monthly-rental-comparison` 民宿 vs 月租公寓 vs 一般出租：三種收益模式比較（a46・minpaku）
