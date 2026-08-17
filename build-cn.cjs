@@ -62,7 +62,14 @@ const made = internal.map(convertFile);
 // 7) 更新 sitemap：加入 -cn 內容頁
 let sm = fs.readFileSync(ROOT + "/sitemap.xml", "utf8");
 if (!sm.includes("index-cn.html")) {
-  const cnStatic = staticPages.filter(f => f !== "index.html").map(cn);
+  // 帶 noindex 的頁面（例如 property.html 這種要靠 ?id= 才有內容的殼頁）不可放進 sitemap，
+  // 否則 sitemap 說「請收錄」、頁面說「不要收錄」，Google Search Console 會報
+  // 「遭到 noindex 標記排除」。繁中／日文版本來就沒放，簡中版之前漏掉了。
+  const isNoindex = f => {
+    try { return /<meta[^>]+name=["']robots["'][^>]*noindex/i.test(fs.readFileSync(ROOT + "/" + f, "utf8")); }
+    catch (e) { return false; }
+  };
+  const cnStatic = staticPages.filter(f => f !== "index.html" && !isNoindex(f)).map(cn);
   const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), ...cnStatic]
     .map(u => `<url><loc>${BASE}${u}</loc><priority>0.6</priority></url>`).join("\n");
   sm = sm.replace("</urlset>", extra + "\n</urlset>");
