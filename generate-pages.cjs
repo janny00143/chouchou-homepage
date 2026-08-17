@@ -13,7 +13,7 @@ const CATS = eval(src.match(/const CATS=(\[[\s\S]*?\]);/)[1]);
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
-  "a42": "keiei-kanri-visa-renewal-2028", "a43": "japan-property-company-vs-individual", "a44": "japan-business-visa-office-hunting",
+  "a45": "japan-rental-yield-gross-vs-net", "a46": "minpaku-monthly-rental-comparison", "a42": "keiei-kanri-visa-renewal-2028", "a43": "japan-property-company-vs-individual", "a44": "japan-business-visa-office-hunting",
   "a41": "how-to-transfer-money-japan-property",
   "a40": "how-to-verify-japan-real-estate-agent",
   "a39": "japan-property-after-sales-service",
