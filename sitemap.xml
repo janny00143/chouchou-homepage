@@ -48,8 +48,8 @@
 <url><loc>https://chouchouinjapan.com/japan-utilities-setup-guide.html</loc><lastmod>2026-07-04</lastmod><priority>0.8</priority></url>
 <url><loc>https://chouchouinjapan.com/japan-phone-sim-no-visa-guide.html</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
 <url><loc>https://chouchouinjapan.com/translate.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/properties.html</loc><priority>0.7</priority></url>
-<url><loc>https://chouchouinjapan.com/properties-ja.html</loc><priority>0.7</priority></url>
+<url><loc>https://chouchouinjapan.com/properties.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://chouchouinjapan.com/properties-ja.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 <url><loc>https://chouchouinjapan.com/property-types.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/property-types-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tokyo-area-guide.html</loc><priority>0.7</priority></url>

@@ -169,6 +169,26 @@
   3. 在 repo 根目錄執行 `node generate-pages.cjs` 重新產生獨立頁與 `sitemap.xml`／`robots.txt`。
   4. commit／push。
 - **不要手改** `<slug>.html`、`sitemap.xml`、`robots.txt`（重跑產生器會覆蓋）。
+
+### ⭐ 產生器的固定執行順序（順序不能換）
+
+```
+node generate-pages.cjs   # 文章獨立頁＋sitemap＋robots
+node build-cn.cjs         # 繁→簡，產生所有 -cn 頁並把 -cn 網址補進 sitemap
+node build-ja.cjs         # 日文文章頁（讀 ja-content.json）
+node build-ja-home.cjs    # 日文首頁 ja.html
+node build-prop-seo.cjs   # ★ 一定要最後跑：物件專區的 JSON-LD ＋ noscript 清單
+```
+
+- `build-prop-seo.cjs` 會把「目前在售物件」寫成結構化資料與純 HTML 清單，塞進
+  `properties.html` / `properties-cn.html` / `properties-ja.html` 的 `<!--PROP-SEO-->` 區塊。
+  物件卡片本身是 JS 渲染的，沒有這段的話搜尋引擎讀不到任何物件內容。
+- **必須排在 `build-cn.cjs` 之後**，因為 `properties-cn.html` 是 build-cn 從繁中版重新產生的，
+  先跑會被蓋掉、而且簡中頁會殘留繁中版的網址。
+- **`<!--PROP-SEO-->` 到 `<!--/PROP-SEO-->` 之間不要手改**，改物件請改 `properties.js` 再重跑。
+- **帶 `noindex` 的頁面不可以進 sitemap**（例如 `property.html` 這種要靠 `?id=` 才有內容的殼頁）。
+  否則 sitemap 說「請收錄」、頁面說「不要收錄」，Search Console 會報「遭到 noindex 標記排除」。
+  `build-cn.cjs` 已會自動偵測並排除，不要手動把這類頁加回 sitemap。
 - 讓 Google 收錄：須在 **Google Search Console** 驗證網站並提交 `sitemap.xml`（帳號層級操作，由周周做；驗證碼可交給 AI 加到首頁 head）。
 
 > 註：這等於多了「產生頁面」一步。雖非傳統 build，但**改完文章一定要重跑產生器**，否則獨立頁與 sitemap 會跟 `ART` 不同步。
