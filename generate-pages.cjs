@@ -4,6 +4,43 @@
    每次有改文章，重跑這支即可重新產生。 */
 const fs = require("fs");
 const BASE = "https://chouchouinjapan.com/";
+
+/* ── 作者／發行者的權威資訊（E-E-A-T）──
+   房產與金錢屬於 Google 的 YMYL 類別，作者的專業資格權重很高。
+   這裡把宅建士資格、公司與免許番号、社群帳號接進每篇文章的結構化資料，
+   並指向可被索引的作者介紹頁 about.html。資料有變動請只改這一處。 */
+const AUTHOR_TW = {
+  "@type": "Person",
+  name: "周欣妤",
+  alternateName: ["周周", "シュウ シンユウ"],
+  url: BASE + "about.html",
+  jobTitle: "宅地建物取引士",
+  knowsLanguage: ["zh-Hant", "ja", "zh-Hans"],
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "日本國家資格",
+    name: "宅地建物取引士（宅建士）",
+    recognizedBy: { "@type": "GovernmentOrganization", name: "日本國土交通省" }
+  },
+  worksFor: {
+    "@type": "RealEstateAgent",
+    name: "株式会社アンドプラス 住宅営業部",
+    identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: "東京都知事 (2) 第102938号" },
+    url: BASE
+  },
+  sameAs: ["https://www.youtube.com/@travelfish67",
+           "https://www.instagram.com/travelfish67/",
+           "https://www.facebook.com/profile.php?id=100002070697066"]
+};
+const PUBLISHER_TW = {
+  "@type": "RealEstateAgent",
+  name: "周周・日本房仲（株式会社アンドプラス）",
+  url: BASE,
+  identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: "東京都知事 (2) 第102938号" },
+  address: { "@type": "PostalAddress", addressCountry: "JP", postalCode: "150-0032",
+             addressRegion: "東京都", addressLocality: "渋谷区", streetAddress: "鶯谷町3-1 ＳＵビル301号" }
+};
+
 const ROOT = __dirname;
 
 let src = fs.readFileSync(ROOT + "/index.html", "utf8");
@@ -77,8 +114,8 @@ function page(a) {
     headline: a.title, description: a.seo || a.ex,
     inLanguage: "zh-Hant",
     datePublished: a.date, dateModified: a.date,
-    author: { "@type": "Person", name: "周周（周欣妤）" },
-    publisher: { "@type": "Organization", name: "周周・日本房仲" },
+    author: AUTHOR_TW,
+    publisher: PUBLISHER_TW,
     mainEntityOfPage: url
   };
   if (cover) ld.image = cover;
@@ -193,6 +230,8 @@ for (const p of STATIC_TOOLS) {
 }
 urls.push({ loc: BASE + "translate-ja.html", pr: "0.6" });
 urls.push({ loc: BASE + "quiz.html", pr: "0.6" });
+urls.push({ loc: BASE + "about.html", pr: "0.8" });      // 作者介紹頁：E-E-A-T 的權威來源
+urls.push({ loc: BASE + "about-ja.html", pr: "0.8" });
 urls.push({ loc: BASE + "privacy.html", pr: "0.3" });
 urls.push({ loc: BASE + "privacy-ja.html", pr: "0.3" });
 urls.push({ loc: BASE + "partners.html", pr: "0.6" });

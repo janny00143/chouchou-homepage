@@ -39,6 +39,7 @@
 .note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:13px;line-height:1.7}
 .cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-bottom:18px}.cta p{margin-bottom:12px;font-size:15px}
 .cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
+.cta .btn-prop{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);color:#fff;border:1.6px solid rgba(255,255,255,.85);border-radius:999px;font-weight:700;font-size:15px;padding:11px 24px;text-decoration:none}.cta .btn-prop:hover{background:rgba(255,255,255,.3)}.cta .ctabtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px;line-height:1.8}
 html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
@@ -60,7 +61,7 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
     <div class="tiers"><b>📐 分级距公式（需另计 10% 消费税）</b><br>・房价 <b>200 万日圆以下</b>：房价 × 5%<br>・房价 <b>200～400 万日圆</b>：房价 × 4% ＋ 2 万日圆<br>・房价 <b>超过 400 万日圆</b>：房价 × 3% ＋ 6 万日圆</div>
     <div class="note">⚠️ 此为法定「上限」，实际以契约为准；金额四舍五入概算。新成屋／建商直售等情况仲介费可能不同。<br><b style="color:#b45309">本试算仅为「自动概算」、仅供参考，不可作为实际或法律依据；一切务必以仲介／司法书士等专业人士的判断为主。</b></div>
   </div>
-  <div class="cta"><p>算完想找适合的物件，或想确认这笔仲介费？<br>把结果直接传给周周 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div>
+  <div class="cta"><p>算完想找适合的物件，或想确认这笔仲介费？<br>把结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看周周自己在卖的物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
   <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以契约、各银行与最新法规为准。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200万以下（5%）";if(price<=4e6)return "200～400万（4%＋2万）";return "超过400万（3%＋6万）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=Math.round(fee).toLocaleString()+" 日圆（约 "+((fee/1e4).toFixed(1).replace(/\.0$/,""))+" 万）";$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

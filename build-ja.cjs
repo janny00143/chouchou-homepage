@@ -2,6 +2,42 @@
    用法：先跑 node generate-pages.cjs，再跑 node build-ja.cjs */
 const fs = require("fs");
 const BASE = "https://chouchouinjapan.com/";
+
+/* ── 著者・発行者の権威情報（E-E-A-T）──
+   宅建士資格・免許番号・SNSを構造化データに接続し、about-ja.html を指す。
+   変更時はここだけ直すこと。 */
+const AUTHOR_JA = {
+  "@type": "Person",
+  name: "周欣妤",
+  alternateName: ["シュウ シンユウ", "周周"],
+  url: BASE + "about-ja.html",
+  jobTitle: "宅地建物取引士",
+  knowsLanguage: ["ja", "zh-Hant", "zh-Hans"],
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "日本の国家資格",
+    name: "宅地建物取引士",
+    recognizedBy: { "@type": "GovernmentOrganization", name: "国土交通省" }
+  },
+  worksFor: {
+    "@type": "RealEstateAgent",
+    name: "株式会社アンドプラス 住宅営業部",
+    identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: "東京都知事 (2) 第102938号" },
+    url: BASE
+  },
+  sameAs: ["https://www.youtube.com/@travelfish67",
+           "https://www.instagram.com/travelfish67/",
+           "https://www.facebook.com/profile.php?id=100002070697066"]
+};
+const PUBLISHER_JA = {
+  "@type": "RealEstateAgent",
+  name: "周周・日本の不動産（株式会社アンドプラス）",
+  url: BASE,
+  identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: "東京都知事 (2) 第102938号" },
+  address: { "@type": "PostalAddress", addressCountry: "JP", postalCode: "150-0032",
+             addressRegion: "東京都", addressLocality: "渋谷区", streetAddress: "鶯谷町3-1 ＳＵビル301号" }
+};
+
 const ROOT = __dirname;
 
 let src = fs.readFileSync(ROOT + "/index.html", "utf8");
@@ -43,8 +79,8 @@ function pageJa(a, j) {
     headline: j.title, description: j.ex,
     inLanguage: "ja",
     datePublished: a.date, dateModified: a.date,
-    author: { "@type": "Person", name: "周欣妤（シュウ・シンユウ）" },
-    publisher: { "@type": "Organization", name: "周周・日本の不動産" },
+    author: AUTHOR_JA,
+    publisher: PUBLISHER_JA,
     mainEntityOfPage: url
   };
   if (cover) ld.image = cover;
