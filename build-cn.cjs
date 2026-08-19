@@ -13,7 +13,7 @@ const slugs = [...slugMatch[1].matchAll(/"a\d+":"([^"]+)"/g)].map(m => m[1]);
 
 // 需要產生 -cn 的內部頁面（會被互相連結的都要做，否則 404）
 const staticPages = ["index.html","properties.html","property.html","minpaku.html","translate.html","feedback.html","videos.html","tools.html","partners.html","quiz.html","property-types.html","tokyo-area-guide.html",
-  "privacy.html","tool-loan.html","tool-cost.html","tool-agent.html","tool-yield.html","tool-fx.html","tool-area.html","tool-convert.html"];
+  "about.html","privacy.html","tool-loan.html","tool-cost.html","tool-agent.html","tool-yield.html","tool-fx.html","tool-area.html","tool-convert.html"];
 const internal = [...staticPages, ...slugs.map(s => s + ".html")].filter(f => fs.existsSync(ROOT + "/" + f));
 const cn = f => f.replace(/\.html$/, "-cn.html");
 
@@ -26,17 +26,39 @@ function convertFile(file) {
     store.push(m); return "@@A" + (store.length - 1) + "@@";
   });
 
+  // 1b) 保護法定登記資訊（CLAUDE.md §7 例外：公司登記名稱、免許番号、地址、姓名拼音
+  //     必須與正式文件一致，不可簡體化）
+  const KEEP = [
+    "東京都知事 (2) 第102938号",
+    "株式会社アンドプラス 住宅営業部",
+    "株式会社アンドプラス",
+    "宅地建物取引業者免許番号",
+    "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号",
+    "鶯谷町3-1 ＳＵビル301号",
+    "東京都知事",
+    "シュウ シンユウ"
+  ];
+  const keep = [];
+  for (const K of KEEP) {
+    s = s.split(K).join("@@K" + keep.length + "@@");
+    keep.push(K);
+  }
+
   // 2) 繁→簡
   s = conv(s);
 
-  // 3) 還原檔名
+  // 3) 還原檔名與法定登記資訊
   s = s.replace(/@@A(\d+)@@/g, (_, i) => store[+i]);
+  s = s.replace(/@@K(\d+)@@/g, (_, i) => keep[+i]);
 
   // 4) 內部連結改 -cn（相對連結，ja.html 與外部/資產不動）
   for (const P of internal) {
     s = s.split('="' + P + '"').join('="' + cn(P) + '"');
     s = s.split("='" + P + "'").join("='" + cn(P) + "'");
   }
+
+  // 4b) 結構化資料裡的作者頁網址（JSON 字串，不是 href，上面的連結改寫吃不到）
+  s = s.split('"' + BASE + 'about.html"').join('"' + BASE + 'about-cn.html"');
 
   // 5) canonical / og:url 指向自己的 -cn
   if (file === "index.html") {

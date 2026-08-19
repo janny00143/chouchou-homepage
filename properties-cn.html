@@ -132,7 +132,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">一户建</button>
     <button data-cat="land">土地</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget" style="margin-left:8px"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select></div>
+  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget" style="margin-left:8px"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk" style="margin-left:8px"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -143,7 +143,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <b>物件资讯说明</b><br>
     台币参考价依即时汇率自动换算（无法取得时以参考汇率概算、标记※），仅供参考，实际交易以日圆计价。<br>本页物件仅供参考，物件状况、价格与条件<b>可能随时异动或已成约</b>，最终条件请以<b>现况及重要事项说明书</b>为准。物件实际收益、可贷成数与税费依个案、依银行与税理士审查为准，本页不构成任何投资或收益保证。<br>
     <br>
-    宅地建物取引业者：<b>株式会社アンドプラス 住宅営业部</b>｜免许番号：<b>东京都知事 (2) 第102938号</b>｜担当：周 欣妤（シュウ シンユウ）｜〒150-0032 东京都渋谷区莺谷町3-1 ＳＵビル301号
+    宅地建物取引业者：<b>株式会社アンドプラス 住宅営業部</b>｜免许番号：<b>東京都知事 (2) 第102938号</b>｜担当：周 欣妤（シュウ シンユウ）｜〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号
   </div>
 </main>
 
@@ -234,6 +234,19 @@ footer a{color:#d6d3d1;text-decoration:none}
   /* 预算区间（单位：日圆）。价格未公开的物件在选了区间之后会先不显示。 */
   var BUDGET={a:[0,3000e4],b:[3000e4,5000e4],c:[5000e4,8000e4],d:[8000e4,15000e4],e:[15000e4,Infinity]};
   var budgetMode="all";
+  /* 车站徒步分钟：从 station 字串抓「徒步N分」，同一物件有多条路线时取最短的那个 */
+  var walkMax=0;
+  function walkMin(p){
+    var t=String(p.station||""), best=0, re=/\u5F92[\u6B65\u6B69]\u7D04?(\d+)\u5206/g, m;
+    while((m=re.exec(t))){ var v=+m[1]; if(!best||v<best) best=v; }
+    return best;
+  }
+  function inWalk(p){
+    if(!walkMax)return true;
+    var w=walkMin(p);
+    if(!w)return false;      /* 读不到徒步分钟的物件，选了条件之后就先不显示 */
+    return w<=walkMax;
+  }
   function inBudget(p){
     if(budgetMode==="all")return true;
     var r=BUDGET[budgetMode]; if(!r)return true;
@@ -244,6 +257,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=act.filter(function(p){
       if(!inBudget(p))return false;
+      if(!inWalk(p))return false;
       if(!selCat)return true;
       return !!ptags(p)[selCat];
     });
@@ -274,6 +288,8 @@ footer a{color:#d6d3d1;text-decoration:none}
   });
   var _ps=document.getElementById("psort");
   if(_ps){_ps.addEventListener("change",function(){sortMode=this.value;render();});}
+  var _pw=document.getElementById("pwalk");
+  if(_pw){_pw.addEventListener("change",function(){walkMax=(this.value==="all")?0:+this.value;render();});}
   var _pb=document.getElementById("pbudget");
   if(_pb){_pb.addEventListener("change",function(){budgetMode=this.value;render();});}
 

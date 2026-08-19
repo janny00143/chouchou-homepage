@@ -39,6 +39,7 @@
 .note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:13px;line-height:1.7}
 .cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-bottom:18px}.cta p{margin-bottom:12px;font-size:15px}
 .cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
+.cta .btn-prop{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);color:#fff;border:1.6px solid rgba(255,255,255,.85);border-radius:999px;font-weight:700;font-size:15px;padding:11px 24px;text-decoration:none}.cta .btn-prop:hover{background:rgba(255,255,255,.3)}.cta .ctabtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px;line-height:1.8}
 html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
@@ -60,7 +61,7 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
     <div class="tiers"><b>📐 分級距公式（需另計 10% 消費稅）</b><br>・房價 <b>200 萬日圓以下</b>：房價 × 5%<br>・房價 <b>200～400 萬日圓</b>：房價 × 4% ＋ 2 萬日圓<br>・房價 <b>超過 400 萬日圓</b>：房價 × 3% ＋ 6 萬日圓</div>
     <div class="note">⚠️ 此為法定「上限」，實際以契約為準；金額四捨五入概算。新成屋／建商直售等情況仲介費可能不同。<br><b style="color:#b45309">本試算僅為「自動概算」、僅供參考，不可作為實際或法律依據；一切務必以仲介／司法書士等專業人士的判斷為主。</b></div>
   </div>
-  <div class="cta"><p>算完想找適合的物件，或想確認這筆仲介費？<br>把結果直接傳給周周 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div>
+  <div class="cta"><p>算完想找適合的物件，或想確認這筆仲介費？<br>把結果直接傳給周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties.html">🏠 看看周周自己在賣的物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div></div>
   <p class="foot">本頁試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以契約、各銀行與最新法規為準。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200萬以下（5%）";if(price<=4e6)return "200～400萬（4%＋2萬）";return "超過400萬（3%＋6萬）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=Math.round(fee).toLocaleString()+" 日圓（約 "+((fee/1e4).toFixed(1).replace(/\.0$/,""))+" 萬）";$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

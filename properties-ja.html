@@ -132,7 +132,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">戸建</button>
     <button data-cat="land">土地</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">並び替え：おすすめ順</option><option value="price-asc">価格：安い順</option><option value="price-desc">価格：高い順</option><option value="size-desc">面積：広い順</option><option value="size-asc">面積：狭い順</option></select><select id="pbudget" style="margin-left:8px"><option value="all">ご予算：指定なし</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5億円</option><option value="e">1.5億円以上</option></select></div>
+  <div class="sortrow"><select id="psort"><option value="default">並び替え：おすすめ順</option><option value="price-asc">価格：安い順</option><option value="price-desc">価格：高い順</option><option value="size-desc">面積：広い順</option><option value="size-asc">面積：狭い順</option></select><select id="pbudget" style="margin-left:8px"><option value="all">ご予算：指定なし</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5億円</option><option value="e">1.5億円以上</option></select><select id="pwalk" style="margin-left:8px"><option value="all">駅徒歩：指定なし</option><option value="5">駅徒歩5分以内</option><option value="7">駅徒歩7分以内</option><option value="10">駅徒歩10分以内</option><option value="15">駅徒歩15分以内</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -232,6 +232,19 @@ footer a{color:#d6d3d1;text-decoration:none}
   /* 預算區間（單位：日圓）。價格未公開的物件在選了區間之後會先不顯示。 */
   var BUDGET={a:[0,3000e4],b:[3000e4,5000e4],c:[5000e4,8000e4],d:[8000e4,15000e4],e:[15000e4,Infinity]};
   var budgetMode="all";
+  /* 車站徒步分鐘：從 station 字串抓「徒步N分」，同一物件有多條路線時取最短的那個 */
+  var walkMax=0;
+  function walkMin(p){
+    var t=String(p.station||""), best=0, re=/\u5F92[\u6B65\u6B69]\u7D04?(\d+)\u5206/g, m;
+    while((m=re.exec(t))){ var v=+m[1]; if(!best||v<best) best=v; }
+    return best;
+  }
+  function inWalk(p){
+    if(!walkMax)return true;
+    var w=walkMin(p);
+    if(!w)return false;      /* 讀不到徒步分鐘的物件，選了條件之後就先不顯示 */
+    return w<=walkMax;
+  }
   function inBudget(p){
     if(budgetMode==="all")return true;
     var r=BUDGET[budgetMode]; if(!r)return true;
@@ -242,6 +255,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=act.filter(function(p){
       if(!inBudget(p))return false;
+      if(!inWalk(p))return false;
       if(!selCat)return true;
       return !!ptags(p)[selCat];
     });
@@ -272,6 +286,8 @@ footer a{color:#d6d3d1;text-decoration:none}
   });
   var _ps=document.getElementById("psort");
   if(_ps){_ps.addEventListener("change",function(){sortMode=this.value;render();});}
+  var _pw=document.getElementById("pwalk");
+  if(_pw){_pw.addEventListener("change",function(){walkMax=(this.value==="all")?0:+this.value;render();});}
   var _pb=document.getElementById("pbudget");
   if(_pb){_pb.addEventListener("change",function(){budgetMode=this.value;render();});}
 
