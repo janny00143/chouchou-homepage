@@ -41,7 +41,7 @@
 - 所有物件資料集中在 **`properties.js` 的 `window.PROPERTIES` 陣列**（周周可自行編輯），頁面用 JS 渲染卡片，**繁中／簡中共用同一份 `properties.js`**，簡中在瀏覽器即時 OpenCC 轉換，**只改資料檔不需重跑任何產生器**（改版型才要重跑 `build-cn.cjs`）。
 - 每筆欄位：`id/status(在售·洽談中·已成約)/cat(invest·live·house·land)/title/price/location/station/layout/size/age/facing/mgmt/right/yield(投資才填)/photos([...])/note(周周推薦語)`；`photos` 第一張=封面、其餘進**相簿燈箱**（卡片右下顯示「📷 N」，可左右滑看）。`photos:[]` 則顯示「照片準備中」。
 - 照片放 root，命名 `prop-<id>-N.jpg`，上架前壓到寬 1500px 內。**務必濾除賣家/來源公司聯絡資訊**；投資物件 note 要保守（表面利回為毛數字、依租況、不保證報酬），貸款一律「依銀行審查為準」。
-- 目前 **18 筆**：8 筆自住（含 2026-07-10 從周周雲端補上的 togoshi701／yotsuya115／kameido209 三筆翻新宅，皆有 6 張實景照）＋10 筆投資店舖（來自「ムゲンエステート」型錄）。
+- 目前 **18 筆**：8 筆自住（含 2026-07-10 從周周雲端補上的 togoshi701／yotsuya115／kameido209 三筆翻新宅，皆有 6 張實景照）＋10 筆投資店舖（來自供應商型錄；供應商名稱不寫在公開檔案裡，見 properties.js 檔頭說明）。
 - **投資店舖照片（2026-07-10 補上）**：來源是型錄（マイソク 宣傳單）低解析度影像，逐張裁出「建物外觀照＋平面圖」再本地畫質修復（4倍放大＋去噪＋銳化），屬**堪用等級、非高清**。一律選整棟外觀、避開帶承租商家招牌的店面近照（合規）。**這些是型錄裁切圖，之後若拿到賣家乾淨原始照可直接同名覆蓋 `prop-<id>-N.jpg` 替換**。裁切原始檔與座標當時在暫存區，已不保留，要重裁需重新從型錄定位。
 - 後台工具 `admin/index.html`（物件登錄小工具，貼販売図面資料自動辨識產生 `properties.js` 片段）、`admin/logs.html`（翻譯機紀錄）。root 的 `property-admin.html` **不是廢棄檔，是「舊網址轉址」**：`<meta refresh>`＋`location.replace` 把 `/property-admin.html` 轉到 `/admin/`，保留舊書籤/舊連結相容（robots.txt 也 Disallow 它）。**要留著**，勿當孤兒檔刪。
 

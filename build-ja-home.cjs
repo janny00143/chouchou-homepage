@@ -191,6 +191,11 @@ const head = `<!-- 周周・日本語ランディングページ（完整版 SPA
   "founder": { "@type": "Person", "name": "周欣妤（周周）", "jobTitle": "住宅営業・不動産エージェント", "worksFor": "株式会社アンドプラス 住宅営業部" },
   "sameAs": ["https://www.instagram.com/travelfish67/", "https://www.youtube.com/@travelfish67", "https://www.tiktok.com/@travelfish67", "https://www.threads.com/@travelfish.jp?igshid=NTc4MTIwNjQ2YQ==", "https://lin.ee/RscRWCp"]
 })}</script>
+<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: FAQ_JA.map(q => ({ "@type": "Question", name: q[0],
+    acceptedAnswer: { "@type": "Answer", text: String(q[1]).replace(/<[^>]+>/g, "") } }))
+})}</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
 ${STYLE}`;
 
