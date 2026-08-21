@@ -218,22 +218,22 @@ const body = `<header>
     @media(max-width:389px){header .logo{font-size:13.5px}header .logo-emblem{height:30px}.burger .bg-t{font-size:12.5px}}
     @media(max-width:355px){header .logo{font-size:11.5px;gap:5px}header .logo-emblem{height:26px}.burger .bg-t{font-size:11px}.burger{gap:4px;padding-left:4px}}
     @media(max-width:335px){header .hd{gap:6px}header .hd-right{gap:4px}header .logo{font-size:10.5px}header .logo-emblem{height:23px}}
-.flowsec{margin:26px 16px 22px}
-.flow-lead{color:var(--mut);font-size:15px;line-height:1.85;margin:-8px 0 16px;max-width:820px}
-.flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.flowsec{margin:20px 16px 16px}
+.flow-lead{color:var(--mut);font-size:14.5px;line-height:1.8;margin:-8px 0 12px}
+.flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 @media(max-width:1000px){.flow-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:680px){.flow-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:420px){.flow-grid{grid-template-columns:1fr}}
-.fstep{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px;transition:box-shadow .15s,transform .15s}
+@media(max-width:680px){.flow-grid{grid-template-columns:repeat(2,1fr);gap:7px}}
+
+.fstep{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px 11px;transition:box-shadow .15s,transform .15s}
 .fstep:hover{box-shadow:0 8px 22px rgba(244,63,94,.10);transform:translateY(-2px)}
-.fn{width:26px;height:26px;flex:0 0 auto;border-radius:999px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
-.fb b{display:block;font-size:14px;font-weight:800;line-height:1.5}
-.fb p{color:var(--mut);font-size:12.5px;line-height:1.75;margin-top:3px}
-.tl{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:#e11d48;background:#fff1f2;border-radius:999px;padding:1px 8px;vertical-align:1px;white-space:nowrap}
+.fn{width:22px;height:22px;flex:0 0 auto;border-radius:999px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.fb b{display:block;font-size:13px;font-weight:700;line-height:1.4}
+
+.tl{display:inline-block;margin-left:0;margin-top:1px;font-size:11.5px;font-weight:700;color:#e11d48;background:#fff1f2;border-radius:999px;padding:1px 8px;vertical-align:1px;white-space:nowrap}
 .step h3 .tl{font-size:12px}
-.flow-note{font-size:12.5px;color:var(--mut);margin-top:12px;line-height:1.8}
-.flow-cta{margin-top:16px}
-.flow-cta .b-line{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:15.5px;padding:13px 28px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(6,199,85,.30);transition:background .14s,transform .14s}
+.flow-note{font-size:12px;color:var(--mut);margin-top:10px;line-height:1.7}
+.flow-cta{margin-top:12px}
+.flow-cta .b-line{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:14.5px;padding:11px 24px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(6,199,85,.30);transition:background .14s,transform .14s}
 .flow-cta .b-line:hover{background:#05b34c;transform:translateY(-1px)}
 </style>
     <div class="herob"><div class="in">
@@ -250,9 +250,9 @@ const body = `<header>
     </div>
     <div class="flowsec">
       <div class="hlp-head"><span class="hlp-sp"></span><h2>ご購入までの流れ</h2><a class="hlp-more" onclick="show('process');return false" href="javascript:void(0)">詳しく見る →</a></div>
-      <p class="flow-lead">「ご相談してから、実際にはどのように進み、どのくらいの期間がかかるのか」というご質問を多くいただきます。全体は次の10ステップで、いずれの工程も日本語と中国語で対応いたします。</p>
+      <p class="flow-lead">初回のご相談からお引き渡しまで全10ステップ、いずれの工程も日本語と中国語で対応いたします。</p>
       <div class="flow-grid" id="flowGrid"></div>
-      <p class="flow-note">＊期間は一般的な目安であり、物件・融資・ご都合により前後いたします。融資の可否および借入割合は個別の審査によります。</p>
+      <p class="flow-note">＊期間は目安であり、物件および金融機関の審査により前後いたします。</p>
       <div class="flow-cta"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">まずはLINEでご相談ください</a></div>
     </div>
     <button class="svc-toggle" id="svcToggle" onclick="toggleSvc()" aria-expanded="false"><span>サービス一覧</span><span class="svc-x">開く ▾</span></button>
@@ -409,8 +409,8 @@ function show(v,id){if(v==='translate'){location.href='translate-ja.html';return
 function setCat(c){curCat=c;const sel=document.getElementById('catSelect');if(sel)sel.value=c||"";show('home');render();const g=document.getElementById('grid');if(g)window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'});}
 function lazyCov(){const els=document.querySelectorAll('.cov[data-cov]');const set=el=>{const a=ART.find(x=>x.id===el.dataset.cov);if(a)el.style.cssText=cov(a);};if(!('IntersectionObserver'in window)){els.forEach(set);return;}const io=new IntersectionObserver((ents,o)=>{ents.forEach(e=>{if(e.isIntersecting){set(e.target);o.unobserve(e.target);}});},{rootMargin:'300px'});els.forEach(el=>io.observe(el));}
 function _isMob(){return window.matchMedia('(max-width:600px)').matches;}
-function artInit(){return _isMob()?10:30;}
-function artStep(){return _isMob()?5:1e9;}
+function artInit(){return 15;}
+function artStep(){return _isMob()?10:15;}
 var artShown=artInit(),_lastSig="";
 function render(){const q=(document.getElementById('q').value||"").toLowerCase();const list=ART.filter(a=>(!curCat||a.cat===curCat)&&(!q||(a.title+a.ex+(a.body||[]).join("")+a.tags.join("")).toLowerCase().includes(q))).sort((a,b)=>(b.date||"").localeCompare(a.date||""));var sig=(curCat||"")+"|"+q;if(sig!==_lastSig){artShown=artInit();_lastSig=sig;}var vis=list.slice(0,artShown);document.getElementById('grid').innerHTML=vis.map(a=>\`<a class="card" href="\${jaHref(a)}"><div class="cov" data-cov="\${a.id}" style="background-image:\${cat(a.cat).g}">\${a.video?'<span class="vbadge">▶ 動画</span>':''}</div><div class="body"><span class="tagcat" style="background:\${cat(a.cat).c}">\${cat(a.cat).name}</span><h3>\${a.title}</h3><p class="ex">\${a.ex}</p><p class="meta">\${a.date}</p></div></a>\`).join("")||'<p style="color:var(--mut)">${JA_UI.noResults}</p>';var mw=document.getElementById('artMoreWrap');if(mw){if(list.length>artShown){mw.style.display='block';var btn=document.getElementById('artMore');if(btn)btn.textContent='記事をもっと見る（残り '+(list.length-artShown)+' 件）';}else{mw.style.display='none';}}lazyCov();}
 function moreArts(){artShown+=artStep();render();}
@@ -438,7 +438,7 @@ const c=S.company;const ci=(l,v)=>\`<div class="ci"><span class="cl">\${l}</span
 document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.brand;
 document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
 var hf=document.getElementById('flowGrid');
-if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<div class="fstep"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b>\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}<p>\${s[1]}</p></div></div>\`).join("");
+if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<div class="fstep" title="\${s[1]}"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b>\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}</div></div>\`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('faqs').innerHTML=FAQ.map(q=>\`<details class="faq"><summary>Q：\${q[0]}</summary><p>A：\${q[1]}</p></details>\`).join("");
