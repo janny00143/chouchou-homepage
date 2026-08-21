@@ -35,16 +35,16 @@ const ART_JA = ART.map(a => {
 }).filter(Boolean);
 
 const PROCESS_JA = [
-  ["初回ヒアリング", "まずはご希望や予算、スケジュールをお伺いし、方向性を確認します。", "当日"],
-  ["ご予算・融資可能性の確認", "自己資金と借入条件を踏まえ、実際に購入可能な範囲を把握します。", "1〜3日"],
-  ["物件の選定", "ご希望条件に合う物件を選び、問題のある物件は事前に除外します。", "1〜3週間"],
-  ["内見／オンライン内見", "台湾にいらっしゃってもオンラインで内見でき、物件の状態を実際に確認できます。", "半日〜数日"],
-  ["購入申込", "気に入った物件が見つかったら購入申込書を提出し、価格交渉を始めます。", "1〜2日"],
-  ["融資事前審査", "銀行に事前審査を申請し、借入可能額を確認します。", "約1週間"],
-  ["ご契約・重要事項説明", "宅地建物取引士が法律上のポイントや権利関係をご説明し、全て中国語で通訳・確認します。", "1〜2時間"],
-  ["融資本審査", "銀行の本審査を通過し、融資条件が確定します。", "約2〜3週間"],
-  ["決済・引き渡し", "残代金をお支払いいただき、引き渡しが完了、鍵をお渡しします。", "約1ヶ月後"],
-  ["登記・その後の管理", "所有権の登記を完了し、その後の管理についてもサポートします。", "引き渡し後"]
+  ["初回ヒアリング", "まずはご希望や予算、スケジュールをお伺いし、方向性を確認します。"],
+  ["ご予算・融資可能性の確認", "自己資金と借入条件を踏まえ、実際に購入可能な範囲を把握します。"],
+  ["物件の選定", "ご希望条件に合う物件を選び、問題のある物件は事前に除外します。"],
+  ["内見／オンライン内見", "台湾にいらっしゃってもオンラインで内見でき、物件の状態を実際に確認できます。"],
+  ["購入申込", "気に入った物件が見つかったら購入申込書を提出し、価格交渉を始めます。"],
+  ["融資事前審査", "銀行に事前審査を申請し、借入可能額を確認します。"],
+  ["ご契約・重要事項説明", "宅地建物取引士が法律上のポイントや権利関係をご説明し、全て中国語で通訳・確認します。"],
+  ["融資本審査", "銀行の本審査を通過し、融資条件が確定します。"],
+  ["決済・引き渡し", "残代金をお支払いいただき、引き渡しが完了、鍵をお渡しします。"],
+  ["登記・その後の管理", "所有権の登記を完了し、その後の管理についてもサポートします。"]
 ];
 const LIVE_JA = [
   "日本で働いていて、賃貸から購入への切り替えを考えている",
@@ -429,9 +429,9 @@ document.getElementById('lineId').textContent=S.lineId;
 document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(S.line);
 const c=S.company;const ci=(l,v)=>\`<div class="ci"><span class="cl">\${l}</span><span class="cv">\${v}</span></div>\`;document.getElementById('company').innerHTML=ci('${JA_UI.companyLabels.company}','株式会社アンドプラス')+ci('${JA_UI.companyLabels.advisor}','周 欣妤 ／ Syu ShinYu ／ シュウ シンユウ')+ci('${JA_UI.companyLabels.license}',c.license)+ci('${JA_UI.companyLabels.addr}',c.addr)+ci('${JA_UI.companyLabels.mobile}',\`<a href="tel:\${c.mobile.replace(/[^0-9]/g,"")}">\${c.mobile}</a>\`)+ci('${JA_UI.companyLabels.tel}',\`<a href="tel:\${c.tel.replace(/[^0-9]/g,"")}">\${c.tel}</a>\`)+ci('${JA_UI.companyLabels.fax}',c.fax)+ci('${JA_UI.companyLabels.email}',\`<a href="mailto:\${c.email}">\${c.email}</a>\`)+ci('${JA_UI.companyLabels.hp}',\`<a href="\${c.hp}" target="_blank" rel='noopener'>\${c.hp}</a>\`);
 document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.brand;
-document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
+document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
 var hf=document.getElementById('flowGrid');
-if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<div class="fstep" title="\${s[1]}"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b>\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}</div></div>\`).join("");
+if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<div class="fstep" title="\${s[1]}"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b></div></div>\`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('faqs').innerHTML=FAQ.map(q=>\`<details class="faq"><summary>Q：\${q[0]}</summary><p>A：\${q[1]}</p></details>\`).join("");
