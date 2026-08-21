@@ -490,7 +490,7 @@ function copyLink(url){
   return Promise.resolve();
 }
 function shareQuiz(){
-  var url = 'https://chouchouinjapan.com/quiz.html?utm_source=share&utm_medium=quiz_share';
+  var url = 'https://chouchouinjapan.com/quiz-cn.html?utm_source=share&utm_medium=quiz_share';
   var pname = (lastTop && PERSONA[lastTop] && PERSONA[lastTop].type) ? PERSONA[lastTop].type : '';
   var text = pname ? ('我是「'+pname+'」！测测看你适合买日本什么样的房子🏠✨') : '测测看你适合买日本什么样的房子🏠✨';
   if(window.gtag) gtag('event','quiz_share',{persona:lastTop||''});

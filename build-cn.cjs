@@ -44,6 +44,13 @@ function convertFile(file) {
     keep.push(K);
   }
 
+  // 1c) 保護 hreflang 的 <link rel="alternate">：這些網址是「刻意」指向繁中／日文版的，
+  //     下面第 4b 步會把站內絕對網址一律改成 -cn，會誤傷 hreflang，所以先收起來。
+  const hre = [];
+  s = s.replace(/<link[^>]+rel=["']alternate["'][^>]*>/gi, m => {
+    hre.push(m); return "@@H" + (hre.length - 1) + "@@";
+  });
+
   // 2) 繁→簡
   s = conv(s);
 
@@ -57,8 +64,25 @@ function convertFile(file) {
     s = s.split("='" + P + "'").join("='" + cn(P) + "'");
   }
 
-  // 4b) 結構化資料裡的作者頁網址（JSON 字串，不是 href，上面的連結改寫吃不到）
-  s = s.split('"' + BASE + 'about.html"').join('"' + BASE + 'about-cn.html"');
+  // 4a) <meta http-equiv="refresh" content="0;url=xxx.html"> 的轉址目標
+  //     （轉址殼頁如 tools.html／tool-convert.html 用的是這個，不是 href，第 4 步吃不到，
+  //      沒改的話簡中使用者會被丟到繁中頁）
+  for (const P of internal) {
+    s = s.split("url=" + P).join("url=" + cn(P));
+  }
+
+  // 4b) 站內「絕對網址」一律改成 -cn：canonical 指向別頁、og:url、JSON-LD 裡的 url 都算。
+  //     hreflang 已在第 1c 步收起來，不會被誤改。
+  for (const P of internal) {
+    s = s.split(BASE + P).join(BASE + cn(P));
+  }
+
+  // 4c) 分享按鈕（Facebook／Threads／複製連結）裡的網址是 URL-encoded 的，
+  //     第 4b 步的字串比對吃不到，沒改的話簡中讀者分享出去的是繁中網址。
+  const encBase = encodeURIComponent(BASE);   // https%3A%2F%2Fchouchouinjapan.com%2F
+  for (const P of internal) {
+    s = s.split(encBase + P).join(encBase + cn(P));
+  }
 
   // 5) canonical / og:url 指向自己的 -cn
   if (file === "index.html") {
@@ -74,6 +98,9 @@ function convertFile(file) {
   s = s.split('content="zh_TW"').join('content="zh_CN"');
   // 6) lang 設為簡體
   s = s.replace(/<html lang="zh-Hant-TW">/g, '<html lang="zh-Hans">').replace(/<html lang="zh-Hant">/g, '<html lang="zh-Hans">');
+
+  // 7) 還原 hreflang 標籤
+  s = s.replace(/@@H(\d+)@@/g, (_, i) => hre[+i]);
 
   fs.writeFileSync(ROOT + "/" + cn(file), s);
   return cn(file);
@@ -91,7 +118,12 @@ if (!sm.includes("index-cn.html")) {
     try { return /<meta[^>]+name=["']robots["'][^>]*noindex/i.test(fs.readFileSync(ROOT + "/" + f, "utf8")); }
     catch (e) { return false; }
   };
-  const cnStatic = staticPages.filter(f => f !== "index.html" && !isNoindex(f)).map(cn);
+  // 轉址殼頁（tools-cn.html／tool-convert-cn.html 這種 <meta refresh>）同樣不放進 sitemap
+  const isStub = f => {
+    try { return /<meta[^>]+http-equiv=["']refresh["']/i.test(fs.readFileSync(ROOT + "/" + f, "utf8")); }
+    catch (e) { return false; }
+  };
+  const cnStatic = staticPages.filter(f => f !== "index.html" && !isNoindex(f)).map(cn).filter(f => !isStub(f));
   const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), ...cnStatic]
     .map(u => `<url><loc>${BASE}${u}</loc><priority>0.6</priority></url>`).join("\n");
   sm = sm.replace("</urlset>", extra + "\n</urlset>");
