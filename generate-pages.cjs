@@ -236,8 +236,19 @@ urls.push({ loc: BASE + "privacy.html", pr: "0.3" });
 urls.push({ loc: BASE + "privacy-ja.html", pr: "0.3" });
 urls.push({ loc: BASE + "partners.html", pr: "0.6" });
 urls.push({ loc: BASE + "partners-ja.html", pr: "0.5" });
+// 轉址殼頁（<meta http-equiv="refresh">，例如 tools.html／tool-convert.html）不可進 sitemap：
+// sitemap 說「請收錄」、頁面卻立刻轉走，Search Console 會報「網頁會重新導向」而排除。
+// 跟 noindex 頁一樣的道理，統一在這裡過濾掉。
+const isRedirectStub = loc => {
+  const f = loc.replace(BASE, "");
+  if (!f || !f.endsWith(".html")) return false;
+  try { return /<meta[^>]+http-equiv=["']refresh["']/i.test(fs.readFileSync(ROOT + "/" + f, "utf8")); }
+  catch (e) { return false; }
+};
+const urlsOut = urls.filter(u => !isRedirectStub(u.loc));
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  urls.map(u => `<url><loc>${u.loc}</loc>${u.lm ? `<lastmod>${u.lm}</lastmod>` : ""}${u.cf ? `<changefreq>${u.cf}</changefreq>` : ""}<priority>${u.pr}</priority></url>`).join("\n") +
+  urlsOut.map(u => `<url><loc>${u.loc}</loc>${u.lm ? `<lastmod>${u.lm}</lastmod>` : ""}${u.cf ? `<changefreq>${u.cf}</changefreq>` : ""}<priority>${u.pr}</priority></url>`).join("\n") +
   `\n</urlset>\n`;
 fs.writeFileSync(ROOT + "/sitemap.xml", sitemap);
 

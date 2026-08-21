@@ -101,8 +101,6 @@
 <url><loc>https://chouchouinjapan.com/japan-utilities-setup-guide-ja.html</loc><lastmod>2026-07-04</lastmod><priority>0.7</priority></url>
 <url><loc>https://chouchouinjapan.com/japan-phone-sim-no-visa-guide-ja.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://chouchouinjapan.com/minpaku-ja.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/tools.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/tools-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/videos.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/videos-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/feedback.html</loc><priority>0.6</priority></url>
@@ -111,8 +109,6 @@
 <url><loc>https://chouchouinjapan.com/tool-agent-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-area.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-area-ja.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/tool-convert.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/tool-convert-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-cost.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-cost-ja.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-fx.html</loc><priority>0.6</priority></url>
@@ -180,7 +176,6 @@
 <url><loc>https://chouchouinjapan.com/translate-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/feedback-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/videos-cn.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/tools-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/partners-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/quiz-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/property-types-cn.html</loc><priority>0.6</priority></url>
@@ -193,5 +188,4 @@
 <url><loc>https://chouchouinjapan.com/tool-yield-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-fx-cn.html</loc><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-area-cn.html</loc><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/tool-convert-cn.html</loc><priority>0.6</priority></url>
 </urlset>
