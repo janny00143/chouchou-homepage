@@ -35,16 +35,16 @@ const ART_JA = ART.map(a => {
 }).filter(Boolean);
 
 const PROCESS_JA = [
-  ["初回ヒアリング", "まずはご希望や予算、スケジュールをお伺いし、方向性を確認します。"],
-  ["ご予算・融資可能性の確認", "自己資金と借入条件を踏まえ、実際に購入可能な範囲を把握します。"],
-  ["物件の選定", "ご希望条件に合う物件を選び、問題のある物件は事前に除外します。"],
-  ["内見／オンライン内見", "台湾にいらっしゃってもオンラインで内見でき、物件の状態を実際に確認できます。"],
-  ["購入申込", "気に入った物件が見つかったら購入申込書を提出し、価格交渉を始めます。"],
-  ["融資事前審査", "銀行に事前審査を申請し、借入可能額を確認します。"],
-  ["ご契約・重要事項説明", "宅地建物取引士が法律上のポイントや権利関係をご説明し、全て中国語で通訳・確認します。"],
-  ["融資本審査", "銀行の本審査を通過し、融資条件が確定します。"],
-  ["決済・引き渡し", "残代金をお支払いいただき、引き渡しが完了、鍵をお渡しします。"],
-  ["登記・その後の管理", "所有権の登記を完了し、その後の管理についてもサポートします。"]
+  ["初回ヒアリング", "まずはご希望や予算、スケジュールをお伺いし、方向性を確認します。", "当日"],
+  ["ご予算・融資可能性の確認", "自己資金と借入条件を踏まえ、実際に購入可能な範囲を把握します。", "1〜3日"],
+  ["物件の選定", "ご希望条件に合う物件を選び、問題のある物件は事前に除外します。", "1〜3週間"],
+  ["内見／オンライン内見", "台湾にいらっしゃってもオンラインで内見でき、物件の状態を実際に確認できます。", "半日〜数日"],
+  ["購入申込", "気に入った物件が見つかったら購入申込書を提出し、価格交渉を始めます。", "1〜2日"],
+  ["融資事前審査", "銀行に事前審査を申請し、借入可能額を確認します。", "約1週間"],
+  ["ご契約・重要事項説明", "宅地建物取引士が法律上のポイントや権利関係をご説明し、全て中国語で通訳・確認します。", "1〜2時間"],
+  ["融資本審査", "銀行の本審査を通過し、融資条件が確定します。", "約2〜3週間"],
+  ["決済・引き渡し", "残代金をお支払いいただき、引き渡しが完了、鍵をお渡しします。", "約1ヶ月後"],
+  ["登記・その後の管理", "所有権の登記を完了し、その後の管理についてもサポートします。", "引き渡し後"]
 ];
 const LIVE_JA = [
   "日本で働いていて、賃貸から購入への切り替えを考えている",
@@ -115,7 +115,7 @@ const JA_UI = {
   ],
   servicePanel4: {
     h: "💬 その他の有料相談サービス",
-    sub: "不動産purchaseとは直接関係のないご相談は、以下の内容で有料相談を承っております：",
+    sub: "不動産購入とは直接関係のないご相談は、以下の内容で有料相談を承っております：",
     items: ["中国語・日本語の通訳、書類翻訳", "日本での就職活動・履歴書・面接に関するご相談", "日本での仕事・生活情報に関するご相談", "ビザに関する基礎情報の整理・専門家のご紹介"],
     note: "※ 不動産のご購入に伴う翻訳・手続きサポートは、仲介サービスの一環として提供いたします。<br>※ 翻訳のみ、就職相談、生活相談などは別途有料サービスとなります。"
   },
@@ -217,10 +217,28 @@ const body = `<header>
     @media(max-width:440px){header .logo{font-size:15px}header .logo-emblem{height:34px}}
     @media(max-width:389px){header .logo{font-size:13.5px}header .logo-emblem{height:30px}.burger .bg-t{font-size:12.5px}}
     @media(max-width:355px){header .logo{font-size:11.5px;gap:5px}header .logo-emblem{height:26px}.burger .bg-t{font-size:11px}.burger{gap:4px;padding-left:4px}}
-    @media(max-width:335px){header .hd{gap:6px}header .hd-right{gap:4px}header .logo{font-size:10.5px}header .logo-emblem{height:23px}}</style>
+    @media(max-width:335px){header .hd{gap:6px}header .hd-right{gap:4px}header .logo{font-size:10.5px}header .logo-emblem{height:23px}}
+.flowsec{margin:26px 16px 22px}
+.flow-lead{color:var(--mut);font-size:15px;line-height:1.85;margin:-8px 0 16px;max-width:820px}
+.flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:1000px){.flow-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.flow-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.flow-grid{grid-template-columns:1fr}}
+.fstep{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px;transition:box-shadow .15s,transform .15s}
+.fstep:hover{box-shadow:0 8px 22px rgba(244,63,94,.10);transform:translateY(-2px)}
+.fn{width:26px;height:26px;flex:0 0 auto;border-radius:999px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.fb b{display:block;font-size:14px;font-weight:800;line-height:1.5}
+.fb p{color:var(--mut);font-size:12.5px;line-height:1.75;margin-top:3px}
+.tl{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:#e11d48;background:#fff1f2;border-radius:999px;padding:1px 8px;vertical-align:1px;white-space:nowrap}
+.step h3 .tl{font-size:12px}
+.flow-note{font-size:12.5px;color:var(--mut);margin-top:12px;line-height:1.8}
+.flow-cta{margin-top:16px}
+.flow-cta .b-line{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:15.5px;padding:13px 28px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(6,199,85,.30);transition:background .14s,transform .14s}
+.flow-cta .b-line:hover{background:#05b34c;transform:translateY(-1px)}
+</style>
     <div class="herob"><div class="in">
   <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
-  <div class="sub">専門性 ・ 親身な対応 ・ 日本もあなたも理解する</div>
+  <div class="sub">東京の中国語対応 不動産エージェント｜マイホーム・投資・ローン・ご契約まで日本語と中国語で</div>
   <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.7V21h14V9.7"/><path d="M9.5 21v-6h5v6"/></svg>自宅購入</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7h1.5M9 11h1.5M13.5 11h1.5M9 15h1.5M13.5 15h1.5"/><path d="M10.5 21v-3h3v3"/></svg>投資物件</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3" rx="0.5"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg>ローン相談</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>日本語対応</span></div>
   <div class="hbtns"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>無料LINE相談</a><a class="b-case" onclick="var r=document.querySelector('.reviews');if(r)r.scrollIntoView({behavior:'smooth'});return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z" fill="currentColor" stroke="none"/></svg>お客様のリアルな声</a></div>
 </div></div>
@@ -229,6 +247,13 @@ const body = `<header>
       <div class="tb"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg></span><div><b>中国語フルサポート</b><span>言葉の心配なし</span></div></div>
       <div class="tb"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-3.4 2.9-5.8 6.5-5.8s6.5 2.4 6.5 5.8"/></svg></span><div><b>500名以上をサポート</b><span>豊富な成約実績</span></div></div>
       <div class="tb"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11.5A7 7 0 1 0 5 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9" r="2.5"/></svg></span><div><b>東京23区に精通</b><span>神奈川・千葉も対応</span></div></div>
+    </div>
+    <div class="flowsec">
+      <div class="hlp-head"><span class="hlp-sp"></span><h2>ご購入までの流れ</h2><a class="hlp-more" onclick="show('process');return false" href="javascript:void(0)">詳しく見る →</a></div>
+      <p class="flow-lead">「ご相談してから、実際にはどのように進み、どのくらいの期間がかかるのか」というご質問を多くいただきます。全体は次の10ステップで、いずれの工程も日本語と中国語で対応いたします。</p>
+      <div class="flow-grid" id="flowGrid"></div>
+      <p class="flow-note">＊期間は一般的な目安であり、物件・融資・ご都合により前後いたします。融資の可否および借入割合は個別の審査によります。</p>
+      <div class="flow-cta"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">まずはLINEでご相談ください</a></div>
     </div>
     <button class="svc-toggle" id="svcToggle" onclick="toggleSvc()" aria-expanded="false"><span>サービス一覧</span><span class="svc-x">開く ▾</span></button>
     <div id="svcWrap">
@@ -411,7 +436,9 @@ document.getElementById('lineId').textContent=S.lineId;
 document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(S.line);
 const c=S.company;const ci=(l,v)=>\`<div class="ci"><span class="cl">\${l}</span><span class="cv">\${v}</span></div>\`;document.getElementById('company').innerHTML=ci('${JA_UI.companyLabels.company}','株式会社アンドプラス')+ci('${JA_UI.companyLabels.advisor}','周 欣妤 ／ Syu ShinYu ／ シュウ シンユウ')+ci('${JA_UI.companyLabels.license}',c.license)+ci('${JA_UI.companyLabels.addr}',c.addr)+ci('${JA_UI.companyLabels.mobile}',\`<a href="tel:\${c.mobile.replace(/[^0-9]/g,"")}">\${c.mobile}</a>\`)+ci('${JA_UI.companyLabels.tel}',\`<a href="tel:\${c.tel.replace(/[^0-9]/g,"")}">\${c.tel}</a>\`)+ci('${JA_UI.companyLabels.fax}',c.fax)+ci('${JA_UI.companyLabels.email}',\`<a href="mailto:\${c.email}">\${c.email}</a>\`)+ci('${JA_UI.companyLabels.hp}',\`<a href="\${c.hp}" target="_blank" rel='noopener'>\${c.hp}</a>\`);
 document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.brand;
-document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
+document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
+var hf=document.getElementById('flowGrid');
+if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<div class="fstep"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b>\${s[2]?\`<span class="tl">\${s[2]}</span>\`:""}<p>\${s[1]}</p></div></div>\`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('faqs').innerHTML=FAQ.map(q=>\`<details class="faq"><summary>Q：\${q[0]}</summary><p>A：\${q[1]}</p></details>\`).join("");
