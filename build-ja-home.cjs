@@ -232,9 +232,6 @@ const body = `<header>
 .tl{display:inline-block;margin-left:0;margin-top:1px;font-size:11.5px;font-weight:700;color:#e11d48;background:#fff1f2;border-radius:999px;padding:1px 8px;vertical-align:1px;white-space:nowrap}
 .step h3 .tl{font-size:12px}
 .flow-note{font-size:12px;color:var(--mut);margin-top:10px;line-height:1.7}
-.flow-cta{margin-top:12px}
-.flow-cta .b-line{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:14.5px;padding:11px 24px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(6,199,85,.30);transition:background .14s,transform .14s}
-.flow-cta .b-line:hover{background:#05b34c;transform:translateY(-1px)}
 
 .fstep{width:100%;text-align:left;font-family:inherit;cursor:pointer}
 .fstep:hover{border-color:#f6adbe}
@@ -275,7 +272,6 @@ const body = `<header>
       <p class="flow-lead">初回のご相談からお引き渡しまで全10ステップ、いずれの工程も日本語と中国語で対応いたします。</p>
       <div class="flow-grid" id="flowGrid"></div>
       <p class="flow-note">＊各工程に要する期間は、物件・融資・ご都合により異なります。融資の可否および借入割合は個別の審査によります。</p>
-      <div class="cta flow-ctabox"><h2>まずはLINEから</h2><p>残りの工程も、私が一緒に進めます。</p><a class="btn btn-line big" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div>
     </div>
     <div class="smask" id="stepModal" aria-hidden="true" onclick="if(event.target===this)closeStep()">
       <div class="smbox" role="dialog" aria-modal="true" aria-labelledby="smTitle">
