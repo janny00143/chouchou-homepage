@@ -124,8 +124,14 @@ if (!sm.includes("index-cn.html")) {
     catch (e) { return false; }
   };
   const cnStatic = staticPages.filter(f => f !== "index.html" && !isNoindex(f)).map(cn).filter(f => !isStub(f));
+  // -cn 頁的 lastmod 沿用繁中對應檔在 sitemap 裡已算好的日期（不另外編日期）
+  const lmOf = u => {
+    const tw = u === "index-cn.html" ? "" : u.replace(/-cn\.html$/, ".html");   // 繁中首頁在 sitemap 是根網址
+    const m = sm.match(new RegExp("<loc>" + BASE.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + tw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "</loc><lastmod>(\\d{4}-\\d{2}-\\d{2})</lastmod>"));
+    return m ? m[1] : "";
+  };
   const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), ...cnStatic]
-    .map(u => `<url><loc>${BASE}${u}</loc><priority>0.6</priority></url>`).join("\n");
+    .map(u => { const lm = lmOf(u); return `<url><loc>${BASE}${u}</loc>${lm ? `<lastmod>${lm}</lastmod>` : ""}<priority>0.6</priority></url>`; }).join("\n");
   sm = sm.replace("</urlset>", extra + "\n</urlset>");
   fs.writeFileSync(ROOT + "/sitemap.xml", sm);
 }

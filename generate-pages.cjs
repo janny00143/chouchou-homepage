@@ -105,7 +105,7 @@ function page(a) {
   const c = cat(a.cat);
   const cover = coverURL(a);
   const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : "");
-  const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); return m ? '<p class="ah"><b>' + m[1] + "</b></p>" : (t.indexOf("<b>")===0 ? '<p class="sh">' + p + "</p>" : "<p>" + p + "</p>"); }).join("");
+  const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); if (m) return '<h2 class="ah">' + m[1] + "</h2>"; const s2 = t.match(/^<b>([\s\S]*?)<\/b>([\s\S]*)$/); if (s2) { const rest = s2[2].trim(); return '<h2 class="ah sh2">' + s2[1] + "</h2>" + (rest ? "<p>" + rest + "</p>" : ""); } return "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
   const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="影片" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
@@ -245,7 +245,27 @@ const isRedirectStub = loc => {
   try { return /<meta[^>]+http-equiv=["']refresh["']/i.test(fs.readFileSync(ROOT + "/" + f, "utf8")); }
   catch (e) { return false; }
 };
-const urlsOut = urls.filter(u => !isRedirectStub(u.loc));
+// sitemap 的 lastmod：沒有明確日期的頁面（工具頁、關於頁等），用「該檔在 git 的最後修改日」，
+// 查不到（例如新檔還沒 commit）就退回檔案系統的 mtime。不編日期。
+const _lmCache = {};
+const fileLastMod = loc => {
+  const f = loc.replace(BASE, "") || "index.html";   // 根網址 "/" 就是 index.html
+  if (!f.endsWith(".html")) return "";
+  if (_lmCache[f] !== undefined) return _lmCache[f];
+  let d = "";
+  try {
+    d = require("child_process")
+      .execSync(`git log -1 --format=%cs -- "${f}"`, { cwd: ROOT, stdio: ["ignore", "pipe", "ignore"] })
+      .toString().trim();
+  } catch (e) { d = ""; }
+  if (!d) {
+    try { d = new Date(fs.statSync(ROOT + "/" + f).mtime).toISOString().slice(0, 10); }
+    catch (e) { d = ""; }
+  }
+  _lmCache[f] = d;
+  return d;
+};
+const urlsOut = urls.filter(u => !isRedirectStub(u.loc)).map(u => (u.lm ? u : { ...u, lm: fileLastMod(u.loc) }));
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   urlsOut.map(u => `<url><loc>${u.loc}</loc>${u.lm ? `<lastmod>${u.lm}</lastmod>` : ""}${u.cf ? `<changefreq>${u.cf}</changefreq>` : ""}<priority>${u.pr}</priority></url>`).join("\n") +
