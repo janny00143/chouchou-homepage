@@ -70,7 +70,7 @@ function pageJa(a, j) {
   const catName = JA_CAT[a.cat] || "不動産コラム";
   const cover = coverURL(a);
   const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + "linear-gradient(135deg,#a8a29e,#d6d3d1)" + (a.cpos ? ";background-position:" + a.cpos : "");
-  const bodyHTML = j.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(出典|参考資料|本記事)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); return m ? '<p class="ah"><b>' + m[1] + "</b></p>" : (t.indexOf("<b>") === 0 ? '<p class="sh">' + p + "</p>" : "<p>" + p + "</p>"); }).join("");
+  const bodyHTML = j.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(出典|参考資料|本記事)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); if (m) return '<h2 class="ah">' + m[1] + "</h2>"; const s2 = t.match(/^<b>([\s\S]*?)<\/b>([\s\S]*)$/); if (s2) { const rest = s2[2].trim(); return '<h2 class="ah sh2">' + s2[1] + "</h2>" + (rest ? "<p>" + rest + "</p>" : ""); } return "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
   const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="動画" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";

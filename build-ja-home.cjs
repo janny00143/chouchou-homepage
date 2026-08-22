@@ -160,6 +160,7 @@ const JA_UI = {
 const escJs = s => String(s).replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 
 const head = `<!-- 周周・日本語ランディングページ（完整版 SPA，跟繁中/簡中同架構）。由 build-ja-home.cjs 自動產生，勿手改。 -->
+<html lang="ja">
 <meta charset="utf-8">
 <script>/* 防複製守門：頁面若被開在非本站網域(有人抄走掛在別處)，在GA啟動前跳回正牌站 */(function(){var h=location.hostname;if(h&&h!=="chouchouinjapan.com"&&h!=="www.chouchouinjapan.com"&&h!=="janny00143.github.io"&&h!=="localhost"&&h!=="127.0.0.1"){location.replace("https://chouchouinjapan.com"+location.pathname);}})();</script>
 <!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
@@ -337,7 +338,7 @@ const body = `<header>
   </section>
 
   <section class="view" id="v-services">
-    <h1 class="t">${JA_UI.servicesTitle}</h1>
+    <h2 class="t">${JA_UI.servicesTitle}</h2>
     <p class="sub">${JA_UI.servicesSub}</p>
     <div class="svcsec">
       ${JA_UI.servicePanels.map(p => `<div class="panel">
@@ -361,26 +362,26 @@ const body = `<header>
   <section class="view" id="v-article"><div class="art" id="artBox"></div></section>
 
   <section class="view" id="v-process">
-    <h1 class="t">${JA_UI.processTitle}</h1><p class="sub">${JA_UI.processSub}</p>
+    <h2 class="t">${JA_UI.processTitle}</h2><p class="sub">${JA_UI.processSub}</p>
     <div id="steps"></div>
     <div class="cta" style="margin-top:24px"><h2>${JA_UI.processCta}</h2><p style="font-size:14.5px;color:#d6d3d1;margin-bottom:14px">${JA_UI.processCtaSub}</p><a class="btn btn-line big" id="lineP" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
   </section>
 
   <section class="view" id="v-live">
-    <h1 class="t">${JA_UI.liveTitle}</h1><p class="sub">${JA_UI.liveSub}</p>
+    <h2 class="t">${JA_UI.liveTitle}</h2><p class="sub">${JA_UI.liveSub}</p>
     <h3 style="margin-bottom:12px">${JA_UI.liveH3}</h3><div class="svc" id="liveSvc"></div>
     <div class="note" style="background:#eff6ff;border:2px solid #60a5fa">${JA_UI.liveNote}</div>
     <div class="cta" style="margin-top:24px"><h2>${JA_UI.liveCta}</h2><a class="btn btn-line big" id="lineL" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
   </section>
 
   <section class="view" id="v-invest">
-    <h1 class="t">${JA_UI.investTitle}</h1><p class="sub">${JA_UI.investSub}</p>
+    <h2 class="t">${JA_UI.investTitle}</h2><p class="sub">${JA_UI.investSub}</p>
     <h3 style="margin-bottom:12px">${JA_UI.investH3}</h3><div class="svc" id="invSvc"></div>
     <div class="note" style="background:#ecfdf5;border:2px solid #34d399">${JA_UI.investNote}</div>
     <div class="cta" style="margin-top:24px"><h2>${JA_UI.investCta}</h2><a class="btn btn-line big" id="lineI" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
   </section>
 
-  <section class="view" id="v-faq"><h1 class="t">${JA_UI.faqTitle}</h1><p class="sub">${JA_UI.faqSub}</p><div id="faqs"></div></section>
+  <section class="view" id="v-faq"><h2 class="t">${JA_UI.faqTitle}</h2><p class="sub">${JA_UI.faqSub}</p><div id="faqs"></div></section>
 
   <section class="view" id="v-about">
     <div class="about">
@@ -389,7 +390,7 @@ const body = `<header>
         <div class="profile">
         <div class="av">周</div>
         <div class="pinfo">
-          <h1 class="pname">${JA_UI.aboutTitle}</h1>
+          <h2 class="pname">${JA_UI.aboutTitle}</h2>
           <p class="prole">${JA_UI.aboutRole}</p>
           <div class="areas"><span class="main">${JA_UI.aboutAreas[0]}</span><span>${JA_UI.aboutAreas[1]}</span><span>${JA_UI.aboutAreas[2]}</span><span>${JA_UI.aboutAreas[3]}</span></div>
           <div id="bio"></div>
