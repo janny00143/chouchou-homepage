@@ -122,7 +122,8 @@ const JA_UI = {
   servicesCta: "どのサービスが合うか知りたい方はこちら",
   processTitle: "外国人の日本不動産購入の流れ",
   processSub: "こうした手続きは、周周が一つひとつ一緒に確認しながら進めますので、日本語の資料を自分で読んで頭を抱える必要はありません。",
-  processCta: "ご自身の条件でどこまで購入できるか知りたい方はこちら",
+  processCta: "最初の一歩は、LINEでのご相談から",
+  processCtaSub: "残りの工程も、私が一緒に進めます。",
   liveTitle: "マイホーム購入サポート",
   liveSub: "日本で暮らしていて、賃貸から購入へのステップアップを考えている方へ。",
   liveH3: "こんな方におすすめです",
@@ -363,7 +364,7 @@ const body = `<header>
   <section class="view" id="v-process">
     <h1 class="t">${JA_UI.processTitle}</h1><p class="sub">${JA_UI.processSub}</p>
     <div id="steps"></div>
-    <div class="cta" style="margin-top:24px"><h2>${JA_UI.processCta}</h2><a class="btn btn-line big" id="lineP" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
+    <div class="cta" style="margin-top:24px"><h2>${JA_UI.processCta}</h2><p style="font-size:14.5px;color:#d6d3d1;margin-bottom:14px">${JA_UI.processCtaSub}</p><a class="btn btn-line big" id="lineP" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>
   </section>
 
   <section class="view" id="v-live">
