@@ -131,7 +131,7 @@ main{padding:26px 0}.view{display:none}#v-services,#v-process,#v-live,#v-invest,
 .card .ex{font-size:14px;color:var(--mut);flex:1}.card .meta{font-size:12px;color:#a8a29e;margin-top:10px}
 .vbadge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:2px 8px;border-radius:999px}
 h1.t{font-size:33px;font-weight:800;line-height:1.25;letter-spacing:-.5px;margin-bottom:18px;position:relative;padding-bottom:14px}h1.t::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:5px;border-radius:999px;background:linear-gradient(90deg,var(--rose),#fb923c)}.sub{color:var(--mut);margin-bottom:28px;max-width:640px;font-size:16px;line-height:1.75}
-#steps{max-width:720px}.step{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:12px;position:relative;transition:box-shadow .15s,transform .15s}.step:hover{box-shadow:0 8px 24px rgba(244,63,94,.1);transform:translateY(-2px)}.step .n{width:40px;height:40px;flex:0 0 auto;border-radius:999px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;box-shadow:0 3px 8px rgba(244,63,94,.25)}.step::before{content:"";position:absolute;left:39px;top:58px;bottom:-12px;width:2px;background:linear-gradient(var(--rose),#fbcfe8);opacity:.45}.step:last-child::before{display:none}.step h3{font-size:17px;margin-bottom:2px}
+#steps{max-width:720px}.step{text-align:left;display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:12px;position:relative;transition:box-shadow .15s,transform .15s}.step:hover{box-shadow:0 8px 24px rgba(244,63,94,.1);transform:translateY(-2px)}.step .n{width:40px;height:40px;flex:0 0 auto;border-radius:999px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;box-shadow:0 3px 8px rgba(244,63,94,.25)}.step::before{content:"";position:absolute;left:39px;top:58px;bottom:-12px;width:2px;background:linear-gradient(var(--rose),#fbcfe8);opacity:.45}.step:last-child::before{display:none}.step h3{font-size:17px;margin-bottom:2px}
 .svc{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:720px}.svc .it{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:14.5px;font-weight:500;transition:border-color .15s,box-shadow .15s}.svc .it:hover{border-color:#fbcfe8;box-shadow:0 3px 10px rgba(244,63,94,.07)}.svc .it .ck{width:22px;height:22px;flex:0 0 auto;border-radius:999px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
 .note{border-radius:18px;padding:22px 24px;margin-top:18px;max-width:720px;font-size:15px;line-height:1.85}
 .faq{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px;max-width:720px;transition:box-shadow .15s,border-color .15s}.faq:hover{border-color:#fbcfe8;box-shadow:0 4px 16px rgba(244,63,94,.07)}.faq summary{font-weight:700;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--rose);font-size:24px;font-weight:300;line-height:1;flex:0 0 auto;transition:transform .2s}.faq[open] summary::after{transform:rotate(45deg)}.faq p{color:var(--mut);margin-top:12px;font-size:15px;line-height:1.8}
@@ -205,6 +205,10 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .smline{display:block;text-align:center;margin-top:14px;background:#06c755;color:#fff;font-weight:700;font-size:14.5px;padding:11px;border-radius:999px}
 .smline:hover{background:#05b34c}
 @media(max-width:600px){.smbox{padding:20px 18px 16px}.smhd h3{font-size:17px}}
+.flow-ctabox{margin-top:16px;padding:24px 22px;border-radius:18px}
+.flow-ctabox h2{font-size:19px;margin-bottom:4px}
+.flow-ctabox p{font-size:14px;color:#d6d3d1;margin-bottom:14px}
+@media(max-width:600px){.flow-ctabox{padding:20px 16px}.flow-ctabox h2{font-size:17px}}
 </style>
 
 <header>
@@ -247,7 +251,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <p class="flow-lead">從第一次聊到拿到鑰匙，一共 10 步、每一步都有我陪，全程中文。</p>
   <div class="flow-grid" id="flowGrid"></div>
   <p class="flow-note">＊每一步實際需要的時間，依物件、貸款與雙方時間而不同。能否貸款與可貸成數依個案與銀行審查為準。</p>
-  <div class="flow-cta"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">從第一步開始：加 LINE 跟周周聊聊</a></div>
+  <div class="cta flow-ctabox"><h2>第一步，就是加我</h2><p>剩下的九步，我陪你一起走。</p><a class="btn btn-line big" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div>
 </div>
 <div class="smask" id="stepModal" aria-hidden="true" onclick="if(event.target===this)closeStep()">
   <div class="smbox" role="dialog" aria-modal="true" aria-labelledby="smTitle">
@@ -365,7 +369,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <section class="view" id="v-article"><div class="art" id="artBox"></div></section>
 
   <section class="view" id="v-process">
-    <h1 class="t">外國人在日本買房流程</h1><p class="sub">這些流程周周都會一步一步陪你確認，不用自己看日文資料看到頭痛。</p>
+    <h1 class="t">外國人在日本買房流程時間軸</h1><p class="sub">這些流程周周都會一步一步陪你確認，不用自己看日文資料看到頭痛。</p>
     <div id="steps"></div>
     <div class="cta" style="margin-top:24px"><h2>想知道你的條件能買到哪？</h2><a class="btn btn-line big" id="lineP" target="_blank" rel='noopener'>加 LINE 諮詢</a></div>
   </section>

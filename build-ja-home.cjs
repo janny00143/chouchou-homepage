@@ -275,7 +275,7 @@ const body = `<header>
       <p class="flow-lead">初回のご相談からお引き渡しまで全10ステップ、いずれの工程も日本語と中国語で対応いたします。</p>
       <div class="flow-grid" id="flowGrid"></div>
       <p class="flow-note">＊各工程に要する期間は、物件・融資・ご都合により異なります。融資の可否および借入割合は個別の審査によります。</p>
-      <div class="flow-cta"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">まずはLINEでご相談ください</a></div>
+      <div class="cta flow-ctabox"><h2>まずはLINEから</h2><p>残りの工程も、私が一緒に進めます。</p><a class="btn btn-line big" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div>
     </div>
     <div class="smask" id="stepModal" aria-hidden="true" onclick="if(event.target===this)closeStep()">
       <div class="smbox" role="dialog" aria-modal="true" aria-labelledby="smTitle">
