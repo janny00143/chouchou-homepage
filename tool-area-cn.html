@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index-cn.html">← 回首页</a>
@@ -53,6 +68,30 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
   <div class="toolnav"><a href="tool-loan-cn.html">🏦 房贷试算</a><a href="tool-cost-cn.html">💴 总费用</a><a href="tool-agent-cn.html">🤝 仲介费</a><a href="tool-yield-cn.html">📈 投报率</a><a href="tool-fx-cn.html">💱 即时汇率</a><a href="tool-area-cn.html" class="act">📐 坪数・帖</a></div>
   <div class="card"><h2>📐 坪・㎡・帖 换算</h2><p class="sub">三个栏位互动换算。1 坪 ≈ 3.305 ㎡（约 2 帖）；1 帖 ≈ 1.62 ㎡（日本不动产标准）。</p><div class="f"><label>坪</label><div class="inp"><input id="a_tsubo" type="number" inputmode="decimal" value="20"><span class="unit">坪</span></div></div><div class="f"><label>平方公尺</label><div class="inp"><input id="a_sqm" type="number" inputmode="decimal" value="66.12"><span class="unit">㎡</span></div></div><div class="f"><label>帖（畳）</label><div class="inp"><input id="a_jo" type="number" inputmode="decimal" value="40.8"><span class="unit">帖</span></div></div><div class="note">＊「帖（畳）」是日本看房常见的房间大小单位，1 帖约 1.62 ㎡；台湾的「坪」1 坪约 3.305 ㎡、约等于 2 帖。</div></div>
   <div class="cta"><p>算完想找适合的物件，或有贷款／税务问题？<br>把你的试算结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看这个坪数的实际物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
+<div class="tinfo">
+  <h2>坪、㎡、帖：日本看房必备的三个单位</h2>
+  <p>日本的物件资料主要用<b>平方公尺（㎡）</b>标示面积，房间大小则常用<b>帖（畳・じょう）</b>，而台湾人习惯用<b>坪</b>。这三个单位在看物件时会不断交错出现，换算熟了会快很多。</p>
+  <ul>
+    <li><b>1 坪 ≒ 3.30578 ㎡</b>（日本与台湾的坪是同一个单位）</li>
+    <li><b>1 帖 ＝ 1.62 ㎡ 以上</b>——这是日本不动产公正取引协议会的规约基准，广告上标示帖数时每帖不得低于 1.62 ㎡。</li>
+  </ul>
+
+  <h3>「帖」其实不只一种大小</h3>
+  <p>榻榻米的实际尺寸因地区而异：关西的京间最大、中京间次之、关东常见的江戸间较小，还有集合住宅常用的団地间。所以同样写「6 帖」，实际空间可能有差。广告上的帖数是依规约换算的数字，<b>真正该看的是专有面积（㎡）</b>。</p>
+
+  <h3>还有一个更容易误会的：专有面积的算法</h3>
+  <p>日本中古公寓的专有面积有两种算法——<b>壁芯面积</b>（从墙壁中心线量）与<b>内法面积</b>（从墙壁内侧量）。广告上多半写壁芯，但登记誊本上写的是内法，内法会比壁芯小 2～5% 左右。这个差异在申请房贷减税等有面积门槛的制度时可能影响资格（例如以登记面积 50 ㎡为界的规定），所以看到接近门槛的物件要特别确认是哪一种。</p>
+  <p>另外，阳台（バルコニー）在日本属于共用部分，不计入专有面积，但广告会另外标示。看物件时把「专有面积」「阳台面积」「壁芯或内法」三件事分清楚，就不太会被数字误导。这些我在看物件时都会帮你逐项确认。</p>
+  <div class="src">1 帖＝1.62 ㎡ 以上为不动产公正取引协议会连合会的表示规约基准；壁芯与内法的差异依建物而不同，实际面积以登记事项证明书与重要事项说明书为准。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常见问题</h2>
+  <details class="tfaq"><summary>为什么登记誊本的面积比广告小？</summary><p>因为算法不同。广告多半用壁芯面积（从墙壁中心线量），登记誊本用内法面积（从墙壁内侧量），内法通常比壁芯小 2～5%。两个都是正确的数字，只是基准不一样。</p></details>
+  <details class="tfaq"><summary>50 ㎡这个门槛为什么重要？</summary><p>日本部分税制优惠与贷款减税设有面积下限，常见的门槛是 50 ㎡，而且判断时采用的是登记上的面积。所以广告写 50 几㎡的物件，实际登记面积有可能低于门槛，要事先确认。实际适用条件请由税理士确认。</p></details>
+  <details class="tfaq"><summary>阳台算在坪数里吗？</summary><p>不算。日本的阳台属于共用部分，只是专用使用权，不计入专有面积，广告会另外标示阳台面积。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "为什么登记誊本的面积比广告小？", "acceptedAnswer": {"@type": "Answer", "text": "因为算法不同。广告多半用壁芯面积（从墙壁中心线量），登记誊本用内法面积（从墙壁内侧量），内法通常比壁芯小 2～5%。两个都是正确的数字，只是基准不一样。"}}, {"@type": "Question", "name": "50 ㎡这个门槛为什么重要？", "acceptedAnswer": {"@type": "Answer", "text": "日本部分税制优惠与贷款减税设有面积下限，常见的门槛是 50 ㎡，而且判断时采用的是登记上的面积。所以广告写 50 几㎡的物件，实际登记面积有可能低于门槛，要事先确认。实际适用条件请由税理士确认。"}}, {"@type": "Question", "name": "阳台算在坪数里吗？", "acceptedAnswer": {"@type": "Answer", "text": "不算。日本的阳台属于共用部分，只是专用使用权，不计入专有面积，广告会另外标示阳台面积。"}}]}</script>
   <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以各银行、税理士、司法书士与最新法规为准。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圆";var TB=3.305785,JO=1.62;function fromT(){var s=+$('a_tsubo').value*TB;$('a_sqm').value=s.toFixed(2);$('a_jo').value=(s/JO).toFixed(1);}function fromS(){var s=+$('a_sqm').value;$('a_tsubo').value=(s*0.3025).toFixed(2);$('a_jo').value=(s/JO).toFixed(1);}function fromJ(){var s=+$('a_jo').value*JO;$('a_sqm').value=s.toFixed(2);$('a_tsubo').value=(s*0.3025).toFixed(2);}$('a_tsubo').addEventListener('input',fromT);$('a_sqm').addEventListener('input',fromS);$('a_jo').addEventListener('input',fromJ);document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

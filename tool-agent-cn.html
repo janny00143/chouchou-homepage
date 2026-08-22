@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp,html[data-theme="dark"] .tiers{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index-cn.html">← 回首页</a>
@@ -62,6 +77,32 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
     <div class="note">⚠️ 此为法定「上限」，实际以契约为准；金额四舍五入概算。新成屋／建商直售等情况仲介费可能不同。<br><b style="color:#b45309">本试算仅为「自动概算」、仅供参考，不可作为实际或法律依据；一切务必以仲介／司法书士等专业人士的判断为主。</b></div>
   </div>
   <div class="cta"><p>算完想找适合的物件，或想确认这笔仲介费？<br>把结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看周周自己在卖的物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
+<div class="tinfo">
+  <h2>日本的仲介手续费是怎么决定的</h2>
+  <p>跟很多国家不同，<b>日本的仲介手续费不是各家自己开价，而是由法律（宅地建物取引业法）订定计算方式与上限</b>。这也是为什么你在不同公司问到的金额，通常不会差太多——大家算的是同一个公式。</p>
+  <p>这对买方其实是好事：你在看物件的时候就能事先知道这笔费用大概是多少，不会到最后才被追加名目不明的费用。这个工具就是用法定的分级距方式帮你把数字算出来，含消费税。</p>
+
+  <h3>这笔费用换到的是什么</h3>
+  <p>在日本买房，真正花时间的往往不是「看房」，而是看不到的那些工作：</p>
+  <ul>
+    <li>向卖方索取并确认レントロール（租金明细表）、租赁契约、登记誊本。</li>
+    <li>向管理公司调阅「重要事项调查报告书」，确认管理费与修缮基金的调涨计划、大楼的积立金余额。</li>
+    <li>确认用途地域、自治体条例、管理规约，判断这间房能不能做你想做的用途。</li>
+    <li>依法由宅地建物取引士进行重要事项说明——这在日本是法定必须由持照者本人执行的。</li>
+    <li>对接银行、司法书士、税理士，把交屋当天的流程排好。</li>
+  </ul>
+  <p>我本身持有宅地建物取引士资格，所以重要事项说明可以由我自己用中文向你逐条说明；你不会遇到「听不懂但还是签了」的状况。这才是这笔费用真正的内容。</p>
+  <p>我的做法是：<b>在带你看房之前，就把你这一件的金额算给你、白纸黑字写清楚</b>，过程中不会有中途加价。</p>
+  <div class="src">计算方式依日本宅地建物取引业法及国土交通省告示的报酬规定；税制与相关规定可能调整，实际金额以契约条件与最新法规为准。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常见问题</h2>
+  <details class="tfaq"><summary>仲介手续费什么时候付？</summary><p>实务上多半分两次：签约时付一半、交屋（决済）时付另一半，也有一次付清的做法。实际依契约约定，我会在签约前就跟你确认清楚时点与金额。</p></details>
+  <details class="tfaq"><summary>买方和卖方都要付吗？</summary><p>买卖双方各自与自己的仲介之间有委托关系，各自负担各自的报酬。实际情形依契约与委托方式而定。</p></details>
+  <details class="tfaq"><summary>除了仲介手续费，还会有其他费用吗？</summary><p>会，那些属于取得诸费用——登录免许税、司法书士报酬、印纸税、不动产取得税、火灾保险等，一般估算是物件价格的 6～10%。我会在你出价前把完整的资金表算给你看。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "仲介手续费什么时候付？", "acceptedAnswer": {"@type": "Answer", "text": "实务上多半分两次：签约时付一半、交屋（决済）时付另一半，也有一次付清的做法。实际依契约约定，我会在签约前就跟你确认清楚时点与金额。"}}, {"@type": "Question", "name": "买方和卖方都要付吗？", "acceptedAnswer": {"@type": "Answer", "text": "买卖双方各自与自己的仲介之间有委托关系，各自负担各自的报酬。实际情形依契约与委托方式而定。"}}, {"@type": "Question", "name": "除了仲介手续费，还会有其他费用吗？", "acceptedAnswer": {"@type": "Answer", "text": "会，那些属于取得诸费用——登录免许税、司法书士报酬、印纸税、不动产取得税、火灾保险等，一般估算是物件价格的 6～10%。我会在你出价前把完整的资金表算给你看。"}}]}</script>
   <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以契约、各银行与最新法规为准。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200万以下（5%）";if(price<=4e6)return "200～400万（4%＋2万）";return "超过400万（3%＋6万）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=Math.round(fee).toLocaleString()+" 日圆（约 "+((fee/1e4).toFixed(1).replace(/\.0$/,""))+" 万）";$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

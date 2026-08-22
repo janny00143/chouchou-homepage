@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index.html">← 回首頁</a>
@@ -53,6 +68,32 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
   <div class="toolnav"><a href="tool-loan.html">🏦 房貸試算</a><a href="tool-cost.html">💴 總費用</a><a href="tool-agent.html">🤝 仲介費</a><a href="tool-yield.html" class="act">📈 投報率</a><a href="tool-fx.html">💱 即時匯率</a><a href="tool-area.html">📐 坪數・帖</a></div>
   <div class="card"><h2>📈 租金投報率</h2><p class="sub">表面利回り＝年租金÷物件價格；實質利回り再扣掉持有支出與購入諸費用。</p><div class="two"><div class="f"><label>物件價格</label><div class="inp"><input id="y_price" type="number" inputmode="decimal" value="3000"><span class="unit">萬日圓</span></div></div><div class="f"><label>每月租金</label><div class="inp"><input id="y_rent" type="number" inputmode="decimal" value="12"><span class="unit">萬日圓</span></div></div><div class="f"><label>每月管理費＋修繕</label><div class="inp"><input id="y_cost" type="number" inputmode="decimal" value="2"><span class="unit">萬日圓</span></div></div><div class="f"><label>年其他支出（稅・保險等）</label><div class="inp"><input id="y_other" type="number" inputmode="decimal" value="10"><span class="unit">萬日圓</span></div></div></div><div class="out"><div class="two" style="gap:12px"><div><div class="big">表面投報率</div><div class="num" id="y_gross">—</div></div><div><div class="big">實質投報率</div><div class="num" id="y_net">—</div></div></div><div class="orow"><span>年租金收入</span><span class="v" id="y_yrent">—</span></div><div class="orow"><span>年持有支出</span><span class="v" id="y_yexp">—</span></div></div><div class="note">⚠️ 投報率不等於實際報酬，未計入空室、租金下跌、修繕、貸款利息與稅金等風險，實際以個案為準。</div></div>
   <div class="cta"><p>算完想找適合的物件，或有貸款／稅務問題？<br>把你的試算結果直接傳給周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties.html">🏠 看看周周手上的收租物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div></div>
+<div class="tinfo">
+  <h2>表面利回り 跟 実質利回り 差在哪</h2>
+  <p>日本物件廣告上寫的那個投報率，幾乎清一色是<b>表面利回り（表面投報率）</b>：年租金收入 ÷ 物件價格，不扣任何成本。它的用途是快速比較物件，不是拿來估你實際會拿到多少現金。</p>
+  <p><b>実質利回り（實質投報率）</b>則是分子扣掉每年的持有成本（管理費與修繕基金、固都稅、管理委託費、火災保險），分母加上取得時的諸費用（一般是物件價格的 6～10%）。同一間房，兩個數字經常差 1.5 個百分點以上。</p>
+
+  <h3>現在的市場水準</h3>
+  <p>健美家的〈收益物件 市場動向マンスリーレポート〉2026 年 6 月期顯示，全國區分公寓的平均表面投報率是 <b>6.61%</b>；但那是全國平均，包含很多地方物件。東京都心的中古區分，實際看到的表面投報率多半落在 4.5～6.0%。低不代表差——都心低投報物件買的是空室風險低、租金穩定、將來好處理。</p>
+
+  <h3>算出來之後，還有四件事這個工具算不到</h3>
+  <ul>
+    <li><b>租約的真實條件</b>——現在租金多少、押金多少、何時到期、有沒有欠繳，寫在レントロール與租賃契約上，網路廣告不會登。</li>
+    <li><b>管理費與修繕基金會漲</b>——調漲時程與大樓的積立金餘額，要向管理公司調「重要事項調查報告書」。</li>
+    <li><b>非居住者的源泉徵收</b>——你人不在日本時，承租人支付租金原則上要先扣 20.42% 再付給你（國稅廳 No.2880），之後可透過確定申告調整，但現金流的時點會完全不同。</li>
+    <li><b>高投報背後的原因</b>——地點、屋齡、構造、租客結構、將來好不好脫手，通常要看謄本與管理組合議事錄才知道。</li>
+  </ul>
+  <p>把物件網址或販売図面傳給我，這四份資料我幫你調齊再算一次，算完你會清楚知道這一間值不值得出手——就算結論是「這間不要買」，我也會直接跟你說。</p>
+  <div class="src">資料來源：健美家〈収益物件 市場動向マンスリーレポート〉2026 年 6 月期；國稅廳〈No.2880 非居住者等に不動産の賃借料を支払ったとき〉。市場數據隨時間變動，稅務處理請由稅理士確認。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常見問題</h2>
+  <details class="tfaq"><summary>投報率多少才值得買？</summary><p>沒有一個通用的數字，要看你的目的。要穩定與保值、將來可能自用，都心低投報但空室風險低的物件比較合理；要現金流，就要往投報高一點的區域或物件型態走，但相對要接受空室期較長、管理較費心、融資條件較嚴。</p></details>
+  <details class="tfaq"><summary>「滿室想定」是什麼意思？</summary><p>意思是「如果全部租出去的話」。現況空屋的物件，廣告上那個租金是估算值，不是已經在收的錢。現況出租中的物件（オーナーチェンジ）比較實在，但要看的是實際租約條件。</p></details>
+  <details class="tfaq"><summary>外國人收租金要繳什麼稅？</summary><p>租金收入要申報所得稅；另外若你在稅務上屬於非居住者，承租人支付租金時原則上要先源泉徵收 20.42%。這筆之後可以透過確定申告調整、多扣的可以退，但實際怎麼處理請由稅理士確認。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "投報率多少才值得買？", "acceptedAnswer": {"@type": "Answer", "text": "沒有一個通用的數字，要看你的目的。要穩定與保值、將來可能自用，都心低投報但空室風險低的物件比較合理；要現金流，就要往投報高一點的區域或物件型態走，但相對要接受空室期較長、管理較費心、融資條件較嚴。"}}, {"@type": "Question", "name": "「滿室想定」是什麼意思？", "acceptedAnswer": {"@type": "Answer", "text": "意思是「如果全部租出去的話」。現況空屋的物件，廣告上那個租金是估算值，不是已經在收的錢。現況出租中的物件（オーナーチェンジ）比較實在，但要看的是實際租約條件。"}}, {"@type": "Question", "name": "外國人收租金要繳什麼稅？", "acceptedAnswer": {"@type": "Answer", "text": "租金收入要申報所得稅；另外若你在稅務上屬於非居住者，承租人支付租金時原則上要先源泉徵收 20.42%。這筆之後可以透過確定申告調整、多扣的可以退，但實際怎麼處理請由稅理士確認。"}}]}</script>
   <p class="foot">本頁試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以各銀行、稅理士、司法書士與最新法規為準。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圓";function calc(){const price=+$('y_price').value*1e4,rent=+$('y_rent').value*1e4,mc=+$('y_cost').value*1e4,ot=+$('y_other').value*1e4;const yr=rent*12,ye=mc*12+ot;const g=price>0?yr/price*100:0;const bc=price*0.07;const net=(price+bc)>0?(yr-ye)/(price+bc)*100:0;$('y_gross').textContent=g>0?g.toFixed(2)+" %":"—";$('y_net').textContent=net?net.toFixed(2)+" %":"—";$('y_yrent').textContent=yfmt(yr);$('y_yexp').textContent=yfmt(ye);}['y_price','y_rent','y_cost','y_other'].forEach(i=>$(i).addEventListener('input',calc));calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

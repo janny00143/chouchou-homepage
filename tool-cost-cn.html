@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-.modesel{display:flex;gap:8px;margin-bottom:14px}.modesel .pm{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;font-size:14px;font-weight:700;color:var(--mut);cursor:pointer;font-family:inherit}.modesel .pm.on{background:var(--rose);color:#fff;border-color:var(--rose)}html[data-theme="dark"] .modesel .pm{background:#1c1917}@media(max-width:480px){.out .num{font-size:25px}}</style>
+.modesel{display:flex;gap:8px;margin-bottom:14px}.modesel .pm{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;font-size:14px;font-weight:700;color:var(--mut);cursor:pointer;font-family:inherit}.modesel .pm.on{background:var(--rose);color:#fff;border-color:var(--rose)}html[data-theme="dark"] .modesel .pm{background:#1c1917}@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index-cn.html">← 回首页</a>
@@ -53,6 +68,34 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
   <div class="toolnav"><a href="tool-loan-cn.html">🏦 房贷试算</a><a href="tool-cost-cn.html" class="act">💴 总费用</a><a href="tool-agent-cn.html">🤝 仲介费</a><a href="tool-yield-cn.html">📈 投报率</a><a href="tool-fx-cn.html">💱 即时汇率</a><a href="tool-area-cn.html">📐 坪数・帖</a></div>
   <div class="card"><h2>💴 购屋总费用・自备款</h2><p class="sub">中古公寓大楼概算。诸费用合计以「有贷款约房价 7%、现金全款约 5%」概估，仲介手数料依法定上限计算。</p><div class="modesel" id="paytype"><button type="button" class="pm on" data-pay="loan" onclick="setPay('loan')">🏦 有贷款</button><button type="button" class="pm" data-pay="cash" onclick="setPay('cash')">💵 现金全款</button></div><div class="two"><div class="f"><label>房屋总价</label><div class="inp"><input id="c_price" type="number" inputmode="decimal" value="6000"><span class="unit">万日圆</span></div></div><div class="f"><label>头期款比例</label><div class="inp"><input id="c_downpct" type="number" inputmode="decimal" value="20"><span class="unit">%</span></div></div></div><div class="out"><div class="big">购屋需准备的现金（头期＋诸费用）</div><div class="num" id="c_cash">—</div><div class="orow"><span>头期款</span><span class="v" id="c_down">—</span></div><div class="orow"><span id="c_csum_lbl">诸费用合计</span><span class="v" id="c_costsum">—</span></div></div><div class="note"><div id="c_items" style="font-size:12.5px;line-height:1.9;margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed #fde68a"></div>⚠️ 诸费用合计约：有贷款＝大约房价 7%、现金全款＝大约房价 5%，差别主要在银行贷款相关费用（事务手续费等）。<br>公寓大楼另含管理费／修缮积立金精算；<br>新筑一户建／整栋会多一笔建物表示登记费。<br>此外购入后另有不动产取得税（依国税局判断为主），<br>实际金额请以税理士／司法书士／仲介确认为准。<br><b style="color:#b45309">⚠️ 本试算仅为「自动概算」、仅供参考，不可作为实际或法律依据；一切务必以税理士／司法书士／仲介等专业人士的判断为主。</b></div></div>
   <div class="cta"><p>算完想找适合的物件，或有贷款／税务问题？<br>把你的试算结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看这个预算能买什么物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
+<div class="tinfo">
+  <h2>房价之外，还要准备多少现金？</h2>
+  <p>很多第一次在日本买房的人，都是到快签约才发现「钱不够」——因为忽略了诸费用。日本买中古屋的取得诸费用，<b>一般估算是物件价格的 6～10%</b>，而且这笔通常要用现金准备，不一定能跟房贷一起借。</p>
+
+  <h3>这 6～10% 包含哪些</h3>
+  <ul>
+    <li><b>仲介手续费</b>——由法律订定计算方式，不是各家自己开价。</li>
+    <li><b>登录免许税</b>——所有权移转与抵押权设定的登记税。</li>
+    <li><b>司法书士报酬</b>——登记手续由司法书士办理。</li>
+    <li><b>印纸税</b>——贴在买卖契约书上，依契约金额分级。</li>
+    <li><b>不动产取得税</b>——买完之后几个月才会寄单来，很多人会忘记留这笔。</li>
+    <li><b>火灾保险・地震保险</b>——贷款的话通常是必要条件。</li>
+    <li><b>固都税的日割清算</b>——交屋当年的固定资产税・都市计划税，买卖双方按天数分摊。</li>
+  </ul>
+
+  <h3>两个最常被漏掉的</h3>
+  <p>第一是<b>不动产取得税</b>。它不是交屋时付，而是交屋后几个月才由都道府县寄缴款单来——很多人那时已经把手上的钱花在装修或家具上了。第二是<b>管理费与修缮基金（修缮积立金）的日割清算</b>，中古公寓交屋当月的费用要跟卖方分摊，金额不大但会出现在最后的清算表上。</p>
+  <p>另外提醒，登录免许税有减免措施但都有期限，税制每年可能调整，实际适用哪一版请由司法书士确认。我在你出价之前就会把完整的资金表算给你看，包含这些容易漏掉的项目，不会让你到签约当天才发现预算不够。</p>
+  <div class="src">诸费用比例 6～10% 为日本不动产业界一般估算值；税制与减免措施每年可能调整，实际以官方最新公告为准，个案适用请由税理士与司法书士确认。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常见问题</h2>
+  <details class="tfaq"><summary>诸费用可以一起贷款吗？</summary><p>有些银行有「诸费用贷款」，但不是每家都有，额度与利率条件也不同，而且会拉高你的总负债。实务上还是建议把这笔钱当成现金准备，资金结构会比较健康。</p></details>
+  <details class="tfaq"><summary>不动产取得税什么时候会来？</summary><p>一般是交屋后数个月，由都道府县寄送缴款书。中古住宅在符合一定条件时有减额措施，但要在期限内申请，所以拿到单子不要放着，实际税额与适用条件请由税理士确认。</p></details>
+  <details class="tfaq"><summary>买新成屋和中古屋的费用结构一样吗？</summary><p>不完全一样。新成屋若是向建商直接购买，可能没有仲介手续费，但会有其他项目；中古屋则多半透过仲介成交。另外，税制上的减免条件对新旧、面积、耐震标准的要求也不同，要看个案。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "诸费用可以一起贷款吗？", "acceptedAnswer": {"@type": "Answer", "text": "有些银行有「诸费用贷款」，但不是每家都有，额度与利率条件也不同，而且会拉高你的总负债。实务上还是建议把这笔钱当成现金准备，资金结构会比较健康。"}}, {"@type": "Question", "name": "不动产取得税什么时候会来？", "acceptedAnswer": {"@type": "Answer", "text": "一般是交屋后数个月，由都道府县寄送缴款书。中古住宅在符合一定条件时有减额措施，但要在期限内申请，所以拿到单子不要放着，实际税额与适用条件请由税理士确认。"}}, {"@type": "Question", "name": "买新成屋和中古屋的费用结构一样吗？", "acceptedAnswer": {"@type": "Answer", "text": "不完全一样。新成屋若是向建商直接购买，可能没有仲介手续费，但会有其他项目；中古屋则多半透过仲介成交。另外，税制上的减免条件对新旧、面积、耐震标准的要求也不同，要看个案。"}}]}</script>
   <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以各银行、税理士、司法书士与最新法规为准。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圆";let pay='loan';function setPay(p){pay=p;var bs=document.querySelectorAll('#paytype .pm');for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-pay')===p);}var d=$('c_downpct');if(p==='cash'){d.value=100;d.disabled=true;}else{d.disabled=false;if(+d.value>=100)d.value=20;}calc();}function calc(){const cash=pay==='cash';const price=+$('c_price').value*1e4;const dp=cash?100:(+$('c_downpct').value);const down=price*dp/100;const rate=cash?0.05:0.07;const fee=(price<=2e6?price*0.05:price<=4e6?price*0.04+2e4:price*0.03+6e4)*1.1;const cs=price*rate;const other=Math.max(0,cs-fee);$('c_down').textContent=yfmt(down);$('c_costsum').textContent=yfmt(cs);var lbl=$('c_csum_lbl');if(lbl)lbl.textContent='诸费用合计（约房价'+Math.round(rate*100)+'%）';$('c_cash').textContent=yfmt(down+cs);var items=['登记费用','火灾保险（5年）','契约书印纸税','固定资产税・都市计划税精算金'];if(!cash)items=items.concat(['金融机构事务手续费','金融机构保证费','贷款事务代行费']);var ci=$('c_items');if(ci)ci.innerHTML='<b style="color:var(--ink)">诸费用包含：</b><br>'+items.map(function(x){return '・'+x;}).join('<br>')+'<br>・仲介手数料（含税）';}['c_price','c_downpct'].forEach(i=>$(i).addEventListener('input',calc));calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

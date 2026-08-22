@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index.html">← 回首頁</a>
@@ -53,6 +68,31 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
   <div class="toolnav"><a href="tool-loan.html">🏦 房貸試算</a><a href="tool-cost.html">💴 總費用</a><a href="tool-agent.html">🤝 仲介費</a><a href="tool-yield.html">📈 投報率</a><a href="tool-fx.html" class="act">💱 即時匯率</a><a href="tool-area.html">📐 坪數・帖</a></div>
   <div class="card"><h2>💱 即時匯率換算</h2><p class="sub" id="fxsub">匯率自動更新中…</p><div class="two"><div class="f"><label>從（貨幣）</label><div class="inp"><select id="fx_from" style="flex:1;border:none;background:transparent;font-size:16px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);outline:none;width:100%"></select></div></div><div class="f"><label>到（貨幣）</label><div class="inp"><select id="fx_to" style="flex:1;border:none;background:transparent;font-size:16px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);outline:none;width:100%"></select></div></div></div><div class="two"><div class="f"><label>金額</label><div class="inp"><input id="fx_a" type="number" inputmode="decimal" value="10000"></div></div><div class="f"><label>換算結果</label><div class="inp"><input id="fx_b" type="number" inputmode="decimal"></div></div></div><p style="text-align:center;margin:8px 0"><button onclick="fxSwap()" style="background:#f5f5f4;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--ink)">⇅ 對調幣別</button></p><p style="text-align:center;font-size:14px;color:var(--rose-d);font-weight:700" id="fx_rateinfo"></p><p style="text-align:center;margin-top:6px"><a href="https://www.google.com/search?q=currency+converter" target="_blank" rel="noopener" style="color:var(--rose);font-size:13px;font-weight:600">🔎 查 Google 匯率</a></p><div class="note">⚠️ 匯率為市場參考中間價，實際換匯／刷卡會有價差，以銀行公告為準。</div></div>
   <div class="cta"><p>算完想找適合的物件，或有貸款／稅務問題？<br>把你的試算結果直接傳給周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties.html">🏠 看看目前在售的物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div></div>
+<div class="tinfo">
+  <h2>看日本物件價格時，匯率怎麼看</h2>
+  <p>日本的物件價格單位是「万円」（1 万円＝10,000 日圓），廣告上寫「6,000万円」就是 6,000 萬日圓。剛開始看物件時，把它換成自己熟悉的幣別，對預算比較有感覺，這個工具就是做這件事。</p>
+
+  <h3>但買房時，匯率不是只換一次</h3>
+  <p>實際的買賣流程裡，你至少會在三個時點需要日圓：</p>
+  <ul>
+    <li><b>簽約時的手付金（訂金）</b>——通常是成交價的 5～10%。</li>
+    <li><b>交屋（決済）時的尾款與諸費用</b>——這是金額最大的一次。</li>
+    <li><b>交屋後的稅金與持有成本</b>——不動產取得稅、固都稅、管理費等。</li>
+  </ul>
+  <p>簽約到交屋之間通常隔一個月以上，這段期間匯率會動。如果你的資金是台幣或其他外幣，等於在房價之外還多背了一個匯率變數。分批換匯、或在資金到位時就先鎖一部分，是滿多客戶採取的做法——但這牽涉個人的資金規劃，我不會給你投資建議，只提醒這件事要事先想。</p>
+
+  <h3>匯款到日本，還有兩件事要注意</h3>
+  <p>一是<b>收款人資訊要正確</b>：日本買房的款項往往要分別匯給賣方、司法書士等不同對象，每一筆的名義與時點都不能出錯。二是<b>時間要抓夠</b>：跨國匯款遇到假日或銀行查核會延遲，而交屋日是不能拖的。這部分我會在時程表上幫你把每一筆的截止日標出來。</p>
+  <div class="src">本頁匯率為即時擷取，僅供參考；實際換匯以銀行牌告與手續費為準。本頁不構成投資或換匯建議。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常見問題</h2>
+  <details class="tfaq"><summary>買房的錢要怎麼匯到日本？</summary><p>一般是從你原本的帳戶跨國匯款到指定帳戶。日本買房常常需要分別匯給不同對象，建議先把每一筆的金額、收款人與截止日列成表再開始動作。站上有一篇文章專門在講匯款流程與必備文件，可以先看。</p></details>
+  <details class="tfaq"><summary>需要先在日本開戶嗎？</summary><p>不一定。有些流程可以不用日本帳戶完成，但如果你之後要收租金、繳固都稅與管理費，有一個日本帳戶會方便很多。實務上開戶的難易度依你的在留狀況而不同。</p></details>
+  <details class="tfaq"><summary>匯率什麼時候換比較好？</summary><p>這個沒有標準答案，也不在我的專業範圍內——我不會給你換匯的時機建議。我能做的是把每一筆款項的時點與金額提早告訴你，讓你有足夠的時間自己安排。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "買房的錢要怎麼匯到日本？", "acceptedAnswer": {"@type": "Answer", "text": "一般是從你原本的帳戶跨國匯款到指定帳戶。日本買房常常需要分別匯給不同對象，建議先把每一筆的金額、收款人與截止日列成表再開始動作。站上有一篇文章專門在講匯款流程與必備文件，可以先看。"}}, {"@type": "Question", "name": "需要先在日本開戶嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不一定。有些流程可以不用日本帳戶完成，但如果你之後要收租金、繳固都稅與管理費，有一個日本帳戶會方便很多。實務上開戶的難易度依你的在留狀況而不同。"}}, {"@type": "Question", "name": "匯率什麼時候換比較好？", "acceptedAnswer": {"@type": "Answer", "text": "這個沒有標準答案，也不在我的專業範圍內——我不會給你換匯的時機建議。我能做的是把每一筆款項的時點與金額提早告訴你，讓你有足夠的時間自己安排。"}}]}</script>
   <p class="foot">本頁試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以各銀行、稅理士、司法書士與最新法規為準。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圓";var CURR=[['JPY','日圓'],['TWD','新台幣'],['USD','美元'],['CNY','人民幣'],['HKD','港幣'],['EUR','歐元'],['KRW','韓元'],['GBP','英鎊'],['AUD','澳幣'],['SGD','新加坡幣']];var RATES=null;function opts(sel,v){sel.innerHTML=CURR.map(function(c){return '<option value="'+c[0]+'"'+(c[0]===v?' selected':'')+'>'+c[1]+'（'+c[0]+'）</option>';}).join('');}opts($('fx_from'),'JPY');opts($('fx_to'),'TWD');function rate(){if(!RATES)return null;var f=$('fx_from').value,t=$('fx_to').value;if(!RATES[f]||!RATES[t])return null;return RATES[t]/RATES[f];}function info(){var r=rate(),e=$('fx_rateinfo');if(r==null){e.textContent='';return;}e.textContent='1 '+$('fx_from').value+' ≈ '+(+r.toPrecision(5))+' '+$('fx_to').value;}function calc(dir){var r=rate();if(r==null)return;if(dir==='b'){var b=+$('fx_b').value;$('fx_a').value=b>0?(+(b/r).toFixed(2)):'';}else{var a=+$('fx_a').value;$('fx_b').value=a>0?(+(a*r).toFixed(2)):'';}info();}function fxSwap(){var f=$('fx_from').value,t=$('fx_to').value;opts($('fx_from'),t);opts($('fx_to'),f);calc('a');}$('fx_from').addEventListener('change',function(){calc('a');});$('fx_to').addEventListener('change',function(){calc('a');});$('fx_a').addEventListener('input',function(){calc('a');});$('fx_b').addEventListener('input',function(){calc('b');});fetch('https://open.er-api.com/v6/latest/USD').then(function(r){return r.json();}).then(function(d){if(d&&d.rates){RATES=d.rates;var t=d.time_last_update_utc?d.time_last_update_utc.replace(' 00:00:00 +0000',''):'';$('fxsub').textContent='已自動更新即時匯率'+(t?'（'+t+'）':'');calc('a');}else{throw 0;}}).catch(function(){$('fxsub').textContent='自動更新失敗，請稍後再試或參考下方 Google 匯率。';});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
