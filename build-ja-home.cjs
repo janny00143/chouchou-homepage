@@ -258,7 +258,7 @@ const body = `<header>
 </style>
     <div class="herob"><div class="in">
   <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
-  <div class="sub">東京の中国語対応 不動産エージェント｜マイホーム・投資・ローン・ご契約まで日本語と中国語で</div>
+  <div class="sub"><span class="s-u">東京の中国語対応 不動産エージェント</span><span class="s-b">｜</span><span class="s-u">マイホーム・投資・ローン・ご契約まで日本語と中国語で</span></div>
   <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.7V21h14V9.7"/><path d="M9.5 21v-6h5v6"/></svg>自宅購入</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7h1.5M9 11h1.5M13.5 11h1.5M9 15h1.5M13.5 15h1.5"/><path d="M10.5 21v-3h3v3"/></svg>投資物件</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3" rx="0.5"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg>ローン相談</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>日本語対応</span></div>
   <div class="hbtns"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>無料LINE相談</a><a class="b-case" onclick="var r=document.querySelector('.reviews');if(r)r.scrollIntoView({behavior:'smooth'});return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z" fill="currentColor" stroke="none"/></svg>お客様のリアルな声</a></div>
 </div></div>
@@ -272,7 +272,6 @@ const body = `<header>
       <div class="hlp-head"><span class="hlp-sp"></span><h2>ご購入までの流れ</h2><a class="hlp-more" onclick="show('process');return false" href="javascript:void(0)">詳しく見る →</a></div>
       <p class="flow-lead">初回のご相談からお引き渡しまで全10ステップ、いずれの工程も日本語と中国語で対応いたします。</p>
       <div class="flow-grid" id="flowGrid"></div>
-      <p class="flow-note">＊各工程に要する期間は、物件・融資・ご都合により異なります。融資の可否および借入割合は個別の審査によります。</p>
     </div>
     <div class="smask" id="stepModal" aria-hidden="true" onclick="if(event.target===this)closeStep()">
       <div class="smbox" role="dialog" aria-modal="true" aria-labelledby="smTitle">
