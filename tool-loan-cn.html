@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index-cn.html">← 回首页</a>
@@ -53,6 +68,33 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
   <div class="toolnav"><a href="tool-loan-cn.html" class="act">🏦 房贷试算</a><a href="tool-cost-cn.html">💴 总费用</a><a href="tool-agent-cn.html">🤝 仲介费</a><a href="tool-yield-cn.html">📈 投报率</a><a href="tool-fx-cn.html">💱 即时汇率</a><a href="tool-area-cn.html">📐 坪数・帖</a></div>
   <div class="card"><h2>🏦 房贷月付试算</h2><p class="sub">等额本息（元利均等）概算。实际利率与可贷成数依各银行审查为准。</p><div class="two"><div class="f"><label>房屋总价</label><div class="inp"><input id="l_price" type="number" inputmode="decimal" value="6000"><span class="unit">万日圆</span></div></div><div class="f"><label>头期款</label><div class="inp"><input id="l_down" type="number" inputmode="decimal" value="1200"><span class="unit">万日圆</span></div></div><div class="f"><label>年利率</label><div class="inp"><input id="l_rate" type="number" inputmode="decimal" value="2.0" step="0.1"><span class="unit">%</span></div></div><div class="f"><label>贷款年限</label><div class="inp"><input id="l_years" type="number" inputmode="numeric" value="35"><span class="unit">年</span></div></div></div><div class="out"><div class="big">每月还款</div><div class="num" id="l_m">—</div></div><div class="note">⚠️ 外国人／非居住者的可贷成数与利率，依个案与银行审查为准，本试算仅供概念参考。</div></div>
   <div class="cta"><p>算完想找适合的物件，或有贷款／税务问题？<br>把你的试算结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看这个预算能买什么物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
+<div class="tinfo">
+  <h2>日本房贷怎么算，外国人要先知道的几件事</h2>
+  <p>这个工具用的是日本最常见的「元利均等偿还」（等额本息）——每个月还一样的金额，前期还的利息比例高、后期本金比例高。日本的房贷年限最长通常到 35 年，也有银行做到 40 年，但年限会受年龄限制（多数要求完済时 80 岁以内）。</p>
+
+  <h3>现在的利率大概在哪里</h3>
+  <p>2026 年 8 月的市场行情：<b>变动型</b>新申请与转贷多半落在年 0.9～1.2% 这个区间；<b>10 年固定</b>主要银行约 3.0～3.6%；全期间固定的 <b>Flat 35（フラット35）</b>是 3.29%，比前一个月上升 0.15%。长期利率从 2026 年 7 月开始走升，7 月 31 日来到 2.80%，固定型的成本因此被往上推。</p>
+  <p>要提醒的是，<b>上面是日本人取得的一般行情，外国人不一定适用</b>。实务上，银行会看你的在留资格、在日年资、收入与物件条件来决定利率与可贷成数；没有永住权的话，愿意承作的银行本来就比较少，条件也会保守一些。所以试算时填一个比行情高一点的利率，反而比较贴近现实。</p>
+
+  <h3>试算之外，银行真正在看什么</h3>
+  <ul>
+    <li><b>在留资格与在日年资</b>——永住有没有、目前签证的种类与剩余期间。</li>
+    <li><b>收入的稳定度</b>——不只看金额，也看是不是同一家公司、有没有换工作。</li>
+    <li><b>物件本身</b>——屋龄、构造、面积、有没有违建或超建，都会影响银行给的担保评价。</li>
+    <li><b>自备款比例</b>——头期款拿得多，核贷机率与利率通常会好一些。</li>
+  </ul>
+  <p>换句话说，「月付多少」只是这件事的其中一半；另一半是「银行愿不愿意借、借多少」，那个没办法用计算机算出来，要实际去问。这一步我可以帮你对接银行、准备文件，并在一开始就诚实告诉你机率大概在哪里——<b>能不能贷、可贷成数依个案与银行审查为准，我不会给你保证。</b></p>
+  <div class="src">资料来源：ダイヤモンド不动产研究所〈2026年8月の住宅ローン金利〉、リクルート〈【フラット35】金利推移〉、モゲチェック〈住宅ローン金利2026年8月の最新动向〉。利率每月变动，实际以各银行最新公告为准。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常见问题</h2>
+  <details class="tfaq"><summary>外国人在日本可以申请房贷吗？</summary><p>可以，但条件跟日本人不同。有永住权的话，选择的银行与条件会接近日本人；没有永住权时，愿意承作的银行较少，通常会要求较高的自备款、在日年资与稳定收入。实际能不能贷、可贷几成，由银行依个案审查决定，没有人能事先保证。</p></details>
+  <details class="tfaq"><summary>头期款要准备多少？</summary><p>除了头期款本身，还要另外准备「取得诸费用」，一般估算是物件价格的 6～10%（仲介手续费、登录免许税、司法书士报酬、印纸税、不动产取得税、火灾保险首期等）。这笔通常要用现金，不一定能跟房贷一起借，所以抓预算时要一起算进去。</p></details>
+  <details class="tfaq"><summary>该选变动还是固定？</summary><p>看你怎么看未来的利率，也看你能承受多少变动。变动型现在的利率低，但日本已经进入升息循环，未来月付有可能增加；固定型利率较高，但整个期间不会变，资金规划比较安稳。人不在日本、收入币别跟日圆不同的人，通常会比较偏好固定型，因为要同时承担汇率与利率两个变数。</p></details>
+  <details class="tfaq"><summary>人不住在日本可以贷款吗？</summary><p>难度比在日本工作的人高很多。多数日本银行对非居住者的房贷相当保守，有些会要求在日本有收入或资产、或请日本的亲属担任连带保证人；也有部分海外银行或日系银行的海外分行有相关方案。这种案子要个案评估，欢迎把你的状况跟我说，我帮你确认有没有可行的路。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "外国人在日本可以申请房贷吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以，但条件跟日本人不同。有永住权的话，选择的银行与条件会接近日本人；没有永住权时，愿意承作的银行较少，通常会要求较高的自备款、在日年资与稳定收入。实际能不能贷、可贷几成，由银行依个案审查决定，没有人能事先保证。"}}, {"@type": "Question", "name": "头期款要准备多少？", "acceptedAnswer": {"@type": "Answer", "text": "除了头期款本身，还要另外准备「取得诸费用」，一般估算是物件价格的 6～10%（仲介手续费、登录免许税、司法书士报酬、印纸税、不动产取得税、火灾保险首期等）。这笔通常要用现金，不一定能跟房贷一起借，所以抓预算时要一起算进去。"}}, {"@type": "Question", "name": "该选变动还是固定？", "acceptedAnswer": {"@type": "Answer", "text": "看你怎么看未来的利率，也看你能承受多少变动。变动型现在的利率低，但日本已经进入升息循环，未来月付有可能增加；固定型利率较高，但整个期间不会变，资金规划比较安稳。人不在日本、收入币别跟日圆不同的人，通常会比较偏好固定型，因为要同时承担汇率与利率两个变数。"}}, {"@type": "Question", "name": "人不住在日本可以贷款吗？", "acceptedAnswer": {"@type": "Answer", "text": "难度比在日本工作的人高很多。多数日本银行对非居住者的房贷相当保守，有些会要求在日本有收入或资产、或请日本的亲属担任连带保证人；也有部分海外银行或日系银行的海外分行有相关方案。这种案子要个案评估，欢迎把你的状况跟我说，我帮你确认有没有可行的路。"}}]}</script>
   <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以各银行、税理士、司法书士与最新法规为准。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圆";function calc(){const price=+$('l_price').value*1e4,down=+$('l_down').value*1e4,rate=+$('l_rate').value,years=+$('l_years').value;const loan=Math.max(0,price-down);const r=rate/100/12,n=years*12;let m=0;if(n>0)m=r>0?loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):loan/n;const total=m*n;$('l_m').textContent=m>0?yen0(m):"—";}['l_price','l_down','l_rate','l_years'].forEach(i=>$(i).addEventListener('input',calc));calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

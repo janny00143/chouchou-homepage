@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index-cn.html">← 回首页</a>
@@ -53,6 +68,31 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
   <div class="toolnav"><a href="tool-loan-cn.html">🏦 房贷试算</a><a href="tool-cost-cn.html">💴 总费用</a><a href="tool-agent-cn.html">🤝 仲介费</a><a href="tool-yield-cn.html">📈 投报率</a><a href="tool-fx-cn.html" class="act">💱 即时汇率</a><a href="tool-area-cn.html">📐 坪数・帖</a></div>
   <div class="card"><h2>💱 即时汇率换算</h2><p class="sub" id="fxsub">汇率自动更新中…</p><div class="two"><div class="f"><label>从（货币）</label><div class="inp"><select id="fx_from" style="flex:1;border:none;background:transparent;font-size:16px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);outline:none;width:100%"></select></div></div><div class="f"><label>到（货币）</label><div class="inp"><select id="fx_to" style="flex:1;border:none;background:transparent;font-size:16px;font-weight:700;font-family:inherit;padding:11px 0;color:var(--ink);outline:none;width:100%"></select></div></div></div><div class="two"><div class="f"><label>金额</label><div class="inp"><input id="fx_a" type="number" inputmode="decimal" value="10000"></div></div><div class="f"><label>换算结果</label><div class="inp"><input id="fx_b" type="number" inputmode="decimal"></div></div></div><p style="text-align:center;margin:8px 0"><button onclick="fxSwap()" style="background:#f5f5f4;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--ink)">⇅ 对调币别</button></p><p style="text-align:center;font-size:14px;color:var(--rose-d);font-weight:700" id="fx_rateinfo"></p><p style="text-align:center;margin-top:6px"><a href="https://www.google.com/search?q=currency+converter" target="_blank" rel="noopener" style="color:var(--rose);font-size:13px;font-weight:600">🔎 查 Google 汇率</a></p><div class="note">⚠️ 汇率为市场参考中间价，实际换汇／刷卡会有价差，以银行公告为准。</div></div>
   <div class="cta"><p>算完想找适合的物件，或有贷款／税务问题？<br>把你的试算结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看目前在售的物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
+<div class="tinfo">
+  <h2>看日本物件价格时，汇率怎么看</h2>
+  <p>日本的物件价格单位是「万円」（1 万円＝10,000 日圆），广告上写「6,000万円」就是 6,000 万日圆。刚开始看物件时，把它换成自己熟悉的币别，对预算比较有感觉，这个工具就是做这件事。</p>
+
+  <h3>但买房时，汇率不是只换一次</h3>
+  <p>实际的买卖流程里，你至少会在三个时点需要日圆：</p>
+  <ul>
+    <li><b>签约时的手付金（订金）</b>——通常是成交价的 5～10%。</li>
+    <li><b>交屋（决済）时的尾款与诸费用</b>——这是金额最大的一次。</li>
+    <li><b>交屋后的税金与持有成本</b>——不动产取得税、固都税、管理费等。</li>
+  </ul>
+  <p>签约到交屋之间通常隔一个月以上，这段期间汇率会动。如果你的资金是台币或其他外币，等于在房价之外还多背了一个汇率变数。分批换汇、或在资金到位时就先锁一部分，是满多客户采取的做法——但这牵涉个人的资金规划，我不会给你投资建议，只提醒这件事要事先想。</p>
+
+  <h3>汇款到日本，还有两件事要注意</h3>
+  <p>一是<b>收款人资讯要正确</b>：日本买房的款项往往要分别汇给卖方、司法书士等不同对象，每一笔的名义与时点都不能出错。二是<b>时间要抓够</b>：跨国汇款遇到假日或银行查核会延迟，而交屋日是不能拖的。这部分我会在时程表上帮你把每一笔的截止日标出来。</p>
+  <div class="src">本页汇率为即时撷取，仅供参考；实际换汇以银行牌告与手续费为准。本页不构成投资或换汇建议。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常见问题</h2>
+  <details class="tfaq"><summary>买房的钱要怎么汇到日本？</summary><p>一般是从你原本的帐户跨国汇款到指定帐户。日本买房常常需要分别汇给不同对象，建议先把每一笔的金额、收款人与截止日列成表再开始动作。站上有一篇文章专门在讲汇款流程与必备文件，可以先看。</p></details>
+  <details class="tfaq"><summary>需要先在日本开户吗？</summary><p>不一定。有些流程可以不用日本帐户完成，但如果你之后要收租金、缴固都税与管理费，有一个日本帐户会方便很多。实务上开户的难易度依你的在留状况而不同。</p></details>
+  <details class="tfaq"><summary>汇率什么时候换比较好？</summary><p>这个没有标准答案，也不在我的专业范围内——我不会给你换汇的时机建议。我能做的是把每一笔款项的时点与金额提早告诉你，让你有足够的时间自己安排。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "买房的钱要怎么汇到日本？", "acceptedAnswer": {"@type": "Answer", "text": "一般是从你原本的帐户跨国汇款到指定帐户。日本买房常常需要分别汇给不同对象，建议先把每一笔的金额、收款人与截止日列成表再开始动作。站上有一篇文章专门在讲汇款流程与必备文件，可以先看。"}}, {"@type": "Question", "name": "需要先在日本开户吗？", "acceptedAnswer": {"@type": "Answer", "text": "不一定。有些流程可以不用日本帐户完成，但如果你之后要收租金、缴固都税与管理费，有一个日本帐户会方便很多。实务上开户的难易度依你的在留状况而不同。"}}, {"@type": "Question", "name": "汇率什么时候换比较好？", "acceptedAnswer": {"@type": "Answer", "text": "这个没有标准答案，也不在我的专业范围内——我不会给你换汇的时机建议。我能做的是把每一笔款项的时点与金额提早告诉你，让你有足够的时间自己安排。"}}]}</script>
   <p class="foot">本页试算仅供概念参考，不构成贷款、税务或投资建议。<br>实际数字以各银行、税理士、司法书士与最新法规为准。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 亿日圆";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 万日圆";return Math.round(yen).toLocaleString()+" 日圆";};const yen0=yen=>!isFinite(yen)||yen<=0?"—":Math.round(yen).toLocaleString()+" 日圆";var CURR=[['JPY','日圆'],['TWD','新台币'],['USD','美元'],['CNY','人民币'],['HKD','港币'],['EUR','欧元'],['KRW','韩元'],['GBP','英镑'],['AUD','澳币'],['SGD','新加坡币']];var RATES=null;function opts(sel,v){sel.innerHTML=CURR.map(function(c){return '<option value="'+c[0]+'"'+(c[0]===v?' selected':'')+'>'+c[1]+'（'+c[0]+'）</option>';}).join('');}opts($('fx_from'),'JPY');opts($('fx_to'),'TWD');function rate(){if(!RATES)return null;var f=$('fx_from').value,t=$('fx_to').value;if(!RATES[f]||!RATES[t])return null;return RATES[t]/RATES[f];}function info(){var r=rate(),e=$('fx_rateinfo');if(r==null){e.textContent='';return;}e.textContent='1 '+$('fx_from').value+' ≈ '+(+r.toPrecision(5))+' '+$('fx_to').value;}function calc(dir){var r=rate();if(r==null)return;if(dir==='b'){var b=+$('fx_b').value;$('fx_a').value=b>0?(+(b/r).toFixed(2)):'';}else{var a=+$('fx_a').value;$('fx_b').value=a>0?(+(a*r).toFixed(2)):'';}info();}function fxSwap(){var f=$('fx_from').value,t=$('fx_to').value;opts($('fx_from'),t);opts($('fx_to'),f);calc('a');}$('fx_from').addEventListener('change',function(){calc('a');});$('fx_to').addEventListener('change',function(){calc('a');});$('fx_a').addEventListener('input',function(){calc('a');});$('fx_b').addEventListener('input',function(){calc('b');});fetch('https://open.er-api.com/v6/latest/USD').then(function(r){return r.json();}).then(function(d){if(d&&d.rates){RATES=d.rates;var t=d.time_last_update_utc?d.time_last_update_utc.replace(' 00:00:00 +0000',''):'';$('fxsub').textContent='已自动更新即时汇率'+(t?'（'+t+'）':'');calc('a');}else{throw 0;}}).catch(function(){$('fxsub').textContent='自动更新失败，请稍后再试或参考下方 Google 汇率。';});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

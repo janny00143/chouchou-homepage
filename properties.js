@@ -59,6 +59,16 @@
       目前已套用： higashitamagawa・fukasawa・nishioi-a・futaba
       （sakurajosui 是中古實屋、沒有パース，維持實景照。）
 
+   ⭐ listed 欄位＝上架日期（YYYY-MM-DD）。物件卡片會自動幫 14 天內上架的標「🆕 新上架」，
+      排序也多了「最新上架」。新增物件時記得填今天的日期；沒填的物件不會被標新，其他行為不受影響。
+      現有物件的日期是從 git 歷史裡「這筆資料第一次出現的 commit 日」回填的，
+      早期那批（2026-07-24）其實是建站時一次匯入，不等於實際上架日。
+
+   ⭐ listed 欄位＝上架日期（YYYY-MM-DD）。物件卡片會自動幫 14 天內上架的標「🆕 新上架」，
+      排序選單也多了「最新上架」。新增物件時記得填當天日期；沒填的物件不會被標新，其他行為不受影響。
+      現有物件的日期是從 git 歷史「這筆資料第一次出現的 commit 日」回填的，
+      早期那批（2026-07-24）其實是建站時一次匯入，不等於真正的上架日。
+
    ⭐ 2026-08-20 上架的「投資 0820」8 件（周周指示：全部上架，但要去掉賣家資訊、地址只寫到丁目）：
       kayabacho101・hamamatsucho102・akasaka101・kabukicho106・daikan708・
       ningyocho104・nakameguro1・tsurumi101
@@ -80,6 +90,7 @@ window.PROPERTIES = [
 
   {
     id: "daikanyama903",
+    listed: "2026-08-14",
     layoutTag: "1LDK",
     status: "在售",
     cat: "live",
@@ -101,6 +112,7 @@ window.PROPERTIES = [
 
   {
     id: "ebisu1103",
+    listed: "2026-08-14",
     layoutTag: "1LDK",
     status: "在售",
     cat: "live",
@@ -122,6 +134,7 @@ window.PROPERTIES = [
 
   {
     id: "ebisu302",
+    listed: "2026-08-14",
     layoutTag: "1LDK",
     status: "在售",
     cat: "live",
@@ -143,6 +156,7 @@ window.PROPERTIES = [
 
   {
     id: "hiyoshi",
+    listed: "2026-08-16",
     layoutTag: "1LDK+3LDK",
     status: "在售",
     cat: "house",
@@ -164,6 +178,7 @@ window.PROPERTIES = [
 
   {
     id: "kaminoge",
+    listed: "2026-08-16",
     layoutTag: "4SLDK",
     status: "在售",
     cat: "house",
@@ -185,6 +200,7 @@ window.PROPERTIES = [
 
   {
     id: "crevia-minamiazabu",
+    listed: "2026-08-16",
     layoutTag: "1K",
     status: "在售",
     cat: "invest",
@@ -206,6 +222,7 @@ window.PROPERTIES = [
 
   {
     id: "belista-higashinippori",
+    listed: "2026-08-16",
     layoutTag: "店舗・事務所",
     status: "在售",
     cat: "invest",
@@ -227,6 +244,7 @@ window.PROPERTIES = [
 
   {
     id: "shinbashi807",
+    listed: "2026-08-16",
     layoutTag: "1LDK",
     status: "在售",
     cat: "live",
@@ -248,6 +266,7 @@ window.PROPERTIES = [
 
   {
     id: "shibuya1003",
+    listed: "2026-08-14",
     layoutTag: "1LDK",
     status: "在售",
     cat: "live",
@@ -269,6 +288,7 @@ window.PROPERTIES = [
 
   {
     id: "akihabara203",
+    listed: "2026-08-13",
     layoutTag: "1LDK",
     status: "在售",
     cat: "live",
@@ -290,6 +310,7 @@ window.PROPERTIES = [
 
   {
     id: "sakurajosui",
+    listed: "2026-08-10",
     layoutTag: "3LDK",
     status: "在售",
     cat: "house",
@@ -311,6 +332,7 @@ window.PROPERTIES = [
 
   {
     id: "yaraicho-b",
+    listed: "2026-08-01",
     layoutTag: "2LDK+S",
     status: "已成約",
     sold: true,
@@ -334,6 +356,7 @@ window.PROPERTIES = [
 
   {
     id: "higashitamagawa",
+    listed: "2026-08-07",
     layoutTag: "3LDK+S",
     status: "在售",
     cat: "house",
@@ -355,6 +378,7 @@ window.PROPERTIES = [
 
   {
     id: "fukasawa",
+    listed: "2026-08-07",
     layoutTag: "4LDK",
     status: "在售",
     cat: "house",
@@ -377,6 +401,7 @@ window.PROPERTIES = [
 
   {
     id: "nishioi-a",
+    listed: "2026-08-07",
     layoutTag: "2LDK+2S",
     status: "在售",
     cat: "house",
@@ -397,6 +422,7 @@ window.PROPERTIES = [
   },
   {
     id: "nishioi-p5",
+    listed: "2026-08-09",
     status: "在售",
     cat: "land",
     title: "西大井2丁目 part5 建築条件付売地",
@@ -417,6 +443,7 @@ window.PROPERTIES = [
 
   {
     id: "futaba",
+    listed: "2026-08-07",
     layoutTag: "2〜3LDK",
     status: "在售",
     cat: "house",
@@ -438,6 +465,7 @@ window.PROPERTIES = [
 
   {
     id: "setagaya-house",
+    listed: "2026-07-27",
     layoutTag: "3LDK+S",
     status: "在售",
     cat: "land",
@@ -459,6 +487,7 @@ window.PROPERTIES = [
 
   {
     id: "daikanyama",
+    listed: "2026-08-03",
     status: "在售",
     cat: "live",
     title: "ウィスティリアコート代官山 2階",
@@ -479,6 +508,7 @@ window.PROPERTIES = [
 
   {
     id: "classy-shinjuku",
+    listed: "2026-08-03",
     status: "在售",
     cat: "live",
     title: "クラッシィタワー新宿御苑 1703",
@@ -499,6 +529,7 @@ window.PROPERTIES = [
 
   {
     id: "lions-setagaya",
+    listed: "2026-08-03",
     status: "在售",
     cat: "live",
     title: "ライオンズガーデン世田谷 201",
@@ -519,6 +550,7 @@ window.PROPERTIES = [
 
   {
     id: "shirokane401",
+    listed: "2026-08-03",
     status: "在售",
     cat: "invest",
     title: "ロイヤルアメニティ白金 401",
@@ -539,6 +571,7 @@ window.PROPERTIES = [
 
   {
     id: "famille309",
+    listed: "2026-08-01",
     status: "在售",
     cat: "live",
     title: "ファミール新宿グランスィートタワー 309",
@@ -559,6 +592,7 @@ window.PROPERTIES = [
 
   {
     id: "pearl-baba301",
+    listed: "2026-08-01",
     status: "在售",
     cat: "live",
     title: "パールマンション高田馬場 301",
@@ -579,6 +613,7 @@ window.PROPERTIES = [
 
   {
     id: "toranomon403",
+    listed: "2026-07-27",
     thumb: "prop-toranomon403-thumb.jpg",
     status: "在售",
     cat: "live",
@@ -600,6 +635,7 @@ window.PROPERTIES = [
 
   {
     id: "shiba2802",
+    listed: "2026-07-27",
     video: "g6TzzDSh5NA",
     status: "在售",
     cat: "live",
@@ -621,6 +657,7 @@ window.PROPERTIES = [
 
   {
     id: "nakameguro702",
+    listed: "2026-07-27",
     status: "在售",
     cat: "live",
     title: "セブンスターマンション第二青葉台 702",
@@ -641,6 +678,7 @@ window.PROPERTIES = [
 
   {
     id: "togoshi701",
+    listed: "2026-07-24",
     status: "在售",
     cat: "live",
     title: "ジェイパーク戸越公園アーキテクト 701",
@@ -661,6 +699,7 @@ window.PROPERTIES = [
 
   {
     id: "yotsuya115",
+    listed: "2026-07-24",
     status: "在售",
     cat: "live",
     title: "ルート四谷三丁目 115",
@@ -681,6 +720,7 @@ window.PROPERTIES = [
 
   {
     id: "kameido209",
+    listed: "2026-07-24",
     status: "已成約",
     sold: true,
     cat: "live",
@@ -702,6 +742,7 @@ window.PROPERTIES = [
 
   {
     id: "suginami308",
+    listed: "2026-07-24",
     status: "在售",
     cat: "live",
     title: "イニシアイオ杉並和泉 308",
@@ -722,6 +763,7 @@ window.PROPERTIES = [
 
   {
     id: "ikebukuro1101",
+    listed: "2026-07-24",
     status: "在售",
     cat: "live",
     title: "日神パレステージ西池袋 1101",
@@ -742,6 +784,7 @@ window.PROPERTIES = [
 
   {
     id: "minamiazabu205",
+    listed: "2026-07-24",
     status: "在售",
     cat: "live",
     title: "ルモンド南麻布 205",
@@ -762,6 +805,7 @@ window.PROPERTIES = [
 
   {
     id: "taito703",
+    listed: "2026-07-24",
     status: "在售",
     cat: "live",
     title: "スカーラ台東根岸 703",
@@ -782,6 +826,7 @@ window.PROPERTIES = [
 
   {
     id: "ryogoku2",
+    listed: "2026-07-24",
     status: "在售",
     cat: "invest",
     title: "両国二丁目ビル（一棟）",
@@ -802,6 +847,7 @@ window.PROPERTIES = [
 
   {
     id: "asakusa3",
+    listed: "2026-07-24",
     status: "在售",
     cat: "invest",
     title: "浅草三丁目ビル（旅館一棟・SunRise Stay）",
@@ -822,6 +868,7 @@ window.PROPERTIES = [
 
   {
     id: "kayabacho101",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "ライオンズマンション茅場町 101号室",
@@ -842,6 +889,7 @@ window.PROPERTIES = [
 
   {
     id: "hamamatsucho102",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "パラシオン浜松町 102",
@@ -862,6 +910,7 @@ window.PROPERTIES = [
 
   {
     id: "akasaka101",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "デュオ・スカーラ赤坂 101",
@@ -882,6 +931,7 @@ window.PROPERTIES = [
 
   {
     id: "kabukicho106",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "歌舞伎町ダイヤモンドパレス 106号室",
@@ -902,6 +952,7 @@ window.PROPERTIES = [
 
   {
     id: "daikan708",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "新宿ダイカンプラザ星座館 708号室",
@@ -922,6 +973,7 @@ window.PROPERTIES = [
 
   {
     id: "ningyocho104",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "リガーレ日本橋人形町アネックスB棟 104号室",
@@ -942,6 +994,7 @@ window.PROPERTIES = [
 
   {
     id: "nakameguro1",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "中目黒借地1棟店舗",
@@ -962,6 +1015,7 @@ window.PROPERTIES = [
 
   {
     id: "tsurumi101",
+    listed: "2026-08-20",
     status: "在售",
     cat: "invest",
     title: "サングレイス鶴見 101",

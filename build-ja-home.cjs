@@ -235,6 +235,28 @@ const body = `<header>
 .flow-cta{margin-top:12px}
 .flow-cta .b-line{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:14.5px;padding:11px 24px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(6,199,85,.30);transition:background .14s,transform .14s}
 .flow-cta .b-line:hover{background:#05b34c;transform:translateY(-1px)}
+
+.fstep{width:100%;text-align:left;font-family:inherit;cursor:pointer}
+.fstep:hover{border-color:#f6adbe}
+.fstep:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.smask{position:fixed;inset:0;background:rgba(41,37,36,.55);backdrop-filter:blur(2px);z-index:300;display:none;align-items:center;justify-content:center;padding:18px}
+.smask.on{display:flex}
+.smbox{background:#fff;border-radius:18px;max-width:460px;width:100%;padding:24px 24px 20px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.22);animation:smIn .18s ease-out}
+@keyframes smIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.smx{position:absolute;top:12px;right:12px;width:32px;height:32px;border:none;background:#f5f5f4;color:#78716c;border-radius:999px;font-size:19px;line-height:1;cursor:pointer;font-family:inherit}
+.smx:hover{background:#e7e5e4;color:var(--ink)}
+.smhd{display:flex;align-items:center;gap:11px;margin-bottom:12px;padding-right:34px}
+.smn{width:34px;height:34px;flex:0 0 auto;border-radius:999px;background:linear-gradient(135deg,var(--rose),#fb923c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.smhd h3{font-size:17px;font-weight:900;line-height:1.45}
+.smtx{font-size:14.5px;line-height:2;color:#44403c;margin-bottom:18px}
+.smft{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.smnav{border:1px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;cursor:pointer}
+.smnav:hover:not(:disabled){border-color:var(--rose);color:#e11d48}
+.smnav:disabled{opacity:.35;cursor:default}
+.smpos{font-size:12.5px;color:var(--mut);font-weight:700}
+.smline{display:block;text-align:center;margin-top:14px;background:#06c755;color:#fff;font-weight:700;font-size:14px;padding:11px;border-radius:999px}
+.smline:hover{background:#05b34c}
+@media(max-width:600px){.smbox{padding:20px 18px 16px}.smhd h3{font-size:16px}}
 </style>
     <div class="herob"><div class="in">
   <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
@@ -254,6 +276,19 @@ const body = `<header>
       <div class="flow-grid" id="flowGrid"></div>
       <p class="flow-note">＊各工程に要する期間は、物件・融資・ご都合により異なります。融資の可否および借入割合は個別の審査によります。</p>
       <div class="flow-cta"><a class="b-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">まずはLINEでご相談ください</a></div>
+    </div>
+    <div class="smask" id="stepModal" aria-hidden="true" onclick="if(event.target===this)closeStep()">
+      <div class="smbox" role="dialog" aria-modal="true" aria-labelledby="smTitle">
+        <button type="button" class="smx" id="smClose" onclick="closeStep()" aria-label="閉じる">×</button>
+        <div class="smhd"><span class="smn" id="smNum"></span><h3 id="smTitle"></h3></div>
+        <p class="smtx" id="smBody"></p>
+        <div class="smft">
+          <button type="button" class="smnav" id="smPrev" onclick="stepMove(-1)">← 前へ</button>
+          <span class="smpos" id="smPos"></span>
+          <button type="button" class="smnav" id="smNext" onclick="stepMove(1)">次へ →</button>
+        </div>
+        <a class="smline" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">この工程についてLINEで相談する</a>
+      </div>
     </div>
     <button class="svc-toggle" id="svcToggle" onclick="toggleSvc()" aria-expanded="false"><span>サービス一覧</span><span class="svc-x">開く ▾</span></button>
     <div id="svcWrap">
@@ -414,6 +449,39 @@ function artStep(){return _isMob()?10:15;}
 var artShown=artInit(),_lastSig="";
 function render(){const q=(document.getElementById('q').value||"").toLowerCase();const list=ART.filter(a=>(!curCat||a.cat===curCat)&&(!q||(a.title+a.ex+(a.body||[]).join("")+a.tags.join("")).toLowerCase().includes(q))).sort((a,b)=>(b.date||"").localeCompare(a.date||""));var sig=(curCat||"")+"|"+q;if(sig!==_lastSig){artShown=artInit();_lastSig=sig;}var vis=list.slice(0,artShown);document.getElementById('grid').innerHTML=vis.map(a=>\`<a class="card" href="\${jaHref(a)}"><div class="cov" data-cov="\${a.id}" style="background-image:\${cat(a.cat).g}">\${a.video?'<span class="vbadge">▶ 動画</span>':''}</div><div class="body"><span class="tagcat" style="background:\${cat(a.cat).c}">\${cat(a.cat).name}</span><h3>\${a.title}</h3><p class="ex">\${a.ex}</p><p class="meta">\${a.date}</p></div></a>\`).join("")||'<p style="color:var(--mut)">${JA_UI.noResults}</p>';var mw=document.getElementById('artMoreWrap');if(mw){if(list.length>artShown){mw.style.display='block';var btn=document.getElementById('artMore');if(btn)btn.textContent='記事をもっと見る（残り '+(list.length-artShown)+' 件）';}else{mw.style.display='none';}}lazyCov();}
 function moreArts(){artShown+=artStep();render();}
+
+/* ご購入までの流れ：ステップをクリックすると詳細を表示 */
+var _stepI=-1,_stepPrevFocus=null;
+function openStep(i){
+  if(i<0||i>=PROCESS.length)return;
+  _stepI=i;
+  var m=document.getElementById('stepModal');if(!m)return;
+  if(_stepPrevFocus===null)_stepPrevFocus=document.activeElement;
+  document.getElementById('smNum').textContent=i+1;
+  document.getElementById('smTitle').textContent=PROCESS[i][0];
+  document.getElementById('smBody').textContent=PROCESS[i][1];
+  document.getElementById('smPos').textContent=(i+1)+' / '+PROCESS.length;
+  document.getElementById('smPrev').disabled=(i===0);
+  document.getElementById('smNext').disabled=(i===PROCESS.length-1);
+  m.classList.add('on');m.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  document.getElementById('smClose').focus();
+}
+function stepMove(d){openStep(_stepI+d);}
+function closeStep(){
+  var m=document.getElementById('stepModal');if(!m)return;
+  m.classList.remove('on');m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(_stepPrevFocus&&_stepPrevFocus.focus)_stepPrevFocus.focus();
+  _stepPrevFocus=null;_stepI=-1;
+}
+document.addEventListener('keydown',function(e){
+  var m=document.getElementById('stepModal');
+  if(!m||!m.classList.contains('on'))return;
+  if(e.key==='Escape')closeStep();
+  else if(e.key==='ArrowLeft')stepMove(-1);
+  else if(e.key==='ArrowRight')stepMove(1);
+});
 function toggleSvc(){var w=document.getElementById('svcWrap'),b=document.getElementById('svcToggle');if(!w||!b)return;var op=w.classList.toggle('open');b.setAttribute('aria-expanded',op);var x=b.querySelector('.svc-x');if(x)x.textContent=op?'閉じる ▴':'開く ▾';}
 function openArt(id){const a=ART.find(x=>x.id===id);if(!a)return;const em=ytEmbed(a.video);document.getElementById('artBox').innerHTML=\`<span class="back" onclick="show('home')">${JA_UI.backToList}</span><div class="acov" style="\${cov(a)}"><span>\${cat(a.cat).name}</span></div><h1 class="atitle">\${a.title}</h1><div class="am"><span>${JA_UI.byline}</span><span>\${a.date}</span></div><p>\${a.ex}</p>\${em?\`<div class="vid"><iframe src="\${em}" allowfullscreen></iframe></div>\`:''}<div class="ablock"><div><b>${JA_UI.articleHelpful}</b><br><span style="color:var(--mut);font-size:14px">${JA_UI.articleHelpfulSub}</span></div><a class="btn btn-line" href="\${S.line}" target="_blank" rel='noopener'>${JA_UI.lineBtn}</a></div>\`;}
 
@@ -438,7 +506,7 @@ const c=S.company;const ci=(l,v)=>\`<div class="ci"><span class="cl">\${l}</span
 document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.brand;
 document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
 var hf=document.getElementById('flowGrid');
-if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<div class="fstep" title="\${s[1]}"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b></div></div>\`).join("");
+if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<button type="button" class="fstep" onclick="openStep(\${i})" aria-haspopup="dialog"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b></div></button>\`).join("");
 document.getElementById('liveSvc').innerHTML=LIVE.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('invSvc').innerHTML=INV.map(t=>\`<div class="it"><span class="ck">✓</span>\${t}</div>\`).join("");
 document.getElementById('faqs').innerHTML=FAQ.map(q=>\`<details class="faq"><summary>Q：\${q[0]}</summary><p>A：\${q[1]}</p></details>\`).join("");

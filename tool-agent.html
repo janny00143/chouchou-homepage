@@ -45,7 +45,22 @@ html[data-theme="dark"]{--ink:#f5f5f4;--mut:#a8a29e;--bg:#0f0d0c;--line:#3a3633}
 html[data-theme="dark"] .sbar,html[data-theme="dark"] .card,html[data-theme="dark"] .toolnav a{background:#1c1917}
 html[data-theme="dark"] .f .inp,html[data-theme="dark"] .tiers{background:#0f0d0c}
 html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
-@media(max-width:480px){.out .num{font-size:25px}}</style>
+@media(max-width:480px){.out .num{font-size:25px}}
+.tinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tinfo h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.tinfo h3{font-size:15.5px;font-weight:800;margin:18px 0 6px;color:#e11d48}
+.tinfo p{font-size:14.5px;line-height:1.95;color:#44403c;margin-bottom:10px}
+.tinfo ul{margin:0 0 12px 20px;font-size:14.5px;line-height:1.95;color:#44403c}
+.tinfo li{margin-bottom:4px}
+.tinfo .src{font-size:12px;color:var(--mut);line-height:1.8;border-top:1px dashed var(--line);padding-top:10px;margin-top:14px}
+.tinfo .src a{color:#e11d48}
+.tfaq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.tfaq summary{cursor:pointer;padding:13px 16px;font-weight:700;font-size:14.5px;list-style:none;position:relative;padding-right:40px}
+.tfaq summary::-webkit-details-marker{display:none}
+.tfaq summary::after{content:"＋";position:absolute;right:16px;top:12px;color:var(--rose);font-weight:900}
+.tfaq[open] summary::after{content:"－"}
+.tfaq p{padding:0 16px 14px;font-size:14px;color:#57534e;line-height:1.95;margin:0}
+</style>
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index.html">← 回首頁</a>
@@ -62,6 +77,32 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
     <div class="note">⚠️ 此為法定「上限」，實際以契約為準；金額四捨五入概算。新成屋／建商直售等情況仲介費可能不同。<br><b style="color:#b45309">本試算僅為「自動概算」、僅供參考，不可作為實際或法律依據；一切務必以仲介／司法書士等專業人士的判斷為主。</b></div>
   </div>
   <div class="cta"><p>算完想找適合的物件，或想確認這筆仲介費？<br>把結果直接傳給周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties.html">🏠 看看周周自己在賣的物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 諮詢</a></div></div>
+<div class="tinfo">
+  <h2>日本的仲介手續費是怎麼決定的</h2>
+  <p>跟很多國家不同，<b>日本的仲介手續費不是各家自己開價，而是由法律（宅地建物取引業法）訂定計算方式與上限</b>。這也是為什麼你在不同公司問到的金額，通常不會差太多——大家算的是同一個公式。</p>
+  <p>這對買方其實是好事：你在看物件的時候就能事先知道這筆費用大概是多少，不會到最後才被追加名目不明的費用。這個工具就是用法定的分級距方式幫你把數字算出來，含消費稅。</p>
+
+  <h3>這筆費用換到的是什麼</h3>
+  <p>在日本買房，真正花時間的往往不是「看房」，而是看不到的那些工作：</p>
+  <ul>
+    <li>向賣方索取並確認レントロール（租金明細表）、租賃契約、登記謄本。</li>
+    <li>向管理公司調閱「重要事項調查報告書」，確認管理費與修繕基金的調漲計畫、大樓的積立金餘額。</li>
+    <li>確認用途地域、自治體條例、管理規約，判斷這間房能不能做你想做的用途。</li>
+    <li>依法由宅地建物取引士進行重要事項說明——這在日本是法定必須由持照者本人執行的。</li>
+    <li>對接銀行、司法書士、稅理士，把交屋當天的流程排好。</li>
+  </ul>
+  <p>我本身持有宅地建物取引士資格，所以重要事項說明可以由我自己用中文向你逐條說明；你不會遇到「聽不懂但還是簽了」的狀況。這才是這筆費用真正的內容。</p>
+  <p>我的做法是：<b>在帶你看房之前，就把你這一件的金額算給你、白紙黑字寫清楚</b>，過程中不會有中途加價。</p>
+  <div class="src">計算方式依日本宅地建物取引業法及國土交通省告示的報酬規定；稅制與相關規定可能調整，實際金額以契約條件與最新法規為準。</div>
+</div>
+
+<div class="tinfo">
+  <h2>常見問題</h2>
+  <details class="tfaq"><summary>仲介手續費什麼時候付？</summary><p>實務上多半分兩次：簽約時付一半、交屋（決済）時付另一半，也有一次付清的做法。實際依契約約定，我會在簽約前就跟你確認清楚時點與金額。</p></details>
+  <details class="tfaq"><summary>買方和賣方都要付嗎？</summary><p>買賣雙方各自與自己的仲介之間有委託關係，各自負擔各自的報酬。實際情形依契約與委託方式而定。</p></details>
+  <details class="tfaq"><summary>除了仲介手續費，還會有其他費用嗎？</summary><p>會，那些屬於取得諸費用——登錄免許稅、司法書士報酬、印紙稅、不動產取得稅、火災保險等，一般估算是物件價格的 6～10%。我會在你出價前把完整的資金表算給你看。</p></details>
+</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "仲介手續費什麼時候付？", "acceptedAnswer": {"@type": "Answer", "text": "實務上多半分兩次：簽約時付一半、交屋（決済）時付另一半，也有一次付清的做法。實際依契約約定，我會在簽約前就跟你確認清楚時點與金額。"}}, {"@type": "Question", "name": "買方和賣方都要付嗎？", "acceptedAnswer": {"@type": "Answer", "text": "買賣雙方各自與自己的仲介之間有委託關係，各自負擔各自的報酬。實際情形依契約與委託方式而定。"}}, {"@type": "Question", "name": "除了仲介手續費，還會有其他費用嗎？", "acceptedAnswer": {"@type": "Answer", "text": "會，那些屬於取得諸費用——登錄免許稅、司法書士報酬、印紙稅、不動產取得稅、火災保險等，一般估算是物件價格的 6～10%。我會在你出價前把完整的資金表算給你看。"}}]}</script>
   <p class="foot">本頁試算僅供概念參考，不構成貸款、稅務或投資建議。<br>實際數字以契約、各銀行與最新法規為準。</p>
 </div>
 <script>const $=id=>document.getElementById(id);const yfmt=yen=>{if(!isFinite(yen)||yen<=0)return "—";if(yen>=1e8)return (yen/1e8).toFixed(2).replace(/\.?0+$/,'')+" 億日圓";if(yen>=1e4)return Math.round(yen/1e4).toLocaleString()+" 萬日圓";return Math.round(yen).toLocaleString()+" 日圓";};function agentFee(price){var base;if(price<=2e6)base=price*0.05;else if(price<=4e6)base=price*0.04+2e4;else base=price*0.03+6e4;return base*1.1;}function tierName(price){if(price<=2e6)return "200萬以下（5%）";if(price<=4e6)return "200～400萬（4%＋2萬）";return "超過400萬（3%＋6萬）";}function calc(){const price=+$('a_price').value*1e4;if(!(price>0)){$('a_fee').textContent="—";$('a_base').textContent="—";$('a_tax').textContent="—";$('a_tier').textContent="—";return;}const fee=agentFee(price);const base=fee/1.1;const tax=fee-base;$('a_fee').textContent=Math.round(fee).toLocaleString()+" 日圓（約 "+((fee/1e4).toFixed(1).replace(/\.0$/,""))+" 萬）";$('a_base').textContent=yfmt(base);$('a_tax').textContent=yfmt(tax);$('a_tier').textContent=tierName(price);}$('a_price').addEventListener('input',calc);calc();document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>

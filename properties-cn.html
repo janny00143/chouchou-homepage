@@ -99,6 +99,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 .line-float::before{content:"";position:absolute;inset:0;border-radius:999px;animation:lfpulse 2.4s infinite;pointer-events:none}
 @keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
 @media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
+.ntag{background:#f43f5e;color:#fff;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;box-shadow:0 2px 6px rgba(244,63,94,.35)}
 </style>
 </head>
 <body>
@@ -132,7 +133,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">一户建</button>
     <button data-cat="land">土地</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget" style="margin-left:8px"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk" style="margin-left:8px"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select></div>
+  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget" style="margin-left:8px"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk" style="margin-left:8px"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -195,10 +196,11 @@ footer a{color:#d6d3d1;text-decoration:none}
     /* 完成预想图（パース）必须标示，不可让人误认为实景照 */
     var isPers=/-pers\./.test(String((p.photos&&p.photos[0])||""));
     var ptag=isPers?'<span class="ptag">完成预想图</span>':"";
+    var ntag=isNew(p)?'<span class="ntag">新上架</span>':"";
     var vtag=p.video?'<span class="vtag">🎬 有影片</span>':"";
     var station=p.station?'<div class="station">🚉 '+C(p.station)+'</div>':"";
     return '<a class="card" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">'
-      +'<div class="ph">'+photo+badge+tag+((vtag||ptag)?'<span class="tagrow">'+vtag+ptag+'</span>':"")+'</div>'
+      +'<div class="ph">'+photo+badge+tag+((ntag||vtag||ptag)?'<span class="tagrow">'+ntag+vtag+ptag+'</span>':"")+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
       +PRICEHTML(p.price,'price','价格请洽询')
@@ -228,6 +230,29 @@ footer a{color:#d6d3d1;text-decoration:none}
     tg.live=(p.cat==="live")||tg.house||/自住|居住用|ご自宅|自宅/.test(String(p.note||"")+String(p.title_cn||"")+String((p.catch||"")));
     return tg;
   }
+  /* 上架日期（properties.js 的 listed 栏位，格式 YYYY-MM-DD）。
+   没填的物件视为旧物件，不会被标成新上架，也不影响排序以外的行为。 */
+  function listedTs(p){var d=String(p.listed||"");if(!/^\d{4}-\d{2}-\d{2}$/.test(d))return 0;var t=Date.parse(d+"T00:00:00+09:00");return isNaN(t)?0:t;}
+  /* 「新上架」只标最近一批：14 天内上架的，从最新的上架日往前取，
+     累积超过 10 件就停（不会切断同一天），避免整页都是 NEW 而失去意义。 */
+  var _newSet=null;
+  function newIds(){
+    if(_newSet)return _newSet;
+    var lim=Date.now()-14*864e5, byDay={};
+    (act||[]).forEach(function(p){
+      var t=listedTs(p); if(!t||t<lim)return;
+      (byDay[p.listed]=byDay[p.listed]||[]).push(p.id);
+    });
+    var days=Object.keys(byDay).sort().reverse(), out={}, n=0;
+    for(var i=0;i<days.length;i++){
+      var g=byDay[days[i]];
+      if(n>0 && n+g.length>10) break;
+      g.forEach(function(id){out[id]=1;});
+      n+=g.length;
+    }
+    _newSet=out; return out;
+  }
+  function isNew(p){return !!newIds()[p.id];}
   function sizeNum(p){var m=String(p.size||"").match(/([\d.]+)\s*(?:㎡|m)/);return m?parseFloat(m[1]):0;}
   var selCat="";  /* 一次只选一个分类，避免同时点两个造成混乱 */
   var sortMode="default";
@@ -268,6 +293,7 @@ footer a{color:#d6d3d1;text-decoration:none}
         if(sortMode==="price-desc")return parseYen(b.price)-parseYen(a.price);
         if(sortMode==="size-desc")return sizeNum(b)-sizeNum(a);
         if(sortMode==="size-asc")return (sizeNum(a)||9e15)-(sizeNum(b)||9e15);
+        if(sortMode==="new")return listedTs(b)-listedTs(a);
         return 0;
       });
     }
