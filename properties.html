@@ -239,7 +239,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   }
 
   var act=list?list.filter(function(p){return !p.sold;}):null;
-  var soldList=list?list.filter(function(p){return p.sold;}):[];
+  var soldList=list?list.filter(function(p){return p.sold;}).sort(function(a,b){return (a.soldOrder||0)-(b.soldOrder||0);}):[];
   /* 已成交物件的卡片：周周指示——只放一張圖、不可點開、地址只到「區」（丁目數字都不寫），
      為的是保護已成交客戶的隱私。所以這裡不共用 card()，另外做一個簡化版。 */
   function wardOf(p){
@@ -257,12 +257,11 @@ footer a{color:#d6d3d1;text-decoration:none}
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
     var line=[ward,type].filter(Boolean).map(C).join("・")||C("東京都內");
     var meta=p.area?C(p.area):'';
-    var band=p.priceBand?'<div class="sold-band"><span>成交價</span><b>'+C(p.priceBand)+'</b></div>':'';
     var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+'</div>':"";
     return '<div class="card sold-card">'
       +'<div class="ph">'+photo+'<span class="sold-rib">已成交</span></div>'
       +'<div class="body"><h3>'+line+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'
-      +(meta?'<div class="sold-meta">'+meta+'</div>':'')+band+when+'</div>'
+      +(meta?'<div class="sold-meta">'+meta+'</div>':'')+when+'</div>'
       +'</div>';
   }
   var _soldOpen=false;

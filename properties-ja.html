@@ -235,7 +235,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   }
 
   var act=list?list.filter(function(p){return !p.sold;}):null;
-  var soldList=list?list.filter(function(p){return p.sold;}):[];
+  var soldList=list?list.filter(function(p){return p.sold;}).sort(function(a,b){return (a.soldOrder||0)-(b.soldOrder||0);}):[];
   /* 成約済み物件のカード：ご成約されたお客様のプライバシー保護のため、
      写真は1枚のみ・詳細ページへは遷移しない・所在地は「区」までとし丁目は表示しない。
      そのため card() は共用せず、簡易版を用意している。 */
@@ -254,12 +254,11 @@ footer a{color:#d6d3d1;text-decoration:none}
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
     var line=[ward,type].filter(Boolean).map(C).join("・")||C("東京都內");
     var meta=p.area?C(p.area):'';
-    var band=p.priceBand?'<div class="sold-band"><span>成約価格</span><b>'+C(p.priceBand)+'</b></div>':'';
     var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+'</div>':"";
     return '<div class="card sold-card">'
       +'<div class="ph">'+photo+'<span class="sold-rib">成約済み</span></div>'
       +'<div class="body"><h3>'+line+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'
-      +(meta?'<div class="sold-meta">'+meta+'</div>':'')+band+when+'</div>'
+      +(meta?'<div class="sold-meta">'+meta+'</div>':'')+when+'</div>'
       +'</div>';
   }
   var _soldOpen=false;

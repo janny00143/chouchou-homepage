@@ -344,7 +344,6 @@ window.PROPERTIES = [
     layoutTag: "2LDK+S",
     location: "東京都新宿區",
     area: "建物180.80㎡（約54.7坪）",
-    priceBand: "約3億3,300万円",
     photos: ["prop-yaraicho-b-1.webp"]
   },
 
@@ -714,6 +713,7 @@ window.PROPERTIES = [
 
   {
     id: "kameido209",
+    soldOrder: 99,   /* 周周指示：排到過去販售的最後面 */
     listed: "2026-07-24",
     status: "已成約",
     sold: true,
@@ -722,7 +722,6 @@ window.PROPERTIES = [
     layoutTag: "2LDK+W",
     location: "東京都江東區",
     area: "49.61㎡（約15.01坪）",
-    priceBand: "約3,300万円",
     photos: ["prop-kameido209-1.webp"]
   },
 
@@ -1029,7 +1028,6 @@ window.PROPERTIES = [
     layoutTag: "1R",
     location: "東京都澀谷區",
     area: "33.16㎡（約10.03坪）",
-    priceBand: "約8,900万円",
     photos: ["prop-impresto-daikanyama-1.webp"]
   },
   {
@@ -1042,7 +1040,6 @@ window.PROPERTIES = [
     layoutTag: "1K",
     location: "東京都世田谷區",
     area: "28.83㎡（約8.72坪）",
-    priceBand: "約2,500万円",
     photos: ["prop-jiyugaoka-daisan-1.webp"]
   },
   {
@@ -1055,7 +1052,6 @@ window.PROPERTIES = [
     layoutTag: "2LDK",
     location: "東京都新宿區",
     area: "45.12㎡（約13.64坪）",
-    priceBand: "約5,700万円",
     photos: ["prop-hines-lofty-1.webp"]
   },
   {
@@ -1068,7 +1064,6 @@ window.PROPERTIES = [
     layoutTag: "2LDK",
     location: "神奈川縣橫濱市港北區",
     area: "60.84㎡（約18.4坪）",
-    priceBand: "約5,800万円",
     photos: ["prop-brillia-shinyokohama-1.webp"]
   },
   {
@@ -1081,7 +1076,6 @@ window.PROPERTIES = [
     layoutTag: "3K",
     location: "東京都品川區",
     area: "建物53.82㎡（約16.28坪）",
-    priceBand: "約7,200万円",
     photos: ["prop-koyamadai-house-1.webp"]
   },
   {
@@ -1094,7 +1088,6 @@ window.PROPERTIES = [
     ptype: "買地自建",
     location: "千葉縣八街市",
     area: "土地2,148㎡（約649.76坪）",
-    priceBand: "約2,300万円",
     photos: ["prop-yachimata-land-1.webp"]
   },
   {
@@ -1107,7 +1100,6 @@ window.PROPERTIES = [
     layoutTag: "1LDK",
     location: "東京都葛飾區",
     area: "43.44㎡（約13.14坪）",
-    priceBand: "約3,000万円",
     photos: ["prop-greenpark-tateishi-1.webp"]
   }
 ];
