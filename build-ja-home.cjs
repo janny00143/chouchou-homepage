@@ -203,7 +203,7 @@ ${STYLE}`;
 
 const body = `<header>
   <div class="wrap hd">
-    <a class="logo" href="#" onclick="show('home');return false"><img class="logo-emblem" src="logo-mark.png" alt="${JA_UI.brand}"><span id="brand">${JA_UI.brand}</span></a>
+    <a class="logo" href="#" onclick="show('home');return false"><img class="logo-emblem" src="logo-mark.webp" alt="${JA_UI.brand}" width="420" height="501"><span id="brand">${JA_UI.brand}</span></a>
     <nav class="main" id="mainnav"></nav>
     <div class="hd-right" style="flex:0 0 auto"><a class="btn btn-line" id="lineTop" target="_blank" rel='noopener' style="white-space:nowrap;flex:0 0 auto">${JA_UI.lineBtn}</a><button class="burger" onclick="document.getElementById('mnav').style.display=document.getElementById('mnav').style.display==='block'?'none':'block'" aria-label="メニュー"><span class="bg-t">メニュー</span><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
   </div>
@@ -317,7 +317,7 @@ const body = `<header>
       <span class="btn" style="background:#fff;color:var(--rose)">${JA_UI.translateCard.cta}</span>
     </div></a>
     </div>
-    <div class="listbanner"><img src="步道.jpg" alt="${JA_UI.altStreet}" loading="lazy"><div class="lb-cap"><span class="lb-t">${JA_UI.listBanner.title}</span><span class="lb-s">${JA_UI.listBanner.sub}</span></div></div>
+    <div class="listbanner"><img src="步道.webp" alt="${JA_UI.altStreet}" loading="lazy" width="1600" height="1200"><div class="lb-cap"><span class="lb-t">${JA_UI.listBanner.title}</span><span class="lb-s">${JA_UI.listBanner.sub}</span></div></div>
     <div class="search" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:560px"><span id="catbar"></span><input id="q" placeholder="${JA_UI.searchPlaceholder}" oninput="render()" style="width:auto;flex:1;min-width:180px"></div>
     <div class="grid" id="grid"></div>\n    <div id="artMoreWrap" style="display:none;text-align:center;margin:10px 0 4px"><button id="artMore" onclick="moreArts()" style="background:#fff;border:1.5px solid var(--rose);color:var(--rose-d);font-family:inherit;font-weight:700;font-size:15px;padding:11px 28px;border-radius:999px;cursor:pointer">記事をもっと見る</button></div>
     <div class="reviews">
@@ -386,7 +386,7 @@ const body = `<header>
   <section class="view" id="v-about">
     <div class="about">
       <div class="panel profile-card">
-        <div class="cover"><img src="櫻花.jpg" alt="${JA_UI.altSakura}" loading="lazy"></div>
+        <div class="cover"><img src="櫻花.webp" alt="${JA_UI.altSakura}" loading="lazy" width="1600" height="1067"></div>
         <div class="profile">
         <div class="av">周</div>
         <div class="pinfo">
