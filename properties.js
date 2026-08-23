@@ -43,6 +43,14 @@
       註：矢来町・ハイネス亀戸 雖已成約，但網站仍以 sold:true 顯示在「過去販售」，
           Drive 資料放在「2 過去販售」不要刪。
 
+   ⛔ 已完工的物件不要放「完成預想圖（パース）」（周周 2026-08-23 指示）：
+      房子已經蓋好了就用實景照，不要再放建商的完成予想図當首圖或相簿。
+      ・2026-08-23 已依此移除：higashitamagawa／fukasawa／nishioi-a／futaba 四件自社新築一戶建的
+        prop-*-pers.webp（檔案留著沒刪，之後若有未完工的新案還用得到）。
+      ・這條取代 2026-08-16「四間自社一戶建改用官方完成預想圖當首圖」的舊做法。
+      ・還沒動的：hamamatsucho102／ningyocho104／tsurumi101 的 -pers 是「改裝後示意圖」
+        （建物本身是既存的，圖是在示意可以怎麼裝潢），性質不同，已回報周周待決定。
+
    ⛔ 借地權物件一律不上架（周周 2026-08-23 指示）：
       周周不賣借地。賣家資料若出現「借地権／旧法賃借権／定期借地権／地上権」等字樣，
       **不要自己判斷要不要上，先提醒周周**。
@@ -369,7 +377,7 @@ window.PROPERTIES = [
     cat: "house",
     title: "東玉川1丁目 新築戸建",
     title_cn: "世田谷區東玉川1丁目 新築一戶建（自社）",
-    price: "1億5,480万円",
+    price: "1億4,980万円",
     location: "東京都世田谷區東玉川1丁目32-13",
     station: "東急目黑線「奥沢」站 徒步約11分／東急池上線「雪が谷大塚」站 徒步約11分／東急東橫線・目黑線「田園調布」站 徒步約13分",
     layout: "2層戸建・LDK約19.5帖＋3居室＋多用途房＋4.7帖閣樓收納",
@@ -379,7 +387,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-higashitamagawa-pers.webp", "prop-higashitamagawa-1.webp","prop-higashitamagawa-2.webp","prop-higashitamagawa-3.webp","prop-higashitamagawa-4.webp","prop-higashitamagawa-5.webp","prop-higashitamagawa-6.webp","prop-higashitamagawa-7.webp","prop-higashitamagawa-8.webp","prop-higashitamagawa-9.webp","prop-higashitamagawa-10.webp"],
+    photos: ["prop-higashitamagawa-1.webp","prop-higashitamagawa-2.webp","prop-higashitamagawa-3.webp","prop-higashitamagawa-4.webp","prop-higashitamagawa-5.webp","prop-higashitamagawa-6.webp","prop-higashitamagawa-7.webp","prop-higashitamagawa-8.webp","prop-higashitamagawa-9.webp","prop-higashitamagawa-10.webp"],
     note: "世田谷區東玉川、田園調布生活圈的自社新築2層戸建！奥沢與雪が谷大塚兩站都徒步約11分，第一種低層住居專用地域、環境安靜。約19.5帖的開放LDK配半島型廚房、挑高玄關加大容量玄關收納，還有4.7帖的閣樓收納，收納力超強。一級建築士事務所一棟一棟原創設計，已完工、可即時交屋，Flat 35S（A方案）適合證明取得預定；學區為奥沢小學、奥沢中學。想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -402,7 +410,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "",
     video: "drive:1r4KXMpF2Emsf-Pybm0U852YWHJzxf8X-",
-    photos: ["prop-fukasawa-pers.webp", "prop-fukasawa-1.webp","prop-fukasawa-2.webp","prop-fukasawa-3.webp","prop-fukasawa-4.webp","prop-fukasawa-5.webp","prop-fukasawa-6.webp","prop-fukasawa-7.webp","prop-fukasawa-8.webp","prop-fukasawa-9.webp"],
+    photos: ["prop-fukasawa-1.webp","prop-fukasawa-2.webp","prop-fukasawa-3.webp","prop-fukasawa-4.webp","prop-fukasawa-5.webp","prop-fukasawa-6.webp","prop-fukasawa-7.webp","prop-fukasawa-8.webp","prop-fukasawa-9.webp"],
     note: "世田谷區深沢、自由が丘生活圈的自社新築3層戸建，建物約48.9坪、在都內戸建裡相當大器！約23.7帖的超大LDK配半島型廚房與食品庫，鐵骨樓梯設計感十足，室內陽台下雨天也能安心晾曬，4間居室全部6帖以上、還有WIC。一級建築士事務所原創設計，已完工、可即時交屋，Flat 35S（A方案）適合證明取得預定；學區為東深沢小學、東深沢中學。可以直接看影片逛一圈實景！想看房加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -424,7 +432,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishioi-a-pers.webp", "prop-nishioi-a-1.webp","prop-nishioi-a-2.webp","prop-nishioi-a-3.webp","prop-nishioi-a-4.webp","prop-nishioi-a-5.webp","prop-nishioi-a-6.webp","prop-nishioi-a-7.webp","prop-nishioi-a-8.webp","prop-nishioi-a-9.webp"],
+    photos: ["prop-nishioi-a-1.webp","prop-nishioi-a-2.webp","prop-nishioi-a-3.webp","prop-nishioi-a-4.webp","prop-nishioi-a-5.webp","prop-nishioi-a-6.webp","prop-nishioi-a-7.webp","prop-nishioi-a-8.webp","prop-nishioi-a-9.webp"],
     note: "品川區西大井、西大井站徒步約9分的自社新築3層戸建（B棟已完売、只剩這棟A棟！）。約22.1帖的開放LDK、全室6.1帖以上，收納規劃充足（WIC＋各室收納），2樓水回り集中、家事動線順暢。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立伊藤學園（小中一貫校）。已完工、2026年8月下旬交屋預定。照片為布置後實景，想看房加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
   {
@@ -466,7 +474,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-futaba-pers.webp", "prop-futaba-1.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
+    photos: ["prop-futaba-1.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
     note: "品川區二葉、下神明站徒步約6分、大井町站也在徒步圈的自社新築3層戸建，A・B兩棟可選！A棟LDK約18.1帖＋L型廚房、B棟LDK約19.0帖＋勾配天井，兩棟都附車庫與充足收納。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立豊葉の杜學園（小中一貫校）。已完工、2026年8月中旬交屋預定。想比較兩棟或預約看房，加LINE跟我說，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
