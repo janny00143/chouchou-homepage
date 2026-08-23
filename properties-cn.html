@@ -53,7 +53,8 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:10px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
-.card .ph{position:relative;height:190px;background:linear-gradient(135deg,#fde8ee,#fbeff2);overflow:hidden}
+.card #grid{min-height:70vh}
+.ph{position:relative;height:190px;background:linear-gradient(135deg,#fde8ee,#fbeff2);overflow:hidden}
 .card .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .card .ph .noimg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e7a9ba;gap:6px}
 .card .ph .noimg span{font-size:38px}
@@ -108,7 +109,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 <body>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="index-cn.html"><img class="logo-emblem" src="logo-mark.png" alt="周周・日本房仲"><span>周周・日本房仲</span></a>
+    <a class="logo" href="index-cn.html"><img class="logo-emblem" src="logo-mark.webp" alt="周周・日本房仲" width="420" height="501"><span>周周・日本房仲</span></a>
     <div class="hnav">
       <a class="hide-sm" href="index-cn.html">← 回首页</a>
       <a class="hide-sm" href="index.html#" onclick="location.href='index-cn.html';return false;">文章</a>
