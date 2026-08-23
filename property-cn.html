@@ -182,9 +182,11 @@ body.noscroll{overflow:hidden}
       if(buf.trim())sents.push(buf);
       lines=[];for(var i=0;i<sents.length;i+=3){lines.push(sents.slice(i,i+3).join(""));}
     }
+    /* 先跳脱（防止资料里的 HTML 被当程式跑），再只把 <b></b> 这个白名单标签放回来 */
+    var B=function(x){return C(x).replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>");};
     return lines.map(function(l){
-      if(l.slice(0,1)==="\u25a0") return '<b class="nsub">'+C(l.slice(1).trim())+'</b>';
-      return '<p class="np">'+C(l)+'</p>';
+      if(l.slice(0,1)==="\u25a0") return '<b class="nsub">'+B(l.slice(1).trim())+'</b>';
+      return '<p class="np">'+B(l)+'</p>';
     }).join("");
   }
   function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
