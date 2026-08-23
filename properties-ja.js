@@ -155,8 +155,7 @@ window.PROPERTIES_JA = {
 
   "yaraicho-b": {
     area: "建物180.80㎡（約54.7坪）",
-    built: "新築",
-    priceBand: "3億円台",
+    priceBand: "約3億3,300万円",
     ptype: "新築戸建",
     location: "東京都新宿区"
   },
@@ -389,8 +388,7 @@ window.PROPERTIES_JA = {
 
   "kameido209": {
     area: "49.61㎡（約15.01坪）",
-    built: "1979年築",
-    priceBand: "3,000万円台",
+    priceBand: "約3,300万円",
     ptype: "中古マンション",
     location: "東京都江東区"
   },
@@ -584,49 +582,44 @@ window.PROPERTIES_JA = {
 ,
   "impresto-daikanyama": {
     area: "33.16㎡（約10.03坪）",
-    built: "2020年築",
-    priceBand: "8,000万円台",
+    priceBand: "約8,900万円",
     ptype: "中古マンション",
     location: "東京都渋谷区"
   },
   "jiyugaoka-daisan": {
     area: "28.83㎡（約8.72坪）",
-    built: "1966年築",
-    priceBand: "2,000万円台",
+    priceBand: "約2,500万円",
     ptype: "中古マンション（リノベーション）",
     location: "東京都世田谷区"
   },
   "hines-lofty": {
     area: "45.12㎡（約13.64坪）",
-    built: "1979年築",
-    priceBand: "5,000万円台",
+    priceBand: "約5,700万円",
     ptype: "中古マンション（リノベーション）",
     location: "東京都新宿区"
   },
   "brillia-shinyokohama": {
     area: "60.84㎡（約18.4坪）",
-    built: "2020年築",
-    priceBand: "5,000万円台",
+    priceBand: "約5,800万円",
     ptype: "中古マンション",
     location: "神奈川県横浜市港北区"
   },
   "koyamadai-house": {
     area: "建物53.82㎡（約16.28坪）",
-    built: "2019年築",
-    priceBand: "7,000万円台",
+    priceBand: "約7,200万円",
     ptype: "中古戸建",
     location: "東京都品川区"
   },
   "yachimata-land": {
+    ward: "千葉県八街市",
     area: "土地2,148㎡（約649.76坪）",
-    priceBand: "2,000万円台",
-    ptype: "土地",
+    priceBand: "約2,300万円",
+    ptype: "土地（注文住宅用）",
     location: "千葉県八街市"
   },
   "greenpark-tateishi": {
     area: "43.44㎡（約13.14坪）",
-    built: "1987年築",
-    priceBand: "2,000万円台",
+    priceBand: "約3,000万円",
     ptype: "中古マンション（リノベーション）",
     location: "東京都葛飾区"
   }

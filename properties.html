@@ -247,15 +247,17 @@ footer a{color:#d6d3d1;text-decoration:none}
     var m=loc.match(new RegExp("([^\\s\u90FD\u9053\u5E9C\u770C\u7E23\u53BF]{1,4}?[\u5340\u533A\u5E02])"));
     return m?m[1]:"";
   }
+  /* 有些物件（例如東京都外）需要連縣名一起寫，就用 ward 欄位直接指定 */
+  function wardLabel(p){ return p.ward || wardOf(p); }
   function soldCard(p){
     var photo=(p.photos&&p.photos.length)
       ? '<img src="'+esc(p.photos[0])+'" alt="" loading="lazy">'
       : '<div class="noimg"><span>🏠</span></div>';
-    var ward=wardOf(p), type=p.ptype||CAT[p.cat]||"";
+    var ward=wardLabel(p), type=p.ptype||CAT[p.cat]||"";
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
     var line=[ward,type].filter(Boolean).map(C).join("・")||C("東京都內");
-    var meta=[p.area,p.built].filter(Boolean).map(C).join(' <span class="dot">·</span> ');
-    var band=p.priceBand?'<div class="sold-band"><span>成交價帶</span><b>'+C(p.priceBand)+'</b></div>':'';
+    var meta=p.area?C(p.area):'';
+    var band=p.priceBand?'<div class="sold-band"><span>成交價</span><b>'+C(p.priceBand)+'</b></div>':'';
     var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+'</div>':"";
     return '<div class="card sold-card">'
       +'<div class="ph">'+photo+'<span class="sold-rib">已成交</span></div>'
