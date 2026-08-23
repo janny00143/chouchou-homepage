@@ -343,6 +343,9 @@ window.PROPERTIES = [
     ptype: "新築一戶建",
     layoutTag: "2LDK+S",
     location: "東京都新宿區",
+    area: "建物180.80㎡（約54.7坪）",
+    built: "新築",
+    priceBand: "3億円台",
     photos: ["prop-yaraicho-b-1.webp"]
   },
 
@@ -719,6 +722,9 @@ window.PROPERTIES = [
     ptype: "中古公寓大樓",
     layoutTag: "2LDK+W",
     location: "東京都江東區",
+    area: "49.61㎡（約15.01坪）",
+    built: "1979年築",
+    priceBand: "3,000万円台",
     photos: ["prop-kameido209-1.webp"]
   },
 
@@ -1024,6 +1030,9 @@ window.PROPERTIES = [
     ptype: "中古公寓大樓",
     layoutTag: "1R",
     location: "東京都澀谷區",
+    area: "33.16㎡（約10.03坪）",
+    built: "2020年築",
+    priceBand: "8,000万円台",
     photos: ["prop-impresto-daikanyama-1.webp"]
   },
   {
@@ -1035,6 +1044,9 @@ window.PROPERTIES = [
     ptype: "中古公寓大樓（翻新）",
     layoutTag: "1K",
     location: "東京都世田谷區",
+    area: "28.83㎡（約8.72坪）",
+    built: "1966年築",
+    priceBand: "2,000万円台",
     photos: ["prop-jiyugaoka-daisan-1.webp"]
   },
   {
@@ -1046,6 +1058,9 @@ window.PROPERTIES = [
     ptype: "中古公寓大樓（翻新）",
     layoutTag: "2LDK",
     location: "東京都新宿區",
+    area: "45.12㎡（約13.64坪）",
+    built: "1979年築",
+    priceBand: "5,000万円台",
     photos: ["prop-hines-lofty-1.webp"]
   },
   {
@@ -1057,6 +1072,9 @@ window.PROPERTIES = [
     ptype: "中古公寓大樓",
     layoutTag: "2LDK",
     location: "神奈川縣橫濱市港北區",
+    area: "60.84㎡（約18.4坪）",
+    built: "2020年築",
+    priceBand: "5,000万円台",
     photos: ["prop-brillia-shinyokohama-1.webp"]
   },
   {
@@ -1068,6 +1086,9 @@ window.PROPERTIES = [
     ptype: "中古一戶建",
     layoutTag: "3K",
     location: "東京都品川區",
+    area: "建物53.82㎡（約16.28坪）",
+    built: "2019年築",
+    priceBand: "7,000万円台",
     photos: ["prop-koyamadai-house-1.webp"]
   },
   {
@@ -1078,6 +1099,8 @@ window.PROPERTIES = [
     cat: "land",
     ptype: "土地",
     location: "千葉縣八街市",
+    area: "土地2,148㎡（約649.76坪）",
+    priceBand: "2,000万円台",
     photos: ["prop-yachimata-land-1.webp"]
   },
   {
@@ -1089,6 +1112,9 @@ window.PROPERTIES = [
     ptype: "中古公寓大樓（翻新）",
     layoutTag: "1LDK",
     location: "東京都葛飾區",
+    area: "43.44㎡（約13.14坪）",
+    built: "1987年築",
+    priceBand: "2,000万円台",
     photos: ["prop-greenpark-tateishi-1.webp"]
   }
 ];
