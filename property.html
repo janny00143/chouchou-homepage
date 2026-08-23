@@ -331,7 +331,9 @@ body.noscroll{overflow:hidden}
     ALL=list;
     var id=getId();
     var p=id?list.filter(function(x){return x.id===id;})[0]:null;
-    if(p)render(p); else notFound();
+    /* 已成交的物件不開放單頁瀏覽（周周指示：保護已成交客戶，地址等細節不再對外顯示）。
+       這裡直接走「找不到」的畫面，該畫面本來就寫著「可能已成約或已下架」。 */
+    if(p && !p.sold) render(p); else notFound();
   }
   var isHans=(document.documentElement.lang||"").toLowerCase().indexOf("hans")>-1 || /-cn\.html$/.test(location.pathname);
   if(isHans){
