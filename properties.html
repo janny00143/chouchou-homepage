@@ -100,6 +100,9 @@ footer a{color:#d6d3d1;text-decoration:none}
 @keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
 @media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
 .ntag{background:#f43f5e;color:#fff;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;box-shadow:0 2px 6px rgba(244,63,94,.35)}
+.sold-card{cursor:default}
+.sold-card:hover{transform:none;box-shadow:none}
+.sold-when{font-size:13px;color:var(--mut);margin-top:2px}
 </style>
 </head>
 <body>
@@ -219,7 +222,27 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   var act=list?list.filter(function(p){return !p.sold;}):null;
   var soldList=list?list.filter(function(p){return p.sold;}):[];
-  function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(function(p,i){return card(p,i);}).join("");ss.style.display="block";fxFill();}
+  /* 已成交物件的卡片：周周指示——只放一張圖、不可點開、地址只到「區」（丁目數字都不寫），
+     為的是保護已成交客戶的隱私。所以這裡不共用 card()，另外做一個簡化版。 */
+  function wardOf(p){
+    var loc=String(p.location||p.title_cn||p.title||"");
+    var m=loc.match(new RegExp("([^\\s\u90FD\u9053\u5E9C\u770C\u7E23\u53BF]{1,4}?[\u5340\u533A\u5E02])"));
+    return m?m[1]:"";
+  }
+  function soldCard(p){
+    var photo=(p.photos&&p.photos.length)
+      ? '<img src="'+esc(p.photos[0])+'" alt="已成交物件" loading="lazy">'
+      : '<div class="noimg"><span>🏠</span><small>照片準備中</small></div>';
+    var ward=wardOf(p), type=CAT[p.cat]||"";
+    var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
+    var line=[ward,type].filter(Boolean).join("・")||"東京都內";
+    var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+' 成交</div>':"";
+    return '<div class="card sold-card">'
+      +'<div class="ph">'+photo+'<span class="badge s3">已成交</span></div>'
+      +'<div class="body"><h3>'+esc(line)+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'+when+'</div>'
+      +'</div>';
+  }
+  function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(soldCard).join("");ss.style.display="block";}
   function ptags(p){
     var tg={};
     tg.house=(p.cat==="house");
