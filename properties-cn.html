@@ -233,13 +233,13 @@ footer a{color:#d6d3d1;text-decoration:none}
     var photo=(p.photos&&p.photos.length)
       ? '<img src="'+esc(p.photos[0])+'" alt="已成交物件" loading="lazy">'
       : '<div class="noimg"><span>🏠</span><small>照片准备中</small></div>';
-    var ward=wardOf(p), type=CAT[p.cat]||"";
+    var ward=wardOf(p), type=p.ptype||CAT[p.cat]||"";
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
-    var line=[ward,type].filter(Boolean).join("・")||"东京都内";
+    var line=[ward,type].filter(Boolean).map(C).join("・")||C("东京都内");
     var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+' 成交</div>':"";
     return '<div class="card sold-card">'
       +'<div class="ph">'+photo+'<span class="badge s3">已成交</span></div>'
-      +'<div class="body"><h3>'+esc(line)+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'+when+'</div>'
+      +'<div class="body"><h3>'+line+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'+when+'</div>'
       +'</div>';
   }
   function renderSold(){var sg=document.getElementById("soldGrid"),ss=document.getElementById("soldSec");if(!sg||!ss||!soldList.length)return;sg.innerHTML=soldList.map(soldCard).join("");ss.style.display="block";}

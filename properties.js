@@ -43,13 +43,17 @@
       註：矢来町・ハイネス亀戸 雖已成約，但網站仍以 sold:true 顯示在「過去販售」，
           Drive 資料放在「2 過去販售」不要刪。
 
-   ⭐ 物件成約、要留在網站當實績時（sold:true）必做（周周 2026-08-14 指示）：
-      為了保護新屋主，網頁上要「去掉樓層／房號、以及丁目後面的番地號碼」——
-      ・title 拿掉房號／棟別（例：「ハイネス亀戸 209」→「ハイネス亀戸」）
-      ・location 只留到丁目（例：「江東區龜戶7-39-26」→「江東區龜戶7丁目」）
-      ・properties-ja.js 的 location 也要同步改
-      ・note 內文若有寫到番地或房號也要一起拿掉
-      在售中的物件不受此限，照常寫完整地址。
+   ⭐ 物件成約、要留在網站當實績時（sold:true）必做（周周 2026-08-23 指示，比舊規則更嚴）：
+      為了保護已成交的客戶，已成交條目「只留會顯示在卡片上的欄位」，其餘一律不寫：
+      ・保留：id / listed / status / sold / cat / ptype / layoutTag / location / photos（只放一張）
+      ・不寫：title、title_cn、price、station、size、age、mgmt、yield、video、note……
+        （這些即使卡片沒顯示，properties.js 是公開檔案，放著等於對外公開）
+      ・location 只到「區／市」，連丁目都不要（例：「江東區龜戶7丁目」→「東京都江東區」）
+      ・ptype 寫物件類型這種客觀事實（中古公寓大樓／新築一戶建／土地…），不要寫用途猜測
+      ・照片只放一張外觀，且上架前檢查有沒有拍到門牌／表札／車牌，有的話要先模糊
+      ・卡片不可點開，property.html?id= 直接輸入也會被擋（已在程式裡處理）
+      ・原始完整資料留在 Drive「2 過去販售（網站實績展示）」與 git 歷史裡，不會不見
+      在售中的物件不受此限，照常寫完整資料。
 
    ⭐ 一戶建的首圖要用「漂亮的外觀」（周周 2026-08-16 指示）：
       外觀是客戶第一眼看的東西，不要拿室內 home staging 圖或雜亂的街拍當首圖。
@@ -333,25 +337,13 @@ window.PROPERTIES = [
   {
     id: "yaraicho-b",
     listed: "2026-08-01",
-    layoutTag: "2LDK+S",
     status: "已成約",
     sold: true,
     cat: "house",
-    title: "矢来町 新築戸建",
-    title_cn: "新宿區矢来町 新築一戶建（自社）",
-    price: "3億3,280万円",
-    location: "東京都新宿區矢来町",
-    station: "東京Metro東西線「神楽坂」站 徒步5分／JR總武線「飯田橋」站 徒步17分",
-    layout: "戸建3層・LDK約25.7帖＋2居室＋多用途房",
-    size: "建物180.80㎡（約54.7坪）・土地101.16㎡（約30.6坪）",
-    age: "新築（2026年7月下旬交屋預定）",
-    facing: "南西向陽台・附Built-in Garage車庫",
-    mgmt: "戸建・無管理費與修繕積立金",
-    right: "所有權",
-    yield: "",
-    video: "drive:1rt0FKwznpMkXJEuGFb1mc8iM_IHO6T9S",
-    photos: ["prop-yaraicho-b-1.jpg","prop-yaraicho-b-2.jpg","prop-yaraicho-b-3.jpg","prop-yaraicho-b-4.jpg","prop-yaraicho-b-5.jpg","prop-yaraicho-b-6.jpg","prop-yaraicho-b-7.jpg","prop-yaraicho-b-8.jpg","prop-yaraicho-b-9.jpg","prop-yaraicho-b-10.jpg","prop-yaraicho-b-11.jpg"],
-    note: "新宿區矢来町、神楽坂站徒步5分的全新三層戸建（自社物件）！亮點是約25.7帖超大LDK、防犯性高的Built-in Garage（車庫可直接進屋）、下雨也安心的室內陽台，還有貼心的衛浴動線與多個WIC收納。由一級建築士事務所一棟一棟原創設計，2026年7月下旬交屋、預計取得Flat 35S適合證明；學區為市谷小學、牛込第一中學。神楽坂生活圈安靜又有味道、離飯田橋也近。本物件已順利成交、感謝關注！想找類似的神楽坂／新宿區新築戸建，歡迎加LINE告訴周周你的需求，我幫你留意最新釋出的自社物件。"
+    ptype: "新築一戶建",
+    layoutTag: "2LDK+S",
+    location: "東京都新宿區",
+    photos: ["prop-yaraicho-b-1.jpg"]
   },
 
   {
@@ -724,20 +716,10 @@ window.PROPERTIES = [
     status: "已成約",
     sold: true,
     cat: "live",
-    title: "ハイネス亀戸",
-    title_cn: "龜戶 北歐風翻新兩房",
-    price: "3,298万円",
-    location: "東京都江東區龜戶7丁目",
-    station: "總武中央線・東武龜戶線「龜戶」站 徒步13分／都營新宿線「大島」站 徒步14分",
-    layout: "2LDK+W",
-    size: "49.61㎡（約15.01坪）",
-    age: "築47年（1979年9月）",
-    facing: "",
-    mgmt: "管理費12,200円＋修繕積立金7,340円／月",
-    right: "所有權",
-    yield: "",
-    photos: ["prop-kameido209-1.jpg","prop-kameido209-2.jpg","prop-kameido209-3.jpg","prop-kameido209-4.jpg","prop-kameido209-5.jpg","prop-kameido209-6.jpg"],
-    note: "3千萬円出頭就能入手的東京2LDK翻新宅：北歐風木質內裝、對面式廚房加新設WIC，食洗機、浴室乾燥、追焚都有。OK超市徒步1分，龜戶中央公園等綠地就在附近。屋齡雖較長，但修繕紀錄扎實、內裝全面換新。本物件已順利成交、感謝關注！想找類似的東京翻新自住宅（3千萬円上下的2LDK），歡迎加LINE告訴周周你的預算與需求，我幫你留意最新釋出的物件。"
+    ptype: "中古公寓大樓",
+    layoutTag: "2LDK+W",
+    location: "東京都江東區",
+    photos: ["prop-kameido209-1.jpg"]
   },
 
   {
@@ -1032,5 +1014,81 @@ window.PROPERTIES = [
     yield: "想定表面約6.7%／NET約6.07%",
     photos: ["prop-tsurumi101-1.jpg","prop-tsurumi101-2-pers.jpg","prop-tsurumi101-3.jpg"],
     note: "不公開物件，地址只寫到丁目，詳細位置加LINE問我。\n這件在橫濱市鶴見區，不是東京都內，所以我先講定位：<b>它走的是「同樣預算、利回比東京高」這條路線</b>。鶴見區是橫濱18區裡人口第三多的區，JR鶴見站徒步5分、京急鶴見站7分，兩線都能走到。\n位置上有個實際的優點：這條路是鶴見站東口與西口開車往來時唯一的通道，車流跟自行車流都很密，做店面能見度高。物件是1樓路面店舖、50.67㎡（約15.32坪），適合美容院、沙龍這種地區型店家，餐飲也可以談（需管理組合同意）。\n屋況：2001年2月築、屬新耐震標準、RC造11層，現況空室募集中。相簿裡有一張是<b>改裝後示意圖（イメージ圖・非實景）</b>，網站會自動標示，別當成現況照片。\n數字面：想定月租36.3万円（含稅）、年租435.6万円，想定表面約6.7%、NET約6.07%。這是招租前的試算，實際看招到誰、租金談多少，不保證報酬。每月管理費8,560円＋修繕基金12,920円＋專有部分修繕基金5,390円＝26,870円，令和8年度固都税85,182円。\n首都圈外圍的店舖物件，銀行看法跟東京都心不太一樣，這點我可以先幫你問。想看現場或討論租客怎麼找，加LINE跟周周說（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
+  },
+  {
+    id: "impresto-daikanyama",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "live",
+    ptype: "中古公寓大樓",
+    layoutTag: "1R",
+    location: "東京都澀谷區",
+    photos: ["prop-impresto-daikanyama-1.jpg"]
+  },
+  {
+    id: "jiyugaoka-daisan",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "live",
+    ptype: "中古公寓大樓（翻新）",
+    layoutTag: "1K",
+    location: "東京都世田谷區",
+    photos: ["prop-jiyugaoka-daisan-1.jpg"]
+  },
+  {
+    id: "hines-lofty",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "live",
+    ptype: "中古公寓大樓（翻新）",
+    layoutTag: "2LDK",
+    location: "東京都新宿區",
+    photos: ["prop-hines-lofty-1.jpg"]
+  },
+  {
+    id: "brillia-shinyokohama",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "live",
+    ptype: "中古公寓大樓",
+    layoutTag: "2LDK",
+    location: "神奈川縣橫濱市港北區",
+    photos: ["prop-brillia-shinyokohama-1.jpg"]
+  },
+  {
+    id: "koyamadai-house",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "house",
+    ptype: "中古一戶建",
+    layoutTag: "3K",
+    location: "東京都品川區",
+    photos: ["prop-koyamadai-house-1.jpg"]
+  },
+  {
+    id: "yachimata-land",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "land",
+    ptype: "土地",
+    location: "千葉縣八街市",
+    photos: ["prop-yachimata-land-1.jpg"]
+  },
+  {
+    id: "greenpark-tateishi",
+    listed: "2026-08-23",
+    status: "已成約",
+    sold: true,
+    cat: "live",
+    ptype: "中古公寓大樓（翻新）",
+    layoutTag: "1LDK",
+    location: "東京都葛飾區",
+    photos: ["prop-greenpark-tateishi-1.jpg"]
   }
 ];
