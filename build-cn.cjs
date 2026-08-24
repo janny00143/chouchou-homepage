@@ -64,6 +64,13 @@ function convertFile(file) {
     s = s.split("='" + P + "'").join("='" + cn(P) + "'");
   }
 
+  // 4-2) 帶查詢字串的站內連結（例如 property.html?id=xxx）——第 4 步比對的是 ="檔名"（含結尾引號），
+  //      有 ?query 的連結會被漏掉，簡中訪客點下去會被丟回繁中頁。
+  for (const P of internal) {
+    s = s.split('="' + P + '?').join('="' + cn(P) + '?');
+    s = s.split("='" + P + "?").join("='" + cn(P) + "?");
+  }
+
   // 4a) <meta http-equiv="refresh" content="0;url=xxx.html"> 的轉址目標
   //     （轉址殼頁如 tools.html／tool-convert.html 用的是這個，不是 href，第 4 步吃不到，
   //      沒改的話簡中使用者會被丟到繁中頁）
