@@ -69,14 +69,14 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
 <div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index-cn.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a></div></div>
 <div class="wrap toolmain">
   <a class="back" href="index-cn.html">← 回首页</a>
-  <div class="top"><h1>📈 租金投报率试算器</h1><p>输入物件价格、月租与支出，算出表面利回り与实质利回り。</p></div>
+  <div class="top"><h1>📈 租金投报率试算器</h1><p>输入物件价格、月租与支出，算出表面投报率与实质投报率。</p></div>
   <div class="toolnav"><a href="tool-loan-cn.html">🏦 房贷试算</a><a href="tool-cost-cn.html">💴 总费用</a><a href="tool-agent-cn.html">🤝 仲介费</a><a href="tool-yield-cn.html" class="act">📈 投报率</a><a href="tool-fx-cn.html">💱 即时汇率</a><a href="tool-area-cn.html">📐 坪数・帖</a></div>
-  <div class="card"><h2>📈 租金投报率</h2><p class="sub">表面利回り＝年租金÷物件价格；实质利回り再扣掉持有支出与购入诸费用。</p><div class="two"><div class="f"><label>物件价格</label><div class="inp"><input id="y_price" type="number" inputmode="decimal" value="3000"><span class="unit">万日圆</span></div></div><div class="f"><label>每月租金</label><div class="inp"><input id="y_rent" type="number" inputmode="decimal" value="12"><span class="unit">万日圆</span></div></div><div class="f"><label>每月管理费＋修缮</label><div class="inp"><input id="y_cost" type="number" inputmode="decimal" value="2"><span class="unit">万日圆</span></div></div><div class="f"><label>年其他支出（税・保险等）</label><div class="inp"><input id="y_other" type="number" inputmode="decimal" value="10"><span class="unit">万日圆</span></div></div></div><div class="out"><div class="two" style="gap:12px"><div><div class="big">表面投报率</div><div class="num" id="y_gross">—</div></div><div><div class="big">实质投报率</div><div class="num" id="y_net">—</div></div></div><div class="orow"><span>年租金收入</span><span class="v" id="y_yrent">—</span></div><div class="orow"><span>年持有支出</span><span class="v" id="y_yexp">—</span></div></div><div class="note">⚠️ 投报率不等于实际报酬，未计入空室、租金下跌、修缮、贷款利息与税金等风险，实际以个案为准。</div></div>
+  <div class="card"><h2>📈 租金投报率</h2><p class="sub">表面投报率（表面利回り）＝年租金÷物件价格；实质投报率（実质利回り）再扣掉持有支出与购入诸费用。</p><div class="two"><div class="f"><label>物件价格</label><div class="inp"><input id="y_price" type="number" inputmode="decimal" value="3000"><span class="unit">万日圆</span></div></div><div class="f"><label>每月租金</label><div class="inp"><input id="y_rent" type="number" inputmode="decimal" value="12"><span class="unit">万日圆</span></div></div><div class="f"><label>每月管理费＋修缮</label><div class="inp"><input id="y_cost" type="number" inputmode="decimal" value="2"><span class="unit">万日圆</span></div></div><div class="f"><label>年其他支出（税・保险等）</label><div class="inp"><input id="y_other" type="number" inputmode="decimal" value="10"><span class="unit">万日圆</span></div></div></div><div class="out"><div class="two" style="gap:12px"><div><div class="big">表面投报率</div><div class="num" id="y_gross">—</div></div><div><div class="big">实质投报率</div><div class="num" id="y_net">—</div></div></div><div class="orow"><span>年租金收入</span><span class="v" id="y_yrent">—</span></div><div class="orow"><span>年持有支出</span><span class="v" id="y_yexp">—</span></div></div><div class="note">⚠️ 投报率不等于实际报酬，未计入空室、租金下跌、修缮、贷款利息与税金等风险，实际以个案为准。</div></div>
   <div class="cta"><p>算完想找适合的物件，或有贷款／税务问题？<br>把你的试算结果直接传给周周 👇</p><div class="ctabtns"><a class="btn-prop" href="properties-cn.html">🏠 看看周周手上的收租物件</a><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div></div>
 <div class="tinfo">
-  <h2>表面利回り 跟 実质利回り 差在哪</h2>
-  <p>日本物件广告上写的那个投报率，几乎清一色是<b>表面利回り（表面投报率）</b>：年租金收入 ÷ 物件价格，不扣任何成本。它的用途是快速比较物件，不是拿来估你实际会拿到多少现金。</p>
-  <p><b>実质利回り（实质投报率）</b>则是分子扣掉每年的持有成本（管理费与修缮基金、固都税、管理委托费、火灾保险），分母加上取得时的诸费用（一般是物件价格的 6～10%）。同一间房，两个数字经常差 1.5 个百分点以上。</p>
+  <h2>表面投报率跟实质投报率差在哪</h2>
+  <p>日本物件广告上写的那个投报率，几乎清一色是<b>表面投报率（表面利回り）</b>：年租金收入 ÷ 物件价格，不扣任何成本。它的用途是快速比较物件，不是拿来估你实际会拿到多少现金。</p>
+  <p><b>实质投报率（実质利回り）</b>则是分子扣掉每年的持有成本（管理费与修缮基金、固都税、管理委托费、火灾保险），分母加上取得时的诸费用（一般是物件价格的 6～10%）。同一间房，两个数字经常差 1.5 个百分点以上。</p>
 
   <h3>现在的市场水准</h3>
   <p>健美家的〈收益物件 市场动向マンスリーレポート〉2026 年 6 月期显示，全国区分公寓的平均表面投报率是 <b>6.61%</b>；但那是全国平均，包含很多地方物件。东京都心的中古区分，实际看到的表面投报率多半落在 4.5～6.0%。低不代表差——都心低投报物件买的是空室风险低、租金稳定、将来好处理。</p>
@@ -88,7 +88,7 @@ html[data-theme="dark"] .toolnav a.act{background:var(--rose)}
     <li><b>非居住者的源泉征收</b>——你人不在日本时，承租人支付租金原则上要先扣 20.42% 再付给你（国税厅 No.2880），之后可透过确定申告调整，但现金流的时点会完全不同。</li>
     <li><b>高投报背后的原因</b>——地点、屋龄、构造、租客结构、将来好不好脱手，通常要看誊本与管理组合议事录才知道。</li>
   </ul>
-  <p>把物件网址或贩売図面传给我，这四份资料我帮你调齐再算一次，算完你会清楚知道这一间值不值得出手——就算结论是「这间不要买」，我也会直接跟你说。</p>
+  <p>把物件网址或物件图面（贩売図面）传给我，这四份资料我帮你调齐再算一次，算完你会清楚知道这一间值不值得出手——就算结论是「这间不要买」，我也会直接跟你说。</p>
   <div class="src">资料来源：健美家〈収益物件 市场动向マンスリーレポート〉2026 年 6 月期；国税厅〈No.2880 非居住者等に不动产の赁借料を支払ったとき〉。市场数据随时间变动，税务处理请由税理士确认。</div>
 </div>
 
