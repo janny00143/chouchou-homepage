@@ -1,6 +1,21 @@
 /* 產生日文版文章頁（-ja.html）。translate-jobs/ja-content.json 提供翻譯後的 title/ex/tags/body。
    用法：先跑 node generate-pages.cjs，再跑 node build-ja.cjs */
 const fs = require("fs");
+const vm = require("vm");
+
+/* 投資系の記事末尾に「販売中の投資物件」を出すため、properties.js と日本語オーバーライドを読み込む。
+   データは properties.js の一箇所だけ。ジェネレーターを回せば記事ページも自動で同期される。 */
+function loadProps(file, key) {
+  try {
+    const ctx = { document: {} }; ctx.window = ctx;
+    vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(__dirname + "/" + file, "utf8"), ctx);
+    return ctx[key] || null;
+  } catch (e) { console.warn("読み込み失敗 " + file + "：" + e.message); return null; }
+}
+const PROPS_RAW = loadProps("properties.js", "PROPERTIES") || [];
+const PROPS_JA_OV = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
+const PROPS = PROPS_RAW.map(p => Object.assign({}, p, PROPS_JA_OV[p.id] || {}));
 const BASE = "https://chouchouinjapan.com/";
 
 /* ── 著者・発行者の権威情報（E-E-A-T）──
@@ -61,6 +76,42 @@ const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g,
 const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/); return m ? "https://www.youtube.com/embed/" + m[1] : ""; };
 const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
 const jaSlug = slug => slug + "-ja";
+
+const PICK_BY_CAT_JA = {
+  invest:  p => p.cat === "invest",
+  /* 「民泊」だと「民泊不可」の物件まで拾ってしまうため、旅館業で判定する */
+  minpaku: p => p.cat === "invest" && /旅館業|旅館一棟|旅館収益|簡易宿所/.test([p.title, p.catch, p.note, p.layout].join(" ")),
+};
+function propsForArticleJa(a) {
+  const pick = PICK_BY_CAT_JA[a.cat];
+  if (!pick) return [];
+  let list = PROPS.filter(p => !p.sold && p.status === "在售" && pick(p));
+  if (a.cat === "minpaku" && list.length < 2) list = PROPS.filter(p => !p.sold && p.status === "在售" && p.cat === "invest");
+  if (list.length < 2) return [];
+  list = list.slice().sort((x, y) => (y.yield ? 1 : 0) - (x.yield ? 1 : 0));
+  const seed = parseInt(String(a.id).replace(/\D/g, ""), 10) || 0;
+  const off = list.length ? seed % list.length : 0;
+  return list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+}
+function propBlockHTMLJa(a) {
+  const list = propsForArticleJa(a);
+  if (!list.length) return "";
+  const cards = list.map(p => {
+    const img = (p.photos && p.photos[0]) ? encodeURIComponent(p.photos[0]) : "";   /* 相對路徑：文章頁跟物件頁都在根目錄 */
+    const name = esc(p.title || "");
+    const yieldLine = p.yield ? '<span class="apy">' + esc(String(p.yield).split("（")[0]) + "</span>" : "";
+    return '<a class="apcard" href="property-ja.html?id=' + encodeURIComponent(p.id) + '">'
+      + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
+      + '<span class="apbody"><b>' + name + "</b>"
+      + '<span class="apmeta">' + esc(p.location || "") + "</span>"
+      + '<span class="apprice">' + esc(String(p.price || "価格はお問い合わせください").split("\n")[0]) + yieldLine + "</span>"
+      + "</span></a>";
+  }).join("");
+  return '<section class="apsec"><h2>現在ご紹介できる投資物件</h2>'
+    + '<p class="apsub">記事を読んで具体的な物件をご覧になりたい方へ。掲載中の物件から数件をご紹介します（物件情報の更新に自動で連動します）。</p>'
+    + '<div class="apgrid">' + cards + "</div>"
+    + '<a class="apmore" href="properties-ja.html">物件一覧を見る →</a></section>';
+}
 
 function pageJa(a, j) {
   const slug = SLUG[a.id];
@@ -143,6 +194,7 @@ ${bodyHTML}
 </div>
 ${vid}
 <div class="ablock" style="margin-top:26px"><div><b>この記事はお役に立ちましたか？ご質問はお気軽にどうぞ</b><br><span style="color:var(--mut);font-size:14px">気になる物件があれば、そのまま周周までお送りください。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div>
+${propBlockHTMLJa(a)}
 ${relHTML}
 <div id="cmts" data-slug="${slug}" data-lang="ja"></div>
 <p style="margin:30px 0;font-size:14px"><a href="ja.html" style="color:var(--rose);font-weight:600">← 周周のほかの記事を見る</a></p>

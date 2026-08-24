@@ -224,7 +224,7 @@ body.noscroll{overflow:hidden}
       var ph=(x.photos&&x.photos.length)
         ? '<img src="'+esc(x.thumb||x.photos[0])+'" alt="'+C(x.title)+'" loading="lazy">'
         : '<div class="rnoimg">🏠</div>';
-      h+='<a class="rcard" href="property.html?id='+encodeURIComponent(x.id)+'">'
+      h+='<a class="rcard" href="property-cn.html?id='+encodeURIComponent(x.id)+'">'
         +'<div class="rph">'+ph+'</div>'
         +'<div class="rb"><h3>'+C(x.title_cn||x.title)+'</h3>'
         +'<p class="rp">'+C(String(x.price||"价格请洽询").split("\n")[0])+'</p>'

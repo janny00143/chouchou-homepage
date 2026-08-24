@@ -3,6 +3,19 @@
    來源：index.html 的 ART / S / CATS / <style>
    每次有改文章，重跑這支即可重新產生。 */
 const fs = require("fs");
+const vm = require("vm");
+
+/* 投資類文章結尾要掛「站上目前的投資物件」，所以這裡把 properties.js 讀進來。
+   資料只有一份（properties.js），文章頁每次重跑產生器就會自動同步，不用人工維護。 */
+function loadProps(file, key) {
+  try {
+    const ctx = { document: {} }; ctx.window = ctx;
+    vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(__dirname + "/" + file, "utf8"), ctx);
+    return ctx[key] || null;
+  } catch (e) { console.warn("讀不到 " + file + "：" + e.message); return null; }
+}
+const PROPS = loadProps("properties.js", "PROPERTIES") || [];
 const BASE = "https://chouchouinjapan.com/";
 
 /* ── 作者／發行者的權威資訊（E-E-A-T）──
@@ -99,6 +112,44 @@ const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\
 const rt = a => Math.max(1, Math.round(a.body.join("").replace(/\s/g, "").length / 350));
 const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
 
+/* 文章分類 → 要推薦哪一種在售物件 */
+const PICK_BY_CAT = {
+  invest:  p => p.cat === "invest",
+  /* 用「旅館業」比對，不要用「民泊」——有物件的 note 寫的是「此戶民泊不可」，用民泊會抓到意思相反的 */
+  minpaku: p => p.cat === "invest" && /旅館業|旅館一棟|旅館収益|旅館收益|簡易宿所/.test([p.title, p.title_cn, p.note, p.layout].join(" ")),
+};
+/* 依文章 id 做穩定的錯開，讓不同文章不會推到同一批物件 */
+function propsForArticle(a) {
+  const pick = PICK_BY_CAT[a.cat];
+  if (!pick) return [];
+  let list = PROPS.filter(p => !p.sold && p.status === "在售" && pick(p));
+  if (a.cat === "minpaku" && list.length < 2) list = PROPS.filter(p => !p.sold && p.status === "在售" && p.cat === "invest");
+  if (list.length < 2) return [];
+  list = list.slice().sort((x, y) => (y.yield ? 1 : 0) - (x.yield ? 1 : 0));   // 有寫投報的排前面
+  const seed = parseInt(String(a.id).replace(/\D/g, ""), 10) || 0;
+  const off = list.length ? seed % list.length : 0;
+  return list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+}
+function propBlockHTML(a) {
+  const list = propsForArticle(a);
+  if (!list.length) return "";
+  const cards = list.map(p => {
+    const img = (p.photos && p.photos[0]) ? encodeURIComponent(p.photos[0]) : "";   /* 相對路徑：文章頁跟物件頁都在根目錄 */
+    const name = esc(p.title_cn || p.title || "");
+    const yieldLine = p.yield ? '<span class="apy">' + esc(String(p.yield).split("（")[0]) + "</span>" : "";
+    return '<a class="apcard" href="property.html?id=' + encodeURIComponent(p.id) + '">'
+      + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
+      + '<span class="apbody"><b>' + name + "</b>"
+      + '<span class="apmeta">' + esc(p.location || "") + "</span>"
+      + '<span class="apprice">' + esc(String(p.price || "價格請洽詢").split("\n")[0]) + yieldLine + "</span>"
+      + "</span></a>";
+  }).join("");
+  return '<section class="apsec"><h2>周周手上目前的投資物件</h2>'
+    + '<p class="apsub">看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。</p>'
+    + '<div class="apgrid">' + cards + "</div>"
+    + '<a class="apmore" href="properties.html">看全部物件 →</a></section>';
+}
+
 function page(a) {
   const slug = SLUG[a.id];
   const url = BASE + slug + ".html";
@@ -179,6 +230,7 @@ ${bodyHTML}
 </div>
 ${vid}
 <div class="ablock" style="margin-top:26px"><div><b>這篇有幫到你嗎？有問題直接問我</b><br><span style="color:var(--mut);font-size:14px">看到喜歡的物件也可以直接貼給周周看看。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div>
+${propBlockHTML(a)}
 ${relHTML}
 <div id="cmts" data-slug="${slug}" data-lang="tw"></div>
 <p style="margin:30px 0;font-size:14px"><a href="index.html" style="color:var(--rose);font-weight:600">← 看更多周周的文章</a></p>
