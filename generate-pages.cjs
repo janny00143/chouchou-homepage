@@ -27,14 +27,8 @@ const AUTHOR_TW = {
   name: "周欣妤",
   alternateName: ["周周", "シュウ シンユウ"],
   url: BASE + "about.html",
-  jobTitle: "宅地建物取引士",
+  jobTitle: "不動產仲介",
   knowsLanguage: ["zh-Hant", "ja", "zh-Hans"],
-  hasCredential: {
-    "@type": "EducationalOccupationalCredential",
-    credentialCategory: "日本國家資格",
-    name: "宅地建物取引士（宅建士）",
-    recognizedBy: { "@type": "GovernmentOrganization", name: "日本國土交通省" }
-  },
   worksFor: {
     "@type": "RealEstateAgent",
     name: "株式会社アンドプラス 住宅営業部",
