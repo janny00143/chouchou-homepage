@@ -193,7 +193,7 @@ ${relHTML}
 <div id="cmts" data-slug="${slug}" data-lang="ja"></div>
 <p style="margin:30px 0;font-size:14px"><a href="ja.html" style="color:var(--rose);font-weight:600">← 周周のほかの記事を見る</a></p>
 </main>
-<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a></div><div class="wrap cp">© ${new Date().getFullYear()} 周周・日本の不動産</div></footer>
+<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="トップへ戻る">↑</button>
 <script type="module" src="comments.js"></script>

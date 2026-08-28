@@ -500,7 +500,7 @@ document.getElementById('bio').innerHTML=S.bio.map(p=>\`<p style="margin-bottom:
 document.getElementById('lineId').textContent=S.lineId;
 document.getElementById('qr').src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(S.line);
 const c=S.company;const ci=(l,v)=>\`<div class="ci"><span class="cl">\${l}</span><span class="cv">\${v}</span></div>\`;document.getElementById('company').innerHTML=ci('${JA_UI.companyLabels.company}','株式会社アンドプラス')+ci('${JA_UI.companyLabels.advisor}','周 欣妤 ／ Syu ShinYu ／ シュウ シンユウ')+ci('${JA_UI.companyLabels.license}',c.license)+ci('${JA_UI.companyLabels.addr}',c.addr)+ci('${JA_UI.companyLabels.mobile}',\`<a href="tel:\${c.mobile.replace(/[^0-9]/g,"")}">\${c.mobile}</a>\`)+ci('${JA_UI.companyLabels.tel}',\`<a href="tel:\${c.tel.replace(/[^0-9]/g,"")}">\${c.tel}</a>\`)+ci('${JA_UI.companyLabels.fax}',c.fax)+ci('${JA_UI.companyLabels.email}',\`<a href="mailto:\${c.email}">\${c.email}</a>\`)+ci('${JA_UI.companyLabels.hp}',\`<a href="\${c.hp}" target="_blank" rel='noopener'>\${c.hp}</a>\`);
-document.getElementById('cp').textContent="© "+new Date().getFullYear()+" "+S.brand;
+document.getElementById('cp').textContent="© "+S.brand;
 document.getElementById('steps').innerHTML=PROCESS.map((s,i)=>\`<div class="step"><span class="n">\${i+1}</span><div><h3>\${s[0]}</h3><p style="color:var(--mut);font-size:14px">\${s[1]}</p></div></div>\`).join("");
 var hf=document.getElementById('flowGrid');
 if(hf)hf.innerHTML=PROCESS.map((s,i)=>\`<button type="button" class="fstep" onclick="openStep(\${i})" aria-haspopup="dialog"><span class="fn">\${i+1}</span><div class="fb"><b>\${s[0]}</b></div></button>\`).join("");
