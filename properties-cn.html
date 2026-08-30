@@ -56,6 +56,8 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .card #grid{min-height:70vh}
 .ph{position:relative;height:190px;background:linear-gradient(135deg,#fde8ee,#fbeff2);overflow:hidden}
 .card .ph img{width:100%;height:100%;object-fit:cover;display:block}
+/* 档名含 -plan. 的（间取图／资讯图）整张显示、不裁切 */
+.card .ph img.fitall{object-fit:contain;background:#faf8f6}
 .card .ph .noimg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e7a9ba;gap:6px}
 .card .ph .noimg span{font-size:38px}
 .card .ph .noimg small{font-size:12.5px;color:#d38aa0}
@@ -205,7 +207,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   function card(p,i){
     var multi=p.photos&&p.photos.length>1;
     var photo=(p.photos&&p.photos.length)
-      ? '<img src="'+esc(p.thumb||p.photos[0])+'" alt="'+C(p.title)+'" loading="lazy">'+(multi?'<span class="cnt">📷 '+p.photos.length+'</span>':'')
+      ? '<img class="'+(/-plan\./.test(String(p.thumb||p.photos[0]||""))?"fitall":"")+'" src="'+esc(p.thumb||p.photos[0])+'" alt="'+C(p.title)+'" loading="lazy">'+(multi?'<span class="cnt">📷 '+p.photos.length+'</span>':'')
       : '<div class="noimg"><span>🏠</span><small>照片准备中</small></div>';
     var st=conv(p.status||"在售");
     var badge='<span class="badge '+(SCLS[st]||SCLS[p.status]||"")+'">'+esc(st)+'</span>';
@@ -251,7 +253,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   function wardLabel(p){ return p.ward || wardOf(p); }
   function soldCard(p){
     var photo=(p.photos&&p.photos.length)
-      ? '<img src="'+esc(p.photos[0])+'" alt="" loading="lazy">'
+      ? '<img class="'+(/-plan\./.test(String(p.photos[0]||""))?"fitall":"")+'" src="'+esc(p.photos[0])+'" alt="" loading="lazy">'
       : '<div class="noimg"><span>🏠</span></div>';
     var ward=wardLabel(p), type=p.ptype||CAT[p.cat]||"";
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');

@@ -41,6 +41,8 @@ main{padding:22px 0 10px}
 .pleft{flex:1 1 540px;min-width:0}.pgal{min-width:0}
 .pmain{position:relative;background:#f5f5f4;border-radius:16px;overflow:hidden;height:clamp(320px,54vh,560px);cursor:zoom-in}
 .pmain img{width:100%;height:100%;object-fit:cover;display:block}
+/* 档名含 -plan. 的（间取图／资讯图）整张显示、不裁切 */
+.pmain img.fitall,.pthumbs img.fitall,.rcard .rph img.fitall{object-fit:contain;background:#faf8f6}
 .pmain .perstag{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.58);color:#fff;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.3px;pointer-events:none}
 .pmain .pnav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.42);color:#fff;border:none;font-size:30px;cursor:pointer;padding:8px 14px;line-height:1;font-family:inherit;border-radius:10px}
 .pmain .pnav:hover{background:rgba(0,0,0,.72)}
@@ -222,7 +224,7 @@ body.noscroll{overflow:hidden}
     var h='<section class="related"><h2>你可能也有兴趣</h2><p class="rsub">周周依你正在看的价格带与区域，挑了几件条件相近的物件。</p><div class="rgrid">';
     pick.forEach(function(x){
       var ph=(x.photos&&x.photos.length)
-        ? '<img src="'+esc(x.thumb||x.photos[0])+'" alt="'+C(x.title)+'" loading="lazy">'
+        ? '<img class="'+(/-plan\./.test(String(x.thumb||x.photos[0]||""))?"fitall":"")+'" src="'+esc(x.thumb||x.photos[0])+'" alt="'+C(x.title)+'" loading="lazy">'
         : '<div class="rnoimg">🏠</div>';
       h+='<a class="rcard" href="property-cn.html?id='+encodeURIComponent(x.id)+'">'
         +'<div class="rph">'+ph+'</div>'
@@ -243,13 +245,13 @@ body.noscroll{overflow:hidden}
     if(photos.length){
       var multi=photos.length>1;
       gal='<div class="pgal"><div class="pmain" id="pmain">'
-        +'<img id="pimg" src="'+esc(photos[0])+'" alt="'+C(p.title)+'">'
+        +'<img id="pimg" class="'+(/-plan\./.test(String(photos[0]||""))?"fitall":"")+'" src="'+esc(photos[0])+'" alt="'+C(p.title)+'">'
         +(multi?'<button class="pnav prev" id="pprev" aria-label="上一张">‹</button><button class="pnav next" id="pnext" aria-label="下一张">›</button>':'')
         +'<span class="pcnt" id="pcnt">1 / '+photos.length+'</span>'
         +'<span class="pzoom">🔍 点图放大</span>'
         +'<span class="perstag" id="perstag" style="display:none">完成预想图</span>'
         +'</div>'
-        +(multi?'<div class="pthumbs" id="pthumbs">'+photos.map(function(src,idx){return '<img src="'+esc(src)+'" data-i="'+idx+'" alt="">';}).join("")+'</div>':'')
+        +(multi?'<div class="pthumbs" id="pthumbs">'+photos.map(function(src,idx){return '<img class="'+(/-plan\./.test(String(src||""))?"fitall":"")+'" src="'+esc(src)+'" data-i="'+idx+'" alt="">';}).join("")+'</div>':'')
         +'</div>';
     } else {
       gal='<div class="pgal"><div class="pnoimg"><span>🏠</span><small>照片准备中，欢迎加 LINE 索取</small></div></div>';
@@ -291,6 +293,9 @@ body.noscroll{overflow:hidden}
       if(pThumbs)pThumbs.addEventListener("click",function(e){var t=e.target.closest("img[data-i]");if(t){pi=+t.getAttribute("data-i");show();}});
     }
   }
+  /* 档名含 -plan. ＝间取图／资讯图，整张显示不裁切 */
+  function isPlan(src){ return /-plan\./.test(String(src||"")); }
+
   /* 完成预想图（パース）必须标示，避免被误认为实景照片 */
   var pPers=null;
   function markPers(){
@@ -300,7 +305,8 @@ body.noscroll{overflow:hidden}
   function show(){
     if(!pImg)return;
     markPers();
-    pImg.src=photos[pi]; if(pCnt)pCnt.textContent=(pi+1)+" / "+photos.length;
+    pImg.src=photos[pi]; pImg.classList.toggle("fitall",isPlan(photos[pi]));
+    if(pCnt)pCnt.textContent=(pi+1)+" / "+photos.length;
     if(pThumbs)Array.prototype.forEach.call(pThumbs.children,function(t,idx){t.classList.toggle("on",idx===pi);var a=pThumbs.children[pi];if(a&&a.scrollIntoView)a.scrollIntoView({inline:"nearest",block:"nearest"});});
     if(zImg&&zoom.classList.contains("on")){zImg.src=photos[pi];zCnt.textContent=(pi+1)+" / "+photos.length;}
   }

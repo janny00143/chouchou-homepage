@@ -146,6 +146,9 @@ function propBlockHTML(a) {
     + '<a class="apmore" href="properties.html">看全部物件 →</a></section>';
 }
 
+const { buildRelMap } = require("./related.cjs");
+const REL = buildRelMap(ART, a => !!(a.url || SLUG[a.id]));
+
 function page(a) {
   const slug = SLUG[a.id];
   const url = BASE + slug + ".html";
@@ -173,8 +176,7 @@ function page(a) {
   ] };
   const t = esc(a.title) + "｜周周・日本房仲";
   const d = esc(a.seo || a.ex);   // seo：只給搜尋引擎看的長描述；沒填就用卡片摘要 ex
-  const others = ART.filter(r => r.id !== a.id && (r.url || SLUG[r.id]));
-  const rel = [...others.filter(r => r.cat === a.cat), ...others.filter(r => r.cat !== a.cat).sort((x, y) => (y.date || "").localeCompare(x.date || ""))].slice(0, 3);
+  const rel = REL[a.id] || [];   // 選文邏輯見 related.cjs（平均分散入連，避免孤兒文章）
   const relHTML = rel.length ? `<section style="margin-top:32px;border-top:1px solid var(--line);padding-top:18px"><h2 style="font-size:18px;margin-bottom:10px">延伸閱讀</h2>` + rel.map(r => `<a href="${r.url || SLUG[r.id] + ".html"}" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ ${r.title}</a>`).join("") + `</section>` : "";
   return `<!DOCTYPE html>
 <html lang="zh-Hant-TW">
