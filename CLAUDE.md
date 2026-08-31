@@ -167,6 +167,31 @@
    - 若 `failure` → **重跑失敗的 deploy job**（`rerun_failed_jobs`）並**再次確認 success** 後才回報；不要只叫周周清快取。
    - 若周周反映「改了很久沒更新／刷新很多次還是舊的」→ **先查部署狀態、不要預設是快取**；很可能就是部署失敗，重跑一次即可。
 
+9. **⭐ 從開發分支同步到 `main` 的正確做法（2026-08-31 踩過的坑，務必照做）**：
+   以前用 `git checkout <開發分支> -- .` 把檔案複製過去——**這個做法只會「覆蓋／新增」，不會「刪除」**。
+   只要開發分支曾經搬移或刪掉檔案，`main` 就會同時留著新舊兩份，樹愈長愈大而且沒人發現
+   （2026-08-31 就因此讓根目錄膨脹到 1196 項，GitHub 檔案列表被截斷）。
+   **正確做法：讓 `main` 的樹「完全等於」開發分支的樹**，用 `commit-tree` 一次做好（不是 force push、不改歷史）：
+
+   ```bash
+   git fetch origin main
+   NEW=$(git commit-tree <開發分支>^{tree} -p origin/main -m "說明")
+   git branch -f _dm $NEW && git checkout _dm
+   git push origin HEAD:main
+   git checkout <開發分支> && git branch -D _dm
+   ```
+
+   **推之前一定要先看差異**，確認要刪的都是預期中的檔案：
+
+   ```bash
+   git diff --stat origin/main <開發分支> | tail -5
+   comm -23 <(git ls-tree -r --name-only origin/main|sort) \
+            <(git ls-tree -r --name-only <開發分支>|sort)   # 這些會從 main 消失
+   ```
+
+   ⚠️ 有些檔案是**只存在於 `main`**（例如 `service.html` 這種以前直接在 main 上建的示範頁）。
+   同步前先把它們 `git checkout origin/main -- <檔名>` 收進開發分支，不要讓它們被清掉。
+
 ---
 
 ## 9. SEO 與文章獨立頁（改文章後必看）
