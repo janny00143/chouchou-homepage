@@ -169,7 +169,7 @@ window.PROPERTIES = [
     mgmt: "管理費9,000円＋修繕積立金17,820円＋網路使用料1,540円／月（合計28,360円・全部委託・大成有樂不動產）",
     right: "所有權",
     yield: "",
-    photos: ["prop-daikanyama903-1.webp","prop-daikanyama903-2.webp","prop-daikanyama903-3.webp","prop-daikanyama903-4.webp","prop-daikanyama903-5.webp","prop-daikanyama903-6.webp","prop-daikanyama903-7.webp","prop-daikanyama903-8.webp","prop-daikanyama903-9.webp","prop-daikanyama903-10.webp","prop-daikanyama903-11.webp","prop-daikanyama903-12.webp"],
+    photos: ["prop-daikanyama903-1.webp","prop-daikanyama903-2.webp","prop-daikanyama903-3.webp","prop-daikanyama903-4.webp","prop-daikanyama903-5.webp","prop-daikanyama903-6.webp","prop-daikanyama903-7.webp","prop-daikanyama903-8.webp","prop-daikanyama903-9.webp","prop-daikanyama903-10.webp","prop-daikanyama903-11.webp","prop-daikanyama903-12.webp","prop-daikanyama903-plan.webp"],
     note: "■ 位置本身就是資產\n代官山站徒步4分、惠比壽站徒步5分。代官山跟惠比壽是東京少數「安靜又有質感、但生活機能完全不缺」的區域，走幾步是選物店與咖啡館，回到住處又是安穩的住宅氛圍，很多在東京長住的外國人最後都選這一帶。\n■ 兩個一般人不會注意、但住起來差很多的規格\n一是二重床二重天井（地板與天花板都有架高層），樓上樓下的聲音傳導比直鋪式好，管線維修也不用敲混凝土；二是逆梁工法，把梁移到外側，所以窗戶可以做得又高又大，室內採光跟開闊感完全不同。\n■ 建築與格局\n2005年4月築的RC造12層樓、總戶數47戶，這間在9樓、西向。格局是LDK約11.2帖＋洋室約3.3帖的1LDK，專有36.10㎡，陽台有8.05㎡算相當寬。\n■ 設備\nLDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室內洗衣機位、自動鎖、電梯，垃圾24小時可丟。可養寵物（管理規約有一定限制，養之前要先確認細則）。\n■ ⚠️ 持有成本要看清楚\n管理費9,000円＋修繕積立金17,820円＋網路使用料1,540円，每月合計約28,360円——修繕積立金比例偏高，好處是大樓的長期修繕準備充足，但如果你是要出租的，這筆務必先算進收益裡。\n現況空屋、可即時交屋，隨時能安排看房。想看房或想討論代官山・惠比壽這一帶的行情，加LINE跟周周說一聲（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -191,7 +191,7 @@ window.PROPERTIES = [
     mgmt: "管理費6,500円＋修繕積立金2,400円／月（合計8,900円・全部委託・管理員巡迴）",
     right: "所有權",
     yield: "",
-    photos: ["prop-ebisu1103-1.webp","prop-ebisu1103-2.webp","prop-ebisu1103-3.webp","prop-ebisu1103-4.webp","prop-ebisu1103-5.webp","prop-ebisu1103-6.webp","prop-ebisu1103-7.webp","prop-ebisu1103-8.webp","prop-ebisu1103-9.webp","prop-ebisu1103-10.webp"],
+    photos: ["prop-ebisu1103-1.webp","prop-ebisu1103-2.webp","prop-ebisu1103-3.webp","prop-ebisu1103-4.webp","prop-ebisu1103-5.webp","prop-ebisu1103-6.webp","prop-ebisu1103-7.webp","prop-ebisu1103-8.webp","prop-ebisu1103-9.webp","prop-ebisu1103-10.webp","prop-ebisu1103-plan.webp"],
     note: "■ 為什麼值得看\n惠比壽地址、11樓的南東角戶——這兩個條件加在一起，在惠比壽這種寸土寸金的地方其實不好找。角戶代表兩面採光通風，加上樓層夠高，實際站在窗邊看出去是很開闊的市景（相簿裡有一張實拍的眺望照，可以直接感受）。\n■ 屋況\n2026年8月剛完成全室翻新：地板、壁紙、洗面台、馬桶、廚房、整體衛浴、門片全部換新，還新設了冷氣一台跟LDK地暖。格局是LDK約11.0帖＋洋室約4.7帖的1LDK，中間可以打通成一個大空間，附步入式衣帽間，一個人住或情侶住都剛好。\n■ 建築與管理\n2009年3月築、RC造13層樓、總戶數55戶。2025年10月才做完大規模修繕，接下來幾年不用擔心大額工程；管理由管理公司 クレアスコミュニティー 全部委託。\n■ 最實在的優點：持有成本低\n管理費6,500円＋修繕積立金2,400円，每個月合計只要8,900円——在惠比壽同級物件裡相當便宜的。\n■ 交通有個隱藏優勢\n廣尾站徒步10分、惠比壽站徒步12分，但其實門口的「惠比壽三丁目」公車站走1分鐘就到，搭公車到惠比壽站約7分、到澀谷約15分，下雨天或提東西的時候差很多。\n■ 其他\n自動鎖、宅配箱、電梯，可養寵物（依規約）。現況空屋、可即時交屋，隨時能看房。\n想約看或想知道外國人買這個價格帶要準備什麼，加LINE跟周周說一聲，我用中文陪你一路走完（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -347,7 +347,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-sakurajosui-1.webp","prop-sakurajosui-3.webp","prop-sakurajosui-4.webp","prop-sakurajosui-5.webp","prop-sakurajosui-6.webp","prop-sakurajosui-7.webp","prop-sakurajosui-8.webp"],
+    photos: ["prop-sakurajosui-1.webp","prop-sakurajosui-3.webp","prop-sakurajosui-4.webp","prop-sakurajosui-5.webp","prop-sakurajosui-6.webp","prop-sakurajosui-7.webp","prop-sakurajosui-8.webp","prop-sakurajosui-plan.webp"],
     note: "想在世田谷區安靜的住宅區買一間「不用等、馬上能住」的房子，這間很值得看。2023年10月完工的築淺戸建，TOYOTA HOME（トヨタホーム）施工，位在南西・南東雙面臨路的角地，兩面採光通風，白天幾乎不用開燈。土地約32坪、建物約29.86坪，格局是3LDK＋約4帖閣樓：一樓是約18.7帖的大LDK，二樓三間洋室（9.8帖・5.5帖・4.6帖）加上陽台，一家人住剛剛好。設備也很到位——客廳地暖、系統廚房（含淨水器與洗碗機）、浴室乾燥機、部分電動鐵捲門，還有玄關的Shoes in Closet大收納。所在地是第一種低層住居專用地域，法規上限制了建物高度與密度，所以街廓清爽、不會被大樓包圍，這也是這一帶長期保值的原因。生活機能方面，小七約280m、桜上水のびのび公園約310m、Sundrug約410m、Ozeki松原店約880m；學區為區立松沢小學（約970m）、松沢中學（約990m）。交通更是強項：京王線、小田急線、東急世田谷線三線可用，去新宿、澀谷、下北澤都很快。這種「築淺＋角地＋三線可用」的世田谷戸建不常出現，有興趣想看房或想知道貸款怎麼規劃，加LINE跟周周說一聲，我用中文幫你安排看屋、把重要事項一條一條講清楚（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認）。"
   },
 
@@ -512,7 +512,7 @@ window.PROPERTIES = [
     mgmt: "管理費14,700円＋修繕積立金24,110円＋町內會費200円／月（合計約39,010円・全部委託・管理員日勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-daikanyama-1.webp","prop-daikanyama-2.webp","prop-daikanyama-3.webp","prop-daikanyama-4.webp","prop-daikanyama-5.webp","prop-daikanyama-6.webp","prop-daikanyama-7.webp","prop-daikanyama-8.webp"],
+    photos: ["prop-daikanyama-1.webp","prop-daikanyama-2.webp","prop-daikanyama-3.webp","prop-daikanyama-4.webp","prop-daikanyama-5.webp","prop-daikanyama-6.webp","prop-daikanyama-7.webp","prop-daikanyama-8.webp","prop-daikanyama-plan.webp"],
     note: "代官山超精華地段、代官山站徒步5分，惠比壽（10分）與澀谷（11分）都在生活圈，鬧中取靜。這戶2026年2月剛完成全室翻新——系統廚具、整體衛浴、給湯器、洗面化妝台、全室地板與壁紙、廁所、建具、玄關地坪通通換新，屋況全新可直接入住。南西向、採光通風佳，SRC造附電梯、都市瓦斯，還附食洗機與售後保固（アフターサービス保証付）。現況空屋、可看房。代官山這種地段的翻新2LDK很稀有，想看房或試算貸款加LINE，我幫你把關（能不能貸、可貸成數依個案與銀行審查為準；此為中古翻新物件，實際以現況與重要事項說明書為準）。"
   },
 
@@ -533,7 +533,7 @@ window.PROPERTIES = [
     mgmt: "管理費38,060円＋修繕積立金10,500円＋網路1,375円／月（全部委託・管理員日勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-classy-shinjuku-1.webp","prop-classy-shinjuku-2.webp","prop-classy-shinjuku-3.webp","prop-classy-shinjuku-4.webp","prop-classy-shinjuku-5.webp","prop-classy-shinjuku-6.webp","prop-classy-shinjuku-7.webp","prop-classy-shinjuku-8.webp"],
+    photos: ["prop-classy-shinjuku-1.webp","prop-classy-shinjuku-2.webp","prop-classy-shinjuku-3.webp","prop-classy-shinjuku-4.webp","prop-classy-shinjuku-5.webp","prop-classy-shinjuku-6.webp","prop-classy-shinjuku-7.webp","prop-classy-shinjuku-8.webp","prop-classy-shinjuku-plan.webp"],
     note: "新宿御苑前站徒步4分、2024年10月落成的制震塔樓（鹿島建設施工、住友商事・三菱地所Residence原分售，共280戶），這戶在17樓、新築後未入居的全新屋！從窗邊就能望見新宿御苑的綠意與副都心的高樓夜景，視野超開闊。大樓等級拉滿：24小時有人管理、Concierge櫃檯、飯店式內廊下設計、各樓層垃圾房、自動鎖與宅配箱。室內於2025年10月完成質感升級（壁面天井造型、玄關全身鏡、埋入式電暖爐、裝飾層架（飾り棚）、建具、清潔），屋況全新。可帶寵物（1戶2隻內，體長70cm・體高50cm・體重15kg以內），即日可交屋、附售後保固。這種地段＋景觀＋新築的塔樓釋出很稀有，想看房或試算貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -554,7 +554,7 @@ window.PROPERTIES = [
     mgmt: "管理費16,700円＋修繕積立金23,090円／月（合計約39,790円・全部委託・管理員日勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-lions-setagaya-1.webp","prop-lions-setagaya-2.webp","prop-lions-setagaya-3.webp","prop-lions-setagaya-4.webp","prop-lions-setagaya-5.webp","prop-lions-setagaya-6.webp","prop-lions-setagaya-7.webp","prop-lions-setagaya-8.webp"],
+    photos: ["prop-lions-setagaya-1.webp","prop-lions-setagaya-2.webp","prop-lions-setagaya-3.webp","prop-lions-setagaya-4.webp","prop-lions-setagaya-5.webp","prop-lions-setagaya-6.webp","prop-lions-setagaya-7.webp","prop-lions-setagaya-8.webp","prop-lions-setagaya-plan.webp"],
     note: "東急世田谷線「世田谷」站徒步5分、閑靜的第一種低層住宅區，這戶2026年6月剛完成全室翻新——廚房（Cleanup クリナップ・附洗碗機與玻璃面爐）、整體衛浴（LIXIL）、洗面台（Panasonic）、廁所、給湯器、專有部給排水管全部換新，玄關貼エコカラット除濕磁磚、全面壁紙與地板重鋪、建具更新、還新裝2台冷氣與照明，屋況全新可直接入住。西向、附電梯、都市瓦斯，現況空屋。世田谷這種安靜又有生活感的地段很受歡迎，想看房或談貸款加LINE，我幫你把關（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -620,7 +620,7 @@ window.PROPERTIES = [
     mgmt: "管理費19,440円＋修繕積立金12,320円＋地代14,643円／月",
     right: "借地權（旧法賃借權・～2036年7月）",
     yield: "",
-    photos: ["prop-toranomon403-1.webp","prop-toranomon403-2.webp","prop-toranomon403-3.webp","prop-toranomon403-4.webp","prop-toranomon403-5.webp","prop-toranomon403-6.webp"],
+    photos: ["prop-toranomon403-1.webp","prop-toranomon403-2.webp","prop-toranomon403-3.webp","prop-toranomon403-4.webp","prop-toranomon403-5.webp","prop-toranomon403-6.webp","prop-toranomon403-plan.webp"],
     note: "港區虎之門超精華地段，南東角戶從陽台就能望見東京鐵塔！2026年4月剛完成全室翻新（地板、壁紙、廚房、衛浴、門窗全換＋新冷氣），屋況全新可直接入住。走路到麻布台Hills約450m、虎之門Hills約680m，神谷町站徒步4分、再加御成門與虎之門Hills共3站可用，機能極佳。這戶是「借地權（旧法賃借權）」——好處是沒有土地取得稅、每年也不用繳土地的固定資產稅，入手總價與持有成本較低；但每月會有地代，且借地權物件的貸款條件通常較嚴，能不能貸、可貸成數依個案與銀行審查為準（此戶不可養寵物）。想看房或試算加LINE，我幫你把關。"
   },
 
@@ -642,7 +642,7 @@ window.PROPERTIES = [
     mgmt: "管理費12,400円＋修繕積立金8,729円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-nakameguro702-1.webp","prop-nakameguro702-2.webp","prop-nakameguro702-3.webp","prop-nakameguro702-4.webp","prop-nakameguro702-5.webp","prop-nakameguro702-6.webp"],
+    photos: ["prop-nakameguro702-1.webp","prop-nakameguro702-2.webp","prop-nakameguro702-3.webp","prop-nakameguro702-4.webp","prop-nakameguro702-5.webp","prop-nakameguro702-6.webp","prop-nakameguro702-plan.webp"],
     note: "中目黑站徒步5分、目黑川櫻並木就在旁邊，春天沿岸約4km櫻花超美！代官山、目黑都在生活圈，まいばすけっと、7-11、藥妝店徒步1分，生活超方便。中目黑是日比谷線始發站、也是東橫線特急急行停車站，往澀谷3分、六本木8分。這戶南西向、全室採光，2026年6月剛完成翻新（系統廚具、整體衛浴、地板、壁紙全新，附追焚與浴室乾燥），還有雙層窗與宅配箱。屋齡雖有，但屬新耐震、修繕紀錄扎實（此戶不可養寵物、不可作事務所使用）。中目黑這種地段的翻新一房很搶手，想看房加LINE我幫你把關（可貸成數依銀行審查為準）。"
   },
 
@@ -699,7 +699,7 @@ window.PROPERTIES = [
     mgmt: "管理費14,800円＋修繕積立金16,300円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-suginami308-1.webp","prop-suginami308-2.webp","prop-suginami308-3.webp","prop-suginami308-4.webp","prop-suginami308-5.webp","prop-suginami308-6.webp"],
+    photos: ["prop-suginami308-1.webp","prop-suginami308-2.webp","prop-suginami308-3.webp","prop-suginami308-4.webp","prop-suginami308-5.webp","prop-suginami308-6.webp","prop-suginami308-plan.webp"],
     note: "2024年剛完成大規模修繕的翻新住宅，地板、廚房、衛浴、壁紙全部換新，屋況乾淨可直接入住，還能帶寵物（限2隻）。代田橋站徒步5分、2站2線，環境安靜又方便。想看細節或試算貸款，加LINE我幫你把關（可貸成數依銀行審查為準）。"
   },
 
@@ -720,7 +720,7 @@ window.PROPERTIES = [
     mgmt: "管理費9,300円＋修繕積立金5,450円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-ikebukuro1101-1.webp","prop-ikebukuro1101-2.webp","prop-ikebukuro1101-3.webp","prop-ikebukuro1101-4.webp","prop-ikebukuro1101-5.webp","prop-ikebukuro1101-6.webp"],
+    photos: ["prop-ikebukuro1101-1.webp","prop-ikebukuro1101-2.webp","prop-ikebukuro1101-3.webp","prop-ikebukuro1101-4.webp","prop-ikebukuro1101-5.webp","prop-ikebukuro1101-6.webp","prop-ikebukuro1101-plan.webp"],
     note: "最上階×角戶、池袋站徒步3分的稀有翻新物件，地板、廚房、衛浴、壁紙全新並附新冷氣。走路就到LUMINE、東武、西武百貨，生活機能極佳。屋齡較長但已全面翻新、屋況新穎（此戶寵物不可）。想看房或談貸款，加LINE我幫你評估。"
   },
 
@@ -741,7 +741,7 @@ window.PROPERTIES = [
     mgmt: "管理費7,115円＋修繕積立金7,900円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-minamiazabu205-1.webp","prop-minamiazabu205-2.webp","prop-minamiazabu205-3.webp","prop-minamiazabu205-4.webp","prop-minamiazabu205-5.webp","prop-minamiazabu205-6.webp"],
+    photos: ["prop-minamiazabu205-1.webp","prop-minamiazabu205-2.webp","prop-minamiazabu205-3.webp","prop-minamiazabu205-4.webp","prop-minamiazabu205-5.webp","prop-minamiazabu205-6.webp","prop-minamiazabu205-plan.webp"],
     note: "南麻布精華地段、麻布十番徒步7分的翻新住宅，地段保值、環境高級又安靜，可帶寵物（限1隻）。屋況全新、可直接入住，很適合想在都心置產或自住的你。想了解行情與貸款試算，加LINE我幫你評估（實際稅費請由稅理士確認）。"
   },
 
@@ -762,7 +762,7 @@ window.PROPERTIES = [
     mgmt: "管理費9,900円＋修繕積立金13,440円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-taito703-1.webp","prop-taito703-2.webp","prop-taito703-3.webp","prop-taito703-4.webp","prop-taito703-5.webp","prop-taito703-6.webp"],
+    photos: ["prop-taito703-1.webp","prop-taito703-2.webp","prop-taito703-3.webp","prop-taito703-4.webp","prop-taito703-5.webp","prop-taito703-6.webp","prop-taito703-plan.webp"],
     note: "三之輪站徒步2分、少見的1SLDK大空間翻新住宅，多一間可彈性運用的服務房（S房）。位於7樓、採光視野好，屋況全新。生活機能成熟、交通方便，適合想要多一點空間的自住買家。想看房或了解貸款、稅費，加LINE我全程中文幫你把關。"
   },
 
