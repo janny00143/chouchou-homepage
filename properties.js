@@ -576,7 +576,7 @@ window.PROPERTIES = [
     mgmt: "管理費15,700円＋修繕積立金7,260円／月（全部委託・管理員通勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-famille309-1.webp","prop-famille309-2.webp","prop-famille309-3.webp","prop-famille309-4.webp","prop-famille309-5.webp","prop-famille309-6.webp","prop-famille309-7.webp","prop-famille309-8.webp","prop-famille309-9.webp"],
+    photos: ["prop-famille309-1.webp","prop-famille309-2.webp","prop-famille309-3.webp","prop-famille309-4.webp","prop-famille309-5.webp","prop-famille309-6.webp","prop-famille309-7.webp","prop-famille309-8.webp","prop-famille309-9.webp","prop-famille309-plan.webp"],
     note: "新宿站徒步只要2分、周邊還能用到約11條路線的塔式住宅（20層建），這戶剛完成全室翻新：廚房、衛浴、洗面台、廁所全部換新，還附食洗機、淨水器、廚餘處理機（ディスポーザー）、浴室乾燥＋追焚機能。約30㎡的1DK，把洋室拉門打開就跟客廳連成開放大空間，很適合在都心工作的單身族自住、或當都心資產持有。大樓保全做得很足——大門與各樓層共2道自動鎖，還有Concierge櫃檯與飯店式氣派大廳。生活機能滿分，NEWoMan・LUMINE・伊勢丹都在徒步圈，樓下約40米就有全家、約110米有まいばすけっと超市，可帶寵物（依管理規約）。目前空屋、可即時交屋；停車場目前無空位（周邊月租約4～4.3萬円參考）。想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；固定資產稅等2025年度年約104,965円、實際以徵收為準）。"
   },
 
@@ -663,7 +663,7 @@ window.PROPERTIES = [
     mgmt: "管理費17,330円＋修繕積立金25,300円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-togoshi701-1.webp","prop-togoshi701-2.webp","prop-togoshi701-3.webp","prop-togoshi701-4.webp","prop-togoshi701-5.webp","prop-togoshi701-6.webp"],
+    photos: ["prop-togoshi701-1.webp","prop-togoshi701-2.webp","prop-togoshi701-3.webp","prop-togoshi701-4.webp","prop-togoshi701-5.webp","prop-togoshi701-6.webp","prop-togoshi701-plan.webp"],
     note: "2026年6月剛完成全室翻新的三面採光角戶，約16.5帖的大客廳加獨立DEN，還有兩面Roof Balcony、視野開闊。戶越公園站徒步3分、戶越銀座商店街就在生活圈，買菜吃飯都方便，可帶寵物（依管理規約）、附監視器自動鎖與宅配箱。這種地段＋格局的組合不常見，想看房加LINE我幫你安排（可貸成數依銀行審查為準）。"
   },
 
