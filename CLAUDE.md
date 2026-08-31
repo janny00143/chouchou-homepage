@@ -53,7 +53,8 @@
 | `<slug>.html`（如 `japan-property-tax-guide.html`） | **每篇文章的獨立 SEO 靜態頁**，由 `generate-pages.cjs` 自動產生。**勿手改**；要改內容請改 `index.html` 的 `ART` 再重跑產生器（見第 9 節）。 |
 | `generate-pages.cjs` | 文章獨立頁／`sitemap.xml`／`robots.txt` 的產生器。 |
 | `sitemap.xml` / `robots.txt` | 給搜尋引擎用，由產生器產出，勿手改。 |
-| `cover-*.jpg` / `pexels-*.jpg` | 文章封面與版面圖，全放 root。 |
+| `cover-*.webp` / `pexels-*.webp` / `prop-*.webp` | **網站實際使用中的圖片，放 root**（HTML 與資料檔都用相對路徑直接引用）。 |
+| `img-original/` | **沒有被任何頁面引用的圖**：轉成 WebP 之後保留的原始 jpg、下架物件與已移除的完成預想圖。2026-08-31 從 root 搬進來（周周指示，密語確認），純粹是為了讓根目錄不要爆掉——GitHub 目錄超過 1,000 個檔就會被截斷顯示。**搬進來的檔案一個都沒有被引用，網站產出零變化**；要復用時再搬回 root 即可。⚠️ 新圖請照舊放 root，不要放這裡。 |
 
 ---
 
