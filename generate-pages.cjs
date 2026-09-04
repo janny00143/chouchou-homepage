@@ -301,6 +301,12 @@ const isRedirectStub = loc => {
 // sitemap 的 lastmod：沒有明確日期的頁面（工具頁、關於頁等），用「該檔在 git 的最後修改日」，
 // 查不到（例如新檔還沒 commit）就退回檔案系統的 mtime。不編日期。
 const _lmCache = {};
+// 三個「文章總覽」頁（首頁三語）的內容會隨最新文章改變，但 sitemap 是在 commit
+// 之前產生的，git log 只查得到上一次的 commit 日期，於是永遠慢一個 commit
+// （下次重跑產生器才補上，看起來就像產生器不冪等）。這裡取「git 日期」與
+// 「ART 最新文章日期」兩者較大的那個，兩個都是真實日期，不編造。
+const HUB_PAGES = new Set(["index.html", "ja.html", "index-cn.html"]);
+const NEWEST_ART = ART.reduce((m, a) => (a.date && a.date > m ? a.date : m), "");
 const fileLastMod = loc => {
   const f = loc.replace(BASE, "") || "index.html";   // 根網址 "/" 就是 index.html
   if (!f.endsWith(".html")) return "";
@@ -315,6 +321,7 @@ const fileLastMod = loc => {
     try { d = new Date(fs.statSync(ROOT + "/" + f).mtime).toISOString().slice(0, 10); }
     catch (e) { d = ""; }
   }
+  if (HUB_PAGES.has(f) && NEWEST_ART > d) d = NEWEST_ART;
   _lmCache[f] = d;
   return d;
 };
