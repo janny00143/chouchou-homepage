@@ -45,6 +45,15 @@ function yen(p) {
   return ((m[1] ? parseFloat(m[1]) * 1e4 : 0) + (m[2] ? parseInt(m[2].replace(/,/g, ""), 10) : 0)) * 1e4;
 }
 
+// 圖片給搜尋引擎讀：封面＋間取圖優先，最多 4 張，一律絕對網址
+// （properties.js 的 photos 已把 -plan 排在第 2 張，所以直接取前幾張就對）
+function pics(p) {
+  return (p.photos || [])
+    .filter(x => x && !/^https?:/i.test(x))
+    .slice(0, 4)
+    .map(x => BASE + x);
+}
+
 const LANG = {
   tw: { file: "properties.html", detail: "property.html", page: "properties.html",
         name: "物件專區｜周周・日本房仲", heading: "目前在售物件一覽",
@@ -75,6 +84,8 @@ function block(key) {
         address: { "@type": "PostalAddress", addressCountry: "JP", streetAddress: d.loc || undefined }
       }
     };
+    const imgs = pics(p);
+    if (imgs.length) item.item.image = imgs;
     if (price > 0) item.item.offers = { "@type": "Offer", price, priceCurrency: "JPY", availability: "https://schema.org/InStock" };
     return item;
   });
