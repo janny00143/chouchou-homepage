@@ -289,6 +289,8 @@ urls.push({ loc: BASE + "privacy.html", pr: "0.3" });
 urls.push({ loc: BASE + "privacy-ja.html", pr: "0.3" });
 urls.push({ loc: BASE + "partners.html", pr: "0.6" });
 urls.push({ loc: BASE + "partners-ja.html", pr: "0.5" });
+// 日本語専用のランディング（売主・同業者向け）。中文版は存在しないので ja だけ。
+urls.push({ loc: BASE + "sell-your-property-ja.html", pr: "0.8" });
 // 轉址殼頁（<meta http-equiv="refresh">，例如 tools.html／tool-convert.html）不可進 sitemap：
 // sitemap 說「請收錄」、頁面卻立刻轉走，Search Console 會報「網頁會重新導向」而排除。
 // 跟 noindex 頁一樣的道理，統一在這裡過濾掉。
