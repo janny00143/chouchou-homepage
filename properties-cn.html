@@ -48,7 +48,7 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 20px}
 .tabs button{border:1px solid var(--line);background:#fff;color:var(--mut);font-family:inherit;font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;cursor:pointer}
 .tabs button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
-.sortrow{margin:-10px 0 18px}
+.sortrow{margin:-10px 0 18px;display:flex;flex-wrap:wrap;gap:8px}
 .sortrow select{font-family:inherit;font-size:14px;font-weight:700;color:var(--mut);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:10px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:transform .15s,box-shadow .15s}
@@ -156,7 +156,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">一户建</button>
     <button data-cat="land">土地</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget" style="margin-left:8px"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk" style="margin-left:8px"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select></div>
+  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大楼（マンション）</option><option value="house">独栋透天（戸建）</option><option value="shop">店铺・事务所</option><option value="whole">整栋</option><option value="land">土地・建筑条件付</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -337,11 +337,52 @@ footer a{color:#d6d3d1;text-decoration:none}
     var y=parseYen(p.price); if(!(y>0))return false;
     return y>=r[0] && y<r[1];
   }
+
+  /* ── 用途筛选 ────────────────────────────────────────────
+     判断顺序不能换：整栋物件的楼层说明里常同时出现「事务所」「洗衣店」，
+     先判断整栋才不会被归成店铺。 */
+  var useMode="all";
+  function useOf(p){
+    if(p.cat==="land")return "land";
+    if(p.cat==="house")return "house";
+    var t=String(p.layout||"")+String(p.title||"");
+    if(/\u6574[\u68df\u680b]/.test(t))return "whole";
+    if(/\u5e97\u8217|\u5e97\u8216|\u4e8b\u52d9\u6240|\u4f5c\u696d\u6240/.test(t+String(p.layoutTag||"")))return "shop";
+    return "mansion";
+  }
+  function inUse(p){ return useMode==="all" || useOf(p)===useMode; }
+
+  /* ── 格局筛选 ────────────────────────────────────────────
+     来源跟卡片上显示的格局标签同一套：layoutTag，没填就从 layout 开头抓。
+     一个物件可能对应多组（例如二世带的「1LDK+3LDK」、A/B 栋的「2〜3LDK」），
+     只要其中一组符合就算命中。抓不到格局的（土地、店铺、整栋）在
+     选了格局条件之后就先不显示，跟预算区间的处理方式一致。 */
+  var layMode="all";
+  function layGroups(p){
+    var src=String(p.layoutTag||p.layout||""), out={}, m;
+    var re=/(\d)\s*[\u301c~\-]\s*(\d)\s*S?LDK|(\d)\s*S?(LDK|DK|K|R)/g;
+    function put(n,kind){
+      if(kind==="R"||kind==="K"||(kind==="DK"&&n===1))out[n===1?"1r":"1ldk"]=1;
+      else if(kind==="DK")out[n===2?"1ldk":"2ldk"]=1;          /* 2DK 归在 1LDK 那一组 */
+      else out[n<=1?"1ldk":(n===2?"2ldk":"3ldk")]=1;           /* LDK */
+    }
+    while((m=re.exec(src))){
+      if(m[1]){ for(var n=+m[1];n<=+m[2];n++) put(n,"LDK"); }
+      else put(+m[3],m[4]);
+    }
+    return Object.keys(out);
+  }
+  function inLayout(p){
+    if(layMode==="all")return true;
+    return layGroups(p).indexOf(layMode)>=0;
+  }
   function render(){
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=act.filter(function(p){
       if(!inBudget(p))return false;
       if(!inWalk(p))return false;
+      if(!inUse(p))return false;
+      if(!inLayout(p))return false;
       if(!selCat)return true;
       return !!ptags(p)[selCat];
     });
@@ -381,6 +422,10 @@ footer a{color:#d6d3d1;text-decoration:none}
   if(_pw){_pw.addEventListener("change",function(){walkMax=(this.value==="all")?0:+this.value;render();});}
   var _pb=document.getElementById("pbudget");
   if(_pb){_pb.addEventListener("change",function(){budgetMode=this.value;render();});}
+  var _pu=document.getElementById("puse");
+  if(_pu){_pu.addEventListener("change",function(){useMode=this.value;render();});}
+  var _pl=document.getElementById("players");
+  if(_pl){_pl.addEventListener("change",function(){layMode=this.value;render();});}
 
   function boot(){ render(); renderSold(); }
   // 简中页：载入 OpenCC 繁→简，让你只维护一份繁中 properties.js，简中自动同步。
