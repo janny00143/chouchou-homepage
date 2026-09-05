@@ -5,7 +5,7 @@
      在文章頁放一個容器：<div id="cmts" data-slug="文章slug" data-lang="tw"></div>
      再載入：<script type="module" src="comments.js"></script>
    ▍資料存在 Firebase Firestore 的 comments 集合
-   ▍管理：ADMIN_EMAILS 裡的帳號登入後，每則留言都會出現刪除鈕
+   ▍管理：ADMIN_EMAIL_HASHES 對得上的帳號登入後，每則留言都會出現刪除鈕
    ============================================================ */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -32,8 +32,26 @@ const RECAPTCHA_SITE_KEY = "6Lf0joMtAAAAANfTspfN91tDC5pWQ-oG6fzfgLb2";
 /* 同一個人兩則留言之間至少要間隔幾秒（防洗版） */
 const COOLDOWN_SEC = 30;
 
-/* 周周的管理帳號（登入後可刪除任何留言）。要改就改這裡。 */
-const ADMIN_EMAILS = ["janny00jou@gmail.com"];
+/* 周周的管理帳號（登入後可刪除任何留言）。
+   這裡存的是管理帳號 Email 的 SHA-256 雜湊，不是信箱本身——
+   信箱直接寫在原始碼裡會被爬蟲抓去寄垃圾信與釣魚信（2026-09-05 周周指示改掉）。
+   換管理帳號的做法：把新信箱去除前後空白、轉小寫，算 SHA-256 十六進位小寫，填進下面陣列。
+   ⚠️ 這只是「不要公開信箱」，不是權限本身；真正的權限仍由 Google 登入與
+      Firestore 規則決定，改這裡不會讓任何人多拿到權限。 */
+const ADMIN_EMAIL_HASHES = ["fb4c495d6b71d12de079627de4175750d8742623085ade8a0e64f050eb0ceeaa"];
+
+/* 登入狀態改變時算一次就好，之後同步讀這個旗標（SHA-256 是非同步的）。
+   算不出來時一律視為「不是管理員」，寧可少給權限也不要多給。 */
+let IS_ADMIN = false;
+async function computeIsAdmin(user){
+  try{
+    const e = ((user && user.email) || "").trim().toLowerCase();
+    if(!e || !(self.crypto && crypto.subtle)) return false;
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(e));
+    const hex = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
+    return ADMIN_EMAIL_HASHES.indexOf(hex) > -1;
+  }catch(err){ return false; }
+}
 
 /* 有新留言時寄信通知周周用的 Web3Forms key（與意見回饋表單同一組，
    本來就是公開用的表單 key，不是密碼）。留空字串就會關掉通知功能。 */
@@ -46,7 +64,7 @@ const NOTIFY_KEY = "d1ac2743-8999-4270-abe8-9896caaf693b";
 const NOTIFY_ADMIN_TOO = false;
 
 /* ── 留言過濾（周周指示：禁連結、禁謾罵、禁詐騙）──
-   周周本人（ADMIN_EMAILS）不受連結限制，方便回覆時貼 LINE。 */
+   周周本人（ADMIN_EMAIL_HASHES）不受連結限制，方便回覆時貼 LINE。 */
 const RE_LINK = /(https?:\/\/|www\.|[a-z0-9-]{2,}\.(com|net|org|jp|tw|cn|io|me|co|xyz|top|shop|link|site|online|vip|info|ru|biz|club)\b|[@＠]line|line\s*id|賴\s*id|加\s*賴)/i;
 const WORDS_ABUSE = ["幹你娘","幹妳娘","操你","去死","白痴","白癡","智障","腦殘","脑残","廢物","废物","王八蛋","混蛋","神經病","神经病","婊子","賤人","贱人","他媽的","他妈的","媽的","妈的","fuck","shit","bitch","asshole","死ね","バカ","アホ","クソ","キチガイ"];
 const WORDS_SCAM = ["保證獲利","保证获利","穩賺","稳赚","包賺","包赚","日賺","日赚","月入十萬","躺著賺","躺着赚","博弈","娛樂城","娱乐城","彩金","刷單","刷单","代操","帶單","带单","報明牌","内线消息","內線消息","私訊我加","私讯我加","加我賴","加我赖","高薪兼職","高薪兼职","無需經驗日領","無息借貸","无息借贷","貸款代辦","贷款代办","代辦貸款","代办贷款","洗錢","洗钱","虛擬貨幣投資","虚拟货币投资","保證過件","保证过件"];
@@ -122,7 +140,7 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;",
 function notifyOwner(text, user, slug){
   try{
     if(!NOTIFY_KEY) return;
-    const isAdm = user && ADMIN_EMAILS.indexOf((user.email||"").toLowerCase())>-1;
+    const isAdm = !!user && IS_ADMIN;
     if(isAdm && !NOTIFY_ADMIN_TOO) return;
     const title = (document.title||"").replace(/｜.*$/,"").trim() || slug;
     const url = location.href.split("#")[0] + "#cmts";
@@ -219,7 +237,7 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
       const text = ta.value.trim();
       if(!text) return;
       if(text.length>1000){ alert(t.tooLong); return; }
-      const isAdm = ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1;
+      const isAdm = IS_ADMIN;
       const bad = checkText(text, isAdm);
       if(bad){ alert(bad==="link"?t.errLink:(bad==="abuse"?t.errAbuse:t.errScam)); return; }
       if(!isAdm){
@@ -232,7 +250,7 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
         await addDoc(collection(db,"comments"), {
           slug, text, uid: me.uid,
           name: me.displayName || "", photo: me.photoURL || "",
-          admin: ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1,
+          admin: IS_ADMIN,
           createdAt: serverTimestamp()
         });
         ta.value = ""; cnt.textContent = "0 / 1000 "+t.counter;
@@ -246,7 +264,7 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
 
   function renderList(rows){
     if(!rows.length){ list.innerHTML = '<p class="cmt-note">'+esc(t.empty)+'</p>'; return; }
-    const isAdmin = me && ADMIN_EMAILS.indexOf((me.email||"").toLowerCase())>-1;
+    const isAdmin = !!me && IS_ADMIN;
     list.innerHTML = rows.map(r=>{
       const canDel = me && (me.uid===r.uid || isAdmin);
       const badge = r.admin ? '<span class="cmt-badge">'+esc(t.admin)+'</span>' : '';
@@ -269,7 +287,7 @@ const GOOGLE_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4
   }
 
   let rows = [];
-  onAuthStateChanged(auth, u => { me = u; renderBox(); renderList(rows); });
+  onAuthStateChanged(auth, async u => { me = u; IS_ADMIN = await computeIsAdmin(u); renderBox(); renderList(rows); });
 
   onSnapshot(
     query(collection(db,"comments"), where("slug","==",slug)),
