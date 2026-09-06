@@ -85,6 +85,20 @@ const JA_CAT = {
   loan: "ローン・税金", life: "生活情報", knowhow: "不動産購入の知識"
 };
 
+/* 封面圖的 width/height：從 img-size.json 查實際尺寸填進去。
+   沒有這兩個屬性瀏覽器算不出版位，圖載入時整頁會往下跳（CLS）。
+   查不到就不填，寧可少一個屬性也不要填錯的尺寸。 */
+const IMG_SIZE = (() => {
+  try { return JSON.parse(fs.readFileSync(ROOT + "/img-size.json", "utf8")); }
+  catch (e) { return {}; }
+})();
+const wh = src => {
+  if (!src) return "";
+  const f = decodeURIComponent(String(src).replace(/^https?:\/\/[^/]+\//, ""));
+  const d = IMG_SIZE[f];
+  return d ? ` width="${d[0]}" height="${d[1]}"` : "";
+};
+
 const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/); return m ? "https://www.youtube.com/embed/" + m[1] : ""; };
 const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
@@ -140,7 +154,7 @@ function pageJa(a, j) {
   const bodyHTML = j.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(出典|参考資料|本記事)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); if (m) return '<h2 class="ah">' + m[1] + "</h2>"; const s2 = t.match(/^<b>([\s\S]*?)<\/b>([\s\S]*)$/); if (s2) { const rest = s2[2].trim(); return '<h2 class="ah sh2">' + s2[1] + "</h2>" + (rest ? "<p>" + rest + "</p>" : ""); } return "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
-  const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="動画" loading="lazy"><span class="pbtn">▶</span></div></div>` : "";
+  const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="動画" loading="lazy" width="1280" height="720"><span class="pbtn">▶</span></div></div>` : "";
   const ld = {
     "@context": "https://schema.org", "@type": "Article",
     headline: j.title, description: j.ex,
@@ -196,7 +210,7 @@ ${SBAR}
 <main class="wrap" style="max-width:760px;padding-top:18px">
 <a class="back" href="ja.html">← ホームに戻る</a>
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="ja.html" style="color:var(--mut)">ホーム</a> › ${catName}</p>
-${a.coverFit === "full" ? `<img src="${cover}" alt="${esc(j.title)}" loading="lazy" style="width:100%;height:auto;border-radius:18px;display:block;margin:0 auto 20px">` : a.coverFit === "contain" ? `<img src="${cover}" alt="${esc(j.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:210px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${catName}</span></div>`}
+${a.coverFit === "full" ? `<img${wh(cover)} src="${cover}" alt="${esc(j.title)}" loading="lazy" style="width:100%;height:auto;border-radius:18px;display:block;margin:0 auto 20px">` : a.coverFit === "contain" ? `<img${wh(cover)} src="${cover}" alt="${esc(j.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:210px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${catName}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${j.title}</h1>
 <div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:16px"><span>執筆者：周周</span><span>${a.date}</span></div>
 <div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f シェア</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(j.title + " " + url)}" target="_blank" rel="noopener">Threadsでシェア</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(j.title)}" target="_blank" rel="noopener">𝕏 でポスト</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ コピーしました';return false">🔗 リンクをコピー</a></div>
