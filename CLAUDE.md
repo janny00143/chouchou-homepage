@@ -52,6 +52,7 @@
 | `minpaku.html` | 民宿（民泊）法規獨立頁，文章 a4 連到這。 |
 | `<slug>.html`（如 `japan-property-tax-guide.html`） | **每篇文章的獨立 SEO 靜態頁**，由 `generate-pages.cjs` 自動產生。**勿手改**；要改內容請改 `index.html` 的 `ART` 再重跑產生器（見第 9 節）。 |
 | `generate-pages.cjs` | 文章獨立頁／`sitemap.xml`／`robots.txt` 的產生器。 |
+| `buy-property-in-japan.html` / `japan-real-estate-agent-for-taiwanese.html`（＋ `-cn` / `-ja`） | **兩個商業關鍵字落地頁，全部由產生器產出，勿手改。**前者是「日本買房」總覽 hub（自動列出 `ART` 全部文章＋工具＋物件），後者是「在日本買房要找誰」比較頁（含 FAQPage 結構化資料）。繁中在 `generate-pages.cjs`（`pageHubTW()` / `pageAgentTW()`）、日文在 `build-ja.cjs`（`pageHubJa()` / `pageAgentJa()`）、簡中由 `build-cn.cjs` 自動轉。要改內容改那兩支產生器裡的函式，然後照第 9 節重跑六支。 |
 | `sitemap.xml` / `robots.txt` | 給搜尋引擎用，由產生器產出，勿手改。 |
 | `cover-*.webp` / `pexels-*.webp` / `prop-*.webp` | **網站實際使用中的圖片，放 root**（HTML 與資料檔都用相對路徑直接引用）。 |
 | `img-original/` | **沒有被任何頁面引用的圖**：轉成 WebP 之後保留的原始 jpg、下架物件與已移除的完成預想圖。2026-08-31 從 root 搬進來（周周指示，密語確認），純粹是為了讓根目錄不要爆掉——GitHub 目錄超過 1,000 個檔就會被截斷顯示。**搬進來的檔案一個都沒有被引用，網站產出零變化**；要復用時再搬回 root 即可。⚠️ 新圖請照舊放 root，不要放這裡。 |
@@ -206,6 +207,9 @@
   3. 在 repo 根目錄執行 `node generate-pages.cjs` 重新產生獨立頁與 `sitemap.xml`／`robots.txt`。
   4. commit／push。
 - **不要手改** `<slug>.html`、`sitemap.xml`、`robots.txt`（重跑產生器會覆蓋）。
+- **落地頁同理不要手改**：`buy-property-in-japan*.html` 與 `japan-real-estate-agent-for-taiwanese*.html` 都是產生器輸出。
+  hub 頁的文章清單是從 `ART` 自動列的，新增文章後重跑產生器就會自己出現，不用另外維護目錄。
+  兩頁的連結掛在**首頁頁尾那排灰字**與**每篇文章頁的頁尾**（`generate-pages.cjs` 的 `FOOT` 常數），主視覺不動（周周 2026-09-07 確認）。
 
 ### ⭐ 產生器的固定執行順序（順序不能換）
 
