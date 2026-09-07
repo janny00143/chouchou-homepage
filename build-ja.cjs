@@ -64,7 +64,7 @@ const HEAD_SCRIPTS = `<script>/* 防複製守門：頁面若被開在非本站�
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>`;
 const SBAR = `<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.webp" alt="" style="height:28px;width:auto;display:block" width="420" height="501">周周・日本の不動産</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div></div>`;
-const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
+const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a><a href="buy-property-in-japan-ja.html" style="color:var(--mut)">📚 記事一覧</a><a href="japan-real-estate-agent-for-taiwanese-ja.html" style="color:var(--mut)">🤝 中華圏のお客様の購入窓口</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="トップへ戻る">↑</button>
 <script type="module" src="comments.js"></script>
@@ -383,3 +383,219 @@ ${FOOT}
 }
 fs.writeFileSync(ROOT + "/sell-your-property-ja.html", pageOwnerJa());
 console.log("sell-your-property-ja.html 已產生");
+
+/* ══════════════════════════════════════════════════════════════
+   商業キーワード向けランディング（日本語版）
+   ・buy-property-in-japan-ja.html        記事一覧ハブ
+   ・japan-real-estate-agent-for-taiwanese-ja.html  仲介窓口の比較
+   繁中版は generate-pages.cjs、簡中版は build-cn.cjs が作る。
+   三言語そろっているので hreflang は 3 本＋x-default。
+   ══════════════════════════════════════════════════════════════ */
+function landingJa(cfg) {
+  const url = BASE + cfg.slug + "-ja.html";
+  const tw = BASE + cfg.slug + ".html";
+  const cn = BASE + cfg.slug + "-cn.html";
+  return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+${HEAD_SCRIPTS}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(cfg.metaTitle)}</title>
+<meta name="description" content="${esc(cfg.desc)}">
+<meta name="keywords" content="${esc(cfg.keywords)}">
+<link rel="canonical" href="${url}">
+<link rel="alternate" hreflang="ja" href="${url}">
+<link rel="alternate" hreflang="zh-Hant" href="${tw}">
+<link rel="alternate" hreflang="zh-Hans" href="${cn}">
+<link rel="alternate" hreflang="x-default" href="${tw}">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="${esc(cfg.metaTitle)}">
+<meta property="og:description" content="${esc(cfg.desc)}">
+<meta property="og:url" content="${url}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+${cfg.ld.map(o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g,"\\u003c").replace(/>/g,"\\u003e").replace(/&/g,"\\u0026")}</script>`).join("\n")}
+${STYLE}
+</head>
+<body>
+${SBAR}
+<main class="wrap" style="max-width:820px;padding-top:18px">
+<a class="back" href="ja.html">← ホームに戻る</a>
+<p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="ja.html" style="color:var(--mut)">ホーム</a> › ${esc(cfg.crumb)}</p>
+<h1 class="atitle" style="margin-bottom:10px">${cfg.h1}</h1>
+<p style="color:var(--mut);font-size:15px;margin-bottom:22px">${cfg.lead}</p>
+<div class="post">
+${cfg.main}
+</div>
+<div class="ablock" style="margin-top:30px"><div><b>${cfg.ctaTitle}</b><br><span style="color:var(--mut);font-size:14px">${cfg.ctaSub}</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div>
+<p style="margin:30px 0;font-size:14px"><a href="ja.html" style="color:var(--rose);font-weight:600">← ホームに戻る</a></p>
+</main>
+${FOOT}
+${LANGSWITCH}
+</body>
+</html>`;
+}
+
+const FAQ_AGENT_JA = [
+  ["中華圏のお客様をご紹介いただく場合、費用はかかりますか。",
+   "オーナー様・不動産会社様から当方へ費用を頂戴することはございません。報酬は宅地建物取引業法の報酬告示の範囲内で、成約時に売買当事者から頂戴する仲介手数料のみでございます。共同仲介の配分についても、事前にお打ち合わせのうえ書面で確認させていただきます。"],
+  ["言語対応の範囲を教えてください。",
+   "お客様とは中国語（繁体字・簡体字）、日本側の関係者様とは日本語で対応いたします。重要事項説明は宅地建物取引業法にもとづき弊社の宅地建物取引士が日本語で実施し、当方が中国語で逐条ご説明する形をとっております。"],
+  ["買主が海外にお住まいの場合、決済はどうなりますか。",
+   "内見はオンラインで代行し、資料のやり取りは電子と郵送を併用いたします。ご契約と決済の実務は物件・売主様・金融機関により異なり、ご本人の来日が必要となる場合、また在留証明・署名証明を事前にご準備いただく場合がございます。案件ごとに初期段階で確認のうえご案内いたします。"],
+  ["非居住者の買主でも住宅ローンは組めますか。",
+   "融資の可否および融資割合は個別の審査によります。金融機関のご紹介と書類のご準備はお手伝いいたしますが、確約は申し上げられません。現金購入のお客様も一定数いらっしゃいます。"],
+  ["どのような物件のご紹介を希望されていますか。",
+   "東京23区を中心に、神奈川・千葉・埼玉の実需向け区分および戸建、収益物件、店舗・事務所まで幅広く拝見しております。借地権物件は原則お取り扱いしておりません。物件資料をお送りいただければ、買主層との相性をお返しいたします。"]
+];
+
+function pageAgentJa() {
+  const c = S.company;
+  const url = BASE + "japan-real-estate-agent-for-taiwanese-ja.html";
+  const main = `
+<p>日本で不動産をご購入になる中華圏（台湾・香港・シンガポール・マレーシア）のお客様には、大きく分けて三つの窓口がございます。それぞれ物件のソース、費用の考え方、成約後にどこまで面倒を見るかが異なります。</p>
+<p>このページでは三つの違いを整理したうえで、当方がどの位置づけでお手伝いしているかをご説明いたします。オーナー様・不動産会社の皆様には、中華圏の買主層をご検討いただく際の参考にしていただければ幸いです。</p>
+
+<h2 class="ah">一、現地（台湾・香港）の海外不動産販売会社</h2>
+<p>母国語で完結し、説明会などで気軽に相談できる点が最大の利点でございます。一方で取り扱い物件は提携先の新築案件などに限られることが多く、レインズ全体からのご提案にはなりにくい構造です。また、サポートはご成約までとなる場合が一般的で、賃貸管理や税務のご相談先はお客様ご自身でお探しになることになります。</p>
+
+<h2 class="ah">二、日本の不動産会社に直接</h2>
+<p>物件のソースという点では最も広く、レインズの情報にそのままアクセスできます。課題は制度の理解でございます。重要事項説明書の内容、管理規約上の用途制限、修繕積立金の改定履歴、借地権の別——いずれも「何を確認すべきか」をご存じでないと、質問そのものが出てまいりません。非居住者の融資実務に不慣れなケースも少なくございません。</p>
+
+<h2 class="ah">三、日本で宅建業者に所属する中国語話者のエージェント</h2>
+<p>当方がこの位置づけでございます。東京の宅建業者に所属し、物件のソースは日本の不動産会社と同じレインズ。そのうえで、お客様とのやり取りは中国語で行います。</p>
+<p>実務上の価値は「通訳」ではなく「翻訳されない部分」にございます。固定資産税の賦課期日、新耐震基準の判定が建築確認申請日であること、管理規約の転貸・民泊に関する定め——中華圏のお客様がつまずかれる箇所はある程度決まっており、そこを事前に潰してからご案内いたします。結果として、ご契約後のキャンセルや条件の蒸し返しが起こりにくくなります。</p>
+
+<h2 class="ah">不動産会社の皆様へ</h2>
+<p>買主をお探しの物件がございましたら、資料をお送りください。中華圏の買主層との相性を拝見し、脈があるものだけご返答いたします。共同仲介の形、報酬の配分、内見のご対応方法は事前にお打ち合わせのうえ進めさせていただきます。ご売却をお考えのオーナー様は<a href="sell-your-property-ja.html">売却をお考えのオーナー様へ</a>のページもあわせてご覧ください。</p>
+
+<h2 class="ah">よくあるご質問</h2>
+${FAQ_AGENT_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+
+<h2 class="ah">運営者情報</h2>
+<div style="margin:12px 0">
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">商号</div><div>${c.name}</div></div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">担当</div><div>${c.person}</div></div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">宅地建物取引業者免許番号</div><div>${c.license}</div></div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">所在地</div><div>${c.addr}</div></div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">電話</div><div>${c.tel}（FAX ${c.fax}）</div></div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">メール</div><div><a href="mailto:${c.email}" style="color:var(--rose)">${c.email}</a></div></div>
+</div>
+
+<p class="src">※ 本ページはサービスのご案内であり、投資勧誘を目的とするものではございません。仲介報酬は宅地建物取引業法の報酬告示の範囲内。融資の可否および融資割合は個別の審査によります。税額は税理士、登記および契約は司法書士・宅地建物取引士のご確認によります。不動産の取得のみをもって在留資格が得られるものではございません。</p>`;
+  return landingJa({
+    slug: "japan-real-estate-agent-for-taiwanese",
+    metaTitle: "中華圏のお客様の不動産購入窓口——三つの選択肢と当方の役割｜周周・日本の不動産",
+    h1: "中華圏のお客様は、どの窓口で日本の不動産を買うのか",
+    lead: "現地の海外不動産販売会社、日本の不動産会社への直接依頼、そして日本で宅建業者に所属する中国語話者のエージェント。三つの違いと、当方がどこを担っているかをご説明いたします。",
+    crumb: "中華圏のお客様の購入窓口",
+    desc: "日本で不動産を購入される中華圏（台湾・香港・シンガポール）のお客様が利用される三つの窓口——現地の海外不動産販売会社、日本の不動産会社への直接依頼、日本で宅建業者に所属する中国語話者のエージェント——について、物件のソース・言語対応・重要事項説明・成約後のサポート・報酬の考え方を整理いたしました。買主をお探しの不動産会社の皆様、ご売却をお考えのオーナー様からのお問い合わせも承っております。",
+    keywords: "中華圏 買主,台湾 買主,中国語対応 不動産,外国人 不動産購入,東京 不動産 仲介,共同仲介,不動産会社 提携,非居住者 購入",
+    ctaTitle: "物件資料をお送りください。買主層との相性を拝見いたします",
+    ctaSub: "共同仲介の形と報酬の配分は、事前にお打ち合わせのうえ進めさせていただきます。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "RealEstateAgent", name: "周周・日本の不動産（" + c.name + "）", url, inLanguage: "ja",
+        description: "東京23区を中心に、中華圏のお客様へ日本の不動産をご紹介しております。",
+        parentOrganization: { "@type": "Organization", name: c.name, url: c.hp },
+        address: { "@type": "PostalAddress", addressCountry: "JP", streetAddress: c.addr },
+        telephone: c.tel, email: c.email,
+        areaServed: ["東京都", "神奈川県", "千葉県", "埼玉県"],
+        knowsLanguage: ["ja", "zh-Hant", "zh-Hans"],
+        identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: c.license } },
+      { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: "ja", mainEntity: FAQ_AGENT_JA.map(q => ({ "@type": "Question", name: q[0], acceptedAnswer: { "@type": "Answer", text: q[1] } })) },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+        { "@type": "ListItem", position: 2, name: "中華圏のお客様の購入窓口", item: url } ] }
+    ],
+    main
+  });
+}
+
+const HUB_CAT_LEAD_JA = {
+  foreign: "外国人が日本の不動産を購入する際の制度、必要書類、送金の実務。",
+  live: "間取り、方位、浴室乾燥機、内見時の確認箇所——実際に住むための視点。",
+  invest: "利回りの見方と、空室・費用を織り込んだ実質の収支。",
+  minpaku: "民泊 180 日、旅館業許可、管理規約——購入前に確認すべき法規。",
+  area: "同じ東京でも、隣の区で相場も住み心地も変わります。",
+  travel: "内見のついでに歩ける場所、そのエリアの実際の雰囲気。",
+  loan: "非居住者の融資条件と、取得時・保有中・売却時の税金。",
+  life: "購入後に始まること——公共料金、携帯、運転免許、防災。",
+  knowhow: "内見、価格交渉、契約、決済——実務で使う共通知識。"
+};
+const HUB_TOOLS_JA = [
+  ["tool-loan-ja.html", "🧮 住宅ローン試算", "価格・頭金・金利・期間から月々の返済額を試算"],
+  ["tool-cost-ja.html", "💰 取得諸費用の試算", "本体価格以外に必要な現金を把握"],
+  ["tool-yield-ja.html", "📈 利回り試算", "表面と実質、二通りで確認"],
+  ["tool-fx-ja.html", "💱 為替換算", "円・台湾ドル・香港ドルの換算"],
+  ["tool-area-ja.html", "📐 面積換算", "坪・㎡・畳の相互換算"],
+  ["translate-ja.html", "🈳 販売図面の翻訳", "日本語の図面を中国語に"]
+];
+
+function pageHubJa() {
+  const url = BASE + "buy-property-in-japan-ja.html";
+  const list = ART.filter(a => !a.url && SLUG[a.id] && JA_CONTENT[a.id]);
+  const byCat = {};
+  for (const a of list) (byCat[a.cat] = byCat[a.cat] || []).push(a);
+  for (const k in byCat) byCat[k].sort((x, y) => (y.date || "").localeCompare(x.date || ""));
+  const order = Object.keys(JA_CAT).filter(id => byCat[id] && byCat[id].length);
+  const total = list.length;
+
+  const catHTML = order.map(id => `<h2 class="ah" id="cat-${id}">${JA_CAT[id]}（${byCat[id].length} 本）</h2>
+<p style="color:var(--mut);font-size:14px;margin:-4px 0 10px">${HUB_CAT_LEAD_JA[id] || ""}</p>
+<ul style="list-style:none;padding:0;margin:0 0 8px">${byCat[id].map(a => {
+    const j = JA_CONTENT[a.id];
+    const ex = String(j.ex || "").slice(0, 62);
+    return `<li style="padding:9px 0;border-bottom:1px solid var(--line)"><a href="${jaSlug(SLUG[a.id])}.html" style="font-weight:600">${esc(j.title)}</a><br><span style="color:var(--mut);font-size:13px">${esc(ex)}${String(j.ex || "").length > 62 ? "…" : ""}</span></li>`;
+  }).join("")}</ul>`).join("\n");
+
+  const toolHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:12px 0">${HUB_TOOLS_JA.map(t => `<a href="${t[0]}" style="display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px"><span style="font-weight:800">${t[1]}</span><br><span style="color:var(--mut);font-size:13px">${t[2]}</span></a>`).join("")}</div>`;
+
+  const main = `
+<p>このページは当サイトの記事一覧でございます。日本での不動産購入について <b>${total} 本</b>の記事を日本語でご用意しております。制度の解説から、購入後の暮らしまわりまで一通り揃えております。</p>
+<p>中華圏のお客様向けに書いた内容を日本語でもご覧いただけるようにしたものですので、海外のお客様がどこでつまずかれるのかをお知りになりたい不動産会社の皆様にも、ご参考になるかと存じます。</p>
+
+<h2 class="ah">先に試算する</h2>
+<p>物件をご覧になる前に、数字を出しておかれると比較が早くなります。いずれも無料・登録不要でございます。</p>
+${toolHTML}
+
+<h2 class="ah">物件をご覧になる場合</h2>
+<p>現在ご紹介中の物件は<a href="properties-ja.html">物件一覧</a>にまとめております。予算・用途・間取りで絞り込めます。エリアの相場は<a href="tokyo-area-guide-ja.html">東京エリアガイド</a>、内見の様子は<a href="videos-ja.html">動画</a>でご覧いただけます。ご売却をお考えのオーナー様は<a href="sell-your-property-ja.html">売却をお考えのオーナー様へ</a>、買主をお探しの不動産会社の皆様は<a href="japan-real-estate-agent-for-taiwanese-ja.html">中華圏のお客様の購入窓口</a>をご覧ください。</p>
+
+<h2 class="ah">テーマ別の記事一覧</h2>
+<p style="color:var(--mut);font-size:14px;margin:-4px 0 14px">全 ${total} 本。カテゴリごとに、新しいものから並べております。</p>
+${catHTML}
+
+<p class="src">※ 本ページは記事の一覧でございます。掲載内容は参考情報であり、実際の条件は現況および重要事項説明書によります。融資の可否と融資割合は個別の審査により、税額は税理士、登記および契約は司法書士・宅地建物取引士のご確認によります。</p>`;
+
+  const items = [];
+  for (const id of order) for (const a of byCat[id]) items.push({ "@type": "ListItem", position: items.length + 1, url: BASE + jaSlug(SLUG[a.id]) + ".html", name: JA_CONTENT[a.id].title });
+
+  return landingJa({
+    slug: "buy-property-in-japan",
+    metaTitle: "日本の不動産購入ガイド（記事一覧）｜周周・日本の不動産",
+    h1: "日本の不動産購入ガイド",
+    lead: "外国人の不動産購入、住宅ローンと税金、投資と収益物件、民泊法規、東京のエリア相場、購入後の暮らし——当サイトの記事を日本語でまとめてご覧いただけます。",
+    crumb: "記事一覧",
+    desc: "日本での不動産購入に関する記事の一覧でございます。外国人の購入制度と必要書類、取得諸費用と税金、非居住者の住宅ローン、投資物件の利回りと空室対策、民泊・旅館業の法規、東京23区のエリア相場、契約と決済、購入後の公共料金や携帯電話まで、全 " + total + " 本を日本語で掲載。住宅ローン・諸費用・利回り・為替・面積換算の無料試算ツール、および物件一覧もこちらから。",
+    keywords: "日本 不動産 購入,外国人 不動産,東京 マンション,住宅ローン 非居住者,不動産投資,民泊 法規,東京 エリア 相場",
+    ctaTitle: "個別のご相談も承っております",
+    ctaSub: "ご予算とご希望のエリアをお知らせいただければ、方向性からご一緒に整理いたします。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "CollectionPage", name: "日本の不動産購入ガイド（記事一覧）", inLanguage: "ja", url, description: "日本での不動産購入に関する記事の一覧、無料試算ツール、物件一覧の入口。", publisher: PUBLISHER_JA },
+      { "@context": "https://schema.org", "@type": "ItemList", name: "日本の不動産購入ガイド 記事一覧", numberOfItems: items.length, itemListElement: items },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+        { "@type": "ListItem", position: 2, name: "記事一覧", item: url } ] }
+    ],
+    main
+  });
+}
+
+fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese-ja.html", pageAgentJa());
+fs.writeFileSync(ROOT + "/buy-property-in-japan-ja.html", pageHubJa());
+console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html 已產生");
