@@ -30,7 +30,7 @@
 2. ⬜ 火災保險・地震保險怎麼保？日本買房後的保險入門
 3. ⬜ 塔式住宅（タワーマンション）優缺點總整理：買塔樓前必看
 4. ✅ 2026-08-24 `japan-rental-management-company` 管理公司（賃貸管理会社）怎麼選（a47・invest）
-5. ⬜ 空室對策：房子租不出去怎麼辦？降租之外的 5 個方法
+5. ✅ 2026-09-07 `japan-rental-vacancy-solutions` 空室對策：日本的房子租不出去怎麼辦？降租之外的 5 個做法（a52・invest）
 6. ⬜ 中古屋翻新（リフォーム／リノベーション）費用行情與流程
 7. ⬜ 事故物件（凶宅）怎麼查？大島てる與告知義務的規定
 8. ⬜ 定期借地權物件是什麼？便宜背後的代價，能不能買
@@ -52,10 +52,12 @@
 24. ⬜ 從看房到交屋要多久？日本買房時間軸全解析
 
 ## 已完成
+✅ 2026-09-07 `japan-rental-vacancy-solutions` 空室對策：日本的房子租不出去怎麼辦？降租之外的 5 個做法（a52・invest）
+   封面用掉：`pexels-curtis-adams-1694007-4258277.webp`
 ✅ 2026-08-31 `tokyo-school-district-property` 東京的學區宅入門：文京區「3S1K」為什麼保值，買之前要懂的事（a50・area）
    封面用掉：`pexels-luis-yanez-57302-206172.webp`
 ✅ 2026-08-31 `japan-earthquake-preparedness-daily` 地震來了怎麼逃？日本人從小做的防災訓練，跟你住進來要準備的事（a49・life）
-   封面用掉：`pexels-curtis-adams-1694007-4258277.webp`
+   封面用掉：`cover-bosai-drill.webp`（周周上傳的防災演練實照，非圖庫）
 ✅ 2026-08-24 `japan-rental-management-company` 人在台灣，日本的房子誰幫我管？賃貸管理会社怎麼選、費用多少（a47・invest）
    封面用掉：`pexels-freestockpro-12955837.webp`
 ✅ 2026-08-24 `japan-hotel-license-simple-lodging` 不想被 180 天綁死？旅館業許可（簡易宿所）的實際門檻（a48・minpaku）
