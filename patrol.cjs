@@ -141,17 +141,27 @@ function checkGit() {
 }
 
 function checkDeploy() {
-  const raw = sh(`curl -s -m 20 "https://api.github.com/repos/janny00143/chouchou-homepage/actions/runs?branch=main&per_page=3"`);
+  const raw = sh(`curl -s -m 20 "https://api.github.com/repos/janny00143/chouchou-homepage/actions/runs?branch=main&per_page=15"`);
   if (!raw) { add("DEPLOY", "Pages 部署", "WARN", "查不到（網路或 API 受限），需人工確認"); return; }
   let runs = [];
   try { runs = JSON.parse(raw).workflow_runs || []; } catch (e) { }
-  if (!runs.length) { add("DEPLOY", "Pages 部署", "WARN", "API 回應無法解析"); return; }
-  const r = runs[0];
+  // ⚠️ 2026-09-13 加了 uptime.yml 之後，這個端點會同時回兩種 workflow，
+  //    直接拿 runs[0] 有可能拿到健檢那支。一定要用 path 過濾出 Pages 部署。
+  const pages = runs.filter(r => r.path === "dynamic/pages/pages-build-deployment");
+  if (!pages.length) { add("DEPLOY", "Pages 部署", "WARN", "最近 15 次執行裡找不到 Pages 部署"); return; }
+  const r = pages[0];
   metrics.deployRun = r.run_number;
   const ok = r.conclusion === "success";
-  add("DEPLOY", "Pages 部署", ok ? "OK" : "FAIL",
-    `#${r.run_number} ${r.head_sha.slice(0, 7)} → ${r.status}/${r.conclusion}`,
-    ok ? [] : ["部署不是 success，要重跑 failed job 並確認變成 success 才算完成"]);
+  // 部署成功還不夠：要確認部署的就是 main 現在的那個 commit，否則線上可能卡在舊版
+  const head = sh("git rev-parse origin/main");
+  const current = head && r.head_sha === head;
+  const items = [];
+  if (!ok) items.push("部署不是 success，要重跑 failed job 並確認變成 success 才算完成");
+  if (ok && !current) items.push(`最新一次部署的是 ${r.head_sha.slice(0, 7)}，但 main 現在是 ${head.slice(0, 7)}（可能還在跑，或那次 push 沒觸發部署）`);
+  add("DEPLOY", "Pages 部署",
+    ok ? (current ? "OK" : "WARN") : "FAIL",
+    `#${r.run_number} ${r.head_sha.slice(0, 7)} → ${r.conclusion}${current ? "（＝main 最新）" : ""}`,
+    items);
 }
 
 /* ══════════════════════════════════════════════════════════════════════
