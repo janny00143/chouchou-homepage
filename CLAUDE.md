@@ -53,6 +53,7 @@
 | `<slug>.html`（如 `japan-property-tax-guide.html`） | **每篇文章的獨立 SEO 靜態頁**，由 `generate-pages.cjs` 自動產生。**勿手改**；要改內容請改 `index.html` 的 `ART` 再重跑產生器（見第 9 節）。 |
 | `generate-pages.cjs` | 文章獨立頁／`sitemap.xml`／`robots.txt` 的產生器。 |
 | `buy-property-in-japan.html` / `japan-real-estate-agent-for-taiwanese.html`（＋ `-cn` / `-ja`） | **兩個商業關鍵字落地頁，全部由產生器產出，勿手改。**前者是「日本買房」總覽 hub（自動列出 `ART` 全部文章＋工具＋物件），後者是「在日本買房要找誰」比較頁（含 FAQPage 結構化資料）。繁中在 `generate-pages.cjs`（`pageHubTW()` / `pageAgentTW()`）、日文在 `build-ja.cjs`（`pageHubJa()` / `pageAgentJa()`）、簡中由 `build-cn.cjs` 自動轉。要改內容改那兩支產生器裡的函式，然後照第 9 節重跑六支。 |
+| `.github/workflows/uptime.yml` | **線上網站健檢**（2026-09-13 建立，密語核准）。從 GitHub 的機器每 6 小時打一次線上站，補上「容器 proxy 打不到自家網域」的盲點。只讀取與檢查，不碰 Pages 部署。詳見第 10 節。 |
 | `patrol.cjs` / `patrol-baseline.json` | **自動巡邏程式與數字基準線**（2026-09-13 起）。巡邏邏輯固化在這裡，不要再寫進排程的 prompt 即席重跑——以前那樣做同樣的誤判會一直復發。用法見第 10 節。 |
 | `sitemap.xml` / `robots.txt` | 給搜尋引擎用，由產生器產出，勿手改。 |
 | `cover-*.webp` / `pexels-*.webp` / `prop-*.webp` | **網站實際使用中的圖片，放 root**（HTML 與資料檔都用相對路徑直接引用）。 |
@@ -288,8 +289,17 @@ node patrol.cjs --json             # 額外輸出機器可讀 JSON
   **數字合理變動時（例如新文章上線）才跑 `--update-baseline` 並跟著那次改動一起 commit**，
   沒事的日子不要更新，免得 git 歷史被每日噪音灌爆。
 
-**這支查不到的事（重要，不要假裝查得過）**：
+**這支自己查不到的事，以及怎麼補起來的**：
 容器的 proxy 擋掉 `chouchouinjapan.com`、`janny00143.github.io` 與 GitHub 的 Pages API，
-所以巡邏**永遠無法確認「網站真的活著」**——只能確認「GitHub 說部署成功」。
-DNS 壞掉、自訂網域掉了、SSL 憑證過期，巡邏都會照樣回報正常。
-這個洞要靠外部監控（UptimeRobot 之類）或一支從 GitHub runner 去打線上站的 workflow 才補得起來。
+所以 `patrol.cjs` **自己永遠打不到線上網站**——只能確認「GitHub 說部署成功」。
+DNS 壞掉、自訂網域掉了、SSL 憑證過期，光看部署狀態都會顯示正常。
+
+→ 這個洞由 **`.github/workflows/uptime.yml`（2026-09-13 建立，密語核准）** 補起來：
+它跑在 GitHub 自己的機器上（不經過那個 proxy），每 6 小時打一次線上網站，檢查
+①六個關鍵網址回 200 且內容關鍵字在（首頁／物件／日文／簡中／sitemap／robots）
+②`www.` 與 `janny00143.github.io` 原網址也通
+③SSL 憑證剩餘天數，少於 14 天就當失敗。
+有問題就讓 workflow 紅字，而 `patrol.cjs` 的 **A9** 會把那個結論讀回來併進每日回報。
+
+⚠️ 這支 workflow 只做讀取與檢查，**不碰 Pages 的部署流程**。
+　 它必須存在於 `main`（預設分支）排程才會跑。要改檢查項目就改那個 yml。
