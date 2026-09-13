@@ -53,6 +53,7 @@
 | `<slug>.html`（如 `japan-property-tax-guide.html`） | **每篇文章的獨立 SEO 靜態頁**，由 `generate-pages.cjs` 自動產生。**勿手改**；要改內容請改 `index.html` 的 `ART` 再重跑產生器（見第 9 節）。 |
 | `generate-pages.cjs` | 文章獨立頁／`sitemap.xml`／`robots.txt` 的產生器。 |
 | `buy-property-in-japan.html` / `japan-real-estate-agent-for-taiwanese.html`（＋ `-cn` / `-ja`） | **兩個商業關鍵字落地頁，全部由產生器產出，勿手改。**前者是「日本買房」總覽 hub（自動列出 `ART` 全部文章＋工具＋物件），後者是「在日本買房要找誰」比較頁（含 FAQPage 結構化資料）。繁中在 `generate-pages.cjs`（`pageHubTW()` / `pageAgentTW()`）、日文在 `build-ja.cjs`（`pageHubJa()` / `pageAgentJa()`）、簡中由 `build-cn.cjs` 自動轉。要改內容改那兩支產生器裡的函式，然後照第 9 節重跑六支。 |
+| `patrol.cjs` / `patrol-baseline.json` | **自動巡邏程式與數字基準線**（2026-09-13 起）。巡邏邏輯固化在這裡，不要再寫進排程的 prompt 即席重跑——以前那樣做同樣的誤判會一直復發。用法見第 10 節。 |
 | `sitemap.xml` / `robots.txt` | 給搜尋引擎用，由產生器產出，勿手改。 |
 | `cover-*.webp` / `pexels-*.webp` / `prop-*.webp` | **網站實際使用中的圖片，放 root**（HTML 與資料檔都用相對路徑直接引用）。 |
 | `img-original/` | **沒有被任何頁面引用的圖**：轉成 WebP 之後保留的原始 jpg、下架物件與已移除的完成預想圖。2026-08-31 從 root 搬進來（周周指示，密語確認），純粹是為了讓根目錄不要爆掉——GitHub 目錄超過 1,000 個檔就會被截斷顯示。**搬進來的檔案一個都沒有被引用，網站產出零變化**；要復用時再搬回 root 即可。⚠️ 新圖請照舊放 root，不要放這裡。 |
@@ -255,3 +256,40 @@ node check-lang.cjs       # 中文頁面的日文殘留檢查（只回報、不�
 - 讓 Google 收錄：須在 **Google Search Console** 驗證網站並提交 `sitemap.xml`（帳號層級操作，由周周做；驗證碼可交給 AI 加到首頁 head）。
 
 > 註：這等於多了「產生頁面」一步。雖非傳統 build，但**改完文章一定要重跑產生器**，否則獨立頁與 sitemap 會跟 `ART` 不同步。
+
+---
+
+## 10. 自動巡邏 `patrol.cjs`（2026-09-13 起）
+
+```bash
+node patrol.cjs                    # 依日本時間的星期自動選型態
+node patrol.cjs A|B|full           # 強制指定（A 技術／B 內容／full 週日大巡）
+node patrol.cjs --gen              # 加做「重跑六支產生器後應無 diff」的冪等檢查
+node patrol.cjs --update-baseline  # 把這次的數字存成新的基準線
+node patrol.cjs --json             # 額外輸出機器可讀 JSON
+```
+
+離開碼：`0` = 沒有 FAIL，`1` = 有 FAIL。A 型約 17 秒（六個頁面平行開無頭瀏覽器）。
+
+**為什麼要有這支**：以前檢查邏輯寫在排程 prompt 裡，每天由 AI 即席重寫掃描器，
+同樣的誤判一直復發（2026-09 第二週就踩三個：物件 `ItemList` 掛在 `mainEntity`
+底下被判成「沒有 ItemList」、中日價格「不一致」其實只是「含稅 vs 税込」、
+40 個 `<img>` 缺 `width/height` 其實全在 JS 樣板字串裡）。寫成程式後，誤判修一次就永久消失。
+
+**改巡邏請改這個檔，不要改 prompt。** 已確認的正常狀況集中在檔案開頭的 `OK` 物件，
+要放行新東西就加在那裡。
+
+**比原本的 prompt 版多做的事**：
+- **A8 瀏覽器執行期檢查** —— 真的用無頭 Chromium 開六個關鍵頁（三語首頁、物件列表、
+  物件詳情、總覽 hub），抓 console error，並斷言關鍵內容真的有渲染出來。
+  `new Function()` 只驗語法，語法對但執行會爆的東西（例如 ART 渲染掛掉導致首頁空白）它抓不到。
+- **基準線比對** —— `patrol-baseline.json` 存上次的 22 個數字，每天只報「有變的」，
+  並對文章數／在售物件數／sitemap 筆數／三語檔數「變少」特別示警。
+  **數字合理變動時（例如新文章上線）才跑 `--update-baseline` 並跟著那次改動一起 commit**，
+  沒事的日子不要更新，免得 git 歷史被每日噪音灌爆。
+
+**這支查不到的事（重要，不要假裝查得過）**：
+容器的 proxy 擋掉 `chouchouinjapan.com`、`janny00143.github.io` 與 GitHub 的 Pages API，
+所以巡邏**永遠無法確認「網站真的活著」**——只能確認「GitHub 說部署成功」。
+DNS 壞掉、自訂網域掉了、SSL 憑證過期，巡邏都會照樣回報正常。
+這個洞要靠外部監控（UptimeRobot 之類）或一支從 GitHub runner 去打線上站的 workflow 才補得起來。
