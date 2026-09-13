@@ -19,6 +19,10 @@
 
    離開碼：0 = 沒有 FAIL；1 = 有 FAIL（可接 CI）
 
+   ⚠️ 這支跑在有 egress proxy 的容器裡，打不到 chouchouinjapan.com。
+      「網站真的活著沒有」由 .github/workflows/uptime.yml 在 GitHub 的機器上檢查，
+      A9 只是把那支 workflow 的結論讀回來。
+
    ⚠️ 加新檢查、或發現誤判，請直接改這個檔並 commit，不要回去改 prompt。
    ══════════════════════════════════════════════════════════════════════ */
 
@@ -317,6 +321,39 @@ async function a8_runtime() {
     `實際開 ${targets.length} 頁 → 執行期錯誤 ${bad.length}`, bad.slice(0, 10));
 }
 
+/* A9（新）：線上網站到底活著沒有。
+   這個容器的 proxy 擋掉 chouchouinjapan.com、janny00143.github.io 與 Pages API，
+   所以巡邏自己永遠打不到線上站。改由 .github/workflows/uptime.yml 在 GitHub 的
+   機器上每 6 小時打一次（200 + 內容關鍵字 + www/github.io + SSL 剩餘天數），
+   這裡只負責把那支 workflow 的結論讀回來。 */
+function a9_uptime() {
+  const raw = sh(`curl -s -m 20 "https://api.github.com/repos/janny00143/chouchou-homepage/actions/workflows/uptime.yml/runs?per_page=3"`);
+  if (!raw) { add("A9", "線上網站健檢", "WARN", "查不到 workflow 結果（網路受限），需人工確認"); return; }
+  let runs = [];
+  try { runs = JSON.parse(raw).workflow_runs || []; } catch (e) { }
+  if (!runs.length) {
+    add("A9", "線上網站健檢", "WARN",
+      "還沒有任何執行紀錄（workflow 剛加、或 Actions 被關掉）",
+      ["到 GitHub → Actions →「線上網站健檢」手動按一次 Run workflow 看看"]);
+    return;
+  }
+  const r = runs.find(x => x.status === "completed") || runs[0];
+  const ageH = Math.round((Date.now() - new Date(r.created_at).getTime()) / 3600000);
+  if (r.status !== "completed") {
+    add("A9", "線上網站健檢", "INFO", `最新一次還在跑（#${r.run_number}）`); return;
+  }
+  const ok = r.conclusion === "success";
+  // 每 6 小時一次，超過 12 小時沒跑代表排程沒在動
+  const stale = ageH > 12;
+  add("A9", "線上網站健檢（GitHub Action）",
+    ok ? (stale ? "WARN" : "OK") : "FAIL",
+    `#${r.run_number} ${r.conclusion}｜${ageH} 小時前`,
+    ok
+      ? (stale ? [`已經 ${ageH} 小時沒跑，確認 Actions 排程還開著`] : [])
+      : ["線上網站有問題（回應碼、內容、www/github.io 或 SSL 憑證），去 Actions 看那次的 log：",
+        r.html_url || ""]);
+}
+
 function a7_idempotent() {
   if (!WANT_GEN) {
     add("A7", "產生器冪等", "INFO", "本次略過（要檢查請加 --gen，它會實際重寫產出檔）");
@@ -598,7 +635,7 @@ function diffBaseline() {
 async function main() {
   checkGit();
   checkDeploy();
-  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); await a8_runtime(); a7_idempotent(); }
+  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();

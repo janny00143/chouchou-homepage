@@ -1,0 +1,85 @@
+# ══════════════════════════════════════════════════════════════════
+# 線上網站健檢
+#
+# 為什麼需要這支：寫網站的 AI 跑在一個有 egress proxy 的容器裡，
+# 那個 proxy 擋掉 chouchouinjapan.com、janny00143.github.io 與
+# GitHub 的 Pages API，所以它**永遠無法確認「網站真的活著」**——
+# 只能確認「GitHub 說部署成功」。DNS 壞掉、自訂網域掉了、憑證過期，
+# 巡邏都會照樣回報正常。
+#
+# 這支 workflow 跑在 GitHub 自己的機器上（不經過那個 proxy），
+# 直接打線上網站。掛了就讓 workflow 紅字——而那個紅字巡邏查得到，
+# 就能併進每天早上的回報。
+#
+# ⚠️ 這支只做「讀取與檢查」，不碰 Pages 的部署流程。
+#    周周 2026-09-13 以通關密語核准建立。
+# ══════════════════════════════════════════════════════════════════
+name: 線上網站健檢
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"     # 每 6 小時一次（UTC）
+  workflow_dispatch:           # 也可以在 Actions 頁面手動按
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: 打線上網站
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 關鍵頁面要回 200，而且內容要對
+        run: |
+          set -u
+          fail=0
+          check() {   # check <網址> <內容裡一定要有的字>
+            url="$1"; needle="$2"
+            code=$(curl -sS -L -o /tmp/page -w '%{http_code}' --max-time 25 "$url" || echo "000")
+            if [ "$code" != "200" ]; then
+              echo "::error::$url 回應 $code（預期 200）"; fail=1; return
+            fi
+            if ! grep -qF "$needle" /tmp/page; then
+              echo "::error::$url 回 200 但內容不對，找不到「$needle」（可能被導去停權頁或空白頁）"; fail=1; return
+            fi
+            size=$(wc -c < /tmp/page)
+            echo "✅ $url  200  ${size} bytes"
+          }
+
+          check "https://chouchouinjapan.com/"                  "周周"
+          check "https://chouchouinjapan.com/properties.html"   "物件"
+          check "https://chouchouinjapan.com/ja.html"           "周周"
+          check "https://chouchouinjapan.com/index-cn.html"     "周周"
+          check "https://chouchouinjapan.com/sitemap.xml"       "<urlset"
+          check "https://chouchouinjapan.com/robots.txt"        "Sitemap:"
+
+          exit $fail
+
+      - name: www 與 GitHub Pages 原網址也要通
+        run: |
+          set -u
+          fail=0
+          for u in "https://www.chouchouinjapan.com/" \
+                   "https://janny00143.github.io/chouchou-homepage/"; do
+            code=$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 25 "$u" || echo "000")
+            if [ "$code" = "200" ]; then echo "✅ $u  200"
+            else echo "::error::$u 回應 $code（預期 200，可能是 DNS 或自訂網域設定出問題）"; fail=1; fi
+          done
+          exit $fail
+
+      - name: SSL 憑證剩幾天（少於 14 天就當失敗）
+        run: |
+          set -u
+          end=$(echo | openssl s_client -servername chouchouinjapan.com \
+                  -connect chouchouinjapan.com:443 2>/dev/null \
+                | openssl x509 -noout -enddate | cut -d= -f2)
+          if [ -z "$end" ]; then
+            echo "::error::讀不到 SSL 憑證，連線可能有問題"; exit 1
+          fi
+          days=$(( ( $(date -d "$end" +%s) - $(date +%s) ) / 86400 ))
+          echo "憑證到期：$end（剩 ${days} 天）"
+          if [ "$days" -lt 14 ]; then
+            echo "::error::憑證只剩 ${days} 天，要處理了"; exit 1
+          fi
+          echo "✅ 憑證還有 ${days} 天"
