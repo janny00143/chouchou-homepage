@@ -494,10 +494,14 @@ function b5_cta() {
 function b6_contextLinks() {
   const { ART } = loadIndexData();
   const JA = JSON.parse(read("ja-content.json"));
-  const count = body => ((body || []).join("").match(/<a href="[a-z0-9-]+\.html"/g) || []).length;
+  // ⚠️ 站上有兩種寫法：新的用雙引號、2026 年前那批用單引號＋inline style。
+  //    只比對雙引號會漏掉一大半，也會把有連結的文章誤判成孤兒（2026-09-15 修）。
+  const LINK_RE = /<a href=['"]([a-z0-9-]+)\.html['"]/g;
+  const count = body => ((body || []).join("").match(LINK_RE) || []).length;
   const tw = ART.reduce((n, a) => n + count(a.body), 0);
   const ja = Object.values(JA).reduce((n, j) => n + count(j.body), 0);
-  const orphTw = ART.filter(a => a.body && count(a.body) === 0).map(a => a.id);
+  // a4（民宿）用 url 直接跳 minpaku.html，body 根本不會被渲染，不該算孤兒
+  const orphTw = ART.filter(a => !a.url && a.body && count(a.body) === 0).map(a => a.id);
   const orphJa = Object.keys(JA).filter(k => count(JA[k].body) === 0);
   metrics.linksTw = tw; metrics.linksJa = ja;
   metrics.orphanTw = orphTw.length; metrics.orphanJa = orphJa.length;
@@ -505,6 +509,22 @@ function b6_contextLinks() {
   add("B6", "內文脈絡連結", "INFO",
     `繁中 ${tw} 條／孤兒 ${orphTw.length} 篇｜日文 ${ja} 條／孤兒 ${orphJa.length} 篇`,
     [`繁中孤兒: ${orphTw.join(",") || "無"}`, `日文孤兒: ${orphJa.join(",") || "無"}`]);
+}
+
+/* B9（新，2026-09-15）：日文文章裡的站內連結必須指向 -ja 頁。
+   當天抓到 9 條日文文章連去繁中頁——日本讀者點下去會跳到中文站，
+   對使用者與 SEO 都不好。這種錯誤肉眼很難發現，交給程式每天掃。 */
+function b9_jaLinks() {
+  const JA = JSON.parse(read("ja-content.json"));
+  const bad = [];
+  for (const id in JA) {
+    const t = (JA[id].body || []).filter(x => typeof x === "string").join("");
+    for (const m of t.matchAll(/<a href=['"]([a-z0-9-]+)\.html['"]/g)) {
+      if (!m[1].endsWith("-ja")) bad.push(`${id} → ${m[1]}.html（應為 ${m[1]}-ja.html）`);
+    }
+  }
+  add("B9", "日文文章的站內連結", bad.length ? "FAIL" : "OK",
+    bad.length ? `有 ${bad.length} 條連到繁中頁` : "全部正確指向 -ja 頁", bad.slice(0, 10));
 }
 
 function b7_props() {
@@ -646,7 +666,7 @@ async function main() {
   checkGit();
   checkDeploy();
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); await a8_runtime(); a7_idempotent(); }
-  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); }
+  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 
