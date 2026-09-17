@@ -216,9 +216,9 @@
 ### ⭐ 產生器的固定執行順序（順序不能換）
 
 ```
-node generate-pages.cjs   # 文章獨立頁＋sitemap＋robots
-node build-cn.cjs         # 繁→簡，產生所有 -cn 頁並把 -cn 網址補進 sitemap
-node build-ja.cjs         # 日文文章頁（讀 ja-content.json）
+node generate-pages.cjs   # 文章獨立頁＋sitemap＋robots＋llms.txt／llms-full.txt
+node build-cn.cjs         # 繁→簡，產生所有 -cn 頁與 llms-cn(-full).txt，並把 -cn 網址補進 sitemap
+node build-ja.cjs         # 日文文章頁（讀 ja-content.json）＋llms-ja(-full).txt
 node build-ja-home.cjs    # 日文首頁 ja.html
 node build-prop-seo.cjs   # ★ 一定要最後跑：物件專區的 JSON-LD ＋ noscript 清單
 node check-lang.cjs       # 中文頁面的日文殘留檢查（只回報、不會擋流程）
@@ -233,6 +233,28 @@ node check-lang.cjs       # 中文頁面的日文殘留檢查（只回報、不�
 - **帶 `noindex` 的頁面不可以進 sitemap**（例如 `property.html` 這種要靠 `?id=` 才有內容的殼頁）。
   否則 sitemap 說「請收錄」、頁面說「不要收錄」，Search Console 會報「遭到 noindex 標記排除」。
   `build-cn.cjs` 已會自動偵測並排除，不要手動把這類頁加回 sitemap。
+### 給 AI 讀的那一層（`llms*.txt`，2026-09-17 起）
+
+除了給人看的 HTML，另外有六個純文字檔專門給語言模型讀，全部是產生器輸出、**勿手改**：
+
+| 檔案 | 內容 | 由誰產生 |
+|---|---|---|
+| `llms.txt` / `llms-full.txt` | 繁中的站台索引／全站文章全文（Markdown） | `generate-pages.cjs` |
+| `llms-cn.txt` / `llms-cn-full.txt` | 上面兩個的簡體版，站內網址改 `-cn` | `build-cn.cjs` |
+| `llms-ja.txt` / `llms-ja-full.txt` | 日文索引／日文全文，含**給日本同業與売主様的窗口** | `build-ja.cjs` |
+
+`robots.txt` 逐一寫明 17 個 AI 爬蟲可讀，並在表頭指向這六個檔。
+
+**防盜的部分（周周 2026-09-17：「要幫我注意不要被盜了」）**——文章本來就公開在網路上，
+沒有辦法技術性阻止複製；能做的是把「誰寫的、可以怎麼用」寫成機器讀得到的東西：
+
+1. 三語 llms 檔都含〈授權與引用條款〉：歡迎引用與標註，謝絕整篇轉載與移除署名。
+2. `llms*-full.txt` 的**每一篇**都帶「作者＋原文網址」兩行，切片複製也會帶著署名。
+3. 文章頁 JSON-LD 加了 `copyrightHolder`、`copyrightYear`、`isAccessibleForFree`，
+   配合原本就有的 `canonical`＋`datePublished`，是主張原創最直接的機器可讀證據。
+4. 簡體版的〈其他語言〉刻意保留一行**指回繁中正本**（不簡體化、網址不改 `-cn`）。
+5. 頁面本來就有的 `HEAD_SCRIPTS` 防複製守門：整頁被抄去掛在別的網域會自動跳回正牌站。
+
 ### ⭐ 中文頁面不要有日文殘留（周周 2026-08-24 指示）
 
 周周多次提醒：**不要日式中文、也不要太多日文**。規則就是 CLAUDE.md 第 7 節那條——
