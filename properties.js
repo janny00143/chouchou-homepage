@@ -403,7 +403,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-futaba-1.webp","prop-futaba-plan.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
+    photos: ["prop-futaba-1.webp","prop-futaba-plan.webp","prop-futaba-kukaku-plan.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
     note: "品川區二葉、下神明站徒步約6分、大井町站也在徒步圈的自社新築3層戸建（B棟）！LDK約19.0帖＋勾配天井，開闊又有設計感，附車庫與充足收納。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立豊葉の杜學園（小中一貫校）。已完工、可即時交屋。想預約看房，加LINE跟我說，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
