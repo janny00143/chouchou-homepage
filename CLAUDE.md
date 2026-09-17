@@ -165,6 +165,20 @@
      店舖・事務所類多半在収益篇後段，只掃前幾頁會漏掉（2026-08-28 就因此誤報「查不到」被周周糾正）。
    - 真的找不到再問她，並說明「我在哪幾份資料裡找過了」。
 
+   ⭐ **怎麼把 Google Drive 的圖檔拿進來（2026-09-17 實測，會用到很多次）**：
+   容器的 proxy **擋掉 `drive.google.com`**（CONNECT 直接被回 403），所以 `curl` 永遠抓不到，
+   **但不要因此跟周周說「我拿不到」**。正確做法是用 Drive 連接器：
+   1. `mcp__Google_Drive__search_files` 用 `parentId = '<資料夾ID>'` 列出檔案、取得每個 fileId。
+   2. 對每個 fileId 呼叫 `mcp__Google_Drive__download_file_content`。
+      回傳會「超過 token 上限」而**被自動存成本機檔案**，訊息裡會給路徑——這正是我們要的，
+      base64 不會灌進對話。
+   3. 用小腳本把那些 JSON（`{content: base64, title, mimeType}`）解成原檔：
+      `json.load(...)` → `base64.b64decode(j["content"])` → 依 `j["title"]` 命名寫檔。
+   4. 之後照常用 PIL 挑圖、縮到長邊 1280、轉 WebP 放 root，並更新 `img-size.json`。
+   ※ 25 張 1MB 照片用這個方式拿完，對話 token 幾乎沒有消耗。
+   ※ PDF 裡的圖用 `pymupdf`（`pip install pymupdf`）：`page.get_pixmap(dpi=300)` 可整頁渲染，
+     `page.get_images()`＋`doc.extract_image(xref)` 可取出內嵌原圖（販売図面的間取圖就是這樣裁的）。
+
    ⭐ **供應商對照表在哪裡（2026-09-17 確立）**：**不在 repo 裡**，也不可以寫回 repo——
    這個 repo 是 Public，`properties.js` 會被瀏覽器整包下載，寫進去就等於公開。
    對照表（哪一筆物件是哪一家的、承辦人、広告可否）放在
