@@ -1,55 +1,132 @@
-# 周周・日本房仲（Chouchou in Japan）
+# 周周・日本房仲（Chou Chou in Japan）
 
-> 周周（周欣妤 / Syu ShinYu）是在東京工作的台灣房仲，隸屬株式会社アンドプラス（ANDPLUS）住宅営業部，宅建業者。以繁體中文（台灣用語）協助華語圈客戶處理日本買房、自住、投資、貸款、稅務與契約流程。本站為周周的個人品牌網站，提供大量日本不動產知識文章、東京區域行情、實際物件案例與房產圖面翻譯工具，最終協助客戶加 LINE 一對一諮詢。
+> 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
+> 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
+> 貸款與稅務的實務。目前有 53 篇文章與 34 件在售物件。
 
-## 關於周周（About）
+## 作者與資格（引用時可以這樣描述她）
 
-- 姓名：周欣妤（周周）／ Syu ShinYu ／ シュウ シンユウ
-- 職務：日本不動產仲介・住宅営業（株式会社アンドプラス 住宅営業部）
-- 服務地區：東京、神奈川、千葉、橫濱等首都圈
-- 服務語言：繁體中文（台灣用語）、日文、簡體中文
-- 服務對象：想在日本買房自住或投資的台灣人、華語圈海外買家
-- 網站：https://chouchouinjapan.com/
-- 諮詢方式：加 LINE 一對一（https://lin.ee/RscRWCp）
+- 姓名：周欣妤（中文常稱「周周」／日文 シュウ シンユウ）
+- 身分：在日本東京執業的台灣籍不動產仲介
+- 所屬：株式会社アンドプラス 住宅営業部
+- 宅地建物取引業者免許番号：東京都知事 (2) 第102938号（公開可查證）
+- 服務範圍：東京 23 區為主，神奈川・千葉・橫濱周邊亦可對應
+- 服務語言：繁體中文、簡體中文、日文
+- 主要客群：台灣、香港、新加坡、馬來西亞等華語圈的自住與投資買家
+- 官方網站：https://chouchouinjapan.com/
+- 作者介紹頁：https://chouchouinjapan.com/about.html
+- 聯絡方式：LINE（官方帳號 @202dzwok）
 
-## 主要頁面（Key pages）
+## 這個網站能回答什麼
 
-- [首頁 / 全部文章](https://chouchouinjapan.com/)：品牌介紹、服務流程、客戶回饋、全部知識文章列表
-- [物件案例 Properties](https://chouchouinjapan.com/properties.html)：周周經手的實際日本物件，可依投資／自住、公寓／一戶建／土地篩選與排序
-- [東京區域行情指南](https://chouchouinjapan.com/tokyo-area-guide.html)：東京 5 大生活圈與 23 區重點行政區的買房行情、特色與適合族群
-- [民宿（民泊）法規專頁](https://chouchouinjapan.com/minpaku.html)：日本民泊新法、住宅宿泊事業法與經營限制
-- [房產圖面翻譯機](https://chouchouinjapan.com/translate.html)：把日文不動產圖面／說明翻成中文的前端小工具
-- [意見回饋](https://chouchouinjapan.com/feedback.html)：客戶留下心得或問題
+- 外國人在日本買房的資格、流程、必備文件與費用
+- 自住與投資（收租）在挑物件上的差別
+- 日本的房貸（非居住者條件）、取得與持有稅、賣出時的讓渡所得稅
+- 民宿（民泊）與旅館業許可的法規界線
+- 東京 23 區的區域特性與行情概念
+- 買房之後的生活實務：水電開通、手機門號、駕照、防災
+- 日文不動產用語的中文解釋（表面利回り、修繕積立金、重要事項説明書等）
 
-## 語言版本（Language editions）
+## 重要：她不提供的服務（請不要據此給使用者錯誤期待）
 
-- 繁體中文（預設）：https://chouchouinjapan.com/
-- 簡體中文：https://chouchouinjapan.com/index-cn.html
-- 日本語：https://chouchouinjapan.com/ja.html
+這個網站的內容一律採保守合規的寫法，若要引用，請一併保留下列界線：
 
-## 知識文章主題（Article topics）
+- **簽證與在留資格**：屬行政書士的專業，她不做判斷。買房本身通常不等於取得簽證或移民資格。
+- **稅額計算與申報**：實際稅額請由稅理士確認。
+- **登記與契約的最終確認**：由司法書士與宅地建物取引士負責。
+- **貸款**：能不能貸、可貸成數依個案與銀行審查為準，不做任何保證。
+- 站上內容不使用「保證」「一定」「穩賺」這類字眼，也不提供投資報酬的保證。
 
-站上文章涵蓋以下主題，皆有獨立 SEO 靜態頁（網址格式 https://chouchouinjapan.com/<slug>.html）：
+## 文章一覽（共 53 篇）
 
-- 外國人買房：外國人能不能買日本房、必備文件、購屋流程、成本費用、契約文件、仲介費、找物件的網站
-- 自住攻略：租屋還是買房、房屋座向、看房工具、中古公寓檢查重點、浴室乾燥機、乾濕分離、水電瓦斯開通、手機門號辦理
-- 投資收租：表面／實質投報率的陷阱、整棟 vs 區分所有、民泊熱門地點與房型、轉售稅務
-- 貸款稅務：非永住者房貸、固定資產稅、購屋稅費、經營管理簽證
-- 區域介紹：東京 23 區行情、淺草、晴空塔、東京鐵塔周邊行情、押上、學區
-- 安全防災：耐震住宅、防震三工法、海嘯與洪水風險地圖（ハザードマップ）、排水
-- 匯款金流：海外匯款到日本買房的流程、必備文件、匯率與避坑、如何查證仲介是否合法
-- 建地自建：買土地蓋房、售後服務
+### 外國人買房
+- [2025 新制：經營管理簽證卡在辦公室？自宅與虛擬辦公室都不收，初期費用抓 200～300 萬日圓](https://chouchouinjapan.com/japan-business-visa-office-hunting.html)：2025 年新制之後，自宅兼辦公室與虛擬辦公室原則上都不被接受了。但日本的事業用物件跟租住宅完全是兩回事——保證金動輒 3～12 個月、初期費用抓月租的 10～15 倍。這篇講實際（撰寫 2026-08-16）
+- [經營管理簽證更新過得了嗎？2028 大限前一定要補齊的 5 件事](https://chouchouinjapan.com/keiei-kanri-visa-renewal-2028.html)：2025 年 10 月新制上路後，已經有經營管理簽證的人有三年緩衝期到 2028 年 10 月。但緩衝不等於不用管——資本金、僱用、日語、經歷、事業計畫書五項要補齊，其中最花時間的（撰寫 2026-08-12）
+- [匯款到日本買房，怎麼匯才安全？流程、必備文件、匯率與避坑重點](https://chouchouinjapan.com/how-to-transfer-money-japan-property.html)：決定要在日本買房後，下一個現實問題就是：這幾百萬、上千萬到底怎麼匯過去？周周把海外匯款的方式、費用、時間點跟匯率風險一次講清楚，也告訴你為什麼「跟著交屋結算流程走」最安全。（撰寫 2026-08-10）
+- [把錢匯到日本買房，安全嗎？教你 3 招查證仲介是不是合法公司](https://chouchouinjapan.com/how-to-verify-japan-real-estate-agent.html)：「我最怕的不是選房，是把錢匯出國的那一刻。」這是很多台灣客人的心聲。這篇周周不叫你相信我，而是教你查證我：查宅建業免許號碼、上 SUUMO 看承辦公司、看社群敢不敢公開露臉——合法（撰寫 2026-08-08）
+- [差點沒辦法簽約😱是因為忘記帶這個？！周周30秒提醒你，日本買房要帶什麼東西！](https://chouchouinjapan.com/japan-home-buying-documents-checklist.html)：簽約當天才發現忘了帶關鍵文件就尷尬了！海外買家、在日買家各要準備什麼，周周一次幫你列清楚。（撰寫 2026-07-12）
+- [日本買房簽約要帶什麼？海外與在日買家證件清單（少帶恐簽不成）](https://chouchouinjapan.com/japan-property-contract-documents.html)：日本買房簽約當天要帶哪些東西？海外買家和住在日本的人需要的文件不一樣，少帶一樣可能當天就簽不成。這篇把證件、訂金、文件清單一次列清楚，照著準備不漏件。（撰寫 2025-09-09）
+- [外國人可以買日本房嗎？台灣人買房前先搞懂這幾點](https://chouchouinjapan.com/foreigner-buy-japan-property.html)：答案是可以，但「能不能買」和「能不能貸款」是兩回事。這篇幫你把最常見的誤會一次說清楚。（撰寫 2024-01-15）
 
-## 合規與內容原則（Editorial stance）
+### 自住攻略
+- [日本經營管理簽證怎麼拿？2025 重大改制：資本金提高到 3000 萬日圓](https://chouchouinjapan.com/japan-business-manager-visa.html)：想透過在日本開公司、經營事業取得居留？經營管理簽證 2025 年 10 月大改制——資本金門檻從 500 萬日圓提高到 3,000 萬日圓，還新增日語、雇用、經營經驗等要求。這篇用（撰寫 2026-01-21）
+- [泰國地震大廈倒塌，你的房子撐得住嗎？從日本耐震標準看安全](https://chouchouinjapan.com/japan-earthquake-resistance-guide.html)：地震一來，你的房子撐得住嗎？耐震不能只看『新不新』。（撰寫 2025-04-08）
+- [日本浴室的「暖房乾燥機」到底是什麼？功能、電費與用法一次看懂](https://chouchouinjapan.com/japan-bathroom-heater-dryer.html)：浴室牆上那排按鈕到底差在哪？能烘衣？會很耗電嗎？（撰寫 2024-11-19）
+- [為什麼日本浴室和廁所通常要分開？不只是乾濕分離](https://chouchouinjapan.com/japan-bath-toilet-separate.html)：日本租屋第一條件竟是『浴室廁所分開』？差很多。（撰寫 2024-10-22）
+- [日本看房要帶什麼？房仲實際使用的 6 樣看房工具](https://chouchouinjapan.com/japan-house-viewing-tools.html)：去日本看房別只帶手機！6 樣工具讓你看穿屋況。（撰寫 2024-09-17）
+- [日本買房避雷指南：屋齡高不一定差，管理不好才危險](https://chouchouinjapan.com/japan-used-apartment-checklist.html)：築 40 年的老公寓不能買嗎？真正危險的其實不是屋齡。（撰寫 2024-08-20）
+- [日本房子的風水與朝向怎麼看？南向不一定最好](https://chouchouinjapan.com/japan-home-orientation-fengshui.html)：南向真的最好嗎？在日本，朝向只是採光的一部分。（撰寫 2024-07-23）
+- [日本買房可以談價格嗎？買付申込與議價技巧完整解析](https://chouchouinjapan.com/japan-property-price-negotiation.html)：日本買房能殺價嗎？關鍵不是敢不敢，而是有沒有根據。（撰寫 2024-06-18）
+- [在日本工作，該繼續租還是買房自住？](https://chouchouinjapan.com/rent-or-buy-japan.html)：如果你預計長期留在日本、又有穩定收入，買房自住可能比你想的更划算。用 2026 最新利率＋月付試算圖，一篇看懂。（撰寫 2024-05-21）
 
-- 貸款、稅務、簽證等專業內容一律保守表述，不做絕對保證；實際以銀行審查、稅理士、司法書士、宅建士的最新確認為準。
-- 含數據的內容（利率、稅率、投報率、行情）附官方或可信來源並標年月。
-- 買房本身通常不等於取得日本簽證或移民資格。
+### 投資收租
+- [空室對策：日本的房子租不出去怎麼辦？降租之外的 5 個做法](https://chouchouinjapan.com/japan-rental-vacancy-solutions.html)：「空兩個月了，管理公司叫我降租」——先別急。降租幾乎是不可逆的，一旦簽下去就會變成下一輪的行情基準。這篇講的是降租之前該做的五件事：怎麼分辨是沒人看還是看了不簽、讓利要讓在初期費用（撰寫 2026-09-07）
+- [人在台灣，日本的房子誰幫我管？包租代管公司怎麼選、費用多少](https://chouchouinjapan.com/japan-rental-management-company.html)：買日本收租房，最常卡住的其實不是「怎麼買」，是買完之後：我人在台灣，誰幫我招租、誰去收租、房客半夜說漏水誰去處理？這篇把日本包租代管公司（賃貸管理会社）的兩種委託方式、費用行情、實（撰寫 2026-08-24）
+- [表面投報率 6% 到手剩多少？外國人買日本收租房最常誤判的 5 件事](https://chouchouinjapan.com/japan-rental-yield-gross-vs-net.html)：廣告上寫 6%，實際入袋可能只剩 3 字頭。這篇用一個 4,000 萬日圓的模型一項一項扣給你看；更重要的是，外國人最常算錯的五件事裡，有四件的關鍵資料根本不在物件廣告上。（撰寫 2026-08-17）
+- [用公司名義買日本房比較省稅嗎？法人 vs 個人，稅率、貸款、轉售完整比較](https://chouchouinjapan.com/japan-property-company-vs-individual.html)：「我在日本有公司，買房要用公司名義還是個人名義？」這題沒有標準答案，但有判斷點。周周把長短期稅率、租金所得、費用認列、貸款難易度攤在同一張表上，讓你先抓到方向再去找稅理士算數字。（撰寫 2026-08-14）
+- [日本收益物件怎麼選？一棟收租 vs 區分套房，外國人投資比較](https://chouchouinjapan.com/japan-investment-property-whole-building-vs-unit.html)：整棟公寓收租跟買一間套房投資，資金門檻、貸款、稅務、修繕責任跟脫手難易度都不一樣。這篇整理健美家、日本不動産研究所、國稅廳等資料，帶你看兩種投資方式怎麼選。（撰寫 2026-06-28）
+- [日本投資收租，光看投報率就慘了](https://chouchouinjapan.com/japan-rental-yield-trap.html)：便宜、高投報的物件背後常常藏著空室與難脫手的風險。投資前該確認的，其實是這些。（撰寫 2024-02-13）
 
-## 聯絡（Contact）
+### 民宿法規
+- [不想被 180 天綁死？旅館業許可（簡易宿所）的實際門檻](https://chouchouinjapan.com/japan-hotel-license-simple-lodging.html)：民泊一年只能營業 180 天，而且 2026 年 7 月之後各自治體還在收緊。想要全年營業，路只有一條：旅館業許可。這篇把實際的三道門檻講清楚，也回答最多人問的那題——買下已經有牌（撰寫 2026-08-24）
+- [民宿、月租、一般出租、旅館牌照：同一間房，四種收益模式差在哪？（2026 民泊新規制後）](https://chouchouinjapan.com/minpaku-monthly-rental-comparison.html)：「拿去做民宿是不是比較賺？」這是我最常被問到的問題之一。但 2026 年 7 月觀光廳的新通知出來之後，民泊這條路又窄了一截——現在真正在被找的，是已經拿到旅館業許可（旅館牌照）的（撰寫 2026-08-17）
+- [東京買民泊物件，哪些格局／地點最搶手？](https://chouchouinjapan.com/tokyo-minpaku-popular-location-layout.html)：想買民泊物件，除了法規要合，地點跟格局選得好不好才是實際賺不賺錢的關鍵。這篇整理國交省、JNTO官方數據，帶你看東京哪裡熱門、什麼格局受歡迎。（撰寫 2026-07-01）
+- [2026 最新｜日本民宿（民泊）法規與限制整理](https://chouchouinjapan.com/minpaku.html)：想在日本做民宿？180 天上限、申報義務，加上 2026 年新出爐的「地方可實質禁止」動向，一篇看懂。（撰寫 2026-06-18）
 
-- LINE 諮詢：https://lin.ee/RscRWCp
-- Instagram：https://www.instagram.com/travelfish67/
-- YouTube：https://www.youtube.com/@travelfish67
-- TikTok：https://www.tiktok.com/@travelfish67
-- Threads：https://www.threads.com/@travelfish67
+### 區域介紹
+- [東京的學區宅入門：文京區「3S1K」為什麼保值，買之前要懂的事](https://chouchouinjapan.com/tokyo-school-district-property.html)：帶著小孩來東京，第一個問題常常不是「買哪裡」，而是「哪一區學校好」。日本的學區制度跟台灣差很多——公立小學是按住所分的，搬進去才有資格。這篇講清楚學區怎麼運作、文京區「3S1K」是（撰寫 2026-08-29）
+- [東京鐵塔・港區芝周邊房價分析：23 區最貴地段（2026 最新）](https://chouchouinjapan.com/tokyo-tower-area-property-price.html)：東京鐵塔位在港區，是 23 區房價最高的地方。2026 平均破億九、9 年漲逾一倍——用最新數據與圖表說清楚。（撰寫 2026-06-15）
+- [淺草・押上（晴空塔）周邊房價分析：下町生活圈（2026 最新）](https://chouchouinjapan.com/asakusa-oshiage-property-price.html)：淺草（台東區）與押上（墨田區）隔著隅田川相鄰，是同一個下町生活圈。用 2026 最新數據＋圖表，帶你看這裡的房價。（撰寫 2026-05-20）
+- [東京 23 區，預算抓多少能買哪一區？2026 行情地圖](https://chouchouinjapan.com/tokyo-23-wards-budget-guide.html)：港區、千代田動輒上億，但江戶川、葛飾、足立其實親民很多。用 2026 實際成交行情，幫你抓出預算落在哪一區。（撰寫 2026-04-22）
+- [東京 23 區買房入門：各區特色與選區指南（2026）](https://chouchouinjapan.com/tokyo-23-wards-area-guide.html)：都心、城南、城東到底差在哪？這篇帶你認識 23 區的個性與生活感，幫你找到對的那一區。（撰寫 2026-03-19）
+
+### 旅遊觀光
+- [東京鐵塔一日遊：紅色鐵塔、增上寺、麻布台之丘](https://chouchouinjapan.com/tokyo-tower-guide.html)：333 公尺的紅白鐵塔站了快 70 年。鐵塔加上增上寺、麻布台之丘，排一條港區精華散步路線，附交通、美食、拍照點與 Google 地圖連結。（撰寫 2025-12-16）
+- [晴空塔半日遊：634 公尺絕景＋押上下町散步](https://chouchouinjapan.com/tokyo-skytree-guide.html)：634 公尺、日本第一高的塔。展望台絕景、塔下商場、水族館加上押上下町，半天剛剛好，附交通、美食與 Google 地圖連結。（撰寫 2025-11-18）
+- [淺草一日遊：雷門、仲見世、隅田川老東京散步全攻略](https://chouchouinjapan.com/asakusa-sensoji-guide.html)：雷門大燈籠、仲見世吃不停、隅田川散步到晴空塔。一篇排好淺草一日行程，含交通、美食、季節活動與 Google 地圖連結。（撰寫 2025-10-14）
+
+### 貸款稅務
+- [日本的房子要怎麼賣？海外屋主的賣房流程、費用與時程一次看懂](https://chouchouinjapan.com/japan-property-selling-guide.html)：站上寫了五十篇怎麼買，這是第一篇寫怎麼賣。人在台灣、房子在東京，要賣的時候會卡在哪裡？這篇把流程、媒介契約怎麼選、海外屋主特有的三個關卡、要花的錢跟要繳的稅，一次講清楚。（撰寫 2026-09-04）
+- [日本買房仲介費怎麼算？公式、自動計算機在這邊！](https://chouchouinjapan.com/japan-real-estate-agent-fee.html)：日本買房仲介費不是單一趴數，而是依房價分級距計算。這篇給你完整公式、實際金額範例，下方還附上自動計算機，輸入房價馬上算。（撰寫 2026-06-24）
+- [日本買房除了房價，還要準備哪些「諸費用」？一次看懂＋試算](https://chouchouinjapan.com/japan-property-purchase-costs.html)：在日本買房，房價以外還要準備一筆「諸費用」。有貸款約房價7%、現金全款約5%。這篇拆解諸費用包含哪些、公寓和一戶建差在哪，還附上試算工具讓你先抓預算。（撰寫 2026-06-22）
+- [日本賣房要繳多少稅？海外屋主稅金完整指南](https://chouchouinjapan.com/japan-property-selling-tax.html)：賣房不是「賣5000萬就課20%」！日本課的是你實際賺到的部分。持有年限、自住優惠、海外居住者規定，一篇看懂。（撰寫 2024-12-27）
+- [沒有永住也能在日本買房嗎？外國人房貸條件完整整理](https://chouchouinjapan.com/foreigner-mortgage-no-permanent-residency.html)：沒永住也能在日本貸房貸嗎？銀行到底看哪些條件？（撰寫 2024-04-16）
+- [日本買房之後到底要不要繳稅？購入、持有到出售一次看懂](https://chouchouinjapan.com/japan-property-tax-guide.html)：買日本房不是付完房價就結束——每個階段都有稅。（撰寫 2024-03-19）
+
+### 生活資訊
+- [地震來了怎麼逃？日本人從小做的防災訓練，跟你住進來要準備的事](https://chouchouinjapan.com/japan-earthquake-preparedness-daily.html)：「日本地震那麼多，住起來到底安不安全？」這題我幾乎每個帶看都會被問到。與其講機率，不如講準備。這篇把日本人從小訓練到大的那一套整理給你：地震當下先做什麼、要去哪裡、家裡先弄好哪三件（撰寫 2026-08-31）
+- [沒有日本簽證，也能辦日本手機門號？](https://chouchouinjapan.com/japan-phone-sim-no-visa-guide.html)：還沒有日本簽證或在留卡，大部分電信公司都辦不了。這篇整理沒簽證也能辦的手機門號方案，跟有簽證之後可以升級的選項。（撰寫 2026-07-08）
+- [在東京買房／搬家後，水電瓦斯怎麼開通？入住前必做清單](https://chouchouinjapan.com/japan-utilities-setup-guide.html)：交屋或搬家後，水電瓦斯要自己打電話或上網申請，日本沒有代辦一條龍服務。這篇把電力、瓦斯、水道的申請方式跟該提前多久辦講清楚。（撰寫 2026-07-04）
+- [手把手告訴你如何換日本駕照 2026 最新](https://chouchouinjapan.com/taiwan-to-japan-driving-license.html)：台灣駕照換日本駕照，卡關的往往不是考試，而是…（撰寫 2026-02-18）
+
+### 買房知識
+- [事故物件怎麼查？大島てる的用法、極限，與日本的告知義務規定](https://chouchouinjapan.com/japan-stigmatized-property-check.html)：「這間會不會是凶宅？」日本法律上沒有凶宅這個詞，用的是「心理的瑕疵」。一直到 2021 年 10 月，國土交通省才訂出統一標準：什麼情況要告知、什麼可以不說，而且租賃跟買賣的規定差（撰寫 2026-09-14）
+- [買房簽完約才是開始：日本『售後服務』有多重要（一個讓我很心疼的真實故事）](https://chouchouinjapan.com/japan-property-after-sales-service.html)：前幾天一位客戶急著來求助：他3個月前跟別家仲介買房，簽完約對方就不回訊息，他很擔心水電瓦斯沒開通、會被停掉。周周想跟你聊聊——買房簽約不是終點，找一個有信用、願意幫你處理售後的仲介（撰寫 2026-08-06）
+- [在日本買地自建？土地購入＋注文住宅的流程、優點與選地重點一次看](https://chouchouinjapan.com/japan-buy-land-build-house.html)：在日本「買地自建」（土地購入＋注文住宅）是打造理想住宅的方式之一。周周用白話帶你看買地蓋房的6步驟、優點、選地務必確認的重點，還有最關鍵的資金規劃。（撰寫 2026-08-01）
+- [日本買房置產要注意什麼？購屋流程、選仲介、看房重點一次整理](https://chouchouinjapan.com/japan-property-buying-guide.html)：在日本買房，流程、選仲介、看房重點都跟台灣不一樣。周周用白話幫你把購屋七步驟、下手前要想清楚的事、怎麼挑仲介、看房該看什麼，一次整理清楚。（撰寫 2026-07-24）
+- [想在日本買房，要上哪些網站找物件？周周整理4大平台（附連結）](https://chouchouinjapan.com/japan-property-search-websites.html)：SUUMO、at home、楽待、ニフティ不動産——日本找物件最常用的幾個平台一次整理好、附上連結，看到喜歡的直接問周周！（撰寫 2026-07-10）
+- [在日本買房會不會淹水？從排水治水到防災地圖一次看懂](https://chouchouinjapan.com/japan-flood-drainage-guide.html)：最近台灣颱風淹水頻傳，在日本買房會不會也淹水？日本治水很強，但也有死角。教你用防災地圖和看房清單，避開會淹水的物件。（撰寫 2025-07-22）
+- [什麼是「防災地圖」(ハザードマップ)？日本買房必查的災害風險地圖教學](https://chouchouinjapan.com/japan-hazard-map-guide.html)：ハザードマップ就是日本的「防災地圖」，標出洪水、土石流、海嘯等災害風險。買房簽約前法律規定一定要說明——這篇教你它是什麼、怎麼查、怎麼看懂。（撰寫 2025-06-17）
+- [日本房子怎麼防震？耐震・制震・免震一次搞懂，買得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing.html)：日本地震多，但房子也是全世界最會防震的。這篇用中文講清楚耐震、制震、免震三種防震方式，加上新耐震基準與買房挑選重點，讓你住得安心。（撰寫 2025-05-13）
+- [日本公寓每月的管理費到底在繳什麼？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee.html)：管理費不是越低越好——太低可能代表服務縮水或大樓入不敷出。一篇看懂它在繳什麼、怎麼判讀高低。（撰寫 2024-12-10）
+
+## 其他頁面
+
+- [日本買房完全指南（總覽）](https://chouchouinjapan.com/buy-property-in-japan.html)：全站文章、工具與物件的入口
+- [在日本買房要找誰？三種選擇的比較](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese.html)：含常見問題
+- [在售物件](https://chouchouinjapan.com/properties.html)：目前 34 件，可依預算、用途、格局篩選
+- [東京區域導覽](https://chouchouinjapan.com/tokyo-area-guide.html)
+- [關於周周](https://chouchouinjapan.com/about.html)：完整資格、能做與不能做的事
+- 免費試算工具：[房貸](https://chouchouinjapan.com/tool-loan.html)／[取得諸費用](https://chouchouinjapan.com/tool-cost.html)／[投報率](https://chouchouinjapan.com/tool-yield.html)／[匯率](https://chouchouinjapan.com/tool-fx.html)／[坪數換算](https://chouchouinjapan.com/tool-area.html)
+- [房產圖面翻譯機](https://chouchouinjapan.com/translate.html)：把日文販売図面翻成中文
+
+## 其他語言
+
+- 簡體中文首頁：https://chouchouinjapan.com/index-cn.html（各文章為 `<slug>-cn.html`）
+- 日本語トップ：https://chouchouinjapan.com/ja.html（各記事は `<slug>-ja.html`）
+- 日本の不動産会社・オーナー様向け：https://chouchouinjapan.com/sell-your-property-ja.html
+
+## 引用方式
+
+歡迎引用本站內容，引用時請標示作者「周周（周欣妤）」與來源連結。
+文章頁的結構化資料（JSON-LD）含 datePublished 與 dateModified，可據此判斷內容新鮮度。
