@@ -252,6 +252,11 @@ node check-lang.cjs       # 中文頁面的日文殘留檢查（只回報、不�
 - **必須排在 `build-cn.cjs` 之後**，因為 `properties-cn.html` 是 build-cn 從繁中版重新產生的，
   先跑會被蓋掉、而且簡中頁會殘留繁中版的網址。
 - **`<!--PROP-SEO-->` 到 `<!--/PROP-SEO-->` 之間不要手改**，改物件請改 `properties.js` 再重跑。
+- ⚠️ **改完 `properties.js` 要跑「全部六支」，不可以只跑 `build-cn` ＋ `build-prop-seo`**
+  （2026-09-18 的 A7 冪等檢查抓到）。因為「在售件數」被內嵌在三個地方：
+  `llms.txt`／`llms-cn.txt`（generate-pages＋build-cn 產）、`llms-ja.txt`（build-ja 產）、
+  `sell-your-property-ja.html` 的「現在○○件を掲載」（build-ja 產）。
+  只跑後兩支的話，物件數改了、這些檔還停在舊數字，線上就會自相矛盾。
 - **帶 `noindex` 的頁面不可以進 sitemap**（例如 `property.html` 這種要靠 `?id=` 才有內容的殼頁）。
   否則 sitemap 說「請收錄」、頁面說「不要收錄」，Search Console 會報「遭到 noindex 標記排除」。
   `build-cn.cjs` 已會自動偵測並排除，不要手動把這類頁加回 sitemap。
