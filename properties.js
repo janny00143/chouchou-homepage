@@ -433,23 +433,23 @@ window.PROPERTIES = [
   {
     id: "futaba",
     listed: "2026-08-07",
-    layoutTag: "2〜3LDK",
+    layoutTag: "3LDK",
     status: "在售",
     cat: "house",
-    title: "二葉1丁目 part3 新築戸建（A棟・B棟）",
-    title_cn: "品川區二葉1丁目 新築一戶建 A・B棟（自社）",
-    price: "A棟 1億4,280万円／B棟 1億4,980万円（含稅）",
+    title: "二葉1丁目 part3 新築戸建（B棟）",
+    title_cn: "品川區二葉1丁目 新築一戶建 B棟（自社）",
+    price: "1億4,680万円（含稅）",
     location: "東京都品川區二葉1丁目13-22",
     station: "東急大井町線「下神明」站 徒步約6分／JR京濱東北線「大井町」站 徒步約12分",
-    layout: "3層戸建・A棟 LDK約18.1帖＋2居室＋多用途房／B棟 LDK約19.0帖＋3居室",
-    size: "A棟 建物109.06㎡・土地59.78㎡／B棟 建物106.29㎡・土地61.58㎡",
+    layout: "3層戸建・LDK約19.0帖＋3居室",
+    size: "建物106.29㎡（約32.2坪）・土地61.58㎡（約18.6坪）",
     age: "新築（已完工・2026年8月中旬交屋預定）",
-    facing: "附車庫（兩棟皆附）",
+    facing: "附車庫",
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-futaba-1.webp","prop-futaba-plan.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
-    note: "品川區二葉、下神明站徒步約6分、大井町站也在徒步圈的自社新築3層戸建，A・B兩棟可選！A棟LDK約18.1帖＋L型廚房、B棟LDK約19.0帖＋勾配天井，兩棟都附車庫與充足收納。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立豊葉の杜學園（小中一貫校）。已完工、2026年8月中旬交屋預定。想比較兩棟或預約看房，加LINE跟我說，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
+    photos: ["prop-futaba-1.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
+    note: "品川區二葉、下神明站徒步約6分、大井町站也在徒步圈的自社新築3層戸建（B棟）！LDK約19.0帖＋勾配天井，開闊又有設計感，附車庫與充足收納。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立豊葉の杜學園（小中一貫校）。已完工、可即時交屋。想預約看房，加LINE跟我說，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
   {
