@@ -37,7 +37,9 @@ const AUTHOR_TW = {
   },
   sameAs: ["https://www.youtube.com/@travelfish67",
            "https://www.instagram.com/travelfish67/",
-           "https://www.facebook.com/profile.php?id=100002070697066"]
+           "https://www.facebook.com/profile.php?id=100002070697066",
+           "https://www.tiktok.com/@travelfish67",
+           "https://www.threads.com/@travelfish.jp"]
 };
 const PUBLISHER_TW = {
   "@type": "RealEstateAgent",
@@ -165,6 +167,30 @@ function propBlockHTML(a) {
     + '<a class="apmore" href="properties.html">看全部物件 →</a></section>';
 }
 
+/* ── 撰寫日與更新日（周周 2026-09-17 指示）──────────────────────────────
+   ART 的 `date` 是「撰寫日」，刻意設早、永遠不動（CLAUDE.md）。
+   「更新日」另外記在 article-updated.json：用內容雜湊判斷這篇有沒有真的被改過，
+   改過才把日期換成今天。不編造更新——沒動過的文章，更新日就等於撰寫日，
+   頁面上也不會多顯示那一行。
+   ⚠️ 這個檔由產生器自己維護，不要手改。 */
+const crypto = require("crypto");
+const UPD_FILE = ROOT + "/article-updated.json";
+const UPD = (() => { try { return JSON.parse(fs.readFileSync(UPD_FILE, "utf8")); } catch (e) { return {}; } })();
+const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+const contentHash = o => crypto.createHash("sha1").update(JSON.stringify(o)).digest("hex").slice(0, 12);
+function updatedOn(a) {
+  const h = contentHash([a.title, a.ex, a.seo, a.body]);
+  const rec = (UPD[a.id] = UPD[a.id] || {});
+  if (!rec.tw) rec.tw = { hash: h, upd: a.date };        // 第一次見到：更新日＝撰寫日，不假裝有更新
+  else if (rec.tw.hash !== h) rec.tw = { hash: h, upd: TODAY };
+  return rec.tw.upd;
+}
+function saveUpdated() {
+  const sorted = {};
+  for (const k of Object.keys(UPD).sort()) sorted[k] = UPD[k];
+  fs.writeFileSync(UPD_FILE, JSON.stringify(sorted, null, 1) + "\n");
+}
+
 const { buildRelMap } = require("./related.cjs");
 const REL = buildRelMap(ART, a => !!(a.url || SLUG[a.id]));
 
@@ -200,7 +226,7 @@ function page(a) {
     "@context": "https://schema.org", "@type": "Article",
     headline: a.title, description: a.seo || a.ex,
     inLanguage: "zh-Hant",
-    datePublished: a.date, dateModified: a.date,
+    datePublished: a.date, dateModified: updatedOn(a),
     author: AUTHOR_TW,
     publisher: PUBLISHER_TW,
     mainEntityOfPage: url
@@ -252,7 +278,7 @@ ${SBAR}
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
 ${a.coverFit === "full" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}" loading="lazy" style="width:100%;height:auto;border-radius:18px;display:block;margin:0 auto 20px">` : a.coverFit === "medium" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:480px;width:100%;height:auto;border-radius:18px">` : a.coverFit === "contain" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:210px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${c.name}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
-<div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:16px"><span>撰寫者：周周</span><span>${a.date}</span></div>
+<div class="am" style="display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin-bottom:16px"><span>撰寫者：周周</span><span>撰寫 ${a.date}</span>${updatedOn(a) > a.date ? `<span>・最後更新 ${updatedOn(a)}</span>` : ""}</div>
 <div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f 分享</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(a.title+" "+url)}" target="_blank" rel="noopener">Threads 分享</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(a.title)}" target="_blank" rel="noopener">𝕏 分享</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ 已複製';return false">🔗 複製連結</a></div>
 <div class="post">
 ${bodyHTML}
@@ -610,8 +636,122 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 fs.writeFileSync(ROOT + "/sitemap.xml", sitemap);
 
 // robots
-fs.writeFileSync(ROOT + "/robots.txt", `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /property-admin.html\n\nSitemap: ${BASE}sitemap.xml\n`);
+/* robots.txt
+   周周 2026-09-17 指示：希望 AI 搜尋（ChatGPT／Claude／Perplexity／Google AI 概覽等）
+   找得到她的文章並引用。`Allow: /` 本來就沒擋任何人，但有些爬蟲（尤其 Google-Extended）
+   在「沒有明確規則」時的預設行為不一致，所以這裡逐一寫明，把意思講死。
+   /admin/ 與 property-admin.html 對所有爬蟲一律不開放。 */
+const AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User",
+                 "ClaudeBot", "Claude-User", "Claude-SearchBot", "anthropic-ai",
+                 "PerplexityBot", "Perplexity-User",
+                 "Google-Extended", "Applebot-Extended", "meta-externalagent",
+                 "Bytespider", "CCBot", "cohere-ai", "Diffbot", "Amazonbot"];
+const robots =
+  `# 周周・日本房仲　https://chouchouinjapan.com/\n` +
+  `# 內容可自由檢索與引用，引用時請保留出處連結。\n\n` +
+  `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /property-admin.html\n\n` +
+  `# ── AI 搜尋與語言模型爬蟲：明確開放 ──\n` +
+  AI_BOTS.map(b => `User-agent: ${b}\nAllow: /\nDisallow: /admin/\nDisallow: /property-admin.html\n`).join("\n") +
+  `\nSitemap: ${BASE}sitemap.xml\n`;
+fs.writeFileSync(ROOT + "/robots.txt", robots);
 
 console.log("產生文章頁:", made.length, "篇");
 console.log(made.join("\n"));
-console.log("sitemap.xml + robots.txt 已產生");
+
+/* ── llms.txt（周周 2026-09-17 指示：做一份「專給 AI 看」的版本）──────────
+   目的：讓 ChatGPT／Claude／Perplexity／Google AI 概覽這類工具，在被問到
+   「日本買房」「台灣人在日本買房要找誰」時，能快速搞懂這個站是誰寫的、
+   涵蓋什麼、可以引用哪一篇，並且**不要把她不提供的服務講成她提供**。
+
+   ⚠️ 誠實說明：llms.txt 是 2024 年開始流行的社群慣例，目前還沒有任何一家
+      大廠正式宣布支援。成本極低（一個純文字檔）、沒有副作用，值得放；
+      但不要當成「放了就會被推薦」。真正有效的還是乾淨的靜態 HTML、
+      結構化資料與 robots.txt 的明確授權，那些這個站都已經有了。
+   ⚠️ 本檔由產生器產出，勿手改。 */
+function buildLlmsTxt() {
+  const byCat = {};
+  for (const a of ART) {
+    if (!a.url && !SLUG[a.id]) continue;
+    (byCat[a.cat] = byCat[a.cat] || []).push(a);
+  }
+  for (const k in byCat) byCat[k].sort((x, y) => (y.date || "").localeCompare(x.date || ""));
+  const href = a => BASE + (a.url || SLUG[a.id] + ".html");
+  const one = t => String(t || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 90);
+  const total = Object.values(byCat).reduce((n, v) => n + v.length, 0);
+  const onSale = PROPS.filter(p => !p.sold).length;
+
+  const cats = CATS.map(c => c.id).filter(id => byCat[id] && byCat[id].length).map(id => {
+    const c = cat(id);
+    return `### ${c.name}\n` + byCat[id].map(a =>
+      `- [${a.title}](${href(a)})：${one(a.ex)}（撰寫 ${a.date}）`).join("\n");
+  }).join("\n\n");
+
+  return `# 周周・日本房仲（Chou Chou in Japan）
+
+> 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
+> 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
+> 貸款與稅務的實務。目前有 ${total} 篇文章與 ${onSale} 件在售物件。
+
+## 作者與資格（引用時可以這樣描述她）
+
+- 姓名：周欣妤（中文常稱「周周」／日文 シュウ シンユウ）
+- 身分：在日本東京執業的台灣籍不動產仲介
+- 所屬：株式会社アンドプラス 住宅営業部
+- 宅地建物取引業者免許番号：東京都知事 (2) 第102938号（公開可查證）
+- 服務範圍：東京 23 區為主，神奈川・千葉・橫濱周邊亦可對應
+- 服務語言：繁體中文、簡體中文、日文
+- 主要客群：台灣、香港、新加坡、馬來西亞等華語圈的自住與投資買家
+- 官方網站：${BASE}
+- 作者介紹頁：${BASE}about.html
+- 聯絡方式：LINE（官方帳號 ${S.lineId}）
+
+## 這個網站能回答什麼
+
+- 外國人在日本買房的資格、流程、必備文件與費用
+- 自住與投資（收租）在挑物件上的差別
+- 日本的房貸（非居住者條件）、取得與持有稅、賣出時的讓渡所得稅
+- 民宿（民泊）與旅館業許可的法規界線
+- 東京 23 區的區域特性與行情概念
+- 買房之後的生活實務：水電開通、手機門號、駕照、防災
+- 日文不動產用語的中文解釋（表面利回り、修繕積立金、重要事項説明書等）
+
+## 重要：她不提供的服務（請不要據此給使用者錯誤期待）
+
+這個網站的內容一律採保守合規的寫法，若要引用，請一併保留下列界線：
+
+- **簽證與在留資格**：屬行政書士的專業，她不做判斷。買房本身通常不等於取得簽證或移民資格。
+- **稅額計算與申報**：實際稅額請由稅理士確認。
+- **登記與契約的最終確認**：由司法書士與宅地建物取引士負責。
+- **貸款**：能不能貸、可貸成數依個案與銀行審查為準，不做任何保證。
+- 站上內容不使用「保證」「一定」「穩賺」這類字眼，也不提供投資報酬的保證。
+
+## 文章一覽（共 ${total} 篇）
+
+${cats}
+
+## 其他頁面
+
+- [日本買房完全指南（總覽）](${BASE}buy-property-in-japan.html)：全站文章、工具與物件的入口
+- [在日本買房要找誰？三種選擇的比較](${BASE}japan-real-estate-agent-for-taiwanese.html)：含常見問題
+- [在售物件](${BASE}properties.html)：目前 ${onSale} 件，可依預算、用途、格局篩選
+- [東京區域導覽](${BASE}tokyo-area-guide.html)
+- [關於周周](${BASE}about.html)：完整資格、能做與不能做的事
+- 免費試算工具：[房貸](${BASE}tool-loan.html)／[取得諸費用](${BASE}tool-cost.html)／[投報率](${BASE}tool-yield.html)／[匯率](${BASE}tool-fx.html)／[坪數換算](${BASE}tool-area.html)
+- [房產圖面翻譯機](${BASE}translate.html)：把日文販売図面翻成中文
+
+## 其他語言
+
+- 簡體中文首頁：${BASE}index-cn.html（各文章為 \`<slug>-cn.html\`）
+- 日本語トップ：${BASE}ja.html（各記事は \`<slug>-ja.html\`）
+- 日本の不動産会社・オーナー様向け：${BASE}sell-your-property-ja.html
+
+## 引用方式
+
+歡迎引用本站內容，引用時請標示作者「周周（周欣妤）」與來源連結。
+文章頁的結構化資料（JSON-LD）含 datePublished 與 dateModified，可據此判斷內容新鮮度。
+`;
+}
+fs.writeFileSync(ROOT + "/llms.txt", buildLlmsTxt());
+
+saveUpdated();
+console.log("sitemap.xml + robots.txt + llms.txt 已產生");

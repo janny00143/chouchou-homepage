@@ -140,6 +140,29 @@ function propBlockHTMLJa(a) {
     + '<a class="apmore" href="properties-ja.html">物件一覧を見る →</a></section>';
 }
 
+/* ── 執筆日と更新日（周周 2026-09-17 指示）─────────────────────────────
+   繁中側と同じ仕組み。日本語本文のハッシュで「本当に直したか」を判定し、
+   直したときだけ更新日を今日に。直していなければ更新日＝執筆日で、
+   ページにも余計な行は出さない（更新をでっち上げない）。
+   ⚠️ article-updated.json は産生器が自動で管理。手で触らないこと。 */
+const crypto = require("crypto");
+const UPD_FILE = ROOT + "/article-updated.json";
+const UPD = (() => { try { return JSON.parse(fs.readFileSync(UPD_FILE, "utf8")); } catch (e) { return {}; } })();
+const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
+const contentHash = o => crypto.createHash("sha1").update(JSON.stringify(o)).digest("hex").slice(0, 12);
+function updatedOnJa(a, j) {
+  const h = contentHash([j.title, j.ex, j.seo, j.body]);
+  const rec = (UPD[a.id] = UPD[a.id] || {});
+  if (!rec.ja) rec.ja = { hash: h, upd: a.date };
+  else if (rec.ja.hash !== h) rec.ja = { hash: h, upd: TODAY };
+  return rec.ja.upd;
+}
+function saveUpdatedJa() {
+  const sorted = {};
+  for (const k of Object.keys(UPD).sort()) sorted[k] = UPD[k];
+  fs.writeFileSync(UPD_FILE, JSON.stringify(sorted, null, 1) + "\n");
+}
+
 const { buildRelMap } = require("./related.cjs");
 const REL_JA = buildRelMap(ART, a => !!(SLUG[a.id] && JA_CONTENT[a.id]));
 
@@ -159,7 +182,7 @@ function pageJa(a, j) {
     "@context": "https://schema.org", "@type": "Article",
     headline: j.title, description: j.ex,
     inLanguage: "ja",
-    datePublished: a.date, dateModified: a.date,
+    datePublished: a.date, dateModified: updatedOnJa(a, j),
     author: AUTHOR_JA,
     publisher: PUBLISHER_JA,
     mainEntityOfPage: url
@@ -212,7 +235,7 @@ ${SBAR}
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="ja.html" style="color:var(--mut)">ホーム</a> › ${catName}</p>
 ${a.coverFit === "full" ? `<img${wh(cover)} src="${cover}" alt="${esc(j.title)}" loading="lazy" style="width:100%;height:auto;border-radius:18px;display:block;margin:0 auto 20px">` : a.coverFit === "contain" ? `<img${wh(cover)} src="${cover}" alt="${esc(j.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:210px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${catName}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${j.title}</h1>
-<div class="am" style="display:flex;gap:14px;color:var(--mut);font-size:14px;margin-bottom:16px"><span>執筆者：周周</span><span>${a.date}</span></div>
+<div class="am" style="display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin-bottom:16px"><span>執筆者：周周</span><span>執筆 ${a.date}</span>${updatedOnJa(a, j) > a.date ? `<span>・最終更新 ${updatedOnJa(a, j)}</span>` : ""}</div>
 <div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f シェア</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(j.title + " " + url)}" target="_blank" rel="noopener">Threadsでシェア</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(j.title)}" target="_blank" rel="noopener">𝕏 でポスト</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ コピーしました';return false">🔗 リンクをコピー</a></div>
 <div class="post">
 ${bodyHTML}
@@ -240,6 +263,7 @@ for (const a of ART) {
   made.push(jaSlug(SLUG[a.id]) + ".html");
 }
 
+saveUpdatedJa();
 console.log("產生日文文章頁:", made.length, "篇 / 共", Object.keys(SLUG).length, "篇");
 console.log(made.join("\n"));
 

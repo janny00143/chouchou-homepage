@@ -1,4 +1,93 @@
+# 周周・日本房仲　https://chouchouinjapan.com/
+# 內容可自由檢索與引用，引用時請保留出處連結。
+
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+# ── AI 搜尋與語言模型爬蟲：明確開放 ──
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Diffbot
+Allow: /
+Disallow: /admin/
+Disallow: /property-admin.html
+
+User-agent: Amazonbot
 Allow: /
 Disallow: /admin/
 Disallow: /property-admin.html
