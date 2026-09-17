@@ -1,14 +1,14 @@
 {
  "date": "2026-09-17",
- "mode": "full",
+ "mode": "A",
  "metrics": {
   "pages": 229,
   "inlineJs": 1557,
   "jsonLd": 363,
-  "links": 3395,
+  "links": 3386,
   "sitemap": 216,
-  "props": 43,
-  "propsOnSale": 34,
+  "props": 40,
+  "propsOnSale": 31,
   "articles": 53,
   "runtimePages": 6,
   "jaEntries": 52,

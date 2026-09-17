@@ -344,51 +344,6 @@ window.PROPERTIES = [
   },
 
   {
-    id: "higashitamagawa",
-    listed: "2026-08-07",
-    layoutTag: "3LDK+S",
-    status: "在售",
-    cat: "house",
-    title: "東玉川1丁目 新築戸建",
-    title_cn: "世田谷區東玉川1丁目 新築一戶建（自社）",
-    price: "1億4,980万円",
-    location: "東京都世田谷區東玉川1丁目32-13",
-    station: "東急目黑線「奥沢」站 徒步約11分／東急池上線「雪が谷大塚」站 徒步約11分／東急東橫線・目黑線「田園調布」站 徒步約13分",
-    layout: "2層戸建・LDK約19.5帖＋3居室＋多用途房＋4.7帖閣樓收納",
-    size: "建物105.33㎡（約31.9坪・含車庫）・土地98.37㎡（約29.8坪）",
-    age: "新築（已完工・可即時交屋）",
-    facing: "附車庫・第一種低層住居專用地域",
-    mgmt: "戸建・無管理費與修繕積立金",
-    right: "所有權",
-    yield: "",
-    photos: ["prop-higashitamagawa-1.webp","prop-higashitamagawa-plan.webp","prop-higashitamagawa-2.webp","prop-higashitamagawa-3.webp","prop-higashitamagawa-4.webp","prop-higashitamagawa-5.webp","prop-higashitamagawa-6.webp","prop-higashitamagawa-7.webp","prop-higashitamagawa-8.webp","prop-higashitamagawa-9.webp","prop-higashitamagawa-10.webp"],
-    note: "世田谷區東玉川、田園調布生活圈的自社新築2層戸建！奥沢與雪が谷大塚兩站都徒步約11分，第一種低層住居專用地域、環境安靜。約19.5帖的開放LDK配半島型廚房、挑高玄關加大容量玄關收納，還有4.7帖的閣樓收納，收納力超強。一級建築士事務所一棟一棟原創設計，已完工、可即時交屋，Flat 35S（A方案）適合證明取得預定；學區為奥沢小學、奥沢中學。想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
-  },
-
-  {
-    id: "fukasawa",
-    listed: "2026-08-07",
-    layoutTag: "4LDK",
-    status: "在售",
-    cat: "house",
-    title: "深沢3丁目 新築戸建",
-    title_cn: "世田谷區深沢3丁目 新築一戶建（自社）",
-    price: "1億3,980万円（含稅）",
-    location: "東京都世田谷區深沢3丁目5-4",
-    station: "東急大井町線・東橫線「自由が丘」站 徒步約25分／東急大井町線「尾山台」站 徒步約20分",
-    layout: "3層戸建・LDK約23.7帖＋4居室（全室6帖以上）",
-    size: "建物161.59㎡（約48.9坪・含車庫）・土地91.67㎡（約27.7坪）",
-    age: "新築（已完工・可即時交屋）",
-    facing: "附車庫・室內陽台（雨天也可用）",
-    mgmt: "戸建・無管理費與修繕積立金",
-    right: "所有權",
-    yield: "",
-    video: "drive:1r4KXMpF2Emsf-Pybm0U852YWHJzxf8X-",
-    photos: ["prop-fukasawa-1.webp","prop-fukasawa-plan.webp","prop-fukasawa-2.webp","prop-fukasawa-3.webp","prop-fukasawa-4.webp","prop-fukasawa-5.webp","prop-fukasawa-6.webp","prop-fukasawa-7.webp","prop-fukasawa-8.webp","prop-fukasawa-9.webp"],
-    note: "世田谷區深沢、自由が丘生活圈的自社新築3層戸建，建物約48.9坪、在都內戸建裡相當大器！約23.7帖的超大LDK配半島型廚房與食品庫，鐵骨樓梯設計感十足，室內陽台下雨天也能安心晾曬，4間居室全部6帖以上、還有WIC。一級建築士事務所原創設計，已完工、可即時交屋，Flat 35S（A方案）適合證明取得預定；學區為東深沢小學、東深沢中學。可以直接看影片逛一圈實景！想看房加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
-  },
-
-  {
     id: "nishioi-a",
     listed: "2026-08-07",
     layoutTag: "2LDK+2S",
@@ -448,7 +403,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-futaba-1.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
+    photos: ["prop-futaba-1.webp","prop-futaba-plan.webp","prop-futaba-2.webp","prop-futaba-3.webp","prop-futaba-4.webp","prop-futaba-5.webp","prop-futaba-6.webp","prop-futaba-7.webp","prop-futaba-8.webp","prop-futaba-9.webp","prop-futaba-10.webp"],
     note: "品川區二葉、下神明站徒步約6分、大井町站也在徒步圈的自社新築3層戸建（B棟）！LDK約19.0帖＋勾配天井，開闊又有設計感，附車庫與充足收納。一級建築士事務所原創設計，Flat 35S（ZEH方案）適合證明取得預定；學區為區立豊葉の杜學園（小中一貫校）。已完工、可即時交屋。想預約看房，加LINE跟我說，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -472,27 +427,6 @@ window.PROPERTIES = [
     yield: "",
     photos: ["prop-setagaya-1.webp","prop-setagaya-house-plan.webp","prop-setagaya-2.webp","prop-setagaya-3.webp"],
     note: "■ 先說清楚這件是什麼\n它是「建築條件付售地」，不是蓋好的成屋。你買下這塊地之後，由我們自社（グランプラス體系）的一級建築士團隊為你設計施工——所以格局、動線、內裝都能照你的想法調整，這是買現成屋做不到的事。\n■ 位置\n世田谷區下馬3丁目，三軒茶屋與學藝大學之間那一帶，安靜、綠意多。旭小學走3分、鶴ヶ久保公園走2分，生活機能完整；駒澤大學站徒步約18分、三軒茶屋站徒步約19分，往澀谷很快。\n■ 土地條件\n約74.31㎡（約22.48坪）、第一種中高層住居專用地域、建蔽率60%／容積率200%。接的是有人行道的公道，日後轉手條件也比較好談。\n■ 參考建築方案\n3層樓、總樓地板約133.66㎡（一樓48.02㎡、二樓50.34㎡含車庫15.52㎡、三樓35.30㎡）。LDK約20.3帖，加上8.3帖、5.5帖、5.5帖、5.3帖四個房間與多用途房，還有兩個步入式衣帽間跟食品儲藏室——一家人住很夠用。\n■ 設備與性能\n瓦斯溫水式地暖、平面型廚房＋洗碗機、W2700餐櫃、三面鏡收納洗面台、電動車充電插座、制震阻尼器。預計取得 Flat 35S（ZEH方案）適合證明，耐震等級2相當、隔熱等級5相當、一次能源等級6相當。學區是區立旭小學、區立駒留中學。\n■ 價格與時程\n土地1億3,200萬円，參考建物價格4,080萬円，總額約1億7,280萬円（含稅）。現況是更地，預計2026年9月中旬交地。\n■ ⚠️ 關於照片\n相簿裡的外觀與室內圖都是參考方案的完成示意圖（パース）、不是實景照，實際成品依最終設計而定。\n這是不對外流通的自社限定物件，只有1區。想聊聊「買地自己蓋」的流程、費用與時程，加LINE跟周周說一聲（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
-  },
-
-  {
-    id: "daikanyama",
-    listed: "2026-08-03",
-    status: "在售",
-    cat: "live",
-    title: "ウィスティリアコート代官山 2階",
-    title_cn: "代官山5分 南西向 全新翻新2LDK",
-    price: "1億3,480万円",
-    location: "東京都渋谷區代官山町10-12",
-    station: "東急東橫線「代官山」站 徒步5分／日比谷線「惠比壽」站 徒步10分／JR山手線・埼京線・湘南新宿線「澀谷」站 徒步11分",
-    layout: "2LDK",
-    size: "57.68㎡（約17.44坪）・陽台3.90㎡",
-    age: "築28年（1998年2月）",
-    facing: "南西向・SRC造9層建的2樓・總戶數45戶",
-    mgmt: "管理費14,700円＋修繕積立金24,110円＋町內會費200円／月（合計約39,010円・全部委託・管理員日勤）",
-    right: "所有權",
-    yield: "",
-    photos: ["prop-daikanyama-1.webp","prop-daikanyama-plan.webp","prop-daikanyama-2.webp","prop-daikanyama-3.webp","prop-daikanyama-4.webp","prop-daikanyama-5.webp","prop-daikanyama-6.webp","prop-daikanyama-7.webp","prop-daikanyama-8.webp"],
-    note: "代官山超精華地段、代官山站徒步5分，惠比壽（10分）與澀谷（11分）都在生活圈，鬧中取靜。這戶2026年2月剛完成全室翻新——系統廚具、整體衛浴、給湯器、洗面化妝台、全室地板與壁紙、廁所、建具、玄關地坪通通換新，屋況全新可直接入住。南西向、採光通風佳，SRC造附電梯、都市瓦斯，還附食洗機與售後保固（アフターサービス保証付）。現況空屋、可看房。代官山這種地段的翻新2LDK很稀有，想看房或試算貸款加LINE，我幫你把關（能不能貸、可貸成數依個案與銀行審查為準；此為中古翻新物件，實際以現況與重要事項說明書為準）。"
   },
 
   {
