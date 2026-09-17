@@ -248,10 +248,29 @@ function a4_data() {
   metrics.props = P.length;
   metrics.propsOnSale = P.filter(p => !p.sold).length;
   metrics.articles = ART.length;
-  const bad = missPhoto.concat(missCover).concat(noJa.map(id => `日文條目缺: ${id}`));
+  /* 在售件數被內嵌在好幾個產出檔裡，改完 properties.js 只跑部分產生器就會對不上。
+     2026-09-18 真的發生過：llms 三語與日文賣方頁停在「34 件」，實際已是 32 件。
+     這裡直接比數字，不必重跑產生器（--gen 才會重跑），所以每天都抓得到。 */
+  const onSale = metrics.propsOnSale;
+  const countChecks = [
+    ["llms.txt", /目前有 \d+ 篇文章與 (\d+) 件在售物件/],
+    ["llms.txt", /在售物件\]\([^)]*\)：目前 (\d+) 件/],
+    ["llms-cn.txt", /目前有 \d+ 篇文章与 (\d+) 件在售物件/],
+    ["llms-ja.txt", /日本語記事 \d+ 本、販売中物件 (\d+) 件/],
+    ["sell-your-property-ja.html", /現在<b>(\d+) 件<\/b>を掲載/],
+  ];
+  const staleCount = [];
+  for (const [file, re] of countChecks) {
+    let t; try { t = fs.readFileSync(path.join(ROOT, file), "utf8"); } catch (e) { continue; }
+    const m = t.match(re);
+    if (m && Number(m[1]) !== onSale) staleCount.push(`${file}: 寫著 ${m[1]} 件，實際在售 ${onSale} 件`);
+  }
+  const bad = missPhoto.concat(missCover)
+    .concat(noJa.map(id => `日文條目缺: ${id}`))
+    .concat(staleCount.map(x => `在售件數不同步 → ${x}（六支產生器沒跑齊）`));
   add("A4", "資料檔",
     bad.length ? "FAIL" : "OK",
-    `物件 ${P.length}（在售 ${metrics.propsOnSale}）／照片遺失 ${missPhoto.length}／日文缺 ${noJa.length}｜文章 ${ART.length}／封面遺失 ${missCover.length}`,
+    `物件 ${P.length}（在售 ${metrics.propsOnSale}）／照片遺失 ${missPhoto.length}／日文缺 ${noJa.length}｜文章 ${ART.length}／封面遺失 ${missCover.length}｜件數同步 ${staleCount.length ? "✗" : "✓"}`,
     bad.slice(0, 10));
 }
 
