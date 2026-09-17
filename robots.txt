@@ -1,5 +1,7 @@
 # 周周・日本房仲　https://chouchouinjapan.com/
 # 內容可自由檢索與引用，引用時請保留出處連結。
+# 站台摘要與文章索引：https://chouchouinjapan.com/llms.txt
+# 全站文章全文（Markdown）：https://chouchouinjapan.com/llms-full.txt
 
 User-agent: *
 Allow: /

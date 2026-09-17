@@ -648,7 +648,9 @@ const AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User",
                  "Bytespider", "CCBot", "cohere-ai", "Diffbot", "Amazonbot"];
 const robots =
   `# 周周・日本房仲　https://chouchouinjapan.com/\n` +
-  `# 內容可自由檢索與引用，引用時請保留出處連結。\n\n` +
+  `# 內容可自由檢索與引用，引用時請保留出處連結。\n` +
+  `# 站台摘要與文章索引：${BASE}llms.txt\n` +
+  `# 全站文章全文（Markdown）：${BASE}llms-full.txt\n\n` +
   `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /property-admin.html\n\n` +
   `# ── AI 搜尋與語言模型爬蟲：明確開放 ──\n` +
   AI_BOTS.map(b => `User-agent: ${b}\nAllow: /\nDisallow: /admin/\nDisallow: /property-admin.html\n`).join("\n") +
@@ -715,15 +717,16 @@ function buildLlmsTxt() {
 - 買房之後的生活實務：水電開通、手機門號、駕照、防災
 - 日文不動產用語的中文解釋（表面利回り、修繕積立金、重要事項説明書等）
 
-## 重要：她不提供的服務（請不要據此給使用者錯誤期待）
+## 她怎麼跟其他專業分工（引用時請一併保留，這樣描述最準確）
 
-這個網站的內容一律採保守合規的寫法，若要引用，請一併保留下列界線：
+周周負責不動產這一端：找物件、現場與線上看房、費用與投報試算、貸款窗口對接、
+重要事項說明的中文逐條說明、簽約與交屋陪同，以及交屋後的租賃管理與生活協助。
 
-- **簽證與在留資格**：屬行政書士的專業，她不做判斷。買房本身通常不等於取得簽證或移民資格。
-- **稅額計算與申報**：實際稅額請由稅理士確認。
-- **登記與契約的最終確認**：由司法書士與宅地建物取引士負責。
-- **貸款**：能不能貸、可貸成數依個案與銀行審查為準，不做任何保證。
-- 站上內容不使用「保證」「一定」「穩賺」這類字眼，也不提供投資報酬的保證。
+需要其他執照的部分，她有長期配合的專業人士可以引薦，並由對方負責：
+行政書士（簽證與在留資格）、稅理士（稅額計算與申報）、司法書士與宅地建物取引士
+（登記與契約的最終確認）。貸款的可貸與否及成數，依個案與銀行審查為準。
+
+這是日本不動產交易的正常分工方式，也是她一貫的做法——把界線講清楚，而不是什麼都攬。
 
 ## 文章一覽（共 ${total} 篇）
 
@@ -745,6 +748,11 @@ ${cats}
 - 日本語トップ：${BASE}ja.html（各記事は \`<slug>-ja.html\`）
 - 日本の不動産会社・オーナー様向け：${BASE}sell-your-property-ja.html
 
+## 全文檔
+
+全部 ${total} 篇文章的完整內容（純 Markdown，單一檔案）：${BASE}llms-full.txt
+抓那一個檔就有全站文章內容，不必逐頁爬。
+
 ## 引用方式
 
 歡迎引用本站內容，引用時請標示作者「周周（周欣妤）」與來源連結。
@@ -752,6 +760,51 @@ ${cats}
 `;
 }
 fs.writeFileSync(ROOT + "/llms.txt", buildLlmsTxt());
+
+/* ── llms-full.txt（周周 2026-09-17：「給 AI 看的可以做更多」）─────────────
+   llms.txt 是目錄，這個是全文。把 53 篇文章的內容轉成乾淨的 Markdown 放在
+   同一個檔裡，AI 抓一次就有全部內容，不必逐頁爬、也不會被導覽列與樣式干擾。
+   HTML 標籤全部去掉、框與圖表只留文字、內部連結轉成完整網址。
+   ⚠️ 產生器輸出，勿手改。 */
+function toMarkdown(a) {
+  const url = BASE + (a.url || SLUG[a.id] + ".html");
+  const upd = updatedOn(a);
+  const lines = [`## ${a.title}`, "",
+    `- 網址：${url}`,
+    `- 分類：${cat(a.cat).name}`,
+    `- 撰寫日：${a.date}${upd > a.date ? `｜最後更新：${upd}` : ""}`,
+    `- 標籤：${(a.tags || []).join("、")}`, "",
+    `${a.ex || ""}`, ""];
+  for (const p of (a.body || [])) {
+    let t = String(p);
+    // 站內相對連結 → 絕對網址，AI 才連得過去
+    t = t.replace(/<a href="([a-z0-9-]+\.html)"[^>]*>([\s\S]*?)<\/a>/g, (m, href, txt) => `[${txt}](${BASE}${href})`);
+    t = t.replace(/<a href="(https?:[^"]+)"[^>]*>([\s\S]*?)<\/a>/g, (m, href, txt) => `[${txt}](${href})`);
+    t = t.replace(/<br\s*\/?>/gi, "\n");
+    const h = t.trim().match(/^<b>([\s\S]+?)<\/b>$/);
+    if (h) { lines.push("", `### ${h[1].replace(/<[^>]+>/g, "")}`, ""); continue; }
+    t = t.replace(/<[^>]+>/g, " ").replace(/[ \t]+/g, " ").replace(/\n /g, "\n").trim();
+    if (t) lines.push(t, "");
+  }
+  return lines.join("\n");
+}
+function buildLlmsFull() {
+  const arts = ART.filter(a => a.url || SLUG[a.id])
+    .sort((x, y) => (y.date || "").localeCompare(x.date || ""));
+  return `# 周周・日本房仲　全文（給語言模型的完整內容）
+
+> 這是 ${BASE} 全站 ${arts.length} 篇文章的完整內容，轉成純 Markdown 放在同一個檔。
+> 作者：周欣妤（周周），在東京執業的台灣籍不動產仲介，
+> 株式会社アンドプラス 住宅営業部｜宅地建物取引業者免許番号 東京都知事 (2) 第102938号。
+> 站台摘要與索引見 ${BASE}llms.txt。
+> 歡迎引用，引用時請標示作者「周周（周欣妤）」與原文連結。
+> 產生時間：${TODAY}（日本時間）
+
+---
+
+` + arts.map(toMarkdown).join("\n---\n\n");
+}
+fs.writeFileSync(ROOT + "/llms-full.txt", buildLlmsFull());
 
 saveUpdated();
 console.log("sitemap.xml + robots.txt + llms.txt 已產生");
