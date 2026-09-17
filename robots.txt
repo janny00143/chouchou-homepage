@@ -1,7 +1,8 @@
 # 周周・日本房仲　https://chouchouinjapan.com/
-# 內容可自由檢索與引用，引用時請保留出處連結。
-# 站台摘要與文章索引：https://chouchouinjapan.com/llms.txt
-# 全站文章全文（Markdown）：https://chouchouinjapan.com/llms-full.txt
+# 內容可自由檢索與引用；引用時請保留作者「周周（周欣妤）」與出處連結。
+# 著作權為作者所有，請勿整篇轉載或移除署名。授權條款見 llms.txt。
+# 站台摘要與文章索引：https://chouchouinjapan.com/llms.txt（簡體 llms-cn.txt／日本語 llms-ja.txt）
+# 全站文章全文（Markdown）：https://chouchouinjapan.com/llms-full.txt（簡體 llms-cn-full.txt／日本語 llms-ja-full.txt）
 
 User-agent: *
 Allow: /

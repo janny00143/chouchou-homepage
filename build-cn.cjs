@@ -17,6 +17,21 @@ const staticPages = ["index.html","properties.html","property.html","minpaku.htm
 const internal = [...staticPages, ...slugs.map(s => s + ".html")].filter(f => fs.existsSync(ROOT + "/" + f));
 const cn = f => f.replace(/\.html$/, "-cn.html");
 
+/* 法定登記資訊與專名：CLAUDE.md §7 的例外，必須與正式文件一致，不可簡體化。
+   （頁面與 llms 純文字檔共用同一份） */
+const KEEP = [
+  "東京都知事 (2) 第102938号",
+  "株式会社アンドプラス 住宅営業部",
+  "株式会社アンドプラス",
+  "宅地建物取引業者免許番号",
+  "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号",
+  "鶯谷町3-1 ＳＵビル301号",
+  "東京都知事",
+  "シュウ シンユウ",
+  // 站名／專名：簡體化之後讀者就搜不到了（「大岛てる」查不到東西）
+  "大島てる"
+];
+
 function convertFile(file) {
   let s = fs.readFileSync(ROOT + "/" + file, "utf8");
 
@@ -26,20 +41,7 @@ function convertFile(file) {
     store.push(m); return "@@A" + (store.length - 1) + "@@";
   });
 
-  // 1b) 保護法定登記資訊（CLAUDE.md §7 例外：公司登記名稱、免許番号、地址、姓名拼音
-  //     必須與正式文件一致，不可簡體化）
-  const KEEP = [
-    "東京都知事 (2) 第102938号",
-    "株式会社アンドプラス 住宅営業部",
-    "株式会社アンドプラス",
-    "宅地建物取引業者免許番号",
-    "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号",
-    "鶯谷町3-1 ＳＵビル301号",
-    "東京都知事",
-    "シュウ シンユウ",
-    // 站名／專名：簡體化之後讀者就搜不到了（「大岛てる」查不到東西）
-    "大島てる"
-  ];
+  // 1b) 保護法定登記資訊（KEEP 定義在檔案上方，頁面與純文字檔共用）
   const keep = [];
   for (const K of KEEP) {
     s = s.split(K).join("@@K" + keep.length + "@@");
@@ -147,3 +149,46 @@ if (!sm.includes("index-cn.html")) {
 
 console.log("產生簡體頁:", made.length, "頁");
 console.log(made.join("\n"));
+
+/* ── llms-cn.txt ／ llms-cn-full.txt（周周 2026-09-17）───────────────────
+   繁中版的 llms.txt／llms-full.txt 轉成簡體，並把站內網址改成 -cn。
+   「繁體中文（正本）」那一行刻意不轉、也不改網址——它就是要指回繁中正本，
+   這樣 AI 讀到簡體版時也知道原文在哪、該標誰。⚠️ 產生物，勿手改。 */
+function convertPlain(s) {
+  const store = [];
+  s = s.replace(/[^\s"'`()<>]+\.(?:jpg|jpeg|png|gif|svg|webp|ico|mp4)/gi, m => {
+    store.push(m); return "@@A" + (store.length - 1) + "@@";
+  });
+  const keep = [];
+  for (const K of KEEP) { s = s.split(K).join("@@K" + keep.length + "@@"); keep.push(K); }
+  s = conv(s);
+  s = s.replace(/@@A(\d+)@@/g, (_, i) => store[+i]).replace(/@@K(\d+)@@/g, (_, i) => keep[+i]);
+  return s;
+}
+
+function buildCnLlms(srcFile, outFile) {
+  if (!fs.existsSync(ROOT + "/" + srcFile)) return null;
+  let s = fs.readFileSync(ROOT + "/" + srcFile, "utf8");
+
+  // 這幾行先收起來不轉：①指回繁中正本的那行（要保持繁體、網址也不改 -cn）
+  //                     ②日文版的指路（「日本語トップ」被簡轉成「日本语トップ」很怪）
+  const pin = [];
+  s = s.replace(/^(?:- 繁體中文（正本）：|- 日本語トップ：|  ．日本語インデックス：|- 日本の不動産会社).*$/gm,
+    m => { pin.push(m); return "@@P" + (pin.length - 1) + "@@"; });
+
+  s = convertPlain(s);
+
+  for (const P of internal) s = s.split(BASE + P).join(BASE + cn(P));
+  s = s.split(BASE + "llms-full.txt").join(BASE + "llms-cn-full.txt");
+  s = s.split(BASE + "llms.txt").join(BASE + "llms-cn.txt");
+  // 首頁那一行指向簡中首頁（正文其他地方的裸 BASE 不動）
+  s = s.split("- 官方网站：" + BASE + "\n").join("- 官方网站：" + BASE + "index-cn.html\n");
+
+  s = s.replace(/@@P(\d+)@@/g, (_, i) => pin[+i]);
+  fs.writeFileSync(ROOT + "/" + outFile, s);
+  return outFile;
+}
+
+const llmsMade = [buildCnLlms("llms.txt", "llms-cn.txt"),
+                  buildCnLlms("llms-full.txt", "llms-cn-full.txt")].filter(Boolean);
+console.log("產生簡體 llms:", llmsMade.join(" / ") || "（來源檔不存在，略過）");
