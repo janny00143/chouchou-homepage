@@ -1,6 +1,6 @@
 {
- "date": "2026-09-17",
- "mode": "A",
+ "date": "2026-09-19",
+ "mode": "B",
  "metrics": {
   "pages": 229,
   "inlineJs": 1557,
@@ -14,7 +14,7 @@
   "jaEntries": 52,
   "cnFiles": 75,
   "jaFiles": 74,
-  "itemList": 34,
+  "itemList": 32,
   "linksTw": 110,
   "linksJa": 108,
   "orphanTw": 0,
