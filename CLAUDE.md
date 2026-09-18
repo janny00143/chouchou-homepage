@@ -197,6 +197,10 @@
    ※ PDF 裡的圖用 `pymupdf`（`pip install pymupdf`）：`page.get_pixmap(dpi=300)` 可整頁渲染，
      `page.get_images()`＋`doc.extract_image(xref)` 可取出內嵌原圖（販売図面的間取圖就是這樣裁的）。
 
+   ⚠️ **自社官網 `and-p.jp` 這個容器連不到**（proxy 直接回 403，`curl` 與 `WebFetch` 都一樣，
+   2026-09-18 實測）。所以「去官網看自社物件還在不在」這件事**我做不到**，
+   要嘛周周直接講、要嘛把頁面存成 PDF／截圖丟進對話或雲端。不要再花時間試連。
+
    ⭐ **供應商對照表在哪裡（2026-09-17 確立）**：**不在 repo 裡**，也不可以寫回 repo——
    這個 repo 是 Public，`properties.js` 會被瀏覽器整包下載，寫進去就等於公開。
    對照表（哪一筆物件是哪一家的、承辦人、広告可否）放在

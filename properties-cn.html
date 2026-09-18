@@ -102,6 +102,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 .line-float::before{content:"";position:absolute;inset:0;border-radius:999px;animation:lfpulse 2.4s infinite;pointer-events:none}
 @keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
 @media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
+.wtag{background:#0ea5e9;color:#fff;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;box-shadow:0 2px 6px rgba(14,165,233,.35)}
 .ntag{background:#f43f5e;color:#fff;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;box-shadow:0 2px 6px rgba(244,63,94,.35)}
 .sold-card{cursor:default}
 .sold-card:hover{transform:none;box-shadow:none}
@@ -156,7 +157,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">一户建</button>
     <button data-cat="land">土地</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大楼（マンション）</option><option value="house">独栋透天（戸建）</option><option value="shop">店铺・事务所</option><option value="whole">整栋</option><option value="land">土地・建筑条件付</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
+  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大楼（マンション）</option><option value="house">独栋透天（戸建）</option><option value="shop">店铺・事务所</option><option value="whole">整栋</option><option value="land">土地・建筑条件付</option></select><select id="pview"><option value="all">景观：不限</option><option value="skytree">看得到晴空塔</option><option value="night">夜景・开阔视野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -203,6 +204,9 @@ footer a{color:#d6d3d1;text-decoration:none}
   function C(s){return esc(conv(s==null?"":String(s)));}
   function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
 
+  /* 景观标签：properties.js 的 view 栏位（选填）。没填就不显示，也不影响筛选。 */
+  var VIEW={skytree:{icon:"\u{1F5FC}",label:"晴空塔景"},night:{icon:"\u{1F303}",label:"夜景・开阔"}};
+
   // 卡片：封面＋名称（日文＋中文）＋价格＋车站，整张是连到独立物件页的连结
   function card(p,i){
     var multi=p.photos&&p.photos.length>1;
@@ -220,10 +224,12 @@ footer a{color:#d6d3d1;text-decoration:none}
     var isPers=/-pers\./.test(String((p.photos&&p.photos[0])||""));
     var ptag=isPers?'<span class="ptag">完成预想图</span>':"";
     var ntag=isNew(p)?'<span class="ntag">新上架</span>':"";
+    /* 景观是很具体的卖点（看得到晴空塔、夜景），在列表就标出来，不要只写在内文 */
+    var vw=VIEW[p.view]; var wtag=vw?'<span class="wtag">'+vw.icon+' '+conv(vw.label)+'</span>':"";
     var vtag=p.video?'<span class="vtag">🎬 有影片</span>':"";
     var station=p.station?'<div class="station">🚉 '+C(p.station)+'</div>':"";
     return '<a class="card" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">'
-      +'<div class="ph">'+photo+badge+tag+((ntag||vtag||ptag)?'<span class="tagrow">'+ntag+vtag+ptag+'</span>':"")+'</div>'
+      +'<div class="ph">'+photo+badge+tag+((ntag||wtag||vtag||ptag)?'<span class="tagrow">'+ntag+wtag+vtag+ptag+'</span>':"")+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
       +PRICEHTML(p.price,'price','价格请洽询')
@@ -352,6 +358,10 @@ footer a{color:#d6d3d1;text-decoration:none}
   }
   function inUse(p){ return useMode==="all" || useOf(p)===useMode; }
 
+  /* 景观筛选：view 没填的物件，在选了景观条件之后就先不显示（同预算／格局的做法） */
+  var viewMode="all";
+  function inView(p){ return viewMode==="all" || p.view===viewMode; }
+
   /* ── 格局筛选 ────────────────────────────────────────────
      来源跟卡片上显示的格局标签同一套：layoutTag，没填就从 layout 开头抓。
      一个物件可能对应多组（例如二世带的「1LDK+3LDK」、A/B 栋的「2〜3LDK」），
@@ -383,6 +393,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       if(!inWalk(p))return false;
       if(!inUse(p))return false;
       if(!inLayout(p))return false;
+      if(!inView(p))return false;
       if(!selCat)return true;
       return !!ptags(p)[selCat];
     });
@@ -426,6 +437,8 @@ footer a{color:#d6d3d1;text-decoration:none}
   if(_pu){_pu.addEventListener("change",function(){useMode=this.value;render();});}
   var _pl=document.getElementById("players");
   if(_pl){_pl.addEventListener("change",function(){layMode=this.value;render();});}
+  var _pv=document.getElementById("pview");
+  if(_pv){_pv.addEventListener("change",function(){viewMode=this.value;render();});}
 
   function boot(){ render(); renderSold(); }
   // 简中页：载入 OpenCC 繁→简，让你只维护一份繁中 properties.js，简中自动同步。

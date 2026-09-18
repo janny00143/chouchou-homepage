@@ -68,8 +68,12 @@ main{padding:22px 0 10px}
 .pfacts span{background:#f8f7f6;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;color:#44403c;line-height:1.4}
 .pfacts span b{display:block;color:#a8a29e;font-weight:500;font-size:11px;margin-bottom:2px}
 .pspec{list-style:none;border-top:1px solid var(--line)}
-.pspec li{display:flex;gap:18px;align-items:flex-start;padding:14px 2px;border-bottom:1px solid #f5f5f4;font-size:14.5px;color:#44403c;line-height:1.75}
-.pspec li b{min-width:60px;color:#a8a29e;font-weight:500;flex-shrink:0}
+.pspec li{display:flex;gap:18px;align-items:flex-start;padding:15px 2px;border-bottom:1px solid #f5f5f4;font-size:14.5px;color:#44403c;line-height:1.8}
+.pspec li b{min-width:62px;color:#a8a29e;font-weight:500;flex-shrink:0}
+/* ／ 分隔的內容一個一行；行與行之間留一點空隙，長句子才不會黏在一起 */
+.pspec li .ln{display:block;font-style:normal}
+.pspec li .ln+.ln{margin-top:7px;padding-top:7px;border-top:1px dotted #ededec}
+@media(max-width:600px){.pspec li{gap:12px;font-size:14px}.pspec li b{min-width:54px}}
 .pmap{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:#57534e;text-decoration:none}
 .pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
@@ -259,7 +263,18 @@ body.noscroll{overflow:hidden}
     var st=conv(p.status||"在售");
     var badges='<div class="pbadges"><span class="b '+(SCLS[st]||SCLS[p.status]||"")+'">'+esc(st)+'</span>'+(CAT[p.cat]?'<span class="t">'+CAT[p.cat]+'</span>':"")+'</div>';
     var cn=p.title_cn?'<span class="cn">'+C(p.title_cn)+'</span>':"";
-    function row(l,v){return v?'<li><b>'+l+'</b><span>'+C(v)+'</span></li>':"";}
+    /* 規格欄位：用「／」分隔的內容（例如三個車站）拆成一行一個，不要擠成一團。
+       周周 2026-09-18：「這種分段可以做得漂亮一點嗎? 一個一行吧，很多東西都擠擠在一起」 */
+    function row(l,v){
+      if(!v)return "";
+      /* 「円／月」「㎡／戸」這種單位用的斜線不能拆，只拆真正的並列項目（例如三個車站） */
+      var parts=String(v).split(/／(?!月|年|人|台|戸|坪|㎡|m2|m²|日|回|世帯)/)
+                  .map(function(x){return x.trim();}).filter(Boolean);
+      var inner=parts.length>1
+        ? '<span>'+parts.map(function(x){return '<i class="ln">'+C(x)+'</i>';}).join("")+'</span>'
+        : '<span>'+C(v)+'</span>';
+      return '<li><b>'+l+'</b>'+inner+'</li>';
+    }
     function chip(l,v){return v?'<span><b>'+l+'</b>'+C(v)+'</span>':"";}
     var facts='<div class="pfacts">'+chip("格局",p.layout)+chip("面積",p.size)+chip("屋齡",p.age)+chip("投報",p.yield)+'</div>';
     var spec='<ul class="pspec">'
