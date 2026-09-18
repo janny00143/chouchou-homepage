@@ -133,6 +133,7 @@ window.PROPERTIES = [
     id: "kototoi902",
     listed: "2026-09-17",
     layoutTag: "1LDK",
+    view: "skytree",
     status: "在售",
     cat: "live",
     title: "朝日言問マンション 902号室",
@@ -199,6 +200,7 @@ window.PROPERTIES = [
     id: "ebisu1103",
     listed: "2026-08-14",
     layoutTag: "1LDK",
+    view: "night",
     status: "在售",
     cat: "live",
     title: "コンシェリア恵比寿 1103号室",
@@ -453,6 +455,7 @@ window.PROPERTIES = [
   {
     id: "classy-shinjuku",
     listed: "2026-08-03",
+    view: "night",
     status: "在售",
     cat: "live",
     title: "クラッシィタワー新宿御苑 1703",
