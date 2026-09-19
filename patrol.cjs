@@ -398,10 +398,28 @@ function a7_idempotent() {
     try { execSync(`node ${g}`, { cwd: ROOT, stdio: "ignore" }); }
     catch (e) { add("A7", "產生器冪等", "FAIL", `${g} 執行失敗（node_modules 掉了？先跑 npm install）`); return; }
   }
-  const after = sh("git status --porcelain").split("\n").filter(Boolean);
-  add("A7", "產生器冪等", after.length ? "FAIL" : "OK",
-    after.length ? `重跑後有 ${after.length} 個檔不同步` : "重跑後 diff = 0",
-    after.slice(0, 10));
+  /* llms*-full.txt 檔頭有「產生時間：YYYY-MM-DD」，昨天產生、今天重跑一定會差那一行。
+     那不是不同步，是日期戳記——2026-09-20 的週日大巡邏踩過一次。
+     所以只要某個檔的 diff「只有日期戳記那幾行」，就不算 FAIL（改完會還原工作區）。 */
+  const DATESTAMP = /^[+-][>\s]*(產生時間|产生时间|生成日時)[：:]\s*\d{4}-\d{2}-\d{2}/;
+  const changed = sh("git status --porcelain").split("\n").filter(Boolean);
+  const real = [], stampOnly = [];
+  for (const line of changed) {
+    /* porcelain 是「XY 檔名」，但 sh() 會 trim 掉整段輸出，
+       第一行的前導空白會不見，所以不能固定 slice(3)（會多切一個字）。 */
+    const m = line.match(/^\s*(\S{1,2})\s+(.*)$/);
+    if (!m) continue;
+    const file = m[2].includes(" -> ") ? m[2].split(" -> ").pop().trim() : m[2].trim();
+    const d = sh(`git diff -U0 -- "${file}"`).split("\n")
+      .filter(x => /^[+-]/.test(x) && !/^(\+\+\+|---)/.test(x));
+    (d.length && d.every(x => DATESTAMP.test(x)) ? stampOnly : real).push(file);
+  }
+  /* 只差日期戳記的檔還原回去，不要讓每天的巡邏在 git 留下噪音 */
+  if (stampOnly.length) sh(`git checkout -- ${stampOnly.map(f => `"${f}"`).join(" ")}`);
+  add("A7", "產生器冪等", real.length ? "FAIL" : "OK",
+    real.length ? `重跑後有 ${real.length} 個檔不同步`
+                : `重跑後 diff = 0${stampOnly.length ? `（另有 ${stampOnly.length} 個檔只差產生日期，已還原）` : ""}`,
+    real.slice(0, 10));
 }
 
 /* ══════════════════════════════════════════════════════════════════════

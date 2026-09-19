@@ -1,6 +1,6 @@
 {
- "date": "2026-09-19",
- "mode": "A",
+ "date": "2026-09-20",
+ "mode": "full",
  "metrics": {
   "pages": 232,
   "inlineJs": 1581,
@@ -11,18 +11,18 @@
   "propsOnSale": 37,
   "articles": 54,
   "runtimePages": 6,
-  "jaEntries": 52,
-  "cnFiles": 75,
-  "jaFiles": 74,
-  "itemList": 32,
-  "linksTw": 110,
-  "linksJa": 108,
+  "jaEntries": 53,
+  "cnFiles": 76,
+  "jaFiles": 75,
+  "itemList": 37,
+  "linksTw": 114,
+  "linksJa": 112,
   "orphanTw": 0,
   "orphanJa": 0,
-  "noPlan": 0,
-  "images": 417,
+  "noPlan": 1,
+  "images": 483,
   "unusedImages": 11,
   "imgNoWH": 0,
-  "rootItems": 683
+  "rootItems": 752
  }
 }
