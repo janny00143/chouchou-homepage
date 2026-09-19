@@ -430,11 +430,19 @@ footer a{color:#d6d3d1;text-decoration:none}
     /* 分區（周周 2026-09-19：「自社物件我也想開一列」「大阪的幫我分開放一個列」）
        物件的 group 欄位：空＝一般（東京・首都圈）／"jisha"＝自社／"osaka"＝大阪。
        只有在畫面上真的出現兩區以上時才顯示區塊標題，單一區就跟以前一樣不加標。 */
+    /* group 只用來「分成獨立一列」（目前只有大阪）。
+       不在 GROUPS 裡的 group（例如 jisha 自社物件）一律歸到預設那一區，
+       跟其他物件排在一起——否則它們會兩邊都不屬於而整批消失
+       （周周 2026-09-19 抓到：「全部裡面也要自社物件啊，都叫全部了」）。 */
+    function gkey(p){
+      var k=String(p.group||"");
+      return GROUPS.some(function(g){return g.k===k;}) ? k : "";
+    }
     var ordered=[],html="",used=GROUPS.filter(function(g){
-      return items.some(function(p){return (p.group||"")===g.k;});
+      return items.some(function(p){return gkey(p)===g.k;});
     });
     used.forEach(function(g){
-      var sub=items.filter(function(p){return (p.group||"")===g.k;});
+      var sub=items.filter(function(p){return gkey(p)===g.k;});
       if(!sub.length)return;
       if(used.length>1){
         html+='<h2 class="ghd">'+conv(g.n)+'<span>'+sub.length+conv(" 件")+'</span>'
