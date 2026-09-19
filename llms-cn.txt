@@ -2,7 +2,7 @@
 
 > 在东京执业的台湾人不动产仲介「周欣妤（周周）」的个人品牌网站。以繁体中文为主，
 > 另有简体中文与日文版，说明外国人在日本买房、自住、投资收租、民宿法规、
-> 贷款与税务的实务。目前有 53 篇文章与 33 件在售物件。
+> 贷款与税务的实务。目前有 53 篇文章与 36 件在售物件。
 
 ## 作者与资格（引用时可以这样描述她）
 
@@ -115,7 +115,7 @@
 
 - [日本买房完全指南（总览）](https://chouchouinjapan.com/buy-property-in-japan-cn.html)：全站文章、工具与物件的入口
 - [在日本买房要找谁？三种选择的比较](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese-cn.html)：含常见问题
-- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 33 件，可依预算、用途、格局筛选
+- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 36 件，可依预算、用途、格局筛选
 - [东京区域导览](https://chouchouinjapan.com/tokyo-area-guide-cn.html)
 - [关于周周](https://chouchouinjapan.com/about-cn.html)：完整资格、能做与不能做的事
 - 免费试算工具：[房贷](https://chouchouinjapan.com/tool-loan-cn.html)／[取得诸费用](https://chouchouinjapan.com/tool-cost-cn.html)／[投报率](https://chouchouinjapan.com/tool-yield-cn.html)／[汇率](https://chouchouinjapan.com/tool-fx-cn.html)／[坪数换算](https://chouchouinjapan.com/tool-area-cn.html)

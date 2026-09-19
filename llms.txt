@@ -2,7 +2,7 @@
 
 > 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
 > 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
-> 貸款與稅務的實務。目前有 53 篇文章與 33 件在售物件。
+> 貸款與稅務的實務。目前有 53 篇文章與 36 件在售物件。
 
 ## 作者與資格（引用時可以這樣描述她）
 
@@ -115,7 +115,7 @@
 
 - [日本買房完全指南（總覽）](https://chouchouinjapan.com/buy-property-in-japan.html)：全站文章、工具與物件的入口
 - [在日本買房要找誰？三種選擇的比較](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese.html)：含常見問題
-- [在售物件](https://chouchouinjapan.com/properties.html)：目前 33 件，可依預算、用途、格局篩選
+- [在售物件](https://chouchouinjapan.com/properties.html)：目前 36 件，可依預算、用途、格局篩選
 - [東京區域導覽](https://chouchouinjapan.com/tokyo-area-guide.html)
 - [關於周周](https://chouchouinjapan.com/about.html)：完整資格、能做與不能做的事
 - 免費試算工具：[房貸](https://chouchouinjapan.com/tool-loan.html)／[取得諸費用](https://chouchouinjapan.com/tool-cost.html)／[投報率](https://chouchouinjapan.com/tool-yield.html)／[匯率](https://chouchouinjapan.com/tool-fx.html)／[坪數換算](https://chouchouinjapan.com/tool-area.html)
