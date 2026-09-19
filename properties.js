@@ -158,6 +158,7 @@ window.PROPERTIES = [
 
   {
     id: "mukougaoka2",
+    group: "jisha",
     listed: "2026-09-19",
     layoutTag: "4LDK",
     status: "在售",
@@ -488,12 +489,13 @@ window.PROPERTIES = [
 
   {
     id: "nishioi-a",
+    group: "jisha",
     listed: "2026-08-07",
     layoutTag: "2LDK+2S",
     status: "在售",
     cat: "house",
     title: "西大井2丁目 part4 A棟 新築戸建",
-    title_cn: "品川區西大井2丁目 新築一戶建 A棟（自社）",
+    title_cn: "品川區西大井2丁目 新築一戶建 A棟",
     price: "1億6,580万円（含稅）",
     location: "東京都品川區西大井2丁目19-10",
     station: "JR湘南新宿ライン・橫須賀線「西大井」站 徒步約9分",
@@ -509,11 +511,12 @@ window.PROPERTIES = [
   },
   {
     id: "nishioi-p5",
+    group: "jisha",
     listed: "2026-08-09",
     status: "在售",
     cat: "land",
     title: "西大井2丁目 part5 建築条件付売地",
-    title_cn: "品川區西大井2丁目 建築條件付土地（自社）",
+    title_cn: "品川區西大井2丁目 建築條件付土地",
     price: "土地 1億6,490万円\n土地＋建物參考總額 2億1,980万円（含稅）",
     location: "東京都品川區西大井2丁目12-13",
     station: "JR埼京線「西大井」站 徒步約7分",
@@ -530,12 +533,13 @@ window.PROPERTIES = [
 
   {
     id: "futaba",
+    group: "jisha",
     listed: "2026-08-07",
     layoutTag: "3LDK",
     status: "在售",
     cat: "house",
     title: "二葉1丁目 part3 新築戸建（B棟）",
-    title_cn: "品川區二葉1丁目 新築一戶建 B棟（自社）",
+    title_cn: "品川區二葉1丁目 新築一戶建 B棟",
     price: "1億4,680万円（含稅）",
     location: "東京都品川區二葉1丁目13-22",
     station: "東急大井町線「下神明」站 徒步約6分／JR京濱東北線「大井町」站 徒步約12分",
@@ -552,12 +556,13 @@ window.PROPERTIES = [
 
   {
     id: "setagaya-house",
+    group: "jisha",
     listed: "2026-07-27",
     layoutTag: "3LDK+S",
     status: "在售",
     cat: "land",
     title: "下馬3丁目 part2 建築条件付売地",
-    title_cn: "世田谷區下馬3丁目 建築條件付土地（自社・限量1區）",
+    title_cn: "世田谷區下馬3丁目 建築條件付土地（限量1區）",
     price: "土地 1億3,200万円\n土地＋建物參考總額 1億7,280万円（含稅）",
     location: "東京都世田谷區下馬3丁目22-3（舊住居表示）",
     station: "東急田園都市線「駒澤大學」站 徒步約18分／東急田園都市線・世田谷線「三軒茶屋」站 徒步約19分",
