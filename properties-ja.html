@@ -159,6 +159,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="mansion">マンション</button>
     <button data-cat="house">戸建</button>
     <button data-cat="land">土地</button>
+    <button data-cat="jisha">自社物件</button>
   </div>
   <div class="sortrow"><select id="psort"><option value="default">並び替え：おすすめ順</option><option value="price-asc">価格：安い順</option><option value="price-desc">価格：高い順</option><option value="size-desc">面積：広い順</option><option value="new">新着順</option><option value="size-asc">面積：狭い順</option></select><select id="pbudget"><option value="all">ご予算：指定なし</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5億円</option><option value="e">1.5億円以上</option></select><select id="pwalk"><option value="all">駅徒歩：指定なし</option><option value="5">駅徒歩5分以内</option><option value="7">駅徒歩7分以内</option><option value="10">駅徒歩10分以内</option><option value="15">駅徒歩15分以内</option></select><select id="puse"><option value="all">種別：指定なし</option><option value="mansion">マンション</option><option value="house">戸建</option><option value="shop">店舗・事務所</option><option value="whole">一棟</option><option value="land">土地・建築条件付</option></select><select id="pview"><option value="all">眺望：指定なし</option><option value="skytree">スカイツリーが見える</option><option value="tower">東京タワーが見える</option><option value="night">夜景・眺望良好</option></select><select id="players"><option value="all">間取り：指定なし</option><option value="1r">1R・1K・1DK</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK以上</option></select></div>
 
@@ -288,6 +289,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   function parseYen(p){var m=String(p||"").match(/(?:([\d.]+)[\u5104\u4ebf])?(?:([\d,]+)[\u4e07\u842c])?[\u5186]/);if(!m||(!m[1]&&!m[2]))return 0;return ((m[1]?parseFloat(m[1])*1e4:0)+(m[2]?parseInt(m[2].replace(/,/g,""),10):0))*1e4;}
   function ptags(p){
     var tg={};
+    tg.jisha=(p.group==="jisha");   /* 自社物件：周周公司自己設計・施工・銷售 */
     tg.house=(p.cat==="house");
     tg.land=(p.cat==="land");
     var whole=/\u6574[\u68df\u680b]/.test(String(p.layout||"")+String(p.title||""));
@@ -323,7 +325,6 @@ footer a{color:#d6d3d1;text-decoration:none}
   var selCat="";  /* 一次只選一個分類，避免同時點兩個造成混亂 */
   /* 物件分區：空 key＝一般物件。n＝區塊標題，s＝標題右邊的小字說明 */
   var GROUPS=[{k:"",n:"東京・首都圏",s:""},
-              {k:"jisha",n:"自社物件",s:"設計・施工・販売まで弊社が一貫して担当"},
               {k:"osaka",n:"大阪エリア",s:""}];
   var sortMode="default";
   /* 預算區間（單位：日圓）。價格未公開的物件在選了區間之後會先不顯示。 */
