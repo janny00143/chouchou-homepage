@@ -51,6 +51,11 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .sortrow{margin:-10px 0 18px;display:flex;flex-wrap:wrap;gap:8px}
 .sortrow select{font-family:inherit;font-size:14px;font-weight:700;color:var(--mut);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:10px}
+.ghd{grid-column:1/-1;margin:26px 0 -4px;display:flex;align-items:center;gap:10px;font-size:17px;font-weight:900;color:var(--ink)}
+.ghd:first-child{margin-top:4px}
+.ghd::before{content:"";width:4px;height:19px;border-radius:2px;background:var(--rose);flex:0 0 auto}
+.ghd span{font-size:12.5px;font-weight:700;color:var(--mut);background:#fbf2f4;border-radius:999px;padding:2px 10px}
+.ghd em{font-style:normal;font-size:12.5px;font-weight:600;color:var(--mut)}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
 .card #grid{min-height:70vh}
@@ -316,6 +321,10 @@ footer a{color:#d6d3d1;text-decoration:none}
   function isNew(p){return !!newIds()[p.id];}
   function sizeNum(p){var m=String(p.size||"").match(/([\d.]+)\s*(?:㎡|m)/);return m?parseFloat(m[1]):0;}
   var selCat="";  /* 一次只選一個分類，避免同時點兩個造成混亂 */
+  /* 物件分區：空 key＝一般物件。n＝區塊標題，s＝標題右邊的小字說明 */
+  var GROUPS=[{k:"",n:"東京・首都圏",s:""},
+              {k:"jisha",n:"自社物件",s:"設計・施工・販売まで弊社が一貫して担当"},
+              {k:"osaka",n:"大阪エリア",s:""}];
   var sortMode="default";
   /* 預算區間（單位：日圓）。價格未公開的物件在選了區間之後會先不顯示。 */
   var BUDGET={a:[0,3000e4],b:[3000e4,5000e4],c:[5000e4,8000e4],d:[8000e4,15000e4],e:[15000e4,Infinity]};
@@ -392,10 +401,15 @@ footer a{color:#d6d3d1;text-decoration:none}
       if(!selCat)return true;
       return !!ptags(p)[selCat];
     });
-    /* 預設排序也要吃 pin：pin 數字越大排越前面（周周指定要置頂的物件） */
+    /* 排序：pin（周周指定置頂）優先，接著一律「上架日新→舊」。
+       周周 2026-09-19：「為啥物件專區沒有照最新排序」——以前預設只吃 pin，
+       同 pin 的就維持 properties.js 的檔案順序，所以新物件不一定排在前面。 */
     items=items.slice();
     if(sortMode==="default"){
-      items.sort(function(a,b){return (b.pin||0)-(a.pin||0);});
+      items.sort(function(a,b){
+        var d=(b.pin||0)-(a.pin||0); if(d)return d;
+        return listedTs(b)-listedTs(a);
+      });
     }
     if(sortMode!=="default"){
       items.sort(function(a,b){
@@ -407,8 +421,23 @@ footer a{color:#d6d3d1;text-decoration:none}
         return 0;
       });
     }
-    shown=items;
-    grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    /* 分區（周周 2026-09-19：「自社物件我也想開一列」「大阪的幫我分開放一個列」）
+       物件的 group 欄位：空＝一般（東京・首都圈）／"jisha"＝自社／"osaka"＝大阪。
+       只有在畫面上真的出現兩區以上時才顯示區塊標題，單一區就跟以前一樣不加標。 */
+    var ordered=[],html="",used=GROUPS.filter(function(g){
+      return items.some(function(p){return (p.group||"")===g.k;});
+    });
+    used.forEach(function(g){
+      var sub=items.filter(function(p){return (p.group||"")===g.k;});
+      if(!sub.length)return;
+      if(used.length>1){
+        html+='<h2 class="ghd">'+conv(g.n)+'<span>'+sub.length+conv(" 件")+'</span>'
+             +(g.s?'<em>'+conv(g.s)+'</em>':'')+'</h2>';
+      }
+      sub.forEach(function(p){ html+=card(p,ordered.length); ordered.push(p); });
+    });
+    shown=ordered;
+    grid.innerHTML=ordered.length?html:emptyMsg();
     fxFill();
   }
 
