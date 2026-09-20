@@ -51,11 +51,6 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .sortrow{margin:-10px 0 18px;display:flex;flex-wrap:wrap;gap:8px}
 .sortrow select{font-family:inherit;font-size:14px;font-weight:700;color:var(--mut);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:10px}
-.ghd{grid-column:1/-1;margin:26px 0 -4px;display:flex;align-items:center;gap:10px;font-size:17px;font-weight:900;color:var(--ink)}
-.ghd:first-child{margin-top:4px}
-.ghd::before{content:"";width:4px;height:19px;border-radius:2px;background:var(--rose);flex:0 0 auto}
-.ghd span{font-size:12.5px;font-weight:700;color:var(--mut);background:#fbf2f4;border-radius:999px;padding:2px 10px}
-.ghd em{font-style:normal;font-size:12.5px;font-weight:600;color:var(--mut)}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
 .card #grid{min-height:70vh}
@@ -162,6 +157,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="house">一户建</button>
     <button data-cat="land">土地</button>
     <button data-cat="jisha">自社物件</button>
+    <button data-cat="osaka">大阪</button>
   </div>
   <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大楼（マンション）</option><option value="house">独栋透天（戸建）</option><option value="shop">店铺・事务所</option><option value="whole">整栋</option><option value="land">土地・建筑条件付</option></select><select id="pview"><option value="all">景观：不限</option><option value="skytree">看得到晴空塔</option><option value="tower">看得到东京铁塔</option><option value="night">夜景・开阔视野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
 
@@ -294,6 +290,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   function ptags(p){
     var tg={};
     tg.jisha=(p.group==="jisha");   /* 自社物件：周周公司自己设计・施工・销售 */
+    tg.osaka=(p.group==="osaka");   /* 大阪：只在点「大阪」时才出现，不混进其他分类 */
     tg.house=(p.cat==="house");
     tg.land=(p.cat==="land");
     var whole=/\u6574[\u68df\u680b]/.test(String(p.layout||"")+String(p.title||""));
@@ -327,9 +324,6 @@ footer a{color:#d6d3d1;text-decoration:none}
   function isNew(p){return !!newIds()[p.id];}
   function sizeNum(p){var m=String(p.size||"").match(/([\d.]+)\s*(?:㎡|m)/);return m?parseFloat(m[1]):0;}
   var selCat="";  /* 一次只选一个分类，避免同时点两个造成混乱 */
-  /* 物件分区：空 key＝一般物件。n＝区块标题，s＝标题右边的小字说明 */
-  var GROUPS=[{k:"",n:"东京・首都圈",s:""},
-              {k:"osaka",n:"大阪专栏",s:""}];
   var sortMode="default";
   /* 预算区间（单位：日圆）。价格未公开的物件在选了区间之后会先不显示。 */
   var BUDGET={a:[0,3000e4],b:[3000e4,5000e4],c:[5000e4,8000e4],d:[8000e4,15000e4],e:[15000e4,Infinity]};
@@ -404,6 +398,9 @@ footer a{color:#d6d3d1;text-decoration:none}
       if(!inUse(p))return false;
       if(!inLayout(p))return false;
       if(!inView(p))return false;
+      /* 大阪物件只在点「大阪」时才显示，不混进「全部」或其他分类
+         （周周 2026-09-20：「大阪的不需要跟全部放一起，就是上方选单丢一个大阪区」） */
+      if(selCat!=="osaka" && p.group==="osaka")return false;
       if(!selCat)return true;
       return !!ptags(p)[selCat];
     });
@@ -430,31 +427,16 @@ footer a{color:#d6d3d1;text-decoration:none}
     /* 分区（周周 2026-09-19：「自社物件我也想开一列」「大阪的帮我分开放一个列」）
        物件的 group 栏位：空＝一般（东京・首都圈）／"jisha"＝自社／"osaka"＝大阪。
        只有在画面上真的出现两区以上时才显示区块标题，单一区就跟以前一样不加标。 */
-    /* group 只用来「分成独立一列」（目前只有大阪）。
-       不在 GROUPS 里的 group（例如 jisha 自社物件）一律归到预设那一区，
-       跟其他物件排在一起——否则它们会两边都不属于而整批消失
-       （周周 2026-09-19 抓到：「全部里面也要自社物件啊，都叫全部了」）。 */
-    function gkey(p){
-      var k=String(p.group||"");
-      return GROUPS.some(function(g){return g.k===k;}) ? k : "";
-    }
-    var ordered=[],html="",used=GROUPS.filter(function(g){
-      return items.some(function(p){return gkey(p)===g.k;});
-    });
-    used.forEach(function(g){
-      var sub=items.filter(function(p){return gkey(p)===g.k;});
-      if(!sub.length)return;
-      if(used.length>1){
-        html+='<h2 class="ghd">'+conv(g.n)+'<span>'+sub.length+conv(" 件")+'</span>'
-             +(g.s?'<em>'+conv(g.s)+'</em>':'')+'</h2>';
-      }
-      sub.forEach(function(p){ html+=card(p,ordered.length); ordered.push(p); });
-    });
-    shown=ordered;
-    grid.innerHTML=ordered.length?html:emptyMsg();
+    shown=items;
+    grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
     fxFill();
   }
 
+  /* 没有大阪物件时就不要显示那颗按钮（点下去空空的很怪） */
+  (function(){
+    var b=document.querySelector('#tabs button[data-cat="osaka"]');
+    if(b && !(act||[]).some(function(p){return p.group==="osaka";})) b.style.display="none";
+  })();
   document.getElementById("tabs").addEventListener("click",function(e){
     var b=e.target.closest("button"); if(!b)return;
     var c=b.dataset.cat;
