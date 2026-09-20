@@ -448,22 +448,65 @@ footer a{color:#d6d3d1;text-decoration:none}
     Array.prototype.forEach.call(this.querySelectorAll("button"),function(x){
       x.classList.toggle("on", selCat ? (x.dataset.cat===selCat) : (x.dataset.cat==="all"));
     });
+    writeUrl();
     render();
   });
-  var _ps=document.getElementById("psort");
-  if(_ps){_ps.addEventListener("change",function(){sortMode=this.value;render();});}
-  var _pw=document.getElementById("pwalk");
-  if(_pw){_pw.addEventListener("change",function(){walkMax=(this.value==="all")?0:+this.value;render();});}
-  var _pb=document.getElementById("pbudget");
-  if(_pb){_pb.addEventListener("change",function(){budgetMode=this.value;render();});}
-  var _pu=document.getElementById("puse");
-  if(_pu){_pu.addEventListener("change",function(){useMode=this.value;render();});}
-  var _pl=document.getElementById("players");
-  if(_pl){_pl.addEventListener("change",function(){layMode=this.value;render();});}
-  var _pv=document.getElementById("pview");
-  if(_pv){_pv.addEventListener("change",function(){viewMode=this.value;render();});}
+  ["psort","pwalk","pbudget","puse","players","pview"].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.addEventListener("change",function(){syncFromControls();writeUrl();render();});
+  });
 
-  function boot(){ render(); renderSold(); }
+
+  /* ── 篩選條件寫進網址（周周 2026-09-21 加）────────────────────
+     選完之後網址就是那個條件（例如 ?cat=jisha、?cat=other&budget=c），
+     可以直接貼給客戶，按上一頁也會回到原本的條件。
+     ・只用 replaceState，不會在瀏覽紀錄裡堆一堆項目
+     ・網址帶進來的值一律先跟畫面上真的有的選項核對過才套用，
+       亂帶參數不會讓頁面進入奇怪狀態 */
+  var QMAP=[["sort","psort"],["budget","pbudget"],["walk","pwalk"],
+            ["use","puse"],["view","pview"],["layout","players"]];
+  function syncFromControls(){
+    var g=function(id){var e=document.getElementById(id);return e?e.value:null;},v;
+    if((v=g("psort"))!=null)sortMode=v;
+    if((v=g("pwalk"))!=null)walkMax=(v==="all")?0:(+v||0);
+    if((v=g("pbudget"))!=null)budgetMode=v;
+    if((v=g("puse"))!=null)useMode=v;
+    if((v=g("players"))!=null)layMode=v;
+    if((v=g("pview"))!=null)viewMode=v;
+  }
+  function writeUrl(){
+    if(!window.history||!history.replaceState)return;
+    var q=[];
+    if(selCat)q.push("cat="+encodeURIComponent(selCat));
+    QMAP.forEach(function(kv){
+      var el=document.getElementById(kv[1]);
+      if(el&&el.value&&el.value!=="all"&&el.value!=="default")q.push(kv[0]+"="+encodeURIComponent(el.value));
+    });
+    try{history.replaceState(null,"",location.pathname+(q.length?"?"+q.join("&"):"")+location.hash);}catch(_){}
+  }
+  function applyUrlState(){
+    var q; try{q=new URLSearchParams(location.search);}catch(_){return;}
+    var c=(q.get("cat")||"").replace(/[^a-z]/gi,"");
+    if(c){
+      var tb=document.querySelector('#tabs button[data-cat="'+c+'"]');
+      /* 「其它」在沒有相關物件時會被藏起來，這種情況不套用 */
+      if(tb&&tb.dataset.cat!=="all"&&tb.style.display!=="none"){
+        selCat=tb.dataset.cat;
+        Array.prototype.forEach.call(document.querySelectorAll("#tabs button"),function(x){
+          x.classList.toggle("on",x.dataset.cat===selCat);
+        });
+      }
+    }
+    QMAP.forEach(function(kv){
+      var v=q.get(kv[0]); if(!v)return;
+      var el=document.getElementById(kv[1]); if(!el)return;
+      var ok=Array.prototype.some.call(el.options,function(o){return o.value===v;});
+      if(ok)el.value=v;
+    });
+    syncFromControls();
+  }
+
+  function boot(){ applyUrlState(); render(); renderSold(); }
   // 簡中頁：載入 OpenCC 繁→簡，讓你只維護一份繁中 properties.js，簡中自動同步。
   var isHans=(document.documentElement.lang||"").toLowerCase().indexOf("hans")>-1 || /-cn\.html$/.test(location.pathname);
   if(isHans){
