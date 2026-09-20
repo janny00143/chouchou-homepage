@@ -81,6 +81,8 @@ main{padding:22px 0 10px}
 .pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
 .pnote .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:7px;font-size:14.5px}.pnote .np{margin:0 0 11px;line-height:1.95}.pnote .np:last-child{margin-bottom:0}.pnote .nsub{display:block;font-weight:700;color:var(--rose-d);font-size:14.5px;margin:16px 0 6px;padding-left:9px;border-left:3px solid var(--rose)}.pnote .nsub:first-child{margin-top:0}
+.pnote .nlink{color:var(--rose-d);font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.pnote .nlink:hover{opacity:.75}
 .pvideo{margin:22px 0 6px}
 .pvideo .nh{display:block;font-weight:700;color:var(--rose-d);margin-bottom:8px;font-size:14.5px}
 .pvwrap{position:relative;padding-bottom:56.25%;height:0;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
@@ -191,8 +193,18 @@ body.noscroll{overflow:hidden}
       if(buf.trim())sents.push(buf);
       lines=[];for(var i=0;i<sents.length;i+=3){lines.push(sents.slice(i,i+3).join(""));}
     }
-    /* 先跳脱（防止资料里的 HTML 被当程式跑），再只把 <b></b> 这个白名单标签放回来 */
-    var B=function(x){return C(x).replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>");};
+    /* 先跳脱（防止资料里的 HTML 被当程式跑），再只把白名单标签放回来：
+       ・<b></b>
+       ・<a href="站内页.html"> ── 只认「纯档名.html（可带 ?id=）」的站内相对连结，
+         样式不含「:」「/」，所以 javascript: 与外部网址都进不来。
+         -cn 页面自动改指到对应的 -cn 页。 */
+    var B=function(x){
+      return C(x)
+        .replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>")
+        .replace(/&lt;a href=&quot;([A-Za-z0-9_.-]+)\.html(\?id=[A-Za-z0-9_-]+)?&quot;&gt;/g,
+          function(_,f,q){return '<a class="nlink" href="'+f+(_isCnFx?"-cn":"")+'.html'+(q||"")+'">';})
+        .replace(/&lt;\/a&gt;/g,"</a>");
+    };
     return lines.map(function(l){
       if(l.slice(0,1)==="\u25a0") return '<b class="nsub">'+B(l.slice(1).trim())+'</b>';
       return '<p class="np">'+B(l)+'</p>';
