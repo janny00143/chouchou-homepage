@@ -603,14 +603,21 @@ function b8_lang() {
 /* ══════════════════════════════════════════════════════════════════════
    C 段：只有週日大巡邏才做
    ══════════════════════════════════════════════════════════════════════ */
+/* 文章的 date 是「發表日」，周周刻意設早，CLAUDE.md 明訂更新時不可改。
+   所以拿 date 排「資料時效」會永遠指向同一批 2024 年的文章，查過也清不掉。
+   改看選填的 checked 欄位＝「數據最後查核日」：有 checked 就用它，沒有才退回 date。
+   查核過但不需要改數字的文章，在 ART 補上 "checked":"YYYY-MM-DD" 即可。 */
 function c1_stale() {
   const { ART } = loadIndexData();
   const score = a => ((a.body || []).join("")
     .match(/20\d\d年|[\d.]+%|[\d,]+万円|[\d,]+日圓|利率|稅率|行情|坪單價/g) || []).length;
   const list = ART.filter(a => score(a) >= 3)
-    .sort((x, y) => String(x.date).localeCompare(String(y.date))).slice(0, 5)
-    .map(a => `${a.date} ${a.id}（${score(a)} 處數字）${String(a.title).slice(0, 34)}`);
-  add("C1", "資料時效", "INFO", "含數字最多且最舊的 5 篇（只列名單，不要自己改 date）", list);
+    .map(a => ({ a, when: String(a.checked || a.date), via: a.checked ? "查核" : "發表" }))
+    .sort((x, y) => x.when.localeCompare(y.when)).slice(0, 5)
+    .map(({ a, when, via }) =>
+      `${when}（${via}）${a.id}（${score(a)} 處數字）${String(a.title).slice(0, 34)}`);
+  add("C1", "資料時效", "INFO",
+    "含數字最多、且最久沒查核的 5 篇（date 不可改；查過就補 checked 欄位）", list);
 }
 
 function c2_images() {
