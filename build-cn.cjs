@@ -73,6 +73,18 @@ function convertFile(file) {
   for (const P of internal) {
     s = s.split('="' + P + '?').join('="' + cn(P) + '?');
     s = s.split("='" + P + "?").join("='" + cn(P) + "?");
+    // 帶錨點的同理（例如 properties.html#top）
+    s = s.split('="' + P + '#').join('="' + cn(P) + '#');
+    s = s.split("='" + P + "#").join("='" + cn(P) + "#");
+  }
+
+  // 4-3) 寫在 JS 字串裡（ART／REVIEWS 等）的站內連結，引號是跳脫過的：href=\"xxx.html\"。
+  //      第 4、4-2 步比對的是沒跳脫的 ="xxx.html"，整批都吃不到。
+  //      2026-09-24 發現首頁上被 JS 渲染的文章內文共 104 條連結全部指回繁中頁，
+  //      簡中讀者點任何一條「延伸閱讀」都會跳出簡中版。
+  for (const P of internal) {
+    s = s.split('=\\"' + P + '\\"').join('=\\"' + cn(P) + '\\"');
+    s = s.split('=\\"' + P + '?').join('=\\"' + cn(P) + '?');
   }
 
   // 4a) <meta http-equiv="refresh" content="0;url=xxx.html"> 的轉址目標
