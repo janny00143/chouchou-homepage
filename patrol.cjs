@@ -48,6 +48,9 @@ const OK = {
   ytCoverArticles: new Set(["a9", "a13", "a14", "a16", "a35"]),
   // 本環境 proxy 擋掉的網域：curl 回 000 是連不上，不是資源失效
   proxyBlocked: "本環境 proxy 會擋掉多數外部網域，回應碼 000 不代表網站失效",
+  // B10：這些頁即使有同名的 -cn／-ja 分身，連到繁中版也是刻意的，不算漏
+  //  ・繁中正本：簡中的〈其他語言〉刻意保留一行指回繁中，見 CLAUDE.md 第 9 節防盜那段
+  langLeakAllow: ["index.html"],
   // 日文物件價格與繁中的差異若只是這些用詞，不算不一致
   priceSynonyms: [
     ["含稅", "税込"], ["參考總額", "参考価格 総額"], ["參考", "参考"],
@@ -564,6 +567,41 @@ function b9_jaLinks() {
     bad.length ? `有 ${bad.length} 條連到繁中頁` : "全部正確指向 -ja 頁", bad.slice(0, 10));
 }
 
+/* B10：產出的 -cn／-ja 頁面本身有沒有連回繁中頁。
+   B9 只看 ja-content.json 的文章內文，抓不到「產生器沒把連結改寫掉」這種漏。
+   2026-09-24 就是這樣漏掉的：index-cn.html 裡被 JS 渲染的文章內文有 104 條連結
+   （寫成 href=\"xxx.html\"、引號是跳脫過的）整批沒被 build-cn 改寫，簡中讀者點了就跳出簡中版；
+   ja.html 的民泊卡片 url 也直接指向繁中的 minpaku.html。
+   兩種引號形式都要掃，因為出問題的正是跳脫過的那一種。 */
+function b10_langLeak() {
+  const FILE_RE = "([A-Za-z0-9_-]+)\\.html";
+  const bad = [];
+  for (const f of htmlFiles()) {
+    const m = f.match(/^(.*?)(?:-(cn|ja))?\.html$/);
+    const lang = f === "ja.html" ? "ja" : f === "index-cn.html" ? "cn" : (m && m[2]);
+    if (!lang) continue;
+    const suffix = "-" + lang;
+    const s = read(f);
+    const seen = new Set();
+    for (const re of [new RegExp(`href="${FILE_RE}`, "g"),
+                      new RegExp(`href=\\\\"${FILE_RE}`, "g"),
+                      new RegExp(`"url":"${FILE_RE}`, "g")]) {
+      for (const g of s.matchAll(re)) {
+        const stem = g[1];
+        if (stem.endsWith(suffix)) continue;
+        if (OK.langLeakAllow.includes(stem + ".html")) continue;
+        // 只有同時存在對應語系檔時才算漏（共用頁如 translate.html 沒有分身，不算）
+        if (!fs.existsSync(path.join(ROOT, stem + suffix + ".html"))) continue;
+        const key = `${f} → ${stem}.html`;
+        if (!seen.has(key)) { seen.add(key); bad.push(`${key}（應為 ${stem}${suffix}.html）`); }
+      }
+    }
+  }
+  add("B10", "簡中／日文頁連回繁中", bad.length ? "FAIL" : "OK",
+    bad.length ? `有 ${bad.length} 處連回繁中頁` : "沒有連回繁中頁",
+    bad.slice(0, 12));
+}
+
 function b7_props() {
   const P = loadProps("properties.js", "PROPERTIES") || [];
   const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
@@ -710,7 +748,7 @@ async function main() {
   checkGit();
   checkDeploy();
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); await a8_runtime(); a7_idempotent(); }
-  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); }
+  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 

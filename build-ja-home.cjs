@@ -31,7 +31,11 @@ const A4_JA = {
 const ART_JA = ART.map(a => {
   const j = a.id === "a4" ? A4_JA : jaContent[a.id];
   if (!j) { console.warn("日文翻譯內容尚未提供，略過此文章: " + a.id); return null; }
-  return { id: a.id, cat: a.cat, date: a.date, title: j.title, tags: j.tags, cover: a.cover, video: a.video, ex: j.ex, url: a.url, body: [j.ex] };
+  // a4（民泊）不走 JS 文章渲染，而是 url 直接跳到獨立頁。ART 裡寫的是繁中的 minpaku.html，
+  // 日文首頁照抄的話，日本訪客點下去會被丟到繁中頁（2026-09-24 發現）。有 -ja 版就換過去。
+  const url = a.url && fs.existsSync(ROOT + "/" + a.url.replace(/\.html$/, "-ja.html"))
+    ? a.url.replace(/\.html$/, "-ja.html") : a.url;
+  return { id: a.id, cat: a.cat, date: a.date, title: j.title, tags: j.tags, cover: a.cover, video: a.video, ex: j.ex, url, body: [j.ex] };
 }).filter(Boolean);
 
 const PROCESS_JA = [
