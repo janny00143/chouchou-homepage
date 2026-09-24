@@ -89,6 +89,15 @@ main{padding:22px 0 10px}
 .pnotfound{text-align:center;padding:70px 20px;color:var(--mut)}
 .pnotfound .big{font-size:46px;margin-bottom:14px}
 .related{margin:40px 0 6px}
+.readmore{margin:34px 0 6px}
+.readmore h2{font-size:19px;font-weight:900;margin:0 0 4px}
+.readmore .rsub{font-size:13.5px;color:var(--mut);margin:0 0 14px}
+.readmore ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.readmore a{display:block;background:#fff;border:1px solid var(--line);border-left:3px solid var(--rose);
+border-radius:12px;padding:12px 15px;text-decoration:none;color:inherit;font-size:14.5px;font-weight:700;line-height:1.6;
+transition:box-shadow .18s,transform .18s}
+.readmore a:hover{box-shadow:0 8px 20px rgba(0,0,0,.08);transform:translateY(-2px);border-left-color:var(--rose-d)}
+
 .related h2{font-size:19px;font-weight:900;margin:0 0 4px}
 .related .rsub{font-size:13.5px;color:var(--mut);margin:0 0 16px}
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -217,6 +226,52 @@ body.noscroll{overflow:hidden}
   /* 你可能也有興趣：同區域／同價格帶／同類型加權，取前 3 件 */
   var ALL=[];
   function wardOf(p){var m=String(p.location||"").match(/([^\s\u90fd\u9053\u5e9c\u770c\u53bf]{1,6}[\u5340\u533a\u5e02\u90e1])/);return m?m[1]:"";}
+
+  /* 関連記事（周周 2026-09-24 承認）。各物件の「おすすめポイント」に
+     手書きでリンクを足すのではなく、種別とタグから自動で2〜3本選びます。 */
+  /* 產生器改寫不到 JS 陣列裡的裸字串，所以語系後綴在執行時才接上 */
+  var PAGESUF="-ja";
+  var ART_LINK={
+    yieldNet:["japan-rental-yield-gross-vs-net","表面利回り6%で手元にいくら残る？見誤りやすい5つのポイント"],
+    yieldTrap:["japan-rental-yield-trap","日本の不動産投資、表面利回りだけを見て失敗する理由"],
+    mgmt:["japan-rental-management-company","海外にお住まいの方へ。賃貸管理会社の選び方と費用の目安"],
+    hotel:["japan-hotel-license-simple-lodging","旅館業許可（簡易宿所）の実際のハードル"],
+    fourModels:["minpaku-monthly-rental-comparison","民泊・マンスリー・一般賃貸・旅館業許可の違い"],
+    minpakuLoc:["tokyo-minpaku-popular-location-layout","民泊物件はどのエリア・間取りが人気？"],
+    whole:["japan-investment-property-whole-building-vs-unit","一棟マンション vs 区分マンション、外国人投資家向け比較"],
+    costs:["japan-property-purchase-costs","物件価格以外に必要な「諸費用」を徹底解説"],
+    loan:["foreigner-mortgage-no-permanent-residency","永住権がなくても住宅ローンは組める？審査条件まとめ"],
+    check:["japan-used-apartment-checklist","築年数の古さより「管理状態」が重要な理由"],
+    nego:["japan-property-price-negotiation","価格交渉はできる？買付申込書と交渉のコツ"],
+    rentBuy:["rent-or-buy-japan","賃貸を続けるべき？それともマイホームを購入すべき？"],
+    school:["tokyo-school-district-property","東京の学区と住まい：文京区「3S1K」はなぜ選ばれ続けるのか"],
+    tax:["japan-property-tax-guide","購入・保有・売却でわかる税金ガイド"]
+  };
+  function readMoreKeys(p){
+    var k=[], cat=String(p.cat||""), tag=String(p.layoutTag||""),
+        txt=[p.title,p.title_cn,p.catch,p.layout].filter(Boolean).join(" "),
+        lodging=/民宿|旅館|民泊/.test(tag+" "+txt) || p.group==="osaka";
+    if(lodging){ k.push("hotel","fourModels","minpakuLoc"); }
+    else if(cat==="invest"){ k.push("yieldNet","yieldTrap","mgmt"); }
+    else if(cat==="house"||cat==="land"){ k.push("costs","nego","loan"); }
+    else { k.push("rentBuy","check","costs"); }
+    if(/誠之|学区|文京/.test(txt)) k.unshift("school");
+    if(/一棟|整棟/.test(txt)) k.unshift("whole");
+    var seen={}, out=[];
+    for(var i=0;i<k.length&&out.length<3;i++){ if(!seen[k[i]]){ seen[k[i]]=1; out.push(k[i]); } }
+    return out;
+  }
+  function readMoreHTML(p){
+    var ks=readMoreKeys(p); if(!ks.length)return "";
+    var h='<section class="readmore"><h2>あわせてお読みください</h2>'
+      +'<p class="rsub">この物件に関わりの深い記事をいくつかご用意いたしました。</p><ul>';
+    ks.forEach(function(k){
+      var a=ART_LINK[k]; if(!a)return;
+      h+='<li><a href="'+a[0]+PAGESUF+'.html">'+C(a[1])+' →</a></li>';
+    });
+    return h+'</ul></section>';
+  }
+
   function relatedHTML(cur){
     var pool=ALL.filter(function(x){return x.id!==cur.id && !x.sold;});
     if(!pool.length)return "";
@@ -247,7 +302,7 @@ body.noscroll{overflow:hidden}
   }
   function paintRelated(p){
     var host=document.getElementById("related");
-    if(host)host.innerHTML=relatedHTML(p);
+    if(host)host.innerHTML=readMoreHTML(p)+relatedHTML(p);
   }
   function render(p){
     document.title=conv(p.title)+"｜周周・日本の不動産";
