@@ -92,6 +92,15 @@ main{padding:22px 0 10px}
 .pnotfound{text-align:center;padding:70px 20px;color:var(--mut)}
 .pnotfound .big{font-size:46px;margin-bottom:14px}
 .related{margin:40px 0 6px}
+.readmore{margin:34px 0 6px}
+.readmore h2{font-size:19px;font-weight:900;margin:0 0 4px}
+.readmore .rsub{font-size:13.5px;color:var(--mut);margin:0 0 14px}
+.readmore ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.readmore a{display:block;background:#fff;border:1px solid var(--line);border-left:3px solid var(--rose);
+border-radius:12px;padding:12px 15px;text-decoration:none;color:inherit;font-size:14.5px;font-weight:700;line-height:1.6;
+transition:box-shadow .18s,transform .18s}
+.readmore a:hover{box-shadow:0 8px 20px rgba(0,0,0,.08);transform:translateY(-2px);border-left-color:var(--rose-d)}
+
 .related h2{font-size:19px;font-weight:900;margin:0 0 4px}
 .related .rsub{font-size:13.5px;color:var(--mut);margin:0 0 16px}
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -222,6 +231,54 @@ body.noscroll{overflow:hidden}
   }
 
 
+
+  /* ── 延伸阅读（周周 2026-09-24 核准的「文章↔物件互相导流」）───────────────
+     用规则自动挑，不在每一笔物件的「周周的看法」里手写连结——
+     45 件物件逐一维护会让看法变啰嗦（CLAUDE.md 有明订看法要精简），
+     而且新物件上架就会忘记加。这里依物件的类型与标签自动配 2～3 篇。 */
+  /* 产生器改写不到 JS 阵列里的裸字串，所以语系后缀在执行时才接上 */
+  var PAGESUF=(/-cn\.html$/.test(location.pathname)?"-cn":"");
+  var ART_LINK={
+    yieldNet:["japan-rental-yield-gross-vs-net","表面投报率 6% 到手剩多少？最常误判的 5 件事"],
+    yieldTrap:["japan-rental-yield-trap","日本投资收租，光看投报率就惨了"],
+    mgmt:["japan-rental-management-company","人在台湾，日本的房子谁帮我管？"],
+    hotel:["japan-hotel-license-simple-lodging","不想被 180 天绑死？旅馆业许可的实际门槛"],
+    fourModels:["minpaku-monthly-rental-comparison","民宿、月租、一般出租、旅馆牌照：四种收益模式差在哪"],
+    minpakuLoc:["tokyo-minpaku-popular-location-layout","买民泊物件，哪些格局／地点最抢手？"],
+    whole:["japan-investment-property-whole-building-vs-unit","一栋收租 vs 区分套房，外国人投资比较"],
+    costs:["japan-property-purchase-costs","买房除了房价，还要准备哪些「诸费用」？"],
+    loan:["foreigner-mortgage-no-permanent-residency","没有永住也能买房吗？外国人房贷条件整理"],
+    check:["japan-used-apartment-checklist","买房避雷指南：屋龄高不一定差，管理不好才危险"],
+    nego:["japan-property-price-negotiation","可以谈价格吗？买付申込与议价技巧"],
+    rentBuy:["rent-or-buy-japan","在日本工作，该继续租还是买房自住？"],
+    school:["tokyo-school-district-property","东京的学区宅入门：文京区「3S1K」为什么保值"],
+    tax:["japan-property-tax-guide","买房之后要缴哪些税？购入、持有到出售一次看懂"]
+  };
+  function readMoreKeys(p){
+    var k=[], cat=String(p.cat||""), tag=String(p.layoutTag||""),
+        txt=[p.title,p.title_cn,p.catch,p.layout].filter(Boolean).join(" "),
+        lodging=/民宿|旅馆|民泊/.test(tag+" "+txt) || p.group==="osaka";
+    if(lodging){ k.push("hotel","fourModels","minpakuLoc"); }
+    else if(cat==="invest"){ k.push("yieldNet","yieldTrap","mgmt"); }
+    else if(cat==="house"||cat==="land"){ k.push("costs","nego","loan"); }
+    else { k.push("rentBuy","check","costs"); }
+    if(/诚之|学区|文京/.test(txt)) k.unshift("school");
+    if(/一栋|整栋/.test(txt)) k.unshift("whole");
+    var seen={}, out=[];
+    for(var i=0;i<k.length&&out.length<3;i++){ if(!seen[k[i]]){ seen[k[i]]=1; out.push(k[i]); } }
+    return out;
+  }
+  function readMoreHTML(p){
+    var ks=readMoreKeys(p); if(!ks.length)return "";
+    var h='<section class="readmore"><h2>想先了解更多？</h2>'
+      +'<p class="rsub">周周挑了几篇跟这件物件最相关的文章，看完再问我会更快。</p><ul>';
+    ks.forEach(function(k){
+      var a=ART_LINK[k]; if(!a)return;
+      h+='<li><a href="'+a[0]+PAGESUF+'.html">'+C(a[1])+' →</a></li>';
+    });
+    return h+'</ul></section>';
+  }
+
   /* 你可能也有兴趣：同区域／同价格带／同类型加权，取前 3 件 */
   var ALL=[];
   function wardOf(p){var m=String(p.location||"").match(/([^\s\u90fd\u9053\u5e9c\u770c\u53bf]{1,6}[\u5340\u533a\u5e02\u90e1])/);return m?m[1]:"";}
@@ -255,7 +312,7 @@ body.noscroll{overflow:hidden}
   }
   function paintRelated(p){
     var host=document.getElementById("related");
-    if(host)host.innerHTML=relatedHTML(p);
+    if(host)host.innerHTML=readMoreHTML(p)+relatedHTML(p);
   }
   function render(p){
     document.title=conv(p.title)+"｜周周・日本房仲";
