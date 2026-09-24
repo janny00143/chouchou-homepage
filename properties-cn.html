@@ -50,6 +50,12 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .tabs button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
 .sortrow{margin:-10px 0 18px;display:flex;flex-wrap:wrap;gap:8px}
 .sortrow select{font-family:inherit;font-size:14px;font-weight:700;color:var(--mut);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
+.sortrow .pqwrap{position:relative;flex:1 1 220px;min-width:180px;max-width:320px}
+.sortrow input#pq{width:100%;font-family:inherit;font-size:14px;font-weight:600;color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 34px 8px 34px;outline:none}
+.sortrow input#pq:focus{border-color:var(--rose)}
+.sortrow .pqico{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px;color:#a8a29e;pointer-events:none}
+.sortrow .pqclr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;font-family:inherit;font-size:16px;line-height:1;color:#a8a29e;cursor:pointer;padding:4px 6px;display:none}
+.sortrow .pqclr:hover{color:var(--rose-d)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:10px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.03);transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
@@ -159,7 +165,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="jisha">自社物件</button>
     <button data-cat="other">其它</button>
   </div>
-  <div class="sortrow"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大楼（マンション）</option><option value="house">独栋透天（戸建）</option><option value="shop">店铺・事务所</option><option value="whole">整栋</option><option value="land">土地・建筑条件付</option></select><select id="pview"><option value="all">景观：不限</option><option value="skytree">看得到晴空塔</option><option value="tower">看得到东京铁塔</option><option value="night">夜景・开阔视野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
+  <div class="sortrow"><div class="pqwrap"><span class="pqico">🔍</span><input id="pq" type="search" autocomplete="off" placeholder="搜寻地名、车站、格局…" aria-label="搜寻地名、车站、格局…"><button type="button" class="pqclr" id="pqclr" aria-label="清除搜寻">&times;</button></div><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><select id="pbudget"><option value="all">预算：不限</option><option value="a">～3,000万円</option><option value="b">3,000～5,000万円</option><option value="c">5,000～8,000万円</option><option value="d">8,000万～1.5亿円</option><option value="e">1.5亿円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以内</option><option value="7">徒步 7 分以内</option><option value="10">徒步 10 分以内</option><option value="15">徒步 15 分以内</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大楼（マンション）</option><option value="house">独栋透天（戸建）</option><option value="shop">店铺・事务所</option><option value="whole">整栋</option><option value="land">土地・建筑条件付</option></select><select id="pview"><option value="all">景观：不限</option><option value="skytree">看得到晴空塔</option><option value="tower">看得到东京铁塔</option><option value="night">夜景・开阔视野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
 
 
   <div class="grid" id="grid"></div>
@@ -243,7 +249,9 @@ footer a{color:#d6d3d1;text-decoration:none}
   function emptyMsg(){
     return '<div class="empty" style="grid-column:1/-1">'
       +'<div class="big">🏠</div>'
-      +'<p>目前这个分类还没有上架的物件。<br>欢迎直接加 LINE 跟周周说你的需求，我帮你找最新、最合适的物件！</p>'
+      +'<p>'+(kw
+        ? '找不到符合「'+C(kw)+'」的物件。<br>换个关键字（例如只打「惠比寿」或「一户建」），或直接加 LINE 跟周周说你要找什么。'
+        : '目前这个分类还没有上架的物件。<br>欢迎直接加 LINE 跟周周说你的需求，我帮你找最新、最合适的物件！')+'</p>'
       +'<div style="margin-top:18px"><a class="btn-line big" href="'+LINE+'" target="_blank" rel="noopener">＋ 加 LINE 询问最新物件</a></div>'
       +'</div>';
   }
@@ -393,9 +401,44 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(layMode==="all")return true;
     return layGroups(p).indexOf(layMode)>=0;
   }
+
+  /* ── 关键字搜寻（周周 2026-09-24 核准）──────────────────────────
+     在售 45 件之后，六个下拉没有一项是地名或站名，客户想找「惠比寿」「田町」
+     「一户建」只能自己卷。这里做纯前端的即时过滤，不送出、不打后端。
+     比对范围：标题（含中文副标）、地点、车站、格局、卖点标语、物件 id。
+     空白可以分隔多个字，全部都要命中才算（AND）。 */
+  var kw="";
+  /* 繁中与日文的汉字写法不同，但指的是同一个地方：物件原名多半保留日文（物件原名那一种），
+     标题与地点则已中文化（惠比寿・涩谷・户越）。客户不管打哪一种都该找得到，
+     所以比对前把两边都折成同一种写法。只收地名／物件常见的字，不做全字集转换。 */
+  var FOLD={"惠":"恵","寿":"寿","涩":"渋","浅":"浅","户":"戸","区":"区","滨":"浜","横":"横",
+    "丰":"豊","广":"広","国":"国","学":"学","卖":"売","楼":"楼","点":"点","边":"辺","驿":"駅",
+    "泽":"沢","济":"済","铁":"鉄","县":"県","两":"両","黑":"黒","关":"関","气":"気","万":"万",
+    "体":"体","藏":"蔵","历":"歴","龙":"竜","龟":"亀","台":"台","与":"与","转":"転","圆":"円"};
+  function fold(s){
+    var t=String(s==null?"":s).toLowerCase(), o="";
+    for(var i=0;i<t.length;i++){ var c=t[i]; o+=(FOLD[c]||c); }
+    return o;
+  }
+  function normKw(s){ return fold(s); }
+  function hay(p){
+    if(p.__hay)return p.__hay;
+    var t=[p.title,p.title_cn,p.catch,p.location,p.station,p.layout,p.layoutTag,p.price,p.id]
+      .filter(Boolean).join(" ");
+    p.__hay=normKw(t);
+    return p.__hay;
+  }
+  function inKw(p){
+    if(!kw)return true;
+    var h=hay(p), ws=kw.split(/\s+/).filter(Boolean);
+    for(var i=0;i<ws.length;i++){ if(h.indexOf(ws[i])<0)return false; }
+    return true;
+  }
+
   function render(){
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=act.filter(function(p){
+      if(!inKw(p))return false;
       if(!inBudget(p))return false;
       if(!inWalk(p))return false;
       if(!inUse(p))return false;
@@ -451,6 +494,17 @@ footer a{color:#d6d3d1;text-decoration:none}
     writeUrl();
     render();
   });
+  var _pq=document.getElementById("pq"), _pqc=document.getElementById("pqclr");
+  if(_pq){
+    var _pqRun=function(){
+      kw=normKw(_pq.value).trim();
+      if(_pqc)_pqc.style.display=_pq.value?"block":"none";
+      writeUrl(); render();
+    };
+    _pq.addEventListener("input",_pqRun);
+    _pq.addEventListener("search",_pqRun);      /* type=search 的小叉叉 */
+    if(_pqc)_pqc.addEventListener("click",function(){ _pq.value=""; _pq.focus(); _pqRun(); });
+  }
   ["psort","pwalk","pbudget","puse","players","pview"].forEach(function(id){
     var el=document.getElementById(id);
     if(el)el.addEventListener("change",function(){syncFromControls();writeUrl();render();});
@@ -478,6 +532,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(!window.history||!history.replaceState)return;
     var q=[];
     if(selCat)q.push("cat="+encodeURIComponent(selCat));
+    if(kw)q.push("q="+encodeURIComponent(kw));
     QMAP.forEach(function(kv){
       var el=document.getElementById(kv[1]);
       if(el&&el.value&&el.value!=="all"&&el.value!=="default")q.push(kv[0]+"="+encodeURIComponent(el.value));
@@ -497,6 +552,10 @@ footer a{color:#d6d3d1;text-decoration:none}
         });
       }
     }
+    var qs=(q.get("q")||"").slice(0,60);
+    if(qs){ kw=normKw(qs).trim();
+      var el=document.getElementById("pq");
+      if(el){ el.value=qs; var c=document.getElementById("pqclr"); if(c)c.style.display="block"; } }
     QMAP.forEach(function(kv){
       var v=q.get(kv[0]); if(!v)return;
       var el=document.getElementById(kv[1]); if(!el)return;
