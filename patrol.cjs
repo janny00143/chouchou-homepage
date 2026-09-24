@@ -405,6 +405,17 @@ function a7_idempotent() {
      那不是不同步，是日期戳記——2026-09-20 的週日大巡邏踩過一次。
      所以只要某個檔的 diff「只有日期戳記那幾行」，就不算 FAIL（改完會還原工作區）。 */
   const DATESTAMP = /^[+-][>\s]*(產生時間|产生时间|生成日時)[：:]\s*\d{4}-\d{2}-\d{2}/;
+  /* sitemap 的 diff 是否「只差 lastmod 的日期」：把 - 行與 + 行配對，
+     兩邊都把 <lastmod>…</lastmod> 的日期抹掉之後若完全相同，就是只差日期。
+     行數不等（表示有 url 被加或被刪）一律不算。 */
+  const lastmodOnly = d => {
+    const minus = d.filter(x => x[0] === "-").map(x => x.slice(1));
+    const plus  = d.filter(x => x[0] === "+").map(x => x.slice(1));
+    if (!minus.length || minus.length !== plus.length) return false;
+    const strip = x => x.replace(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g, "<lastmod/>");
+    return minus.every((x, i) => strip(x) === strip(plus[i]));
+  };
+
   const changed = sh("git status --porcelain").split("\n").filter(Boolean);
   const real = [], stampOnly = [];
   for (const line of changed) {
@@ -415,7 +426,14 @@ function a7_idempotent() {
     const file = m[2].includes(" -> ") ? m[2].split(" -> ").pop().trim() : m[2].trim();
     const d = sh(`git diff -U0 -- "${file}"`).split("\n")
       .filter(x => /^[+-]/.test(x) && !/^(\+\+\+|---)/.test(x));
-    (d.length && d.every(x => DATESTAMP.test(x)) ? stampOnly : real).push(file);
+    let onlyStamp = d.length && d.every(x => DATESTAMP.test(x));
+    /* sitemap.xml 的 <lastmod> 取自「該檔在 git 的最後 commit 日」，而 sitemap 是在
+       commit 之前產生的——所以只要 index.html 這種頁改了又還沒 commit，重跑一定會
+       差那個日期，而且永遠差一個 commit。這是設計上必然，不是產生器壞掉。
+       只有在「每一組 +/- 行除了 <lastmod> 的日期以外完全一樣」時才放行；
+       多一筆或少一筆 <url> 都還是會 FAIL。 */
+    if (!onlyStamp && file === "sitemap.xml") onlyStamp = lastmodOnly(d);
+    (onlyStamp ? stampOnly : real).push(file);
   }
   /* 只差日期戳記的檔還原回去，不要讓每天的巡邏在 git 留下噪音 */
   if (stampOnly.length) sh(`git checkout -- ${stampOnly.map(f => `"${f}"`).join(" ")}`);
