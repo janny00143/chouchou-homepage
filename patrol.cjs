@@ -701,10 +701,32 @@ function c2_images() {
       if (!/\bwidth=/.test(m[0]) || !/\bheight=/.test(m[0])) noWH++;
     }
   }
+  /* 反過來查：被引用、但 root 找不到的圖（破圖）。
+     A4 只查文章封面與物件照片，像 quiz.html 拿某件物件的照片當裝飾圖這種
+     就落在檢查之外——2026-09-25 下架淺草三丁目、把照片搬進 img-original/ 之後，
+     quiz.html 與 quiz-cn.html 就這樣默默破圖了。 */
+  const have = new Set(imgs);
+  const missing = [];
+  /* img-size.json 只是尺寸索引，留著已封存圖片的舊資料不會造成破圖，不列入 */
+  for (const f of fs.readdirSync(ROOT).filter(x => /\.(html|js|json)$/i.test(x) && x !== "img-size.json")) {
+    const s = read(f);
+    /* 只認「整個引號裡就是一個相對檔名」的寫法（src="a.webp"、img:'a.webp'、url(a.webp)）。
+       不然會把外連網址的檔名也抓進來——例如 YouTube 縮圖
+       https://i.ytimg.com/vi/xxx/maxresdefault.jpg，那不是站內檔案。 */
+    for (const m of s.matchAll(/["'(]([\w\-.()（）%]+\.(?:webp|jpg|jpeg|png|svg|gif))["')]/gi)) {
+      let n = m[1];
+      try { n = decodeURIComponent(n); } catch (e) { }
+      if (have.has(n) || have.has(m[1])) continue;
+      if (fs.existsSync(path.join(ROOT, n))) continue;
+      missing.push(`${f} → ${n}`);
+    }
+  }
   metrics.images = imgs.length; metrics.unusedImages = unused.length; metrics.imgNoWH = noWH;
-  add("C2", "圖片健檢", noWH ? "WARN" : "INFO",
-    `root ${imgs.length} 張｜未被引用 ${unused.length}｜>500KB ${big.length}｜靜態 <img> ${total} 個、缺 width/height ${noWH}`,
-    [unused.length ? `未引用: ${unused.join(" ")}` : "", big.length ? `大圖: ${big.join(" ")}` : ""].filter(Boolean));
+  add("C2", "圖片健檢", missing.length ? "FAIL" : (noWH ? "WARN" : "INFO"),
+    `root ${imgs.length} 張｜未被引用 ${unused.length}｜引用了但檔案不存在 ${missing.length}｜>500KB ${big.length}｜靜態 <img> ${total} 個、缺 width/height ${noWH}`,
+    [missing.length ? `破圖: ${[...new Set(missing)].slice(0, 8).join("｜")}` : "",
+     unused.length ? `未引用: ${unused.join(" ")}` : "",
+     big.length ? `大圖: ${big.join(" ")}` : ""].filter(Boolean));
 }
 
 function c3_external() {
