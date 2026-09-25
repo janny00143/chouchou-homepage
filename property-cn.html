@@ -66,17 +66,18 @@ main{padding:22px 0 10px}
 .pprice{font-size:32px;font-weight:900;color:var(--rose-d);margin:14px 0 20px}
 .pfacts{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 20px}
 .pfacts span{background:#f8f7f6;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;color:#44403c;line-height:1.4}
-.pfacts span b{display:block;color:#a8a29e;font-weight:500;font-size:11px;margin-bottom:2px}
+.pfacts span>b:first-child{display:block;color:#a8a29e;font-weight:500;font-size:11px;margin-bottom:2px}
 .pspec{list-style:none;border-top:1px solid var(--line)}
 .pspec li{display:flex;gap:18px;align-items:flex-start;padding:15px 2px;border-bottom:1px solid #f5f5f4;font-size:14.5px;color:#44403c;line-height:1.8}
-.pspec li b{min-width:62px;color:#a8a29e;font-weight:500;flex-shrink:0}
+.pspec li>b:first-child{min-width:62px;color:#a8a29e;font-weight:500;flex-shrink:0}
+.pfacts span b,.pspec li .tx b,.pspec li span b{display:inline;color:inherit;font-weight:800;font-size:inherit;margin:0}
 /* ／ 分隔的内容一个一行；行与行之间留一点空隙，长句子才不会黏在一起 */
 .pspec li .ln{display:flex;align-items:flex-start;gap:9px;font-style:normal}
 .pspec li .ln+.ln{margin-top:9px}
 .pspec li .ln .mk{flex:0 0 auto;font-style:normal;font-size:14px;line-height:1.8}
 .pspec li .ln .mk.dot{width:6px;height:6px;border-radius:50%;background:var(--rose);opacity:.45;margin-top:.72em}
 .pspec li .ln .tx{font-style:normal}
-@media(max-width:600px){.pspec li{gap:12px;font-size:14px}.pspec li b{min-width:54px}}
+@media(max-width:600px){.pspec li{gap:12px;font-size:14px}.pspec li>b:first-child{min-width:54px}}
 .pmap{display:inline-flex;align-items:center;gap:7px;margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:#57534e;text-decoration:none}
 .pmap:hover{border-color:var(--rose);color:var(--rose-d)}
 .pnote{background:rgba(244,63,94,.05);border-left:3px solid var(--rose);border-radius:10px;padding:16px 18px;font-size:14px;color:#57534e;margin:22px 0 6px;line-height:2}
@@ -337,6 +338,11 @@ body.noscroll{overflow:hidden}
     var cn=p.title_cn?'<span class="cn">'+C(p.title_cn)+'</span>':"";
     /* 规格栏位：用「／」分隔的内容（例如三个车站）拆成一行一个，不要挤成一团。
        周周 2026-09-18：「这种分段可以做得漂亮一点吗? 一个一行吧，很多东西都挤挤在一起」 */
+    /* 规格栏位里的 <b> 是刻意标的（改装中、连栋长屋、分割登记这类「不利益事実」，
+       CLAUDE.md §4 要求明示）。C() 会把它跳脱成可见的 &lt;b&gt;，2026-09-25 发现
+       大阪那批共 8 个栏位都印出原始标签。比照「周周的看法」的做法：
+       先全部跳脱，再只把 <b></b> 放回来。 */
+    function CB(x){return C(x).replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>");}
     function row(l,v,ic){
       if(!v)return "";
       /* 「円／月」「㎡／戸」这种单位用的斜线不能拆，只拆真正的并列项目（例如三个车站） */
@@ -346,14 +352,14 @@ body.noscroll{overflow:hidden}
       if(parts.length>1){
         var mk=ic?'<em class="mk">'+ic+'</em>':'<em class="mk dot"></em>';
         inner='<span class="multi">'+parts.map(function(x){
-          return '<i class="ln">'+mk+'<em class="tx">'+C(x)+'</em></i>';
+          return '<i class="ln">'+mk+'<em class="tx">'+CB(x)+'</em></i>';
         }).join("")+'</span>';
       }else{
-        inner='<span>'+C(v)+'</span>';
+        inner='<span>'+CB(v)+'</span>';
       }
       return '<li><b>'+l+'</b>'+inner+'</li>';
     }
-    function chip(l,v){return v?'<span><b>'+l+'</b>'+C(v)+'</span>':"";}
+    function chip(l,v){return v?'<span><b>'+l+'</b>'+CB(v)+'</span>':"";}
     var facts='<div class="pfacts">'+chip("格局",p.layout)+chip("面积",p.size)+chip("屋龄",p.age)+chip("投报",p.yield)+'</div>';
     var spec='<ul class="pspec">'
       +row("地点",p.location)+row("车站",p.station,"\u{1F689}")+row("格局",p.layout)+row("面积",p.size)
