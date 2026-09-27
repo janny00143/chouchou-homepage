@@ -681,8 +681,11 @@ function c2_images() {
   const refs = new Set();
   for (const f of fs.readdirSync(ROOT).filter(x => /\.(html|js|cjs|json|md)$/i.test(x))) {
     const s = read(f);
-    // 檔名可能含中文且在 HTML 裡是 URL 編碼過的，兩種形式都要收
-    for (const m of s.matchAll(/[\w\-.()（）%]+\.(?:webp|jpg|jpeg|png|svg|gif)/gi)) {
+    /* 檔名可能含中文。過去只收 URL 編碼過的那種寫法，但站上多數地方是直接寫
+       src="櫻花.webp" 這種未編碼的中文檔名，而 \w 不含中日文字，整批比對不到——
+       於是「未被引用」每個週日都固定誤報同一批 11 張（2026-09-28 查出）。
+       字元類補上中日文字範圍，兩種寫法都收得到。 */
+    for (const m of s.matchAll(/[\w\-.()（）%\u3040-\u30ff\u4e00-\u9fff]+\.(?:webp|jpg|jpeg|png|svg|gif)/gi)) {
       refs.add(m[0]);
       try { refs.add(decodeURIComponent(m[0])); } catch (e) { }
     }
