@@ -293,7 +293,7 @@ ${a.coverFit === "full" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}"
 ${bodyHTML}
 </div>
 ${vid}
-<div class="ablock" style="margin-top:26px"><div><b>這篇有幫到你嗎？有問題直接問我</b><br><span style="color:var(--mut);font-size:14px">看到喜歡的物件也可以直接貼給周周看看。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div>
+<div class="ablock" style="margin-top:26px"><div><b>這篇有幫到你嗎？有問題直接問我</b><br><span style="color:var(--mut);font-size:14px">看到喜歡的物件也可以直接貼給周周看看。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 問周周</a></div>
 ${propBlockHTML(a)}
 ${relHTML}
 <div id="cmts" data-slug="${slug}" data-lang="tw"></div>
@@ -349,7 +349,7 @@ ${SBAR}
 <div class="post">
 ${cfg.main}
 </div>
-<div class="ablock" style="margin-top:30px"><div><b>${cfg.ctaTitle}</b><br><span style="color:var(--mut);font-size:14px">${cfg.ctaSub}</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div>
+<div class="ablock" style="margin-top:30px"><div><b>${cfg.ctaTitle}</b><br><span style="color:var(--mut);font-size:14px">${cfg.ctaSub}</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 問周周</a></div>
 <p style="margin:30px 0;font-size:14px"><a href="index.html" style="color:var(--rose);font-weight:600">← 回首頁看更多</a></p>
 </main>
 ${FOOT}
