@@ -122,7 +122,7 @@ JR山手線・JR京濱東北線・東急目黑線「惠比壽」站 徒步12分
 - 建築構造：寫材料與樓層，格式為「材料造／地下X樓、地上Y樓建」，材料用中文（鋼筋混凝土造／鋼骨造／木造，不要用RC/SRC、不要用「階」要用「樓」）。範例：鋼筋混凝土造／地下1樓、地上5樓建。
 - 翻新：特別注意圖面是否有「新規內裝／リフォーム／リノベーション／リノベ／フルリフォーム／改裝」等字樣。有的話務必寫出翻新範圍與內容（廚房、衛浴、地板、壁紙、給排水管線等），全部寫繁體中文、不要出現任何日文，每項獨立一行、開頭加「・」，越具體越好，這是重要加分項。沒有就填「圖面未標示」。
 - 分析「優點」：站在房仲角度，大方寫出所有賣點（地點、價格、格局、採光、翻新、生活機能、車站距離等），可以寫詳細一點，每點獨立一行、開頭加「・」。
-- 分析「缺點」：寫 1～2 點「需要留意」的地方（例如屋齡與未來修繕、管理或修繕基金、採光通風、格局、車站距離、周邊環境等），用提醒的語氣點出方向、具體一點，但不要寫得太負面、不要直接斷定。每點獨立一行、開頭加「・」。一定要有內容，不可空白。
+- 分析「缺點」：**只能寫圖面上真的有寫出來的、買方需要留意的事實**，例如屋齡、建蔽率超建（建ぺい率オーバー）、再建築不可、借地權、建築條件付、市街化調整區域、私道負擔、現況出租中、管理費或修繕基金金額、無停車場、無電梯、不可飼養寵物、需另外負擔的費用、土地權利形態等。**嚴禁自行推測或補充圖面沒寫的事**——不要憑空談採光、通風、噪音、周邊環境、未來修繕、轉售難易或行情。照圖面原文如實寫，用中性、提醒的語氣，不要加恐嚇或個人評價。圖面上有幾點就寫幾點、每點獨立一行、開頭加「・」；圖面上真的沒有可寫的，就只寫「・圖面未特別標示需要留意的事項，建議加周周 LINE 逐項確認」。
 - 金額換算好懂（3,980万円→3,980萬日圓）。
 - 補充：把用途地域、防火指定、私道負擔、都市計畫、高度地區、主要道路、電力瓦斯水道、停車位、現況、交屋日、修繕紀錄、注意事項、特約等其他重點都整合在這裡。所有日文詞都必須翻成台灣看得懂的中文，絕對不要留任何日文，例如：都市ガス→都市瓦斯、プロパンガス→桶裝瓦斯、駐車スペース→停車位、あり→有、なし→無、○台分→○台份、引渡し／引渡日→交屋日、本下水→公共下水道、初旬→上旬、中旬→中旬、下旬→下旬、現況→目前狀況、建築中→興建中、更地→空地、私道負担→私設道路分攤。圖面上有幾點重點就列幾點、不要刪減，每點獨立一行、開頭加「・」、簡短易讀。
 - 連結資訊：如果圖面上有網址、QR碼旁的說明文字、或其他重要描述句子／詞語，寫在這裡（網址照原樣寫出來）。沒有就留空字串。
@@ -142,7 +142,7 @@ const INVEST_PROMPT=`你是協助台灣客戶看懂日本「投資（收租）�
 - 物件資訊：地址盡量完整（會用來顯示地圖，務必準確）；交通（最近車站＋徒步分鐘，「駅」翻「車站／站」，多車站各自獨立一行）；用途地域、建蔽率／容積率（有寫才填）；管理狀況。
 - 分析「利回分析」：站在房仲角度白話解讀這個物件的投報率，務必保守務實、不要保證穩賺或斷定報酬。重點提醒：表面利回是還沒扣管理費、修繕、空室、稅金的「毛數字」，實際到手的實質利回會更低；並依「格局構成」點出主要客層（例：1K 多為單身上班族／學生，家庭房型客層較穩定但租金總額高）；以及影響收益的關鍵（屋齡與未來修繕、入居率與空室風險、貸款條件等）。每點獨立一行、開頭加「・」，內容寫具體、可以多寫幾點。
 - 分析「優點」：大方寫出收租賣點（利回水準、滿租、戶數規模、屋況、車站距離、生活機能等），每點獨立一行、開頭加「・」，至少寫 4～6 點、寫具體一點。
-- 分析「缺點」：寫 1～2 點需要留意的地方，用提醒的語氣點出方向（例如屋齡偏高未來修繕、入居率、區位空室等），具體一點但不要寫得太絕、不要直接斷定，每點獨立一行、開頭加「・」。一定要有內容，不可空白。
+- 分析「缺點」：**只能寫資料上真的有寫出來的、買方需要留意的事實**，例如屋齡、現況空室戶數、投報率是「滿室想定」而非現況、建蔽率超建、再建築不可、借地權、市街化調整區域、私道負擔、用途地域限制、現況出租中、管理費用、需另外負擔的費用等。**嚴禁自行推測或補充資料上沒寫的事**——不要憑空談空室風險、未來修繕、租金行情或轉售難易。照原文如實寫，用中性、提醒的語氣，不要加恐嚇或個人評價。有幾點就寫幾點、每點獨立一行、開頭加「・」；資料上真的沒有可寫的，就只寫「・資料未特別標示需要留意的事項，建議加周周 LINE 逐項確認」。
 - 補充：用途地域、防火指定、現況、交屋、管理狀況、租金明細（レントロール）、注意事項、特約等重點整合在此，全部翻中文、不留日文，每點獨立一行、開頭加「・」。
 - 連結資訊：圖面上的網址、QR 旁說明或重要描述（網址照原樣寫出）。沒有就留空字串。
 - 沒寫的欄位一律填「圖面未標示」，不要猜測編造。
@@ -451,9 +451,9 @@ function showResult(o){
   let analysisCard='';
   if(pros||cons){
     let inner='';
-    if(pros){const h=Math.max(16,Math.ceil(pros.length*0.82));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,h)}</p></div>`;}
-    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,Math.max(24,Math.ceil(cons.length*0.7)))}</p></div>`;}
-    inner+=`<div class="locktip">🔒想了解完整優缺點分析？<br><a href="${LINE}" target="_blank" rel='noopener'>加周周 LINE</a>，我幫你把這個物件詳細看一遍+分析。</div>`;
+    if(pros){inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(pros)}</p></div>`;}
+    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(cons)}</p></div>`;}
+    inner+=`<div class="locktip">🔒以上只整理圖面上寫的內容。想知道行情、貸款條件與實際該注意什麼？<br><a href="${LINE}" target="_blank" rel='noopener'>加周周 LINE</a>，我幫你把這個物件詳細看一遍+分析。</div>`;
     analysisCard=`<div class="tcard"><h3>🔍 物件分析（周周視角）</h3>${inner}</div>`;
   }
   const sup=String(o.補充||'').trim();const link=String(o.連結資訊||'').trim();const hasLink=link&&link.indexOf('未標示')<0;
@@ -496,8 +496,8 @@ function showInvestResult(o){
   if(ya||pros||cons){
     var inner='';
     if(ya){var hy=Math.max(20,Math.ceil(ya.length*0.8));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--rose-d);font-size:14px;margin-bottom:4px">📊 利回分析</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(ya,hy)}</p></div>`;}
-    if(pros){var hp=Math.max(16,Math.ceil(pros.length*0.82));inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(pros,hp)}</p></div>`;}
-    if(cons){var hc=Math.max(24,Math.ceil(cons.length*0.7));inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${teaser(cons,hc)}</p></div>`;}
+    if(pros){inner+=`<div style="margin-bottom:12px"><p style="font-weight:700;color:var(--green-d);font-size:14px;margin-bottom:4px">👍 優點</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(pros)}</p></div>`;}
+    if(cons){inner+=`<div><p style="font-weight:700;color:#b45309;font-size:14px;margin-bottom:4px">⚠️ 需要留意（可再確認）</p><p style="font-size:14px;color:#44403c;white-space:pre-line">${esc(cons)}</p></div>`;}
     inner+=`<div class="locktip">🔒想了解完整投報與收益試算？<br><a href="${LINE}" target="_blank" rel='noopener'>加周周 LINE</a>，我幫你把這個收租物件詳細試算一遍。</div>`;
     analysisCard=`<div class="tcard"><h3>🔍 投資分析（周周視角）</h3>${inner}</div>`;
   }
