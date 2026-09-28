@@ -1,5 +1,5 @@
 {
- "date": "2026-09-25",
+ "date": "2026-09-28",
  "mode": "full",
  "metrics": {
   "pages": 235,
@@ -20,9 +20,9 @@
   "orphanTw": 0,
   "orphanJa": 0,
   "noPlan": 1,
-  "images": 524,
-  "unusedImages": 11,
+  "images": 527,
+  "unusedImages": 0,
   "imgNoWH": 0,
-  "rootItems": 796
+  "rootItems": 800
  }
 }

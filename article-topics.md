@@ -139,7 +139,10 @@
    原本的 `pexels-slava-v-2159989286-36451111.webp` 因與 a14 內頁大圖重複已換下）
 ## 已完成
 ✅ 2026-09-21 `shibuya-scramble-crossing` 澀谷十字路口為什麼人可以這麼多？一次綠燈，五條斑馬線同時放行（a55・area）
-   封面用掉：`cover-shibuya-crossing.webp`（自製資訊橫幅，非圖庫）
+   封面用掉：`shibuya-crossing-aerial.webp`（2026-09-28 周周上傳的俯瞰實拍，換掉原本自製的
+   `cover-shibuya-crossing.webp`；舊橫幅未刪，留在 root 可隨時換回）
+   內文另用：`shibuya-crossing-night.webp`（夜間站前人潮）、`shibuya-crossing-video.mp4`
+   ＋ `shibuya-crossing-poster.webp`（全站第一支內嵌影片，click-to-play）
 ✅ 2026-09-14 `japan-stigmatized-property-check` 事故物件怎麼查？大島てる的用法、極限，與日本的告知義務規定（a53・knowhow）
    封面用掉：`pexels-joanie-xie-1306424600-33752181.webp`（原 jpg 已轉 WebP，原檔移入 img-original/）
    ⚠️ 順手加了兩個專名白名單：`check-lang.cjs` 的 ALLOW 與 `build-cn.cjs` 的 KEEP 都加了「大島てる」，
