@@ -152,7 +152,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "",
     video: "N9ivvqZa1ek",
-    photos: ["prop-kototoi902-1.webp","prop-kototoi902-plan.webp","prop-kototoi902-2.webp","prop-kototoi902-3.webp","prop-kototoi902-4.webp","prop-kototoi902-5.webp","prop-kototoi902-6.webp","prop-kototoi902-7.webp","prop-kototoi902-8.webp","prop-kototoi902-9.webp"],
+    photos: ["prop/prop-kototoi902-1.webp","prop/prop-kototoi902-plan.webp","prop/prop-kototoi902-2.webp","prop/prop-kototoi902-3.webp","prop/prop-kototoi902-4.webp","prop/prop-kototoi902-5.webp","prop/prop-kototoi902-6.webp","prop/prop-kototoi902-7.webp","prop/prop-kototoi902-8.webp","prop/prop-kototoi902-9.webp"],
     note: "■ 這間的主角是陽台\n站在陽台就看得到晴空塔。9樓、南東角戶，前面沒有東西擋住——同一棟裡也只有這個方位這個樓層做得到。（眺望會隨天候變化，也無法保證未來周邊建物不變。）\n■ 位置\n東京晴空塔站徒步7分、本所吾妻橋站8分、押上站11分，三站三條線。東京ソラマチ約510m、隅田公園只要約70m，淺草過一座橋就到。\n■ 格局與屋況\n1LDK・專有46.45㎡（LDK約12.8帖＋洋室約5.0帖），衛浴三分離、附步入式衣帽間。2026年7月2日剛完成全面翻新，廚房、衛浴、建具全部換新，附食洗機與浴室乾燥機，照明家具也附上，行李搬進去就能住。大樓2022年9月才做過大規模修繕。\n■ 現況空屋，隨時可以看房\n這種屋齡各家銀行條件差很多，我可以先幫你問過幾家，挑最好的那家再出手。加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -175,7 +175,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承。水電瓦斯為公營水道・都市瓦斯・公共排水",
     right: "所有權",
     yield: "表面想定18.9%／實質想定約10.1%（賣方試算：想定年銷售額965.7萬円・想定年收益462.8萬円）",
-    photos: ["prop-tengachaya-1.webp","prop-tengachaya-plan.webp","prop-tengachaya-2.webp","prop-tengachaya-3.webp","prop-tengachaya-4.webp","prop-tengachaya-5.webp"],
+    photos: ["prop/prop-tengachaya-1.webp","prop/prop-tengachaya-plan.webp","prop/prop-tengachaya-2.webp","prop/prop-tengachaya-3.webp","prop/prop-tengachaya-4.webp","prop/prop-tengachaya-5.webp"],
     note: "■ 這間是什麼\n大阪市西成區潮路、天下茶屋一帶的<b>町家型民宿一棟</b>，取得旅館業許可（365天可營業），2026年5月剛全面改裝完成、6月8日起已經在營運。土地48.22㎡・建物74.11㎡的兩層木造。\n■ 亮點\n三站三線都在腳程內——西天下茶屋3分、岸里7分、天下茶屋9分；天下茶屋是南海本線與地下鐵堺筋線的交會站，從關西機場、難波、梅田過來都很直接，正是海外旅客會選的位置。屋內走的是紅鳥居＋和室矮桌的日式路線，照片就是實際的樣子。照明、空調、家具、家電都附，運營公司也可以沿用或換掉。\n■ 要先知道的\n這是<b>連棟房屋（長屋）</b>，1970年築。連棟與屋齡會影響貸款條件，各家銀行看法差很多——我可以先幫你問過幾家再決定怎麼出手。另有私道負擔約6.5㎡與退縮距離約1.26㎡。\n■ 想看數字或現場\n賣方有完整的收益預估表與實際營運資料，我可以整份要過來跟你一起看。加LINE跟我說一聲就好。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -198,7 +198,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承。水電瓦斯為公營水道・都市瓦斯・公共排水",
     right: "所有權",
     yield: "表面想定18.4%／實質想定約10.2%（賣方試算：想定年銷售額730.8萬円・想定年收益404.9萬円）",
-    photos: ["prop-oimazato-1.webp","prop-oimazato-plan.webp","prop-oimazato-2.webp","prop-oimazato-3.webp","prop-oimazato-4.webp","prop-oimazato-5.webp","prop-oimazato-6.webp"],
+    photos: ["prop/prop-oimazato-1.webp","prop/prop-oimazato-plan.webp","prop/prop-oimazato-2.webp","prop/prop-oimazato-3.webp","prop/prop-oimazato-4.webp","prop/prop-oimazato-5.webp","prop/prop-oimazato-6.webp"],
     note: "■ 這間是什麼\n大阪地下鐵千日前線「今里」站徒步3分的<b>特區民宿一棟</b>（大阪市的國家戰略特區民泊，365天可營運），2025年9月末改裝完成、10月31日起已經在營運。總價3,980萬円，是這一批裡最好入手的一間。\n■ 亮點\n<b>離站3分</b>——民宿最吃的就是「拖著行李走得到」，這個距離很有說服力。內裝走深藍＋木質的現代風，一樓LDK開放式廚房、二樓配上下舖，適合家庭與小團體。照明、空調、家具、家電都附，運營公司可沿用或更換。\n■ 要先知道的\n建物是1921年（大正10年）的老屋、<b>連棟房屋</b>，而且<b>有未登記的增建部分</b>；登記面積38.33㎡與課稅證明上的51.21㎡不一致，土地也有暫定測量面積（30.13㎡）與登記面積（19.10㎡）的差。這些都會影響貸款與未來轉手，不是不能處理，但一定要先弄清楚——這一段我可以幫你跟賣方一項一項問。\n■ 下一步\n想看收益預估表、營運實績或現場影片，加LINE跟我說。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -221,7 +221,7 @@ window.PROPERTIES = [
     mgmt: "商店街管理費 月額4,000円。附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定20.9%／實質想定約11.9%（賣方試算：想定年銷售額1,315萬円・想定年收益751.5萬円）",
-    photos: ["prop-tsuruhashi-mori-1.webp","prop-tsuruhashi-mori-plan.webp","prop-tsuruhashi-mori-2.webp","prop-tsuruhashi-mori-3.webp","prop-tsuruhashi-mori-4.webp","prop-tsuruhashi-mori-5.webp","prop-tsuruhashi-mori-6.webp"],
+    photos: ["prop/prop-tsuruhashi-mori-1.webp","prop/prop-tsuruhashi-mori-plan.webp","prop/prop-tsuruhashi-mori-2.webp","prop/prop-tsuruhashi-mori-3.webp","prop/prop-tsuruhashi-mori-4.webp","prop/prop-tsuruhashi-mori-5.webp","prop/prop-tsuruhashi-mori-6.webp"],
     note: "■ 這間是什麼\n<b>鶴橋站徒步3分</b>的特區民宿，買的是建物的<b>3樓部分</b>（有分割登記），約105㎡、多間客房＋共用LDK，還有一個檜木浴池。2025年8月改裝完成、9月29日起營運中。\n■ 亮點\n鶴橋是JR環狀線、近鐵奈良線・大阪線、地下鐵千日前線的交會站，走3分鐘就到；韓國城就在旁邊，是海外旅客會特地來的地方。這一批裡它的實質想定投報率最高。\n■ 要先知道的\n這是<b>建物的一部分（3樓）＋土地持分</b>，不是整棟；商店街管理費每月4,000円。分割登記的物件在貸款上比整棟麻煩，銀行的看法差很多，我可以先幫你問過幾家再談。建物是1971年築。\n■ 下一步\n想看營運數字、權利關係的文件或現場影片，加LINE跟我說。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -244,7 +244,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定20.3%／實質想定約11.9%（賣方試算：想定年銷售額1,341萬円・想定年收益784.3萬円）",
-    photos: ["prop-seihaku-1.webp","prop-seihaku-plan.webp","prop-seihaku-2.webp","prop-seihaku-3.webp","prop-seihaku-4.webp","prop-seihaku-5.webp","prop-seihaku-6.webp"],
+    photos: ["prop/prop-seihaku-1.webp","prop/prop-seihaku-plan.webp","prop/prop-seihaku-2.webp","prop/prop-seihaku-3.webp","prop/prop-seihaku-4.webp","prop/prop-seihaku-5.webp","prop/prop-seihaku-6.webp"],
     note: "■ 這間是什麼\n大阪地下鐵四橋線「花園町」站徒步7分的<b>特區民宿一棟</b>，2024年12月末改裝完成、2025年4月起營運中。全白基調的內裝，最特別的是<b>有三溫暖與露天浴池</b>，還有一個頂樓露台。\n■ 亮點\n三溫暖這幾年在日本是很強的訂房誘因，能把平均房價拉起來，也是同價帶民宿裡少見的配置。花園町到難波只要幾分鐘，位置對旅客很方便。\n■ 要先知道的\n這間的面積資料比較複雜：登記簿56.35㎡、課稅證明70.07㎡、消防署登記115.32㎡，三個數字不一樣，而且<b>有未登記的增建部分</b>、<b>現況為連棟建築</b>，建築年份也是不詳。這些會直接影響貸款與將來轉手，買之前一定要把文件弄清楚——我可以陪你一項一項跟賣方確認。\n■ 下一步\n想看實際營運數字或現場影片，加LINE跟我說。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -267,7 +267,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定17.7%／實質想定約10.0%（賣方試算：想定年銷售額1,689萬円・想定年收益954.3萬円／床位17張、預想平均入住率72%）",
-    photos: ["prop-momodani-1.webp","prop-momodani-plan.webp","prop-momodani-2.webp","prop-momodani-3.webp","prop-momodani-4.webp","prop-momodani-5.webp","prop-momodani-6.webp"],
+    photos: ["prop/prop-momodani-1.webp","prop/prop-momodani-plan.webp","prop/prop-momodani-2.webp","prop/prop-momodani-3.webp","prop/prop-momodani-4.webp","prop/prop-momodani-5.webp","prop/prop-momodani-6.webp"],
     note: "■ 這間是什麼\n生野區桃谷的<b>民宿一棟</b>，同時有旅館業許可（365天可營業）與特區民泊，2026年4月下旬全面翻修完成、6月25日起營運中。土地88㎡・建物130㎡，是這一批裡規模最大的其中一間，床位17張。\n■ 亮點\n內裝做得很講究——一樓有和風中庭與拱型天花，還有一個檜木浴池與露天石缽浴，走的是「住一晚會想拍照」的路線。鶴橋站8分、桃谷站10分，兩個JR環狀線車站都能用。<b>鋼筋混凝土造</b>在這個價帶的民宿裡算少見，對貸款與長期維護都是加分。\n■ 要先知道的\n建物是1979年築；有私道負擔約1㎡與退縮距離。收益是以床位17張、預想平均入住率72%試算的。\n■ 下一步\n賣方有逐月的收益預估表與實際營運資料，我可以整份要過來跟你一起看。加LINE跟我說一聲。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -290,7 +290,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定17.2%／實質想定約9.3%（賣方試算：想定年銷售額1,682萬円・想定年利益913萬円）",
-    photos: ["prop-kyoto-uta-1.webp","prop-kyoto-uta-plan.webp","prop-kyoto-uta-2.webp","prop-kyoto-uta-3.webp","prop-kyoto-uta-4.webp","prop-kyoto-uta-5.webp","prop-kyoto-uta-6.webp"],
+    photos: ["prop/prop-kyoto-uta-1.webp","prop/prop-kyoto-uta-plan.webp","prop/prop-kyoto-uta-2.webp","prop/prop-kyoto-uta-3.webp","prop/prop-kyoto-uta-4.webp","prop/prop-kyoto-uta-5.webp","prop/prop-kyoto-uta-6.webp"],
     note: "■ 這間是什麼\n這一批裡<b>唯一一間在京都</b>的町家民宿一棟，京都市南區東九條、地下鐵烏丸線「十條」站徒步5～6分。2026年7月末改裝完成，預計9月中旬以旅館業開始營運（365天可營業）。土地63.9㎡・建物127.29㎡的三層木造。\n■ 亮點\n京都的住宿需求一年四季都很穩，而且<b>新的民宿許可愈來愈難拿</b>，已經整理好、執照也在走的物件本身就有稀少性。內裝把坪庭、障子、和室做得很完整，照片就是實際完成的樣子。烏丸線直達京都車站，觀光動線很順。\n■ 要先知道的\n<b>還沒開始營運</b>，所以帳面上的數字目前都還是賣方的想定試算，沒有實際營運實績可以看。另有私道負擔與退縮距離3.35㎡。\n■ 下一步\n想看許可的進度、收益預估表或現場影片，加LINE跟我說。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -313,7 +313,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定17.98%／實質想定9.85%（賣方試算：想定年銷售額1,636萬円・想定年收益896.7萬円・想定入住率72%）",
-    photos: ["prop-nishikujo-1-pers.webp","prop-nishikujo-plan.webp"],
+    photos: ["prop/prop-nishikujo-1-pers.webp","prop/prop-nishikujo-plan.webp"],
     note: "■ 這間是什麼\n<b>西九條站徒步2分</b>的民宿一棟，地上3層加屋頂平台，寢室5間、床位12個（最多可住20人）。土地56.33㎡・建物136.62㎡，1981年築的鐵骨造。目前還在改裝，依賣方資料預計2027年1月上旬完工、2月開始營運。\n■ 亮點\n西九條是<b>JR大阪環狀線與阪神難波線的交會站</b>——往環球影城（USJ）一站、往難波與神戶都直達，對帶小孩的家庭客與海外旅客來說是很好講的位置。1樓有LDK與寢室，2、3樓各配寢室與脫衣室，屋頂另有平台。\n■ 要先知道的\n相簿裡的外觀與間取圖是<b>完成預想圖</b>，實際完成狀況以現場及重要事項說明書為準。因為還沒開始營運，表面與實質投報率都是賣方的想定試算、沒有營運實績。改裝與營運時程也是賣方預定，會不會如期以現況為準。\n■ 下一步\n想看改裝進度、收益預估表或許可文件，加LINE跟我說，我幫你跟賣方確認。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率與營運成本變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -336,7 +336,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定18.6%／實質想定約10.0%（賣方試算：想定年銷售額1,531萬円・想定年收益821.2萬円）",
-    photos: ["prop-tsuruhashi-ren-1-pers.webp","prop-tsuruhashi-ren-plan.webp"],
+    photos: ["prop/prop-tsuruhashi-ren-1-pers.webp","prop/prop-tsuruhashi-ren-plan.webp"],
     note: "■ 這間是什麼\n<b>鶴橋站徒步2分</b>的民宿一棟，取得旅館業許可（365天可營業），同時也有民泊新法的180天框架。目前還在改裝，預計2026年9月下旬完工、11月上旬開始營運。土地48.51㎡・建物97.30㎡的三層木造。\n■ 亮點\n<b>離站2分</b>是這一批裡最近的。鶴橋是JR環狀線、近鐵兩線、地下鐵千日前線的交會站，從關西機場經近鐵直接過來就到，韓國城也在旁邊——對海外旅客來說位置非常好懂。\n■ 要先知道的\n相簿裡的外觀與間取圖是<b>完成預想圖</b>，實際完成狀況以現場與重要事項說明書為準。建物是1947年築，另有私道負擔約5.46㎡與退縮距離約2.94㎡。因為還沒開始營運，數字都還是賣方的想定試算，沒有營運實績。\n■ 下一步\n想看改裝進度、收益預估表或許可文件，加LINE跟我說。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -359,7 +359,7 @@ window.PROPERTIES = [
     mgmt: "附帶照明・空調・家具・家電，運營公司可變更及繼承",
     right: "所有權",
     yield: "表面想定18.1%／實質想定約10.0%（賣方試算：想定年銷售額1,840萬円・想定年收益1,015萬円）",
-    photos: ["prop-bentencho-1-pers.webp","prop-bentencho-plan.webp"],
+    photos: ["prop/prop-bentencho-1-pers.webp","prop/prop-bentencho-plan.webp"],
     note: "■ 這間是什麼\n大阪市港區波除、JR大阪環狀線與地下鐵中央線「弁天町」站徒步7分的<b>民宿一棟</b>，同時有民泊新法180天與旅館業365天的框架。目前改裝中，預計2026年11月完工、12月中旬開始營運。土地53.01㎡・建物133.08㎡。\n■ 亮點\n<b>共7間寢室</b>，是這一批裡房間數最多的，適合團體客與長住；<b>鐵骨造</b>在民宿裡也相對好處理。弁天町一站就到大阪港與海遊館，去環球影城（USJ）也很近——家庭客與親子團的需求很明確。\n■ 要先知道的\n相簿裡的外觀與間取圖是<b>完成預想圖</b>，實際完成狀況以現場與重要事項說明書為準。建物是1972年築。因為還沒開始營運，數字都還是賣方的想定試算，沒有營運實績。\n■ 下一步\n想看改裝進度、收益預估表或許可文件，加LINE跟我說。（表面／實質投報率均為賣方提供的<b>想定・滿租試算，不是保證收益</b>；實際住宿收入會隨季節、入住率、營運成本而變動。旅館業・民泊等許可與營運狀況、以及能不能承接現有營運公司，請以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認。）"
   },
 
@@ -383,7 +383,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金。學區：區立誠之小學校・區立第六中學校（學區劃分以文京區公所最新公告為準）。建築確認號碼 SJK-KX256013170",
     right: "所有權",
     yield: "",
-    photos: ["prop-mukougaoka2-1.webp","prop-mukougaoka2-plan.webp","prop-mukougaoka2-2.webp","prop-mukougaoka2-3.webp","prop-mukougaoka2-4.webp","prop-mukougaoka2-5.webp","prop-mukougaoka2-6.webp","prop-mukougaoka2-7.webp","prop-mukougaoka2-8.webp","prop-mukougaoka2-9.webp","prop-mukougaoka2-10.webp","prop-mukougaoka2-11.webp","prop-mukougaoka2-12.webp","prop-mukougaoka2-13.webp","prop-mukougaoka2-14.webp","prop-mukougaoka2-15.webp","prop-mukougaoka2-16.webp","prop-mukougaoka2-17.webp","prop-mukougaoka2-18.webp","prop-mukougaoka2-19.webp","prop-mukougaoka2-20.webp","prop-mukougaoka2-21.webp","prop-mukougaoka2-kukaku-plan.webp"],
+    photos: ["prop/prop-mukougaoka2-1.webp","prop/prop-mukougaoka2-plan.webp","prop/prop-mukougaoka2-2.webp","prop/prop-mukougaoka2-3.webp","prop/prop-mukougaoka2-4.webp","prop/prop-mukougaoka2-5.webp","prop/prop-mukougaoka2-6.webp","prop/prop-mukougaoka2-7.webp","prop/prop-mukougaoka2-8.webp","prop/prop-mukougaoka2-9.webp","prop/prop-mukougaoka2-10.webp","prop/prop-mukougaoka2-11.webp","prop/prop-mukougaoka2-12.webp","prop/prop-mukougaoka2-13.webp","prop/prop-mukougaoka2-14.webp","prop/prop-mukougaoka2-15.webp","prop/prop-mukougaoka2-16.webp","prop/prop-mukougaoka2-17.webp","prop/prop-mukougaoka2-18.webp","prop/prop-mukougaoka2-19.webp","prop/prop-mukougaoka2-20.webp","prop/prop-mukougaoka2-21.webp","prop/prop-mukougaoka2-kukaku-plan.webp"],
     note: "■ 這間是什麼\n文京區向丘2丁目、東大前站徒步3分的<b>新築一戶建</b>——從設計、施工到銷售都是我們公司自己來的自社物件。地上3層、土地106.74㎡・建物177.36㎡的4LDK，現況已完成，2026年10月上旬交屋。\n■ 亮點一：<b>誠之小學校學區</b>\n文京區最有人氣的小學被家長叫做「<a href=\"bunkyo-3s1k-elementary-schools.html\">3S1K</a>」——誠之、昭和、千駄木、窪町，這間就在其中名氣最大的<b>誠之小學校</b>學區，中學是區立第六中學校。西片・向丘這一帶本來就是安靜的高級住宅區，東大本鄉校區就在旁邊，住戶裡醫師、律師、研究者的比例高，補習班與升學資源也集中。很多家庭是為了學區才搬進來的，所以這一區的房子一向不太等人。\n（3S1K 是長年在教育與房地產市場形成的印象，不是政府公布的排名；學區劃分也可能調整，實際請以文京區公所最新公告為準。）\n■ 亮點二：近站又有內建車庫\n東大前3分、白山11分、根津12分，三站三條線。車庫直接收在屋子裡（約6.4m×2.9m），下雨天上下車不用淋到；文京區這個地段能同時做到近站、獨棟、車位不外租的，本來就不多。\n■ 格局與規格\n2樓整層是23.5帖的LDK，一家人的重心放在同一層；1樓9.5帖臥室＋步入式衣帽間與備蓄庫，3樓再配三間臥室（6.5帖＋6.0帖×2）。設備是平檯廚房、洗碗機、瓦斯衣物乾燥機（乾太くん）、全熱交換第一種換氣、噴塗隔熱、SECOM居家保全、瓦斯溫水地暖、電動車充電插座、制震阻尼器。耐震等級2、ZEH水準、隔熱性能第5級，省能標示三顆星，預估年水電瓦斯費約19.7萬円。Flat 35 房貸（フラット35）的35S・A方案適合證明書預計取得。\n■ 自社物件，問到底都可以\n房子是我們自己蓋的，設計怎麼想的、材料用什麼、施工過程如何，我這邊都問得到，不必經過第三家。想看房或先試算貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -406,7 +406,7 @@ window.PROPERTIES = [
     mgmt: "管理費・修繕積立金 未定（建物完工前尚未定案）。管理公司：住友不動產建物服務（全部委託）。施工：西松建設。敷地內有停車場與自行車停車場，空位狀況需另行確認",
     right: "所有權",
     yield: "",
-    photos: ["prop-rainbow2902-1-pers.webp","prop-rainbow2902-plan.webp","prop-rainbow2902-2-pers.webp","prop-rainbow2902-3-pers.webp","prop-rainbow2902-4-pers.webp","prop-rainbow2902-5-pers.webp","prop-rainbow2902-6-pers.webp","prop-rainbow2902-7-pers.webp"],
+    photos: ["prop/prop-rainbow2902-1-pers.webp","prop/prop-rainbow2902-plan.webp","prop/prop-rainbow2902-2-pers.webp","prop/prop-rainbow2902-3-pers.webp","prop/prop-rainbow2902-4-pers.webp","prop/prop-rainbow2902-5-pers.webp","prop/prop-rainbow2902-6-pers.webp","prop/prop-rainbow2902-7-pers.webp"],
     note: "■ 這間是什麼\n港區芝浦・海岸的<b>新築塔樓大樓（新築マンション）</b>，34層建的29樓南西角戶，3LDK・專有75.69㎡。2028年4月完工，現在還在建築中，誰都還沒住過，交屋時間可以談。\n■ 亮點\n陽台約39.86㎡——將近12坪，是塔樓裡很少見的尺度；加上南西角戶又在29樓，採光與開闊感是這間最強的地方。相簿裡的室內外都是<b>完成預想圖</b>，眺望與實際完成狀況以現場及重要事項說明書為準，也無法保證未來周邊建物不變。\n■ 規格\nLD約13.0帖，三個房間都有收納，另有步入式衣帽間與獨立化妝間。廚房附三口爐、洗碗機、廚餘處理機；浴室有追焚、浴室乾燥與霧氣三溫暖。大樓是免震構造，24小時有人管理＋禮賓服務、各樓層24小時可丟垃圾，另有訪客房與兒童遊戲室，可養寵物（細則有）。\n■ 這是業界未公開物件\n沒有掛在任何網站或同業平台，只有我這邊可以介紹。管理費與修繕積立金要等完工前才定案；新築塔樓的貸款各家銀行看法差很多，我可以先幫你問過幾家再決定怎麼談。加LINE跟我說一聲，我用中文一步一步陪你走完（設備之契約不適合責任免責；實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -429,7 +429,7 @@ window.PROPERTIES = [
     mgmt: "管理費・修繕積立金 未定（建物完工前尚未定案）。管理公司：住友不動產建物服務（全部委託）。施工：前田建設工業。敷地內有停車場與自行車停車場，空位狀況需另行確認",
     right: "所有權",
     yield: "",
-    photos: ["prop-tamachi2904-1-pers.webp","prop-tamachi2904-plan.webp","prop-tamachi2904-2-pers.webp","prop-tamachi2904-3-pers.webp","prop-tamachi2904-4-pers.webp","prop-tamachi2904-5-pers.webp","prop-tamachi2904-6-pers.webp","prop-tamachi2904-map.webp"],
+    photos: ["prop/prop-tamachi2904-1-pers.webp","prop/prop-tamachi2904-plan.webp","prop/prop-tamachi2904-2-pers.webp","prop/prop-tamachi2904-3-pers.webp","prop/prop-tamachi2904-4-pers.webp","prop/prop-tamachi2904-5-pers.webp","prop/prop-tamachi2904-6-pers.webp","prop/prop-tamachi2904-map.webp"],
     note: "■ 這間是什麼\n田町站徒步10分、港區芝浦的<b>新築免震塔樓大樓（新築マンション）</b>，34層建的29樓角戶，3LDK・專有76.12㎡。2028年4月完工，現在還在建築中，誰都還沒住過，交屋時間可以談。\n■ 亮點\n三條路線三個車站都是徒步10分，而且是高層角戶、陽台朝南東。田町・三田一帶正在大規模重劃，未來的生活機能只會更好。相簿裡的室內外都是<b>完成預想圖</b>，眺望與實際完成狀況以現場及重要事項說明書為準，也無法保證未來周邊建物不變。\n■ 規格\nLD約12.2帖，三個房間都有收納，另有步入式衣帽間與獨立化妝間。廚房附三口爐、洗碗機、廚餘處理機；浴室有追焚、浴室乾燥與霧氣三溫暖。大樓是免震構造，24小時有人管理＋禮賓服務、各樓層24小時可丟垃圾，另有訪客房與兒童遊戲室，可養寵物（細則有）。\n■ 這是業界未公開物件\n沒有掛在任何網站或同業平台，只有我這邊可以介紹。管理費與修繕積立金要等完工前才定案；新築塔樓的貸款各家銀行看法差很多，我可以先幫你問過幾家再決定怎麼談。加LINE跟我說一聲，我用中文一步一步陪你走完（設備之契約不適合責任免責；實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -452,7 +452,7 @@ window.PROPERTIES = [
     mgmt: "管理費22,105円＋修繕積立金18,730円／月（合計40,835円・全部委託・住友不動產）。停車場11,000円／月（空位狀況需另行確認）。施工：竹中工務店。敷地內另有自行車停車場",
     right: "所有權",
     yield: "",
-    photos: ["prop-kanamachi3612-1.webp","prop-kanamachi3612-plan.webp","prop-kanamachi3612-2.webp","prop-kanamachi3612-3.webp","prop-kanamachi3612-4.webp","prop-kanamachi3612-5.webp","prop-kanamachi3612-6.webp","prop-kanamachi3612-7.webp","prop-kanamachi3612-8.webp","prop-kanamachi3612-10.webp","prop-kanamachi3612-11.webp","prop-kanamachi3612-12.webp","prop-kanamachi3612-13.webp","prop-kanamachi3612-14.webp"],
+    photos: ["prop/prop-kanamachi3612-1.webp","prop/prop-kanamachi3612-plan.webp","prop/prop-kanamachi3612-2.webp","prop/prop-kanamachi3612-3.webp","prop/prop-kanamachi3612-4.webp","prop/prop-kanamachi3612-5.webp","prop/prop-kanamachi3612-6.webp","prop/prop-kanamachi3612-7.webp","prop/prop-kanamachi3612-8.webp","prop/prop-kanamachi3612-10.webp","prop/prop-kanamachi3612-11.webp","prop/prop-kanamachi3612-12.webp","prop/prop-kanamachi3612-13.webp","prop/prop-kanamachi3612-14.webp"],
     note: "■ 這間是什麼\n金町站大規模重劃區裡的37層塔樓，這戶在36樓、西向角戶，4SLDK・專有77.83㎡。2016年2月築、竹中工務店施工，總戶數700戶。\n■ 亮點\n相簿裡的眺望照都是從這戶實際拍的。<b>天氣好的時候，晴空塔與富士山都看得到</b>；白天是江戶川與一整片開闊的天空，晚上整面市區燈火從角窗鋪過去。36樓的角戶在這一帶幾乎不會釋出（眺望會隨天候變化，也無法保證未來周邊建物不變）。\n正對大型公園，窗外就是成片綠意，前面沒有東西擋著。樓下旁邊就有超市，下班順路買菜、臨時缺東西都是幾分鐘的事，帶小孩的家庭會很有感。\n■ 格局與規格\n四房＋多功能房（サービスルーム），77.83㎡在這個總價帶算很能住。多功能房的隔間可以拆除調整，整理成<b>四間都寬敞的大房</b>，一家四口各有各的空間也排得開（室內裝修需依管理規約向管理組合申請，可否施作請以現場與規約為準）。LDK約11.0帖，主臥附步入式衣帽間，玄關還有自己的前庭。衛浴三分離，廚房附三口爐、洗碗機、廚餘處理機；浴室有追焚、浴室乾燥與霧氣三溫暖。大樓是免震構造，24小時有人管理＋禮賓服務、各樓層24小時可丟垃圾，另有訪客房與兒童遊戲室，可養寵物（細則有）。管理費＋修繕積立金合計40,835円／月，要停車再加11,000円／月（車位空位狀況要另外確認）。\n■ 這是業界未公開物件\n沒有掛在任何網站或同業平台，只有我這邊可以介紹。現況居住中，看房要先跟屋主約時間，想看的話早點跟我說。加LINE跟我說一聲，我用中文一步一步陪你走完（設備之契約不適合責任免責；實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -477,7 +477,7 @@ window.PROPERTIES = [
     mgmt: "管理費23,100円＋修繕積立金13,200円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-shiba2802-1.webp","prop-shiba2802-2.webp","prop-shiba2802-3.webp","prop-shiba2802-4.webp","prop-shiba2802-5.webp","prop-shiba2802-6.webp"],
+    photos: ["prop/prop-shiba2802-1.webp","prop/prop-shiba2802-2.webp","prop/prop-shiba2802-3.webp","prop/prop-shiba2802-4.webp","prop/prop-shiba2802-5.webp","prop/prop-shiba2802-6.webp"],
     note: "港區芝、濱松町站徒步6分的制震塔樓（清水建設施工、共479戶），這戶在28樓、人氣西向，東京鐵塔幾乎就在腳下！2026年7月剛完成全室翻新，含TES式地暖、3台新冷氣，屋況全新。24小時有人管理＋禮賓服務、4重保全、各樓層可24小時丟垃圾，管理與生活機能都是塔樓等級。可養寵物（1戶2隻內、成長後體高50cm・體重10kg以內），基地內停車場目前有空位（月租約3.9〜5.2萬円，以最新公告為準）。這種高層景觀＋精華地段的塔樓不常釋出，想看房或試算貸款加LINE，我幫你安排（可貸成數依銀行審查為準）。"
   },
 
@@ -500,7 +500,7 @@ window.PROPERTIES = [
     mgmt: "管理費9,000円＋修繕積立金17,820円＋網路使用料1,540円／月（合計28,360円・全部委託・大成有樂不動產）",
     right: "所有權",
     yield: "",
-    photos: ["prop-daikanyama903-1.webp","prop-daikanyama903-plan.webp","prop-daikanyama903-2.webp","prop-daikanyama903-3.webp","prop-daikanyama903-4.webp","prop-daikanyama903-5.webp","prop-daikanyama903-6.webp","prop-daikanyama903-7.webp","prop-daikanyama903-8.webp","prop-daikanyama903-9.webp","prop-daikanyama903-10.webp","prop-daikanyama903-11.webp","prop-daikanyama903-12.webp"],
+    photos: ["prop/prop-daikanyama903-1.webp","prop/prop-daikanyama903-plan.webp","prop/prop-daikanyama903-2.webp","prop/prop-daikanyama903-3.webp","prop/prop-daikanyama903-4.webp","prop/prop-daikanyama903-5.webp","prop/prop-daikanyama903-6.webp","prop/prop-daikanyama903-7.webp","prop/prop-daikanyama903-8.webp","prop/prop-daikanyama903-9.webp","prop/prop-daikanyama903-10.webp","prop/prop-daikanyama903-11.webp","prop/prop-daikanyama903-12.webp"],
     note: "■ 位置本身就是資產\n代官山站徒步4分、惠比壽站徒步5分。代官山跟惠比壽是東京少數「安靜又有質感、但生活機能完全不缺」的區域，走幾步是選物店與咖啡館，回到住處又是安穩的住宅氛圍，很多在東京長住的外國人最後都選這一帶。\n■ 兩個一般人不會注意、但住起來差很多的規格\n一是二重床二重天井（地板與天花板都有架高層），樓上樓下的聲音傳導比直鋪式好，管線維修也不用敲混凝土；二是逆梁工法，把梁移到外側，所以窗戶可以做得又高又大，室內採光跟開闊感完全不同。\n■ 建築與格局\n2005年4月築的RC造12層樓、總戶數47戶，這間在9樓、西向。格局是LDK約11.2帖＋洋室約3.3帖的1LDK，專有36.10㎡，陽台有8.05㎡算相當寬。\n■ 設備\nLDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室內洗衣機位、自動鎖、電梯，垃圾24小時可丟。可養寵物（管理規約有一定限制，養之前要先確認細則）。\n■ ⚠️ 持有成本要看清楚\n管理費9,000円＋修繕積立金17,820円＋網路使用料1,540円，每月合計約28,360円——修繕積立金比例偏高，好處是大樓的長期修繕準備充足，但如果你是要出租的，這筆務必先算進收益裡。\n現況空屋、可即時交屋，隨時能安排看房。想看房或想討論代官山・惠比壽這一帶的行情，加LINE跟周周說一聲（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -523,7 +523,7 @@ window.PROPERTIES = [
     mgmt: "管理費6,500円＋修繕積立金2,400円／月（合計8,900円・全部委託・管理員巡迴）",
     right: "所有權",
     yield: "",
-    photos: ["prop-ebisu1103-1.webp","prop-ebisu1103-plan.webp","prop-ebisu1103-2.webp","prop-ebisu1103-3.webp","prop-ebisu1103-4.webp","prop-ebisu1103-5.webp","prop-ebisu1103-6.webp","prop-ebisu1103-7.webp","prop-ebisu1103-8.webp","prop-ebisu1103-9.webp","prop-ebisu1103-10.webp"],
+    photos: ["prop/prop-ebisu1103-1.webp","prop/prop-ebisu1103-plan.webp","prop/prop-ebisu1103-2.webp","prop/prop-ebisu1103-3.webp","prop/prop-ebisu1103-4.webp","prop/prop-ebisu1103-5.webp","prop/prop-ebisu1103-6.webp","prop/prop-ebisu1103-7.webp","prop/prop-ebisu1103-8.webp","prop/prop-ebisu1103-9.webp","prop/prop-ebisu1103-10.webp"],
     note: "■ 為什麼值得看\n惠比壽地址、11樓的南東角戶——這兩個條件加在一起，在惠比壽這種寸土寸金的地方其實不好找。角戶代表兩面採光通風，加上樓層夠高，實際站在窗邊看出去是很開闊的市景（相簿裡有一張實拍的眺望照，可以直接感受）。\n■ 屋況\n2026年8月剛完成全室翻新：地板、壁紙、洗面台、馬桶、廚房、整體衛浴、門片全部換新，還新設了冷氣一台跟LDK地暖。格局是LDK約11.0帖＋洋室約4.7帖的1LDK，中間可以打通成一個大空間，附步入式衣帽間，一個人住或情侶住都剛好。\n■ 建築與管理\n2009年3月築、RC造13層樓、總戶數55戶。2025年10月才做完大規模修繕，接下來幾年不用擔心大額工程；管理由管理公司 クレアスコミュニティー 全部委託。\n■ 最實在的優點：持有成本低\n管理費6,500円＋修繕積立金2,400円，每個月合計只要8,900円——在惠比壽同級物件裡相當便宜的。\n■ 交通有個隱藏優勢\n廣尾站徒步10分、惠比壽站徒步12分，但其實門口的「惠比壽三丁目」公車站走1分鐘就到，搭公車到惠比壽站約7分、到澀谷約15分，下雨天或提東西的時候差很多。\n■ 其他\n自動鎖、宅配箱、電梯，可養寵物（依規約）。現況空屋、可即時交屋，隨時能看房。\n想約看或想知道外國人買這個價格帶要準備什麼，加LINE跟周周說一聲，我用中文陪你一路走完（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -545,7 +545,7 @@ window.PROPERTIES = [
     mgmt: "管理費15,300円＋修繕積立金22,500円／月（另有外部區分所有者協力金500円・合計38,300円・全部委託・管理員日勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-ebisu302-1.webp","prop-ebisu302-plan.webp","prop-ebisu302-2.webp","prop-ebisu302-3.webp","prop-ebisu302-4.webp","prop-ebisu302-5.webp","prop-ebisu302-6.webp","prop-ebisu302-7.webp","prop-ebisu302-8.webp","prop-ebisu302-9.webp"],
+    photos: ["prop/prop-ebisu302-1.webp","prop/prop-ebisu302-plan.webp","prop/prop-ebisu302-2.webp","prop/prop-ebisu302-3.webp","prop/prop-ebisu302-4.webp","prop/prop-ebisu302-5.webp","prop/prop-ebisu302-6.webp","prop/prop-ebisu302-7.webp","prop/prop-ebisu302-8.webp","prop/prop-ebisu302-9.webp"],
     note: "■ 掛惠比壽的地址，過廣尾的生活\n廣尾站徒步8分、惠比壽站徒步12分，廣尾商店街走約250公尺就到，附近還有 まいばすけっと（小型超市）跟 リコス 超市，日常採買非常方便。廣尾這一帶因為有大使館跟國際學校，住起來安靜、街廓乾淨，是很多外國人在東京會挑的區域。\n■ 屋況\n2026年5月剛完成全室翻新：地板、壁紙、洗面台、馬桶、廚房、整體衛浴、門片全部換新，還新裝了一台冷氣。\n■ 這次翻新最有誠意的兩個地方\n一是LDK新設了地暖，二是新做了一間大型步入式衣帽間（相簿裡有實拍，掛衣服的空間比一般1LDK多很多）。格局是LDK約11.7帖＋洋室約5.6帖，專有面積43.64㎡在1LDK裡算寬敞的，客廳那面還做了嵌燈層板牆，晚上氣氛很好。\n■ 建築與安全性\n2004年3月築的RC造8層樓、總戶數28戶。雙重自動鎖＋飯店式內廊下＋宅配箱，安全性在這個規模的大樓裡算高標準；管理由管理公司 新日本コミュニティー 全部委託、管理員日勤。可養寵物（貓狗合計2隻、依細則）。\n■ ⚠️ 要提醒你一件事\n這棟的每月固定費用偏高——管理費15,300円＋修繕積立金22,500円＋外部區分所有者協力金500円，合計約38,300円。修繕積立金收得高通常代表大樓的長期修繕準備比較充足，但如果你是要出租的，這筆會直接吃掉收益，買之前一定要一起算進去。\n現況空屋、可即時交屋。想約看房或想討論持有成本怎麼估，加LINE跟周周說（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -567,7 +567,7 @@ window.PROPERTIES = [
     mgmt: "無管理費・修繕積立金（一戶建）。固定資產稅・都市計畫稅年額1,351,870円",
     right: "所有權",
     yield: "",
-    photos: ["prop-kaminoge-1.webp","prop-kaminoge-plan.webp","prop-kaminoge-2.webp"],
+    photos: ["prop/prop-kaminoge-1.webp","prop/prop-kaminoge-plan.webp","prop/prop-kaminoge-2.webp"],
     note: "■ 這是未公開的獨家物件\n這間沒有登在 REINS（日本不動產流通標準情報系統），也不會出現在一般入口網站上，是周周這邊才拿得到的物件。有興趣的話請直接跟我聯絡。\n■ 上野毛是什麼樣的地方\n世田谷區上野毛一帶是東京數一數二安靜的高級住宅區，第一種低層住居專用地域，路上幾乎沒有高樓，整條街都是獨棟。五島美術館、多摩川的河岸綠地都在生活圈裡，環境非常成熟。\n■ 土地136坪、RC造\n土地449.58㎡（約136坪）、建物276.34㎡。RC造二層建，可停4台車。在世田谷這個位置能有136坪的土地，本身就是稀有度很高的條件——土地價值是這間物件的核心。\n■ 翻新工程進行中\n預定實施全新的內外裝工程，工程完工預定日是2026年9月4日。也就是說你買到的會是整理過的狀態，不用自己再發包一次。相簿目前只有外觀與平面圖，內部完成後的照片我會再補上；想先看現場也可以安排。\n■ 周周的看法\n這個價格帶的買方通常在意兩件事：地段會不會保值、將來好不好處理。上野毛的低層住宅區在世田谷屬於長期穩定的類型，土地大、臨路條件好，未來要自用、要重建、要轉手都有彈性。\n因為是未公開物件，資料我不會全部放在網路上——想看詳細圖面、確認工程內容或安排現場，加LINE跟周周說一聲（實際條件以現況及重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -590,7 +590,7 @@ window.PROPERTIES = [
     mgmt: "管理費7,630円＋修繕積立金7,100円／月（合計14,730円）。固定資產稅・都市計畫稅年額73,415円",
     right: "所有權",
     yield: "表面投報率（表面利回り）約5.96%（滿租想定月租198,000円）",
-    photos: ["prop-belista-higashinippori-1.webp","prop-belista-higashinippori-plan.webp","prop-belista-higashinippori-2.webp"],
+    photos: ["prop/prop-belista-higashinippori-1.webp","prop/prop-belista-higashinippori-plan.webp","prop/prop-belista-higashinippori-2.webp"],
     note: "■ 這是未公開的獨家物件\n沒有登在 REINS，也不會出現在一般入口網站，是周周這邊才拿得到的物件。\n■ 1樓路面，位置在櫻花並木旁\n沿著「カンカン森通り」的1樓路面區劃，這條路的櫻花並木很漂亮，走路的人多、店面能見度高。1樓路面跟樓上的辦公室是完全不同的東西——租客看得到、客人走得進來，這是它的價值所在。\n■ 條件比一般住宅型區劃好用很多\n天花板高度超過3公尺，專有部本身就附廚房與廁所，電力配置到電燈主幹40A＋動力主幹50A＋另有預備動力主幹60A。這種電力條件代表餐飲、輕作業、工作室這類需要動力電源的業種都能考慮，租客範圍比一般事務所廣。\n■ 數字\n3,980万円、滿租想定月租198,000円，表面投報率約5.96%。每月管理費7,630円＋修繕積立金7,100円，固都稅年額73,415円。現況為帶租約（賃貸中），交屋後直接承接現有租約，當月就有租金進帳。\n■ 周周的看法\n這件適合想要比住宅型收租再高一點投報、而且希望一交屋就有現金流的投資人。如果你是想自用（貿易、工作室、事務所），要先確認現有租約的到期日與解約條件，這部分我可以幫你跟對方問清楚。要提醒的是，店舖・事務所的租客汰換速度跟住宅不同，空租期可能比較長，融資條件也跟住宅房貸是兩回事——這兩點我會先跟你講清楚再談。\n想看現場或了解可貸條件，加LINE跟周周說（實際收益、可貸成數與稅費依個案、依銀行與稅理士審查為準，本頁不構成任何投資或收益保證；用途是否符合請以管理規約與重要事項說明書為準）。"
   },
 
@@ -613,7 +613,7 @@ window.PROPERTIES = [
     mgmt: "管理費11,800円＋修繕積立金3,730円／月（合計15,530円・全部委託）",
     right: "所有權",
     yield: "",
-    photos: ["prop-shibuya1003-1.webp","prop-shibuya1003-plan.webp","prop-shibuya1003-2.webp","prop-shibuya1003-3.webp","prop-shibuya1003-4.webp","prop-shibuya1003-5.webp","prop-shibuya1003-6.webp","prop-shibuya1003-7.webp","prop-shibuya1003-8.webp","prop-shibuya1003-9.webp","prop-shibuya1003-10.webp","prop-shibuya1003-11.webp","prop-shibuya1003-12.webp"],
+    photos: ["prop/prop-shibuya1003-1.webp","prop/prop-shibuya1003-plan.webp","prop/prop-shibuya1003-2.webp","prop/prop-shibuya1003-3.webp","prop/prop-shibuya1003-4.webp","prop/prop-shibuya1003-5.webp","prop/prop-shibuya1003-6.webp","prop/prop-shibuya1003-7.webp","prop/prop-shibuya1003-8.webp","prop/prop-shibuya1003-9.webp","prop/prop-shibuya1003-10.webp","prop/prop-shibuya1003-11.webp","prop/prop-shibuya1003-12.webp"],
     note: "■ 先講最狠的一點：澀谷站徒步1分\n半藏門線・副都心線・田園都市線從B3出口出來就到，山手線那側走3分、井之頭線6分，連表參道也只要11分——在整個東京，能站在這個位置上的住宅本來就沒幾棟。而且澀谷這幾年整個大改造，車站周邊、櫻丘、澀谷 SAKURA STAGE（渋谷サクラステージ）一路蓋下來，生活機能只會越來越好。\n■ 免震，不是耐震\n建築本身是2012年12月完工的都市型免震塔樓，地下3層附17層建，這間在10樓。免震對怕地震的台灣客戶來說是很實際的加分——它不是「耐震」而是「免震」，用裝置吸收晃動，家具翻倒的風險小很多。\n■ 管理水準\n施工是熊谷組、管理由管理公司 日鉄興和不動産コミュニティ 全部委託。24小時有人管理、還有禮賓服務（コンシェルジュ）、飯店式內廊下、各樓層都有垃圾間，是這個價格帶該有的樣子。\n■ 屋況\n剛做完全室翻新：廚房、浴室、洗面台、馬桶全部換新，地板重鋪、全室壁紙重貼，配了洗碗機、廚餘處理機（ディスポーザー）、浴室乾燥機、熱水器附追焚。\n■ 格局\n縱長型的1LDK，LDK約12.7帖、附地暖，天花板與牆面做了間接照明，晚上氣氛很好；洋室約4.0帖，中間是拉門，打開就是一個大套房、關起來就是一房一廳，一個人住或情侶住都很好調度。\n■ 收納是最加分的地方\n41.58㎡的坪效能做出步入式衣帽間（WIC）＋玄關收納間（SIC）很不容易，換季衣物、行李箱、滑雪板都塞得下，生活空間才不會亂。\n■ 其他\n表參道、代代木公園都在生活圈裡，九州屋（澀谷ヒカリエ ShinQs店）走5分就到。可養寵物（貓狗合計2隻以內，依管理規約）。管理費11,800円＋修繕積立金3,730円，每月合計15,530円。\n現況空屋、可即時交屋。想看房、或想了解外國人在日本買這個價格帶要準備什麼文件、能不能貸款，加LINE跟周周說一聲，我用中文一步一步陪你走完（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -635,7 +635,7 @@ window.PROPERTIES = [
     mgmt: "管理費9,900円＋修繕積立金9,000円／月（合計18,900円・全部委託・管理員巡迴）",
     right: "所有權",
     yield: "",
-    photos: ["prop-akihabara203-1.webp","prop-akihabara203-plan.webp","prop-akihabara203-2.webp","prop-akihabara203-3.webp","prop-akihabara203-4.webp","prop-akihabara203-5.webp","prop-akihabara203-6.webp","prop-akihabara203-7.webp","prop-akihabara203-8.webp"],
+    photos: ["prop/prop-akihabara203-1.webp","prop/prop-akihabara203-plan.webp","prop/prop-akihabara203-2.webp","prop/prop-akihabara203-3.webp","prop/prop-akihabara203-4.webp","prop/prop-akihabara203-5.webp","prop/prop-akihabara203-6.webp","prop/prop-akihabara203-7.webp","prop/prop-akihabara203-8.webp"],
     note: "上野・淺草・秋葉原都在生活圈裡，這間最大的武器就是交通——6站7線可用，新御徒町徒步6分、藏前8分、淺草橋8分，連秋葉原走路14分也到，不管上班還是往來機場都很方便。屋況部分，2026年8月才剛完成全室翻新：廚房、浴室、洗面台、馬桶、地板、壁紙、門片、照明、熱水器全部換新，配的是LIXIL系統廚房（含淨水器一體式水龍頭）與附浴室乾燥機的衛浴，洋室還有可動層板＋插座的收納櫃。北歐木質色調做得很舒服，帶著行李就能入住。建築本身是2009年築的RC造11層樓、總戶數27戶，管理狀況相當好——2021年做過大規模修繕、2024年電梯也整修完畢，還有長期修繕計畫表，這對中古大樓來說是很重要的加分項。另外有影像對講門禁、宅配箱、監視器，一個人住或情侶住都安心，也可以養寵物（依管理規約）。鳥越・藏前・淺草橋這一帶是近年很紅的「下町×文青」區域，質感咖啡店和個性小店越開越多，假日在附近散步就很有生活感。日常採買也方便，超市約130m、便利商店約110m、藥妝店約500m。管理費加修繕積立金每月合計18,900円，2026年度固定資產稅等年額63,600円。空屋隨時可看，想約看房或想了解外國人怎麼貸款、需要準備哪些文件，加LINE跟周周說一聲，我用中文一步一步陪你走完（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認）。"
   },
 
@@ -657,7 +657,7 @@ window.PROPERTIES = [
     mgmt: "戸建・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-sakurajosui-1.webp","prop-sakurajosui-plan.webp","prop-sakurajosui-3.webp","prop-sakurajosui-4.webp","prop-sakurajosui-5.webp","prop-sakurajosui-6.webp","prop-sakurajosui-7.webp","prop-sakurajosui-8.webp"],
+    photos: ["prop/prop-sakurajosui-1.webp","prop/prop-sakurajosui-plan.webp","prop/prop-sakurajosui-3.webp","prop/prop-sakurajosui-4.webp","prop/prop-sakurajosui-5.webp","prop/prop-sakurajosui-6.webp","prop/prop-sakurajosui-7.webp","prop/prop-sakurajosui-8.webp"],
     note: "想在世田谷區安靜的住宅區買一間「不用等、馬上能住」的房子，這間很值得看。2023年10月完工的築淺戸建，TOYOTA HOME（トヨタホーム）施工，位在南西・南東雙面臨路的角地，兩面採光通風，白天幾乎不用開燈。土地約32坪、建物約29.86坪，格局是3LDK＋約4帖閣樓：一樓是約18.7帖的大LDK，二樓三間洋室（9.8帖・5.5帖・4.6帖）加上陽台，一家人住剛剛好。設備也很到位——客廳地暖、系統廚房（含淨水器與洗碗機）、浴室乾燥機、部分電動鐵捲門，還有玄關的Shoes in Closet大收納。所在地是第一種低層住居專用地域，法規上限制了建物高度與密度，所以街廓清爽、不會被大樓包圍，這也是這一帶長期保值的原因。生活機能方面，小七約280m、桜上水のびのび公園約310m、Sundrug約410m、Ozeki松原店約880m；學區為區立松沢小學（約970m）、松沢中學（約990m）。交通更是強項：京王線、小田急線、東急世田谷線三線可用，去新宿、澀谷、下北澤都很快。這種「築淺＋角地＋三線可用」的世田谷戸建不常出現，有興趣想看房或想知道貸款怎麼規劃，加LINE跟周周說一聲，我用中文幫你安排看屋、把重要事項一條一條講清楚（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認）。"
   },
 
@@ -671,7 +671,7 @@ window.PROPERTIES = [
     layoutTag: "2LDK+S",
     location: "東京都新宿區",
     area: "建物180.80㎡（約54.7坪）",
-    photos: ["prop-yaraicho-b-1.webp"]
+    photos: ["prop/prop-yaraicho-b-1.webp"]
   },
 
   {
@@ -692,7 +692,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishioi-p5-1-pers.webp","prop-nishioi-p5-plan.webp","prop-nishioi-p5-2-pers.webp","prop-nishioi-p5-3-pers.webp","prop-nishioi-p5-4.webp","prop-nishioi-p5-5.webp","prop-nishioi-p5-6.webp"],
+    photos: ["prop/prop-nishioi-p5-1-pers.webp","prop/prop-nishioi-p5-plan.webp","prop/prop-nishioi-p5-2-pers.webp","prop/prop-nishioi-p5-3-pers.webp","prop/prop-nishioi-p5-4.webp","prop/prop-nishioi-p5-5.webp","prop/prop-nishioi-p5-6.webp"],
     note: "■ 這間是什麼\n品川區西大井2丁目、JR埼京線「西大井」站徒步約7分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地106.05㎡、總樓地板186.60㎡的3層樓建，<b>現況是更地、房子還沒完工，2027年4月下旬交屋預定</b>（建築確認號碼 SJK-KX265615170 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 亮點：25.8帖的LDK配鋼骨樓梯\n2樓整層是約25.8帖的LDK，搭配斜屋頂造型的<b>勾配天井</b>與當成主視覺的鋼骨樓梯，這種挑空感在都內同坪數的戶建裡很少見。廚房背面留了食品儲藏室（パントリー），生活感可以整個收起來；2樓東西兩面都有陽台，其中一面是下雨天也用得到的內陽台。\n■ 位置與學區\n西大井搭埼京線直達大崎、澀谷、新宿，湘南新宿線與橫須賀線也都在同一站，往品川、橫濱方向一樣順。學區是區立伊藤學園——品川區的小中一貫校，小學到國中不用換學校，有小孩的家庭會很有感。\n■ 規格與條件\n耐震等級2，Flat 35 房貸（フラット35）S（A方案）適合證明書取得預定，1樓有內建車庫與門廊。用途地域是近鄰商業地域、建蔽率80%／容積率200%、準防火地域、第二種高度地區。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，想看現地或先把貸款抓出來，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -716,7 +716,7 @@ window.PROPERTIES = [
     mgmt: "土地・無管理費與修繕積立金",
     right: "所有權",
     yield: "",
-    photos: ["prop-setagaya-1.webp","prop-setagaya-house-plan.webp","prop-setagaya-2.webp","prop-setagaya-3.webp"],
+    photos: ["prop/prop-setagaya-1.webp","prop/prop-setagaya-house-plan.webp","prop/prop-setagaya-2.webp","prop/prop-setagaya-3.webp"],
     note: "■ 先說清楚這件是什麼\n它是「建築條件付售地」，不是蓋好的成屋。你買下這塊地之後，由我們自社（グランプラス體系）的一級建築士團隊為你設計施工——所以格局、動線、內裝都能照你的想法調整，這是買現成屋做不到的事。\n■ 位置\n世田谷區下馬3丁目，三軒茶屋與學藝大學之間那一帶，安靜、綠意多。旭小學走3分、鶴ヶ久保公園走2分，生活機能完整；駒澤大學站徒步約18分、三軒茶屋站徒步約19分，往澀谷很快。\n■ 土地條件\n約74.31㎡（約22.48坪）、第一種中高層住居專用地域、建蔽率60%／容積率200%。接的是有人行道的公道，日後轉手條件也比較好談。\n■ 參考建築方案\n3層樓、總樓地板約133.66㎡（一樓48.02㎡、二樓50.34㎡含車庫15.52㎡、三樓35.30㎡）。LDK約20.3帖，加上8.3帖、5.5帖、5.5帖、5.3帖四個房間與多用途房，還有兩個步入式衣帽間跟食品儲藏室——一家人住很夠用。\n■ 設備與性能\n瓦斯溫水式地暖、平面型廚房＋洗碗機、W2700餐櫃、三面鏡收納洗面台、電動車充電插座、制震阻尼器。預計取得 Flat 35S（ZEH方案）適合證明，耐震等級2相當、隔熱等級5相當、一次能源等級6相當。學區是區立旭小學、區立駒留中學。\n■ 價格與時程\n土地1億3,200萬円，參考建物價格4,080萬円，總額約1億7,280萬円（含稅）。現況是更地，預計2026年9月中旬交地。\n■ ⚠️ 關於照片\n相簿裡的外觀與室內圖都是參考方案的完成示意圖（パース）、不是實景照，實際成品依最終設計而定。\n這是不對外流通的自社限定物件，只有1區。想聊聊「買地自己蓋」的流程、費用與時程，加LINE跟周周說一聲（實際條件以重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -738,7 +738,7 @@ window.PROPERTIES = [
     mgmt: "管理費38,060円＋修繕積立金10,500円＋網路1,375円／月（全部委託・管理員日勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-classy-shinjuku-1.webp","prop-classy-shinjuku-plan.webp","prop-classy-shinjuku-2.webp","prop-classy-shinjuku-3.webp","prop-classy-shinjuku-4.webp","prop-classy-shinjuku-5.webp","prop-classy-shinjuku-6.webp","prop-classy-shinjuku-7.webp","prop-classy-shinjuku-8.webp"],
+    photos: ["prop/prop-classy-shinjuku-1.webp","prop/prop-classy-shinjuku-plan.webp","prop/prop-classy-shinjuku-2.webp","prop/prop-classy-shinjuku-3.webp","prop/prop-classy-shinjuku-4.webp","prop/prop-classy-shinjuku-5.webp","prop/prop-classy-shinjuku-6.webp","prop/prop-classy-shinjuku-7.webp","prop/prop-classy-shinjuku-8.webp"],
     note: "新宿御苑前站徒步4分、2024年10月落成的制震塔樓（鹿島建設施工、住友商事・三菱地所Residence原分售，共280戶），這戶在17樓、新築後未入居的全新屋！從窗邊就能望見新宿御苑的綠意與副都心的高樓夜景，視野超開闊。大樓等級拉滿：24小時有人管理、Concierge櫃檯、飯店式內廊下設計、各樓層垃圾房、自動鎖與宅配箱。室內於2025年10月完成質感升級（壁面天井造型、玄關全身鏡、埋入式電暖爐、裝飾層架（飾り棚）、建具、清潔），屋況全新。可帶寵物（1戶2隻內，體長70cm・體高50cm・體重15kg以內），即日可交屋、附售後保固。這種地段＋景觀＋新築的塔樓釋出很稀有，想看房或試算貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -759,7 +759,7 @@ window.PROPERTIES = [
     mgmt: "管理費16,700円＋修繕積立金23,090円／月（合計約39,790円・全部委託・管理員日勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-lions-setagaya-1.webp","prop-lions-setagaya-plan.webp","prop-lions-setagaya-2.webp","prop-lions-setagaya-3.webp","prop-lions-setagaya-4.webp","prop-lions-setagaya-5.webp","prop-lions-setagaya-6.webp","prop-lions-setagaya-7.webp","prop-lions-setagaya-8.webp"],
+    photos: ["prop/prop-lions-setagaya-1.webp","prop/prop-lions-setagaya-plan.webp","prop/prop-lions-setagaya-2.webp","prop/prop-lions-setagaya-3.webp","prop/prop-lions-setagaya-4.webp","prop/prop-lions-setagaya-5.webp","prop/prop-lions-setagaya-6.webp","prop/prop-lions-setagaya-7.webp","prop/prop-lions-setagaya-8.webp"],
     note: "東急世田谷線「世田谷」站徒步5分、閑靜的第一種低層住宅區，這戶2026年6月剛完成全室翻新——廚房（Cleanup クリナップ・附洗碗機與玻璃面爐）、整體衛浴（LIXIL）、洗面台（Panasonic）、廁所、給湯器、專有部給排水管全部換新，玄關貼エコカラット除濕磁磚、全面壁紙與地板重鋪、建具更新、還新裝2台冷氣與照明，屋況全新可直接入住。西向、附電梯、都市瓦斯，現況空屋。世田谷這種安靜又有生活感的地段很受歡迎，想看房或談貸款加LINE，我幫你把關（能不能貸、可貸成數依個案與銀行審查為準；實際以現況與重要事項說明書為準）。"
   },
 
@@ -781,7 +781,7 @@ window.PROPERTIES = [
     mgmt: "管理費15,700円＋修繕積立金7,260円／月（全部委託・管理員通勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-famille309-1.webp","prop-famille309-plan.webp","prop-famille309-2.webp","prop-famille309-3.webp","prop-famille309-4.webp","prop-famille309-5.webp","prop-famille309-6.webp","prop-famille309-7.webp","prop-famille309-8.webp","prop-famille309-9.webp"],
+    photos: ["prop/prop-famille309-1.webp","prop/prop-famille309-plan.webp","prop/prop-famille309-2.webp","prop/prop-famille309-3.webp","prop/prop-famille309-4.webp","prop/prop-famille309-5.webp","prop/prop-famille309-6.webp","prop/prop-famille309-7.webp","prop/prop-famille309-8.webp","prop/prop-famille309-9.webp"],
     note: "新宿站徒步只要2分、周邊還能用到約11條路線的塔式住宅（20層建），這戶剛完成全室翻新：廚房、衛浴、洗面台、廁所全部換新，還附食洗機、淨水器、廚餘處理機（ディスポーザー）、浴室乾燥＋追焚機能。約30㎡的1DK，把洋室拉門打開就跟客廳連成開放大空間，很適合在都心工作的單身族自住、或當都心資產持有。大樓保全做得很足——大門與各樓層共2道自動鎖，還有Concierge櫃檯與飯店式氣派大廳。生活機能滿分，NEWoMan・LUMINE・伊勢丹都在徒步圈，樓下約40米就有全家、約110米有まいばすけっと超市，可帶寵物（依管理規約）。目前空屋、可即時交屋；停車場目前無空位（周邊月租約4～4.3萬円參考）。想看房或談貸款加LINE，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；固定資產稅等2025年度年約104,965円、實際以徵收為準）。"
   },
 
@@ -802,7 +802,7 @@ window.PROPERTIES = [
     mgmt: "管理費13,000円＋修繕積立金10,680円／月（全部委託・管理員通勤）",
     right: "所有權",
     yield: "",
-    photos: ["prop-pearl-baba301-1.webp","prop-pearl-baba301-plan.webp","prop-pearl-baba301-2.webp","prop-pearl-baba301-3.webp","prop-pearl-baba301-4.webp"],
+    photos: ["prop/prop-pearl-baba301-1.webp","prop/prop-pearl-baba301-plan.webp","prop/prop-pearl-baba301-2.webp","prop/prop-pearl-baba301-3.webp","prop/prop-pearl-baba301-4.webp"],
     note: "高田馬場站與西早稻田站都只要徒步5分、可用到山手線・東西線・西武新宿線・副都心線的「雙站四線」好位置。這戶是南西向的角住戶，兩面採光、通風好，白色磁磚外觀的RC造大樓。目前正在進行全室翻新（廚房、衛浴、洗面、廁所全換，地板重鋪、建具更新、追焚給湯器、防犯攝影機），完工後的室內實景會陸續補上，現在可以先看格局圖與外觀，也有完工示意影片可索取。生活超方便，BIGBOX高田馬場、唐吉訶德、マルエツ超市、都立戶山公園都在附近，還附給排水管與瓦斯管10年保固。要留意這戶為3層建的3樓、無電梯、寵物不可。想搶先看房或談貸款加LINE告訴我，我幫你安排（能不能貸、可貸成數依個案與銀行審查為準；此為翻新中物件，實際以現況與重要事項說明書為準）。"
   },
 
@@ -823,7 +823,7 @@ window.PROPERTIES = [
     mgmt: "管理費12,400円＋修繕積立金8,729円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-nakameguro702-1.webp","prop-nakameguro702-plan.webp","prop-nakameguro702-2.webp","prop-nakameguro702-3.webp","prop-nakameguro702-4.webp","prop-nakameguro702-5.webp","prop-nakameguro702-6.webp"],
+    photos: ["prop/prop-nakameguro702-1.webp","prop/prop-nakameguro702-plan.webp","prop/prop-nakameguro702-2.webp","prop/prop-nakameguro702-3.webp","prop/prop-nakameguro702-4.webp","prop/prop-nakameguro702-5.webp","prop/prop-nakameguro702-6.webp"],
     note: "中目黑站徒步5分、目黑川櫻並木就在旁邊，春天沿岸約4km櫻花超美！代官山、目黑都在生活圈，まいばすけっと、7-11、藥妝店徒步1分，生活超方便。中目黑是日比谷線始發站、也是東橫線特急急行停車站，往澀谷3分、六本木8分。這戶南西向、全室採光，2026年6月剛完成翻新（系統廚具、整體衛浴、地板、壁紙全新，附追焚與浴室乾燥），還有雙層窗與宅配箱。屋齡雖有，但屬新耐震、修繕紀錄扎實（此戶不可養寵物、不可作事務所使用）。中目黑這種地段的翻新一房很搶手，想看房加LINE我幫你把關（可貸成數依銀行審查為準）。"
   },
 
@@ -844,7 +844,7 @@ window.PROPERTIES = [
     mgmt: "管理費17,330円＋修繕積立金25,300円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-togoshi701-1.webp","prop-togoshi701-plan.webp","prop-togoshi701-2.webp","prop-togoshi701-3.webp","prop-togoshi701-4.webp","prop-togoshi701-5.webp","prop-togoshi701-6.webp"],
+    photos: ["prop/prop-togoshi701-1.webp","prop/prop-togoshi701-plan.webp","prop/prop-togoshi701-2.webp","prop/prop-togoshi701-3.webp","prop/prop-togoshi701-4.webp","prop/prop-togoshi701-5.webp","prop/prop-togoshi701-6.webp"],
     note: "2026年6月剛完成全室翻新的三面採光角戶，約16.5帖的大客廳加獨立DEN，還有兩面Roof Balcony、視野開闊。戶越公園站徒步3分、戶越銀座商店街就在生活圈，買菜吃飯都方便，可帶寵物（依管理規約）、附監視器自動鎖與宅配箱。這種地段＋格局的組合不常見，想看房加LINE我幫你安排（可貸成數依銀行審查為準）。"
   },
 
@@ -860,7 +860,7 @@ window.PROPERTIES = [
     layoutTag: "2LDK+W",
     location: "東京都江東區",
     area: "49.61㎡（約15.01坪）",
-    photos: ["prop-kameido209-1.webp"]
+    photos: ["prop/prop-kameido209-1.webp"]
   },
 
   {
@@ -880,7 +880,7 @@ window.PROPERTIES = [
     mgmt: "管理費7,115円＋修繕積立金7,900円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-minamiazabu205-1.webp","prop-minamiazabu205-plan.webp","prop-minamiazabu205-2.webp","prop-minamiazabu205-3.webp","prop-minamiazabu205-4.webp","prop-minamiazabu205-5.webp","prop-minamiazabu205-6.webp"],
+    photos: ["prop/prop-minamiazabu205-1.webp","prop/prop-minamiazabu205-plan.webp","prop/prop-minamiazabu205-2.webp","prop/prop-minamiazabu205-3.webp","prop/prop-minamiazabu205-4.webp","prop/prop-minamiazabu205-5.webp","prop/prop-minamiazabu205-6.webp"],
     note: "南麻布精華地段、麻布十番徒步7分的翻新住宅，地段保值、環境高級又安靜，可帶寵物（限1隻）。屋況全新、可直接入住，很適合想在都心置產或自住的你。想了解行情與貸款試算，加LINE我幫你評估（實際稅費請由稅理士確認）。"
   },
 
@@ -901,7 +901,7 @@ window.PROPERTIES = [
     mgmt: "管理費9,900円＋修繕積立金13,440円／月",
     right: "所有權",
     yield: "",
-    photos: ["prop-taito703-1.webp","prop-taito703-plan.webp","prop-taito703-2.webp","prop-taito703-3.webp","prop-taito703-4.webp","prop-taito703-5.webp","prop-taito703-6.webp"],
+    photos: ["prop/prop-taito703-1.webp","prop/prop-taito703-plan.webp","prop/prop-taito703-2.webp","prop/prop-taito703-3.webp","prop/prop-taito703-4.webp","prop/prop-taito703-5.webp","prop/prop-taito703-6.webp"],
     note: "三之輪站徒步2分、少見的1SLDK大空間翻新住宅，多一間可彈性運用的服務房（S房）。位於7樓、採光視野好，屋況全新。生活機能成熟、交通方便，適合想要多一點空間的自住買家。想看房或了解貸款、稅費，加LINE我全程中文幫你把關。"
   },
 
@@ -922,7 +922,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "土地・建物 所有權",
     yield: "想定約13.15%（含旅館＋店舗、滿租試算・未保證）",
-    photos: ["prop-ryogoku-1.webp","prop-ryogoku2-plan.webp","prop-ryogoku-2.webp","prop-ryogoku-3.webp","prop-ryogoku-4.webp","prop-ryogoku-5.webp","prop-ryogoku-6.webp"],
+    photos: ["prop/prop-ryogoku-1.webp","prop/prop-ryogoku2-plan.webp","prop/prop-ryogoku-2.webp","prop/prop-ryogoku-3.webp","prop/prop-ryogoku-4.webp","prop/prop-ryogoku-5.webp","prop/prop-ryogoku-6.webp"],
     note: "兩國站徒步8分的整棟收益大樓（RC造5層）：1樓為出租中的自助洗衣店（月租16.5万円），2～5樓為旅館4戶（旅館業營業許可<b>已取得</b>、屬舊條例適用），目前已委託旅館營運公司、<b>旅館營運中</b>。外牆與防水已重做、內裝全面翻新。想定年收益約3,919万円、想定利回約13.15%（含旅館營運試算、未保證，實際依營運與空置而定）。整棟土地建物皆所有權，適合想要一棟旅館型收益的買家。\n如果你之後想自己使用，依現行條件可以在3個月前通知後解除營運委託。詳細營運試算與貸款，加LINE我幫你評估（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；旅館業許可的承繼與變更請由行政書士與保健所確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -944,7 +944,7 @@ window.PROPERTIES = [
     mgmt: "管理費19,500円＋修繕基金（修繕積立金）14,627円＝每月34,127円",
     right: "所有權",
     yield: "想定表面約7.23%／NET約6.58%（想定月租44万円・含稅）",
-    photos: ["prop-kayabacho101-1.webp","prop-kayabacho101-plan.webp","prop-kayabacho101-2.webp","prop-kayabacho101-3.webp"],
+    photos: ["prop/prop-kayabacho101-1.webp","prop/prop-kayabacho101-plan.webp","prop/prop-kayabacho101-2.webp","prop/prop-kayabacho101-3.webp"],
     note: "這間在茅場町跟八丁堀中間，是金融證券公司林立的辦公區，白天上班族多、晚上又有住戶，客層滿穩的。物件本身是11層大樓的1樓路面店舖，44.95㎡（約13.59坪），<b>重飲食可、業種也不限</b>——會排煙管的餐飲店最麻煩的就是找不到能開的地方，這種條件其實不好找。\n屋齡1979年6月、已經47年了，這點我不會幫它擦脂抹粉；但這棟有耐震診斷報告書、而且已經確認符合標準，貸款跟將來轉手會比一般舊樓好談一些。\n數字面：現況是空的（募集中），想定月租44万円（含稅）、年租528万円，想定表面約7.23%、扣掉管理費與修繕基金、固都稅之後的NET約6.58%。這是滿租試算，實際要看招到什麼租客、租金談到多少，不保證報酬。每月固定支出是管理費19,500円＋修繕基金14,627円，令和8年度固都稅66,191円。\n想看現場或想知道外國人買店舖型物件貸款怎麼談，加LINE跟周周說一聲（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -965,7 +965,7 @@ window.PROPERTIES = [
     mgmt: "管理費28,600円＋修繕基金（修繕積立金）19,960円＝每月48,560円（含町內會費）",
     right: "所有權",
     yield: "想定表面約4.66%／NET約4.31%",
-    photos: ["prop-hamamatsucho102-1.webp","prop-hamamatsucho102-plan.webp","prop-hamamatsucho102-3.webp","prop-hamamatsucho102-4.webp","prop-hamamatsucho102-5.webp"],
+    photos: ["prop/prop-hamamatsucho102-1.webp","prop/prop-hamamatsucho102-plan.webp","prop/prop-hamamatsucho102-3.webp","prop/prop-hamamatsucho102-4.webp","prop/prop-hamamatsucho102-5.webp"],
     note: "港區濱松町、大門站徒步6分，這一帶是純商務區，周邊都是辦公大樓，中午跟晚上的餐飲需求很實在。這間是1樓路面店舖，<b>兩側都是知名連鎖便利商店</b>，路過的人一定看得到你的招牌——做店面生意，能見度就是租金。\n屋況方面，現況是空的，前一手是咖哩咖啡店，設備原封留下（居抜き），而且這間從大樓落成到現在只有一個屋主。\n數字面：想定月租77万円（含稅）、年租924万円，想定表面約4.66%、NET約4.31%。港區這種等級的地段，表面利回本來就不會太高，它賣的是地段跟穩定性，不是高利回，這點我先講清楚。每月管理費28,600円＋修繕基金19,960円合計48,560円，令和8年度固都稅116,738円。\n看房要約承辦人一起到場。想討論這種商務區店舖的租客好不好找、貸款怎麼配，加LINE跟周周聊（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -986,7 +986,7 @@ window.PROPERTIES = [
     mgmt: "管理費38,100円＋修繕基金（修繕積立金）15,400円＝每月53,500円",
     right: "所有權",
     yield: "想定表面約4.63%／NET約4.39%",
-    photos: ["prop-akasaka101-1.webp","prop-akasaka101-plan.webp","prop-akasaka101-2.webp","prop-akasaka101-3.webp","prop-akasaka101-4.webp"],
+    photos: ["prop/prop-akasaka101-1.webp","prop/prop-akasaka101-plan.webp","prop/prop-akasaka101-2.webp","prop/prop-akasaka101-3.webp","prop/prop-akasaka101-4.webp"],
     note: "位置在港區赤坂，溜池山王站徒步2分、赤坂站徒步5分，是東京商務機能最密集的一區，政府機關、大使館、企業總部都在附近。物件是1樓路面店舖、專有81.04㎡（約24.51坪），這個大小在赤坂的1樓店面裡算相當有份量，做展示間、事務所、診所或餐飲都有空間發揮（餐飲需要管理組合同意）。\n屋況：2000年11月築、屬新耐震標準，現況是展示間規格，大約2年前做過設備與內裝翻新（廁所3處、空調、壁紙等）。過去的租客是展示間，再往前是蕎麥麵店與餐飲店，代表這個空間本身餐飲設備是有底子的。\n數字面：想定月租135.3万円（含稅）、年租1,623.6万円，想定表面約4.63%、NET約4.39%。每月管理費38,100円＋修繕基金15,400円＝53,500円，令和8年度固都稅219,602円。\n這個價格帶的買家通常會一起考慮法人持有跟稅務結構，這部分我可以幫你找稅理士一起談（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1007,7 +1007,7 @@ window.PROPERTIES = [
     mgmt: "管理費23,500円＋修繕基金（修繕積立金）10,400円＝每月33,900円（自主管理）",
     right: "所有權",
     yield: "表面約6.11%／NET約5.51%（現況租約試算）",
-    photos: ["prop-kabukicho106-1.webp","prop-kabukicho106-plan.webp","prop-kabukicho106-2.webp","prop-kabukicho106-3.webp","prop-kabukicho106-4.webp","prop-kabukicho106-5.webp","prop-kabukicho106-6.webp"],
+    photos: ["prop/prop-kabukicho106-1.webp","prop/prop-kabukicho106-plan.webp","prop/prop-kabukicho106-2.webp","prop/prop-kabukicho106-3.webp","prop/prop-kabukicho106-4.webp","prop/prop-kabukicho106-5.webp","prop/prop-kabukicho106-6.webp"],
     note: "新宿歌舞伎町，1樓的區分店舖，現況是<b>已經有租客在營業的BAR、買下來直接收租（オーナーチェンジ）</b>，不用自己招租、也沒有空窗期。這種帶租約的店舖對第一次買日本收益物件的人來說門檻低一點，因為現金流從交屋那天就開始。\n數字面：現況月租40万円（含稅）、年租480万円，表面約6.11%、NET約5.51%。每月管理費23,500円＋修繕基金10,400円＝33,900円（這棟是自主管理），令和8年度固都稅63,825円。買方要承接現有的租賃契約，保證金返還金376,500円（關東方式）也一併承接，電費基本費每月8,000円由現租客負擔。\n歌舞伎町這個地段、加上屋齡（1981年7月築），各家銀行的看法差很多——這正是找我談的價值：我可以先幫你問過幾家，把條件最好的那條路找出來再決定怎麼出手。想看謄本、租賃契約內容或試算貸款，加LINE跟周周說（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1028,7 +1028,7 @@ window.PROPERTIES = [
     mgmt: "管理費21,175円＋修繕基金（修繕積立金）16,940円＝每月38,115円",
     right: "所有權",
     yield: "表面約7.50%／NET約6.51%（現況租約試算）",
-    photos: ["prop-daikan708-1.webp","prop-daikan708-plan.webp","prop-daikan708-2.webp","prop-daikan708-3.webp","prop-daikan708-4.webp","prop-daikan708-5.webp"],
+    photos: ["prop/prop-daikan708-1.webp","prop/prop-daikan708-plan.webp","prop/prop-daikan708-2.webp","prop/prop-daikan708-3.webp","prop/prop-daikan708-4.webp","prop/prop-daikan708-5.webp"],
     note: "新宿三丁目站徒步4分、新宿站徒步6分，三條路線可用。這間在7樓，24.71㎡（約7.47坪）的小坪數店舖，現況是小酒館（スナック）在營業，<b>買下來直接接手租約收租</b>。總價5,600万円在東京都心的收益物件裡算是小額入門，第一次買日本收租物件的人常從這種規模開始。\n數字面：現況月租35万円（含稅）、年租420万円，表面約7.50%、NET約6.51%。每月管理費21,175円＋修繕基金16,940円＝38,115円，令和8年度固都稅94,350円。買方需承接現有租約，保證金返還金328,825円（關東方式）；招牌使用費每月1,900円、垃圾處理費與延滯金每月2,965円由現租客負擔。\n依規定要先告知：本建物為<b>建蔽率超建（建蔽率オーバー）</b>、1980年8月築。因此這件比較適合現金買家，或手上已有特殊融資管道的投資人——這類物件的價格本來就反映了這一點，換句話說，能用現金出手的人反而談得到比較好的條件。想看租賃契約、謄本、或評估貸款可行性，加LINE跟周周談（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1049,7 +1049,7 @@ window.PROPERTIES = [
     mgmt: "管理費14,470円＋修繕基金（修繕積立金）9,500円＝每月23,970円",
     right: "所有權",
     yield: "想定表面約4.4%／NET約3.9%",
-    photos: ["prop-ningyocho104-1.webp","prop-ningyocho104-plan.webp","prop-ningyocho104-2.webp","prop-ningyocho104-3.webp","prop-ningyocho104-5.webp"],
+    photos: ["prop/prop-ningyocho104-1.webp","prop/prop-ningyocho104-plan.webp","prop/prop-ningyocho104-2.webp","prop/prop-ningyocho104-3.webp","prop/prop-ningyocho104-5.webp"],
     note: "水天宮前站徒步2分、人形町3分、茅場町7分——三站三線，這種交通條件在日本橋一帶算很強。人形町是東京少數還留著老街氣氛的商業區，白天有辦公族、假日有觀光客跟逛街的人，租客業種的選擇比純辦公區廣。\n物件是1樓路面店舖・事務所，30.00㎡（約9.08坪），<b>2007年10月築、屋齡才18年</b>，在店舖型收益物件裡屬於很新的。何商可（業種不限），沒有瓦斯，所以重餐飲不行，但輕食可以談。前一手租客是行政書士事務所。\n數字面：想定月租38.5万円（含稅）、年租462万円，想定表面約4.4%、NET約3.9%。這是空室後的想定租金試算，實際招到多少要看市況，不保證報酬。每月管理費14,470円＋修繕基金9,500円＝23,970円，令和7年度固都稅228,871円。\n有兩件事要留意：一是這棟目前正在進行大規模修繕；二是利回數字在這批物件裡偏低，它的價值在屋齡新、地段強、將來好轉手，適合看重資產穩定度多過現金流的買家。\n想看現場、租金行情或試算貸款，加LINE跟周周說（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1071,7 +1071,7 @@ window.PROPERTIES = [
     mgmt: "管理費8,560円＋修繕基金（修繕積立金）12,920円＋專有部分修繕基金5,390円＝每月26,870円",
     right: "所有權",
     yield: "想定表面約6.7%／NET約6.07%",
-    photos: ["prop-tsurumi101-1.webp","prop-tsurumi101-plan.webp","prop-tsurumi101-3.webp"],
+    photos: ["prop/prop-tsurumi101-1.webp","prop/prop-tsurumi101-plan.webp","prop/prop-tsurumi101-3.webp"],
     note: "這件在橫濱市鶴見區，不是東京都內，所以我先講定位：<b>它走的是「同樣預算、利回比東京高」這條路線</b>。鶴見區是橫濱18區裡人口第三多的區，JR鶴見站徒步5分、京急鶴見站7分，兩線都能走到。\n位置上有個實際的優點：這條路是鶴見站東口與西口開車往來時唯一的通道，車流跟自行車流都很密，做店面能見度高。物件是1樓路面店舖、50.67㎡（約15.32坪），適合美容院、沙龍這種地區型店家，餐飲也可以談（需管理組合同意）。\n屋況：2001年2月築、屬新耐震標準、RC造11層，現況空室募集中。\n數字面：想定月租36.3万円（含稅）、年租435.6万円，想定表面約6.7%、NET約6.07%。這是招租前的試算，實際看招到誰、租金談多少，不保證報酬。每月管理費8,560円＋修繕基金12,920円＋專有部分修繕基金5,390円＝26,870円，令和8年度固都稅85,182円。\n首都圈外圍的店舖物件，銀行看法跟東京都心不太一樣，這點我可以先幫你問。想看現場或討論租客怎麼找，加LINE跟周周說（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
   {
@@ -1084,7 +1084,7 @@ window.PROPERTIES = [
     layoutTag: "1R",
     location: "東京都澀谷區",
     area: "33.16㎡（約10.03坪）",
-    photos: ["prop-impresto-daikanyama-1.webp"]
+    photos: ["prop/prop-impresto-daikanyama-1.webp"]
   },
   {
     id: "jiyugaoka-daisan",
@@ -1096,7 +1096,7 @@ window.PROPERTIES = [
     layoutTag: "1K",
     location: "東京都世田谷區",
     area: "28.83㎡（約8.72坪）",
-    photos: ["prop-jiyugaoka-daisan-1.webp"]
+    photos: ["prop/prop-jiyugaoka-daisan-1.webp"]
   },
   {
     id: "hines-lofty",
@@ -1108,7 +1108,7 @@ window.PROPERTIES = [
     layoutTag: "2LDK",
     location: "東京都新宿區",
     area: "45.12㎡（約13.64坪）",
-    photos: ["prop-hines-lofty-1.webp"]
+    photos: ["prop/prop-hines-lofty-1.webp"]
   },
   {
     id: "brillia-shinyokohama",
@@ -1120,7 +1120,7 @@ window.PROPERTIES = [
     layoutTag: "2LDK",
     location: "神奈川縣橫濱市港北區",
     area: "60.84㎡（約18.4坪）",
-    photos: ["prop-brillia-shinyokohama-1.webp"]
+    photos: ["prop/prop-brillia-shinyokohama-1.webp"]
   },
   {
     id: "koyamadai-house",
@@ -1132,7 +1132,7 @@ window.PROPERTIES = [
     layoutTag: "3K",
     location: "東京都品川區",
     area: "建物53.82㎡（約16.28坪）",
-    photos: ["prop-koyamadai-house-1.webp"]
+    photos: ["prop/prop-koyamadai-house-1.webp"]
   },
   {
     id: "yachimata-land",
@@ -1144,7 +1144,7 @@ window.PROPERTIES = [
     ptype: "買地自建",
     location: "千葉縣八街市",
     area: "土地2,148㎡（約649.76坪）",
-    photos: ["prop-yachimata-land-1.webp"]
+    photos: ["prop/prop-yachimata-land-1.webp"]
   },
   {
     id: "greenpark-tateishi",
@@ -1156,7 +1156,7 @@ window.PROPERTIES = [
     layoutTag: "1LDK",
     location: "東京都葛飾區",
     area: "43.44㎡（約13.14坪）",
-    photos: ["prop-greenpark-tateishi-1.webp"]
+    photos: ["prop/prop-greenpark-tateishi-1.webp"]
   },
   {
     id: "ebisu3",
@@ -1175,7 +1175,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "土地・建物 所有權",
     yield: "想定約8.61%（滿租試算・未保證）",
-    photos: ["prop-ebisu3-1.webp","prop-ebisu3-plan.webp","prop-ebisu3-2.webp","prop-ebisu3-3.webp","prop-ebisu3-4.webp","prop-ebisu3-5.webp","prop-ebisu3-6.webp","prop-ebisu3-7.webp","prop-ebisu3-8.webp","prop-ebisu3-9.webp"],
+    photos: ["prop/prop-ebisu3-1.webp","prop/prop-ebisu3-plan.webp","prop/prop-ebisu3-2.webp","prop/prop-ebisu3-3.webp","prop/prop-ebisu3-4.webp","prop/prop-ebisu3-5.webp","prop/prop-ebisu3-6.webp","prop/prop-ebisu3-7.webp","prop/prop-ebisu3-8.webp","prop/prop-ebisu3-9.webp"],
     note: "惠比壽三丁目的整棟收益大樓，最大的重點是<b>旅館業營業許可已取得，而且屬於舊條例適用</b>——2026 年 7 月民泊新規制之後，很多自治體開始收緊，能拿到舊條例許可的物件會越來越少，這是它跟一般民泊物件最不一樣的地方。\n位置在惠比壽、廣尾、白金台三個生活圈的中間，白金台站徒步11分、惠比壽站徒步15分。這一帶對海外旅客的辨識度很高，去澀谷、中目黑、原宿、六本木、麻布十番、銀座都方便，做住宿客層很好抓。\n建物是鐵骨造4層、1996年4月築，外牆塗裝與防水都已重做，內裝也整修完成、<b>各室家具已配置</b>。配置是2～4樓共4間客室（21㎡兩間、44㎡兩間），1樓是常駐事務所。旅館營運已委託給營運公司，<b>2～4樓目前旅館營運中</b>。\n數字面：想定年收益 4,205万円、想定利回約 8.61%。這是滿租試算、不是保證，實際看住房率、ADR 與營運成本而定。土地與建物都是所有權（不是借地），這點對貸款比較有利。\n如果你之後想自己使用，依現行條件可以在3個月前通知後解除委託。想看現場、要完整營運試算或想談貸款，加LINE跟周周說（能不能貸、可貸成數依個案與銀行審查為準；實際稅額請由稅理士確認；旅館業許可的承繼與變更請由行政書士與保健所確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1197,7 +1197,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-aizumi-p2-1-pers.webp","prop-aizumi-p2-plan.webp","prop-aizumi-p2-2-pers.webp","prop-aizumi-p2-3-pers.webp"],
+    photos: ["prop/prop-aizumi-p2-1-pers.webp","prop/prop-aizumi-p2-plan.webp","prop/prop-aizumi-p2-2-pers.webp","prop/prop-aizumi-p2-3-pers.webp"],
     note: "■ 這間是什麼\n新宿區愛住町、四谷三丁目站徒步約4分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地95.35㎡，現況是空地（更地），2026年9月交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 2億6,480万円；加上參考建物價格 5,500万円，總額約 3億1,980万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約24.4帖、總樓地板約164.10㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東京ﾒﾄﾛ丸ノ内線「四谷三丁目」站 徒步約4分／都営新宿線「曙橋」站 徒步約7分／JR中央線「四ツ谷」站 徒步約15分。學區是區立四谷小學校、區立四谷中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1219,7 +1219,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-fukasawa7a-1-pers.webp","prop-fukasawa7a-plan.webp","prop-fukasawa7a-2-pers.webp","prop-fukasawa7a-3-pers.webp"],
+    photos: ["prop/prop-fukasawa7a-1-pers.webp","prop/prop-fukasawa7a-plan.webp","prop/prop-fukasawa7a-2-pers.webp","prop/prop-fukasawa7a-3-pers.webp"],
     note: "■ 這間是什麼\n世田谷區深沢、桜新町站徒步約14分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地138.32㎡，現況是空地（更地），2026年11月上旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 2億2,100万円；加上參考建物價格 4,880万円，總額約 2億6,980万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（2層建、LDK約20.4帖、總樓地板約137.61㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急田園都市線「桜新町」站 徒步約14分。學區是區立桜町小學校、區立深沢中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、食品儲藏室（パントリー）、加寬洗面台。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1241,7 +1241,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-fukasawa7b-1-pers.webp","prop-fukasawa7b-plan.webp","prop-fukasawa7b-2-pers.webp","prop-fukasawa7b-3-pers.webp"],
+    photos: ["prop/prop-fukasawa7b-1-pers.webp","prop/prop-fukasawa7b-plan.webp","prop/prop-fukasawa7b-2-pers.webp","prop/prop-fukasawa7b-3-pers.webp"],
     note: "■ 這間是什麼\n世田谷區深沢、桜新町站徒步約14分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地138.32㎡，現況是空地（更地），2026年11月上旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 2億2,100万円；加上參考建物價格 4,880万円，總額約 2億6,980万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（2層建、LDK約22.5帖、總樓地板約133.47㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急田園都市線「桜新町」站 徒步約14分。學區是區立桜町小學校、區立深沢中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、加寬洗面台、高櫃收納。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1263,7 +1263,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-gohongi2-1-pers.webp","prop-gohongi2-plan.webp","prop-gohongi2-2-pers.webp"],
+    photos: ["prop/prop-gohongi2-1-pers.webp","prop/prop-gohongi2-plan.webp","prop/prop-gohongi2-2-pers.webp"],
     note: "■ 這間是什麼\n目黑區五本木、学芸大学站徒步約9分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地107.61㎡，舊屋拆除中，2026年12月中旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 2億6,715万円；加上參考建物價格 5,665万円，總額約 3億2,380万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約26.3帖、總樓地板約199.79㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急東横線「学芸大学」站 徒步約9分／東急東横線「祐天寺」站 徒步約10分。學區是區立五本木小學校、區立目黒中央中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1285,7 +1285,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-hatanodai3-1-pers.webp","prop-hatanodai3-plan.webp","prop-hatanodai3-2-pers.webp","prop-hatanodai3-3-pers.webp"],
+    photos: ["prop/prop-hatanodai3-1-pers.webp","prop/prop-hatanodai3-plan.webp","prop/prop-hatanodai3-2-pers.webp","prop/prop-hatanodai3-3-pers.webp"],
     note: "■ 這間是什麼\n品川區旗の台、旗の台站徒步約4分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地85.96㎡、總樓地板158.10㎡的3層樓建，<b>現況已完工</b>，2026年11月中旬交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約28.7帖，居室約10.1帖、約7.5帖、約5.9帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急池上線・東急大井町線「旗の台」站 徒步約4分／東急大井町線「荏原町」站 徒步約2分。學區是區立旗台小學校、區立荏原第五中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1307,7 +1307,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-higashigaoka1-p2-1-pers.webp","prop-higashigaoka1-p2-plan.webp"],
+    photos: ["prop/prop-higashigaoka1-p2-1-pers.webp","prop/prop-higashigaoka1-p2-plan.webp"],
     note: "■ 這間是什麼\n目黑區東が丘、駒沢大学站徒步約13分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地115.60㎡、總樓地板169.62㎡的2層樓建，<b>現況建築中、房子還沒完工</b>，2026年12月中旬交屋預定（建築確認號碼 SJK-KX266001300 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約26.0帖，居室約10.0帖、約7.7帖、約6.5帖、約5.6帖。\n設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 規格\n耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急田園都市線「駒沢大学」站 徒步約13分。學區是區立東根小學校、區立第十中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1329,7 +1329,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-higashinakano1-1-pers.webp","prop-higashinakano1-plan.webp"],
+    photos: ["prop/prop-higashinakano1-1-pers.webp","prop/prop-higashinakano1-plan.webp"],
     note: "■ 這間是什麼\n中野區東中野、東中野站徒步約5分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地76.77㎡、總樓地板137.12㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年2月下旬交屋預定（建築確認號碼 SJK-KX266002540 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.0帖，居室約8.1帖、約6.9帖、約5.5帖、約5.3帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\nJR中央･総武線「東中野」站 徒步約5分。學區是區立塔山小學校、區立中野東中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1351,7 +1351,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-higashitamagawa-p4a-1-pers.webp","prop-higashitamagawa-p4a-plan.webp"],
+    photos: ["prop/prop-higashitamagawa-p4a-1-pers.webp","prop/prop-higashitamagawa-p4a-plan.webp"],
     note: "■ 這間是什麼\n世田谷區東玉川、奥沢站徒步約10分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地111.13㎡、總樓地板110.64㎡的2層樓建，<b>現況建築中、房子還沒完工</b>，2026年12月下旬交屋預定（建築確認號碼 SJK-KX266001630 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.7帖，居室約7.0帖、約6.4帖、約5.6帖。\n■ 規格\n耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「奥沢」站 徒步約10分／東急東横線･東急目黒線「田園調布」站 徒步約12分。學區是區立奥沢小學校、區立奥沢中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1373,7 +1373,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-higashitamagawa-p4b-1-pers.webp","prop-higashitamagawa-p4b-plan.webp"],
+    photos: ["prop/prop-higashitamagawa-p4b-1-pers.webp","prop/prop-higashitamagawa-p4b-plan.webp"],
     note: "■ 這間是什麼\n世田谷區東玉川、奥沢站徒步約10分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地104.35㎡、總樓地板118.21㎡的2層樓建，<b>現況建築中、房子還沒完工</b>，2026年12月下旬交屋預定（建築確認號碼 SJK-KX266001560 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約20.3帖，居室約7.0帖、約6.1帖。\n■ 規格\n耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「奥沢」站 徒步約10分／東急東横線･東急目黒線「田園調布」站 徒步約12分。學區是區立奥沢小學校、區立奥沢中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1395,7 +1395,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-hiratsuka3-p3-1-pers.webp","prop-hiratsuka3-p3-plan.webp","prop-hiratsuka3-p3-2-pers.webp","prop-hiratsuka3-p3-3-pers.webp"],
+    photos: ["prop/prop-hiratsuka3-p3-1-pers.webp","prop/prop-hiratsuka3-p3-plan.webp","prop/prop-hiratsuka3-p3-2-pers.webp","prop/prop-hiratsuka3-p3-3-pers.webp"],
     note: "■ 這間是什麼\n品川區平塚、戸越銀座站徒步約5分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地124.19㎡、總樓地板210.88㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年1月下旬交屋預定（建築確認號碼 SJK-KX265612770 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約27.3帖，居室約7.5帖、約6.9帖、約6.8帖、約5.9帖。\n設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急池上線「戸越銀座」站 徒步約5分／都営浅草線「戸越」站 徒步約7分／東急目黒線「武蔵小山」站 徒步約16分。學區是區立京陽小學校、區立戸越台中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1417,7 +1417,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-kamimeguro4a-1-pers.webp","prop-kamimeguro4a-plan.webp","prop-kamimeguro4a-2-pers.webp","prop-kamimeguro4a-3-pers.webp"],
+    photos: ["prop/prop-kamimeguro4a-1-pers.webp","prop/prop-kamimeguro4a-plan.webp","prop/prop-kamimeguro4a-2-pers.webp","prop/prop-kamimeguro4a-3-pers.webp"],
     note: "■ 這間是什麼\n目黑區上目黒、祐天寺站徒步約10分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地100.06㎡，現況有舊屋、以更地（拆除後）交付，2026年10月上旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億5,680万円；加上參考建物價格 3,700万円，總額約 1億9,380万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約20.5帖、總樓地板約105.93㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急東横線「祐天寺」站 徒步約10分／東急東横線「中目黒」站 徒步約14分。學區是區立上目黒小學校、區立目黒中央中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、加寬洗面台、高櫃收納。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1439,7 +1439,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-kamimeguro4b-1-pers.webp","prop-kamimeguro4b-plan.webp","prop-kamimeguro4b-2-pers.webp","prop-kamimeguro4b-3-pers.webp"],
+    photos: ["prop/prop-kamimeguro4b-1-pers.webp","prop/prop-kamimeguro4b-plan.webp","prop/prop-kamimeguro4b-2-pers.webp","prop/prop-kamimeguro4b-3-pers.webp"],
     note: "■ 這間是什麼\n目黑區上目黒、祐天寺站徒步約10分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地80.19㎡，現況有舊屋、以更地（拆除後）交付，2026年10月上旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億9,180万円；加上參考建物價格 4,200万円，總額約 2億3,380万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約20.6帖、總樓地板約132.61㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急東横線「祐天寺」站 徒步約10分／東急東横線「中目黒」站 徒步約14分。學區是區立上目黒小學校、區立目黒中央中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、加寬洗面台、鋼骨樓梯。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1461,7 +1461,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-kamiyoga6-1-pers.webp","prop-kamiyoga6-plan.webp"],
+    photos: ["prop/prop-kamiyoga6-1-pers.webp","prop/prop-kamiyoga6-plan.webp"],
     note: "■ 這間是什麼\n世田谷區上用賀、用賀站徒步約22分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地154.31㎡，現況有舊屋、以更地（拆除後）交付，2026年9月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億5,880万円；加上參考建物價格 6,600万円，總額約 2億2,480万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（2層建、LDK約28.0帖、總樓地板約160.82㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急田園都市線「用賀」站 徒步約22分。學區是區立用賀小學校、區立用賀中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1483,7 +1483,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-koenjiminami5-1-pers.webp","prop-koenjiminami5-plan.webp","prop-koenjiminami5-2-pers.webp","prop-koenjiminami5-3-pers.webp"],
+    photos: ["prop/prop-koenjiminami5-1-pers.webp","prop/prop-koenjiminami5-plan.webp","prop/prop-koenjiminami5-2-pers.webp","prop/prop-koenjiminami5-3-pers.webp"],
     note: "■ 這間是什麼\n杉並區高円寺南、高円寺站徒步約10分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地115.38㎡、總樓地板186.63㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年3月上旬交屋預定（建築確認號碼 SJK-KX266004030 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.5帖，居室約11.0帖、約8.5帖、約6.0帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\nJR中央線「高円寺」站 徒步約10分。學區是區立杉並第三小學校、區立高南中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1505,7 +1505,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-komaba1-1-pers.webp","prop-komaba1-plan.webp"],
+    photos: ["prop/prop-komaba1-1-pers.webp","prop/prop-komaba1-plan.webp"],
     note: "■ 這間是什麼\n目黑區駒場、駒場東大前站徒步約2分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地147.55㎡、總樓地板223.32㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2026年10月下旬交屋預定（建築確認號碼 SJK-KX256013640 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約30.2帖，居室約6.4帖、約6.0帖。\n設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n京王井の頭線「駒場東大前」站 徒步約2分／JR山手線「渋谷」站 徒步約20分。學區是區立駒場小學校、區立第一中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1527,7 +1527,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-koyama3-p6-1-pers.webp","prop-koyama3-p6-plan.webp","prop-koyama3-p6-2-pers.webp"],
+    photos: ["prop/prop-koyama3-p6-1-pers.webp","prop/prop-koyama3-p6-plan.webp","prop/prop-koyama3-p6-2-pers.webp"],
     note: "■ 這間是什麼\n品川區小山、武蔵小山站徒步約2分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地93.93㎡，現況是空地（更地），2026年10月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 3億1,000万円；加上參考建物價格 5,380万円，總額約 3億6,380万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約26.3帖、總樓地板約180.26㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急目黒線「武蔵小山」站 徒步約2分。學區是區立後地小學校、區立荏原第一中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1549,7 +1549,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-koyama7-p2a-1-pers.webp","prop-koyama7-p2a-plan.webp","prop-koyama7-p2a-2-pers.webp","prop-koyama7-p2a-3-pers.webp"],
+    photos: ["prop/prop-koyama7-p2a-1-pers.webp","prop/prop-koyama7-p2a-plan.webp","prop/prop-koyama7-p2a-2-pers.webp","prop/prop-koyama7-p2a-3-pers.webp"],
     note: "■ 這間是什麼\n品川區小山、洗足站徒步約4分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地137.89㎡、總樓地板139.63㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年3月中旬交屋預定（建築確認號碼 SJK-KX266004590 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約24.0帖，居室約8.8帖、約6.0帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「洗足」站 徒步約4分。學區是區立第二延山小學校、區立荏原第六中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1571,7 +1571,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-koyama7-p2b-1-pers.webp","prop-koyama7-p2b-plan.webp","prop-koyama7-p2b-2-pers.webp","prop-koyama7-p2b-3-pers.webp"],
+    photos: ["prop/prop-koyama7-p2b-1-pers.webp","prop/prop-koyama7-p2b-plan.webp","prop/prop-koyama7-p2b-2-pers.webp","prop/prop-koyama7-p2b-3-pers.webp"],
     note: "■ 這間是什麼\n品川區小山、洗足站徒步約4分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地114.97㎡、總樓地板127.52㎡的2層樓建，<b>現況建築中、房子還沒完工</b>，2027年3月中旬交屋預定（建築確認號碼 SJK-KX266004720 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約21.9帖，居室約6.7帖、約5.7帖、約5.4帖、約5.3帖。\n■ 規格\n耐震等級３、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「洗足」站 徒步約4分。學區是區立第二延山小學校、區立荏原第六中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1593,7 +1593,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-meguro-honcho4-p4a-1-pers.webp","prop-meguro-honcho4-p4a-plan.webp"],
+    photos: ["prop/prop-meguro-honcho4-p4a-1-pers.webp","prop/prop-meguro-honcho4-p4a-plan.webp"],
     note: "■ 這間是什麼\n目黑區目黒本町、西小山站徒步約13分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地67.75㎡，現況是空地（更地），2026年11月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億1,000万円；加上參考建物價格 3,680万円，總額約 1億4,680万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約21.1帖、總樓地板約119.19㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急目黒線「西小山」站 徒步約13分／東急目黒線「武蔵小山」站 徒步約14分。學區是區立月光原小學校、區立目黒南中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、餐邊櫃、加寬洗面台、高櫃收納、斜屋頂挑高（勾配天井）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1615,7 +1615,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-meguro-honcho4-p4b-1-pers.webp","prop-meguro-honcho4-p4b-plan.webp"],
+    photos: ["prop/prop-meguro-honcho4-p4b-1-pers.webp","prop/prop-meguro-honcho4-p4b-plan.webp"],
     note: "■ 這間是什麼\n目黑區目黒本町、西小山站徒步約13分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地64.95㎡，現況是空地（更地），2026年11月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億1,000万円；加上參考建物價格 3,680万円，總額約 1億4,680万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約22.1帖、總樓地板約120.01㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急目黒線「西小山」站 徒步約13分／東急目黒線「武蔵小山」站 徒步約14分。學區是區立月光原小學校、區立目黒南中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、餐邊櫃、加寬洗面台、高櫃收納、瓦斯溫水地暖。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1637,7 +1637,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-meguro-honcho4-p5-1-pers.webp","prop-meguro-honcho4-p5-plan.webp","prop-meguro-honcho4-p5-2-pers.webp","prop-meguro-honcho4-p5-3-pers.webp"],
+    photos: ["prop/prop-meguro-honcho4-p5-1-pers.webp","prop/prop-meguro-honcho4-p5-plan.webp","prop/prop-meguro-honcho4-p5-2-pers.webp","prop/prop-meguro-honcho4-p5-3-pers.webp"],
     note: "■ 這間是什麼\n目黑區目黒本町、武蔵小山站徒步約14分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地59.81㎡，現況是空地（更地），2026年10月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 9,400万円；加上參考建物價格 3,980万円，總額約 1億3,380万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約20.3帖、總樓地板約109.97㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急目黒線「武蔵小山」站 徒步約14分／東急目黒線「西小山」站 徒步約13分。學區是區立月光原小學校、區立目黒南中學校。規格上會做到平檯廚房、洗碗機、制震阻尼器、三面鏡收納、餐邊櫃、加寬洗面台、高櫃收納、瓦斯溫水地暖。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1659,7 +1659,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-meguro-honcho6-p2-1-pers.webp","prop-meguro-honcho6-p2-plan.webp"],
+    photos: ["prop/prop-meguro-honcho6-p2-1-pers.webp","prop/prop-meguro-honcho6-p2-plan.webp"],
     note: "■ 這間是什麼\n目黑區目黒本町、武蔵小山站徒步約10分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地103.50㎡，現況是空地（更地），2026年9月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億9,300万円；加上參考建物價格 6,180万円，總額約 2億5,480万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約28.5帖、總樓地板約181.85㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急目黒線「武蔵小山」站 徒步約10分／東急目黒線「西小山」站 徒步約8分。學區是區立向原小學校、區立目黒南中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1681,7 +1681,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-midorigaoka1-p2-1-pers.webp","prop-midorigaoka1-p2-plan.webp","prop-midorigaoka1-p2-2-pers.webp","prop-midorigaoka1-p2-3-pers.webp"],
+    photos: ["prop/prop-midorigaoka1-p2-1-pers.webp","prop/prop-midorigaoka1-p2-plan.webp","prop/prop-midorigaoka1-p2-2-pers.webp","prop/prop-midorigaoka1-p2-3-pers.webp"],
     note: "■ 這間是什麼\n目黑區緑が丘、緑が丘站徒步約1分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地100.69㎡、總樓地板178.20㎡的3層樓建，<b>現況是空地（更地）、房子還沒完工</b>，2027年5月上旬交屋預定（建築確認號碼 SJK-KX266005700 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約25.0帖，居室約9.5帖、約8.0帖、約7.1帖、約6.0帖、約5.0帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急大井町線「緑が丘」站 徒步約1分。學區是區立中根小學校、區立目黒西中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1703,7 +1703,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-minamienoki-p2-1-pers.webp","prop-minamienoki-p2-plan.webp","prop-minamienoki-p2-2-pers.webp","prop-minamienoki-p2-3-pers.webp"],
+    photos: ["prop/prop-minamienoki-p2-1-pers.webp","prop/prop-minamienoki-p2-plan.webp","prop/prop-minamienoki-p2-2-pers.webp","prop/prop-minamienoki-p2-3-pers.webp"],
     note: "■ 這間是什麼\n新宿區南榎町、神楽坂站徒步約12分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地81.77㎡、總樓地板151.94㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年1月上旬交屋預定（建築確認號碼 SJK-KX265610070 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約25.0帖，居室約8.8帖、約6.8帖、約6.2帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東京メトロ東西線「神楽坂」站 徒步約12分／都営大江戸線「牛込柳町」站 徒步約5分。學區是區立市谷小學校、區立牛込第一中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1725,7 +1725,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-minamiogikubo3-p2-1-pers.webp","prop-minamiogikubo3-p2-plan.webp"],
+    photos: ["prop/prop-minamiogikubo3-p2-1-pers.webp","prop/prop-minamiogikubo3-p2-plan.webp"],
     note: "■ 這間是什麼\n杉並區南荻窪、荻窪站徒步約15分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地167.62㎡、總樓地板150.34㎡的2層樓建，<b>現況建築中、房子還沒完工</b>，2027年4月上旬交屋預定（建築確認號碼 SJK266002570 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約26.1帖，居室約11.0帖、約7.7帖、約6.1帖、約6.0帖。\n■ 規格\n耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\nJR中央線「荻窪」站 徒步約15分／JR中央線「西荻窪」站 徒步約14分。學區是區立荻窪小學校、區立神明中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1747,7 +1747,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-minamishinagawa6-1-pers.webp","prop-minamishinagawa6-plan.webp","prop-minamishinagawa6-2-pers.webp","prop-minamishinagawa6-3-pers.webp"],
+    photos: ["prop/prop-minamishinagawa6-1-pers.webp","prop/prop-minamishinagawa6-plan.webp","prop/prop-minamishinagawa6-2-pers.webp","prop/prop-minamishinagawa6-3-pers.webp"],
     note: "■ 這間是什麼\n品川區南品川、大井町站徒步約6分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地79.38㎡，現況是空地（更地），2026年9月中旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億5,980万円；加上參考建物價格 4,600万円，總額約 2億580万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約20.6帖、總樓地板約133.31㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\nJR京浜東北線・東急大井町・りんかい線「大井町」站 徒步約6分／京急本線「青物横丁」站 徒步約10分。學區是區立浅間台小學校、區立東海中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、食品儲藏室（パントリー）、加寬洗面台。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1769,7 +1769,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-nakamachi1-p4-1-pers.webp","prop-nakamachi1-p4-plan.webp"],
+    photos: ["prop/prop-nakamachi1-p4-1-pers.webp","prop/prop-nakamachi1-p4-plan.webp"],
     note: "■ 這間是什麼\n目黑區中町、学芸大学站徒步約13分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地109.37㎡，現況是空地（更地），2026年10月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億8,680万円；加上參考建物價格 5,500万円，總額約 2億4,180万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約23.4帖、總樓地板約171.43㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急東横線「学芸大学」站 徒步約13分／東急東横線「祐天寺」站 徒步約15分。學區是區立油面小學校、區立大鳥中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、食品儲藏室（パントリー）、加寬洗面台。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1791,7 +1791,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nakanohoncho2-p3-1-pers.webp","prop-nakanohoncho2-p3-plan.webp"],
+    photos: ["prop/prop-nakanohoncho2-p3-1-pers.webp","prop/prop-nakanohoncho2-p3-plan.webp"],
     note: "■ 這間是什麼\n中野區本町、中野坂上站徒步約2分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地54.29㎡、總樓地板85.95㎡的3層樓建，<b>現況是空地（更地）、房子還沒完工</b>，2027年3月上旬交屋預定（建築確認號碼 SJK-KX266004450 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約16.7帖，居室約16.7帖、約7.4帖、約4.9帖。\n■ 規格\n耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東京ﾒﾄﾛ丸ノ内線・都営大江戸線「中野坂上」站 徒步約2分／JR中央･総武線・都営大江戸線「東中野」站 徒步約20分。學區是區立中野第一小學校、區立第二中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1813,7 +1813,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nakanohoncho6-p2-1-pers.webp","prop-nakanohoncho6-p2-plan.webp","prop-nakanohoncho6-p2-2-pers.webp","prop-nakanohoncho6-p2-3-pers.webp"],
+    photos: ["prop/prop-nakanohoncho6-p2-1-pers.webp","prop/prop-nakanohoncho6-p2-plan.webp","prop/prop-nakanohoncho6-p2-2-pers.webp","prop/prop-nakanohoncho6-p2-3-pers.webp"],
     note: "■ 這間是什麼\n中野區本町、東高円寺站徒步約8分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地79.12㎡、總樓地板140.59㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2026年10月中旬交屋預定（建築確認號碼 SJK-KX256013500 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.0帖，居室約9.2帖、約6.1帖、約5.7帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東京ﾒﾄﾛ丸ノ内線「東高円寺」站 徒步約8分／JR中央線「中野」站 徒步約17分。學區是區立中野本郷小學校、區立第二中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1835,7 +1835,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishigotanda3a-1-pers.webp","prop-nishigotanda3a-plan.webp"],
+    photos: ["prop/prop-nishigotanda3a-1-pers.webp","prop/prop-nishigotanda3a-plan.webp"],
     note: "■ 這間是什麼\n品川區西五反田、不動前站徒步約5分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地73.65㎡、總樓地板147.20㎡的3層樓建，<b>現況是空地（更地）、房子還沒完工</b>，2027年5月中旬交屋預定（建築確認號碼 SJK-KX266005360 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.6帖，居室約7.2帖、約7.0帖、約6.5帖、約5.1帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「不動前」站 徒步約5分／JR山手線「目黒」站 徒步約13分。學區是區立第四日野小學校、區立荏原第一中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1857,7 +1857,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishigotanda3b-1-pers.webp","prop-nishigotanda3b-plan.webp"],
+    photos: ["prop/prop-nishigotanda3b-1-pers.webp","prop/prop-nishigotanda3b-plan.webp"],
     note: "■ 這間是什麼\n品川區西五反田、不動前站徒步約5分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地74.34㎡、總樓地板153.05㎡的3層樓建，<b>現況是空地（更地）、房子還沒完工</b>，2027年5月下旬交屋預定（建築確認號碼 SJK-KX266005370 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.9帖，居室約7.7帖、約7.5帖、約6.3帖、約6.0帖、約5.5帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「不動前」站 徒步約5分／JR山手線「目黒」站 徒步約13分。學區是區立第四日野小學校、區立荏原第一中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1879,7 +1879,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishinakanobu1a-1-pers.webp","prop-nishinakanobu1a-plan.webp","prop-nishinakanobu1a-2-pers.webp","prop-nishinakanobu1a-3-pers.webp"],
+    photos: ["prop/prop-nishinakanobu1a-1-pers.webp","prop/prop-nishinakanobu1a-plan.webp","prop/prop-nishinakanobu1a-2-pers.webp","prop/prop-nishinakanobu1a-3-pers.webp"],
     note: "■ 這間是什麼\n品川區西中延、荏原中延站徒步約7分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地57.87㎡，現況是空地（更地），2026年10月交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 9,880万円；加上參考建物價格 3,600万円，總額約 1億3,480万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約18.3帖、總樓地板約104.37㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急池上線「荏原中延」站 徒步約7分／東急目黒線「武蔵小山」站 徒步約15分／都営浅草線「戸越」站 徒步約12分。學區是區立中延小學校、區立荏原平塚學園。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、加寬洗面台、高櫃收納。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1901,7 +1901,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-nishishinagawa2-p5-1-pers.webp","prop-nishishinagawa2-p5-plan.webp","prop-nishishinagawa2-p5-2-pers.webp","prop-nishishinagawa2-p5-3-pers.webp"],
+    photos: ["prop/prop-nishishinagawa2-p5-1-pers.webp","prop/prop-nishishinagawa2-p5-plan.webp","prop/prop-nishishinagawa2-p5-2-pers.webp","prop/prop-nishishinagawa2-p5-3-pers.webp"],
     note: "■ 這間是什麼\n品川區西品川、大崎站徒步約12分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地99.58㎡、總樓地板170.80㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2026年12月下旬交屋預定（建築確認號碼 SJK-KX266001850 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約26.8帖，居室約10.2帖、約7.1帖、約6.1帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\nJR山手線「大崎」站 徒步約12分／JR京浜東北線･東急大井町線「大井町」站 徒步約15分／東急大井町線「下神明」站 徒步約7分。學區是區立三木小學校、區立大崎中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1923,7 +1923,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-omorikita-p5a-1-pers.webp","prop-omorikita-p5a-plan.webp","prop-omorikita-p5a-2-pers.webp","prop-omorikita-p5a-3-pers.webp"],
+    photos: ["prop/prop-omorikita-p5a-1-pers.webp","prop/prop-omorikita-p5a-plan.webp","prop/prop-omorikita-p5a-2-pers.webp","prop/prop-omorikita-p5a-3-pers.webp"],
     note: "■ 這間是什麼\n大田區大森北、平和島站徒步約7分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地75.00㎡，現況有舊屋、以更地（拆除後）交付，2026年12月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 9,700万円；加上參考建物價格 4,280万円，總額約 1億3,980万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約21.8帖、總樓地板約134.43㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n京急本線「平和島」站 徒步約7分／JR京浜東北線「大森」站 徒步約19分。學區是區立入新井第五小學校、區立大森第二中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、食品儲藏室（パントリー）、高櫃收納。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1945,7 +1945,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-omorikita-p5b-1-pers.webp","prop-omorikita-p5b-plan.webp"],
+    photos: ["prop/prop-omorikita-p5b-1-pers.webp","prop/prop-omorikita-p5b-plan.webp"],
     note: "■ 這間是什麼\n大田區大森北、平和島站徒步約7分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地87.01㎡，現況有舊屋、以更地（拆除後）交付，2026年12月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億2,800万円；加上參考建物價格 4,980万円，總額約 1億7,780万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約21.3帖、總樓地板約154.17㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n京急本線「平和島」站 徒步約7分／JR京浜東北線「大森」站 徒步約19分。學區是區立入新井第五小學校、區立大森第二中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、食品儲藏室（パントリー）、加寬洗面台。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1967,7 +1967,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-osaki2-1-pers.webp","prop-osaki2-plan.webp","prop-osaki2-2-pers.webp","prop-osaki2-3-pers.webp"],
+    photos: ["prop/prop-osaki2-1-pers.webp","prop/prop-osaki2-plan.webp","prop/prop-osaki2-2-pers.webp","prop/prop-osaki2-3-pers.webp"],
     note: "■ 這間是什麼\n品川區大崎、大崎站徒步約6分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地122.97㎡，現況有舊屋、以更地（拆除後）交付，2026年10月中旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億5,390万円；加上參考建物價格 6,090万円，總額約 2億1,480万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約25.6帖、總樓地板約169.95㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\nJR山手線「大崎」站 徒步約6分。學區是區立芳水小學校、區立大崎中學校。規格上會做到平檯廚房、洗碗機、制震阻尼器、三面鏡收納、餐邊櫃、食品儲藏室（パントリー）、加寬洗面台、瓦斯溫水地暖。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1989,7 +1989,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-shimomeguro5-p2a-1-pers.webp","prop-shimomeguro5-p2a-plan.webp","prop-shimomeguro5-p2a-2-pers.webp","prop-shimomeguro5-p2a-3-pers.webp"],
+    photos: ["prop/prop-shimomeguro5-p2a-1-pers.webp","prop/prop-shimomeguro5-p2a-plan.webp","prop/prop-shimomeguro5-p2a-2-pers.webp","prop/prop-shimomeguro5-p2a-3-pers.webp"],
     note: "■ 這間是什麼\n目黑區下目黒、武蔵小山站徒步約12分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地97.61㎡、總樓地板192.33㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年4月上旬交屋預定（建築確認號碼 SJK-KX266003230 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約26.0帖，居室約11.0帖、約6.4帖、約6.1帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急目黒線「武蔵小山」站 徒步約12分。學區是區立不動小學校、區立大鳥中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2011,7 +2011,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-togoshi5-p2b-1-pers.webp","prop-togoshi5-p2b-plan.webp","prop-togoshi5-p2b-2-pers.webp","prop-togoshi5-p2b-3-pers.webp"],
+    photos: ["prop/prop-togoshi5-p2b-1-pers.webp","prop/prop-togoshi5-p2b-plan.webp","prop/prop-togoshi5-p2b-2-pers.webp","prop/prop-togoshi5-p2b-3-pers.webp"],
     note: "■ 這間是什麼\n品川區戸越、戸越公園站徒步約3分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地85.91㎡、總樓地板154.71㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年1月上旬交屋預定（建築確認號碼 SJK-KX256013870 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約22.7帖，居室約9.1帖、約7.5帖、約6.1帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急大井町線「戸越公園」站 徒步約3分／都営浅草線「戸越」站 徒步約8分。學區是區立宮前小學校、區立戸越台中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2033,7 +2033,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-uehara1-1-pers.webp","prop-uehara1-plan.webp","prop-uehara1-2-pers.webp","prop-uehara1-3-pers.webp"],
+    photos: ["prop/prop-uehara1-1-pers.webp","prop/prop-uehara1-plan.webp","prop/prop-uehara1-2-pers.webp","prop/prop-uehara1-3-pers.webp"],
     note: "■ 這間是什麼\n澀谷區上原、代々木上原站徒步約4分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地75.51㎡、總樓地板156.87㎡的3層樓建，<b>現況是空地（更地）、房子還沒完工</b>，2027年6月中旬交屋預定（建築確認號碼 SJK-KX266005190 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約21.0帖，居室約10.4帖、約7.3帖、約5.0帖、約4.1帖。\n設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東京ﾒﾄﾛ千代田線・小田急線「代々木上原」站 徒步約4分／小田急線「代々木八幡」站 徒步約8分／東京ﾒﾄﾛ千代田線「代々木公園」站 徒步約9分。學區是區立上原小學校、區立上原中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2055,7 +2055,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop-yoyogi2-p2-1-pers.webp","prop-yoyogi2-p2-plan.webp"],
+    photos: ["prop/prop-yoyogi2-p2-1-pers.webp","prop/prop-yoyogi2-p2-plan.webp"],
     note: "■ 這間是什麼\n澀谷區代々木、新宿站徒步約6分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地98.90㎡，現況是空地（更地），2026年10月交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 3億3,000万円；加上參考建物價格 6,980万円，總額約 3億9,980万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約26.3帖、總樓地板約199.83㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n都営大江戸線「新宿」站 徒步約6分／JR山手線「代々木」站 徒步約6分／小田急小田原線「南新宿」站 徒步約2分。學區是區立代々木山谷小學校、區立原宿外苑中學校。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2077,7 +2077,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-yutaka4-p3-1-pers.webp","prop-yutaka4-p3-plan.webp"],
+    photos: ["prop/prop-yutaka4-p3-1-pers.webp","prop/prop-yutaka4-p3-plan.webp"],
     note: "■ 這間是什麼\n品川區豊町、下神明站徒步約6分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地91.49㎡、總樓地板160.69㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2026年12月上旬交屋預定（建築確認號碼 SJK-KX266000420 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約24.0帖，居室約6.1帖、約6.0帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急大井町線「下神明」站 徒步約6分／JR横須賀線・湘南新宿ライン「西大井」站 徒步約9分／東急大井町線「大井町」站 徒步約15分。學區是區立豊葉の杜學園（小中一貫校）。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2099,7 +2099,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-yutaka4-p4-1-pers.webp","prop-yutaka4-p4-plan.webp"],
+    photos: ["prop/prop-yutaka4-p4-1-pers.webp","prop/prop-yutaka4-p4-plan.webp"],
     note: "■ 這間是什麼\n品川區豊町、戸越公園站徒步約6分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地81.20㎡、總樓地板125.55㎡的3層樓建，<b>現況已完工</b>，2026年10月下旬交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約21.5帖，居室約8.3帖、約6.4帖、約6.0帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急大井町線「戸越公園」站 徒步約6分／東急大井町線「下神明」站 徒步約11分。學區是區立豊葉の杜學園（小中一貫校）。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2121,7 +2121,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-yutaka4-p5-1-pers.webp","prop-yutaka4-p5-plan.webp","prop-yutaka4-p5-2-pers.webp","prop-yutaka4-p5-3-pers.webp"],
+    photos: ["prop/prop-yutaka4-p5-1-pers.webp","prop/prop-yutaka4-p5-plan.webp","prop/prop-yutaka4-p5-2-pers.webp","prop/prop-yutaka4-p5-3-pers.webp"],
     note: "■ 這間是什麼\n品川區豊町、戸越公園站徒步約5分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地111.08㎡、總樓地板186.84㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2027年2月下旬交屋預定（建築確認號碼 SJK-KX266003270 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約28.2帖，居室約11.1帖、約6.0帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急大井町線「戸越公園」站 徒步約5分／都営浅草線「中延」站 徒步約10分。學區是區立豊葉の杜學園（小中一貫校）。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2143,7 +2143,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop-yutaka6a-1-pers.webp","prop-yutaka6a-plan.webp","prop-yutaka6a-2-pers.webp","prop-yutaka6a-3-pers.webp"],
+    photos: ["prop/prop-yutaka6a-1-pers.webp","prop/prop-yutaka6a-plan.webp","prop/prop-yutaka6a-2-pers.webp","prop/prop-yutaka6a-3-pers.webp"],
     note: "■ 這間是什麼\n品川區豊町、戸越公園站徒步約5分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地63.93㎡、總樓地板115.81㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2026年12月上旬交屋預定（建築確認號碼 SJK-KX266001070 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\n開放式LDK，居室約7.3帖、約6.1帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東急大井町線「戸越公園」站 徒步約5分／東急大井町線/都営浅草線「中延」站 徒步約6分。學區是區立大原小學校、區立豊葉の杜學園。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   }
 ];

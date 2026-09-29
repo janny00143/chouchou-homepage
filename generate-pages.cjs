@@ -154,7 +154,10 @@ function propBlockHTML(a) {
   const list = propsForArticle(a);
   if (!list.length) return "";
   const cards = list.map(p => {
-    const img = (p.photos && p.photos[0]) ? encodeURIComponent(p.photos[0]) : "";   /* 相對路徑：文章頁跟物件頁都在根目錄 */
+    /* 相對路徑：文章頁跟物件頁都在根目錄。2026-09-29 物件圖搬進 prop/ 之後，
+       encodeURIComponent 會把「/」也編成 %2F 造成破圖，改成逐段編碼。 */
+    const img = (p.photos && p.photos[0])
+      ? String(p.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
     const name = esc(p.title_cn || p.title || "");
     const yieldLine = p.yield ? '<span class="apy">' + esc(String(p.yield).split("（")[0]) + "</span>" : "";
     return '<a class="apcard" href="property.html?id=' + encodeURIComponent(p.id) + '">'
