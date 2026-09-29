@@ -690,8 +690,13 @@ function c2_images() {
       try { refs.add(decodeURIComponent(m[0])); } catch (e) { }
     }
   }
-  const imgs = fs.readdirSync(ROOT).filter(f => imgRe.test(f));
-  const unused = imgs.filter(f => !refs.has(f) && !refs.has(encodeURIComponent(f)));
+  /* 2026-09-29：物件写真は prop/ に移動（root が 1000 件に近づいたため）。
+     root と prop/ の両方を見る。参照側は "prop/xxx.webp" と書かれるが、
+     上の正規表現は「/」を含まないので basename で照合される。 */
+  const sub = fs.existsSync(path.join(ROOT, "prop"))
+    ? fs.readdirSync(path.join(ROOT, "prop")).filter(f => imgRe.test(f)).map(f => "prop/" + f) : [];
+  const imgs = fs.readdirSync(ROOT).filter(f => imgRe.test(f)).concat(sub);
+  const unused = imgs.filter(f => { const b = f.split("/").pop(); return !refs.has(b) && !refs.has(encodeURIComponent(b)); });
   const big = imgs.filter(f => fs.statSync(path.join(ROOT, f)).size > 500 * 1024)
     .map(f => `${f}(${Math.round(fs.statSync(path.join(ROOT, f)).size / 1024)}KB)`);
   // ⚠️ 只看靜態 HTML 裡的 <img>。JS 樣板字串裡的 <img> 尺寸是執行時才知道的，
