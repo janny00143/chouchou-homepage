@@ -44,6 +44,8 @@ main{padding:22px 0 10px}
 /* 檔名含 -plan. 的（間取圖／資訊圖）整張顯示、不裁切 */
 .pmain img.fitall,.pthumbs img.fitall,.rcard .rph img.fitall{object-fit:contain;background:#faf8f6}
 .pmain .perstag{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.58);color:#fff;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.3px;pointer-events:none}
+/* 建築條件付土地的封面是完成預想圖，所以「這是土地」也要標在封面上（周周 2026-09-29） */
+.pmain .landtag{position:absolute;left:12px;bottom:48px;background:rgba(180,83,9,.9);color:#fff;font-size:12.5px;font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.3px;pointer-events:none}
 .pmain .pnav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.42);color:#fff;border:none;font-size:30px;cursor:pointer;padding:8px 14px;line-height:1;font-family:inherit;border-radius:10px}
 .pmain .pnav:hover{background:rgba(0,0,0,.72)}
 .pmain .pnav.prev{left:12px}.pmain .pnav.next{right:12px}
@@ -327,6 +329,7 @@ body.noscroll{overflow:hidden}
         +'<span class="pcnt" id="pcnt">1 / '+photos.length+'</span>'
         +'<span class="pzoom">🔍 點圖放大</span>'
         +'<span class="perstag" id="perstag" style="display:none">完成預想圖</span>'
+        +(p.cat==="land"?'<span class="landtag">'+C("土地")+'</span>':"")
         +'</div>'
         +(multi?'<div class="pthumbs" id="pthumbs">'+photos.map(function(src,idx){return '<img class="'+(/-plan\./.test(String(src||""))?"fitall":"")+'" src="'+esc(src)+'" data-i="'+idx+'" alt="">';}).join("")+'</div>':'')
         +'</div>';
