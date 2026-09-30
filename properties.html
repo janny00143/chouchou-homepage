@@ -130,7 +130,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 #soldMore{display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid #e7e5e4;border-radius:999px;padding:10px 22px;font-family:inherit;font-size:14px;font-weight:700;color:#57534e;cursor:pointer}
 #soldMore:hover{background:#faf9f7;border-color:#d6d3d1}
 .sold-see{font-size:14px;font-weight:700;color:var(--rose-d,#e11d48)}
-</style>
+.jishalink{display:block;margin:10px 0 0;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:14px;padding:11px 15px;font-size:14px;font-weight:700;color:#e11d48}.jishalink small{display:block;font-weight:400;font-size:12.5px;color:#78716c;margin-top:2px}</style>
 </head>
 <body>
 <header>
@@ -168,6 +168,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   <div class="sortrow"><div class="pqwrap"><span class="pqico">🔍</span><input id="pq" type="search" autocomplete="off" placeholder="搜尋地名、車站、格局…" aria-label="搜尋地名、車站、格局…"><button type="button" class="pqclr" id="pqclr" aria-label="清除搜尋">&times;</button></div><select id="psort"><option value="default">排序：預設</option><option value="price-asc">價格：低 → 高</option><option value="price-desc">價格：高 → 低</option><option value="size-desc">面積：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面積：小 → 大</option></select><select id="pbudget"><option value="all">預算：不限</option><option value="a">～3,000萬円</option><option value="b">3,000～5,000萬円</option><option value="c">5,000～8,000萬円</option><option value="d">8,000萬～1.5億円</option><option value="e">1.5億円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以內</option><option value="7">徒步 7 分以內</option><option value="10">徒步 10 分以內</option><option value="15">徒步 15 分以內</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大樓（マンション）</option><option value="house">獨棟透天（戸建）</option><option value="shop">店舖・事務所</option><option value="whole">整棟</option><option value="land">土地・建築條件付</option></select><select id="pview"><option value="all">景觀：不限</option><option value="skytree">看得到晴空塔</option><option value="tower">看得到東京鐵塔</option><option value="night">夜景・開闊視野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
 
 
+  <a class="jishalink" href="jisha.html">🏗️ 什麼是「自社物件」？—— 我們自己設計、自己蓋的房子 →<small>設計・施工・銷售同一家，賣方直售沒有中間轉手；建築條件付售地的規則也在這一頁講清楚。</small></a>
   <div class="grid" id="grid"></div>
 
   <div id="soldSec" style="display:none"><h2 style="font-size:20px;font-weight:900;margin:36px 0 6px">🏆 過去販售物件</h2><p style="color:var(--mut);font-size:14px;margin-bottom:16px">這些物件已順利成交。想找類似條件的物件，歡迎加 LINE 告訴周周你的需求，我幫你留意最新釋出！</p><div class="grid" id="soldGrid"></div><div class="sold-foot"><button type="button" id="soldMore" onclick="toggleSold()" style="display:none"></button><a class="sold-see" href="properties.html#top">看目前在售的物件 →</a></div></div>

@@ -572,7 +572,9 @@ for (const a of ART) {
   else if (SLUG[a.id]) { urls.push({ loc: BASE + SLUG[a.id] + ".html", lm: a.date, pr: "0.8" }); }
 }
 urls.push({ loc: BASE + "translate.html", pr: "0.6" });
-urls.push({ loc: BASE + "properties.html", pr: "0.9", cf: "weekly" });   // 物件專區：周周指示要能被搜到，權重僅次於首頁
+urls.push({ loc: BASE + "properties.html", pr: "0.9", cf: "weekly" });
+urls.push({ loc: BASE + "jisha.html", pr: "0.8", cf: "weekly" });      // 自社物件專區（2026-09-30）
+urls.push({ loc: BASE + "jisha-ja.html", pr: "0.8", cf: "weekly" });   // 物件專區：周周指示要能被搜到，權重僅次於首頁
 urls.push({ loc: BASE + "properties-ja.html", pr: "0.9", cf: "weekly" });
 urls.push({ loc: BASE + "property-types.html", pr: "0.6" });
 urls.push({ loc: BASE + "property-types-ja.html", pr: "0.6" });
