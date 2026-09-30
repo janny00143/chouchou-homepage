@@ -138,6 +138,12 @@
    封面用掉：`art-3s1k-seishi.webp`（誠之小學校實拍，周周 2026-09-20 提供；
    原本的 `pexels-slava-v-2159989286-36451111.webp` 因與 a14 內頁大圖重複已換下）
 ## 已完成
+✅ 2026-10-01 `japan-building-conditional-land` 日本的「建築條件付售地」是什麼？買地＋蓋房的中間選項（a56・knowhow）
+   封面用掉：`cover-joken-land.webp`（原 `img-original/pexels-pavel-danilyuk-7937717.webp` 搬回 root，未重轉）
+   內文另用：`art-joken-landplan.webp`（西大井2丁目 part5 的土地配置圖，賣家資訊已確認無）
+   圖表三個：三種買法比較表／六步驟時間軸（3 個月期限那兩格標色）／付款節奏長條圖
+   ⭐ 與站上 20 件建築條件付土地做了雙向連結（物件 note → 文章；文章 → 自社專區與物件專區）
+   ⚠️ 刻意不寫「建築条件を外す（加價解除建築條件）」——那是教客戶避開周周公司的工程契約，違反 CLAUDE.md §3
 ✅ 2026-09-21 `shibuya-scramble-crossing` 澀谷十字路口為什麼人可以這麼多？一次綠燈，五條斑馬線同時放行（a55・area）
    封面用掉：`shibuya-crossing-aerial.webp`（2026-09-28 周周上傳的俯瞰實拍，換掉原本自製的
    `cover-shibuya-crossing.webp`；舊橫幅未刪，留在 root 可隨時換回）
