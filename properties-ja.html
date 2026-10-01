@@ -449,13 +449,40 @@ footer a{color:#d6d3d1;text-decoration:none}
     });
     /* 排序：pin（周周指定置頂）優先，接著一律「上架日新→舊」。
        周周 2026-09-19：「為啥物件專區沒有照最新排序」——以前預設只吃 pin，
-       同 pin 的就維持 properties.js 的檔案順序，所以新物件不一定排在前面。 */
+       同 pin 的就維持 properties.js 的檔案順序，所以新物件不一定排在前面。
+
+       ⭐ 周周 2026-10-01：「自社的幫我放散一點，一開始滑下來的都要是最推的，
+       土地的可以放下去一點」。自社 44 件同一天上架，只照上架日排的話會整片
+       黏在最前面，其他供應商的物件全部被擠到看不到。所以預設排序改成三段：
+         ① pin（向丘30／晴空塔29／東京鐵塔28／專任獨家26）
+         ② 主力區：自社與非自社各自依上架日排好，再「等比例交錯」混在一起，
+            這樣往下滑不會連續看到十幾件自社
+         ③ 建築條件付土地（cat==="land"）整批排到最後
+       只影響預設排序；使用者自己選價格／面積／最新上架時不套用。 */
     items=items.slice();
     if(sortMode==="default"){
-      items.sort(function(a,b){
-        var d=(b.pin||0)-(a.pin||0); if(d)return d;
-        return listedTs(b)-listedTs(a);
+      var byNew=function(a,b){ return listedTs(b)-listedTs(a); };
+      var pinned=items.filter(function(p){return p.pin;}).sort(function(a,b){
+        var d=(b.pin||0)-(a.pin||0); return d?d:byNew(a,b);
       });
+      var rest=items.filter(function(p){return !p.pin;});
+      var land=rest.filter(function(p){return p.cat==="land";}).sort(byNew);
+      var main=rest.filter(function(p){return p.cat!=="land";});
+      var mj=main.filter(function(p){return p.group==="jisha";}).sort(byNew);
+      var mo=main.filter(function(p){return p.group!=="jisha";}).sort(byNew);
+      /* 等比例交錯：兩邊各自看「已經發出去幾成」，誰落後就先發誰。
+         長度差很多也能均勻散開（39 : 27 會變成大約每 2～3 件出現 1 件自社）。 */
+      var weave=function(x,y){
+        if(!x.length)return y.slice(); if(!y.length)return x.slice();
+        var out=[],i=0,j=0;
+        while(i<x.length||j<y.length){
+          if(i>=x.length){out.push(y[j++]);continue;}
+          if(j>=y.length){out.push(x[i++]);continue;}
+          out.push((i/x.length<=j/y.length)?x[i++]:y[j++]);
+        }
+        return out;
+      };
+      items=pinned.concat(weave(mo,mj)).concat(land);
     }
     if(sortMode!=="default"){
       items.sort(function(a,b){
