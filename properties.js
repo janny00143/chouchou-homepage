@@ -692,7 +692,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-nishioi-p5-1-pers.webp","prop/prop-nishioi-p5-plan.webp","prop/prop-nishioi-p5-2-pers.webp","prop/prop-nishioi-p5-3-pers.webp","prop/prop-nishioi-p5-4.webp","prop/prop-nishioi-p5-5.webp","prop/prop-nishioi-p5-6.webp"],
+    photos: ["prop/prop-nishioi-p5-1-pers.webp","prop/prop-nishioi-p5-plan.webp","prop/prop-nishioi-p5-kukaku-plan.webp","prop/prop-nishioi-p5-2-pers.webp","prop/prop-nishioi-p5-3-pers.webp","prop/prop-nishioi-p5-4.webp","prop/prop-nishioi-p5-5.webp","prop/prop-nishioi-p5-6.webp","prop/prop-nishioi-p5-site1.webp","prop/prop-nishioi-p5-site2.webp","prop/prop-nishioi-p5-road1.webp"],
     note: "■ 這間是什麼\n品川區西大井2丁目、JR埼京線「西大井」站徒步約7分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地106.05㎡、總樓地板186.60㎡的3層樓建，<b>現況是更地、房子還沒完工，2027年4月下旬交屋預定</b>（建築確認號碼 SJK-KX265615170 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 亮點：25.8帖的LDK配鋼骨樓梯\n2樓整層是約25.8帖的LDK，搭配斜屋頂造型的<b>勾配天井</b>與當成主視覺的鋼骨樓梯，這種挑空感在都內同坪數的戶建裡很少見。廚房背面留了食品儲藏室（パントリー），生活感可以整個收起來；2樓東西兩面都有陽台，其中一面是下雨天也用得到的內陽台。\n■ 位置與學區\n西大井搭埼京線直達大崎、澀谷、新宿，湘南新宿線與橫須賀線也都在同一站，往品川、橫濱方向一樣順。學區是區立伊藤學園——品川區的小中一貫校，小學到國中不用換學校，有小孩的家庭會很有感。\n■ 規格與條件\n耐震等級2，Flat 35 房貸（フラット35）S（A方案）適合證明書取得預定，1樓有內建車庫與門廊。用途地域是近鄰商業地域、建蔽率80%／容積率200%、準防火地域、第二種高度地區。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，想看現地或先把貸款抓出來，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -1461,7 +1461,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-kamiyoga6-1-pers.webp","prop/prop-kamiyoga6-plan.webp"],
+    photos: ["prop/prop-kamiyoga6-1-pers.webp","prop/prop-kamiyoga6-plan.webp","prop/prop-kamiyoga6-kukaku-plan.webp","prop/prop-kamiyoga6-site1.webp","prop/prop-kamiyoga6-site2.webp","prop/prop-kamiyoga6-road1.webp"],
     note: "■ 這間是什麼\n世田谷區上用賀、用賀站徒步約22分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地154.31㎡，現況有舊屋、以更地（拆除後）交付，2026年9月下旬交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 1億5,880万円；加上參考建物價格 6,600万円，總額約 2億2,480万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（2層建、LDK約28.0帖、總樓地板約160.82㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n東急田園都市線「用賀」站 徒步約22分。學區是區立用賀小學校、區立用賀中學校。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。\n（第一次碰到「建築條件付售地」？我寫了一篇<a href=\"japan-building-conditional-land.html\">完整說明</a>，規則、期限、付款節奏都在裡面。）"
   },
 
@@ -1813,7 +1813,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-nakanohoncho6-p2-1-pers.webp","prop/prop-nakanohoncho6-p2-plan.webp","prop/prop-nakanohoncho6-p2-2-pers.webp","prop/prop-nakanohoncho6-p2-3-pers.webp"],
+    photos: ["prop/prop-nakanohoncho6-p2-site1.webp","prop/prop-nakanohoncho6-p2-plan.webp","prop/prop-nakanohoncho6-p2-site2.webp","prop/prop-nakanohoncho6-p2-road1.webp","prop/prop-nakanohoncho6-p2-kukaku-plan.webp","prop/prop-nakanohoncho6-p2-1-pers.webp","prop/prop-nakanohoncho6-p2-2-pers.webp","prop/prop-nakanohoncho6-p2-3-pers.webp"],
     note: "■ 這間是什麼\n中野區本町、東高円寺站徒步約8分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地79.12㎡、總樓地板140.59㎡的3層樓建，<b>現況建築中、房子還沒完工</b>，2026年10月中旬交屋預定（建築確認號碼 SJK-KX256013500 已取得）。相簿裡的外觀與室內圖都是完成預想圖，實際以現況與設計圖為準。\n■ 格局與亮點\nLDK約23.0帖，居室約9.2帖、約6.1帖、約5.7帖。\n■ 規格\n耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。\n■ 位置與學區\n東京ﾒﾄﾛ丸ノ内線「東高円寺」站 徒步約8分／JR中央線「中野」站 徒步約17分。學區是區立中野本郷小學校、區立第二中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
 
@@ -2055,7 +2055,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-yoyogi2-p2-1-pers.webp","prop/prop-yoyogi2-p2-plan.webp"],
+    photos: ["prop/prop-yoyogi2-p2-1-pers.webp","prop/prop-yoyogi2-p2-plan.webp","prop/prop-yoyogi2-p2-kukaku-plan.webp","prop/prop-yoyogi2-p2-site1.webp","prop/prop-yoyogi2-p2-site2.webp","prop/prop-yoyogi2-p2-road1.webp"],
     note: "■ 這間是什麼\n澀谷區代々木、新宿站徒步約6分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。土地98.90㎡，現況是空地（更地），2026年10月交地預定。\n■ 「建築條件付」是什麼意思，先講清楚\n這類物件的條件是：<b>房子必須由我們公司承建</b>，不能自己另外找建商，而且通常要在一定期間內簽好建築工程契約；沒談成的話土地契約也會一併解除、款項退還。這點我不會等到簽約那天才講。換個角度看，好處是土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 價格怎麼看\n土地 3億3,000万円；加上參考建物價格 6,980万円，總額約 3億9,980万円（含稅）。建物那一段會隨你最後決定的設計與規格變動，圖面上的是參考方案（3層建、LDK約26.3帖、總樓地板約199.83㎡）。相簿裡的外觀與室內圖都是完成預想圖，不是實景照。\n■ 位置與學區\n都営大江戸線「新宿」站 徒步約6分／JR山手線「代々木」站 徒步約6分／小田急小田原線「南新宿」站 徒步約2分。學區是區立代々木山谷小學校、區立原宿外苑中學校。\n■ 想在東京蓋自己的房子，我從頭陪你走\n買地自建的流程、付款節奏、貸款時點都跟買現成的房子不一樣，外國人辦更要提早抓。想看現地、想先跑一次資金計畫，加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。\n（第一次碰到「建築條件付售地」？我寫了一篇<a href=\"japan-building-conditional-land.html\">完整說明</a>，規則、期限、付款節奏都在裡面。）"
   },
 
