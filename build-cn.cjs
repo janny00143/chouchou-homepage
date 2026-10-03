@@ -135,6 +135,18 @@ function convertFile(file) {
   return cn(file);
 }
 
+/* 成約・下架した物件の -cn ページ掃除：
+   繁中與日文版的 prop-*.html 由各自的產生器在重跑時自動刪掉，
+   但簡中版是「照著現有繁中檔轉」，來源檔沒了就不會再轉，舊檔會留在原地
+   （2026-10-03 大崎2丁目下架時發現 prop-osaki2-cn.html 沒被清掉）。
+   這裡依繁中現況反推，清掉沒有對應來源的 prop-*-cn.html。 */
+{
+  const keepCn = new Set(propPages.map(cn));
+  for (const f of fs.readdirSync(ROOT)) {
+    if (/^prop-[A-Za-z0-9_-]+-cn\.html$/.test(f) && !keepCn.has(f)) fs.unlinkSync(ROOT + "/" + f);
+  }
+}
+
 const made = internal.map(convertFile);
 
 // 7) 更新 sitemap：加入 -cn 內容頁
