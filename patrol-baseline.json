@@ -1,28 +1,28 @@
 {
  "date": "2026-10-03",
- "mode": "B",
+ "mode": "full",
  "metrics": {
-  "pages": 241,
-  "inlineJs": 1638,
-  "jsonLd": 381,
-  "links": 3773,
-  "sitemap": 228,
+  "pages": 511,
+  "inlineJs": 2988,
+  "jsonLd": 924,
+  "links": 8963,
+  "sitemap": 498,
   "props": 99,
   "propsOnSale": 90,
   "articles": 56,
   "runtimePages": 6,
   "jaEntries": 55,
-  "cnFiles": 79,
-  "jaFiles": 78,
+  "cnFiles": 169,
+  "jaFiles": 168,
   "itemList": 90,
   "linksTw": 121,
   "linksJa": 119,
   "orphanTw": 0,
   "orphanJa": 0,
   "noPlan": 1,
-  "images": 715,
+  "images": 731,
   "unusedImages": 0,
   "imgNoWH": 0,
-  "rootItems": 402
+  "rootItems": 672
  }
 }

@@ -54,6 +54,15 @@ function pics(p) {
     .map(x => BASE + x);
 }
 
+/* 物件獨立頁（提案 2・2026-10-03）：property.html?id= 是 noindex 殼頁，
+   JSON-LD 與 noscript 清單一律改指可被收錄的靜態頁，讓內部連結有權重可傳。
+   靜態頁不存在時（例如還沒跑過 generate-pages）退回殼頁，頁面不會壞。 */
+const propStatic = (key, id) => {
+  const suf = key === "cn" ? "-cn" : key === "ja" ? "-ja" : "";
+  const f = "prop-" + id + suf + ".html";
+  return fs.existsSync(ROOT + "/" + f) ? f : null;
+};
+
 const LANG = {
   tw: { file: "properties.html", detail: "property.html", page: "properties.html",
         name: "物件專區｜周周・日本房仲", heading: "目前在售物件一覽",
@@ -75,7 +84,8 @@ function block(key) {
 
   const items = act.map((p, i) => {
     const d = L.pick(p);
-    const url = BASE + L.detail + "?id=" + encodeURIComponent(p.id);
+    const st = propStatic(key, p.id);
+    const url = st ? BASE + st : BASE + L.detail + "?id=" + encodeURIComponent(p.id);
     const price = yen(p.price);
     const item = {
       "@type": "ListItem", position: i + 1, name: d.title, url,
@@ -99,7 +109,9 @@ function block(key) {
 
   const rows = act.map(p => {
     const d = L.pick(p);
-    return '<li><a href="' + L.detail + "?id=" + encodeURIComponent(p.id) + '">' + esc(d.title) + "</a>"
+    const st = propStatic(key, p.id);
+    const href = st || (L.detail + "?id=" + encodeURIComponent(p.id));
+    return '<li><a href="' + href + '">' + esc(d.title) + "</a>"
       + (p.price ? " — " + esc(String(p.price).split("\n")[0]) : "")
       + (d.loc ? "（" + esc(d.loc) + "）" : "") + "</li>";
   }).join("");

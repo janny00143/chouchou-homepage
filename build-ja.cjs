@@ -648,7 +648,7 @@ const NOTE_MD_JA = t => String(t || "")
   .replace(/<a href="(https?:[^"]+)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, x) => `[${x}](${h})`)
   .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 const PROP_CAT_JA = { invest: "投資・収益物件", live: "住まい（実需）", house: "戸建", land: "土地・建築条件付売地" };
-const propUrlJa = p => BASE + "property-ja.html?id=" + p.id;
+const propUrlJa = p => BASE + "prop-" + p.id + "-ja.html";   /* 提案2以降は静的ページを指す */
 const onSalePropsJa = () => PROPS.filter(p => !p.sold && p.status === "在售");
 
 function propsIndexJa() {
@@ -683,6 +683,194 @@ function propToMarkdownJa(p) {
     else L.push(t, "");
   }
   return L.join("\n");
+}
+
+/* ── 物件独立ページ（日本語版・提案2／2026-10-03 承認）──────────────────
+   prop-<id>-ja.html。繁体字版は generate-pages.cjs、簡体字版は build-cn.cjs。
+   ⚠️ 販売中の物件のみ。成約後は再実行時に自動で削除される。
+   ⚠️ -pers は「完成予想図」、-plan は「間取図・区画図」と必ず明記（法令上の要請）。
+   ⚠️ 住所は properties.js の location をそのまま使用。仕入先名は書かない。
+   ⚠️ 生成物につき直接編集しないこと。 */
+/* properties.js 的 video 存的是 11 碼純 ID（文章的 ytEmbed 吃的是完整網址），
+   兩種都要接得住，否則物件頁的影片與 VideoObject 會整個不輸出。 */
+const propYt = v => {
+  const s = String(v || "").trim();
+  if (!s) return "";
+  const m = s.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/);
+  const id = m ? m[1] : (/^[\w-]{11}$/.test(s) ? s : "");
+  return id ? "https://www.youtube.com/embed/" + id : "";
+};
+const propSlugJa = p => "prop-" + p.id + "-ja";
+const propPageUrlJa = p => BASE + propSlugJa(p) + ".html";
+
+function propYenJa(s) {
+  const m = String(s || "").match(/(?:([\d.]+)[億亿])?(?:([\d,]+)[万萬])?[円]/);
+  if (!m || (!m[1] && !m[2])) return 0;
+  return ((m[1] ? parseFloat(m[1]) * 1e4 : 0) + (m[2] ? parseInt(m[2].replace(/,/g, ""), 10) : 0)) * 1e4;
+}
+
+function propSpecRowsJa(p) {
+  const rows = [
+    ["価格", p.price], ["所在地", p.location], ["交通", p.station],
+    ["間取り", p.layout], ["面積", p.size], ["築年・現況", p.age],
+    ["その他条件", p.facing], ["管理費・修繕積立金", p.mgmt],
+    ["権利形態", p.right], ["利回り", p.yield]
+  ];
+  return rows.filter(r => PLAIN_JA(r[1])).map(r =>
+    `<tr><th>${esc(r[0])}</th><td>${esc(PLAIN_JA(r[1]))}</td></tr>`).join("");
+}
+
+function propNoteHTMLJa(p) {
+  const out = [];
+  for (const raw of String(p.note || "").split("\n")) {
+    const t = raw.trim();
+    if (!t) continue;
+    if (/^■/.test(t)) { out.push(`<h2 class="ah">${esc(PLAIN_JA(t).replace(/^■\s*/, ""))}</h2>`); continue; }
+    out.push("<p>" + t + "</p>");
+  }
+  return out.join("");
+}
+
+function propGalleryJa(p) {
+  const list = (p.photos || []).filter(x => x && !/^https?:/i.test(x));
+  if (!list.length) return "";
+  return `<div class="pgal">` + list.map((src, i) => {
+    const pers = /-pers\./.test(src);
+    const plan = /-plan\./.test(src);
+    const cap = pers ? "完成予想図（実際とは異なります）" : plan ? "間取図・区画図" : "";
+    const sty = plan || pers
+      ? "width:100%;height:auto;max-height:520px;object-fit:contain;background:#faf8f7"
+      : "width:100%;height:auto";
+    return `<figure><img${wh(src)} src="${esc(src)}" alt="${esc(PLAIN_JA(p.title))}${i ? "　" + (i + 1) : ""}" loading="lazy" decoding="async" style="${sty};border-radius:14px;display:block">`
+      + (cap ? `<figcaption>${cap}</figcaption>` : "") + `</figure>`;
+  }).join("") + `</div>`;
+}
+
+function propVideoLdJa(p, url) {
+  const em = propYt(p.video);
+  if (!em || !p.videoDate) return null;
+  const vid = em.split("/embed/")[1];
+  return {
+    "@context": "https://schema.org", "@type": "VideoObject",
+    name: PLAIN_JA(p.title) + "｜物件動画",
+    description: PLAIN_JA(p.title) + " の物件紹介動画（周周・日本の不動産）",
+    thumbnailUrl: ["https://i.ytimg.com/vi/" + vid + "/maxresdefault.jpg"],
+    uploadDate: p.videoDate,
+    embedUrl: em,
+    contentUrl: "https://www.youtube.com/watch?v=" + vid,
+    publisher: PUBLISHER_JA,
+    mainEntityOfPage: url
+  };
+}
+
+function propPageJa(p) {
+  const url = propPageUrlJa(p);
+  const title = PLAIN_JA(p.title);
+  const t = esc(title) + "｜周周・日本の不動産";
+  const bits = [PLAIN_JA(p.station), PLAIN_JA(p.layout), PLAIN_JA(p.size), PLAIN_JA(p.price)].filter(Boolean);
+  /* catch だけだと 30 字前後で検索結果に出る情報が足りないため、
+     必ず交通・間取り・面積・価格を続ける（patrol B2「過短」対策）。 */
+  const head = PLAIN_JA(p.catch) || title;
+  const d = esc((head + "。" + bits.join("｜")).slice(0, 155));
+  const cover = (p.photos || []).find(x => x && !/^https?:/i.test(x)) || "";
+  const coverAbs = cover ? BASE + cover.split("/").map(encodeURIComponent).join("/") : "";
+  const imgs = (p.photos || []).filter(x => x && !/^https?:/i.test(x)).slice(0, 6)
+    .map(x => BASE + x.split("/").map(encodeURIComponent).join("/"));
+  const twUrl = BASE + "prop-" + p.id + ".html";
+
+  const ld = {
+    "@context": "https://schema.org", "@type": "Accommodation",
+    name: title, description: PLAIN_JA(p.catch) || title,
+    url, inLanguage: "ja",
+    address: { "@type": "PostalAddress", addressCountry: "JP", streetAddress: PLAIN_JA(p.location) || undefined },
+    provider: PUBLISHER_JA, copyrightHolder: COPYRIGHT_JA, isAccessibleForFree: true
+  };
+  if (imgs.length) ld.image = imgs;
+  const yenV = propYenJa(p.price);
+  if (yenV > 0) ld.offers = { "@type": "Offer", price: yenV, priceCurrency: "JPY",
+    availability: "https://schema.org/InStock", url, seller: PUBLISHER_JA };
+  const ldCrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+    { "@type": "ListItem", position: 2, name: "物件情報", item: BASE + "properties-ja.html" },
+    { "@type": "ListItem", position: 3, name: title, item: url }
+  ] };
+  const lds = [ld, ldCrumb];
+  const vLd = propVideoLdJa(p, url);
+  if (vLd) lds.push(vLd);
+
+  const em = propYt(p.video);
+  const vidId = em ? em.split("/embed/")[1] : "";
+  const vid = em ? `<div class="vid" style="margin:22px 0"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="物件動画" loading="lazy" width="1280" height="720"><span class="pbtn">▶</span></div></div>` : "";
+
+  return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+${HEAD_SCRIPTS}
+<title>${t}</title>
+<meta name="description" content="${d}">
+<link rel="canonical" href="${url}">
+<link rel="alternate" hreflang="ja" href="${url}">
+<link rel="alternate" hreflang="zh-Hant" href="${twUrl}">
+<link rel="alternate" hreflang="zh-Hans" href="${twUrl.replace(/\.html$/, "-cn.html")}">
+<link rel="alternate" hreflang="x-default" href="${twUrl}">${coverAbs ? `
+<link rel="preload" as="image" href="${esc(coverAbs)}">` : ""}
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="${t}">
+<meta property="og:description" content="${d}">
+<meta property="og:url" content="${url}">${coverAbs ? `\n<meta property="og:image" content="${esc(coverAbs)}">` : ""}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://i.ytimg.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+${lds.map(x => `<script type="application/ld+json">${JSON.stringify(x).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026")}</script>`).join("\n")}
+${STYLE}
+<style>
+.pgal{display:grid;gap:14px;margin:18px 0 6px}
+.pgal figure{margin:0}
+.pgal figcaption{font-size:12.5px;color:var(--mut);margin-top:5px;text-align:center}
+.ptab{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+.ptab th,.ptab td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+.ptab th{width:34%;color:var(--mut);font-weight:700;white-space:nowrap}
+.pprice{font-size:26px;font-weight:900;color:var(--rose-d);margin:2px 0 6px;line-height:1.35;white-space:pre-line}
+.psub{color:var(--mut);font-size:14.5px;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div id="rp"></div>
+${SBAR}
+<main class="wrap" style="max-width:820px;padding-top:18px">
+<a class="back" href="properties-ja.html">← 物件一覧へ</a>
+<p style="font-size:13px;color:var(--mut);margin-bottom:12px"><a href="ja.html" style="color:var(--mut)">ホーム</a> › <a href="properties-ja.html" style="color:var(--mut)">物件情報</a></p>
+<h1 class="atitle" style="margin-bottom:6px">${esc(title)}</h1>${PLAIN_JA(p.catch) ? `
+<p class="psub">${esc(PLAIN_JA(p.catch))}</p>` : ""}
+<p class="pprice">${esc(PLAIN_JA(p.price))}</p>
+${propGalleryJa(p)}
+<table class="ptab">${propSpecRowsJa(p)}</table>
+<div class="post">
+${propNoteHTMLJa(p)}
+</div>
+${vid}
+<div class="ablock" style="margin-top:26px"><div><b>ご内見・資金計画のご相談</b><br><span style="color:var(--mut);font-size:14px">日本語でお気軽にご連絡ください。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div>
+<p style="margin-top:20px;font-size:14px"><a href="property-ja.html?id=${encodeURIComponent(p.id)}">📷 スライド版で写真を見る</a>　·　<a href="properties-ja.html">他の販売中物件を見る →</a></p>
+<p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 掲載内容は作成時点のものでございます。最終的な条件は現況および重要事項説明書をご確認ください。融資の可否・融資割合は個別の審査により、税額は税理士、登記・契約内容は司法書士および宅地建物取引士にご確認ください。</p>
+</main>
+${FOOT}
+</body>
+</html>`;
+}
+
+/* 書き出し：販売中でなくなったページは掃除してから生成 */
+{
+  const keepJa = new Set(onSalePropsJa().map(p => propSlugJa(p) + ".html"));
+  for (const f of fs.readdirSync(ROOT)) {
+    if (/^prop-[A-Za-z0-9_-]+-ja\.html$/.test(f) && !keepJa.has(f)) fs.unlinkSync(ROOT + "/" + f);
+  }
+  let n = 0;
+  for (const p of onSalePropsJa()) { fs.writeFileSync(ROOT + "/" + propSlugJa(p) + ".html", propPageJa(p)); n++; }
+  console.log("物件独立ページ（日本語）" + n + " ページ生成");
 }
 
 /* ── llms-ja.txt ／ llms-ja-full.txt（周周 2026-09-17）────────────────────

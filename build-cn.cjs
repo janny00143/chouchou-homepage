@@ -14,7 +14,13 @@ const slugs = [...slugMatch[1].matchAll(/"a\d+":"([^"]+)"/g)].map(m => m[1]);
 // 需要產生 -cn 的內部頁面（會被互相連結的都要做，否則 404）
 const staticPages = ["index.html","properties.html","property.html","jisha.html","minpaku.html","translate.html","feedback.html","videos.html","tools.html","partners.html","quiz.html","property-types.html","tokyo-area-guide.html",
   "about.html","privacy.html","buy-property-in-japan.html","japan-real-estate-agent-for-taiwanese.html","tool-loan.html","tool-cost.html","tool-agent.html","tool-yield.html","tool-fx.html","tool-area.html","tool-convert.html"];
-const internal = [...staticPages, ...slugs.map(s => s + ".html")].filter(f => fs.existsSync(ROOT + "/" + f));
+/* 物件獨立頁 prop-<id>.html（提案 2・2026-10-03）：由 generate-pages.cjs 產出，
+   數量會隨在售物件增減，所以用掃目錄的方式抓，不另外維護清單。
+   （-cn／-ja 要排除，否則會把產物再轉一次） */
+const propPages = fs.readdirSync(ROOT)
+  .filter(f => /^prop-[A-Za-z0-9_-]+\.html$/.test(f) && !/-(cn|ja)\.html$/.test(f))
+  .sort();
+const internal = [...staticPages, ...slugs.map(s => s + ".html"), ...propPages].filter(f => fs.existsSync(ROOT + "/" + f));
 const cn = f => f.replace(/\.html$/, "-cn.html");
 
 /* 法定登記資訊與專名：CLAUDE.md §7 的例外，必須與正式文件一致，不可簡體化。
@@ -153,7 +159,7 @@ if (!sm.includes("index-cn.html")) {
     const m = sm.match(new RegExp("<loc>" + BASE.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + tw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "</loc><lastmod>(\\d{4}-\\d{2}-\\d{2})</lastmod>"));
     return m ? m[1] : "";
   };
-  const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), ...cnStatic]
+  const extra = ["index-cn.html", ...slugs.map(s => s + "-cn.html"), ...cnStatic, ...propPages.map(cn)]
     .map(u => { const lm = lmOf(u); return `<url><loc>${BASE}${u}</loc>${lm ? `<lastmod>${lm}</lastmod>` : ""}<priority>0.6</priority></url>`; }).join("\n");
   sm = sm.replace("</urlset>", extra + "\n</urlset>");
   fs.writeFileSync(ROOT + "/sitemap.xml", sm);

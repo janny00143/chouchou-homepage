@@ -4308,7 +4308,7 @@ eSIM 還是實體 SIM？ 如果你的手機支援 eSIM，很多方案可以掃�
 
 ## 品川區西中延 荏原中延站4分 最上層・附約12㎡屋頂陽台 全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=bcity-shinagawa703
+- 網址：https://chouchouinjapan.com/prop-bcity-shinagawa703.html
 - 物件名（日文原名）：B CITY APARTMENT SHINAGAWA WEST 703号室
 - 所在地：東京都品川區西中延2-4-7
 - 交通：東急池上線「荏原中延」站 徒步4分／東急大井町線「荏原町」站 徒步10分／東急大井町線「旗の台」站 徒步12分
@@ -4345,7 +4345,7 @@ LDK約11.4帖的面對面廚房，看得到整個客廳。附食洗機、淨水�
 
 ## 墨田區亀沢 錦糸町站7分 南向角戶・三房格局 全新翻新2SLDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=sxl-kinshicho201
+- 網址：https://chouchouinjapan.com/prop-sxl-kinshicho201.html
 - 物件名（日文原名）：エス・バイ・エルマンション錦糸町 201号室
 - 所在地：東京都墨田區亀沢4-19-16
 - 交通：JR總武線・總武快速線・東京Metro半藏門線「錦糸町」站 徒步7分
@@ -4382,7 +4382,7 @@ LDK約11.4帖的面對面廚房，看得到整個客廳。附食洗機、淨水�
 
 ## 豐島區北大塚 大塚站4分 南西向三面採光 全新翻新2LDK＋WIC
 
-- 網址：https://chouchouinjapan.com/property.html?id=levenheim-otsuka202
+- 網址：https://chouchouinjapan.com/prop-levenheim-otsuka202.html
 - 物件名（日文原名）：レーベンハイム大塚 202号室
 - 所在地：東京都豐島區北大塚1-20-20
 - 交通：JR山手線「大塚」站 徒步4分
@@ -4419,7 +4419,7 @@ LDK約12.7帖，中島型廚房標配食洗機；浴室是1416尺寸、附浴室
 
 ## 文京區西片 東大前站3分 北西角戶・眺望開闊 全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=montebelde-nishikata501
+- 網址：https://chouchouinjapan.com/prop-montebelde-nishikata501.html
 - 物件名（日文原名）：モンテベルデ本郷西片 501号室
 - 所在地：東京都文京區西片2-25-8
 - 交通：東京Metro南北線「東大前」站 徒步3分／東京Metro千代田線「根津」站 徒步9分／都營三田線・都營大江戶線「春日」站 徒步10分／東京Metro丸之內線・都營大江戶線「本鄉三丁目」站 徒步13分
@@ -4456,7 +4456,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 墨田區向島 9樓南東角戶 陽台望晴空塔・全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=kototoi902
+- 網址：https://chouchouinjapan.com/prop-kototoi902.html
 - 物件名（日文原名）：朝日言問マンション 902号室
 - 所在地：東京都墨田區向島2丁目22-12
 - 交通：都營淺草線「本所吾妻橋」站 徒步8分／東武晴空塔線（東武スカイツリーライン）「東京晴空塔（とうきょうスカイツリー）」站 徒步7分／東京Metro半藏門線「押上」站 徒步11分
@@ -4489,7 +4489,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市西成區 天下茶屋 町家民宿一棟（旅館業365・營運中）
 
-- 網址：https://chouchouinjapan.com/property.html?id=tengachaya
+- 網址：https://chouchouinjapan.com/prop-tengachaya.html
 - 物件名（日文原名）：R天下茶屋 雅（西成區潮路2丁目）
 - 所在地：大阪府大阪市西成區潮路二丁目
 - 交通：南海本線・大阪地下鐵堺筋線「天下茶屋」站 徒步9分／南海高野線「西天下茶屋」站 徒步3分／大阪地下鐵四橋線「岸里」站 徒步7分
@@ -4523,7 +4523,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市東成區 今里站3分 特區民宿一棟（365天・營運中）
 
-- 網址：https://chouchouinjapan.com/property.html?id=oimazato
+- 網址：https://chouchouinjapan.com/prop-oimazato.html
 - 物件名（日文原名）：R大今里 幸（東成區大今里3丁目）
 - 所在地：大阪府大阪市東成區大今里三丁目
 - 交通：大阪地下鐵千日前線「今里」站 徒步3分
@@ -4557,7 +4557,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市生野區 鶴橋站3分 特區民宿（3樓部分・營運中）
 
-- 網址：https://chouchouinjapan.com/property.html?id=tsuruhashi-mori
+- 網址：https://chouchouinjapan.com/prop-tsuruhashi-mori.html
 - 物件名（日文原名）：R鶴橋 守 3F（生野區鶴橋2丁目）
 - 所在地：大阪府大阪市生野區鶴橋二丁目
 - 交通：JR大阪環狀線・近鐵奈良線／大阪線・大阪地下鐵千日前線「鶴橋」站 徒步3分
@@ -4591,7 +4591,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市西成區 花園町7分 特區民宿一棟（附三溫暖與露天浴・營運中）
 
-- 網址：https://chouchouinjapan.com/property.html?id=seihaku
+- 網址：https://chouchouinjapan.com/prop-seihaku.html
 - 物件名（日文原名）：整白（西成區長橋1丁目）
 - 所在地：大阪府大阪市西成區長橋一丁目
 - 交通：大阪地下鐵四橋線「花園町」站 徒步7分
@@ -4625,7 +4625,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市生野區 鶴橋8分 民宿一棟（旅館業365＋特區民泊・營運中）
 
-- 網址：https://chouchouinjapan.com/property.html?id=momodani
+- 網址：https://chouchouinjapan.com/prop-momodani.html
 - 物件名（日文原名）：R桃谷 秀（生野區桃谷2丁目）
 - 所在地：大阪府大阪市生野區桃谷二丁目
 - 交通：JR大阪環狀線「鶴橋」站 徒步8分／JR大阪環狀線「桃谷」站 徒步10分
@@ -4659,7 +4659,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 京都市南區 十條站5分 町家民宿一棟（旅館業365・2026年9月中旬預計營運）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kyoto-uta
+- 網址：https://chouchouinjapan.com/prop-kyoto-uta.html
 - 物件名（日文原名）：R京都 歌（京都市南區東九條柳下町）
 - 所在地：京都府京都市南區東九條柳下町
 - 交通：京都市營地下鐵烏丸線「十條」站 徒步5～6分／京阪電氣鐵道京阪線「鳥羽街道」站 徒步10分
@@ -4693,7 +4693,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市此花區 西九條站2分 民宿一棟（改裝中・2027年2月預計營運）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nishikujo
+- 網址：https://chouchouinjapan.com/prop-nishikujo.html
 - 物件名（日文原名）：R西九条 柚（此花區西九條4丁目）
 - 所在地：大阪府大阪市此花區西九條四丁目
 - 交通：JR大阪環狀線・阪神難波線「西九條」站 徒步2分
@@ -4727,7 +4727,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市生野區 鶴橋站2分 民宿一棟（改裝中・2026年11月預計營運）
 
-- 網址：https://chouchouinjapan.com/property.html?id=tsuruhashi-ren
+- 網址：https://chouchouinjapan.com/prop-tsuruhashi-ren.html
 - 物件名（日文原名）：R鶴橋 蓮（生野區鶴橋2丁目）
 - 所在地：大阪府大阪市生野區鶴橋二丁目
 - 交通：JR大阪環狀線・近鐵奈良線／大阪線・大阪地下鐵千日前線「鶴橋」站 徒步2分
@@ -4761,7 +4761,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 大阪市港區 弁天町7分 民宿一棟（改裝中・2026年12月預計營運）
 
-- 網址：https://chouchouinjapan.com/property.html?id=bentencho
+- 網址：https://chouchouinjapan.com/prop-bentencho.html
 - 物件名（日文原名）：R弁天町 麗（港區波除5丁目）
 - 所在地：大阪府大阪市港區波除五丁目
 - 交通：JR大阪環狀線・大阪地下鐵中央線「弁天町」站 徒步7分
@@ -4795,7 +4795,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 文京區向丘 誠之小學區 新築一戶建4LDK（自社・東大前3分）
 
-- 網址：https://chouchouinjapan.com/property.html?id=mukougaoka2
+- 網址：https://chouchouinjapan.com/prop-mukougaoka2.html
 - 物件名（日文原名）：向丘2丁目 part2 新築戸建
 - 所在地：東京都文京區向丘2丁目8-14
 - 交通：東京Metro南北線「東大前」站 徒步約3分／都營三田線「白山」站 徒步約11分／東京Metro千代田線「根津」站 徒步約12分
@@ -4834,7 +4834,7 @@ LDK約10.7帖＋洋室約3.7帖，適合單身或兩人。面對面廚房附食�
 
 ## 【獨家】港區海岸 新築塔樓 29樓南西角戶3LDK（2028年4月完工）
 
-- 網址：https://chouchouinjapan.com/property.html?id=rainbow2902
+- 網址：https://chouchouinjapan.com/prop-rainbow2902.html
 - 物件名（日文原名）：CITY TOWER THE RAINBOW 高層階
 - 所在地：東京都港區海岸3丁目
 - 交通：百合海鷗號（ゆりかもめ）「芝浦碼頭（芝浦ふ頭）」站 徒步5分／JR山手線・京濱東北線「田町」站 徒步14分／都營三田線・淺草線「三田」站 徒步14分
@@ -4867,7 +4867,7 @@ LD約13.0帖，三個房間都有收納，另有步入式衣帽間與獨立化�
 
 ## 【獨家】港區芝浦 新築免震塔樓 田町10分・29樓角戶3LDK（2028年4月完工）
 
-- 網址：https://chouchouinjapan.com/property.html?id=tamachi2904
+- 網址：https://chouchouinjapan.com/prop-tamachi2904.html
 - 物件名（日文原名）：シティタワー東京田町 高層階
 - 所在地：東京都港區芝浦2丁目
 - 交通：JR山手線・京濱東北線「田町」站 徒步10分／都營三田線・淺草線「三田」站 徒步10分／百合海鷗號（ゆりかもめ）「芝浦碼頭（芝浦ふ頭）」站 徒步10分
@@ -4900,7 +4900,7 @@ LD約12.2帖，三個房間都有收納，另有步入式衣帽間與獨立化�
 
 ## 【獨家】葛飾區金町 37層塔樓 36樓西向角戶4SLDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=kanamachi3612
+- 網址：https://chouchouinjapan.com/prop-kanamachi3612.html
 - 物件名（日文原名）：シティタワー金町 タワー棟 高層階
 - 所在地：東京都葛飾區新宿6丁目
 - 交通：JR常磐線各站停車（常磐緩行線）「金町」站 徒步12分／京成金町線「京成金町」站 徒步13分
@@ -4935,7 +4935,7 @@ LD約12.2帖，三個房間都有收納，另有步入式衣帽間與獨立化�
 
 ## 濱松町 塔樓高層・足下東京鐵塔
 
-- 網址：https://chouchouinjapan.com/property.html?id=shiba2802
+- 網址：https://chouchouinjapan.com/prop-shiba2802.html
 - 物件名（日文原名）：クレストプライムタワー芝 2802
 - 所在地：東京都港區芝1-2-1
 - 交通：JR山手線・京濱東北線「濱松町」站 徒步6分／都營三田線「芝公園」站 徒步7分／都營大江戶線「大門」站 徒步7分
@@ -4954,7 +4954,7 @@ LD約12.2帖，三個房間都有收納，另有步入式衣帽間與獨立化�
 
 ## 代官山4分・惠比壽5分 1LDK（二重床二重天井）
 
-- 網址：https://chouchouinjapan.com/property.html?id=daikanyama903
+- 網址：https://chouchouinjapan.com/prop-daikanyama903.html
 - 物件名（日文原名）：オーベル代官山DE 903号室
 - 所在地：東京都澀谷區惠比壽南3-4-14
 - 交通：東急東橫線「代官山」站 徒步4分／東京Metro日比谷線「惠比壽」站 徒步5分／JR山手線「惠比壽」站 徒步8分
@@ -4993,7 +4993,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 惠比壽 11樓南東角戶 全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=ebisu1103
+- 網址：https://chouchouinjapan.com/prop-ebisu1103.html
 - 物件名（日文原名）：コンシェリア恵比寿 1103号室
 - 所在地：東京都澀谷區惠比壽3-45-2
 - 交通：東京Metro日比谷線「廣尾」站 徒步10分／JR山手線・埼京線・湘南新宿線「惠比壽」站 徒步12分（「惠比壽三丁目」公車站徒步1分・搭公車到惠比壽站約7分、到澀谷站約15分）
@@ -5036,7 +5036,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 惠比壽 廣尾8分 全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=ebisu302
+- 網址：https://chouchouinjapan.com/prop-ebisu302.html
 - 物件名（日文原名）：リ・プレゼ恵比寿 302号室
 - 所在地：東京都澀谷區惠比壽2-24-4
 - 交通：東京Metro日比谷線「廣尾」站 徒步8分／JR山手線「惠比壽」站 徒步12分
@@ -5075,7 +5075,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】世田谷區上野毛 土地136坪 RC造邸宅（內外裝翻新中）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kaminoge
+- 網址：https://chouchouinjapan.com/prop-kaminoge.html
 - 物件名（日文原名）：世田谷区上野毛四丁目 戸建
 - 所在地：東京都世田谷區上野毛4丁目
 - 交通：東急田園都市線「用賀」站 徒步13分
@@ -5114,7 +5114,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】荒川區東日暮里 1樓路面店舖・事務所（表面5.96%）
 
-- 網址：https://chouchouinjapan.com/property.html?id=belista-higashinippori
+- 網址：https://chouchouinjapan.com/prop-belista-higashinippori.html
 - 物件名（日文原名）：ＢＥＬＩＳＴＡ東日暮里 101号室
 - 所在地：東京都荒川區東日暮里2丁目
 - 交通：東京Metro日比谷線「三之輪」站 徒步9分
@@ -5154,7 +5154,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 澀谷站1分 免震塔樓 全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=shibuya1003
+- 網址：https://chouchouinjapan.com/prop-shibuya1003.html
 - 物件名（日文原名）：テラス渋谷美竹 1003号室
 - 所在地：東京都澀谷區澀谷1-15-15
 - 交通：東京Metro半藏門線・副都心線・東急田園都市線「澀谷」站 徒步1分／JR山手線等4條路線「澀谷」站 徒步3分／京王井之頭線「澀谷」站 徒步6分／東京Metro半藏門線・銀座線・千代田線「表參道」站 徒步11分
@@ -5201,7 +5201,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 台東區 鳥越 6站7線可用 翻新1LDK（秋葉原・淺草橋生活圈）
 
-- 網址：https://chouchouinjapan.com/property.html?id=akihabara203
+- 網址：https://chouchouinjapan.com/prop-akihabara203.html
 - 物件名（日文原名）：プレスト・アイディ秋葉原 203号室
 - 所在地：東京都台東區鳥越1-27-2
 - 交通：都營大江戸線「新御徒町」站 徒步6分／都營大江戸線・淺草線「藏前」站 徒步8分／都營淺草線・JR總武線「淺草橋」站 徒步8分／JR山手線・京濱東北線「秋葉原」站 徒步14分
@@ -5220,7 +5220,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 世田谷區 桜上水3丁目 築淺角地戸建（3LDK・附車位）
 
-- 網址：https://chouchouinjapan.com/property.html?id=sakurajosui
+- 網址：https://chouchouinjapan.com/prop-sakurajosui.html
 - 物件名（日文原名）：桜上水3丁目 戸建
 - 所在地：東京都世田谷區桜上水3丁目
 - 交通：小田急線「經堂」站 徒步13分／東急世田谷線「松原」站 徒步10分／京王線「桜上水」站 徒步15分
@@ -5239,7 +5239,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 品川區西大井 站7分 新築一戶建（自社・2027年4月交屋）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nishioi-p5
+- 網址：https://chouchouinjapan.com/prop-nishioi-p5.html
 - 物件名（日文原名）：西大井2丁目 part5 新築戸建
 - 所在地：東京都品川區西大井2丁目12-13
 - 交通：JR埼京線・湘南新宿線・橫須賀線「西大井」站 徒步約7分
@@ -5275,7 +5275,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 世田谷區下馬3丁目 建築條件付土地（自社・限量1區）
 
-- 網址：https://chouchouinjapan.com/property.html?id=setagaya-house
+- 網址：https://chouchouinjapan.com/prop-setagaya-house.html
 - 物件名（日文原名）：下馬3丁目 part2 建築条件付売地
 - 所在地：東京都世田谷區下馬3丁目22-3（舊住居表示）
 - 交通：東急田園都市線「駒澤大學」站 徒步約18分／東急田園都市線・世田谷線「三軒茶屋」站 徒步約19分
@@ -5324,7 +5324,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 新宿御苑前4分 2024新築塔樓・望新宿夜景2LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=classy-shinjuku
+- 網址：https://chouchouinjapan.com/prop-classy-shinjuku.html
 - 物件名（日文原名）：クラッシィタワー新宿御苑 1703
 - 所在地：東京都新宿區四谷4-29-3
 - 交通：東京Metro丸之內線「新宿御苑前」站 徒步4分／丸之內線「四谷三丁目」站 徒步6分／都營新宿線「新宿三丁目」站 徒步10分
@@ -5343,7 +5343,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 世田谷站5分 全新翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=lions-setagaya
+- 網址：https://chouchouinjapan.com/prop-lions-setagaya.html
 - 物件名（日文原名）：ライオンズガーデン世田谷 201
 - 所在地：東京都世田谷區世田谷1-31-13
 - 交通：東急世田谷線「世田谷」站 徒步5分
@@ -5362,7 +5362,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 新宿站2分 塔式住宅 全新翻新1DK
 
-- 網址：https://chouchouinjapan.com/property.html?id=famille309
+- 網址：https://chouchouinjapan.com/prop-famille309.html
 - 物件名（日文原名）：ファミール新宿グランスィートタワー 309
 - 所在地：東京都渋谷區代々木2-21-8
 - 交通：JR山手線等「新宿」站 徒步2分／山手線・總武中央線・大江戶線「代々木」站 徒步8分（周邊共可利用約11條路線）
@@ -5381,7 +5381,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 高田馬場5分 南西向角戶 翻新1LDK
 
-- 網址：https://chouchouinjapan.com/property.html?id=pearl-baba301
+- 網址：https://chouchouinjapan.com/prop-pearl-baba301.html
 - 物件名（日文原名）：パールマンション高田馬場 301
 - 所在地：東京都新宿區高田馬場1-21-25
 - 交通：JR山手線・東西線・西武新宿線「高田馬場」站 徒步5分／副都心線「西早稻田」站 徒步5分
@@ -5400,7 +5400,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 中目黑 目黑川櫻並木・翻新一房
 
-- 網址：https://chouchouinjapan.com/property.html?id=nakameguro702
+- 網址：https://chouchouinjapan.com/prop-nakameguro702.html
 - 物件名（日文原名）：セブンスターマンション第二青葉台 702
 - 所在地：東京都目黑區青葉台1丁目29-12
 - 交通：東急東橫線・東京Metro日比谷線「中目黑」站 徒步5分
@@ -5419,7 +5419,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 品川區 戶越公園 三面採光角戶
 
-- 網址：https://chouchouinjapan.com/property.html?id=togoshi701
+- 網址：https://chouchouinjapan.com/prop-togoshi701.html
 - 物件名（日文原名）：ジェイパーク戸越公園アーキテクト 701
 - 所在地：東京都品川區戶越6-19-14
 - 交通：大井町線「戶越公園」站 徒步3分／大井町線・淺草線「中延」站 徒步5分／池上線「荏原中延」站 徒步7分／橫須賀線・湘南新宿線「西大井」站 徒步9分
@@ -5438,7 +5438,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 南麻布 精華翻新宅
 
-- 網址：https://chouchouinjapan.com/property.html?id=minamiazabu205
+- 網址：https://chouchouinjapan.com/prop-minamiazabu205.html
 - 物件名（日文原名）：ルモンド南麻布 205
 - 所在地：東京都港區南麻布2-2-4
 - 交通：「麻布十番」站 徒步7分（大江戶線・南北線）／「白金高輪」站 徒步10分（三田線）
@@ -5456,7 +5456,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 台東區根岸 大空間三房
 
-- 網址：https://chouchouinjapan.com/property.html?id=taito703
+- 網址：https://chouchouinjapan.com/prop-taito703.html
 - 物件名（日文原名）：スカーラ台東根岸 703
 - 所在地：東京都台東區根岸5-25-11
 - 交通：日比谷線「三之輪」站 徒步2分／「南千住」站 徒步10分（常磐線・筑波快線）
@@ -5474,7 +5474,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 兩國 整棟旅館收益
 
-- 網址：https://chouchouinjapan.com/property.html?id=ryogoku2
+- 網址：https://chouchouinjapan.com/prop-ryogoku2.html
 - 物件名（日文原名）：両国二丁目ビル（一棟）
 - 所在地：東京都墨田區兩國二丁目6-9
 - 交通：JR總武中央線・都營大江戶線「兩國」站 徒步8分
@@ -5494,7 +5494,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 中央區茅場町 1樓路面店舖（想定表面7.23%）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kayabacho101
+- 網址：https://chouchouinjapan.com/prop-kayabacho101.html
 - 物件名（日文原名）：ライオンズマンション茅場町 101号室
 - 所在地：東京都中央區新川1丁目
 - 交通：東京Metro日比谷線・東西線「茅場町」站 徒步8分／東京Metro日比谷線・JR京葉線「八丁堀」站 徒步7分
@@ -5520,7 +5520,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 濱松町 1樓路面店舖（現況空室・可餐飲）
 
-- 網址：https://chouchouinjapan.com/property.html?id=hamamatsucho102
+- 網址：https://chouchouinjapan.com/prop-hamamatsucho102.html
 - 物件名（日文原名）：パラシオン浜松町 102
 - 所在地：東京都港區濱松町1丁目
 - 交通：都營大江戶線・都營淺草線「大門」站 徒步6分／JR山手線「濱松町」站 徒步8分
@@ -5546,7 +5546,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】赤坂 溜池山王2分 1樓路面店舖（81㎡）
 
-- 網址：https://chouchouinjapan.com/property.html?id=akasaka101
+- 網址：https://chouchouinjapan.com/prop-akasaka101.html
 - 物件名（日文原名）：デュオ・スカーラ赤坂 101
 - 所在地：東京都港區赤坂2丁目
 - 交通：東京Metro銀座線「溜池山王」站 徒步2分／東京Metro千代田線「赤坂」站 徒步5分
@@ -5572,7 +5572,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】歌舞伎町 1樓店舖・帶租約（表面6.11%）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kabukicho106
+- 網址：https://chouchouinjapan.com/prop-kabukicho106.html
 - 物件名（日文原名）：歌舞伎町ダイヤモンドパレス 106号室
 - 所在地：東京都新宿區歌舞伎町2丁目
 - 交通：東京Metro副都心線「新宿三丁目」站 徒步4分／都營大江戶線「東新宿」站 徒步5分
@@ -5596,7 +5596,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】新宿三丁目4分 帶租約店舖（NET6.51%）
 
-- 網址：https://chouchouinjapan.com/property.html?id=daikan708
+- 網址：https://chouchouinjapan.com/prop-daikan708.html
 - 物件名（日文原名）：新宿ダイカンプラザ星座館 708号室
 - 所在地：東京都新宿區歌舞伎町1丁目
 - 交通：東京Metro副都心線「新宿三丁目」站 徒步4分／JR山手線「新宿」站 徒步6分
@@ -5620,7 +5620,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】中央區 水天宮前2分 1樓路面店舖・事務所
 
-- 網址：https://chouchouinjapan.com/property.html?id=ningyocho104
+- 網址：https://chouchouinjapan.com/prop-ningyocho104.html
 - 物件名（日文原名）：リガーレ日本橋人形町アネックスB棟 104号室
 - 所在地：東京都中央區日本橋人形町1丁目
 - 交通：東京Metro半藏門線「水天宮前」站 徒步2分／東京Metro日比谷線「人形町」站 徒步3分／東京Metro日比谷線・東西線「茅場町」站 徒步7分
@@ -5648,7 +5648,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 【獨家】橫濱市鶴見區 鶴見站5分 1樓路面店舖（想定表面6.7%）
 
-- 網址：https://chouchouinjapan.com/property.html?id=tsurumi101
+- 網址：https://chouchouinjapan.com/prop-tsurumi101.html
 - 物件名（日文原名）：サングレイス鶴見 101
 - 所在地：神奈川縣橫濱市鶴見區鶴見中央2丁目
 - 交通：JR京濱東北線・JR鶴見線「鶴見」站 徒步5分／京急本線「京急鶴見」站 徒步7分
@@ -5676,7 +5676,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 惠比壽 整棟旅館收益（旅館業許可済）
 
-- 網址：https://chouchouinjapan.com/property.html?id=ebisu3
+- 網址：https://chouchouinjapan.com/prop-ebisu3.html
 - 物件名（日文原名）：恵比寿3丁目ビル（一棟）
 - 所在地：東京都澀谷區惠比壽三丁目
 - 交通：東京Metro南北線・都營三田線「白金台」站 徒步11分／JR山手線・東京Metro日比谷線「惠比壽」站 徒步15分
@@ -5702,7 +5702,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 新宿區愛住町 四谷三丁目站4分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=aizumi-p2
+- 網址：https://chouchouinjapan.com/prop-aizumi-p2.html
 - 物件名（日文原名）：愛住町 part2 建築条件付売地
 - 所在地：東京都新宿區愛住町16-2（舊住居表示）
 - 交通：東京ﾒﾄﾛ丸ノ内線「四谷三丁目」站 徒步約4分／都営新宿線「曙橋」站 徒步約7分／JR中央線「四ツ谷」站 徒步約15分
@@ -5740,7 +5740,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 世田谷區深沢 桜新町站14分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=fukasawa7a
+- 網址：https://chouchouinjapan.com/prop-fukasawa7a.html
 - 物件名（日文原名）：深沢7丁目 A区画 建築条件付売地
 - 所在地：東京都世田谷區深沢7丁目9-10（舊住居表示）
 - 交通：東急田園都市線「桜新町」站 徒步約14分
@@ -5778,7 +5778,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 世田谷區深沢 桜新町站14分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=fukasawa7b
+- 網址：https://chouchouinjapan.com/prop-fukasawa7b.html
 - 物件名（日文原名）：深沢7丁目 B区画 建築条件付売地
 - 所在地：東京都世田谷區深沢7丁目9-10（舊住居表示）
 - 交通：東急田園都市線「桜新町」站 徒步約14分
@@ -5816,7 +5816,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 目黑區五本木 学芸大学站9分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=gohongi2
+- 網址：https://chouchouinjapan.com/prop-gohongi2.html
 - 物件名（日文原名）：五本木2丁目 建築条件付売地
 - 所在地：東京都目黒區五本木2丁目43-12（舊住居表示）
 - 交通：東急東横線「学芸大学」站 徒步約9分／東急東横線「祐天寺」站 徒步約10分
@@ -5854,7 +5854,7 @@ LDK部分的TES溫水式地暖、淨水器一體型水龍頭、洗碗機、室�
 
 ## 品川區旗の台 旗の台站4分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=hatanodai3
+- 網址：https://chouchouinjapan.com/prop-hatanodai3.html
 - 物件名（日文原名）：旗の台3丁目 新築戸建
 - 所在地：東京都品川區旗の台3丁目8-7
 - 交通：東急池上線・東急大井町線「旗の台」站 徒步約4分／東急大井町線「荏原町」站 徒步約2分
@@ -5891,7 +5891,7 @@ LDK約28.7帖，居室約10.1帖、約7.5帖、約5.9帖。
 
 ## 目黑區東が丘 駒沢大学站13分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=higashigaoka1-p2
+- 網址：https://chouchouinjapan.com/prop-higashigaoka1-p2.html
 - 物件名（日文原名）：東が丘1丁目 part2 新築戸建
 - 所在地：東京都目黒區東が丘1丁目12-4（舊住居表示）
 - 交通：東急田園都市線「駒沢大学」站 徒步約13分
@@ -5930,7 +5930,7 @@ LDK約26.0帖，居室約10.0帖、約7.7帖、約6.5帖、約6.2帖，另有約
 
 ## 中野區東中野 東中野站5分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=higashinakano1
+- 網址：https://chouchouinjapan.com/prop-higashinakano1.html
 - 物件名（日文原名）：東中野1丁目 新築戸建
 - 所在地：東京都中野區東中野1丁目43-13（舊住居表示）
 - 交通：JR中央･総武線「東中野」站 徒步約5分
@@ -5967,7 +5967,7 @@ JR中央･総武線「東中野」站 徒步約5分。學區是區立塔山小�
 
 ## 世田谷區東玉川 奥沢站10分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=higashitamagawa-p4a
+- 網址：https://chouchouinjapan.com/prop-higashitamagawa-p4a.html
 - 物件名（日文原名）：東玉川1丁目 part4 A棟 新築戸建
 - 所在地：東京都世田谷區東玉川1丁目38-3（舊住居表示）
 - 交通：東急目黒線「奥沢」站 徒步約10分／東急東横線･東急目黒線「田園調布」站 徒步約12分
@@ -6004,7 +6004,7 @@ LDK約23.7帖，居室約7.0帖、約6.4帖、約5.6帖。
 
 ## 世田谷區東玉川 奥沢站10分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=higashitamagawa-p4b
+- 網址：https://chouchouinjapan.com/prop-higashitamagawa-p4b.html
 - 物件名（日文原名）：東玉川1丁目 part4 B棟 新築戸建
 - 所在地：東京都世田谷區東玉川1丁目38-3（舊住居表示）
 - 交通：東急目黒線「奥沢」站 徒步約10分／東急東横線･東急目黒線「田園調布」站 徒步約12分
@@ -6041,7 +6041,7 @@ LDK約20.3帖，居室約7.0帖、約6.1帖。
 
 ## 品川區平塚 戸越銀座站5分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=hiratsuka3-p3
+- 網址：https://chouchouinjapan.com/prop-hiratsuka3-p3.html
 - 物件名（日文原名）：平塚3丁目 part3 新築戸建
 - 所在地：東京都品川區平塚3丁目8-8（舊住居表示）
 - 交通：東急池上線「戸越銀座」站 徒步約5分／都営浅草線「戸越」站 徒步約7分／東急目黒線「武蔵小山」站 徒步約16分
@@ -6080,7 +6080,7 @@ LDK約27.3帖，居室約7.5帖、約6.9帖、約6.8帖、約5.9帖。
 
 ## 目黑區上目黒 祐天寺站10分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kamimeguro4a
+- 網址：https://chouchouinjapan.com/prop-kamimeguro4a.html
 - 物件名（日文原名）：上目黒4丁目 A区画 建築条件付売地
 - 所在地：東京都目黒區上目黒4丁目33-4（舊住居表示）
 - 交通：東急東横線「祐天寺」站 徒步約10分／東急東横線「中目黒」站 徒步約14分
@@ -6118,7 +6118,7 @@ LDK約27.3帖，居室約7.5帖、約6.9帖、約6.8帖、約5.9帖。
 
 ## 目黑區上目黒 祐天寺站10分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kamimeguro4b
+- 網址：https://chouchouinjapan.com/prop-kamimeguro4b.html
 - 物件名（日文原名）：上目黒4丁目 B区画 建築条件付売地
 - 所在地：東京都目黒區上目黒4丁目33-4（舊住居表示）
 - 交通：東急東横線「祐天寺」站 徒步約10分／東急東横線「中目黒」站 徒步約14分
@@ -6156,7 +6156,7 @@ LDK約27.3帖，居室約7.5帖、約6.9帖、約6.8帖、約5.9帖。
 
 ## 世田谷區上用賀 用賀站22分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=kamiyoga6
+- 網址：https://chouchouinjapan.com/prop-kamiyoga6.html
 - 物件名（日文原名）：上用賀6丁目 建築条件付売地
 - 所在地：東京都世田谷區上用賀6丁目15-11（舊住居表示）
 - 交通：東急田園都市線「用賀」站 徒步約22分
@@ -6194,7 +6194,7 @@ LDK約27.3帖，居室約7.5帖、約6.9帖、約6.8帖、約5.9帖。
 
 ## 杉並區高円寺南 高円寺站10分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=koenjiminami5
+- 網址：https://chouchouinjapan.com/prop-koenjiminami5.html
 - 物件名（日文原名）：高円寺南5丁目 新築戸建
 - 所在地：東京都杉並區高円寺南5丁目31-22（舊住居表示）
 - 交通：JR中央線「高円寺」站 徒步約10分
@@ -6231,7 +6231,7 @@ JR中央線「高円寺」站 徒步約10分。學區是區立杉並第三小學
 
 ## 目黑區駒場 駒場東大前站2分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=komaba1
+- 網址：https://chouchouinjapan.com/prop-komaba1.html
 - 物件名（日文原名）：駒場1丁目 新築戸建
 - 所在地：東京都目黒區駒場1丁目26-23
 - 交通：京王井の頭線「駒場東大前」站 徒步約2分／JR山手線「渋谷」站 徒步約20分
@@ -6270,7 +6270,7 @@ LDK約30.2帖，居室約6.4帖、約6.0帖。
 
 ## 品川區小山 武蔵小山站2分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=koyama3-p6
+- 網址：https://chouchouinjapan.com/prop-koyama3-p6.html
 - 物件名（日文原名）：小山3丁目 part6 建築条件付売地
 - 所在地：東京都品川區小山3丁目5-15（舊住居表示）
 - 交通：東急目黒線「武蔵小山」站 徒步約2分
@@ -6308,7 +6308,7 @@ LDK約30.2帖，居室約6.4帖、約6.0帖。
 
 ## 品川區小山 洗足站4分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=koyama7-p2a
+- 網址：https://chouchouinjapan.com/prop-koyama7-p2a.html
 - 物件名（日文原名）：小山7丁目 part2 A棟 新築戸建
 - 所在地：東京都品川區小山7丁目15-14（舊住居表示）
 - 交通：東急目黒線「洗足」站 徒步約4分
@@ -6345,7 +6345,7 @@ LDK約24.0帖，居室約8.8帖、約6.0帖。
 
 ## 品川區小山 洗足站4分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=koyama7-p2b
+- 網址：https://chouchouinjapan.com/prop-koyama7-p2b.html
 - 物件名（日文原名）：小山7丁目 part2 B棟 新築戸建
 - 所在地：東京都品川區小山7丁目15-14（舊住居表示）
 - 交通：東急目黒線「洗足」站 徒步約4分
@@ -6382,7 +6382,7 @@ LDK約21.9帖，居室約6.7帖、約5.7帖、約5.4帖、約5.3帖。
 
 ## 目黑區目黒本町 西小山站13分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=meguro-honcho4-p4a
+- 網址：https://chouchouinjapan.com/prop-meguro-honcho4-p4a.html
 - 物件名（日文原名）：目黒本町4丁目 part4 A区画 建築条件付売地
 - 所在地：東京都目黒區目黒本町4丁目17-6（舊住居表示）
 - 交通：東急目黒線「西小山」站 徒步約13分／東急目黒線「武蔵小山」站 徒步約14分
@@ -6420,7 +6420,7 @@ LDK約21.9帖，居室約6.7帖、約5.7帖、約5.4帖、約5.3帖。
 
 ## 目黑區目黒本町 西小山站13分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=meguro-honcho4-p4b
+- 網址：https://chouchouinjapan.com/prop-meguro-honcho4-p4b.html
 - 物件名（日文原名）：目黒本町4丁目 part4 B区画 建築条件付売地
 - 所在地：東京都目黒區目黒本町4丁目17-6（舊住居表示）
 - 交通：東急目黒線「西小山」站 徒步約13分／東急目黒線「武蔵小山」站 徒步約14分
@@ -6458,7 +6458,7 @@ LDK約21.9帖，居室約6.7帖、約5.7帖、約5.4帖、約5.3帖。
 
 ## 目黑區目黒本町 武蔵小山站14分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=meguro-honcho4-p5
+- 網址：https://chouchouinjapan.com/prop-meguro-honcho4-p5.html
 - 物件名（日文原名）：目黒本町4丁目 part5 建築条件付売地
 - 所在地：東京都目黒區目黒本町4丁目17-10（舊住居表示）
 - 交通：東急目黒線「武蔵小山」站 徒步約14分／東急目黒線「西小山」站 徒步約13分
@@ -6496,7 +6496,7 @@ LDK約21.9帖，居室約6.7帖、約5.7帖、約5.4帖、約5.3帖。
 
 ## 目黑區目黒本町 武蔵小山站10分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=meguro-honcho6-p2
+- 網址：https://chouchouinjapan.com/prop-meguro-honcho6-p2.html
 - 物件名（日文原名）：目黒本町6丁目 part2 建築条件付売地
 - 所在地：東京都目黒區目黒本町6丁目3-11（舊住居表示）
 - 交通：東急目黒線「武蔵小山」站 徒步約10分／東急目黒線「西小山」站 徒步約8分
@@ -6534,7 +6534,7 @@ LDK約21.9帖，居室約6.7帖、約5.7帖、約5.4帖、約5.3帖。
 
 ## 目黑區緑が丘 緑が丘站1分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=midorigaoka1-p2
+- 網址：https://chouchouinjapan.com/prop-midorigaoka1-p2.html
 - 物件名（日文原名）：緑が丘1丁目 part2 新築戸建
 - 所在地：東京都目黒區緑が丘1丁目10-11（舊住居表示）
 - 交通：東急大井町線「緑が丘」站 徒步約1分
@@ -6571,7 +6571,7 @@ LDK約25.0帖，居室約9.5帖、約8.0帖、約7.1帖、約6.0帖、約5.0帖�
 
 ## 新宿區南榎町 神楽坂站12分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=minamienoki-p2
+- 網址：https://chouchouinjapan.com/prop-minamienoki-p2.html
 - 物件名（日文原名）：南榎町 part2 新築戸建
 - 所在地：東京都新宿區南榎町68-30（舊住居表示）
 - 交通：東京メトロ東西線「神楽坂」站 徒步約12分／都営大江戸線「牛込柳町」站 徒步約5分
@@ -6608,7 +6608,7 @@ LDK約25.0帖，居室約8.8帖、約6.8帖、約6.2帖。
 
 ## 杉並區南荻窪 荻窪站15分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=minamiogikubo3-p2
+- 網址：https://chouchouinjapan.com/prop-minamiogikubo3-p2.html
 - 物件名（日文原名）：南荻窪3丁目 part2 新築戸建
 - 所在地：東京都杉並區南荻窪3丁目6-14（舊住居表示）
 - 交通：JR中央線「荻窪」站 徒步約15分／JR中央線「西荻窪」站 徒步約14分
@@ -6645,7 +6645,7 @@ JR中央線「荻窪」站 徒步約15分／JR中央線「西荻窪」站 徒步
 
 ## 品川區南品川 大井町站6分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=minamishinagawa6
+- 網址：https://chouchouinjapan.com/prop-minamishinagawa6.html
 - 物件名（日文原名）：南品川6丁目 建築条件付売地
 - 所在地：東京都品川區南品川6丁目7-38（舊住居表示）
 - 交通：JR京浜東北線・東急大井町・りんかい線「大井町」站 徒步約6分／京急本線「青物横丁」站 徒步約10分
@@ -6683,7 +6683,7 @@ JR京浜東北線・東急大井町・りんかい線「大井町」站 徒步�
 
 ## 目黑區中町 学芸大学站13分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nakamachi1-p4
+- 網址：https://chouchouinjapan.com/prop-nakamachi1-p4.html
 - 物件名（日文原名）：中町1丁目 part4 建築条件付売地
 - 所在地：東京都目黒區中町1丁目21-9（舊住居表示）
 - 交通：東急東横線「学芸大学」站 徒步約13分／東急東横線「祐天寺」站 徒步約15分
@@ -6721,7 +6721,7 @@ JR京浜東北線・東急大井町・りんかい線「大井町」站 徒步�
 
 ## 中野區本町 中野坂上站2分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nakanohoncho2-p3
+- 網址：https://chouchouinjapan.com/prop-nakanohoncho2-p3.html
 - 物件名（日文原名）：中野區本町2丁目 part3 新築戸建
 - 所在地：東京都中野區本町2丁目49-1（舊住居表示）
 - 交通：東京ﾒﾄﾛ丸ノ内線・都営大江戸線「中野坂上」站 徒步約2分／JR中央･総武線・都営大江戸線「東中野」站 徒步約20分
@@ -6758,7 +6758,7 @@ LDK約16.7帖，居室約16.7帖、約7.4帖、約4.9帖。
 
 ## 中野區本町 東高円寺站8分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nakanohoncho6-p2
+- 網址：https://chouchouinjapan.com/prop-nakanohoncho6-p2.html
 - 物件名（日文原名）：中野區本町6丁目 part2 新築戸建
 - 所在地：東京都中野區本町6丁目33-8
 - 交通：東京ﾒﾄﾛ丸ノ内線「東高円寺」站 徒步約8分／JR中央線「中野」站 徒步約17分
@@ -6795,7 +6795,7 @@ LDK約23.0帖，居室約9.2帖、約6.1帖、約5.7帖、約5.4帖。
 
 ## 品川區西五反田 不動前站5分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nishigotanda3a
+- 網址：https://chouchouinjapan.com/prop-nishigotanda3a.html
 - 物件名（日文原名）：西五反田3丁目 A棟 新築戸建
 - 所在地：東京都品川區西五反田3丁目13-13（舊住居表示）
 - 交通：東急目黒線「不動前」站 徒步約5分／JR山手線「目黒」站 徒步約13分
@@ -6832,7 +6832,7 @@ LDK約23.6帖，居室約7.2帖、約7.0帖、約6.5帖、約5.1帖。
 
 ## 品川區西五反田 不動前站5分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nishigotanda3b
+- 網址：https://chouchouinjapan.com/prop-nishigotanda3b.html
 - 物件名（日文原名）：西五反田3丁目 B棟 新築戸建
 - 所在地：東京都品川區西五反田3丁目13-13（舊住居表示）
 - 交通：東急目黒線「不動前」站 徒步約5分／JR山手線「目黒」站 徒步約13分
@@ -6869,7 +6869,7 @@ LDK約23.9帖，居室約7.7帖、約7.5帖、約6.3帖、約6.0帖、約5.5帖�
 
 ## 品川區西中延 荏原中延站7分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nishinakanobu1a
+- 網址：https://chouchouinjapan.com/prop-nishinakanobu1a.html
 - 物件名（日文原名）：西中延1丁目 A区画 建築条件付売地
 - 所在地：東京都品川區西中延1丁目6-12（舊住居表示）
 - 交通：東急池上線「荏原中延」站 徒步約7分／東急目黒線「武蔵小山」站 徒步約15分／都営浅草線「戸越」站 徒步約12分
@@ -6907,7 +6907,7 @@ LDK約23.9帖，居室約7.7帖、約7.5帖、約6.3帖、約6.0帖、約5.5帖�
 
 ## 品川區西品川 大崎站12分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=nishishinagawa2-p5
+- 網址：https://chouchouinjapan.com/prop-nishishinagawa2-p5.html
 - 物件名（日文原名）：西品川2丁目 part5 新築戸建
 - 所在地：東京都品川區西品川2丁目22-7
 - 交通：JR山手線「大崎」站 徒步約12分／JR京浜東北線･東急大井町線「大井町」站 徒步約15分／東急大井町線「下神明」站 徒步約7分
@@ -6944,7 +6944,7 @@ JR山手線「大崎」站 徒步約12分／JR京浜東北線･東急大井町�
 
 ## 大田區大森北 平和島站7分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=omorikita-p5a
+- 網址：https://chouchouinjapan.com/prop-omorikita-p5a.html
 - 物件名（日文原名）：大森北3丁目 part5 A区画 建築条件付売地
 - 所在地：東京都大田區大森北3丁目38-7（舊住居表示）
 - 交通：京急本線「平和島」站 徒步約7分／JR京浜東北線「大森」站 徒步約19分
@@ -6982,7 +6982,7 @@ JR山手線「大崎」站 徒步約12分／JR京浜東北線･東急大井町�
 
 ## 大田區大森北 平和島站7分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=omorikita-p5b
+- 網址：https://chouchouinjapan.com/prop-omorikita-p5b.html
 - 物件名（日文原名）：大森北3丁目 part5 B区画 建築条件付売地
 - 所在地：東京都大田區大森北3丁目38-7（舊住居表示）
 - 交通：京急本線「平和島」站 徒步約7分／JR京浜東北線「大森」站 徒步約19分
@@ -7020,7 +7020,7 @@ JR山手線「大崎」站 徒步約12分／JR京浜東北線･東急大井町�
 
 ## 品川區大崎 大崎站6分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=osaki2
+- 網址：https://chouchouinjapan.com/prop-osaki2.html
 - 物件名（日文原名）：大崎2丁目 建築条件付売地
 - 所在地：東京都品川區大崎2丁目5-22（舊住居表示）
 - 交通：JR山手線「大崎」站 徒步約6分
@@ -7058,7 +7058,7 @@ JR山手線「大崎」站 徒步約6分。學區是區立芳水小學校、區�
 
 ## 目黑區下目黒 武蔵小山站12分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=shimomeguro5-p2a
+- 網址：https://chouchouinjapan.com/prop-shimomeguro5-p2a.html
 - 物件名（日文原名）：下目黒5丁目 part2 A棟 新築戸建
 - 所在地：東京都目黒區下目黒5丁目36-31（舊住居表示）
 - 交通：東急目黒線「武蔵小山」站 徒步約12分
@@ -7095,7 +7095,7 @@ LDK約26.0帖，居室約11.0帖、約6.4帖、約6.1帖。
 
 ## 品川區戸越 戸越公園站3分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=togoshi5-p2b
+- 網址：https://chouchouinjapan.com/prop-togoshi5-p2b.html
 - 物件名（日文原名）：戸越5丁目 part2 B棟 新築戸建
 - 所在地：東京都品川區戸越5丁目12-3
 - 交通：東急大井町線「戸越公園」站 徒步約3分／都営浅草線「戸越」站 徒步約8分
@@ -7132,7 +7132,7 @@ LDK約22.7帖，居室約9.1帖、約7.5帖、約6.1帖。
 
 ## 澀谷區上原 代々木上原站4分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=uehara1
+- 網址：https://chouchouinjapan.com/prop-uehara1.html
 - 物件名（日文原名）：上原1丁目 新築戸建
 - 所在地：東京都渋谷區上原1丁目15-7（舊住居表示）
 - 交通：東京ﾒﾄﾛ千代田線・小田急線「代々木上原」站 徒步約4分／小田急線「代々木八幡」站 徒步約8分／東京ﾒﾄﾛ千代田線「代々木公園」站 徒步約9分
@@ -7171,7 +7171,7 @@ LDK約21.0帖，居室約10.4帖、約7.3帖、約5.0帖、約4.1帖。
 
 ## 澀谷區代々木 新宿站6分 建築條件付土地（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=yoyogi2-p2
+- 網址：https://chouchouinjapan.com/prop-yoyogi2-p2.html
 - 物件名（日文原名）：代々木2丁目 part2 建築条件付売地
 - 所在地：東京都渋谷區代々木2丁目24-8（舊住居表示）
 - 交通：都営大江戸線「新宿」站 徒步約6分／JR山手線「代々木」站 徒步約6分／小田急小田原線「南新宿」站 徒步約2分
@@ -7209,7 +7209,7 @@ LDK約21.0帖，居室約10.4帖、約7.3帖、約5.0帖、約4.1帖。
 
 ## 品川區豊町 下神明站6分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=yutaka4-p3
+- 網址：https://chouchouinjapan.com/prop-yutaka4-p3.html
 - 物件名（日文原名）：豊町4丁目 part3 新築戸建
 - 所在地：東京都品川區豊町4丁目11-4
 - 交通：東急大井町線「下神明」站 徒步約6分／JR横須賀線・湘南新宿ライン「西大井」站 徒步約9分／東急大井町線「大井町」站 徒步約15分
@@ -7246,7 +7246,7 @@ LDK約24.0帖，居室約6.1帖、約6.0帖。
 
 ## 品川區豊町 戸越公園站6分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=yutaka4-p4
+- 網址：https://chouchouinjapan.com/prop-yutaka4-p4.html
 - 物件名（日文原名）：豊町4丁目 part4 新築戸建
 - 所在地：東京都品川區豊町4丁目3-10
 - 交通：東急大井町線「戸越公園」站 徒步約6分／東急大井町線「下神明」站 徒步約11分
@@ -7283,7 +7283,7 @@ LDK約21.5帖，居室約8.3帖、約6.4帖、約6.0帖。
 
 ## 品川區豊町 戸越公園站5分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=yutaka4-p5
+- 網址：https://chouchouinjapan.com/prop-yutaka4-p5.html
 - 物件名（日文原名）：豊町4丁目 part5 新築戸建
 - 所在地：東京都品川區豊町4丁目5-10（舊住居表示）
 - 交通：東急大井町線「戸越公園」站 徒步約5分／都営浅草線「中延」站 徒步約10分
@@ -7320,7 +7320,7 @@ LDK約28.2帖，居室約11.1帖、約6.0帖。
 
 ## 品川區豊町 戸越公園站5分 新築一戶建（自社）
 
-- 網址：https://chouchouinjapan.com/property.html?id=yutaka6a
+- 網址：https://chouchouinjapan.com/prop-yutaka6a.html
 - 物件名（日文原名）：豊町6丁目 A棟 新築戸建
 - 所在地：東京都品川區豊町6丁目10-13
 - 交通：東急大井町線「戸越公園」站 徒步約5分／東急大井町線/都営浅草線「中延」站 徒步約6分

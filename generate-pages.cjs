@@ -594,6 +594,14 @@ for (const p of STATIC_TOOLS) {
 }
 urls.push({ loc: BASE + "translate-ja.html", pr: "0.6" });
 urls.push({ loc: BASE + "quiz.html", pr: "0.6" });
+/* 物件獨立頁（提案 2・2026-10-03）。lastmod 用 properties.js 的 listed，
+   不用 git／mtime —— 新檔沒有 git 紀錄，退回 mtime 會讓 sitemap 每跑一次就變，
+   產生器就不冪等了（patrol A7 會抓到）。 */
+for (const p of PROPS.filter(x => !x.sold && x.status === "在售")) {
+  const lm = p.listed || "";
+  urls.push({ loc: BASE + "prop-" + p.id + ".html", lm, pr: "0.7", cf: "weekly" });
+  urls.push({ loc: BASE + "prop-" + p.id + "-ja.html", lm, pr: "0.6" });
+}
 // 商業關鍵字落地頁：hub 是「日本買房」的入口，權重高於一般文章
 urls.push({ loc: BASE + "buy-property-in-japan.html", pr: "0.9", cf: "weekly" });
 urls.push({ loc: BASE + "buy-property-in-japan-ja.html", pr: "0.7", cf: "weekly" });
@@ -714,7 +722,7 @@ const NOTE_MD = t => String(t || "")
   .replace(/<a href="(https?:[^"]+)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, x) => `[${x}](${h})`)
   .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 const PROP_CAT_TW = { invest: "投資收租", live: "自住", house: "一戶建", land: "土地・建築條件付售地" };
-const propUrl = p => BASE + "property.html?id=" + p.id;
+const propUrl = p => BASE + "prop-" + p.id + ".html";   /* 提案 2 之後指可被收錄的靜態頁 */
 const onSaleProps = () => PROPS.filter(p => !p.sold && p.status === "在售");
 
 function propsIndexTw() {
@@ -749,6 +757,226 @@ function propToMarkdown(p) {
     else L.push(t, "");
   }
   return L.join("\n");
+}
+
+/* ── 物件獨立 SEO 靜態頁（提案 2・周周 2026-10-03 密語核准）────────────
+   為什麼要做：property.html?id= 是 noindex 的殼頁，所以在這之前
+   90 件在售物件沒有任何一頁可以被 Google 收錄，全部擠在 properties.html
+   一頁裡互相稀釋，「文京區 向丘 新築 一戶建」這種長尾字完全吃不到。
+   文章每篇都有獨立靜態頁，物件這邊等於缺一塊。
+
+   產出：prop-<id>.html（繁中）。-cn 由 build-cn.cjs 轉，-ja 由 build-ja.cjs 產。
+   ⚠️ 只做「在售」物件；成約後重跑產生器會自動把該頁刪掉。
+   ⚠️ 相片沿用 properties.js 的 photos；-pers 一律標「完成預想圖」（法規要求），
+      -plan 標「間取圖／區劃圖」並整張顯示不裁切。
+   ⚠️ 地址沿用 location 欄位（已依広告規約遮蔽）；供應商名稱永不寫入。
+   ⚠️ 產生器輸出，勿手改。 */
+/* properties.js 的 video 存的是 11 碼純 ID（文章的 ytEmbed 吃的是完整網址），
+   兩種都要接得住，否則物件頁的影片與 VideoObject 會整個不輸出。 */
+const propYt = v => {
+  const s = String(v || "").trim();
+  if (!s) return "";
+  const m = s.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/);
+  const id = m ? m[1] : (/^[\w-]{11}$/.test(s) ? s : "");
+  return id ? "https://www.youtube.com/embed/" + id : "";
+};
+/* A区画／B棟 這種同一建案的兄弟物件共用同一個 title_cn，不加區別的話
+   兩頁的 <title> 會一模一樣（patrol B2 會抓到「title 重複」），
+   搜尋結果也分不出是哪一戶。重複時從日文物件名取出「A区画」「B棟」
+   「part5」這類識別字附在標題後面。 */
+const _propTitleDup = (() => {
+  const c = {};
+  for (const x of PROPS.filter(y => !y.sold && y.status === "在售")) {
+    const k = String(x.title_cn || x.title).trim();
+    c[k] = (c[k] || 0) + 1;
+  }
+  return c;
+})();
+function propTitleTW(p) {
+  const base = PLAIN(p.title_cn || p.title);
+  if ((_propTitleDup[String(p.title_cn || p.title).trim()] || 0) < 2) return base;
+  /* 「東玉川1丁目 part4 A棟」會同時命中 part4 與 A棟，要先取棟／区画，
+     那才是區別兩戶的那一個字；part 只是同一建案的期別。 */
+  const t = String(p.title);
+  const m = t.match(/([A-Za-z]\s*[区區]画|[A-Za-z]\s*棟)/) || t.match(/(part\s*\d+)/i);
+  return m ? base + "（" + m[1].replace(/\s+/g, "") + "）" : base + "（" + p.id + "）";
+}
+const propSlug = p => "prop-" + p.id;
+const propPageUrl = p => BASE + propSlug(p) + ".html";
+
+function propSpecRows(p) {
+  const rows = [
+    ["價格", p.price], ["所在地", p.location], ["交通", p.station],
+    ["格局", p.layout], ["面積", p.size], ["屋齡與現況", p.age],
+    ["其他條件", p.facing], ["管理費與修繕基金", p.mgmt],
+    ["權利形態", p.right], ["投報率", p.yield]
+  ];
+  return rows.filter(r => PLAIN(r[1])).map(r =>
+    `<tr><th>${esc(r[0])}</th><td>${esc(PLAIN(r[1]))}</td></tr>`).join("");
+}
+
+function propNoteHTML(p) {
+  const out = [];
+  for (const raw of String(p.note || "").split("\n")) {
+    const t = raw.trim();
+    if (!t) continue;
+    if (/^■/.test(t)) { out.push(`<h2 class="ah">${esc(PLAIN(t).replace(/^■\s*/, ""))}</h2>`); continue; }
+    /* 內部連結保留成真的 <a>，其餘標籤（<b> 等）原樣輸出 */
+    out.push("<p>" + t + "</p>");
+  }
+  return out.join("");
+}
+
+function propGallery(p) {
+  const list = (p.photos || []).filter(x => x && !/^https?:/i.test(x));
+  if (!list.length) return "";
+  return `<div class="pgal">` + list.map((src, i) => {
+    const pers = /-pers\./.test(src);
+    const plan = /-plan\./.test(src);
+    const capTxt = pers ? "完成預想圖（非實景照）" : plan ? "間取圖／區劃圖" : "";
+    const sty = plan || pers
+      ? "width:100%;height:auto;max-height:520px;object-fit:contain;background:#faf8f7"
+      : "width:100%;height:auto";
+    return `<figure><img${wh(src)} src="${esc(src)}" alt="${esc(PLAIN(p.title_cn || p.title))}${i ? "　" + (i + 1) : ""}" loading="lazy" decoding="async" style="${sty};border-radius:14px;display:block">`
+      + (capTxt ? `<figcaption>${capTxt}</figcaption>` : "") + `</figure>`;
+  }).join("") + `</div>`;
+}
+
+function propPage(p) {
+  const url = propPageUrl(p);
+  const title = propTitleTW(p);
+  const t = esc(title) + "｜周周・日本房仲";
+  const descBits = [PLAIN(p.station), PLAIN(p.layout), PLAIN(p.size), PLAIN(p.price)].filter(Boolean);
+  const d = esc((title + "。" + descBits.join("｜")).slice(0, 155));
+  const cover = (p.photos || []).find(x => x && !/^https?:/i.test(x)) || "";
+  const coverAbs = cover ? BASE + cover.split("/").map(encodeURIComponent).join("/") : "";
+  const imgs = (p.photos || []).filter(x => x && !/^https?:/i.test(x)).slice(0, 6)
+    .map(x => BASE + x.split("/").map(encodeURIComponent).join("/"));
+
+  const ld = {
+    "@context": "https://schema.org", "@type": "Accommodation",
+    name: title, description: PLAIN(p.ex || p.title_cn || p.title),
+    url, inLanguage: "zh-Hant",
+    address: { "@type": "PostalAddress", addressCountry: "JP", streetAddress: PLAIN(p.location) || undefined },
+    provider: PUBLISHER_TW,
+    copyrightHolder: COPYRIGHT_TW,
+    isAccessibleForFree: true
+  };
+  if (imgs.length) ld.image = imgs;
+  const yenV = propYen(p.price);
+  if (yenV > 0) ld.offers = { "@type": "Offer", price: yenV, priceCurrency: "JPY",
+    availability: "https://schema.org/InStock", url, seller: PUBLISHER_TW };
+  const ldCrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+    { "@type": "ListItem", position: 2, name: "物件專區", item: BASE + "properties.html" },
+    { "@type": "ListItem", position: 3, name: title, item: url }
+  ] };
+  const lds = [ld, ldCrumb];
+  const vLd = propVideoLd(p, url);
+  if (vLd) lds.push(vLd);
+
+  const em = propYt(p.video);
+  const vidId = em ? em.split("/embed/")[1] : "";
+  const vid = em ? `<div class="vid" style="margin:22px 0"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="物件影片" loading="lazy" width="1280" height="720"><span class="pbtn">▶</span></div></div>` : "";
+
+  return `<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+${HEAD_SCRIPTS}
+<title>${t}</title>
+<meta name="description" content="${d}">
+<meta name="keywords" content="日本買房,東京買房,日本不動產,${esc(PLAIN(p.layoutTag || ""))},${esc(PLAIN(p.location).replace(/[0-9０-９\-－丁目番地（）()]/g, " ").trim().split(/\s+/).slice(0, 3).join(","))},台灣人買日本房,中文房仲">
+<link rel="canonical" href="${url}">
+<link rel="alternate" hreflang="zh-Hant" href="${url}">
+<link rel="alternate" hreflang="zh-Hans" href="${url.replace(/\.html$/, "-cn.html")}">
+<link rel="alternate" hreflang="ja" href="${url.replace(/\.html$/, "-ja.html")}">
+<link rel="alternate" hreflang="x-default" href="${url}">${coverAbs ? `
+<link rel="preload" as="image" href="${esc(coverAbs)}">` : ""}
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="${t}">
+<meta property="og:description" content="${d}">
+<meta property="og:url" content="${url}">${coverAbs ? `\n<meta property="og:image" content="${esc(coverAbs)}">` : ""}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://i.ytimg.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+${lds.map(x => `<script type="application/ld+json">${JSON.stringify(x).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026")}</script>`).join("\n")}
+${STYLE}
+<style>
+.pgal{display:grid;gap:14px;margin:18px 0 6px}
+.pgal figure{margin:0}
+.pgal figcaption{font-size:12.5px;color:var(--mut);margin-top:5px;text-align:center}
+.ptab{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+.ptab th,.ptab td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+.ptab th{width:34%;color:var(--mut);font-weight:700;white-space:nowrap}
+.pprice{font-size:26px;font-weight:900;color:var(--rose-d);margin:2px 0 6px;line-height:1.35;white-space:pre-line}
+.psub{color:var(--mut);font-size:14.5px;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div id="rp"></div>
+${SBAR}
+<main class="wrap" style="max-width:820px;padding-top:18px">
+<a class="back" href="properties.html">← 回物件專區</a>
+<p style="font-size:13px;color:var(--mut);margin-bottom:12px"><a href="index.html" style="color:var(--mut)">首頁</a> › <a href="properties.html" style="color:var(--mut)">物件專區</a></p>
+<h1 class="atitle" style="margin-bottom:6px">${esc(title)}</h1>
+<p class="psub">${esc(PLAIN(p.title))}</p>
+<p class="pprice">${esc(PLAIN(p.price))}</p>
+${propGallery(p)}
+<table class="ptab">${propSpecRows(p)}</table>
+<div class="post">
+${propNoteHTML(p)}
+</div>
+${vid}
+<div class="ablock" style="margin-top:26px"><div><b>想看這間，或先抓貸款？</b><br><span style="color:var(--mut);font-size:14px">用中文直接問周周，看房、試算、流程都可以。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 問周周</a></div>
+<p style="margin-top:20px;font-size:14px"><a href="property.html?id=${encodeURIComponent(p.id)}">📷 看互動版（相簿可滑）</a>　·　<a href="properties.html">看其他在售物件 →</a></p>
+<p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 本頁資訊以刊登時為準，物件狀況可能異動，實際條件請以現況與重要事項說明書為準。能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約內容由司法書士・宅地建物取引士確認。</p>
+</main>
+${FOOT}
+</body>
+</html>`;
+}
+
+/* 「1億2,340万円」→ 123400000（取不到就回 0，不寫價格） */
+function propYen(s) {
+  const m = String(s || "").match(/(?:([\d.]+)[億亿])?(?:([\d,]+)[万萬])?[円]/);
+  if (!m || (!m[1] && !m[2])) return 0;
+  return ((m[1] ? parseFloat(m[1]) * 1e4 : 0) + (m[2] ? parseInt(m[2].replace(/,/g, ""), 10) : 0)) * 1e4;
+}
+
+/* VideoObject（提案 3）：uploadDate 是 Google 的必要欄位，
+   properties.js 沒填 videoDate 就不輸出，寧可不給也不要給假日期。 */
+function propVideoLd(p, url) {
+  const em = propYt(p.video);
+  if (!em || !p.videoDate) return null;
+  const vid = em.split("/embed/")[1];
+  return {
+    "@context": "https://schema.org", "@type": "VideoObject",
+    name: PLAIN(p.title_cn || p.title) + "｜物件影片",
+    description: PLAIN(p.title_cn || p.title) + " 的物件介紹影片（周周・日本房仲）",
+    thumbnailUrl: ["https://i.ytimg.com/vi/" + vid + "/maxresdefault.jpg"],
+    uploadDate: p.videoDate,
+    embedUrl: em,
+    contentUrl: "https://www.youtube.com/watch?v=" + vid,
+    publisher: PUBLISHER_TW,
+    mainEntityOfPage: url
+  };
+}
+
+/* 寫檔：先清掉上一輪留下、這次已不在售的 prop-*.html，避免成約後還掛著 */
+{
+  const keep = new Set(onSaleProps().map(p => propSlug(p) + ".html"));
+  for (const f of fs.readdirSync(ROOT)) {
+    if (/^prop-[A-Za-z0-9_-]+\.html$/.test(f) && !/-(cn|ja)\.html$/.test(f) && !keep.has(f)) {
+      fs.unlinkSync(ROOT + "/" + f);
+    }
+  }
+  let n = 0;
+  for (const p of onSaleProps()) { fs.writeFileSync(ROOT + "/" + propSlug(p) + ".html", propPage(p)); n++; }
+  console.log("物件獨立頁（繁中）已產生 " + n + " 頁");
 }
 
 /* ── llms.txt（周周 2026-09-17 指示：做一份「專給 AI 看」的版本）──────────
