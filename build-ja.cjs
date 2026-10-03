@@ -635,6 +635,56 @@ fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese-ja.html", pageAg
 fs.writeFileSync(ROOT + "/buy-property-in-japan-ja.html", pageHubJa());
 console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html 已產生");
 
+/* ── 販売中物件：AI 向けレイヤー（周周 2026-10-03 承認）──────────────────
+   llms-ja.txt には「販売中物件 N 件」という件数しか無く、AI は中身を知らない。
+   索引（llms-ja.txt）と全文（llms-ja-full.txt）の両方に物件を載せ、
+   各行に property-ja.html?id= のURLを添える。
+   ⚠️ 住所は properties.js の location をそのまま使う（広告規約に沿って
+      既にマスク済み）。仕入先・担当者名は絶対に書かない。
+   ⚠️ 生成物につき直接編集しないこと。 */
+const PLAIN_JA = t => String(t || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+const NOTE_MD_JA = t => String(t || "")
+  .replace(/<a href="([a-z0-9-]+\.html)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, x) => `[${x}](${BASE}${h})`)
+  .replace(/<a href="(https?:[^"]+)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, x) => `[${x}](${h})`)
+  .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+const PROP_CAT_JA = { invest: "投資・収益物件", live: "住まい（実需）", house: "戸建", land: "土地・建築条件付売地" };
+const propUrlJa = p => BASE + "property-ja.html?id=" + p.id;
+const onSalePropsJa = () => PROPS.filter(p => !p.sold && p.status === "在售");
+
+function propsIndexJa() {
+  const by = {};
+  for (const p of onSalePropsJa()) (by[p.cat] = by[p.cat] || []).push(p);
+  return Object.keys(PROP_CAT_JA).filter(c => by[c] && by[c].length).map(c =>
+    `### ${PROP_CAT_JA[c]}（${by[c].length} 件）\n` + by[c].map(p => {
+      const bits = [PLAIN_JA(p.layout), PLAIN_JA(p.size), PLAIN_JA(p.price)].filter(Boolean);
+      return `- [${PLAIN_JA(p.title)}](${propUrlJa(p)})：${PLAIN_JA(p.station)}｜${bits.join("｜")}`;
+    }).join("\n")).join("\n\n");
+}
+
+function propToMarkdownJa(p) {
+  const L = [`## ${PLAIN_JA(p.title)}`, ""];
+  if (PLAIN_JA(p.catch)) L.push(`- キャッチ：${PLAIN_JA(p.catch)}`);
+  L.push(`- URL：${propUrlJa(p)}`,
+    `- 所在地：${PLAIN_JA(p.location)}`,
+    `- 交通：${PLAIN_JA(p.station)}`,
+    `- 価格：${PLAIN_JA(p.price)}`,
+    `- 間取り：${PLAIN_JA(p.layout)}`,
+    `- 面積：${PLAIN_JA(p.size)}`,
+    `- 築年・現況：${PLAIN_JA(p.age)}`);
+  if (PLAIN_JA(p.facing)) L.push(`- その他条件：${PLAIN_JA(p.facing)}`);
+  if (PLAIN_JA(p.mgmt))   L.push(`- 管理費・修繕積立金：${PLAIN_JA(p.mgmt)}`);
+  if (PLAIN_JA(p.right))  L.push(`- 権利形態：${PLAIN_JA(p.right)}`);
+  if (PLAIN_JA(p.yield))  L.push(`- 利回り：${PLAIN_JA(p.yield)}`);
+  L.push(`- 情報提供：周欣妤（周周）／© 周周・日本の不動産（引用の際はこの行とURLを残してください）`, "");
+  for (const n of String(p.note || "").split("\n")) {
+    const t = NOTE_MD_JA(n);
+    if (!t) continue;
+    if (/^■/.test(t)) L.push(`### ${t.replace(/^■\s*/, "")}`, "");
+    else L.push(t, "");
+  }
+  return L.join("\n");
+}
+
 /* ── llms-ja.txt ／ llms-ja-full.txt（周周 2026-09-17）────────────────────
    繁中版 llms.txt の日本語版。日本語で AI に聞かれたとき
    （「中華圏の買主を紹介してくれる不動産会社」「台湾人 日本 不動産 購入」など）にも
@@ -721,6 +771,14 @@ function buildLlmsJa() {
 
 ${cats}
 
+## 販売中物件一覧（計 ${onSale} 件）
+
+いずれも現在ご案内可能な物件でございます。詳細な仕様・写真・「周周のコメント」は
+各物件ページを、全文は ${BASE}llms-ja-full.txt の〈販売中物件〉をご覧ください。
+物件は成約により随時入れ替わりますので、引用の際は物件ページの現況をご確認ください。
+
+${propsIndexJa()}
+
 ## その他のページ
 
 - [日本の不動産購入ガイド（記事一覧）](${BASE}buy-property-in-japan-ja.html)
@@ -734,7 +792,7 @@ ${cats}
 
 ## 全文ファイル
 
-日本語記事 ${arts.length} 本の全文（Markdown、1ファイル）：${BASE}llms-ja-full.txt
+日本語記事 ${arts.length} 本と販売中物件 ${onSale} 件の全文（Markdown、1ファイル）：${BASE}llms-ja-full.txt
 
 ${LICENSE_JA}`;
 }
@@ -766,9 +824,10 @@ function toMarkdownJa(a) {
 function buildLlmsJaFull() {
   const arts = ART.filter(a => SLUG[a.id] && JA_CONTENT[a.id])
     .sort((x, y) => (y.date || "").localeCompare(x.date || ""));
+  const props = onSalePropsJa();
   return `# 周周・日本の不動産　全文（言語モデル向けの完全版）
 
-> ${BASE}ja.html の日本語記事 ${arts.length} 本の全文を、Markdown で1ファイルにまとめたものでございます。
+> ${BASE}ja.html の日本語記事 ${arts.length} 本と販売中物件 ${props.length} 件の全文を、Markdown で1ファイルにまとめたものでございます。
 > 著者：周欣妤（周周）。東京で勤務する台湾籍の不動産仲介、
 > 株式会社アンドプラス 住宅営業部｜宅地建物取引業者免許番号 東京都知事 (2) 第102938号。
 > サイト概要と索引は ${BASE}llms-ja.txt をご覧ください。
@@ -777,7 +836,17 @@ function buildLlmsJaFull() {
 ${LICENSE_JA}
 ---
 
-` + arts.map(toMarkdownJa).join("\n---\n\n");
+` + arts.map(toMarkdownJa).join("\n---\n\n")
+  + `\n---\n\n# 販売中物件（計 ${props.length} 件）
+
+> 現在ご案内可能な物件でございます。成約により随時入れ替わりますので、
+> 引用の際は物件ページの現況をご確認ください。
+> 融資の可否・融資割合は個別の審査により、税額は税理士、
+> 登記・契約内容は司法書士および宅地建物取引士にご確認いただいております。
+
+---
+
+` + props.map(propToMarkdownJa).join("\n---\n\n");
 }
 fs.writeFileSync(ROOT + "/llms-ja-full.txt", buildLlmsJaFull());
 saveUpdatedJa();
