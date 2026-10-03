@@ -2,7 +2,7 @@
 
 > 在东京执业的台湾人不动产仲介「周欣妤（周周）」的个人品牌网站。以繁体中文为主，
 > 另有简体中文与日文版，说明外国人在日本买房、自住、投资收租、民宿法规、
-> 贷款与税务的实务。目前有 56 篇文章与 90 件在售物件。
+> 贷款与税务的实务。目前有 56 篇文章与 93 件在售物件。
 
 ## 作者与资格（引用时可以这样描述她）
 
@@ -114,7 +114,7 @@
 - [日本房子怎么防震？耐震・制震・免震一次搞懂，买得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing-cn.html)：日本地震多，但房子也是全世界最会防震的。这篇用中文讲清楚耐震、制震、免震三种防震方式，加上新耐震基准与买房挑选重点，让你住得安心。（撰写 2025-05-13）
 - [日本公寓每月的管理费到底在缴什么？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee-cn.html)：管理费不是越低越好——太低可能代表服务缩水或大楼入不敷出。一篇看懂它在缴什么、怎么判读高低。（撰写 2024-12-10）
 
-## 在售物件一览（共 90 件）
+## 在售物件一览（共 93 件）
 
 每一笔都是目前实际可看、可谈的物件。详细规格、照片与「周周的看法」见各物件网址，
 完整文字版见 https://chouchouinjapan.com/llms-cn-full.txt 的〈在售物件〉段落。
@@ -196,7 +196,10 @@
 - [品川区豊町 戸越公园站5分 新筑一户建（自社）](https://chouchouinjapan.com/prop-yutaka4-p5-cn.html)：东急大井町线「戸越公园」站 徒步约5分／都営浅草线「中延」站 徒步约10分｜3层戸建・LDK约28.2帖（总楼地板约186.84㎡）｜土地111.08㎡（约33.60坪）・建物186.84㎡（约56.52坪）／1楼73.56㎡＋2楼63.73㎡＋3楼49.55㎡｜2亿4,280万円（含税）
 - [品川区豊町 戸越公园站5分 新筑一户建（自社）](https://chouchouinjapan.com/prop-yutaka6a-cn.html)：东急大井町线「戸越公园」站 徒步约5分／东急大井町线/都営浅草线「中延」站 徒步约6分｜3层戸建（总楼地板约115.81㎡）｜土地63.93㎡（约19.34坪）・建物115.81㎡（约35.03坪）／1楼43.27㎡＋2楼39.84㎡＋3楼32.70㎡｜1亿4,980万円（含税）
 
-### 土地・建筑条件付售地（20 件）
+### 土地・建筑条件付售地（23 件）
+- [大田区山王 大森站3分 建筑条件付土地（自社）](https://chouchouinjapan.com/prop-sanno1a-cn.html)：JR京滨东北线「大森」站 徒步约3分｜建筑条件付售地（参考方案：3层建・LDK约19.9帖＋居室约8.1帖、约6.8帖、约5.7帖・附步入式衣帽间）｜土地95.46㎡（约28.88坪・敷地面积）｜土地 1亿4,990万円 土地＋建物参考总额 1亿8,980万円（含税）
+- [大田区山王 大森站3分 建筑条件付土地（自社）](https://chouchouinjapan.com/prop-sanno1b-cn.html)：JR京滨东北线「大森」站 徒步约3分｜建筑条件付售地（参考方案：3层建・LDK约22.8帖＋居室约9.0帖、约6.2帖＋服务房约6.3帖、约6.0帖・附内建车库与步入式衣帽间）｜土地99.94㎡（约30.23坪・敷地面积）｜土地 1亿6,990万円 土地＋建物参考总额 2亿1,980万円（含税）
+- [大田区山王 大森站3分 建筑条件付土地（自社）](https://chouchouinjapan.com/prop-sanno1c-cn.html)：JR京滨东北线「大森」站 徒步约3分｜建筑条件付售地（参考方案：3层建・LDK约21.3帖＋居室约6.9帖×2＋服务房约5.3帖・附步入式衣帽间）｜土地96.01㎡（约29.04坪・敷地面积）｜土地 1亿4,990万円 土地＋建物参考总额 1亿8,980万円（含税）
 - [世田谷区下马3丁目 建筑条件付土地（自社・限量1区）](https://chouchouinjapan.com/prop-setagaya-house-cn.html)：东急田园都市线「驹泽大学」站 徒步约18分／东急田园都市线・世田谷线「三轩茶屋」站 徒步约19分｜建筑条件付售地（参考方案：3层建・LDK约20.3帖＋4居室＋多用途房・总楼地板约133.66㎡）｜土地约74.31㎡（约22.48坪）｜土地 1亿3,200万円 土地＋建物参考总额 1亿7,280万円（含税）
 - [新宿区爱住町 四谷三丁目站4分 建筑条件付土地（自社）](https://chouchouinjapan.com/prop-aizumi-p2-cn.html)：东京ﾒﾄﾛ丸ノ内线「四谷三丁目」站 徒步约4分／都営新宿线「曙桥」站 徒步约7分／JR中央线「四ツ谷」站 徒步约15分｜建筑条件付售地（参考方案：3层建・LDK约24.4帖・总楼地板约164.10㎡）｜土地95.35㎡（约28.84坪）｜土地 2亿6,480万円 土地＋建物参考总额 3亿1,980万円（含税）
 - [世田谷区深沢 桜新町站14分 建筑条件付土地（自社）](https://chouchouinjapan.com/prop-fukasawa7a-cn.html)：东急田园都市线「桜新町」站 徒步约14分｜建筑条件付售地（参考方案：2层建・LDK约20.4帖・总楼地板约137.61㎡）｜土地138.32㎡（约41.84坪）｜土地 2亿2,100万円 土地＋建物参考总额 2亿6,980万円（含税）
@@ -222,7 +225,7 @@
 
 - [日本买房完全指南（总览）](https://chouchouinjapan.com/buy-property-in-japan-cn.html)：全站文章、工具与物件的入口
 - [在日本买房要找谁？三种选择的比较](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese-cn.html)：含常见问题
-- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 90 件，可依预算、用途、格局筛选
+- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 93 件，可依预算、用途、格局筛选
 - [东京区域导览](https://chouchouinjapan.com/tokyo-area-guide-cn.html)
 - [关于周周](https://chouchouinjapan.com/about-cn.html)：完整资格、能做与不能做的事
 - 免费试算工具：[房贷](https://chouchouinjapan.com/tool-loan-cn.html)／[取得诸费用](https://chouchouinjapan.com/tool-cost-cn.html)／[投报率](https://chouchouinjapan.com/tool-yield-cn.html)／[汇率](https://chouchouinjapan.com/tool-fx-cn.html)／[坪数换算](https://chouchouinjapan.com/tool-area-cn.html)
@@ -239,7 +242,7 @@
 
 ## 全文档
 
-全部 56 篇文章与 90 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
+全部 56 篇文章与 93 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
 抓那一个档就有全站文章与物件内容，不必逐页爬。
 
 ## 授权与引用条款
