@@ -481,7 +481,13 @@ function b2_meta() {
     const t = (s.match(/<title>([^<]*)<\/title>/) || [])[1] || "";
     (titles[t] = titles[t] || []).push(f);
   }
-  const dup = Object.entries(titles).filter(([, v]) => v.length > 1)
+  /* 同一頁的三語版本（X.html／X-cn.html／X-ja.html）標題相同不是錯：
+     繁中與簡中在沒有可簡化字的短標題上本來就會一模一樣，而且它們之間
+     有 hreflang 互指，Google 會當成語言版本而不是重複內容。
+     只有「不同頁」撞標題才算問題。（2026-10-03 物件獨立頁上線後補上） */
+  const langBase = f => f.replace(/-(cn|ja)\.html$/, ".html");
+  const dup = Object.entries(titles)
+    .filter(([, v]) => v.length > 1 && new Set(v.map(langBase)).size > 1)
     .map(([t, v]) => `${t.slice(0, 40)} → ${v.join(",")}`);
   const bad = noDesc.map(f => `缺 description: ${f}`).concat(dup);
   add("B2", "meta description / title", bad.length ? "FAIL" : "OK",

@@ -4075,7 +4075,7 @@ SIMはどう受け取る？ ビザ不要プランの受取方法は主に、 海
 ## B CITY APARTMENT SHINAGAWA WEST 703号室
 
 - キャッチ：最上階7階・約12㎡のルーフバルコニー付、2015年築のフルリノベーション済1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=bcity-shinagawa703
+- URL：https://chouchouinjapan.com/prop-bcity-shinagawa703-ja.html
 - 所在地：東京都品川区西中延2-4-7
 - 交通：東急池上線「荏原中延」駅 徒歩4分／東急大井町線「荏原町」駅 徒歩10分／東急大井町線「旗の台」駅 徒歩12分
 - 価格：7,298万円（含稅）
@@ -4094,7 +4094,7 @@ SIMはどう受け取る？ ビザ不要プランの受取方法は主に、 海
 ## エス・バイ・エルマンション錦糸町 201号室
 
 - キャッチ：「錦糸町」駅徒歩7分、南向き×角住戸・3部屋確保の62.74㎡フルリノベーション済2SLDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=sxl-kinshicho201
+- URL：https://chouchouinjapan.com/prop-sxl-kinshicho201-ja.html
 - 所在地：東京都墨田区亀沢4-19-16
 - 交通：JR総武線・総武快速線・東京メトロ半蔵門線「錦糸町」駅 徒歩7分
 - 価格：8,298万円（含稅）
@@ -4113,7 +4113,7 @@ SIMはどう受け取る？ ビザ不要プランの受取方法は主に、 海
 ## レーベンハイム大塚 202号室
 
 - キャッチ：JR山手線「大塚」駅徒歩4分、南西向き×3方角住戸・WIC付フルリノベーション済2LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=levenheim-otsuka202
+- URL：https://chouchouinjapan.com/prop-levenheim-otsuka202-ja.html
 - 所在地：東京都豊島区北大塚1-20-20
 - 交通：JR山手線「大塚」駅 徒歩4分
 - 価格：7,798万円（含稅）
@@ -4132,7 +4132,7 @@ JR山手線「大塚」駅徒歩4分、駅近ながらも閑静な住宅街に�
 ## モンテベルデ本郷西片 501号室
 
 - キャッチ：南北線「東大前」駅徒歩3分、開放感ある眺望の北西角部屋・フルリノベーション済1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=montebelde-nishikata501
+- URL：https://chouchouinjapan.com/prop-montebelde-nishikata501-ja.html
 - 所在地：東京都文京区西片2-25-8
 - 交通：東京メトロ南北線「東大前」駅 徒歩3分／東京メトロ千代田線「根津」駅 徒歩9分／都営三田線・都営大江戸線「春日」駅 徒歩10分／東京メトロ丸ノ内線・都営大江戸線「本郷三丁目」駅 徒歩13分
 - 価格：5,298万円（含稅）
@@ -4151,7 +4151,7 @@ JR山手線「大塚」駅徒歩4分、駅近ながらも閑静な住宅街に�
 ## 朝日言問マンション 902号室
 
 - キャッチ：バルコニーからスカイツリーを望む、南東角部屋9階・フルリノベーション済1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=kototoi902
+- URL：https://chouchouinjapan.com/prop-kototoi902-ja.html
 - 所在地：東京都墨田区向島2丁目22-12
 - 交通：都営浅草線「本所吾妻橋」駅 徒歩8分／東武スカイツリーライン「とうきょうスカイツリー」駅 徒歩7分／東京メトロ半蔵門線「押上」駅 徒歩11分
 - 価格：4,799万円（含稅）
@@ -4170,7 +4170,7 @@ JR山手線「大塚」駅徒歩4分、駅近ながらも閑静な住宅街に�
 ## R天下茶屋 雅（西成区潮路2丁目）
 
 - キャッチ：大阪市西成区・天下茶屋／町家一棟の民泊施設（旅館業365日・運営中）
-- URL：https://chouchouinjapan.com/property-ja.html?id=tengachaya
+- URL：https://chouchouinjapan.com/prop-tengachaya-ja.html
 - 所在地：大阪府大阪市西成区潮路二丁目
 - 交通：南海本線・Osaka Metro堺筋線「天下茶屋」駅 徒歩9分／南海高野線「西天下茶屋」駅 徒歩3分／Osaka Metro四つ橋線「岸里」駅 徒歩7分
 - 価格：4,600万円
@@ -4190,7 +4190,7 @@ JR山手線「大塚」駅徒歩4分、駅近ながらも閑静な住宅街に�
 ## R大今里 幸（東成区大今里3丁目）
 
 - キャッチ：大阪市東成区・今里駅徒歩3分／特区民泊一棟（365日・運営中）
-- URL：https://chouchouinjapan.com/property-ja.html?id=oimazato
+- URL：https://chouchouinjapan.com/prop-oimazato-ja.html
 - 所在地：大阪府大阪市東成区大今里三丁目
 - 交通：Osaka Metro千日前線「今里」駅 徒歩3分
 - 価格：3,980万円
@@ -4210,7 +4210,7 @@ Osaka Metro千日前線「今里」駅より徒歩3分。スーツケースを�
 ## R鶴橋 守 3F（生野区鶴橋2丁目）
 
 - キャッチ：大阪市生野区・鶴橋駅徒歩3分／特区民泊（3階部分・運営中）
-- URL：https://chouchouinjapan.com/property-ja.html?id=tsuruhashi-mori
+- URL：https://chouchouinjapan.com/prop-tsuruhashi-mori-ja.html
 - 所在地：大阪府大阪市生野区鶴橋二丁目
 - 交通：JR大阪環状線・近鉄奈良線／大阪線・Osaka Metro千日前線「鶴橋」駅 徒歩3分
 - 価格：6,300万円
@@ -4230,7 +4230,7 @@ JR大阪環状線・近鉄・Osaka Metroが乗り入れる「鶴橋」駅より�
 ## 整白（西成区長橋1丁目）
 
 - キャッチ：大阪市西成区・花園町駅徒歩7分／特区民泊一棟（サウナ・露天風呂付・運営中）
-- URL：https://chouchouinjapan.com/property-ja.html?id=seihaku
+- URL：https://chouchouinjapan.com/prop-seihaku-ja.html
 - 所在地：大阪府大阪市西成区長橋一丁目
 - 交通：Osaka Metro四つ橋線「花園町」駅 徒歩7分
 - 価格：6,600万円
@@ -4250,7 +4250,7 @@ Osaka Metro四つ橋線「花園町」駅より徒歩7分。白を基調とし�
 ## R桃谷 秀（生野区桃谷2丁目）
 
 - キャッチ：大阪市生野区・鶴橋駅徒歩8分／宿泊施設一棟（旅館業365日＋特区民泊・運営中）
-- URL：https://chouchouinjapan.com/property-ja.html?id=momodani
+- URL：https://chouchouinjapan.com/prop-momodani-ja.html
 - 所在地：大阪府大阪市生野区桃谷二丁目
 - 交通：JR大阪環状線「鶴橋」駅 徒歩8分／JR大阪環状線「桃谷」駅 徒歩10分
 - 価格：9,543万円
@@ -4270,7 +4270,7 @@ JR大阪環状線「鶴橋」駅徒歩8分・「桃谷」駅徒歩10分。旅館
 ## R京都 歌（京都市南区東九条柳下町）
 
 - キャッチ：京都市南区・十条駅徒歩5分／町家一棟の宿泊施設（旅館業365日・2026年9月中旬運営開始予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=kyoto-uta
+- URL：https://chouchouinjapan.com/prop-kyoto-uta-ja.html
 - 所在地：京都府京都市南区東九条柳下町
 - 交通：京都市営地下鉄烏丸線「十条」駅 徒歩5〜6分／京阪電気鉄道京阪線「鳥羽街道」駅 徒歩10分
 - 価格：9,800万円
@@ -4290,7 +4290,7 @@ JR大阪環状線「鶴橋」駅徒歩8分・「桃谷」駅徒歩10分。旅館
 ## R西九条 柚（此花区西九条4丁目）
 
 - キャッチ：大阪市此花区・西九条駅徒歩2分／宿泊施設一棟（改装中・2027年2月運営開始予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=nishikujo
+- URL：https://chouchouinjapan.com/prop-nishikujo-ja.html
 - 所在地：大阪府大阪市此花区西九条四丁目
 - 交通：JR大阪環状線・阪神なんば線「西九条」駅 徒歩2分
 - 価格：9,100万円
@@ -4310,7 +4310,7 @@ JR大阪環状線「鶴橋」駅徒歩8分・「桃谷」駅徒歩10分。旅館
 ## R鶴橋 蓮（生野区鶴橋2丁目）
 
 - キャッチ：大阪市生野区・鶴橋駅徒歩2分／宿泊施設一棟（改装中・2026年11月運営開始予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=tsuruhashi-ren
+- URL：https://chouchouinjapan.com/prop-tsuruhashi-ren-ja.html
 - 所在地：大阪府大阪市生野区鶴橋二丁目
 - 交通：JR大阪環状線・近鉄奈良線／大阪線・Osaka Metro千日前線「鶴橋」駅 徒歩2分
 - 価格：8,250万円
@@ -4330,7 +4330,7 @@ JR大阪環状線「鶴橋」駅徒歩8分・「桃谷」駅徒歩10分。旅館
 ## R弁天町 麗（港区波除5丁目）
 
 - キャッチ：大阪市港区・弁天町駅徒歩7分／宿泊施設一棟（寝室7室・改装中・2026年12月運営開始予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=bentencho
+- URL：https://chouchouinjapan.com/prop-bentencho-ja.html
 - 所在地：大阪府大阪市港区波除五丁目
 - 交通：JR大阪環状線・Osaka Metro中央線「弁天町」駅 徒歩7分
 - 価格：1億150万円
@@ -4350,7 +4350,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 向丘2丁目 part2 新築戸建
 
 - キャッチ：【新築戸建】文京区向丘2丁目／誠之小学校学区・東大前駅徒歩3分・ビルトインガレージ付4LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=mukougaoka2
+- URL：https://chouchouinjapan.com/prop-mukougaoka2-ja.html
 - 所在地：東京都文京区向丘2丁目8-14
 - 交通：東京メトロ南北線「東大前」駅 徒歩約3分／都営三田線「白山」駅 徒歩約11分／東京メトロ千代田線「根津」駅 徒歩約12分
 - 価格：3億2,580万円（含稅）
@@ -4369,7 +4369,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 【新築】CITY TOWER THE RAINBOW 港区海岸・高層階
 
 - キャッチ：【新築タワーマンション】港区海岸／34階建29階の南西角住戸・3LDK（2028年4月竣工予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=rainbow2902
+- URL：https://chouchouinjapan.com/prop-rainbow2902-ja.html
 - 所在地：東京都港区海岸3丁目
 - 交通：ゆりかもめ「芝浦ふ頭」駅 徒歩5分／JR山手線・京浜東北線「田町」駅 徒歩14分／都営三田線・浅草線「三田」駅 徒歩14分
 - 価格：3億2,800万円
@@ -4388,7 +4388,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 【新築】シティタワー東京田町 港区芝浦・高層階
 
 - キャッチ：【新築タワーマンション】港区芝浦／田町駅徒歩10分・免震タワー29階の角住戸・3LDK（2028年4月竣工予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=tamachi2904
+- URL：https://chouchouinjapan.com/prop-tamachi2904-ja.html
 - 所在地：東京都港区芝浦2丁目
 - 交通：JR山手線・京浜東北線「田町」駅 徒歩10分／都営三田線・浅草線「三田」駅 徒歩10分／ゆりかもめ「芝浦ふ頭」駅 徒歩10分
 - 価格：3億6,800万円
@@ -4407,7 +4407,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## シティタワー金町 タワー棟 高層階
 
 - キャッチ：金町・37階建タワー棟36階／西向き角住戸・4SLDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=kanamachi3612
+- URL：https://chouchouinjapan.com/prop-kanamachi3612-ja.html
 - 所在地：東京都葛飾区新宿6丁目
 - 交通：JR常磐線各駅停車（常磐緩行線）「金町」駅 徒歩12分／京成金町線「京成金町」駅 徒歩13分
 - 価格：9,680万円
@@ -4426,7 +4426,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## クレストプライムタワー芝 2802
 
 - キャッチ：浜松町・タワー高層階・眼下に東京タワー
-- URL：https://chouchouinjapan.com/property-ja.html?id=shiba2802
+- URL：https://chouchouinjapan.com/prop-shiba2802-ja.html
 - 所在地：東京都港区芝1-2-1
 - 交通：JR山手線・京浜東北線「浜松町」駅 徒歩6分／都営三田線「芝公園」駅 徒歩7分／都営大江戸線「大門」駅 徒歩7分
 - 価格：2億7,000万円
@@ -4445,7 +4445,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## オーベル代官山DE 903号室
 
 - キャッチ：代官山駅徒歩4分・恵比寿駅徒歩5分／二重床二重天井の1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=daikanyama903
+- URL：https://chouchouinjapan.com/prop-daikanyama903-ja.html
 - 所在地：東京都渋谷区恵比寿南3-4-14
 - 交通：東急東横線「代官山」駅 徒歩4分／東京メトロ日比谷線「恵比寿」駅 徒歩5分／JR山手線「恵比寿」駅 徒歩8分
 - 価格：9,180万円
@@ -4464,7 +4464,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## コンシェリア恵比寿 1103号室
 
 - キャッチ：恵比寿アドレス・11階南東角部屋／リノベーション済1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=ebisu1103
+- URL：https://chouchouinjapan.com/prop-ebisu1103-ja.html
 - 所在地：東京都渋谷区恵比寿3-45-2
 - 交通：東京メトロ日比谷線「広尾」駅 徒歩10分／JR山手線・埼京線・湘南新宿ライン「恵比寿」駅 徒歩12分（バス停「恵比寿三丁目」徒歩1分・恵比寿駅までバス約7分、渋谷駅まで約15分）
 - 価格：1億300万円（含稅）
@@ -4483,7 +4483,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## リ・プレゼ恵比寿 302号室
 
 - キャッチ：広尾駅徒歩8分・渋谷区恵比寿アドレス／フルリノベーション済1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=ebisu302
+- URL：https://chouchouinjapan.com/prop-ebisu302-ja.html
 - 所在地：東京都渋谷区恵比寿2-24-4
 - 交通：東京メトロ日比谷線「広尾」駅 徒歩8分／JR山手線「恵比寿」駅 徒歩12分
 - 価格：9,499万円（含稅）
@@ -4502,7 +4502,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 世田谷区上野毛四丁目 戸建
 
 - キャッチ：【非公開】上野毛・土地136坪のRC造邸宅／内外装工事実施予定
-- URL：https://chouchouinjapan.com/property-ja.html?id=kaminoge
+- URL：https://chouchouinjapan.com/prop-kaminoge-ja.html
 - 所在地：東京都世田谷区上野毛4丁目
 - 交通：東急田園都市線「用賀」駅 徒歩13分
 - 価格：6億4,800万円
@@ -4533,7 +4533,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## ＢＥＬＩＳＴＡ東日暮里 101号室
 
 - キャッチ：【非公開】東日暮里・1階路面／店舗事務所 表面5.96%
-- URL：https://chouchouinjapan.com/property-ja.html?id=belista-higashinippori
+- URL：https://chouchouinjapan.com/prop-belista-higashinippori-ja.html
 - 所在地：東京都荒川区東日暮里2丁目
 - 交通：東京メトロ日比谷線「三ノ輪」駅 徒歩9分
 - 価格：3,980万円
@@ -4565,7 +4565,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## テラス渋谷美竹 1003号室
 
 - キャッチ：渋谷駅徒歩1分・都市型免震タワーレジデンス／リノベーション済1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=shibuya1003
+- URL：https://chouchouinjapan.com/prop-shibuya1003-ja.html
 - 所在地：東京都渋谷区渋谷1-15-15
 - 交通：東京メトロ半蔵門線・副都心線・東急田園都市線「渋谷」駅 徒歩1分／JR山手線他4路線「渋谷」駅 徒歩3分／京王井の頭線「渋谷」駅 徒歩6分／東京メトロ半蔵門線・銀座線・千代田線「表参道」駅 徒歩11分
 - 価格：1億2,980万円
@@ -4584,7 +4584,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## プレスト・アイディ秋葉原 203号室
 
 - キャッチ：6駅7路線利用可・2026年8月リノベ完了の1LDK（上野・浅草・秋葉原エリア）
-- URL：https://chouchouinjapan.com/property-ja.html?id=akihabara203
+- URL：https://chouchouinjapan.com/prop-akihabara203-ja.html
 - 所在地：東京都台東区鳥越1-27-2
 - 交通：都営大江戸線「新御徒町」駅 徒歩6分／都営大江戸線・浅草線「蔵前」駅 徒歩8分／都営浅草線・JR総武線「浅草橋」駅 徒歩8分／JR山手線・京浜東北線「秋葉原」駅 徒歩14分
 - 価格：4,298万円（含稅）
@@ -4603,7 +4603,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 桜上水3丁目 戸建
 
 - キャッチ：世田谷区桜上水・築浅3LDKの角地戸建（3路線利用可・駐車スペース付）
-- URL：https://chouchouinjapan.com/property-ja.html?id=sakurajosui
+- URL：https://chouchouinjapan.com/prop-sakurajosui-ja.html
 - 所在地：東京都世田谷区桜上水3丁目
 - 交通：小田急線「経堂」駅 徒歩13分／東急世田谷線「松原」駅 徒歩10分／京王線「桜上水」駅 徒歩15分
 - 価格：1億8,900万円
@@ -4622,7 +4622,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 西大井2丁目 part5 新築戸建
 
 - キャッチ：西大井7分・自社設計施工の新築3階建戸建（LDK約25.8帖・2027年4月下旬引渡予定）
-- URL：https://chouchouinjapan.com/property-ja.html?id=nishioi-p5
+- URL：https://chouchouinjapan.com/prop-nishioi-p5-ja.html
 - 所在地：東京都品川区西大井2丁目12-13
 - 交通：JR埼京線・湘南新宿ライン・横須賀線「西大井」駅 徒歩約7分
 - 価格：2億1,980万円（税込）
@@ -4648,7 +4648,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 下馬3丁目 part2 建築条件付売地
 
 - キャッチ：世田谷区下馬3丁目・建築条件付売地（自社分譲・限定1区画）
-- URL：https://chouchouinjapan.com/property-ja.html?id=setagaya-house
+- URL：https://chouchouinjapan.com/prop-setagaya-house-ja.html
 - 所在地：東京都世田谷区下馬3丁目22-3（旧住居表示）
 - 交通：東急田園都市線「駒沢大学」駅 徒歩約18分／東急田園都市線・世田谷線「三軒茶屋」駅 徒歩約19分
 - 価格：土地 1億3,200万円 土地＋建物參考總額 1億7,280万円（含稅）
@@ -4669,7 +4669,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## クラッシィタワー新宿御苑 1703
 
 - キャッチ：新宿御苑前4分・2024年築タワー・新築未入居2LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=classy-shinjuku
+- URL：https://chouchouinjapan.com/prop-classy-shinjuku-ja.html
 - 所在地：東京都新宿区四谷4-29-3
 - 交通：東京メトロ丸ノ内線「新宿御苑前」駅 徒歩4分／丸ノ内線「四谷三丁目」駅 徒歩6分／都営新宿線「新宿三丁目」駅 徒歩10分
 - 価格：2億6,800万円
@@ -4688,7 +4688,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## ライオンズガーデン世田谷 201
 
 - キャッチ：世田谷駅5分・フルリノベーション1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=lions-setagaya
+- URL：https://chouchouinjapan.com/prop-lions-setagaya-ja.html
 - 所在地：東京都世田谷区世田谷1-31-13
 - 交通：東急世田谷線「世田谷」駅 徒歩5分
 - 価格：5,980万円
@@ -4707,7 +4707,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## ファミール新宿グランスィートタワー 309
 
 - キャッチ：新宿駅2分・タワーレジデンス・フルリノベーション1DK
-- URL：https://chouchouinjapan.com/property-ja.html?id=famille309
+- URL：https://chouchouinjapan.com/prop-famille309-ja.html
 - 所在地：東京都渋谷区代々木2-21-8
 - 交通：JR山手線ほか「新宿」駅 徒歩2分／「代々木」駅 徒歩8分（周辺で約11路線利用可）
 - 価格：6,780万円
@@ -4726,7 +4726,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## パールマンション高田馬場 301
 
 - キャッチ：高田馬場5分・南西角住戸・リノベーション1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=pearl-baba301
+- URL：https://chouchouinjapan.com/prop-pearl-baba301-ja.html
 - 所在地：東京都新宿区高田馬場1-21-25
 - 交通：JR山手線・東西線・西武新宿線「高田馬場」駅 徒歩5分／副都心線「西早稲田」駅 徒歩5分
 - 価格：3,798万円
@@ -4745,7 +4745,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## セブンスターマンション第二青葉台 702
 
 - キャッチ：中目黒・目黒川桜並木そば・リノベーション1LDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=nakameguro702
+- URL：https://chouchouinjapan.com/prop-nakameguro702-ja.html
 - 所在地：東京都目黒区青葉台1丁目29-12
 - 交通：東急東横線・東京メトロ日比谷線「中目黒」駅 徒歩5分
 - 価格：7,499万円
@@ -4764,7 +4764,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## ジェイパーク戸越公園アーキテクト 701
 
 - キャッチ：戸越公園駅3分・三方角住戸・ルーフバルコニー付
-- URL：https://chouchouinjapan.com/property-ja.html?id=togoshi701
+- URL：https://chouchouinjapan.com/prop-togoshi701-ja.html
 - 所在地：東京都品川区戸越6-19-14
 - 交通：東急大井町線「戸越公園」駅 徒歩3分／「中延」駅 徒歩5分（大井町線・浅草線）／池上線「荏原中延」駅 徒歩7分／横須賀線・湘南新宿ライン「西大井」駅 徒歩9分
 - 価格：1億1,800万円
@@ -4783,7 +4783,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## ルモンド南麻布 205
 
 - キャッチ：南麻布・麻布十番7分のリノベーション住戸
-- URL：https://chouchouinjapan.com/property-ja.html?id=minamiazabu205
+- URL：https://chouchouinjapan.com/prop-minamiazabu205-ja.html
 - 所在地：東京都港区南麻布2-2-4
 - 交通：「麻布十番」駅 徒歩7分（大江戸線・南北線）／「白金高輪」駅 徒歩10分（三田線）
 - 価格：7,099万円
@@ -4801,7 +4801,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## スカーラ台東根岸 703
 
 - キャッチ：三ノ輪駅2分・ゆとりの1SLDK
-- URL：https://chouchouinjapan.com/property-ja.html?id=taito703
+- URL：https://chouchouinjapan.com/prop-taito703-ja.html
 - 所在地：東京都台東区根岸5-25-11
 - 交通：日比谷線「三ノ輪」駅 徒歩2分／「南千住」駅 徒歩10分（常磐線・つくばエクスプレス）
 - 価格：6,799万円
@@ -4819,7 +4819,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 両国二丁目ビル（一棟）
 
 - キャッチ：両国・一棟収益ビル（ホテル4室＋店舗）
-- URL：https://chouchouinjapan.com/property-ja.html?id=ryogoku2
+- URL：https://chouchouinjapan.com/prop-ryogoku2-ja.html
 - 所在地：東京都墨田区両国二丁目6-9
 - 交通：JR総武中央線・都営大江戸線「両国」駅 徒歩8分
 - 価格：2億9,800万円
@@ -4839,7 +4839,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## ライオンズマンション茅場町 101号室
 
 - キャッチ：茅場町・八丁堀／1階路面店舗（重飲食可・想定表面7.23%）
-- URL：https://chouchouinjapan.com/property-ja.html?id=kayabacho101
+- URL：https://chouchouinjapan.com/prop-kayabacho101-ja.html
 - 所在地：東京都中央区新川一丁目
 - 交通：東京メトロ日比谷線・東西線「茅場町」駅 徒歩8分／東京メトロ日比谷線・JR京葉線「八丁堀」駅 徒歩7分
 - 価格：7,300万円（含稅）
@@ -4859,7 +4859,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## パラシオン浜松町 102
 
 - キャッチ：港区浜松町／視認性良好な1階路面店舗（現況空室・飲食可）
-- URL：https://chouchouinjapan.com/property-ja.html?id=hamamatsucho102
+- URL：https://chouchouinjapan.com/prop-hamamatsucho102-ja.html
 - 所在地：東京都港区浜松町一丁目
 - 交通：都営大江戸線・都営浅草線「大門」駅 徒歩6分／JR山手線「浜松町」駅 徒歩8分
 - 価格：1億9,800万円（含稅）
@@ -4879,7 +4879,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## デュオ・スカーラ赤坂 101
 
 - キャッチ：【非公開】港区赤坂／溜池山王駅徒歩2分・81㎡の1階路面店舗
-- URL：https://chouchouinjapan.com/property-ja.html?id=akasaka101
+- URL：https://chouchouinjapan.com/prop-akasaka101-ja.html
 - 所在地：東京都港区赤坂二丁目
 - 交通：東京メトロ銀座線「溜池山王」駅 徒歩2分／東京メトロ千代田線「赤坂」駅 徒歩5分
 - 価格：3億5,000万円（含稅）
@@ -4899,7 +4899,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 歌舞伎町ダイヤモンドパレス 106号室
 
 - キャッチ：【非公開】新宿・歌舞伎町／1階区分店舗のオーナーチェンジ（表面6.11%）
-- URL：https://chouchouinjapan.com/property-ja.html?id=kabukicho106
+- URL：https://chouchouinjapan.com/prop-kabukicho106-ja.html
 - 所在地：東京都新宿区歌舞伎町二丁目
 - 交通：東京メトロ副都心線「新宿三丁目」駅 徒歩4分／都営大江戸線「東新宿」駅 徒歩5分
 - 価格：7,850万円（含稅）
@@ -4919,7 +4919,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 新宿ダイカンプラザ星座館 708号室
 
 - キャッチ：【非公開】新宿三丁目駅徒歩4分／オーナーチェンジ店舗（NET約6.51%）
-- URL：https://chouchouinjapan.com/property-ja.html?id=daikan708
+- URL：https://chouchouinjapan.com/prop-daikan708-ja.html
 - 所在地：東京都新宿区歌舞伎町一丁目
 - 交通：東京メトロ副都心線「新宿三丁目」駅 徒歩4分／JR山手線「新宿」駅 徒歩6分
 - 価格：5,600万円（含稅）
@@ -4939,7 +4939,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## リガーレ日本橋人形町アネックスB棟 104号室
 
 - キャッチ：【非公開】水天宮前駅徒歩2分／築浅の1階路面店舗・事務所
-- URL：https://chouchouinjapan.com/property-ja.html?id=ningyocho104
+- URL：https://chouchouinjapan.com/prop-ningyocho104-ja.html
 - 所在地：東京都中央区日本橋人形町一丁目
 - 交通：東京メトロ半蔵門線「水天宮前」駅 徒歩2分／東京メトロ日比谷線「人形町」駅 徒歩3分／東京メトロ日比谷線・東西線「茅場町」駅 徒歩7分
 - 価格：1億500万円（含稅）
@@ -4959,7 +4959,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## サングレイス鶴見 101
 
 - キャッチ：【非公開】横浜・鶴見駅徒歩5分／1階路面店舗（想定表面6.7%）
-- URL：https://chouchouinjapan.com/property-ja.html?id=tsurumi101
+- URL：https://chouchouinjapan.com/prop-tsurumi101-ja.html
 - 所在地：神奈川県横浜市鶴見区鶴見中央二丁目
 - 交通：JR京浜東北線・JR鶴見線「鶴見」駅 徒歩5分／京急本線「京急鶴見」駅 徒歩7分
 - 価格：6,500万円（含稅）
@@ -4979,7 +4979,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 恵比寿3丁目ビル（一棟）
 
 - キャッチ：恵比寿三丁目・旅館業営業許可取得済（旧条例適用）の一棟収益ビル
-- URL：https://chouchouinjapan.com/property-ja.html?id=ebisu3
+- URL：https://chouchouinjapan.com/prop-ebisu3-ja.html
 - 所在地：東京都渋谷区恵比寿三丁目
 - 交通：東京メトロ南北線・都営三田線「白金台」駅 徒歩11分／JR山手線・東京メトロ日比谷線「恵比寿」駅 徒歩15分
 - 価格：4億8,800万円
@@ -5005,7 +5005,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 愛住町 part2 建築条件付売地
 
 - キャッチ：四谷三丁目駅徒歩4分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=aizumi-p2
+- URL：https://chouchouinjapan.com/prop-aizumi-p2-ja.html
 - 所在地：東京都新宿区愛住町16-2（旧住居表示）
 - 交通：東京ﾒﾄﾛ丸ノ内線「四谷三丁目」駅徒歩約4分 ／ 都営新宿線「曙橋」駅徒歩約7分 ／ JR中央線「四ツ谷」駅徒歩約15分
 - 価格：土地 2億6,480万円 土地＋建物參考總額 3億1,980万円（含稅）
@@ -5033,7 +5033,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 深沢7丁目 A区画 建築条件付売地
 
 - キャッチ：桜新町駅徒歩14分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=fukasawa7a
+- URL：https://chouchouinjapan.com/prop-fukasawa7a-ja.html
 - 所在地：東京都世田谷区深沢7丁目9-10（旧住居表示）
 - 交通：東急田園都市線「桜新町」駅徒歩約14分
 - 価格：土地 2億2,100万円 土地＋建物參考總額 2億6,980万円（含稅）
@@ -5061,7 +5061,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 深沢7丁目 B区画 建築条件付売地
 
 - キャッチ：桜新町駅徒歩14分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=fukasawa7b
+- URL：https://chouchouinjapan.com/prop-fukasawa7b-ja.html
 - 所在地：東京都世田谷区深沢7丁目9-10（旧住居表示）
 - 交通：東急田園都市線「桜新町」駅徒歩約14分
 - 価格：土地 2億2,100万円 土地＋建物參考總額 2億6,980万円（含稅）
@@ -5089,7 +5089,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 五本木2丁目 建築条件付売地
 
 - キャッチ：学芸大学駅徒歩9分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=gohongi2
+- URL：https://chouchouinjapan.com/prop-gohongi2-ja.html
 - 所在地：東京都目黒区五本木2丁目43-12（旧住居表示）
 - 交通：東急東横線「学芸大学」駅徒歩約9分 ／ 東急東横線「祐天寺」駅徒歩約10分
 - 価格：土地 2億6,715万円 土地＋建物參考總額 3億2,380万円（含稅）
@@ -5117,7 +5117,7 @@ JR大阪環状線・Osaka Metro中央線「弁天町」駅より徒歩7分。 �
 ## 旗の台3丁目 新築戸建
 
 - キャッチ：旗の台駅徒歩4分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=hatanodai3
+- URL：https://chouchouinjapan.com/prop-hatanodai3-ja.html
 - 所在地：東京都品川区旗の台3丁目8-7
 - 交通：東急池上線・東急大井町線「旗の台」駅徒歩約4分 ／ 東急大井町線「荏原町」駅徒歩約2分
 - 価格：1億9,980万円（含稅）
@@ -5144,7 +5144,7 @@ LDK約28.7帖、居室は約10.1帖・約7.5帖・約5.9帖でございます。
 ## 東が丘1丁目 part2 新築戸建
 
 - キャッチ：駒沢大学駅徒歩13分・自社設計施工の新築2階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=higashigaoka1-p2
+- URL：https://chouchouinjapan.com/prop-higashigaoka1-p2-ja.html
 - 所在地：東京都目黒区東が丘1丁目12-4（旧住居表示）
 - 交通：東急田園都市線「駒沢大学」駅徒歩約13分
 - 価格：2億7,980万円（含稅）
@@ -5171,7 +5171,7 @@ LDK約26.0帖、居室は約10.0帖・約7.7帖・約6.5帖・約6.2帖、ほか
 ## 東中野1丁目 新築戸建
 
 - キャッチ：東中野駅徒歩5分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=higashinakano1
+- URL：https://chouchouinjapan.com/prop-higashinakano1-ja.html
 - 所在地：東京都中野区東中野1丁目43-13（旧住居表示）
 - 交通：JR中央･総武線「東中野」駅徒歩約5分
 - 価格：1億6,380万円（含稅）
@@ -5198,7 +5198,7 @@ LDK約23.0帖、居室は約8.1帖・約6.9帖・約5.5帖・約5.3帖でござ�
 ## 東玉川1丁目 part4 A棟 新築戸建
 
 - キャッチ：奥沢駅徒歩10分・自社設計施工の新築2階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=higashitamagawa-p4a
+- URL：https://chouchouinjapan.com/prop-higashitamagawa-p4a-ja.html
 - 所在地：東京都世田谷区東玉川1丁目38-3（旧住居表示）
 - 交通：東急目黒線「奥沢」駅徒歩約10分 ／ 東急東横線･東急目黒線「田園調布」駅徒歩約12分
 - 価格：1億7,180万円（含稅）
@@ -5225,7 +5225,7 @@ LDK約23.7帖、居室は約7.0帖・約6.4帖・約5.6帖でございます。
 ## 東玉川1丁目 part4 B棟 新築戸建
 
 - キャッチ：奥沢駅徒歩10分・自社設計施工の新築2階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=higashitamagawa-p4b
+- URL：https://chouchouinjapan.com/prop-higashitamagawa-p4b-ja.html
 - 所在地：東京都世田谷区東玉川1丁目38-3（旧住居表示）
 - 交通：東急目黒線「奥沢」駅徒歩約10分 ／ 東急東横線･東急目黒線「田園調布」駅徒歩約12分
 - 価格：1億7,180万円（含稅）
@@ -5252,7 +5252,7 @@ LDK約20.3帖、居室は約7.0帖・約6.1帖でございます。
 ## 平塚3丁目 part3 新築戸建
 
 - キャッチ：戸越銀座駅徒歩5分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=hiratsuka3-p3
+- URL：https://chouchouinjapan.com/prop-hiratsuka3-p3-ja.html
 - 所在地：東京都品川区平塚3丁目8-8（旧住居表示）
 - 交通：東急池上線「戸越銀座」駅徒歩約5分 ／ 都営浅草線「戸越」駅徒歩約7分 ／ 東急目黒線「武蔵小山」駅徒歩約16分
 - 価格：2億8,480万円（含稅）
@@ -5279,7 +5279,7 @@ LDK約27.3帖、居室は約7.5帖・約6.9帖・約6.8帖・約5.9帖でござ�
 ## 上目黒4丁目 A区画 建築条件付売地
 
 - キャッチ：祐天寺駅徒歩10分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=kamimeguro4a
+- URL：https://chouchouinjapan.com/prop-kamimeguro4a-ja.html
 - 所在地：東京都目黒区上目黒4丁目33-4（旧住居表示）
 - 交通：東急東横線「祐天寺」駅徒歩約10分 ／ 東急東横線「中目黒」駅徒歩約14分
 - 価格：土地 1億5,680万円 土地＋建物參考總額 1億9,380万円（含稅）
@@ -5307,7 +5307,7 @@ LDK約27.3帖、居室は約7.5帖・約6.9帖・約6.8帖・約5.9帖でござ�
 ## 上目黒4丁目 B区画 建築条件付売地
 
 - キャッチ：祐天寺駅徒歩10分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=kamimeguro4b
+- URL：https://chouchouinjapan.com/prop-kamimeguro4b-ja.html
 - 所在地：東京都目黒区上目黒4丁目33-4（旧住居表示）
 - 交通：東急東横線「祐天寺」駅徒歩約10分 ／ 東急東横線「中目黒」駅徒歩約14分
 - 価格：土地 1億9,180万円 土地＋建物參考總額 2億3,380万円（含稅）
@@ -5335,7 +5335,7 @@ LDK約27.3帖、居室は約7.5帖・約6.9帖・約6.8帖・約5.9帖でござ�
 ## 上用賀6丁目 建築条件付売地
 
 - キャッチ：用賀駅徒歩22分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=kamiyoga6
+- URL：https://chouchouinjapan.com/prop-kamiyoga6-ja.html
 - 所在地：東京都世田谷区上用賀6丁目15-11（旧住居表示）
 - 交通：東急田園都市線「用賀」駅徒歩約22分
 - 価格：土地 1億5,880万円 土地＋建物參考總額 2億2,480万円（含稅）
@@ -5363,7 +5363,7 @@ LDK約27.3帖、居室は約7.5帖・約6.9帖・約6.8帖・約5.9帖でござ�
 ## 高円寺南5丁目 新築戸建
 
 - キャッチ：高円寺駅徒歩10分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=koenjiminami5
+- URL：https://chouchouinjapan.com/prop-koenjiminami5-ja.html
 - 所在地：東京都杉並区高円寺南5丁目31-22（旧住居表示）
 - 交通：JR中央線「高円寺」駅徒歩約10分
 - 価格：2億1,980万円（含稅）
@@ -5390,7 +5390,7 @@ LDK約23.5帖、居室は約11.0帖・約8.5帖・約6.0帖でございます。
 ## 駒場1丁目 新築戸建
 
 - キャッチ：駒場東大前駅徒歩2分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=komaba1
+- URL：https://chouchouinjapan.com/prop-komaba1-ja.html
 - 所在地：東京都目黒区駒場1丁目26-23
 - 交通：京王井の頭線「駒場東大前」駅徒歩約2分 ／ JR山手線「渋谷」駅徒歩約20分
 - 価格：3億4,980万円（含稅）
@@ -5417,7 +5417,7 @@ LDK約30.2帖、居室は約6.4帖・約6.0帖でございます。
 ## 小山3丁目 part6 建築条件付売地
 
 - キャッチ：武蔵小山駅徒歩2分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=koyama3-p6
+- URL：https://chouchouinjapan.com/prop-koyama3-p6-ja.html
 - 所在地：東京都品川区小山3丁目5-15（旧住居表示）
 - 交通：東急目黒線「武蔵小山」駅徒歩約2分
 - 価格：土地 3億1,000万円 土地＋建物參考總額 3億6,380万円（含稅）
@@ -5445,7 +5445,7 @@ LDK約30.2帖、居室は約6.4帖・約6.0帖でございます。
 ## 小山7丁目 part2 A棟 新築戸建
 
 - キャッチ：洗足駅徒歩4分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=koyama7-p2a
+- URL：https://chouchouinjapan.com/prop-koyama7-p2a-ja.html
 - 所在地：東京都品川区小山7丁目15-14（旧住居表示）
 - 交通：東急目黒線「洗足」駅徒歩約4分
 - 価格：1億9,880万円（含稅）
@@ -5472,7 +5472,7 @@ LDK約24.0帖、居室は約8.8帖・約6.0帖でございます。
 ## 小山7丁目 part2 B棟 新築戸建
 
 - キャッチ：洗足駅徒歩4分・自社設計施工の新築2階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=koyama7-p2b
+- URL：https://chouchouinjapan.com/prop-koyama7-p2b-ja.html
 - 所在地：東京都品川区小山7丁目15-14（旧住居表示）
 - 交通：東急目黒線「洗足」駅徒歩約4分
 - 価格：2億1,980万円（含稅）
@@ -5499,7 +5499,7 @@ LDK約21.9帖、居室は約6.7帖・約5.7帖・約5.4帖・約5.3帖でござ�
 ## 目黒本町4丁目 part4 A区画 建築条件付売地
 
 - キャッチ：西小山駅徒歩13分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=meguro-honcho4-p4a
+- URL：https://chouchouinjapan.com/prop-meguro-honcho4-p4a-ja.html
 - 所在地：東京都目黒区目黒本町4丁目17-6（旧住居表示）
 - 交通：東急目黒線「西小山」駅徒歩約13分 ／ 東急目黒線「武蔵小山」駅徒歩約14分
 - 価格：土地 1億1,000万円 土地＋建物參考總額 1億4,680万円（含稅）
@@ -5527,7 +5527,7 @@ LDK約21.9帖、居室は約6.7帖・約5.7帖・約5.4帖・約5.3帖でござ�
 ## 目黒本町4丁目 part4 B区画 建築条件付売地
 
 - キャッチ：西小山駅徒歩13分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=meguro-honcho4-p4b
+- URL：https://chouchouinjapan.com/prop-meguro-honcho4-p4b-ja.html
 - 所在地：東京都目黒区目黒本町4丁目17-6（旧住居表示）
 - 交通：東急目黒線「西小山」駅徒歩約13分 ／ 東急目黒線「武蔵小山」駅徒歩約14分
 - 価格：土地 1億1,000万円 土地＋建物參考總額 1億4,680万円（含稅）
@@ -5555,7 +5555,7 @@ LDK約21.9帖、居室は約6.7帖・約5.7帖・約5.4帖・約5.3帖でござ�
 ## 目黒本町4丁目 part5 建築条件付売地
 
 - キャッチ：武蔵小山駅徒歩14分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=meguro-honcho4-p5
+- URL：https://chouchouinjapan.com/prop-meguro-honcho4-p5-ja.html
 - 所在地：東京都目黒区目黒本町4丁目17-10（旧住居表示）
 - 交通：東急目黒線「武蔵小山」駅徒歩約14分 ／ 東急目黒線「西小山」駅徒歩約13分
 - 価格：土地 9,400万円 土地＋建物參考總額 1億3,380万円（含稅）
@@ -5583,7 +5583,7 @@ LDK約21.9帖、居室は約6.7帖・約5.7帖・約5.4帖・約5.3帖でござ�
 ## 目黒本町6丁目 part2 建築条件付売地
 
 - キャッチ：武蔵小山駅徒歩10分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=meguro-honcho6-p2
+- URL：https://chouchouinjapan.com/prop-meguro-honcho6-p2-ja.html
 - 所在地：東京都目黒区目黒本町6丁目3-11（旧住居表示）
 - 交通：東急目黒線「武蔵小山」駅徒歩約10分 ／ 東急目黒線「西小山」駅徒歩約8分
 - 価格：土地 1億9,300万円 土地＋建物參考總額 2億5,480万円（含稅）
@@ -5611,7 +5611,7 @@ LDK約21.9帖、居室は約6.7帖・約5.7帖・約5.4帖・約5.3帖でござ�
 ## 緑が丘1丁目 part2 新築戸建
 
 - キャッチ：緑が丘駅徒歩1分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=midorigaoka1-p2
+- URL：https://chouchouinjapan.com/prop-midorigaoka1-p2-ja.html
 - 所在地：東京都目黒区緑が丘1丁目10-11（旧住居表示）
 - 交通：東急大井町線「緑が丘」駅徒歩約1分
 - 価格：2億6,480万円（含稅）
@@ -5638,7 +5638,7 @@ LDK約25.0帖、居室は約9.5帖・約8.0帖・約7.1帖・約6.0帖・約5.0�
 ## 南榎町 part2 新築戸建
 
 - キャッチ：神楽坂駅徒歩12分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=minamienoki-p2
+- URL：https://chouchouinjapan.com/prop-minamienoki-p2-ja.html
 - 所在地：東京都新宿区南榎町68-30（旧住居表示）
 - 交通：東京メトロ東西線「神楽坂」駅徒歩約12分 ／ 都営大江戸線「牛込柳町」駅徒歩約5分
 - 価格：2億7,280万円（含稅）
@@ -5665,7 +5665,7 @@ LDK約25.0帖、居室は約8.8帖・約6.8帖・約6.2帖でございます。
 ## 南荻窪3丁目 part2 新築戸建
 
 - キャッチ：荻窪駅徒歩15分・自社設計施工の新築2階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=minamiogikubo3-p2
+- URL：https://chouchouinjapan.com/prop-minamiogikubo3-p2-ja.html
 - 所在地：東京都杉並区南荻窪3丁目6-14（旧住居表示）
 - 交通：JR中央線「荻窪」駅徒歩約15分 ／ JR中央線「西荻窪」駅徒歩約14分
 - 価格：2億2,180万円（含稅）
@@ -5692,7 +5692,7 @@ LDK約26.1帖、居室は約11.0帖・約7.7帖・約6.1帖・約6.0帖でござ
 ## 南品川6丁目 建築条件付売地
 
 - キャッチ：大井町駅徒歩6分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=minamishinagawa6
+- URL：https://chouchouinjapan.com/prop-minamishinagawa6-ja.html
 - 所在地：東京都品川区南品川6丁目7-38（旧住居表示）
 - 交通：JR京浜東北線・東急大井町・りんかい線「大井町」駅徒歩約6分 ／ 京急本線「青物横丁」駅徒歩約10分
 - 価格：土地 1億5,980万円 土地＋建物參考總額 2億580万円（含稅）
@@ -5720,7 +5720,7 @@ LDK約26.1帖、居室は約11.0帖・約7.7帖・約6.1帖・約6.0帖でござ
 ## 中町1丁目 part4 建築条件付売地
 
 - キャッチ：学芸大学駅徒歩13分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=nakamachi1-p4
+- URL：https://chouchouinjapan.com/prop-nakamachi1-p4-ja.html
 - 所在地：東京都目黒区中町1丁目21-9（旧住居表示）
 - 交通：東急東横線「学芸大学」駅徒歩約13分 ／ 東急東横線「祐天寺」駅徒歩約15分
 - 価格：土地 1億8,680万円 土地＋建物參考總額 2億4,180万円（含稅）
@@ -5748,7 +5748,7 @@ LDK約26.1帖、居室は約11.0帖・約7.7帖・約6.1帖・約6.0帖でござ
 ## 中野區本町2丁目 part3 新築戸建
 
 - キャッチ：中野坂上駅徒歩2分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=nakanohoncho2-p3
+- URL：https://chouchouinjapan.com/prop-nakanohoncho2-p3-ja.html
 - 所在地：東京都中野区本町2丁目49-1（旧住居表示）
 - 交通：東京ﾒﾄﾛ丸ノ内線・都営大江戸線「中野坂上」駅徒歩約2分 ／ JR中央･総武線・都営大江戸線「東中野」駅徒歩約20分
 - 価格：1億3,180万円（含稅）
@@ -5775,7 +5775,7 @@ LDK約16.7帖、居室は約16.7帖・約7.4帖・約4.9帖でございます。
 ## 中野區本町6丁目 part2 新築戸建
 
 - キャッチ：東高円寺駅徒歩8分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=nakanohoncho6-p2
+- URL：https://chouchouinjapan.com/prop-nakanohoncho6-p2-ja.html
 - 所在地：東京都中野区本町6丁目33-8
 - 交通：東京ﾒﾄﾛ丸ノ内線「東高円寺」駅徒歩約8分 ／ JR中央線「中野」駅徒歩約17分
 - 価格：1億5,980万円（含稅）
@@ -5802,7 +5802,7 @@ LDK約23.0帖、居室は約9.2帖・約6.1帖・約5.7帖・約5.4帖でござ�
 ## 西五反田3丁目 A棟 新築戸建
 
 - キャッチ：不動前駅徒歩5分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=nishigotanda3a
+- URL：https://chouchouinjapan.com/prop-nishigotanda3a-ja.html
 - 所在地：東京都品川区西五反田3丁目13-13（旧住居表示）
 - 交通：東急目黒線「不動前」駅徒歩約5分 ／ JR山手線「目黒」駅徒歩約13分
 - 価格：2億3,280万円（含稅）
@@ -5829,7 +5829,7 @@ LDK約23.6帖、居室は約7.2帖・約7.0帖・約6.5帖・約5.1帖でござ�
 ## 西五反田3丁目 B棟 新築戸建
 
 - キャッチ：不動前駅徒歩5分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=nishigotanda3b
+- URL：https://chouchouinjapan.com/prop-nishigotanda3b-ja.html
 - 所在地：東京都品川区西五反田3丁目13-13（旧住居表示）
 - 交通：東急目黒線「不動前」駅徒歩約5分 ／ JR山手線「目黒」駅徒歩約13分
 - 価格：2億3,980万円（含稅）
@@ -5856,7 +5856,7 @@ LDK約23.9帖、居室は約7.7帖・約7.5帖・約6.3帖・約6.0帖・約5.5�
 ## 西中延1丁目 A区画 建築条件付売地
 
 - キャッチ：荏原中延駅徒歩7分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=nishinakanobu1a
+- URL：https://chouchouinjapan.com/prop-nishinakanobu1a-ja.html
 - 所在地：東京都品川区西中延1丁目6-12（旧住居表示）
 - 交通：東急池上線「荏原中延」駅徒歩約7分 ／ 東急目黒線「武蔵小山」駅徒歩約15分 ／ 都営浅草線「戸越」駅徒歩約12分
 - 価格：土地 9,880万円 土地＋建物參考總額 1億3,480万円（含稅）
@@ -5884,7 +5884,7 @@ LDK約23.9帖、居室は約7.7帖・約7.5帖・約6.3帖・約6.0帖・約5.5�
 ## 西品川2丁目 part5 新築戸建
 
 - キャッチ：大崎駅徒歩12分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=nishishinagawa2-p5
+- URL：https://chouchouinjapan.com/prop-nishishinagawa2-p5-ja.html
 - 所在地：東京都品川区西品川2丁目22-7
 - 交通：JR山手線「大崎」駅徒歩約12分 ／ JR京浜東北線･東急大井町線「大井町」駅徒歩約15分 ／ 東急大井町線「下神明」駅徒歩約7分
 - 価格：2億980万円（含稅）
@@ -5911,7 +5911,7 @@ LDK約26.8帖、居室は約10.2帖・約7.1帖・約6.1帖でございます。
 ## 大森北3丁目 part5 A区画 建築条件付売地
 
 - キャッチ：平和島駅徒歩7分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=omorikita-p5a
+- URL：https://chouchouinjapan.com/prop-omorikita-p5a-ja.html
 - 所在地：東京都大田区大森北3丁目38-7（旧住居表示）
 - 交通：京急本線「平和島」駅徒歩約7分 ／ JR京浜東北線「大森」駅徒歩約19分
 - 価格：土地 9,700万円 土地＋建物參考總額 1億3,980万円（含稅）
@@ -5939,7 +5939,7 @@ LDK約26.8帖、居室は約10.2帖・約7.1帖・約6.1帖でございます。
 ## 大森北3丁目 part5 B区画 建築条件付売地
 
 - キャッチ：平和島駅徒歩7分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=omorikita-p5b
+- URL：https://chouchouinjapan.com/prop-omorikita-p5b-ja.html
 - 所在地：東京都大田区大森北3丁目38-7（旧住居表示）
 - 交通：京急本線「平和島」駅徒歩約7分 ／ JR京浜東北線「大森」駅徒歩約19分
 - 価格：土地 1億2,800万円 土地＋建物參考總額 1億7,780万円（含稅）
@@ -5967,7 +5967,7 @@ LDK約26.8帖、居室は約10.2帖・約7.1帖・約6.1帖でございます。
 ## 大崎2丁目 建築条件付売地
 
 - キャッチ：大崎駅徒歩6分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=osaki2
+- URL：https://chouchouinjapan.com/prop-osaki2-ja.html
 - 所在地：東京都品川区大崎2丁目5-22（旧住居表示）
 - 交通：JR山手線「大崎」駅徒歩約6分
 - 価格：土地 1億5,390万円 土地＋建物參考總額 2億1,480万円（含稅）
@@ -5995,7 +5995,7 @@ LDK約26.8帖、居室は約10.2帖・約7.1帖・約6.1帖でございます。
 ## 下目黒5丁目 part2 A棟 新築戸建
 
 - キャッチ：武蔵小山駅徒歩12分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=shimomeguro5-p2a
+- URL：https://chouchouinjapan.com/prop-shimomeguro5-p2a-ja.html
 - 所在地：東京都目黒区下目黒5丁目36-31（旧住居表示）
 - 交通：東急目黒線「武蔵小山」駅徒歩約12分
 - 価格：2億5,980万円（含稅）
@@ -6022,7 +6022,7 @@ LDK約26.0帖、居室は約11.0帖・約6.4帖・約6.1帖でございます。
 ## 戸越5丁目 part2 B棟 新築戸建
 
 - キャッチ：戸越公園駅徒歩3分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=togoshi5-p2b
+- URL：https://chouchouinjapan.com/prop-togoshi5-p2b-ja.html
 - 所在地：東京都品川区戸越5丁目12-3
 - 交通：東急大井町線「戸越公園」駅徒歩約3分 ／ 都営浅草線「戸越」駅徒歩約8分
 - 価格：1億9,280万円（含稅）
@@ -6049,7 +6049,7 @@ LDK約22.7帖、居室は約9.1帖・約7.5帖・約6.1帖でございます。
 ## 上原1丁目 新築戸建
 
 - キャッチ：代々木上原駅徒歩4分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=uehara1
+- URL：https://chouchouinjapan.com/prop-uehara1-ja.html
 - 所在地：東京都渋谷区上原1丁目15-7（旧住居表示）
 - 交通：東京ﾒﾄﾛ千代田線・小田急線「代々木上原」駅徒歩約4分 ／ 小田急線「代々木八幡」駅徒歩約8分 ／ 東京ﾒﾄﾛ千代田線「代々木公園」駅徒歩約9分
 - 価格：3億1,480万円（含稅）
@@ -6076,7 +6076,7 @@ LDK約21.0帖、居室は約10.4帖・約7.3帖・約5.0帖・約4.1帖でござ
 ## 代々木2丁目 part2 建築条件付売地
 
 - キャッチ：新宿駅徒歩6分・建築条件付売地（自社設計施工）
-- URL：https://chouchouinjapan.com/property-ja.html?id=yoyogi2-p2
+- URL：https://chouchouinjapan.com/prop-yoyogi2-p2-ja.html
 - 所在地：東京都渋谷区代々木2丁目24-8（旧住居表示）
 - 交通：都営大江戸線「新宿」駅徒歩約6分 ／ JR山手線「代々木」駅徒歩約6分 ／ 小田急小田原線「南新宿」駅徒歩約2分
 - 価格：土地 3億3,000万円 土地＋建物參考總額 3億9,980万円（含稅）
@@ -6104,7 +6104,7 @@ LDK約21.0帖、居室は約10.4帖・約7.3帖・約5.0帖・約4.1帖でござ
 ## 豊町4丁目 part3 新築戸建
 
 - キャッチ：下神明駅徒歩6分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=yutaka4-p3
+- URL：https://chouchouinjapan.com/prop-yutaka4-p3-ja.html
 - 所在地：東京都品川区豊町4丁目11-4
 - 交通：東急大井町線「下神明」駅徒歩約6分 ／ JR横須賀線・湘南新宿ライン「西大井」駅徒歩約9分 ／ 東急大井町線「大井町」駅徒歩約15分
 - 価格：1億9,980万円（含稅）
@@ -6131,7 +6131,7 @@ LDK約24.0帖、居室は約6.1帖・約6.0帖でございます。
 ## 豊町4丁目 part4 新築戸建
 
 - キャッチ：戸越公園駅徒歩6分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=yutaka4-p4
+- URL：https://chouchouinjapan.com/prop-yutaka4-p4-ja.html
 - 所在地：東京都品川区豊町4丁目3-10
 - 交通：東急大井町線「戸越公園」駅徒歩約6分 ／ 東急大井町線「下神明」駅徒歩約11分
 - 価格：1億5,380万円（含稅）
@@ -6158,7 +6158,7 @@ LDK約21.5帖、居室は約8.3帖・約6.4帖・約6.0帖でございます。
 ## 豊町4丁目 part5 新築戸建
 
 - キャッチ：戸越公園駅徒歩5分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=yutaka4-p5
+- URL：https://chouchouinjapan.com/prop-yutaka4-p5-ja.html
 - 所在地：東京都品川区豊町4丁目5-10（旧住居表示）
 - 交通：東急大井町線「戸越公園」駅徒歩約5分 ／ 都営浅草線「中延」駅徒歩約10分
 - 価格：2億4,280万円（含稅）
@@ -6185,7 +6185,7 @@ LDK約28.2帖、居室は約11.1帖・約6.0帖でございます。
 ## 豊町6丁目 A棟 新築戸建
 
 - キャッチ：戸越公園駅徒歩5分・自社設計施工の新築3階建戸建
-- URL：https://chouchouinjapan.com/property-ja.html?id=yutaka6a
+- URL：https://chouchouinjapan.com/prop-yutaka6a-ja.html
 - 所在地：東京都品川区豊町6丁目10-13
 - 交通：東急大井町線「戸越公園」駅徒歩約5分 ／ 東急大井町線/都営浅草線「中延」駅徒歩約6分
 - 価格：1億4,980万円（含稅）
