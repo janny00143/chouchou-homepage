@@ -152,7 +152,8 @@ p.jsub{font-size:14px;color:var(--mut);margin-bottom:12px;padding-left:12px}
     var name=JA?esc(p.title):esc(p.title_cn||p.title);
     var price=esc(String(p.price||"").split("\n")[0]);
     var stn=esc(String(f(p,"station")||"").split(/／|\//)[0]);
-    return '<a class="jcard" href="property.html?id='+encodeURIComponent(p.id)+'">'
+    /* 2026-10-04：改指可被收錄的物件靜態頁（原本是 noindex 殼頁） */
+    return '<a class="jcard" href="prop-'+p.id+'.html">'
       +'<div class="jph">'+(src?'<img src="'+esc(src)+'" alt="'+name+'" loading="lazy">':'')
       +(tags?'<span class="jtags">'+tags+'</span>':'')+'</div>'
       +'<div class="jb"><div class="jn">'+name+'</div><div class="jp">'+price+'</div>'

@@ -597,6 +597,32 @@ function b9_jaLinks() {
    （寫成 href=\"xxx.html\"、引號是跳脫過的）整批沒被 build-cn 改寫，簡中讀者點了就跳出簡中版；
    ja.html 的民泊卡片 url 也直接指向繁中的 minpaku.html。
    兩種引號形式都要掃，因為出問題的正是跳脫過的那一種。 */
+/* B11：可被收錄的頁面不該把內部連結指到 noindex 的殼頁。
+   2026-10-03 物件獨立頁（prop-<id>.html）上線後，文章裡的「相關物件」卡片、
+   自社專區與文章內文的手寫連結仍指向 property*.html?id=（noindex），
+   等於內部連結的權重整個丟掉、使用者也被送到不可收錄的頁。
+   2026-10-04 全部改掉，這裡把規則固化，避免以後新增連結又漏。
+   允許的例外：殼頁自己，以及各物件靜態頁底部那條「看互動版（相簿可滑）」。 */
+function b11_noindexLinks() {
+  const shells = ["property.html", "property-cn.html", "property-ja.html"];
+  const bad = [];
+  for (const f of seoPages()) {
+    if (shells.includes(f)) continue;
+    const s = read(f);
+    const isPropPage = /^prop-[A-Za-z0-9_-]+(-cn|-ja)?\.html$/.test(f);
+    for (const sh of shells) {
+      const n = (s.match(new RegExp('href="' + sh.replace(/\./g, "\\.") + '\\?id=', "g")) || []).length;
+      if (!n) continue;
+      /* 物件靜態頁本身允許一條：底部的「看互動版」 */
+      if (isPropPage && n === 1) continue;
+      bad.push(`${f} → ${sh}?id=（${n} 條）`);
+    }
+  }
+  add("B11", "內部連結指向 noindex 殼頁", bad.length ? "FAIL" : "OK",
+    bad.length ? `${bad.length} 頁有多餘的殼頁連結` : "沒有（物件連結都指向可收錄的靜態頁）",
+    bad.slice(0, 8));
+}
+
 function b10_langLeak() {
   const FILE_RE = "([A-Za-z0-9_-]+)\\.html";
   const bad = [];
@@ -802,7 +828,7 @@ async function main() {
   checkGit();
   checkDeploy();
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); await a8_runtime(); a7_idempotent(); }
-  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); }
+  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 
