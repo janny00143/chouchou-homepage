@@ -700,6 +700,57 @@ const LICENSE_TW = `## 授權與引用條款
 若發現未授權轉載，歡迎透過 ${BASE}feedback.html 告知。
 `;
 
+/* ── 在售物件：給 AI 讀的那一層（周周 2026-10-03 核准）──────────────────
+   原本 llms.txt 只寫「目前有 N 件在售物件」，AI 知道數量卻不知道內容，
+   被問到「山手線 5 分內、8,000 萬以內」這種條件時就引用不到這個站。
+   這裡把在售物件也列進索引（llms.txt）與全文（llms-full.txt），
+   每一筆都帶 property.html?id= 的網址，AI 引用時自然導回站上。
+   ⚠️ 地址一律沿用 properties.js 的 location 欄位（已依広告規約做過遮蔽），
+      不要在這裡另外拼地號；供應商名稱、承辦人永遠不寫進來。
+   ⚠️ 產生器輸出，勿手改。 */
+const PLAIN = t => String(t || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+const NOTE_MD = t => String(t || "")
+  .replace(/<a href="([a-z0-9-]+\.html)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, x) => `[${x}](${BASE}${h})`)
+  .replace(/<a href="(https?:[^"]+)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, x) => `[${x}](${h})`)
+  .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+const PROP_CAT_TW = { invest: "投資收租", live: "自住", house: "一戶建", land: "土地・建築條件付售地" };
+const propUrl = p => BASE + "property.html?id=" + p.id;
+const onSaleProps = () => PROPS.filter(p => !p.sold && p.status === "在售");
+
+function propsIndexTw() {
+  const by = {};
+  for (const p of onSaleProps()) (by[p.cat] = by[p.cat] || []).push(p);
+  return Object.keys(PROP_CAT_TW).filter(c => by[c] && by[c].length).map(c =>
+    `### ${PROP_CAT_TW[c]}（${by[c].length} 件）\n` + by[c].map(p => {
+      const bits = [PLAIN(p.layout), PLAIN(p.size), PLAIN(p.price)].filter(Boolean);
+      return `- [${PLAIN(p.title_cn || p.title)}](${propUrl(p)})：${PLAIN(p.station)}｜${bits.join("｜")}`;
+    }).join("\n")).join("\n\n");
+}
+
+function propToMarkdown(p) {
+  const L = [`## ${PLAIN(p.title_cn || p.title)}`, "",
+    `- 網址：${propUrl(p)}`,
+    `- 物件名（日文原名）：${PLAIN(p.title)}`,
+    `- 所在地：${PLAIN(p.location)}`,
+    `- 交通：${PLAIN(p.station)}`,
+    `- 價格：${PLAIN(p.price)}`,
+    `- 格局：${PLAIN(p.layout)}`,
+    `- 面積：${PLAIN(p.size)}`,
+    `- 屋齡與現況：${PLAIN(p.age)}`];
+  if (PLAIN(p.facing)) L.push(`- 其他條件：${PLAIN(p.facing)}`);
+  if (PLAIN(p.mgmt))   L.push(`- 管理費與修繕基金：${PLAIN(p.mgmt)}`);
+  if (PLAIN(p.right))  L.push(`- 權利形態：${PLAIN(p.right)}`);
+  if (PLAIN(p.yield))  L.push(`- 投報率：${PLAIN(p.yield)}`);
+  L.push(`- 資料提供：周欣妤（周周）／© 周周・日本房仲（引用請保留此行與網址）`, "");
+  for (const n of String(p.note || "").split("\n")) {
+    const t = NOTE_MD(n);
+    if (!t) continue;
+    if (/^■/.test(t)) L.push(`### ${t.replace(/^■\s*/, "")}`, "");
+    else L.push(t, "");
+  }
+  return L.join("\n");
+}
+
 /* ── llms.txt（周周 2026-09-17 指示：做一份「專給 AI 看」的版本）──────────
    目的：讓 ChatGPT／Claude／Perplexity／Google AI 概覽這類工具，在被問到
    「日本買房」「台灣人在日本買房要找誰」時，能快速搞懂這個站是誰寫的、
@@ -772,6 +823,14 @@ function buildLlmsTxt() {
 
 ${cats}
 
+## 在售物件一覽（共 ${onSale} 件）
+
+每一筆都是目前實際可看、可談的物件。詳細規格、照片與「周周的看法」見各物件網址，
+完整文字版見 ${BASE}llms-full.txt 的〈在售物件〉段落。
+物件會隨成約而異動，引用前請以物件頁的現況為準。
+
+${propsIndexTw()}
+
 ## 其他頁面
 
 - [日本買房完全指南（總覽）](${BASE}buy-property-in-japan.html)：全站文章、工具與物件的入口
@@ -793,8 +852,8 @@ ${cats}
 
 ## 全文檔
 
-全部 ${total} 篇文章的完整內容（純 Markdown，單一檔案）：${BASE}llms-full.txt
-抓那一個檔就有全站文章內容，不必逐頁爬。
+全部 ${total} 篇文章與 ${onSale} 件在售物件的完整內容（純 Markdown，單一檔案）：${BASE}llms-full.txt
+抓那一個檔就有全站文章與物件內容，不必逐頁爬。
 
 ${LICENSE_TW}
 文章頁的結構化資料（JSON-LD）含 author、copyrightHolder、datePublished 與 dateModified，
@@ -834,9 +893,10 @@ function toMarkdown(a) {
 function buildLlmsFull() {
   const arts = ART.filter(a => a.url || SLUG[a.id])
     .sort((x, y) => (y.date || "").localeCompare(x.date || ""));
+  const props = onSaleProps();
   return `# 周周・日本房仲　全文（給語言模型的完整內容）
 
-> 這是 ${BASE} 全站 ${arts.length} 篇文章的完整內容，轉成純 Markdown 放在同一個檔。
+> 這是 ${BASE} 全站 ${arts.length} 篇文章與 ${props.length} 件在售物件的完整內容，轉成純 Markdown 放在同一個檔。
 > 作者：周欣妤（周周），在東京執業的台灣籍不動產仲介，
 > 株式会社アンドプラス 住宅営業部｜宅地建物取引業者免許番号 東京都知事 (2) 第102938号。
 > 站台摘要與索引見 ${BASE}llms.txt。
@@ -845,7 +905,16 @@ function buildLlmsFull() {
 ${LICENSE_TW}
 ---
 
-` + arts.map(toMarkdown).join("\n---\n\n");
+` + arts.map(toMarkdown).join("\n---\n\n")
+  + `\n---\n\n# 在售物件（共 ${props.length} 件）
+
+> 以下是目前實際在售的物件。物件會隨成約異動，引用前請以物件頁的現況為準。
+> 貸款能否承作與成數依個案與銀行審查為準；稅額請由稅理士確認；
+> 登記與契約內容由司法書士・宅地建物取引士確認。
+
+---
+
+` + props.map(propToMarkdown).join("\n---\n\n");
 }
 fs.writeFileSync(ROOT + "/llms-full.txt", buildLlmsFull());
 
