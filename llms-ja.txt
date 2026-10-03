@@ -178,7 +178,7 @@
 - [桜上水3丁目 戸建](https://chouchouinjapan.com/property-ja.html?id=sakurajosui)：小田急線「経堂」駅 徒歩13分／東急世田谷線「松原」駅 徒歩10分／京王線「桜上水」駅 徒歩15分｜3LDK・地上2階建（LDK約18.7帖＋洋室9.8帖・5.5帖・4.6帖＋ロフト約4.0帖）｜建物98.72㎡（約29.86坪）・土地105.97㎡（約32.05坪）｜1億8,900万円
 - [西大井2丁目 part5 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nishioi-p5)：JR埼京線・湘南新宿ライン・横須賀線「西大井」駅 徒歩約7分｜3階建戸建・LDK約25.8帖＋3居室＋サービスルーム（延床約186.60㎡）｜土地106.05㎡（約32.08坪）・建物186.60㎡（約56.45坪）／1階65.61㎡（車庫・ポーチ12.60㎡含む）＋2階73.28㎡（東西バルコニー15.73㎡含む）＋3階47.71㎡｜2億1,980万円（税込）
 - [旗の台3丁目 新築戸建](https://chouchouinjapan.com/property-ja.html?id=hatanodai3)：東急池上線・東急大井町線「旗の台」駅徒歩約4分 ／ 東急大井町線「荏原町」駅徒歩約2分｜3階建戸建・LDK約28.7帖（延床約158.10㎡）｜土地85.96㎡・建物158.10㎡｜1億9,980万円（含稅）
-- [東が丘1丁目 part2 新築戸建](https://chouchouinjapan.com/property-ja.html?id=higashigaoka1-p2)：東急田園都市線「駒沢大学」駅徒歩約13分｜2階建戸建・LDK約26.0帖（延床約169.62㎡）｜土地115.60㎡・建物169.62㎡｜2億7,980万円（含稅）
+- [東が丘1丁目 part2 新築戸建](https://chouchouinjapan.com/property-ja.html?id=higashigaoka1-p2)：東急田園都市線「駒沢大学」駅徒歩約13分｜2階建戸建・LDK約26.0帖（延床約169.62㎡）｜土地115.60㎡・建物169.62㎡（1F 84.97㎡〔車庫・ポーチ19.91㎡含む〕＋2F 80.93㎡＋PH1F 3.72㎡）｜2億7,980万円（含稅）
 - [東中野1丁目 新築戸建](https://chouchouinjapan.com/property-ja.html?id=higashinakano1)：JR中央･総武線「東中野」駅徒歩約5分｜3階建戸建・LDK約23.0帖（延床約137.12㎡）｜土地76.77㎡・建物137.12㎡｜1億6,380万円（含稅）
 - [東玉川1丁目 part4 A棟 新築戸建](https://chouchouinjapan.com/property-ja.html?id=higashitamagawa-p4a)：東急目黒線「奥沢」駅徒歩約10分 ／ 東急東横線･東急目黒線「田園調布」駅徒歩約12分｜2階建戸建・LDK約23.7帖（延床約110.64㎡）｜土地111.13㎡・建物110.64㎡｜1億7,180万円（含稅）
 - [東玉川1丁目 part4 B棟 新築戸建](https://chouchouinjapan.com/property-ja.html?id=higashitamagawa-p4b)：東急目黒線「奥沢」駅徒歩約10分 ／ 東急東横線･東急目黒線「田園調布」駅徒歩約12分｜2階建戸建・LDK約20.3帖（延床約118.21㎡）｜土地104.35㎡・建物118.21㎡｜1億7,180万円（含稅）
@@ -191,7 +191,7 @@
 - [南榎町 part2 新築戸建](https://chouchouinjapan.com/property-ja.html?id=minamienoki-p2)：東京メトロ東西線「神楽坂」駅徒歩約12分 ／ 都営大江戸線「牛込柳町」駅徒歩約5分｜3階建戸建・LDK約25.0帖（延床約151.94㎡）｜土地81.77㎡・建物151.94㎡｜2億7,280万円（含稅）
 - [南荻窪3丁目 part2 新築戸建](https://chouchouinjapan.com/property-ja.html?id=minamiogikubo3-p2)：JR中央線「荻窪」駅徒歩約15分 ／ JR中央線「西荻窪」駅徒歩約14分｜2階建戸建・LDK約26.1帖（延床約150.34㎡）｜土地167.62㎡・建物150.34㎡｜2億2,180万円（含稅）
 - [中野區本町2丁目 part3 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nakanohoncho2-p3)：東京ﾒﾄﾛ丸ノ内線・都営大江戸線「中野坂上」駅徒歩約2分 ／ JR中央･総武線・都営大江戸線「東中野」駅徒歩約20分｜3階建戸建・LDK約16.7帖（延床約85.95㎡）｜土地54.29㎡・建物85.95㎡｜1億3,180万円（含稅）
-- [中野區本町6丁目 part2 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nakanohoncho6-p2)：東京ﾒﾄﾛ丸ノ内線「東高円寺」駅徒歩約8分 ／ JR中央線「中野」駅徒歩約17分｜3階建戸建・LDK約23.0帖（延床約140.59㎡）｜土地79.12㎡・建物140.59㎡｜1億6,480万円（含稅）
+- [中野區本町6丁目 part2 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nakanohoncho6-p2)：東京ﾒﾄﾛ丸ノ内線「東高円寺」駅徒歩約8分 ／ JR中央線「中野」駅徒歩約17分｜3階建戸建・LDK約23.0帖（延床約140.59㎡）｜土地79.12㎡・建物140.59㎡｜1億5,980万円（含稅）
 - [西五反田3丁目 A棟 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nishigotanda3a)：東急目黒線「不動前」駅徒歩約5分 ／ JR山手線「目黒」駅徒歩約13分｜3階建戸建・LDK約23.6帖（延床約147.20㎡）｜土地73.65㎡・建物147.20㎡｜2億3,280万円（含稅）
 - [西五反田3丁目 B棟 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nishigotanda3b)：東急目黒線「不動前」駅徒歩約5分 ／ JR山手線「目黒」駅徒歩約13分｜3階建戸建・LDK約23.9帖（延床約153.05㎡）｜土地74.34㎡・建物153.05㎡｜2億3,980万円（含稅）
 - [西品川2丁目 part5 新築戸建](https://chouchouinjapan.com/property-ja.html?id=nishishinagawa2-p5)：JR山手線「大崎」駅徒歩約12分 ／ JR京浜東北線･東急大井町線「大井町」駅徒歩約15分 ／ 東急大井町線「下神明」駅徒歩約7分｜3階建戸建・LDK約26.8帖（延床約170.80㎡）｜土地99.58㎡・建物170.80㎡｜2億980万円（含稅）
