@@ -133,7 +133,8 @@ function propBlockHTMLJa(a) {
       ? String(p.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
     const name = esc(p.title || "");
     const yieldLine = p.yield ? '<span class="apy">' + esc(String(p.yield).split("（")[0]) + "</span>" : "";
-    return '<a class="apcard" href="property-ja.html?id=' + encodeURIComponent(p.id) + '">'
+    /* 2026-10-04：noindex のシェルページではなく静的ページへ（提案2の続き） */
+    return '<a class="apcard" href="prop-' + p.id + '-ja.html">'
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + name + "</b>"
       + '<span class="apmeta">' + esc(p.location || "") + "</span>"

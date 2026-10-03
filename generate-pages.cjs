@@ -161,7 +161,10 @@ function propBlockHTML(a) {
       ? String(p.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
     const name = esc(p.title_cn || p.title || "");
     const yieldLine = p.yield ? '<span class="apy">' + esc(String(p.yield).split("（")[0]) + "</span>" : "";
-    return '<a class="apcard" href="property.html?id=' + encodeURIComponent(p.id) + '">'
+    /* 2026-10-04：原本指向 property.html?id=（noindex 殼頁），等於內部連結
+       的權重全部丟掉、使用者也被送到不可收錄的頁。提案 2 的靜態頁上線後
+       改指 prop-<id>.html。 */
+    return '<a class="apcard" href="prop-' + p.id + '.html">'
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + name + "</b>"
       + '<span class="apmeta">' + esc(p.location || "") + "</span>"

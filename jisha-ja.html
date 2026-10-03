@@ -153,7 +153,8 @@ p.jsub{font-size:14px;color:var(--mut);margin-bottom:12px;padding-left:12px}
     var name=JA?esc(p.title):esc(p.title_cn||p.title);
     var price=esc(String(p.price||"").split("\n")[0]);
     var stn=esc(String(f(p,"station")||"").split(/／|\//)[0]);
-    return '<a class="jcard" href="property-ja.html?id='+encodeURIComponent(p.id)+'">'
+    /* 2026-10-04：静的ページへ（原本は noindex シェル） */
+    return '<a class="jcard" href="prop-'+p.id+'-ja.html">'
       +'<div class="jph">'+(src?'<img src="'+esc(src)+'" alt="'+name+'" loading="lazy">':'')
       +(tags?'<span class="jtags">'+tags+'</span>':'')+'</div>'
       +'<div class="jb"><div class="jn">'+name+'</div><div class="jp">'+price+'</div>'
