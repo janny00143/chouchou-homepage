@@ -989,6 +989,47 @@ function readMoreKeys(p) {
   return out;
 }
 
+/* ── 同區域的其他物件（2026-10-05 巡邏提案・可逆加值，自己先做）────────────
+   物件頁往外的出口原本只有「延伸閱讀（文章）」與「看其他在售物件（整個列表）」，
+   看完一間就斷了。這裡用 location 的前段（都道府縣＋區）比對，列 2〜3 件同區的在售物件。
+   同區不足就退回同一條路線的車站名；還是不足就整段不輸出，不硬湊。 */
+function propWard(p) {
+  const loc = PLAIN(p.location || "");
+  const m = loc.match(/^(東京都|神奈川縣|千葉縣|埼玉縣|大阪府|京都府|兵庫縣)?\s*([^\d\s]{1,6}?[區市郡])/);
+  return m ? m[2] : "";
+}
+function propNearby(p) {
+  const ward = propWard(p);
+  if (!ward) return [];
+  const pool = onSaleProps().filter(x => x.id !== p.id);
+  let list = pool.filter(x => propWard(x) === ward);
+  if (list.length < 2) return [];
+  /* 同類型（自住／土地／收益）優先，其餘照原順序 */
+  list = list.slice().sort((a, b) => (b.cat === p.cat ? 1 : 0) - (a.cat === p.cat ? 1 : 0));
+  const seed = String(p.id).split("").reduce((n, c) => n + c.charCodeAt(0), 0);
+  const off = seed % list.length;
+  return list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+}
+function propNearbyHTML(p) {
+  const list = propNearby(p);
+  if (!list.length) return "";
+  const cards = list.map(x => {
+    const img = (x.photos && x.photos[0])
+      ? String(x.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
+    const yieldLine = x.yield ? '<span class="apy">' + esc(String(x.yield).split("（")[0]) + "</span>" : "";
+    return '<a class="apcard" href="prop-' + x.id + '.html">'
+      + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
+      + '<span class="apbody"><b>' + esc(propTitleTW(x)) + "</b>"
+      + '<span class="apmeta">' + esc(PLAIN(x.location || "")) + "</span>"
+      + '<span class="apprice">' + esc(PLAIN(String(x.price || "價格請洽詢")).split("\n")[0]) + yieldLine + "</span>"
+      + "</span></a>";
+  }).join("");
+  return '<section class="apsec" style="margin-top:26px"><h2>' + esc(propWard(p)) + '的其他物件</h2>'
+    + '<p class="apsub">同一區、現在也在售的。想一起看、一天排完也可以。</p>'
+    + '<div class="apgrid">' + cards + "</div>"
+    + '<a class="apmore" href="properties.html">看全部物件 →</a></section>';
+}
+
 function propReadMore(p) {
   const slugs = readMoreKeys(p);
   if (!slugs.length) return "";
@@ -1092,6 +1133,7 @@ ${propNoteHTML(p)}
 </div>
 ${vid}
 ${propReadMore(p)}
+${propNearbyHTML(p)}
 <div class="ablock" style="margin-top:26px"><div><b>想看這間，或先抓貸款？</b><br><span style="color:var(--mut);font-size:14px">用中文直接問周周，看房、試算、流程都可以。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 問周周</a></div>
 <p style="margin-top:20px;font-size:14px"><a href="property.html?id=${encodeURIComponent(p.id)}">📷 看互動版（相簿可滑）</a>　·　<a href="properties.html">看其他在售物件 →</a></p>
 <p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 本頁資訊以刊登時為準，物件狀況可能異動，實際條件請以現況與重要事項說明書為準。能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約內容由司法書士・宅地建物取引士確認。</p>
