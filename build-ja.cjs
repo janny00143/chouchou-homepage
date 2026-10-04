@@ -792,7 +792,7 @@ function propGalleryJa(p) {
     /* -illust：建物未定の売地用の参考イメージ。完成予想図とは書けない（表示規約）。 */
     const illu = /-illust\./.test(src);
     const cap = pers ? "完成予想図（実際とは異なります）"
-      : illu ? "イメージイラスト（参考）／完成予想図ではありません。実際の建物は設計・工事請負契約により異なります"
+      : illu ? "イメージ画像（参考）／完成予想図ではありません。実際の建物は設計・工事請負契約により異なります"
       : plan ? "間取図・区画図" : "";
     const sty = plan || pers || illu
       ? "width:100%;height:auto;max-height:520px;object-fit:contain;background:#faf8f7"
