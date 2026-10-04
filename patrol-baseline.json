@@ -1,11 +1,11 @@
 {
- "date": "2026-10-04",
+ "date": "2026-10-05",
  "mode": "full",
  "metrics": {
   "pages": 511,
   "inlineJs": 2988,
-  "jsonLd": 924,
-  "links": 10232,
+  "jsonLd": 930,
+  "links": 11065,
   "sitemap": 498,
   "props": 99,
   "propsOnSale": 90,
@@ -19,8 +19,8 @@
   "linksJa": 123,
   "orphanTw": 0,
   "orphanJa": 0,
-  "noPlan": 1,
-  "images": 733,
+  "noPlan": 0,
+  "images": 735,
   "unusedImages": 0,
   "imgNoWH": 0,
   "rootItems": 672

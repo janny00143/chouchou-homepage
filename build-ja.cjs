@@ -872,6 +872,39 @@ function readMoreSlugsJa(p) {
   return out;
 }
 
+/* 同じ区の他物件（繁中版 propNearbyHTML と同じルール） */
+function propWardJa(p) {
+  const loc = PLAIN_JA(p.location || "");
+  const m = loc.match(/^(東京都|神奈川県|千葉県|埼玉県|大阪府|京都府|兵庫県)?\s*([^\d\s]{1,6}?[区市郡])/);
+  return m ? m[2] : "";
+}
+function propNearbyHTMLJa(p) {
+  const ward = propWardJa(p);
+  if (!ward) return "";
+  const pool = onSalePropsJa().filter(x => x.id !== p.id);
+  let list = pool.filter(x => propWardJa(x) === ward);
+  if (list.length < 2) return "";
+  list = list.slice().sort((a, b) => (b.cat === p.cat ? 1 : 0) - (a.cat === p.cat ? 1 : 0));
+  const seed = String(p.id).split("").reduce((n, c) => n + c.charCodeAt(0), 0);
+  const off = seed % list.length;
+  list = list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+  const cards = list.map(x => {
+    const img = (x.photos && x.photos[0])
+      ? String(x.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
+    const yieldLine = x.yield ? '<span class="apy">' + esc(String(x.yield).split("（")[0]) + "</span>" : "";
+    return '<a class="apcard" href="prop-' + x.id + '-ja.html">'
+      + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
+      + '<span class="apbody"><b>' + esc(PLAIN_JA(x.title || "")) + "</b>"
+      + '<span class="apmeta">' + esc(PLAIN_JA(x.location || "")) + "</span>"
+      + '<span class="apprice">' + esc(PLAIN_JA(String(x.price || "価格はお問い合わせください")).split("\n")[0]) + yieldLine + "</span>"
+      + "</span></a>";
+  }).join("");
+  return '<section class="apsec" style="margin-top:26px"><h2>' + esc(ward) + 'の他の物件</h2>'
+    + '<p class="apsub">同じ区で現在ご紹介できる物件でございます。まとめてのご内見も承ります。</p>'
+    + '<div class="apgrid">' + cards + "</div>"
+    + '<a class="apmore" href="properties-ja.html">物件一覧を見る →</a></section>';
+}
+
 function propReadMoreJa(p) {
   const slugs = readMoreSlugsJa(p);
   if (!slugs.length) return "";
@@ -970,6 +1003,7 @@ ${propNoteHTMLJa(p)}
 </div>
 ${vid}
 ${propReadMoreJa(p)}
+${propNearbyHTMLJa(p)}
 <div class="ablock" style="margin-top:26px"><div><b>ご内見・資金計画のご相談</b><br><span style="color:var(--mut);font-size:14px">日本語でお気軽にご連絡ください。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div>
 <p style="margin-top:20px;font-size:14px"><a href="property-ja.html?id=${encodeURIComponent(p.id)}">📷 スライド版で写真を見る</a>　·　<a href="properties-ja.html">他の販売中物件を見る →</a></p>
 <p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 掲載内容は作成時点のものでございます。最終的な条件は現況および重要事項説明書をご確認ください。融資の可否・融資割合は個別の審査により、税額は税理士、登記・契約内容は司法書士および宅地建物取引士にご確認ください。</p>
