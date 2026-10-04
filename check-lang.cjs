@@ -83,6 +83,73 @@ const ALLOW = [
 // 程式碼裡用來比對日文備註的關鍵字
 "ご自宅"];
 
+/* ───────────────────────────────────────────────────────────────────────────
+ * 第二關：「全漢字的日文詞」（周周 2026-10-04 指示後追加）
+ *
+ * 上面那關抓平假名與日本漢字，但像「修繕積立金」「管理組合」「手付金」
+ * 「媒介契約」這種——每個字拆開都是中文字——它完全抓不到，
+ * 於是這些日文詞就一路留在繁中正文裡（2026-10-04 全站掃到 180 處）。
+ *
+ * 規則跟 CLAUDE.md §7 一樣：日文原文只能出現在括號裡，中文要在前面。
+ *   ✅ 修繕基金（修繕積立金）      ❌ 這棟的修繕積立金偏低
+ *
+ * 要放行新詞就加進 JPTERM_OK（長詞白名單，例如「應告知事項」含「告知事項」）；
+ * 要新增偵測詞就加進 JPTERMS，格式 [日文, 建議的中文]。偵測邏輯不要改。
+ * ─────────────────────────────────────────────────────────────────────────── */
+const JPTERMS = [
+  ["修繕積立金", "修繕基金"], ["管理組合", "管委會"], ["手付金", "訂金"],
+  ["媒介契約", "委託銷售契約"], ["告知事項", "應告知事項"], ["注文住宅", "訂製住宅"],
+  ["登記簿", "登記謄本"], ["更地", "空地"], ["敷金", "押金"], ["礼金", "禮金"],
+  ["上棟", "上樑"], ["着工", "動工"], ["引渡", "交屋"], ["分譲", "自地自建自售"],
+  ["心理的瑕疵", "心理瑕疵"], ["建売", "現成新成屋"], ["仲介手数料", "仲介費"],
+  ["保証会社", "保證公司"], ["原状回復", "回復原狀"], ["任意売却", "任意出售"],
+];
+// 含偵測詞、但本身已經是正確中文（或正式名稱）的長詞 → 整串放行
+const JPTERM_OK = [
+  "應告知事項", "登記謄本", "大規模修繕", "長期修繕計畫", "敷金・保証金",
+  "敷金の相場", "敷金相場", "表面利回り、修繕積立金、重要事項説明書等", "敷金礼金ゼロ", "建築条件付", "司法書士", "宅地建物取引士",
+];
+
+function checkJpTerms() {
+  let n = 0;
+  for (const f of FILES.concat(["jisha.html", "generate-pages.cjs", "build-prop-seo.cjs"])) {
+    if (!fs.existsSync(f)) continue;
+    // translate.html 是翻譯機的日→中對照詞表，整檔就是要寫日文原文
+    if (f === "translate.html") continue;
+    const raw = fs.readFileSync(f, "utf8");
+    const mask = new Uint8Array(raw.length);
+    const cov = pat => { let i = 0; while ((i = raw.indexOf(pat, i)) >= 0) { mask.fill(1, i, i + pat.length); i += pat.length; } };
+    for (const w of JPTERM_OK) cov(w);
+    for (const w of ALLOW) cov(w);
+    { const r = /https?:\/\/[^\s"'<>]+/g; let m; while ((m = r.exec(raw))) mask.fill(1, m.index, m.index + m[0].length); }
+    const bad = [];
+    for (const [jp, tw] of JPTERMS) {
+      let i = 0;
+      while ((i = raw.indexOf(jp, i)) >= 0) {
+        const j = i + jp.length;
+        const before = i > 0 ? raw[i - 1] : "";
+        const after = raw[j] || "";
+        i = j;
+        if (mask[i - 1]) continue;
+        if (OPEN.includes(before)) continue;                 // 中文在前、日文在括號內 → 合格
+        if ("）)」』〉》】〕".includes(after)) continue;      // 括號內的日文原文
+        bad.push([jp, tw, j - jp.length]);
+      }
+    }
+    if (!bad.length) continue;
+    n += bad.length;
+    console.log("\n── " + f + "（全漢字日文詞 " + bad.length + " 處）");
+    const seen = new Set();
+    for (const [jp, tw, pos] of bad) {
+      if (seen.has(jp)) continue; seen.add(jp);
+      console.log("   " + jp.padEnd(10) + "→ 建議「" + tw + "（" + jp + "）」  …"
+        + raw.slice(Math.max(0, pos - 22), pos + 22).replace(/\s+/g, "") + "…");
+    }
+  }
+  console.log(n ? "\n⚠️  共 " + n + " 處全漢字日文詞直接當正文用（CLAUDE.md §7）。改成「中文（日文原文）」；合法的加進 check-lang.cjs 的 JPTERM_OK。"
+                : "\n✅ 沒有偵測到全漢字的日文詞直接當正文用");
+}
+
 const FIELD = /(title_cn|note)\s*:\s*"((?:[^"\\]|\\.)*)"/g;   // 物件檔只查這兩欄
 
 let total = 0, files = 0;
@@ -130,3 +197,5 @@ for (const f of FILES) {
 }
 console.log(total ? "\n⚠️  共 " + total + " 處疑似日文殘留（" + files + " 個檔）。正文請改成「中文（日文原文）」；確定合法的加進 check-lang.cjs 的 ALLOW。"
                   : "\n✅ 中文頁面沒有偵測到日文殘留");
+
+checkJpTerms();
