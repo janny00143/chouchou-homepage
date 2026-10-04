@@ -9,7 +9,7 @@
 
 window.PROPERTIES_JA = {
   "sanno1": {
-    photos: ["prop/prop-sanno1-ja-illust.webp","prop/prop-sanno1-kukaku-plan.webp","prop/prop-sanno1a-plan.webp","prop/prop-sanno1b-plan.webp","prop/prop-sanno1c-plan.webp"],
+    photos: ["prop/prop-sanno1-ja-illust.webp","prop/prop-sanno1-b-illust.webp","prop/prop-sanno1-kukaku-plan.webp","prop/prop-sanno1a-plan.webp","prop/prop-sanno1b-plan.webp","prop/prop-sanno1c-plan.webp"],
     catch: "JR「大森」駅徒歩3分・第一種低層住居専用地域の建築条件付売地（A・B・C 全3区画）",
     location: "東京都大田区山王1丁目",
     station: "JR京浜東北線「大森」駅 徒歩約3分",
