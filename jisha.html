@@ -146,9 +146,11 @@ p.jsub{font-size:14px;color:var(--mut);margin-bottom:12px;padding-left:12px}
   function card(p){
     var src=(p.photos&&p.photos[0])||"";
     var pers=/-pers\./.test(src);
+    var illu=/-illust\./.test(src);
     var tags="";
     if(p.cat==="land") tags+='<span class="land">土地</span>';
     if(pers) tags+='<span>完成預想圖</span>';
+    if(illu) tags+='<span>示意圖</span>';
     var name=JA?esc(p.title):esc(p.title_cn||p.title);
     var price=esc(String(p.price||"").split("\n")[0]);
     var stn=esc(String(f(p,"station")||"").split(/／|\//)[0]);
