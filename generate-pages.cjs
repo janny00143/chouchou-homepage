@@ -928,7 +928,7 @@ function propGallery(p) {
        そう書いてはいけない（不動産の表示に関する公正競争規約）。2026-10-04 追加 */
     const illu = /-illust\./.test(src);
     const capTxt = pers ? "完成預想圖（非實景照）"
-      : illu ? "參考外觀示意圖（イメージイラスト）／非完成預想圖，實際建物依設計與工程承攬契約而異"
+      : illu ? "參考外觀示意圖（イメージ画像）／非完成預想圖，實際建物依設計與工程承攬契約而異"
       : plan ? "間取圖／區劃圖" : "";
     const sty = plan || pers || illu
       ? "width:100%;height:auto;max-height:520px;object-fit:contain;background:#faf8f7"
