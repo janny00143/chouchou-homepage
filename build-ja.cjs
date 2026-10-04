@@ -107,21 +107,70 @@ const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\
 const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
 const jaSlug = slug => slug + "-ja";
 
+/* 繁中版 generate-pages.cjs と同じルール（提案1・2026-10-04 対象分類を拡大）。
+   life／travel は意図的に対象外——生活・観光記事に物件カードは唐突になる。 */
+const HOME_CAT_JA = p => p.cat === "live" || p.cat === "house";
 const PICK_BY_CAT_JA = {
   invest:  p => p.cat === "invest",
   /* 「民泊」だと「民泊不可」の物件まで拾ってしまうため、旅館業で判定する */
   minpaku: p => p.cat === "invest" && /旅館業|旅館一棟|旅館収益|簡易宿所/.test([p.title, p.catch, p.note, p.layout].join(" ")),
+  live:    HOME_CAT_JA,
+  foreign: HOME_CAT_JA,
+  loan:    HOME_CAT_JA,
+  knowhow: HOME_CAT_JA,
+  area:    HOME_CAT_JA,
 };
+/* エリア記事 → 同じエリアの販売中物件。左＝記事タイトル、右＝物件の location。
+   物件側は日本漢字、記事側（繁中タイトル）は中文なので両方を列挙する。 */
+const AREA_HINT_JA = [
+  [/文京/, /文京/],
+  [/澀谷|渋谷/, /澀谷|渋谷/],
+  [/中目黑|中目黒/, /中目黑|中目黒|上目黒|目黑本町|目黒本町/],
+  [/惠比壽|恵比寿/, /惠比壽|恵比寿/],
+  [/代官山/, /代官山|猿楽|澀谷|渋谷/],
+  [/目黑|目黒/, /目黑|目黒/],
+  [/世田谷|三軒茶屋|下北澤/, /世田谷/],
+  [/品川|武藏小山|武蔵小山|大井/, /品川|大井/],
+  [/大田|蒲田|大森/, /大田/],
+  [/新宿|四谷|高田馬場/, /新宿|四谷|高田馬場/],
+  [/台東|淺草|浅草|上野/, /台東|淺草|浅草/],
+  [/墨田|晴空塔|押上|錦糸/, /墨田/],
+  [/豐島|豊島|池袋|大塚/, /豐島|豊島/],
+  [/荒川|日暮里/, /荒川/],
+  [/葛飾|江東|灣岸|湾岸|豐洲|豊洲|勝どき/, /葛飾|江東|海岸|芝浦/],
+  [/中野/, /中野/],
+  [/杉並|高圓寺|高円寺|荻窪/, /杉並|高円寺|荻窪/],
+  [/港區|麻布|六本木|虎之門|虎ノ門/, /港區/],
+  [/大阪|西成|生野|東成/, /大阪/],
+  [/京都/, /京都/],
+];
 function propsForArticleJa(a) {
   const pick = PICK_BY_CAT_JA[a.cat];
   if (!pick) return [];
-  let list = PROPS.filter(p => !p.sold && p.status === "在售" && pick(p));
-  if (a.cat === "minpaku" && list.length < 2) list = PROPS.filter(p => !p.sold && p.status === "在售" && p.cat === "invest");
+  const onSale = PROPS.filter(p => !p.sold && p.status === "在售");
+  let list = [], areaHit = false;
+  if (a.cat === "area") {
+    const txt = [a.title, (a.tags || []).join(" ")].join(" ");
+    for (const [inArt, inLoc] of AREA_HINT_JA) {
+      if (!inArt.test(txt)) continue;
+      const m = onSale.filter(p => inLoc.test(String(p.location || "")));
+      if (m.length >= 2) { list = m; areaHit = true; break; }
+    }
+  }
+  if (!list.length) list = onSale.filter(pick);
+  if (a.cat === "minpaku" && list.length < 2) list = onSale.filter(p => p.cat === "invest");
   if (list.length < 2) return [];
   list = list.slice().sort((x, y) => (y.yield ? 1 : 0) - (x.yield ? 1 : 0));
   const seed = parseInt(String(a.id).replace(/\D/g, ""), 10) || 0;
   const off = list.length ? seed % list.length : 0;
-  return list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+  const out = list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+  out.areaHit = areaHit;
+  return out;
+}
+function propBlockTitleJa(a, areaHit) {
+  if (areaHit) return "このエリアで現在ご紹介できる物件";
+  if (a.cat === "invest" || a.cat === "minpaku") return "現在ご紹介できる投資物件";
+  return "現在ご紹介できる居住用物件";
 }
 function propBlockHTMLJa(a) {
   const list = propsForArticleJa(a);
@@ -141,7 +190,7 @@ function propBlockHTMLJa(a) {
       + '<span class="apprice">' + esc(String(p.price || "価格はお問い合わせください").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
-  return '<section class="apsec"><h2>現在ご紹介できる投資物件</h2>'
+  return '<section class="apsec"><h2>' + esc(propBlockTitleJa(a, list.areaHit)) + '</h2>'
     + '<p class="apsub">記事を読んで具体的な物件をご覧になりたい方へ。掲載中の物件から数件をご紹介します（物件情報の更新に自動で連動します）。</p>'
     + '<div class="apgrid">' + cards + "</div>"
     + '<a class="apmore" href="properties-ja.html">物件一覧を見る →</a></section>';
@@ -764,6 +813,66 @@ function propVideoLdJa(p, url) {
   };
 }
 
+/* ── 物件ページの「関連記事」（提案 1・2026-10-04）──────────────────────
+   繁中版 generate-pages.cjs の propReadMore と同じルール。
+   記事タイトルは ja-content.json から取るので、記事側を直せば自動で追従する。
+   記事が未翻訳・未執筆のキーは出さない（リンク切れを作らない）。 */
+const READ_MORE_JA = {
+  yieldNet:  "japan-rental-yield-gross-vs-net",
+  yieldTrap: "japan-rental-yield-trap",
+  mgmt:      "japan-rental-management-company",
+  hotel:     "japan-hotel-license-simple-lodging",
+  fourModels:"minpaku-monthly-rental-comparison",
+  minpakuLoc:"tokyo-minpaku-popular-location-layout",
+  whole:     "japan-investment-property-whole-building-vs-unit",
+  costs:     "japan-property-purchase-costs",
+  loan:      "foreigner-mortgage-no-permanent-residency",
+  check:     "japan-used-apartment-checklist",
+  nego:      "japan-property-price-negotiation",
+  rentBuy:   "rent-or-buy-japan",
+  school:    "tokyo-school-district-property",
+  tax:       "japan-property-tax-guide",
+  land:      "japan-buy-land-build-house",
+  condLand:  "japan-building-conditional-land"
+};
+const SLUG2JA = (() => {
+  const m = {};
+  for (const a of ART) {
+    const sl = SLUG[a.id], j = JA_CONTENT[a.id];
+    if (sl && j && j.title) m[sl] = j.title;
+  }
+  return m;
+})();
+
+function readMoreSlugsJa(p) {
+  const k = [], cat = String(p.cat || ""), tag = String(p.layoutTag || "");
+  const txt = [p.title, p.title_cn, p.catch, p.layout, p.facing].filter(Boolean).map(PLAIN_JA).join(" ");
+  const lodging = /民宿|旅館|民泊/.test(tag + " " + txt) || p.group === "osaka";
+  if (lodging) k.push("hotel", "fourModels", "minpakuLoc");
+  else if (cat === "invest") k.push("yieldNet", "yieldTrap", "mgmt");
+  else if (cat === "land") k.push("land", "costs", "loan");
+  else if (cat === "house") k.push("costs", "nego", "loan");
+  else k.push("rentBuy", "check", "costs");
+  if (/建築条件付/.test(txt)) k.unshift("condLand");
+  if (/誠之|学区|文京/.test(txt)) k.unshift("school");
+  if (/一棟/.test(txt)) k.unshift("whole");
+  const out = [];
+  for (const key of k) {
+    const sl = READ_MORE_JA[key];
+    if (!sl || !SLUG2JA[sl]) continue;
+    if (!out.includes(sl)) out.push(sl);
+    if (out.length === 3) break;
+  }
+  return out;
+}
+
+function propReadMoreJa(p) {
+  const slugs = readMoreSlugsJa(p);
+  if (!slugs.length) return "";
+  const li = slugs.map(sl => `<a href="${jaSlug(sl)}.html" style="display:block;padding:10px 0;border-bottom:1px solid var(--line)">→ ${esc(SLUG2JA[sl])}</a>`).join("");
+  return `<section style="margin-top:28px;border-top:1px solid var(--line);padding-top:16px"><h2 style="font-size:18px;margin-bottom:6px">あわせて読みたい</h2>${li}</section>`;
+}
+
 function propPageJa(p) {
   const url = propPageUrlJa(p);
   const title = PLAIN_JA(p.title);
@@ -854,6 +963,7 @@ ${propGalleryJa(p)}
 ${propNoteHTMLJa(p)}
 </div>
 ${vid}
+${propReadMoreJa(p)}
 <div class="ablock" style="margin-top:26px"><div><b>ご内見・資金計画のご相談</b><br><span style="color:var(--mut);font-size:14px">日本語でお気軽にご連絡ください。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div>
 <p style="margin-top:20px;font-size:14px"><a href="property-ja.html?id=${encodeURIComponent(p.id)}">📷 スライド版で写真を見る</a>　·　<a href="properties-ja.html">他の販売中物件を見る →</a></p>
 <p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 掲載内容は作成時点のものでございます。最終的な条件は現況および重要事項説明書をご確認ください。融資の可否・融資割合は個別の審査により、税額は税理士、登記・契約内容は司法書士および宅地建物取引士にご確認ください。</p>

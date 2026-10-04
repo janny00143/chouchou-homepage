@@ -133,23 +133,78 @@ const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\
 const rt = a => Math.max(1, Math.round(a.body.join("").replace(/\s/g, "").length / 350));
 const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
 
-/* 文章分類 → 要推薦哪一種在售物件 */
+/* ── 文章分類 → 要推薦哪一種在售物件（提案 1・2026-10-04 擴大覆蓋）────────
+   原本只有 invest 與 minpaku 兩類會出現物件卡片，55 篇文章裡只有 9 篇有，
+   其餘 46 篇讀完就斷在那裡、沒有往物件導流。這裡把自住／貸款／外國人買房／
+   買房知識也納入（配自住型物件），區域介紹則比對文章講的區域與物件所在地。
+   life（生活資訊）與 travel（觀光）刻意不配——那兩類硬塞物件卡片會很突兀，
+   CLAUDE.md §3 要的是散文感，結尾本來就有加 LINE 的導引。 */
+const HOME_CAT = p => p.cat === "live" || p.cat === "house";
 const PICK_BY_CAT = {
   invest:  p => p.cat === "invest",
   /* 用「旅館業」比對，不要用「民泊」——有物件的 note 寫的是「此戶民泊不可」，用民泊會抓到意思相反的 */
   minpaku: p => p.cat === "invest" && /旅館業|旅館一棟|旅館収益|旅館收益|簡易宿所/.test([p.title, p.title_cn, p.note, p.layout].join(" ")),
+  live:    HOME_CAT,
+  foreign: HOME_CAT,
+  loan:    HOME_CAT,
+  knowhow: HOME_CAT,
+  area:    HOME_CAT,      // area 另外會先試「同區域」，比對不到才退回自住型
 };
+/* 區域介紹文章 → 同一區的在售物件。
+   左邊比對文章標題／標籤，右邊比對物件的 location。
+   物件專區保留日文漢字（CLAUDE.md §9），文章一律中文，所以兩種寫法都要列。 */
+const AREA_HINT = [
+  [/文京/,                 /文京/],
+  [/澀谷|渋谷/,            /澀谷|渋谷/],
+  [/中目黑|中目黒/,        /中目黑|中目黒|上目黒|目黑本町|目黒本町/],
+  [/惠比壽|恵比寿/,        /惠比壽|恵比寿/],
+  [/代官山/,               /代官山|猿楽|澀谷|渋谷/],
+  [/目黑|目黒/,            /目黑|目黒/],
+  [/世田谷|三軒茶屋|下北澤/, /世田谷/],
+  [/品川|武藏小山|武蔵小山|大井/, /品川|大井/],
+  [/大田|蒲田|大森/,       /大田/],
+  [/新宿|四谷|高田馬場/,   /新宿|四谷|高田馬場/],
+  [/台東|淺草|浅草|上野/,  /台東|淺草|浅草/],
+  [/墨田|晴空塔|押上|錦糸/, /墨田/],
+  [/豐島|豊島|池袋|大塚/,  /豐島|豊島/],
+  [/荒川|日暮里/,          /荒川/],
+  [/葛飾|江東|灣岸|湾岸|豐洲|豊洲|勝どき/, /葛飾|江東|海岸|芝浦/],
+  [/中野/,                 /中野/],
+  [/杉並|高圓寺|高円寺|荻窪/, /杉並|高円寺|荻窪/],
+  [/港區|麻布|六本木|虎之門|虎ノ門/, /港區/],
+  [/大阪|西成|生野|東成/,  /大阪/],
+  [/京都/,                 /京都/],
+];
 /* 依文章 id 做穩定的錯開，讓不同文章不會推到同一批物件 */
 function propsForArticle(a) {
   const pick = PICK_BY_CAT[a.cat];
   if (!pick) return [];
-  let list = PROPS.filter(p => !p.sold && p.status === "在售" && pick(p));
-  if (a.cat === "minpaku" && list.length < 2) list = PROPS.filter(p => !p.sold && p.status === "在售" && p.cat === "invest");
+  const onSale = PROPS.filter(p => !p.sold && p.status === "在售");
+  let list = [], areaHit = false;
+  if (a.cat === "area") {
+    const txt = [a.title, (a.tags || []).join(" ")].join(" ");
+    for (const [inArt, inLoc] of AREA_HINT) {
+      if (!inArt.test(txt)) continue;
+      const m = onSale.filter(p => inLoc.test(String(p.location || "")));
+      if (m.length >= 2) { list = m; areaHit = true; break; }
+    }
+  }
+  if (!list.length) list = onSale.filter(pick);
+  if (a.cat === "minpaku" && list.length < 2) list = onSale.filter(p => p.cat === "invest");
   if (list.length < 2) return [];
   list = list.slice().sort((x, y) => (y.yield ? 1 : 0) - (x.yield ? 1 : 0));   // 有寫投報的排前面
   const seed = parseInt(String(a.id).replace(/\D/g, ""), 10) || 0;
   const off = list.length ? seed % list.length : 0;
-  return list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+  const out = list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+  out.areaHit = areaHit;
+  return out;
+}
+/* 標題要跟文章類型對得上——投資文章寫「投資物件」、自住文章寫「自住物件」 */
+function propBlockTitle(a, areaHit) {
+  if (areaHit) return ["這個區域，周周手上現在有的物件", "文章裡講的區域，站上現在就有在售的物件。"];
+  if (a.cat === "invest" || a.cat === "minpaku")
+    return ["周周手上目前的投資物件", "看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。"];
+  return ["周周手上目前的自住物件", "看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。"];
 }
 function propBlockHTML(a) {
   const list = propsForArticle(a);
@@ -171,8 +226,9 @@ function propBlockHTML(a) {
       + '<span class="apprice">' + esc(String(p.price || "價格請洽詢").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
-  return '<section class="apsec"><h2>周周手上目前的投資物件</h2>'
-    + '<p class="apsub">看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。</p>'
+  const [h2, sub] = propBlockTitle(a, list.areaHit);
+  return '<section class="apsec"><h2>' + esc(h2) + '</h2>'
+    + '<p class="apsub">' + esc(sub) + '</p>'
     + '<div class="apgrid">' + cards + "</div>"
     + '<a class="apmore" href="properties.html">看全部物件 →</a></section>';
 }
@@ -845,6 +901,70 @@ function propGallery(p) {
   }).join("") + `</div>`;
 }
 
+/* ── 物件靜態頁的「延伸閱讀」（提案 1・2026-10-04）──────────────────────
+   property.html（互動版殼頁）2026-09-24 就有這個區塊，但它是 noindex；
+   真正被搜尋引擎收錄的是這裡產的 prop-*.html，而那邊一篇文章都沒連到，
+   等於 90 個可收錄頁完全沒有往文章導流。這裡把同一套規則搬過來。
+   規則照 property.html：不在每筆物件的「周周的看法」手寫連結（看法要精簡、
+   新物件上架也會忘記加），改成依 cat 與標籤自動配 2～3 篇。
+   標題直接從 ART 取，文章改標題這裡就跟著改，不會對不上。 */
+const READ_MORE = {
+  yieldNet:  "japan-rental-yield-gross-vs-net",
+  yieldTrap: "japan-rental-yield-trap",
+  mgmt:      "japan-rental-management-company",
+  hotel:     "japan-hotel-license-simple-lodging",
+  fourModels:"minpaku-monthly-rental-comparison",
+  minpakuLoc:"tokyo-minpaku-popular-location-layout",
+  whole:     "japan-investment-property-whole-building-vs-unit",
+  costs:     "japan-property-purchase-costs",
+  loan:      "foreigner-mortgage-no-permanent-residency",
+  check:     "japan-used-apartment-checklist",
+  nego:      "japan-property-price-negotiation",
+  rentBuy:   "rent-or-buy-japan",
+  school:    "tokyo-school-district-property",
+  tax:       "japan-property-tax-guide",
+  land:      "japan-buy-land-build-house",
+  condLand:  "japan-building-conditional-land",
+  tower:     "japan-tower-mansion-guide"
+};
+const SLUG2ART = (() => { const m = {}; for (const a of ART) if (SLUG[a.id]) m[SLUG[a.id]] = a; return m; })();
+
+function readMoreKeys(p) {
+  const k = [], cat = String(p.cat || ""), tag = String(p.layoutTag || "");
+  const txt = [p.title, p.title_cn, p.catch, p.layout, p.facing].filter(Boolean).map(PLAIN).join(" ");
+  const lodging = /民宿|旅館|民泊/.test(tag + " " + txt) || p.group === "osaka";
+  if (lodging) k.push("hotel", "fourModels", "minpakuLoc");
+  else if (cat === "invest") k.push("yieldNet", "yieldTrap", "mgmt");
+  else if (cat === "land") k.push("land", "costs", "loan");
+  else if (cat === "house") k.push("costs", "nego", "loan");
+  else k.push("rentBuy", "check", "costs");
+  if (/建築条件付|建築條件付/.test(txt)) k.unshift("condLand");
+  if (/塔樓|タワー/.test(txt)) k.unshift("tower");
+  if (/誠之|學區|文京/.test(txt)) k.unshift("school");
+  if (/一棟|整棟/.test(txt)) k.unshift("whole");
+  const out = [];
+  for (const key of k) {
+    const slug = READ_MORE[key];
+    if (!slug || !SLUG2ART[slug]) continue;        // 文章還沒寫就略過，不產死連結
+    if (!out.includes(slug)) out.push(slug);
+    if (out.length === 3) break;
+  }
+  return out;
+}
+
+function propReadMore(p) {
+  const slugs = readMoreKeys(p);
+  if (!slugs.length) return "";
+  const li = slugs.map(sl => {
+    const a = SLUG2ART[sl];
+    return `<li style="margin:6px 0"><a href="${sl}.html">${esc(PLAIN(a.title))}</a></li>`;
+  }).join("");
+  return `<div style="margin-top:26px;padding:14px 16px;border:1px solid var(--bd);border-radius:12px;background:#fafaf9">
+<p style="font-weight:800;margin:0 0 6px">📖 看這間之前，這幾篇可以先讀</p>
+<ul style="margin:0;padding-left:20px;font-size:14.5px;line-height:1.7">${li}</ul>
+</div>`;
+}
+
 function propPage(p) {
   const url = propPageUrl(p);
   const title = propTitleTW(p);
@@ -934,6 +1054,7 @@ ${propGallery(p)}
 ${propNoteHTML(p)}
 </div>
 ${vid}
+${propReadMore(p)}
 <div class="ablock" style="margin-top:26px"><div><b>想看這間，或先抓貸款？</b><br><span style="color:var(--mut);font-size:14px">用中文直接問周周，看房、試算、流程都可以。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 問周周</a></div>
 <p style="margin-top:20px;font-size:14px"><a href="property.html?id=${encodeURIComponent(p.id)}">📷 看互動版（相簿可滑）</a>　·　<a href="properties.html">看其他在售物件 →</a></p>
 <p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 本頁資訊以刊登時為準，物件狀況可能異動，實際條件請以現況與重要事項說明書為準。能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約內容由司法書士・宅地建物取引士確認。</p>
