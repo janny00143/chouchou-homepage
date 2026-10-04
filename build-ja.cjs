@@ -110,6 +110,7 @@ const jaSlug = slug => slug + "-ja";
 /* 繁中版 generate-pages.cjs と同じルール（提案1・2026-10-04 対象分類を拡大）。
    life／travel は意図的に対象外——生活・観光記事に物件カードは唐突になる。 */
 const HOME_CAT_JA = p => p.cat === "live" || p.cat === "house";
+const LAND_ART_JA = new Set(["a38", "a56"]);   // 土地を買う話の記事には土地物件を
 const PICK_BY_CAT_JA = {
   invest:  p => p.cat === "invest",
   /* 「民泊」だと「民泊不可」の物件まで拾ってしまうため、旅館業で判定する */
@@ -145,7 +146,7 @@ const AREA_HINT_JA = [
   [/京都/, /京都/],
 ];
 function propsForArticleJa(a) {
-  const pick = PICK_BY_CAT_JA[a.cat];
+  const pick = LAND_ART_JA.has(a.id) ? (p => p.cat === "land") : PICK_BY_CAT_JA[a.cat];
   if (!pick) return [];
   const onSale = PROPS.filter(p => !p.sold && p.status === "在售");
   let list = [], areaHit = false;
@@ -169,6 +170,7 @@ function propsForArticleJa(a) {
 }
 function propBlockTitleJa(a, areaHit) {
   if (areaHit) return "このエリアで現在ご紹介できる物件";
+  if (LAND_ART_JA.has(a.id)) return "現在ご紹介できる土地（建築条件付売地など）";
   if (a.cat === "invest" || a.cat === "minpaku") return "現在ご紹介できる投資物件";
   return "現在ご紹介できる居住用物件";
 }
@@ -787,8 +789,12 @@ function propGalleryJa(p) {
   return `<div class="pgal">` + list.map((src, i) => {
     const pers = /-pers\./.test(src);
     const plan = /-plan\./.test(src);
-    const cap = pers ? "完成予想図（実際とは異なります）" : plan ? "間取図・区画図" : "";
-    const sty = plan || pers
+    /* -illust：建物未定の売地用の参考イメージ。完成予想図とは書けない（表示規約）。 */
+    const illu = /-illust\./.test(src);
+    const cap = pers ? "完成予想図（実際とは異なります）"
+      : illu ? "イメージイラスト（参考）／完成予想図ではありません。実際の建物は設計・工事請負契約により異なります"
+      : plan ? "間取図・区画図" : "";
+    const sty = plan || pers || illu
       ? "width:100%;height:auto;max-height:520px;object-fit:contain;background:#faf8f7"
       : "width:100%;height:auto";
     return `<figure><img${wh(src)} src="${esc(src)}" alt="${esc(PLAIN_JA(p.title))}${i ? "　" + (i + 1) : ""}" loading="lazy" decoding="async" style="${sty};border-radius:14px;display:block">`

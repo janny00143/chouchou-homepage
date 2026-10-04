@@ -140,6 +140,9 @@ const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.
    life（生活資訊）與 travel（觀光）刻意不配——那兩類硬塞物件卡片會很突兀，
    CLAUDE.md §3 要的是散文感，結尾本來就有加 LINE 的導引。 */
 const HOME_CAT = p => p.cat === "live" || p.cat === "house";
+/* 買地自建／建築條件付售地のように「土地を買う」話の記事は、
+   cat が knowhow でも土地物件を出す（2026-10-04 周周の「幫我串接」指示）。 */
+const LAND_ART = new Set(["a38", "a56"]);
 const PICK_BY_CAT = {
   invest:  p => p.cat === "invest",
   /* 用「旅館業」比對，不要用「民泊」——有物件的 note 寫的是「此戶民泊不可」，用民泊會抓到意思相反的 */
@@ -177,7 +180,7 @@ const AREA_HINT = [
 ];
 /* 依文章 id 做穩定的錯開，讓不同文章不會推到同一批物件 */
 function propsForArticle(a) {
-  const pick = PICK_BY_CAT[a.cat];
+  const pick = LAND_ART.has(a.id) ? (p => p.cat === "land") : PICK_BY_CAT[a.cat];
   if (!pick) return [];
   const onSale = PROPS.filter(p => !p.sold && p.status === "在售");
   let list = [], areaHit = false;
@@ -202,10 +205,35 @@ function propsForArticle(a) {
 /* 標題要跟文章類型對得上——投資文章寫「投資物件」、自住文章寫「自住物件」 */
 function propBlockTitle(a, areaHit) {
   if (areaHit) return ["這個區域，周周手上現在有的物件", "文章裡講的區域，站上現在就有在售的物件。"];
+  if (LAND_ART.has(a.id))
+    return ["周周手上目前的買地自建用地", "想自地自建、蓋訂製住宅？這幾塊地是站上現在就有的（資料會隨物件更新自動同步）。"];
   if (a.cat === "invest" || a.cat === "minpaku")
     return ["周周手上目前的投資物件", "看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。"];
   return ["周周手上目前的自住物件", "看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。"];
 }
+/* 同じ title_cn の兄弟物件（A棟／B棟・A区画／B区画）をカード上で区別する。
+   propTitleTW と同じ考え方だが、こちらは記事ページ生成時（PLAIN 定義より前）に
+   走るので、依存のない軽い実装にしてある。 */
+const _cardDup = (() => {
+  const c = {};
+  for (const p of PROPS) {
+    if (p.sold || p.status !== "在售") continue;
+    const k = String(p.title_cn || p.title || "").trim();
+    c[k] = (c[k] || 0) + 1;
+  }
+  return c;
+})();
+function cardName(p) {
+  const strip = x => String(x || "").replace(/<[^>]*>/g, "").trim();
+  const base = strip(p.title_cn || p.title);
+  if ((_cardDup[String(p.title_cn || p.title || "").trim()] || 0) < 2) return base;
+  const src = strip(p.title) + " " + strip(p.title_cn);
+  const m = src.match(/([A-F]|[Ａ-Ｆ])\s*(棟|[区區][画畫])/) || src.match(/(part\s*\d+)/i);
+  /* 繁中頁なので「区画」は「區畫」に直す（CLAUDE.md §7） */
+  const sfx = m ? m[0].replace(/\s+/g, "").replace(/区画|區画|区畫/, "區畫") : "";
+  return sfx ? base + "（" + sfx + "）" : base;
+}
+
 function propBlockHTML(a) {
   const list = propsForArticle(a);
   if (!list.length) return "";
@@ -214,7 +242,8 @@ function propBlockHTML(a) {
        encodeURIComponent 會把「/」也編成 %2F 造成破圖，改成逐段編碼。 */
     const img = (p.photos && p.photos[0])
       ? String(p.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
-    const name = esc(p.title_cn || p.title || "");
+    /* A棟／B棟のように title_cn が重なる兄弟物件は区別して出す（2026-10-04） */
+    const name = esc(cardName(p));
     const yieldLine = p.yield ? '<span class="apy">' + esc(String(p.yield).split("（")[0]) + "</span>" : "";
     /* 2026-10-04：原本指向 property.html?id=（noindex 殼頁），等於內部連結
        的權重全部丟掉、使用者也被送到不可收錄的頁。提案 2 的靜態頁上線後
@@ -827,7 +856,8 @@ function propToMarkdown(p) {
    產出：prop-<id>.html（繁中）。-cn 由 build-cn.cjs 轉，-ja 由 build-ja.cjs 產。
    ⚠️ 只做「在售」物件；成約後重跑產生器會自動把該頁刪掉。
    ⚠️ 相片沿用 properties.js 的 photos；-pers 一律標「完成預想圖」（法規要求），
-      -plan 標「間取圖／區劃圖」並整張顯示不裁切。
+      -plan 標「間取圖／區劃圖」並整張顯示不裁切，
+      -illust 標「參考外觀示意圖」並明示非完成預想圖（建物未定的売地用）。
    ⚠️ 地址沿用 location 欄位（已依広告規約遮蔽）；供應商名稱永不寫入。
    ⚠️ 產生器輸出，勿手改。 */
 /* properties.js 的 video 存的是 11 碼純 ID（文章的 ytEmbed 吃的是完整網址），
@@ -857,8 +887,10 @@ function propTitleTW(p) {
   /* 「東玉川1丁目 part4 A棟」會同時命中 part4 與 A棟，要先取棟／区画，
      那才是區別兩戶的那一個字；part 只是同一建案的期別。 */
   const t = String(p.title);
-  const m = t.match(/([A-Za-z]\s*[区區]画|[A-Za-z]\s*棟)/) || t.match(/(part\s*\d+)/i);
-  return m ? base + "（" + m[1].replace(/\s+/g, "") + "）" : base + "（" + p.id + "）";
+  const m = t.match(/([A-Za-z]\s*[区區][画畫]|[A-Za-z]\s*棟)/) || t.match(/(part\s*\d+)/i);
+  /* 繁中頁なので「区画」は「區畫」に直す（CLAUDE.md §7・日文不可直接當正文） */
+  const sfx = m ? m[1].replace(/\s+/g, "").replace(/区画|區画|区畫/, "區畫") : "";
+  return sfx ? base + "（" + sfx + "）" : base + "（" + p.id + "）";
 }
 const propSlug = p => "prop-" + p.id;
 const propPageUrl = p => BASE + propSlug(p) + ".html";
@@ -892,8 +924,13 @@ function propGallery(p) {
   return `<div class="pgal">` + list.map((src, i) => {
     const pers = /-pers\./.test(src);
     const plan = /-plan\./.test(src);
-    const capTxt = pers ? "完成預想圖（非實景照）" : plan ? "間取圖／區劃圖" : "";
-    const sty = plan || pers
+    /* -illust：建物がまだ無い売地用の「参考イメージ」。完成予想図ではないので
+       そう書いてはいけない（不動産の表示に関する公正競争規約）。2026-10-04 追加 */
+    const illu = /-illust\./.test(src);
+    const capTxt = pers ? "完成預想圖（非實景照）"
+      : illu ? "參考外觀示意圖（イメージイラスト）／非完成預想圖，實際建物依設計與工程承攬契約而異"
+      : plan ? "間取圖／區劃圖" : "";
+    const sty = plan || pers || illu
       ? "width:100%;height:auto;max-height:520px;object-fit:contain;background:#faf8f7"
       : "width:100%;height:auto";
     return `<figure><img${wh(src)} src="${esc(src)}" alt="${esc(PLAIN(p.title_cn || p.title))}${i ? "　" + (i + 1) : ""}" loading="lazy" decoding="async" style="${sty};border-radius:14px;display:block">`

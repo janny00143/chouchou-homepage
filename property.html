@@ -402,7 +402,7 @@ body.noscroll{overflow:hidden}
   var pPers=null;
   function markPers(){
     if(!pPers)return;
-    pPers.style.display=/-pers\./.test(String(photos[pi]||""))?"":"none";
+    var _s=String(photos[pi]||"");var _p=/-pers\./.test(_s),_i=/-illust\./.test(_s);pPers.style.display=(_p||_i)?"":"none";if(_p||_i)pPers.textContent=_i?"參考外觀示意圖":"完成預想圖";
   }
   function show(){
     if(!pImg)return;
