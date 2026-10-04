@@ -271,6 +271,7 @@ window.PROPERTIES = [
     right: "所有權",
     yield: "",
     video: "N9ivvqZa1ek",
+    videoDate: "2026-09-19",
     photos: ["prop/prop-kototoi902-1.webp","prop/prop-kototoi902-plan.webp","prop/prop-kototoi902-2.webp","prop/prop-kototoi902-3.webp","prop/prop-kototoi902-4.webp","prop/prop-kototoi902-5.webp","prop/prop-kototoi902-6.webp","prop/prop-kototoi902-7.webp","prop/prop-kototoi902-8.webp","prop/prop-kototoi902-9.webp"],
     note: "■ 這間的主角是陽台\n站在陽台就看得到晴空塔。9樓、南東角戶，前面沒有東西擋住——同一棟裡也只有這個方位這個樓層做得到。（眺望會隨天候變化，也無法保證未來周邊建物不變。）\n■ 位置\n東京晴空塔站徒步7分、本所吾妻橋站8分、押上站11分，三站三條線。東京ソラマチ約510m、隅田公園只要約70m，淺草過一座橋就到。\n■ 格局與屋況\n1LDK・專有46.45㎡（LDK約12.8帖＋洋室約5.0帖），衛浴三分離、附步入式衣帽間。2026年7月2日剛完成全面翻新，廚房、衛浴、建具全部換新，附食洗機與浴室乾燥機，照明家具也附上，行李搬進去就能住。大樓2022年9月才做過大規模修繕。\n■ 現況空屋，隨時可以看房\n這種屋齡各家銀行條件差很多，我可以先幫你問過幾家，挑最好的那家再出手。加LINE跟我說一聲，我用中文一步一步陪你走完（實際條件以現況與重要事項說明書為準；能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士・宅建士確認）。"
   },
@@ -587,6 +588,7 @@ window.PROPERTIES = [
     layoutTag: "2LDK",
     view: "tower",
     video: "g6TzzDSh5NA",
+    videoDate: "2026-08-15",
     status: "在售",
     cat: "live",
     title: "クレストプライムタワー芝 2802",
