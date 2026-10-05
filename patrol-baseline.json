@@ -5,7 +5,7 @@
   "pages": 514,
   "inlineJs": 3012,
   "jsonLd": 936,
-  "links": 11119,
+  "links": 11121,
   "sitemap": 501,
   "props": 99,
   "propsOnSale": 90,
@@ -15,14 +15,14 @@
   "cnFiles": 170,
   "jaFiles": 169,
   "itemList": 90,
-  "linksTw": 129,
+  "linksTw": 130,
   "linksJa": 126,
   "orphanTw": 0,
   "orphanJa": 0,
   "noPlan": 0,
-  "images": 736,
+  "images": 737,
   "unusedImages": 0,
   "imgNoWH": 0,
-  "rootItems": 677
+  "rootItems": 678
  }
 }
