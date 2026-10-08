@@ -40,7 +40,7 @@ const BASELINE_FILE = path.join(ROOT, "patrol-baseline.json");
 const OK = {
   // 供應商一覽只有文字、還沒有図面與照片的物件：先上架（周周 2026-10-08 指示），卡片會顯示「照片準備中」。
   // 取得図面補上照片後，把 id 從這裡拿掉。
-  pendingPhoto: new Set(["crest-shiba1813", "crest-shiba2705"]),
+  pendingPhoto: new Set([]),
   // Google Search Console 的驗證檔，本來就只有一行、沒有 meta
   verifyFile: /^google[0-9a-f]+\.html$/i,
   // 這些頁不套一般的 SEO 規則

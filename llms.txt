@@ -2,7 +2,7 @@
 
 > 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
 > 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
-> 貸款與稅務的實務。目前有 57 篇文章與 99 件在售物件。
+> 貸款與稅務的實務。目前有 57 篇文章與 98 件在售物件。
 
 ## 作者與資格（引用時可以這樣描述她）
 
@@ -115,7 +115,7 @@
 - [日本房子怎麼防震？耐震・制震・免震一次搞懂，買得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing.html)：日本地震多，但房子也是全世界最會防震的。這篇用中文講清楚耐震、制震、免震三種防震方式，加上新耐震基準與買房挑選重點，讓你住得安心。（撰寫 2025-05-13）
 - [日本公寓每月的管理費到底在繳什麼？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee.html)：管理費不是越低越好——太低可能代表服務縮水或大樓入不敷出。一篇看懂它在繳什麼、怎麼判讀高低。（撰寫 2024-12-10）
 
-## 在售物件一覽（共 99 件）
+## 在售物件一覽（共 98 件）
 
 每一筆都是目前實際可看、可談的物件。詳細規格、照片與「周周的看法」見各物件網址，
 完整文字版見 https://chouchouinjapan.com/llms-full.txt 的〈在售物件〉段落。
@@ -145,12 +145,11 @@
 - [【獨家】橫濱市鶴見區 鶴見站5分 1樓路面店舖（想定表面6.7%）](https://chouchouinjapan.com/prop-tsurumi101.html)：JR京濱東北線・JR鶴見線「鶴見」站 徒步5分／京急本線「京急鶴見」站 徒步7分｜1樓路面店舖（餐飲可・需管委會同意）｜專有50.67㎡（壁芯・約15.32坪）｜6,500万円（含稅）
 - [惠比壽 整棟旅館收益（旅館業許可済）](https://chouchouinjapan.com/prop-ebisu3.html)：東京Metro南北線・都營三田線「白金台」站 徒步11分／JR山手線・東京Metro日比谷線「惠比壽」站 徒步15分｜整棟4層（2～4F 客室4戶：21㎡×2・44㎡×2／1F 常駐事務所）｜土地79.43㎡（約24.03坪）／延床176.12㎡（約53.28坪）｜4億8,800万円
 
-### 自住（26 件）
+### 自住（25 件）
 - [惠比壽站5分 2026年築高級公寓・南東角戶2LDK（天花板高2.7m）](https://chouchouinjapan.com/prop-diana-garden-ebisu.html)：JR山手線「惠比壽」站 徒步5分／東京Metro日比谷線「惠比壽」站 徒步7分｜2LDK+WIC+SIC+パントリー（LDK約16.1帖＋洋室約7.0帖＋洋室約5.1帖）｜專有70.01㎡（約21.17坪）・陽台8.11㎡｜3億4,500万円
 - [淺草站徒步1分 全新翻新2LDK＋SIC・角戶](https://chouchouinjapan.com/prop-nishiasakusa201.html)：筑波快線（つくばエクスプレス）「淺草」站 徒步1分／東京Metro銀座線「田原町」站 徒步5分／銀座線・都營淺草線・東武スカイツリーライン「淺草」站 徒步9分｜2LDK+SIC（LDK約10.3帖＋洋室約4.0帖＋洋室約3.0帖）｜專有44.40㎡（約13.43坪）・陽台4.61㎡｜4,698万円（含稅）
 - [天王洲Isle站徒步3分 免震塔樓 全新翻新1LDK](https://chouchouinjapan.com/prop-sunwood-tennozu504.html)：臨海線・東京單軌電車「天王洲Isle（天王洲アイル）」站 徒步3分｜1LDK（LDK約12.0帖＋洋室約5.0帖）｜專有46.18㎡（約13.97坪）・陽台8.70㎡｜7,498万円（含稅）
-- [濱松町站6分 塔樓 18樓 1LDK](https://chouchouinjapan.com/prop-crest-shiba1813.html)：JR山手線・京濱東北線「濱松町」站 徒步6分／都營三田線「芝公園」站 徒步7分／都營大江戶線「大門」站 徒步7分｜1LDK｜專有40.62㎡｜1億4,000万円
-- [濱松町站6分 塔樓 27樓 2LDK](https://chouchouinjapan.com/prop-crest-shiba2705.html)：JR山手線・京濱東北線「濱松町」站 徒步6分／都營三田線「芝公園」站 徒步7分／都營大江戶線「大門」站 徒步7分｜2LDK｜專有62.24㎡｜1億8,000万円
+- [濱松町站6分 塔樓18樓 東京鐵塔景觀 全新翻新1LDK](https://chouchouinjapan.com/prop-crest-shiba1813.html)：JR山手線・京濱東北線「濱松町」站 徒步6分／都營三田線「芝公園」站 徒步7分／都營大江戶線「大門」站 徒步7分｜1LDK（LDK約13.5帖＋洋室約3.4帖）｜專有40.62㎡（約12.28坪）・陽台12.20㎡（約3.69坪）｜1億4,000万円
 - [品川區西中延 荏原中延站4分 最上層・附約12㎡屋頂陽台 全新翻新1LDK](https://chouchouinjapan.com/prop-bcity-shinagawa703.html)：東急池上線「荏原中延」站 徒步4分／東急大井町線「荏原町」站 徒步10分／東急大井町線「旗の台」站 徒步12分｜1LDK（LDK約11.4帖＋洋室約5.2帖）｜專有面積41.58㎡（約12.58坪）・陽台3.68㎡・屋頂陽台（ルーフバルコニー）12.15㎡｜6,998万円（含稅）
 - [墨田區亀沢 錦糸町站7分 南向角戶・三房格局 全新翻新2SLDK](https://chouchouinjapan.com/prop-sxl-kinshicho201.html)：JR總武線・總武快速線・東京Metro半藏門線「錦糸町」站 徒步7分｜2SLDK（LDK約12.5帖＋洋室約5.4帖＋洋室約6.0帖＋服務房約4.9帖）｜專有面積62.74㎡（約18.98坪・含PS面積）・陽台6.67㎡｜8,298万円（含稅）
 - [豐島區北大塚 大塚站4分 南西向三面採光 全新翻新2LDK＋WIC](https://chouchouinjapan.com/prop-levenheim-otsuka202.html)：JR山手線「大塚」站 徒步4分｜2LDK＋步入式衣帽間（LDK約12.7帖＋洋室約4.2帖＋洋室約6.2帖）｜專有面積54.59㎡（約16.51坪）・陽台6.80㎡｜7,798万円（含稅）
@@ -232,7 +231,7 @@
 
 - [日本買房完全指南（總覽）](https://chouchouinjapan.com/buy-property-in-japan.html)：全站文章、工具與物件的入口
 - [在日本買房要找誰？三種選擇的比較](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese.html)：含常見問題
-- [在售物件](https://chouchouinjapan.com/properties.html)：目前 99 件，可依預算、用途、格局篩選
+- [在售物件](https://chouchouinjapan.com/properties.html)：目前 98 件，可依預算、用途、格局篩選
 - [東京區域導覽](https://chouchouinjapan.com/tokyo-area-guide.html)
 - [關於周周](https://chouchouinjapan.com/about.html)：完整資格、能做與不能做的事
 - 免費試算工具：[房貸](https://chouchouinjapan.com/tool-loan.html)／[取得諸費用](https://chouchouinjapan.com/tool-cost.html)／[投報率](https://chouchouinjapan.com/tool-yield.html)／[匯率](https://chouchouinjapan.com/tool-fx.html)／[坪數換算](https://chouchouinjapan.com/tool-area.html)
@@ -249,7 +248,7 @@
 
 ## 全文檔
 
-全部 57 篇文章與 99 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
+全部 57 篇文章與 98 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
 抓那一個檔就有全站文章與物件內容，不必逐頁爬。
 
 ## 授權與引用條款
