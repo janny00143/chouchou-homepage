@@ -38,6 +38,9 @@ const BASELINE_FILE = path.join(ROOT, "patrol-baseline.json");
 /* ── 已確認的「正常狀況」，不可回報為問題（周周確認過，重複提會很煩）──────
    這裡是白名單的單一真相來源。要放行新東西就加在這裡。 */
 const OK = {
+  // 供應商一覽只有文字、還沒有図面與照片的物件：先上架（周周 2026-10-08 指示），卡片會顯示「照片準備中」。
+  // 取得図面補上照片後，把 id 從這裡拿掉。
+  pendingPhoto: new Set(["crest-shiba1813", "crest-shiba2705"]),
   // Google Search Console 的驗證檔，本來就只有一行、沒有 meta
   verifyFile: /^google[0-9a-f]+\.html$/i,
   // 這些頁不套一般的 SEO 規則
@@ -536,7 +539,7 @@ function b4_structured() {
     if (!list) { bad.push(`${f}: 找不到 ItemList`); continue; }
     const items = list.itemListElement || [];
     itemCount = items.length;
-    const noImg = items.filter(x => !(x.item && x.item.image)).length;
+    const noImg = Math.max(0, items.filter(x => !(x.item && x.item.image)).length - OK.pendingPhoto.size);
     const noOffer = items.filter(x => !(x.item && x.item.offers)).length;
     if (noImg) bad.push(`${f}: ${noImg} 筆缺 image`);
     if (noOffer) bad.push(`${f}: ${noOffer} 筆缺 offers`);
@@ -656,7 +659,7 @@ function b7_props() {
   const P = loadProps("properties.js", "PROPERTIES") || [];
   const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
   const onSale = P.filter(p => !p.sold);
-  const noPhoto = onSale.filter(p => !(p.photos || []).length).map(p => p.id);
+  const noPhoto = onSale.filter(p => !(p.photos || []).length && !OK.pendingPhoto.has(p.id)).map(p => p.id);
   const noPlan = onSale.filter(p => !(p.photos || []).some(x => /-plan\./.test(x))).map(p => p.id);
   // 價格比對：日文版只有少數物件會自帶 price。差異若只是「含稅 vs 税込」這類
   //  用詞，不算不一致（2026-09 曾誤報 nishioi-p5 與 futaba）。
