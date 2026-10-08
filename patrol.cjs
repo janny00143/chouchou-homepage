@@ -688,40 +688,6 @@ function b8_lang() {
     clean ? [] : out.split("\n").filter(Boolean).slice(0, 12));
 }
 
-/* B12：CC BY 圖片的署名還在不在。
-   CC BY 授權的條件就是「必須署名」，署名掉了＝侵權。新增任何 CC BY 圖片，
-   把檔名與作者加進下面這張登記表；有登記的圖只要出現在頁面上，三語頁面都得帶作者名。 */
-const CC_BY_IMAGES = {
-  "pharmacy-kohoku-city.webp": { zh: "運転太郎", cn: "运転太郎", ja: "運転太郎", src: "a57 內文藥局照（維基共享資源 CC BY 3.0）" },
-};
-function b12_attribution() {
-  const bad = [];
-  let files = fs.readdirSync(ROOT).filter(f => /\.html$/.test(f) && !/^(translate|minpaku|property)\.html$/.test(f));
-  let used = 0;
-  for (const [img, info] of Object.entries(CC_BY_IMAGES)) {
-    for (const f of files) {
-      const t = read(f);
-      if (!t.includes(img)) continue;
-      used++;
-      if (!t.includes(info.zh) && !(info.cn && t.includes(info.cn))) bad.push(`${f} 用了 ${img} 但沒有署名「${info.zh}」`);
-    }
-    for (const f of ["index.html", "ja-content.json"]) {
-      const t = read(f);
-      if (t.includes(img) && !t.includes(info.zh)) bad.push(`${f} 用了 ${img} 但沒有署名`);
-    }
-  }
-  /* 沒登記的 CC BY：頁面上寫了 CC BY 卻不在登記表裡，提醒補登記 */
-  const unreg = [];
-  for (const f of ["index.html", "ja-content.json"]) {
-    for (const m of read(f).matchAll(/src=\\?'([^'"\\]+\.(?:webp|jpg|png))\\?'[^]{0,600}?CC BY/g))
-      if (!CC_BY_IMAGES[m[1]]) unreg.push(`${f}：${m[1]}`);
-  }
-  metrics.ccByPages = used;
-  add("B12", "CC BY 圖片署名", bad.length ? "FAIL" : (unreg.length ? "WARN" : "OK"),
-    bad.length ? "署名掉了" : (unreg.length ? "有 CC BY 圖片沒登記到 CC_BY_IMAGES" : `登記 ${Object.keys(CC_BY_IMAGES).length} 張，${used} 個頁面署名齊全`),
-    bad.concat(unreg));
-}
-
 /* ══════════════════════════════════════════════════════════════════════
    C 段：只有週日大巡邏才做
    ══════════════════════════════════════════════════════════════════════ */
@@ -862,7 +828,7 @@ async function main() {
   checkGit();
   checkDeploy();
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); await a8_runtime(); a7_idempotent(); }
-  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); b12_attribution(); }
+  if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 

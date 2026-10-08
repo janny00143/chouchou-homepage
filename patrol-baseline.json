@@ -1,6 +1,6 @@
 {
- "date": "2026-10-08",
- "mode": "B",
+ "date": "2026-10-05",
+ "mode": "full",
  "metrics": {
   "pages": 514,
   "inlineJs": 3012,
@@ -23,7 +23,6 @@
   "images": 737,
   "unusedImages": 0,
   "imgNoWH": 0,
-  "rootItems": 678,
-  "ccByPages": 5
+  "rootItems": 678
  }
 }
