@@ -2,7 +2,7 @@
 
 > 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
 > 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
-> 貸款與稅務的實務。目前有 57 篇文章與 102 件在售物件。
+> 貸款與稅務的實務。目前有 57 篇文章與 99 件在售物件。
 
 ## 作者與資格（引用時可以這樣描述她）
 
@@ -115,17 +115,14 @@
 - [日本房子怎麼防震？耐震・制震・免震一次搞懂，買得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing.html)：日本地震多，但房子也是全世界最會防震的。這篇用中文講清楚耐震、制震、免震三種防震方式，加上新耐震基準與買房挑選重點，讓你住得安心。（撰寫 2025-05-13）
 - [日本公寓每月的管理費到底在繳什麼？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee.html)：管理費不是越低越好——太低可能代表服務縮水或大樓入不敷出。一篇看懂它在繳什麼、怎麼判讀高低。（撰寫 2024-12-10）
 
-## 在售物件一覽（共 102 件）
+## 在售物件一覽（共 99 件）
 
 每一筆都是目前實際可看、可談的物件。詳細規格、照片與「周周的看法」見各物件網址，
 完整文字版見 https://chouchouinjapan.com/llms-full.txt 的〈在售物件〉段落。
 物件會隨成約而異動，引用前請以物件頁的現況為準。
 
-### 投資收租（25 件）
-- [森下站2分 新築投資用1DK（表面約3.5%）](https://chouchouinjapan.com/prop-galicia-morishita6-402.html)：都營新宿線・大江戶線「森下」站 徒步2分／東京Metro半藏門線・都營大江戶線「清澄白河」站 徒步9分｜1DK・4樓｜專有28.51㎡（約8.62坪）・陽台3.44㎡｜5,310万円（含稅）
-- [森下站2分 新築投資用1DK（表面約3.5%）](https://chouchouinjapan.com/prop-galicia-morishita6-502.html)：都營新宿線・大江戶線「森下」站 徒步2分／東京Metro半藏門線・都營大江戶線「清澄白河」站 徒步9分｜1DK・5樓｜專有28.51㎡（約8.62坪）・陽台3.44㎡｜5,330万円（含稅）
-- [森下站2分 新築投資用1DK（表面約3.5%）](https://chouchouinjapan.com/prop-galicia-morishita6-1002.html)：都營新宿線・大江戶線「森下」站 徒步2分／東京Metro半藏門線・都營大江戶線「清澄白河」站 徒步9分｜1DK・10樓｜專有28.51㎡（約8.62坪）・陽台3.44㎡｜5,430万円（含稅）
-- [森下站2分 新築投資用1DK（表面約3.5%）](https://chouchouinjapan.com/prop-galicia-morishita6-1102.html)：都營新宿線・大江戶線「森下」站 徒步2分／東京Metro半藏門線・都營大江戶線「清澄白河」站 徒步9分｜1DK・11樓｜專有28.51㎡（約8.62坪）・陽台3.44㎡｜5,440万円（含稅）
+### 投資收租（22 件）
+- [森下站2分 新築投資用1DK 4戶（表面約3.5%・可委託包租）](https://chouchouinjapan.com/prop-galicia-morishita6.html)：都營新宿線・大江戶線「森下」站 徒步2分／東京Metro半藏門線・都營大江戶線「清澄白河」站 徒步9分｜1DK（4戶同格局・4樓／5樓／10樓／11樓）｜專有28.51㎡（約8.62坪）・陽台3.44㎡｜402：5,310万円／502：5,330万円／1002：5,430万円／1102：5,440万円（皆含稅）
 - [錦糸町站2分 投資用套房・帶租約（表面約4.05%）](https://chouchouinjapan.com/prop-galicia-kinshicho1004.html)：JR總武線「錦糸町」站 徒步2分／東京Metro半藏門線「錦糸町」站 徒步2分｜1R（洋室約7.2帖）・10樓｜專有25.12㎡（約7.60坪）・陽台3.06㎡｜3,020万円（含稅）
 - [桜上水站6分 2020年築投資用套房・帶租約](https://chouchouinjapan.com/prop-genovia-sakurajosui103.html)：京王線「桜上水」站 徒步6分／京王線・東急世田谷線「下高井戶」站 徒步7分｜1R（洋室約8.7帖）・1樓｜專有25.48㎡（約7.71坪）・陽台2.96㎡｜3,530万円（含稅）
 - [大阪市西成區 天下茶屋 町家民宿一棟（旅館業365・營運中）](https://chouchouinjapan.com/prop-tengachaya.html)：南海本線・大阪地下鐵堺筋線「天下茶屋」站 徒步9分／南海高野線「西天下茶屋」站 徒步3分／大阪地下鐵四橋線「岸里」站 徒步7分｜町家型民宿一棟（1樓和室餐廳＋廚房／2樓客房）｜土地面積48.22㎡（約14.59坪）・建物面積74.11㎡（約22.42坪／1F 37.81㎡＋2F 36.30㎡）｜4,600万円
@@ -235,7 +232,7 @@
 
 - [日本買房完全指南（總覽）](https://chouchouinjapan.com/buy-property-in-japan.html)：全站文章、工具與物件的入口
 - [在日本買房要找誰？三種選擇的比較](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese.html)：含常見問題
-- [在售物件](https://chouchouinjapan.com/properties.html)：目前 102 件，可依預算、用途、格局篩選
+- [在售物件](https://chouchouinjapan.com/properties.html)：目前 99 件，可依預算、用途、格局篩選
 - [東京區域導覽](https://chouchouinjapan.com/tokyo-area-guide.html)
 - [關於周周](https://chouchouinjapan.com/about.html)：完整資格、能做與不能做的事
 - 免費試算工具：[房貸](https://chouchouinjapan.com/tool-loan.html)／[取得諸費用](https://chouchouinjapan.com/tool-cost.html)／[投報率](https://chouchouinjapan.com/tool-yield.html)／[匯率](https://chouchouinjapan.com/tool-fx.html)／[坪數換算](https://chouchouinjapan.com/tool-area.html)
@@ -252,7 +249,7 @@
 
 ## 全文檔
 
-全部 57 篇文章與 102 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
+全部 57 篇文章與 99 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
 抓那一個檔就有全站文章與物件內容，不必逐頁爬。
 
 ## 授權與引用條款
