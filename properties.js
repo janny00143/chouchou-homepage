@@ -176,14 +176,14 @@ window.PROPERTIES = [
     price: "402：5,310万円／502：5,330万円／1002：5,430万円／1102：5,440万円（皆含稅）",
     location: "東京都江東區森下1-18-2",
     station: "都營新宿線・大江戶線「森下」站 徒步2分／東京Metro半藏門線・都營大江戶線「清澄白河」站 徒步9分",
-    layout: "1DK（4戶同格局・4樓／5樓／10樓／11樓）",
+    layout: "1DK（4戶皆B型・洋室約4.3疊＋餐廚約6.4疊・4樓／5樓／10樓／11樓）",
     size: "專有28.51㎡（約8.62坪）・陽台3.44㎡",
     age: "新築・全22戶",
     facing: "4戶皆現況空室・出租與建物管理由賣方集團負責",
     mgmt: "管理費12,100円＋修繕基金（修繕積立金）1,600円＝每月13,700円（全部委託）",
     right: "所有權",
     yield: "表面約3.5%（想定月租402：155,500円／502：156,000円／1002：158,500円／1102：159,000円・含共益費・非保證）",
-    photos: ["prop/prop-galicia-morishita6-1.webp","prop/prop-galicia-morishita6-2.webp","prop/prop-galicia-morishita6-3.webp","prop/prop-galicia-morishita6-4.webp","prop/prop-galicia-morishita6-5.webp","prop/prop-galicia-morishita6-6.webp","prop/prop-galicia-morishita6-7.webp"],
+    photos: ["prop/prop-galicia-morishita6-1.webp","prop/prop-galicia-morishita6-2.webp","prop/prop-galicia-morishita6-plan.webp","prop/prop-galicia-morishita6-3.webp","prop/prop-galicia-morishita6-4.webp","prop/prop-galicia-morishita6-5.webp","prop/prop-galicia-morishita6-6.webp","prop/prop-galicia-morishita6-7.webp"],
     note: "■ 這間是什麼\n都營新宿線・大江戶線<b>森下站徒步2分</b>的新築投資用公寓，這次放出4戶1DK：402、502、1002、1102，現況都是空室。賣方是投資型公寓的專業業者（売主），仲介手續費這邊沒有額外加收。\n■ 亮點\n專有都是28.51㎡，售價5,310萬〜5,440萬円，想定月租約155,500〜159,000円（含共益費），表面投報率約3.5%（試算，非保證）。這4戶都可以委託管理公司做「月租包租」（管理費用另計），不用自己招租、收租與處理房客問題。清澄白河、東京都心都在生活圈，單身與小家庭的租屋需求穩。\n■ 下一步\n想比較4戶的樓層與價格、試算貸款，加LINE跟周周說，我用中文陪你一步一步確認，也能先幫你問幾家銀行的看法。"
   },
 
