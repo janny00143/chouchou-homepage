@@ -2946,5 +2946,37 @@
  "pharmacy-kohoku-city.webp": [
   1280,
   961
+ ],
+ "prop/prop-shimouma3-ab-1-pers.webp": [
+  1280,
+  853
+ ],
+ "prop/prop-shimouma3-a-plan.webp": [
+  1205,
+  885
+ ],
+ "prop/prop-shimouma3-a-kukaku-plan.webp": [
+  457,
+  431
+ ],
+ "prop/prop-shimouma3-b-plan.webp": [
+  1205,
+  885
+ ],
+ "prop/prop-shimouma3-b-kukaku-plan.webp": [
+  457,
+  431
+ ],
+ "prop/prop-shimouma3-site1.webp": [
+  1280,
+  960
+ ],
+ "prop/prop-shimouma3-road1.webp": [
+  1280,
+  960
+ ],
+ "prop/prop-shimouma3-road2.webp": [
+  1280,
+  960
  ]
 }
