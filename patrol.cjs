@@ -55,6 +55,8 @@ const OK = {
   //  ・繁中正本：簡中的〈其他語言〉刻意保留一行指回繁中，見 CLAUDE.md 第 9 節防盜那段
   langLeakAllow: ["index.html"],
   // 日文物件價格與繁中的差異若只是這些用詞，不算不一致
+  // 森下Ⅵ 的價格刻意寫「5,800万円〜（詳細請諮詢）」，日文版對應「お問い合わせください」（周周 2026-10-08 指示）
+  priceTextAllow: new Set(["galicia-morishita6"]),
   priceSynonyms: [
     ["含稅", "税込"], ["參考總額", "参考価格 総額"], ["參考", "参考"],
     ["總額", "総額"], ["萬円", "万円"], ["價格", "価格"],
@@ -671,7 +673,7 @@ function b7_props() {
   const priceDiff = [];
   for (const p of P) {
     const j = PJ[p.id];
-    if (!j || !j.price || !p.price) continue;
+    if (!j || !j.price || !p.price || OK.priceTextAllow.has(p.id)) continue;
     if (norm(p.price) !== norm(j.price)) priceDiff.push(`${p.id}\n      TW: ${p.price}\n      JA: ${j.price}`);
   }
   const bad = noPhoto.map(i => `缺照片: ${i}`).concat(priceDiff.map(x => `中日價格不一致: ${x}`));
