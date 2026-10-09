@@ -3146,5 +3146,73 @@
  "condo-large-scale-repair.webp": [
   1280,
   965
+ ],
+ "cover-non-rebuildable.webp": [
+  1600,
+  533
+ ],
+ "gx-h3-ja.webp": [
+  1200,
+  400
+ ],
+ "gx-h1-zh.webp": [
+  1200,
+  470
+ ],
+ "gx-g3-ja.webp": [
+  1200,
+  450
+ ],
+ "gx-h2-zh.webp": [
+  1200,
+  470
+ ],
+ "gx-g2-ja.webp": [
+  1200,
+  500
+ ],
+ "gx-h3-zh.webp": [
+  1200,
+  400
+ ],
+ "gx-g4-ja.webp": [
+  1200,
+  500
+ ],
+ "gx-h1-ja.webp": [
+  1200,
+  470
+ ],
+ "gx-g1-zh.webp": [
+  1200,
+  540
+ ],
+ "gx-g3-zh.webp": [
+  1200,
+  450
+ ],
+ "gx-g2-zh.webp": [
+  1200,
+  500
+ ],
+ "gx-g4-zh.webp": [
+  1200,
+  500
+ ],
+ "gx-g5-zh.webp": [
+  1200,
+  450
+ ],
+ "gx-g1-ja.webp": [
+  1200,
+  540
+ ],
+ "gx-g5-ja.webp": [
+  1200,
+  450
+ ],
+ "gx-h2-ja.webp": [
+  1200,
+  470
  ]
 }

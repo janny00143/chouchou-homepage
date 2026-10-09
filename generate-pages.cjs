@@ -60,6 +60,7 @@ const CATS = eval(src.match(/const CATS=(\[[\s\S]*?\]);/)[1]);
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
+  "a59": "japan-non-rebuildable-property",
   "a58": "japan-mansion-repair-reserve-fund",
   "a57": "japan-see-a-doctor-guide",
   "a56": "japan-building-conditional-land",
