@@ -2,7 +2,7 @@
 
 > 在东京执业的台湾人不动产仲介「周欣妤（周周）」的个人品牌网站。以繁体中文为主，
 > 另有简体中文与日文版，说明外国人在日本买房、自住、投资收租、民宿法规、
-> 贷款与税务的实务。目前有 57 篇文章与 98 件在售物件。
+> 贷款与税务的实务。目前有 57 篇文章与 97 件在售物件。
 
 ## 作者与资格（引用时可以这样描述她）
 
@@ -115,16 +115,15 @@
 - [日本房子怎么防震？耐震・制震・免震一次搞懂，买得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing-cn.html)：日本地震多，但房子也是全世界最会防震的。这篇用中文讲清楚耐震、制震、免震三种防震方式，加上新耐震基准与买房挑选重点，让你住得安心。（撰写 2025-05-13）
 - [日本公寓每月的管理费到底在缴什么？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee-cn.html)：管理费不是越低越好——太低可能代表服务缩水或大楼入不敷出。一篇看懂它在缴什么、怎么判读高低。（撰写 2024-12-10）
 
-## 在售物件一览（共 98 件）
+## 在售物件一览（共 97 件）
 
 每一笔都是目前实际可看、可谈的物件。详细规格、照片与「周周的看法」见各物件网址，
 完整文字版见 https://chouchouinjapan.com/llms-cn-full.txt 的〈在售物件〉段落。
 物件会随成约而异动，引用前请以物件页的现况为准。
 
-### 投资收租（22 件）
-- [森下站2分 新筑投资用1DK 4户（表面约3.2%・可委托包租）](https://chouchouinjapan.com/prop-galicia-morishita6-cn.html)：都营新宿线・大江户线「森下」站 徒步2分／东京Metro半藏门线・都营大江户线「清澄白河」站 徒步9分｜1DK（4户皆B型・洋室约4.3叠＋餐厨约6.4叠・4楼／5楼／10楼／11楼）｜专有28.51㎡（约8.62坪）・阳台3.44㎡｜5,800万円〜（详细请咨询・含税）
+### 投资收租（21 件）
+- [森下站2分 新筑投资用1DK 4户（表面约3.2%・可委托包租）](https://chouchouinjapan.com/prop-galicia-morishita6-cn.html)：都营新宿线・大江户线「森下」站 徒步2分／东京Metro半藏门线・都营大江户线「清澄白河」站 徒步9分｜1DK（4户皆B型・洋室约4.3叠＋餐厨约6.4叠・4楼／5楼／10楼／11楼）｜专有28.51㎡（约8.62坪）・阳台3.44㎡｜5,800万円〜（详细请咨询）
 - [锦糸町站2分 投资用套房・带租约（表面约4.05%）](https://chouchouinjapan.com/prop-galicia-kinshicho1004-cn.html)：JR总武线「锦糸町」站 徒步2分／东京Metro半藏门线「锦糸町」站 徒步2分｜1R（洋室约7.2帖）・10楼｜专有25.12㎡（约7.60坪）・阳台3.06㎡｜3,020万円（含税）
-- [桜上水站6分 2020年筑投资用套房・带租约](https://chouchouinjapan.com/prop-genovia-sakurajosui103-cn.html)：京王线「桜上水」站 徒步6分／京王线・东急世田谷线「下高井户」站 徒步7分｜1R（洋室约8.7帖）・1楼｜专有25.48㎡（约7.71坪）・阳台2.96㎡｜3,530万円（含税）
 - [大阪市西成区 天下茶屋 町家民宿一栋（旅馆业365・营运中）](https://chouchouinjapan.com/prop-tengachaya-cn.html)：南海本线・大阪地下铁堺筋线「天下茶屋」站 徒步9分／南海高野线「西天下茶屋」站 徒步3分／大阪地下铁四桥线「岸里」站 徒步7分｜町家型民宿一栋（1楼和室餐厅＋厨房／2楼客房）｜土地面积48.22㎡（约14.59坪）・建物面积74.11㎡（约22.42坪／1F 37.81㎡＋2F 36.30㎡）｜4,600万円
 - [大阪市东成区 今里站3分 特区民宿一栋（365天・营运中）](https://chouchouinjapan.com/prop-oimazato-cn.html)：大阪地下铁千日前线「今里」站 徒步3分｜特区民宿一栋（1楼LDK＋2楼客房・含上下铺）｜土地面积19.10㎡（约5.78坪／土地暂定测量面积30.13㎡）・建物面积38.33㎡（1F 25.38㎡＋2F 12.95㎡・另有未登记的增建部分；课税证明上的建筑面积为51.21㎡）｜3,980万円
 - [大阪市生野区 鹤桥站3分 特区民宿（3楼部分・营运中）](https://chouchouinjapan.com/prop-tsuruhashi-mori-cn.html)：JR大阪环状线・近铁奈良线／大阪线・大阪地下铁千日前线「鹤桥」站 徒步3分｜特区民宿（建物3楼部分・多客房＋共用LDK＋桧风吕）｜建物面积（3楼部分）105.16㎡（约31.81坪）・土地为持分（138.93㎡中的31192分之10516）｜6,300万円
@@ -231,7 +230,7 @@
 
 - [日本买房完全指南（总览）](https://chouchouinjapan.com/buy-property-in-japan-cn.html)：全站文章、工具与物件的入口
 - [在日本买房要找谁？三种选择的比较](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese-cn.html)：含常见问题
-- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 98 件，可依预算、用途、格局筛选
+- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 97 件，可依预算、用途、格局筛选
 - [东京区域导览](https://chouchouinjapan.com/tokyo-area-guide-cn.html)
 - [关于周周](https://chouchouinjapan.com/about-cn.html)：完整资格、能做与不能做的事
 - 免费试算工具：[房贷](https://chouchouinjapan.com/tool-loan-cn.html)／[取得诸费用](https://chouchouinjapan.com/tool-cost-cn.html)／[投报率](https://chouchouinjapan.com/tool-yield-cn.html)／[汇率](https://chouchouinjapan.com/tool-fx-cn.html)／[坪数换算](https://chouchouinjapan.com/tool-area-cn.html)
@@ -248,7 +247,7 @@
 
 ## 全文档
 
-全部 57 篇文章与 98 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
+全部 57 篇文章与 97 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
 抓那一个档就有全站文章与物件内容，不必逐页爬。
 
 ## 授权与引用条款
