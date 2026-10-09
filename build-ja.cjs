@@ -189,7 +189,7 @@ function propBlockHTMLJa(a) {
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + name + "</b>"
       + '<span class="apmeta">' + esc(p.location || "") + "</span>"
-      + '<span class="apprice">' + esc(String(p.price || "価格はお問い合わせください").split("\n")[0]) + yieldLine + "</span>"
+      + '<span class="apprice">' + esc(String(p.price || "価格はお問い合わせください").replace(/[（(]\s*税込\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
   return '<section class="apsec"><h2>' + esc(propBlockTitleJa(a, list.areaHit)) + '</h2>'
@@ -896,7 +896,7 @@ function propNearbyHTMLJa(p) {
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + esc(PLAIN_JA(x.title || "")) + "</b>"
       + '<span class="apmeta">' + esc(PLAIN_JA(x.location || "")) + "</span>"
-      + '<span class="apprice">' + esc(PLAIN_JA(String(x.price || "価格はお問い合わせください")).split("\n")[0]) + yieldLine + "</span>"
+      + '<span class="apprice">' + esc(PLAIN_JA(String(x.price || "価格はお問い合わせください")).replace(/[（(]\s*税込\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
   return '<section class="apsec" style="margin-top:26px"><h2>' + esc(ward) + 'の他の物件</h2>'

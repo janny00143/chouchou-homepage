@@ -253,7 +253,7 @@ function propBlockHTML(a) {
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + name + "</b>"
       + '<span class="apmeta">' + esc(p.location || "") + "</span>"
-      + '<span class="apprice">' + esc(String(p.price || "價格請洽詢").split("\n")[0]) + yieldLine + "</span>"
+      + '<span class="apprice">' + esc(String(p.price || "價格請洽詢").replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
   const [h2, sub] = propBlockTitle(a, list.areaHit);
@@ -1022,7 +1022,7 @@ function propNearbyHTML(p) {
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + esc(propTitleTW(x)) + "</b>"
       + '<span class="apmeta">' + esc(PLAIN(x.location || "")) + "</span>"
-      + '<span class="apprice">' + esc(PLAIN(String(x.price || "價格請洽詢")).split("\n")[0]) + yieldLine + "</span>"
+      + '<span class="apprice">' + esc(PLAIN(String(x.price || "價格請洽詢")).replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
   return '<section class="apsec" style="margin-top:26px"><h2>' + esc(propWard(p)) + '的其他物件</h2>'
