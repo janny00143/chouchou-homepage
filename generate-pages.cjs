@@ -29,6 +29,9 @@ const AUTHOR_TW = {
   url: BASE + "about.html",
   jobTitle: "不動產仲介",
   knowsLanguage: ["zh-Hant", "ja", "zh-Hans"],
+  // 實體辨識用：讓搜尋引擎與 AI 知道「這個人是誰、擅長什麼、服務哪裡」（2026-10-10）
+  knowsAbout: ["日本不動產買賣", "外國人在日本買房", "日本住宅貸款（非居住者）", "日本不動產投資與收租", "日本房屋稅務", "東京 23 區中古公寓與戶建"],
+  areaServed: [{ "@type": "AdministrativeArea", name: "東京都" }, { "@type": "AdministrativeArea", name: "神奈川縣" }, { "@type": "AdministrativeArea", name: "大阪府" }],
   worksFor: {
     "@type": "RealEstateAgent",
     name: "株式会社アンドプラス 住宅営業部",
@@ -339,6 +342,11 @@ function page(a) {
     datePublished: a.date, dateModified: updatedOn(a),
     author: AUTHOR_TW,
     publisher: PUBLISHER_TW,
+    keywords: (a.tags || []).join(", "),
+    articleSection: c.name,
+    wordCount: a.body.join("").replace(/<[^>]*>/g, "").replace(/\s/g, "").length,
+    about: (a.tags || []).map(t => ({ "@type": "Thing", name: t })),
+    isPartOf: { "@type": "WebSite", name: "周周・日本房仲", url: BASE },
     // 著作權欄位：讓爬蟲與 AI 讀得到「這是誰的內容」。被整篇抄走時，
     // 原文的 canonical + datePublished + copyrightHolder 是主張原創最直接的機器可讀證據。
     // （這裡用精簡版，不重複整個 author 物件，每頁可以少背 700 bytes）

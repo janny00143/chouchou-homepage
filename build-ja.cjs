@@ -28,6 +28,9 @@ const AUTHOR_JA = {
   url: BASE + "about-ja.html",
   jobTitle: "不動産仲介",
   knowsLanguage: ["ja", "zh-Hant", "zh-Hans"],
+  // エンティティ認識用：誰が、何の専門家で、どこを担当するか（2026-10-10）
+  knowsAbout: ["日本の不動産売買", "外国人の日本不動産購入", "住宅ローン（非居住者）", "不動産投資・賃貸収益", "不動産の税務", "東京23区の中古マンション・戸建"],
+  areaServed: [{ "@type": "AdministrativeArea", name: "東京都" }, { "@type": "AdministrativeArea", name: "神奈川県" }, { "@type": "AdministrativeArea", name: "大阪府" }],
   worksFor: {
     "@type": "RealEstateAgent",
     name: "株式会社アンドプラス 住宅営業部",
@@ -250,6 +253,10 @@ function pageJa(a, j) {
     datePublished: a.date, dateModified: updatedOnJa(a, j),
     author: AUTHOR_JA,
     publisher: PUBLISHER_JA,
+    keywords: (j.tags || a.tags || []).join(", "),
+    wordCount: (j.body || []).join("").replace(/<[^>]*>/g, "").replace(/\s/g, "").length,
+    about: (j.tags || a.tags || []).map(t => ({ "@type": "Thing", name: t })),
+    isPartOf: { "@type": "WebSite", name: "周周・日本房仲", url: BASE + "ja.html" },
     // 著作権の欄（繁中版と同じ。誰が書いたかを機械可読にしておく。
     //             author の全部を繰り返さず、簡略版で十分）
     copyrightHolder: COPYRIGHT_JA,
