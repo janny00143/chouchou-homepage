@@ -60,6 +60,7 @@ const CATS = eval(src.match(/const CATS=(\[[\s\S]*?\]);/)[1]);
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
+  "a60": "japan-fire-earthquake-insurance-guide",
   "a59": "japan-non-rebuildable-property",
   "a58": "japan-mansion-repair-reserve-fund",
   "a57": "japan-see-a-doctor-guide",
@@ -146,6 +147,10 @@ const HOME_CAT = p => p.cat === "live" || p.cat === "house";
 /* 買地自建／建築條件付售地のように「土地を買う」話の記事は、
    cat が knowhow でも土地物件を出す（2026-10-04 周周の「幫我串接」指示）。 */
 const LAND_ART = new Set(["a38", "a56"]);
+/* 2026-10-10（周周核准提案 2）：講「戶建」的文章配戶建物件、講「公寓」的配公寓，
+   不要兩種混在一起。a59 再建築不可＝戶建／a58 修繕基金・a9 老公寓避雷＝公寓。 */
+const HOUSE_ART = new Set(["a59"]);
+const MANSION_ART = new Set(["a58", "a9"]);
 const PICK_BY_CAT = {
   invest:  p => p.cat === "invest",
   /* 用「旅館業」比對，不要用「民泊」——有物件的 note 寫的是「此戶民泊不可」，用民泊會抓到意思相反的 */
@@ -183,7 +188,10 @@ const AREA_HINT = [
 ];
 /* 依文章 id 做穩定的錯開，讓不同文章不會推到同一批物件 */
 function propsForArticle(a) {
-  const pick = LAND_ART.has(a.id) ? (p => p.cat === "land") : PICK_BY_CAT[a.cat];
+  const pick = LAND_ART.has(a.id) ? (p => p.cat === "land")
+    : HOUSE_ART.has(a.id) ? (p => p.cat === "house")
+    : MANSION_ART.has(a.id) ? (p => p.cat === "live")
+    : PICK_BY_CAT[a.cat];
   if (!pick) return [];
   const onSale = PROPS.filter(p => !p.sold && p.status === "在售");
   let list = [], areaHit = false;
@@ -210,6 +218,10 @@ function propBlockTitle(a, areaHit) {
   if (areaHit) return ["這個區域，周周手上現在有的物件", "文章裡講的區域，站上現在就有在售的物件。"];
   if (LAND_ART.has(a.id))
     return ["周周手上目前的買地自建用地", "想自地自建、蓋訂製住宅？這幾塊地是站上現在就有的（資料會隨物件更新自動同步）。"];
+  if (HOUSE_ART.has(a.id))
+    return ["周周手上目前的戶建物件", "看完想直接看實際案例？這幾件是站上現在就有的戶建（資料會隨物件更新自動同步）。"];
+  if (MANSION_ART.has(a.id))
+    return ["周周手上目前的公寓物件", "看完想直接看實際案例？這幾件是站上現在就有的公寓（資料會隨物件更新自動同步）。"];
   if (a.cat === "invest" || a.cat === "minpaku")
     return ["周周手上目前的投資物件", "看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。"];
   return ["周周手上目前的自住物件", "看完文章想直接看實際案例？這幾件是站上現在就有的（資料會隨物件更新自動同步）。"];

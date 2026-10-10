@@ -3214,5 +3214,37 @@
  "gx-h2-ja.webp": [
   1200,
   470
+ ],
+ "gx-k1-zh.webp": [
+  1200,
+  500
+ ],
+ "gx-k3-zh.webp": [
+  1200,
+  450
+ ],
+ "gx-k1-ja.webp": [
+  1200,
+  500
+ ],
+ "gx-k3-ja.webp": [
+  1200,
+  450
+ ],
+ "gx-k2-ja.webp": [
+  1200,
+  470
+ ],
+ "gx-k2-zh.webp": [
+  1200,
+  470
+ ],
+ "cover-insurance-guide.webp": [
+  1600,
+  533
+ ],
+ "cover-insurance-guide-ja.webp": [
+  1600,
+  533
  ]
 }

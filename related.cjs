@@ -13,6 +13,11 @@
    排序是「入連次數 → ART 順序」，完全決定性，重跑結果一致。
    ============================================================ */
 
+/* 2026-10-10（周周核准提案 1）：「中古屋怎麼看」系列互相導流。
+   系列內的文章，延伸閱讀的前 2 條固定放系列裡的其他篇（依順序輪流錯開，
+   避免每篇都指向同一篇），第 3 條照原本的「入連最少」邏輯補。 */
+const SERIES = ["a9", "a58", "a59", "a60"];
+
 function buildRelMap(ART, isEligible, N = 3, SAME = 2) {
   const idx = new Map(ART.map((a, i) => [a.id, i]));
   const inbound = Object.create(null);
@@ -23,6 +28,13 @@ function buildRelMap(ART, isEligible, N = 3, SAME = 2) {
     if (!isEligible(a)) continue;
     const others = ART.filter(r => r.id !== a.id && isEligible(r));
     const picked = [];
+    if (SERIES.includes(a.id)) {
+      const k = SERIES.indexOf(a.id);
+      for (let j = 1; j < SERIES.length && picked.length < 2; j++) {
+        const r = others.find(x => x.id === SERIES[(k + j) % SERIES.length]);
+        if (r) { picked.push(r); inbound[r.id]++; }
+      }
+    }
     const take = (pool, upTo) => {
       pool.slice()
         .sort((x, y) => (inbound[x.id] - inbound[y.id]) || (idx.get(x.id) - idx.get(y.id)))

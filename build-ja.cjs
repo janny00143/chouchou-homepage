@@ -110,7 +110,9 @@ const jaSlug = slug => slug + "-ja";
 /* 繁中版 generate-pages.cjs と同じルール（提案1・2026-10-04 対象分類を拡大）。
    life／travel は意図的に対象外——生活・観光記事に物件カードは唐突になる。 */
 const HOME_CAT_JA = p => p.cat === "live" || p.cat === "house";
-const LAND_ART_JA = new Set(["a38", "a56"]);   // 土地を買う話の記事には土地物件を
+const LAND_ART_JA = new Set(["a38", "a56"]);
+const HOUSE_ART_JA = new Set(["a59"]);        // 戸建の話の記事には戸建を
+const MANSION_ART_JA = new Set(["a58", "a9"]); // マンションの話の記事にはマンションを   // 土地を買う話の記事には土地物件を
 const PICK_BY_CAT_JA = {
   invest:  p => p.cat === "invest",
   /* 「民泊」だと「民泊不可」の物件まで拾ってしまうため、旅館業で判定する */
@@ -146,7 +148,10 @@ const AREA_HINT_JA = [
   [/京都/, /京都/],
 ];
 function propsForArticleJa(a) {
-  const pick = LAND_ART_JA.has(a.id) ? (p => p.cat === "land") : PICK_BY_CAT_JA[a.cat];
+  const pick = LAND_ART_JA.has(a.id) ? (p => p.cat === "land")
+    : HOUSE_ART_JA.has(a.id) ? (p => p.cat === "house")
+    : MANSION_ART_JA.has(a.id) ? (p => p.cat === "live")
+    : PICK_BY_CAT_JA[a.cat];
   if (!pick) return [];
   const onSale = PROPS.filter(p => !p.sold && p.status === "在售");
   let list = [], areaHit = false;
@@ -171,6 +176,8 @@ function propsForArticleJa(a) {
 function propBlockTitleJa(a, areaHit) {
   if (areaHit) return "このエリアで現在ご紹介できる物件";
   if (LAND_ART_JA.has(a.id)) return "現在ご紹介できる土地（建築条件付売地など）";
+  if (HOUSE_ART_JA.has(a.id)) return "現在ご紹介できる戸建物件";
+  if (MANSION_ART_JA.has(a.id)) return "現在ご紹介できるマンション物件";
   if (a.cat === "invest" || a.cat === "minpaku") return "現在ご紹介できる投資物件";
   return "現在ご紹介できる居住用物件";
 }
@@ -230,7 +237,7 @@ function pageJa(a, j) {
   const twUrl = BASE + slug + ".html";
   const cnUrl = BASE + slug + "-cn.html";
   const catName = JA_CAT[a.cat] || "不動産コラム";
-  const cover = coverURL(a);
+  const cover = coverURL(j.cover ? { cover: j.cover } : a);   // 文字入りの封面は日本語版を j.cover で指定
   const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + "linear-gradient(135deg,#a8a29e,#d6d3d1)" + (a.cpos ? ";background-position:" + a.cpos : "");
   const bodyHTML = j.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(出典|参考資料|本記事)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); if (m) return '<h2 class="ah">' + m[1] + "</h2>"; const s2 = t.match(/^<b>([\s\S]*?)<\/b>([\s\S]*)$/); if (s2) { const rest = s2[2].trim(); return '<h2 class="ah sh2">' + s2[1] + "</h2>" + (rest ? "<p>" + rest + "</p>" : ""); } return "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
