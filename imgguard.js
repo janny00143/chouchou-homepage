@@ -10,10 +10,10 @@
   }
   function place(img, ov) {
     var w = img.offsetWidth, h = img.offsetHeight;
-    if (!w || !h) { ov.style.display = "none"; return; }
-    ov.style.display = "";
-    ov.style.left = img.offsetLeft + "px"; ov.style.top = img.offsetTop + "px";
-    ov.style.width = w + "px"; ov.style.height = h + "px";
+    if (!w || !h) { ov.style.setProperty("display", "none", "important"); return; }
+    ov.style.setProperty("display", "block", "important");
+    ov.style.setProperty("left", img.offsetLeft + "px", "important"); ov.style.setProperty("top", img.offsetTop + "px", "important");
+    ov.style.setProperty("width", w + "px", "important"); ov.style.setProperty("height", h + "px", "important");
   }
   function guard(img) {
     if (img.__g || !isTarget(img) || !img.parentNode) return;
@@ -25,6 +25,7 @@
       e.preventDefault(); e.stopPropagation();
       img.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
     });
+    if (getComputedStyle(img.parentNode).position === "static") img.parentNode.style.position = "relative";
     img.insertAdjacentElement("afterend", ov);
     img.__g = ov;
     place(img, ov);
@@ -46,7 +47,7 @@
   }
   function start() {
     var st = document.createElement("style");
-    st.textContent = ".imgguard-ov{position:absolute;opacity:0;z-index:2;margin:0;padding:0;border:0;max-width:none;max-height:none;object-fit:contain;-webkit-user-drag:auto;cursor:inherit}";
+    st.textContent = "img.imgguard-ov{position:absolute!important;opacity:0!important;visibility:visible!important;z-index:2!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;filter:none!important;transform:none!important;max-width:none!important;max-height:none!important;min-width:0!important;min-height:0!important;flex:none!important;object-fit:contain!important;background:none!important;cursor:inherit}";
     document.head.appendChild(st);
     scan(document);
     new MutationObserver(function (muts) {
