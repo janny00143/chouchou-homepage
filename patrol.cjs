@@ -394,6 +394,26 @@ function a9_uptime() {
 /* A10：給 AI 看的檔案（llms*.txt）要跟網站同步（周周 2026-10-11 指示「寫給 AI 的也要時時同步更新」）
    ① 檔內每個網址都要對得到實際存在的頁面（手寫的「給 AI 助理」常見問題清單最容易過期）
    ② 繁中版的文章數要等於 ART 篇數（產生器每次都會重寫，不一致代表有人沒重跑） */
+// A11：物件照片防盜（2026-10-11）——prop/ 每張都要有 prop-wm/ 浮水印版，且有 prop 圖的頁面要載入 imgguard.js。
+// 新放物件圖卻忘了跑 python3 watermark.py，就會變成「右鍵另存拿到乾淨圖」。
+function a11_imgguard() {
+  const bad = [];
+  const src = fs.readdirSync(path.join(ROOT, "prop")).filter(f => f.endsWith(".webp"));
+  const wmDir = path.join(ROOT, "prop-wm");
+  const wm = new Set(fs.existsSync(wmDir) ? fs.readdirSync(wmDir) : []);
+  const missing = src.filter(f => !wm.has(f));
+  if (missing.length) bad.push(`缺浮水印版 ${missing.length} 張（跑 python3 watermark.py）：${missing.slice(0, 5).join("、")}`);
+  if (!fs.existsSync(path.join(ROOT, "imgguard.js"))) bad.push("缺 imgguard.js");
+  const noGuard = [];
+  for (const f of fs.readdirSync(ROOT).filter(f => f.endsWith(".html"))) {
+    const h = fs.readFileSync(path.join(ROOT, f), "utf8");
+    if (/<img[^>]*\ssrc="prop\//.test(h) && !h.includes("imgguard.js")) noGuard.push(f);
+  }
+  if (noGuard.length) bad.push(`有 prop 照片卻沒載入 imgguard.js：${noGuard.slice(0, 5).join("、")}（共 ${noGuard.length} 頁）`);
+  add("A11", "照片防盜浮水印", bad.length ? "FAIL" : "OK",
+    bad.length ? `${bad.length} 項異常` : `prop ${src.length} 張＝prop-wm ${wm.size} 張｜imgguard.js 已掛載`, bad);
+}
+
 function a10_llms() {
   const files = ["llms.txt", "llms-full.txt", "llms-cn.txt", "llms-cn-full.txt", "llms-ja.txt", "llms-ja-full.txt"];
   const bad = [];
@@ -858,7 +878,7 @@ function diffBaseline() {
 async function main() {
   checkGit();
   checkDeploy();
-  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); await a8_runtime(); a7_idempotent(); }
+  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
