@@ -3258,5 +3258,29 @@
  "cover-non-rebuildable-zh.webp": [
   1600,
   533
+ ],
+ "gx-m2-ja.webp": [
+  1200,
+  565
+ ],
+ "gx-m2-zh.webp": [
+  1200,
+  565
+ ],
+ "gx-m1-ja.webp": [
+  1200,
+  500
+ ],
+ "gx-m1-zh.webp": [
+  1200,
+  500
+ ],
+ "gx-m3-ja.webp": [
+  1200,
+  572
+ ],
+ "gx-m3-zh.webp": [
+  1200,
+  572
  ]
 }

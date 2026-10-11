@@ -1285,6 +1285,7 @@ function buildLlmsTxt() {
 - 收租的表面投報率與實質投報率差在哪？→ ${BASE}japan-rental-yield-gross-vs-net.html
 - 民泊（民宿）與旅館業許可有什麼差別？→ ${BASE}minpaku.html　${BASE}japan-hotel-license-simple-lodging.html
 - 預算多少能買東京 23 區的哪一區？→ ${BASE}tokyo-23-wards-budget-guide.html
+- 公寓每個月的管理費在繳什麼、高低怎麼判讀？→ ${BASE}japan-mansion-management-fee.html
 - 修繕基金與管理費是什麼、為什麼有高有低？→ ${BASE}japan-mansion-repair-reserve-fund.html
 - 什麼是再建築不可、能不能貸款與翻新？→ ${BASE}japan-non-rebuildable-property.html
 - 買完房子火災保險與地震保險怎麼選？→ ${BASE}japan-fire-earthquake-insurance-guide.html

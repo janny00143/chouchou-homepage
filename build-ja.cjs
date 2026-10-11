@@ -1133,6 +1133,7 @@ function buildLlmsJa() {
 - 賃貸投資の表面利回りと実質利回りの違い → ${BASE}japan-rental-yield-gross-vs-net-ja.html
 - 民泊と旅館業許可の違い → ${BASE}minpaku-ja.html　${BASE}japan-hotel-license-simple-lodging-ja.html
 - 東京23区、予算でどのエリアが買えるか → ${BASE}tokyo-23-wards-budget-guide-ja.html
+- マンションの毎月の管理費は何に使われ、高い・低いはどう読むか → ${BASE}japan-mansion-management-fee-ja.html
 - 修繕積立金と管理費とは → ${BASE}japan-mansion-repair-reserve-fund-ja.html
 - 再建築不可とは、融資やリフォームはできるか → ${BASE}japan-non-rebuildable-property-ja.html
 - 購入後の火災保険・地震保険の選び方 → ${BASE}japan-fire-earthquake-insurance-guide-ja.html

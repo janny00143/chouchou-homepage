@@ -391,6 +391,32 @@ function a9_uptime() {
         r.html_url || ""]);
 }
 
+/* A10：給 AI 看的檔案（llms*.txt）要跟網站同步（周周 2026-10-11 指示「寫給 AI 的也要時時同步更新」）
+   ① 檔內每個網址都要對得到實際存在的頁面（手寫的「給 AI 助理」常見問題清單最容易過期）
+   ② 繁中版的文章數要等於 ART 篇數（產生器每次都會重寫，不一致代表有人沒重跑） */
+function a10_llms() {
+  const files = ["llms.txt", "llms-full.txt", "llms-cn.txt", "llms-cn-full.txt", "llms-ja.txt", "llms-ja-full.txt"];
+  const bad = [];
+  let urls = 0;
+  for (const f of files) {
+    if (!fs.existsSync(path.join(ROOT, f))) { bad.push(`缺檔：${f}`); continue; }
+    const t = read(f);
+    const set = new Set([...t.matchAll(/https:\/\/chouchouinjapan\.com\/([A-Za-z0-9_\-\.\/%]*)/g)].map(m => m[1].replace(/[.,;:]+$/, "")));
+    for (const u of set) {
+      urls++;
+      const file = u === "" ? "index.html" : decodeURIComponent(u).replace(/[?#].*$/, "");
+      if (!fs.existsSync(path.join(ROOT, file))) bad.push(`${f} → 找不到 ${u}`);
+    }
+  }
+  try {
+    const { ART } = loadIndexData();
+    const m = read("llms.txt").match(/共 (\d+) 篇/);
+    if (m && Number(m[1]) !== ART.length) bad.push(`llms.txt 寫共 ${m[1]} 篇，但 ART 有 ${ART.length} 篇`);
+  } catch (e) { bad.push("無法比對文章數：" + e.message); }
+  add("A10", "給 AI 看的檔案（llms）", bad.length ? "FAIL" : "OK",
+    `6 個檔｜網址 ${urls} 條｜${bad.length ? "有問題" : "全部對得到頁面、篇數一致"}`, bad.slice(0, 10));
+}
+
 function a7_idempotent() {
   if (!WANT_GEN) {
     add("A7", "產生器冪等", "INFO", "本次略過（要檢查請加 --gen，它會實際重寫產出檔）");
@@ -832,7 +858,7 @@ function diffBaseline() {
 async function main() {
   checkGit();
   checkDeploy();
-  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); await a8_runtime(); a7_idempotent(); }
+  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
