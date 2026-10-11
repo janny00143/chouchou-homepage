@@ -175,8 +175,8 @@ const head = `<!-- 周周・日本語ランディングページ（完整版 SPA
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f43f5e">
 <title>中国語・台湾語・日本語対応の不動産エージェント｜東京で日本の住まい探しをサポート｜周周</title>
-<meta name="description" content="東京を拠点に、中国語（繁体字）・台湾語・日本語のトリリンガルで日本の不動産購入・住み替え・投資・住宅ローン・契約をサポート。台湾出身のスタッフが日本語での対応も完全に問題なく行えるため、中国語圏のお客様はもちろん、日本語でのご相談も安心です。お気軽に LINE でご相談ください。">
-<meta name="keywords" content="中国語対応 不動産,台湾語 対応 不動産,バイリンガル 不動産エージェント,台湾人 不動産,中国語 不動産仲介,東京 不動産 中国語,繁体字 不動産,華語 不動産,台湾 不動産 東京,中国語対応 住宅購入,中国語 賃貸 購入 東京">
+<meta name="description" content="東京を拠点に、中国語（繁体字）・台湾語・日本語のトリリンガルで日本の不動産購入・住み替え・投資・住宅ローン・契約をサポート。台湾出身のスタッフが日本語での対応も完全に問題なく行えるため、中国語圏のお客様はもちろん、日本語でのご相談も安心です。お気軽に LINE でご相談ください。台湾のお客様・中華圏のお客様・外国籍のお客様向けの窓口です。">
+<meta name="keywords" content="台湾のお客様 不動産,中華圏のお客様,外国籍のお客様 不動産購入,華語 不動産仲介,中国語対応 不動産,台湾語 対応 不動産,バイリンガル 不動産エージェント,台湾人 不動産,中国語 不動産仲介,東京 不動産 中国語,繁体字 不動産,華語 不動産,台湾 不動産 東京,中国語対応 住宅購入,中国語 賃貸 購入 東京">
 <link rel="canonical" href="https://chouchouinjapan.com/ja.html">
 <link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/ja.html">
 <link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/">
