@@ -718,6 +718,7 @@ const NOTE_MD_JA = t => String(t || "")
 const PROP_CAT_JA = { invest: "投資・収益物件", live: "住まい（実需）", house: "戸建", land: "土地・建築条件付売地" };
 const propUrlJa = p => BASE + "prop-" + p.id + "-ja.html";   /* 提案2以降は静的ページを指す */
 const onSalePropsJa = () => PROPS.filter(p => !p.sold && p.status === "在售");
+const pagedPropsJa = () => PROPS.filter(p => !p.sold && (p.status === "在售" || p.keepPage));
 
 function propsIndexJa() {
   const by = {};
@@ -953,7 +954,7 @@ function propPageJa(p) {
   if (imgs.length) ld.image = imgs;
   const yenV = propYenJa(p.price);
   if (yenV > 0) ld.offers = { "@type": "Offer", price: yenV, priceCurrency: "JPY",
-    availability: "https://schema.org/InStock", url, seller: PUBLISHER_JA };
+    availability: p.status === "在售" ? "https://schema.org/InStock" : "https://schema.org/SoldOut", url, seller: PUBLISHER_JA };
   const ldCrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
     { "@type": "ListItem", position: 2, name: "物件情報", item: BASE + "properties-ja.html" },
@@ -1012,6 +1013,7 @@ ${SBAR}
 <h1 class="atitle" style="margin-bottom:6px">${esc(title)}</h1>${PLAIN_JA(p.catch) ? `
 <p class="psub">${esc(PLAIN_JA(p.catch))}</p>` : ""}
 <p class="pprice">${esc(PLAIN_JA(p.price))}</p>
+${p.status === "在售" ? "" : '<p style="display:inline-block;background:#fdecef;color:var(--rose-d);font-weight:700;border-radius:8px;padding:6px 14px;margin:0 0 8px">成約済み</p>'}
 ${propGalleryJa(p)}
 <table class="ptab">${propSpecRowsJa(p)}</table>
 <div class="post">
@@ -1031,12 +1033,12 @@ ${FOOT}
 
 /* 書き出し：販売中でなくなったページは掃除してから生成 */
 {
-  const keepJa = new Set(onSalePropsJa().map(p => propSlugJa(p) + ".html"));
+  const keepJa = new Set(pagedPropsJa().map(p => propSlugJa(p) + ".html"));
   for (const f of fs.readdirSync(ROOT)) {
     if (/^prop-[A-Za-z0-9_-]+-ja\.html$/.test(f) && !keepJa.has(f)) fs.unlinkSync(ROOT + "/" + f);
   }
   let n = 0;
-  for (const p of onSalePropsJa()) { fs.writeFileSync(ROOT + "/" + propSlugJa(p) + ".html", propPageJa(p)); n++; }
+  for (const p of pagedPropsJa()) { fs.writeFileSync(ROOT + "/" + propSlugJa(p) + ".html", propPageJa(p)); n++; }
   console.log("物件独立ページ（日本語）" + n + " ページ生成");
 }
 

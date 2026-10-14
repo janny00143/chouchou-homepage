@@ -624,7 +624,8 @@ window.PROPERTIES = [
     group: "jisha",
     listed: "2026-09-19",
     layoutTag: "4LDK",
-    status: "在售",
+    status: "已成約",
+    keepPage: true,   /* 周周 2026-10-11：成約不撤下、網址不變，獨立頁照留 */
     cat: "house",
     title: "向丘2丁目 part2 新築戸建",
     title_cn: "文京區向丘 誠之小學區 新築一戶建4LDK（自社・東大前3分）",

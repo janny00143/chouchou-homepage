@@ -710,7 +710,7 @@ urls.push({ loc: BASE + "quiz.html", pr: "0.6" });
 /* 物件獨立頁（提案 2・2026-10-03）。lastmod 用 properties.js 的 listed，
    不用 git／mtime —— 新檔沒有 git 紀錄，退回 mtime 會讓 sitemap 每跑一次就變，
    產生器就不冪等了（patrol A7 會抓到）。 */
-for (const p of PROPS.filter(x => !x.sold && x.status === "在售")) {
+for (const p of PROPS.filter(x => !x.sold && (x.status === "在售" || x.keepPage))) {
   const lm = p.listed || "";
   urls.push({ loc: BASE + "prop-" + p.id + ".html", lm, pr: "0.7", cf: "weekly" });
   urls.push({ loc: BASE + "prop-" + p.id + "-ja.html", lm, pr: "0.6" });
@@ -837,6 +837,8 @@ const NOTE_MD = t => String(t || "")
 const PROP_CAT_TW = { invest: "投資收租", live: "自住", house: "一戶建", land: "土地・建築條件付售地" };
 const propUrl = p => BASE + "prop-" + p.id + ".html";   /* 提案 2 之後指可被收錄的靜態頁 */
 const onSaleProps = () => PROPS.filter(p => !p.sold && p.status === "在售");
+/* keepPage:true ＝ 成約後仍保留獨立頁（周周 2026-10-11：向丘2 成約不撤下、網址不變），頁內改標「已成約」 */
+const pagedProps = () => PROPS.filter(p => !p.sold && (p.status === "在售" || p.keepPage));
 
 function propsIndexTw() {
   const by = {};
@@ -1091,7 +1093,7 @@ function propPage(p) {
   if (imgs.length) ld.image = imgs;
   const yenV = propYen(p.price);
   if (yenV > 0) ld.offers = { "@type": "Offer", price: yenV, priceCurrency: "JPY",
-    availability: "https://schema.org/InStock", url, seller: PUBLISHER_TW };
+    availability: p.status === "在售" ? "https://schema.org/InStock" : "https://schema.org/SoldOut", url, seller: PUBLISHER_TW };
   const ldCrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
     { "@type": "ListItem", position: 2, name: "物件專區", item: BASE + "properties.html" },
@@ -1151,6 +1153,7 @@ ${SBAR}
 <h1 class="atitle" style="margin-bottom:6px">${esc(title)}</h1>
 <p class="psub">${esc(PLAIN(p.title))}</p>
 <p class="pprice">${esc(PLAIN(p.price))}</p>
+${p.status === "在售" ? "" : '<p style="display:inline-block;background:#fdecef;color:var(--rose-d);font-weight:700;border-radius:8px;padding:6px 14px;margin:0 0 8px">已成約</p>'}
 ${propGallery(p)}
 <table class="ptab">${propSpecRows(p)}</table>
 <div class="post">
@@ -1196,14 +1199,14 @@ function propVideoLd(p, url) {
 
 /* 寫檔：先清掉上一輪留下、這次已不在售的 prop-*.html，避免成約後還掛著 */
 {
-  const keep = new Set(onSaleProps().map(p => propSlug(p) + ".html"));
+  const keep = new Set(pagedProps().map(p => propSlug(p) + ".html"));
   for (const f of fs.readdirSync(ROOT)) {
     if (/^prop-[A-Za-z0-9_-]+\.html$/.test(f) && !/-(cn|ja)\.html$/.test(f) && !keep.has(f)) {
       fs.unlinkSync(ROOT + "/" + f);
     }
   }
   let n = 0;
-  for (const p of onSaleProps()) { fs.writeFileSync(ROOT + "/" + propSlug(p) + ".html", propPage(p)); n++; }
+  for (const p of pagedProps()) { fs.writeFileSync(ROOT + "/" + propSlug(p) + ".html", propPage(p)); n++; }
   console.log("物件獨立頁（繁中）已產生 " + n + " 頁");
 }
 
