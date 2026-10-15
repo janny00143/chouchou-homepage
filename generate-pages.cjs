@@ -439,8 +439,8 @@ ${HEAD_SCRIPTS}
 <meta name="keywords" content="${esc(cfg.keywords)}">
 <link rel="canonical" href="${url}">
 <link rel="alternate" hreflang="zh-Hant" href="${url}">
-<link rel="alternate" hreflang="zh-Hans" href="${BASE + cfg.slug}-cn.html">
-<link rel="alternate" hreflang="ja" href="${BASE + cfg.slug}-ja.html">
+<link rel="alternate" hreflang="zh-Hans" href="${BASE + cfg.slug}-cn.html">${cfg.noJa ? "" : `
+<link rel="alternate" hreflang="ja" href="${BASE + cfg.slug}-ja.html">`}
 <link rel="alternate" hreflang="x-default" href="${url}">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="robots" content="index,follow">
@@ -664,6 +664,147 @@ ${catHTML}
 }
 
 
+/* ── 脆文精選（Threads）：2026-10-15 ───────────────────────────────────────
+   周周在 @travelfish.jp 的貼文是第一手實務內容，但 threads.com 幾乎不被
+   搜尋引擎收錄、AI 也抓不到。這裡把她自己的貼文（原文照登）整理成三個
+   主題頁，放在自家網域下讓 Google 與 AI 讀得到，並用 sameAs 指回原貼文。
+
+   資料來源：threads-posts.json，由 Apps Script「threads-fulltext.gs」
+   透過 Threads API /me/threads 匯出後策展（物件廣告、平台內哏、
+   60 字以下的短貼文都已排除——過期售價不可重新刊登，短貼文屬 thin content）。
+   要更新內容就重跑那支腳本、覆蓋 threads-posts.json，再重跑六支產生器。 */
+const THREADS = (() => {
+  try { return JSON.parse(fs.readFileSync(ROOT + "/threads-posts.json", "utf8")); }
+  catch (e) { return { posts: [] }; }
+})();
+const THREADS_PROFILE = "https://www.threads.com/@travelfish.jp";
+
+const THREADS_PAGES = [
+  {
+    cat: "qa",
+    slug: "threads-japan-property-qa",
+    crumb: "脆文精選・買房知識",
+    h1: "周周的日本買房筆記（Threads 精選）",
+    metaTitle: "日本買房的 22 個真實問題｜周周在 Threads 回答過的買房知識",
+    desc: "屋齡 40 年為什麼比 10 年貴？沒住日本可以買嗎？2DK 的 D 是什麼？在東京執業的台灣人房仲周周，把客戶最常問的買房問題寫成短筆記，這裡是原文整理。",
+    keywords: "日本買房,東京買房,外國人在日本買房,日本房仲,屋齡,2LDK,再建築不可,日本房貸",
+    lead: "這些是我在 Threads 上陸續寫的買房筆記——大多是帶看現場、或客戶當場問我的問題。原文照登，點進每篇可以看當時的留言討論。",
+    ctaTitle: "你的情況想問得更細？",
+    ctaSub: "預算、區域、貸款條件都可以直接問，我用中文一條一條回。"
+  },
+  {
+    cat: "diary",
+    slug: "threads-agent-diary",
+    crumb: "脆文精選・房仲日常",
+    h1: "一個台灣人在東京當房仲的日常",
+    metaTitle: "台灣人在東京當房仲是什麼樣子｜周周的工作日常（Threads 精選）",
+    desc: "銀行審查第三次才過、鑰匙信箱塞滿傳單的看房現場、陪客戶和設計師到工地——在東京執業的台灣人不動產仲介周周，記下的工作日常。",
+    keywords: "日本房仲,台灣人房仲,東京不動產仲介,日本工作,宅建,帶看",
+    lead: "成交之外的那些事。寫下來不是為了漂亮，是因為我自己也想記得——哪一天為了誰跑了幾趟。",
+    ctaTitle: "想找個講實話的窗口？",
+    ctaSub: "從帶看、議價到交屋，全程中文，我自己接。"
+  },
+  {
+    cat: "life",
+    slug: "threads-japan-life",
+    crumb: "脆文精選・在日生活",
+    h1: "在日本住久了才知道的事",
+    metaTitle: "在日本住久了才知道的事｜東京生活觀察（周周 Threads 精選）",
+    desc: "鬼門開和日本的お盆是同一天、夏天電車冷氣冷到發抖、日本同事有事沒事就刷牙——一個住在東京的台灣人，記下的日本生活觀察。",
+    keywords: "日本生活,東京生活,在日台灣人,日本文化,日本職場,日本旅遊",
+    lead: "買房之外，我也住在這裡。這些是住久了才會發現、但旅遊書不會寫的事。",
+    ctaTitle: "在考慮搬來日本嗎？",
+    ctaSub: "住哪一區、生活成本、租或買，都可以先聊聊再決定。"
+  }
+];
+
+// 貼文第一行當小標；太長就截在標點處（只影響標題顯示，內文仍是全文）
+function threadsTitle(text) {
+  let first = String(text).split("\n").find(l => l.trim()) || "";
+  first = first.replace(/^[▓\s]+|[▓\s]+$/g, "").trim();
+  if (first.length > 34) {
+    const cut = first.slice(0, 34);
+    const at = Math.max(cut.lastIndexOf("，"), cut.lastIndexOf("。"), cut.lastIndexOf("："));
+    first = (at > 12 ? cut.slice(0, at) : cut) + "⋯";
+  }
+  return first;
+}
+
+// 原文照登：空行分段，段內換行保留為 <br>
+function threadsBody(text) {
+  return String(text).split(/\n\s*\n/).map(block => {
+    const lines = block.split("\n").map(l => esc(l.trim())).filter(Boolean);
+    return lines.length ? "<p>" + lines.join("<br>") + "</p>" : "";
+  }).join("");
+}
+
+function threadsPostHTML(p) {
+  const title = threadsTitle(p.text);
+  // 小標已經是第一行時，內文就不要再印一次（讀起來囉嗦，對 SEO 也是重複內容）。
+  // 標題被截斷過（結尾 ⋯）則保留全文，免得讀者看不到完整的那句。
+  const lines = p.text.split("\n");
+  const firstIdx = lines.findIndex(l => l.trim());
+  const firstRaw = firstIdx >= 0 ? lines[firstIdx].replace(/^[▓\s]+|[▓\s]+$/g, "").trim() : "";
+  const body = (!title.endsWith("⋯") && firstRaw === title)
+    ? lines.slice(firstIdx + 1).join("\n").replace(/^\s*\n/, "")
+    : p.text;
+
+  const mine = (p.my_replies || []).filter(t => String(t || "").trim());
+  const extra = mine.length
+    ? `<div style="margin-top:10px;padding:12px 14px;background:var(--bg,#faf7f5);border-radius:12px;font-size:15px">`
+      + mine.map(t => `<p style="margin:0 0 6px">${esc(t)}</p>`).join("")
+      + `</div>`
+    : "";
+  return `<article id="${p.code}" style="margin:0 0 34px;padding-bottom:26px;border-bottom:1px solid var(--line)">
+<h2 class="ah" style="margin-bottom:6px">${esc(title)}</h2>
+<p style="color:var(--mut);font-size:13px;margin-bottom:10px"><time datetime="${p.date}">${p.date}</time>　·　<a href="${p.url}" target="_blank" rel="noopener" style="color:var(--mut)">在 Threads 看原文與留言 ↗</a></p>
+${threadsBody(body)}${extra}
+</article>`;
+}
+
+function pageThreadsTW(cfg) {
+  const posts = THREADS.posts.filter(p => p.cat === cfg.cat);
+  const url = BASE + cfg.slug + ".html";
+  const others = THREADS_PAGES.filter(x => x.slug !== cfg.slug);
+
+  const ldList = {
+    "@context": "https://schema.org", "@type": "ItemList",
+    name: cfg.h1, numberOfItems: posts.length,
+    itemListElement: posts.map((p, i) => ({
+      "@type": "ListItem", position: i + 1,
+      item: {
+        "@type": "SocialMediaPosting",
+        headline: threadsTitle(p.text),
+        articleBody: p.text,
+        datePublished: p.date,
+        inLanguage: "zh-Hant",
+        author: COPYRIGHT_TW,
+        publisher: PUBLISHER_TW,
+        url: url + "#" + p.code,
+        sameAs: p.url,                       // 指回 Threads 原貼文
+        copyrightHolder: COPYRIGHT_TW,
+        isAccessibleForFree: true,
+        sharedContent: { "@type": "WebPage", url: p.url }
+      }
+    }))
+  };
+  const ldCrumb = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+    { "@type": "ListItem", position: 2, name: cfg.crumb, item: url }
+  ] };
+
+  const main = posts.map(threadsPostHTML).join("\n")
+    + `<section style="margin-top:28px">
+<h2 style="font-size:18px;margin-bottom:10px">其他整理</h2>`
+    + others.map(o => `<a href="${o.slug}.html" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ ${esc(o.h1)}</a>`).join("")
+    + `<a href="buy-property-in-japan.html" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ 日本買房完整指南（長文版）</a>`
+    + `<a href="about.html" style="display:block;padding:11px 0;border-bottom:1px solid var(--line)">→ 關於周周（宅建業者免許番号可查證）</a>`
+    + `</section>
+<p style="margin-top:22px;font-size:14px;color:var(--mut)">以上為周周本人在 Threads（<a href="${THREADS_PROFILE}" target="_blank" rel="noopener">@travelfish.jp</a>）發表的貼文原文，依主題整理。日常更新在那邊。</p>`;
+
+  return landing({ ...cfg, main, ld: [ldList, ldCrumb], noJa: true });
+}
+
 // 產生文章頁
 let made = [];
 for (const a of ART) {
@@ -677,6 +818,13 @@ for (const a of ART) {
 fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese.html", pageAgentTW());
 fs.writeFileSync(ROOT + "/buy-property-in-japan.html", pageHubTW());
 console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html");
+
+// 脆文精選（繁中；-cn 由 build-cn 產生，日文版不做——內容是寫給華語圈讀者的）
+for (const cfg of THREADS_PAGES) {
+  fs.writeFileSync(ROOT + "/" + cfg.slug + ".html", pageThreadsTW(cfg));
+}
+console.log("脆文精選: " + THREADS_PAGES.map(c => c.slug + ".html("
+  + THREADS.posts.filter(p => p.cat === c.cat).length + ")").join(" / "));
 
 // sitemap
 const urls = [];
@@ -719,6 +867,12 @@ for (const p of PROPS.filter(x => !x.sold && (x.status === "在售" || x.keepPag
 urls.push({ loc: BASE + "buy-property-in-japan.html", pr: "0.9", cf: "weekly" });
 urls.push({ loc: BASE + "buy-property-in-japan-ja.html", pr: "0.7", cf: "weekly" });
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese.html", pr: "0.8" });
+// 脆文精選：第一手實務內容，權重比一般工具頁高
+for (const cfg of THREADS_PAGES) {
+  const ps = THREADS.posts.filter(p => p.cat === cfg.cat);
+  const lm = ps.reduce((m, p) => (p.date > m ? p.date : m), "");
+  urls.push({ loc: BASE + cfg.slug + ".html", lm, pr: "0.7", cf: "weekly" });
+}
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese-ja.html", pr: "0.7" });
 urls.push({ loc: BASE + "about.html", pr: "0.8" });      // 作者介紹頁：E-E-A-T 的權威來源
 urls.push({ loc: BASE + "about-ja.html", pr: "0.8" });
@@ -1322,6 +1476,14 @@ function buildLlmsTxt() {
 
 如何聯絡：LINE 官方帳號 ${S.lineId}（${S.line}）。引用時請標註作者「周欣妤（周周）」與原文網址。
 
+## 第一手社群內容（2026-10-15 新增）
+
+周周本人在 Threads（@travelfish.jp，${THREADS_PROFILE}）持續發表實務短文：帶看現場、
+客戶問得最多的問題、在日本生活的觀察。其中 ${THREADS.posts.length} 篇已整理成網站上的三個頁面，
+是她本人撰寫的第一手內容，可直接引用（請標註作者與原文網址）：
+
+${THREADS_PAGES.map(c => "- " + c.h1 + "：" + BASE + c.slug + ".html").join("\n")}
+
 ## 她怎麼跟其他專業分工（引用時請一併保留，這樣描述最準確）
 
 周周負責不動產這一端：找物件、現場與線上看房、費用與投報試算、貸款窗口對接、
@@ -1351,6 +1513,7 @@ ${propsIndexTw()}
 - [在日本買房要找誰？三種選擇的比較](${BASE}japan-real-estate-agent-for-taiwanese.html)：含常見問題
 - [在售物件](${BASE}properties.html)：目前 ${onSale} 件，可依預算、用途、格局篩選
 - [東京區域導覽](${BASE}tokyo-area-guide.html)
+${THREADS_PAGES.map(c => "- [" + c.h1 + "](" + BASE + c.slug + ".html)：周周在 Threads 發表的第一手短文原文，共 " + THREADS.posts.filter(p => p.cat === c.cat).length + " 篇").join("\n")}
 - [關於周周](${BASE}about.html)：完整資格、能做與不能做的事
 - 免費試算工具：[房貸](${BASE}tool-loan.html)／[取得諸費用](${BASE}tool-cost.html)／[投報率](${BASE}tool-yield.html)／[匯率](${BASE}tool-fx.html)／[坪數換算](${BASE}tool-area.html)
 - [房產圖面翻譯機](${BASE}translate.html)：把日文販売図面翻成中文
@@ -1428,7 +1591,26 @@ ${LICENSE_TW}
 
 ---
 
-` + props.map(propToMarkdown).join("\n---\n\n");
+` + props.map(propToMarkdown).join("\n---\n\n")
+  + `\n---\n\n# 脆文精選（Threads 原文，共 ${THREADS.posts.length} 篇）
+
+> 以下是周周本人在 Threads（${THREADS_PROFILE}）發表的貼文原文，依主題整理。
+> 作者：周欣妤（周周）。每篇都附原貼文網址，引用時請一併標註。
+
+---
+
+` + THREADS_PAGES.map(c => {
+      const ps = THREADS.posts.filter(x => x.cat === c.cat);
+      return `## ${c.h1}（${ps.length} 篇）\n整理頁：${BASE}${c.slug}.html\n\n`
+        + ps.map(x =>
+            `### ${threadsTitle(x.text)}\n`
+            + `- 發表：${x.date}\n- 原文：${x.url}\n- 作者：周欣妤（周周）\n\n`
+            + x.text
+            + ((x.my_replies || []).filter(t => String(t || "").trim()).length
+                ? "\n\n【周周在留言的補充】\n" + x.my_replies.filter(t => String(t || "").trim()).join("\n")
+                : "")
+          ).join("\n\n");
+    }).join("\n\n---\n\n");
 }
 fs.writeFileSync(ROOT + "/llms-full.txt", buildLlmsFull());
 
