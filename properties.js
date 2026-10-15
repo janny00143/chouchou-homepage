@@ -279,7 +279,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-sanno1-illust.webp","prop/prop-sanno1-b-illust.webp","prop/prop-sanno1-kukaku-plan.webp","prop/prop-sanno1a-plan.webp","prop/prop-sanno1b-plan.webp","prop/prop-sanno1c-plan.webp"],
+    photos: ["prop/prop-sanno1-illust.webp", "prop/prop-sanno1-b-illust.webp", "prop/prop-sanno1-kukaku-plan.webp", "prop/prop-sanno1a-plan.webp", "prop/prop-sanno1b-plan.webp", "prop/prop-sanno1c-plan.webp", "prop/prop-sanno1-site1.webp", "prop/prop-sanno1-site2.webp", "prop/prop-sanno1-site3.webp", "prop/prop-sanno1-road1.webp", "prop/prop-sanno1-road2.webp"],
     note: "■ 這是什麼\n大田區山王、JR京濱東北線「大森」站徒步<b>3分</b>的<b>買地自建・訂製住宅用地</b>（日文叫「建築條件付売地」），是我們自社的案子，A・B・C 三個區畫一次釋出。現況為空地（更地），土地2026年11月上旬交地預定。\n■ 亮點：第一種低層＋走路3分\n山手線一站到品川、兩站到東京，走路三分鐘就到大森站，卻是<b>第一種低層住居專用地域</b>——周邊不會蓋起高樓或商業設施，日照與寧靜度有法規在保障。學區是區立山王小學校徒步2分。這個組合在大森不常出現。\n■ 三個區畫\nA區畫 95.46㎡／土地 1億4,990万円・建物參考 3,990万円\nB區畫 99.94㎡／土地 1億6,990万円・建物參考 4,990万円——土地最大、而且是唯一直接面路的一塊，參考方案排得進內建車庫\nC區畫 96.01㎡／土地 1億4,990万円・建物參考 3,990万円\n三區都是3層建的參考方案，也都附步入式衣帽間。\n■ 規則我先講清楚\n建築條件付的意思是<b>房子由我們公司承建</b>，要在一定期間內簽好建築工程契約；沒談成的話土地契約一併解除、款項退還。A、C兩區由通道連到前面道路（敷地延長），B直接面路；前面道路是法42條2項道路，面寬約4.0m是退縮後的數字。這種地形各家銀行的估價差很多，我可以先幫你問過幾家再決定怎麼出手。\n■ 想在東京蓋自己的家\n買地自建的流程、付款節奏、貸款時點都跟買現成的不一樣，外國人更要提早抓。加LINE跟我說一聲，我用中文從選地、設計到交屋一路陪你走完（相簿第一張是<b>參考外觀示意圖</b>，不是完成預想圖、也不是任何一區的定案設計；平面圖與區劃圖同樣是參考方案；建物參考價格會隨最後決定的設計與規格變動）。"
   },
   {
@@ -1499,7 +1499,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-hatanodai3-1-pers.webp","prop/prop-hatanodai3-plan.webp","prop/prop-hatanodai3-2-pers.webp","prop/prop-hatanodai3-3-pers.webp"],
+    photos: ["prop/prop-hatanodai3-1.webp", "prop/prop-hatanodai3-plan.webp", "prop/prop-hatanodai3-2.webp", "prop/prop-hatanodai3-3.webp", "prop/prop-hatanodai3-4.webp", "prop/prop-hatanodai3-5.webp", "prop/prop-hatanodai3-6.webp", "prop/prop-hatanodai3-7.webp", "prop/prop-hatanodai3-8.webp", "prop/prop-hatanodai3-9.webp", "prop/prop-hatanodai3-10.webp", "prop/prop-hatanodai3-11.webp"],
     note: "■ 這間是什麼\n品川區旗の台、旗の台站徒步約4分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地85.96㎡、總樓地板158.10㎡的3層樓建，<b>現況已完工</b>，2026年11月中旬交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約28.7帖，居室約10.1帖、約7.5帖、約5.9帖。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立旗台小學校、區立荏原第五中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
@@ -1697,7 +1697,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-koenjiminami5-1-pers.webp","prop/prop-koenjiminami5-plan.webp","prop/prop-koenjiminami5-2-pers.webp","prop/prop-koenjiminami5-3-pers.webp"],
+    photos: ["prop/prop-koenjiminami5-1-pers.webp", "prop/prop-koenjiminami5-plan.webp", "prop/prop-koenjiminami5-2-pers.webp", "prop/prop-koenjiminami5-3-pers.webp", "prop/prop-koenjiminami5-site1.webp", "prop/prop-koenjiminami5-site2.webp", "prop/prop-koenjiminami5-site3.webp", "prop/prop-koenjiminami5-road1.webp", "prop/prop-koenjiminami5-road2.webp"],
     note: "■ 這間是什麼\n杉並區高円寺南、高円寺站徒步約10分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。\n■ 格局與亮點\nLDK約23.5帖，居室約11.0帖、約8.5帖、約6.0帖。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立杉並第三小學校、區立高南中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
@@ -1983,7 +1983,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-minamiogikubo3-p2-1-pers.webp","prop/prop-minamiogikubo3-p2-plan.webp"],
+    photos: ["prop/prop-minamiogikubo3-p2-1-pers.webp", "prop/prop-minamiogikubo3-p2-plan.webp", "prop/prop-minamiogikubo3-p2-site1.webp", "prop/prop-minamiogikubo3-p2-road1.webp", "prop/prop-minamiogikubo3-p2-road2.webp"],
     note: "■ 這間是什麼\n杉並區南荻窪、荻窪站徒步約15分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。\n■ 格局與亮點\nLDK約26.1帖，居室約11.0帖、約7.7帖、約6.1帖、約6.0帖。耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立荻窪小學校、區立神明中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
@@ -2137,7 +2137,7 @@ window.PROPERTIES = [
     mgmt: "",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-nishinakanobu1a-1-pers.webp","prop/prop-nishinakanobu1a-plan.webp","prop/prop-nishinakanobu1a-2-pers.webp","prop/prop-nishinakanobu1a-3-pers.webp","prop/prop-nishinakanobu1a-kukaku-plan.webp"],
+    photos: ["prop/prop-nishinakanobu1a-1-pers.webp", "prop/prop-nishinakanobu1a-plan.webp", "prop/prop-nishinakanobu1a-2-pers.webp", "prop/prop-nishinakanobu1a-3-pers.webp", "prop/prop-nishinakanobu1a-kukaku-plan.webp", "prop/prop-nishinakanobu1a-site1.webp", "prop/prop-nishinakanobu1a-site2.webp", "prop/prop-nishinakanobu1a-site3.webp", "prop/prop-nishinakanobu1a-road1.webp", "prop/prop-nishinakanobu1a-road2.webp"],
     note: "■ 這間是什麼\n品川區西中延、荏原中延站徒步約7分的<b>建築條件付售地</b>。買下土地之後，由我們自社（グランプラス體系）的一級建築士團隊替你設計施工——格局、動線、收納都能照你的生活習慣調整。\n■ 亮點\n學區是區立中延小學校、區立荏原平塚學園。規格上會做到平檯廚房、洗碗機、電動車充電插座、制震阻尼器、三面鏡收納、餐邊櫃、加寬洗面台、高櫃收納。土地、設計、施工、售後都同一家，中間不會互相推責任，你想問到多細都可以。\n■ 規則我先講清楚\n房子必須由我們公司承建，而且要在一定期間內簽好建築工程契約；沒談成的話土地契約一併解除、款項退還。建物價格會隨你最後決定的設計與規格變動。\n■ 下一步\n買地自建的付款節奏與貸款時點都跟買現成的不一樣，外國人更要提早抓。加LINE跟我說一聲，我用中文從選地到交屋陪你走完。\n（第一次碰到「建築條件付售地」？我寫了一篇完整說明，規則、期限、付款節奏都在裡面。）"
   },
 
@@ -2247,7 +2247,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-togoshi5-p2b-1-pers.webp","prop/prop-togoshi5-p2b-plan.webp","prop/prop-togoshi5-p2b-2-pers.webp","prop/prop-togoshi5-p2b-3-pers.webp"],
+    photos: ["prop/prop-togoshi5-p2b-1-pers.webp", "prop/prop-togoshi5-p2b-plan.webp", "prop/prop-togoshi5-p2b-2-pers.webp", "prop/prop-togoshi5-p2b-3-pers.webp", "prop/prop-togoshi5-p2b-site1.webp", "prop/prop-togoshi5-p2b-site2.webp", "prop/prop-togoshi5-p2b-road1.webp"],
     note: "■ 這間是什麼\n品川區戸越、戸越公園站徒步約3分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。\n■ 格局與亮點\nLDK約22.7帖，居室約9.1帖、約7.5帖、約6.1帖。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立宮前小學校、區立戸越台中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
@@ -2335,7 +2335,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-yutaka4-p4-1-pers.webp","prop/prop-yutaka4-p4-plan.webp"],
+    photos: ["prop/prop-yutaka4-p4-1.webp", "prop/prop-yutaka4-p4-plan.webp", "prop/prop-yutaka4-p4-2.webp", "prop/prop-yutaka4-p4-3.webp", "prop/prop-yutaka4-p4-4.webp", "prop/prop-yutaka4-p4-5.webp", "prop/prop-yutaka4-p4-6.webp", "prop/prop-yutaka4-p4-7.webp", "prop/prop-yutaka4-p4-8.webp", "prop/prop-yutaka4-p4-9.webp", "prop/prop-yutaka4-p4-10.webp", "prop/prop-yutaka4-p4-11.webp", "prop/prop-yutaka4-p4-12.webp", "prop/prop-yutaka4-p4-13.webp"],
     note: "■ 這間是什麼\n品川區豊町、戸越公園站徒步約6分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地81.20㎡、總樓地板125.55㎡的3層樓建，<b>現況已完工</b>，2026年10月下旬交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約21.5帖，居室約8.3帖、約6.4帖、約6.0帖。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立豊葉の杜學園（小中一貫校）。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
