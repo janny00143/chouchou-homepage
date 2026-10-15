@@ -357,7 +357,7 @@ console.log(made.join("\n"));
 function pageOwnerJa() {
   const url = BASE + "sell-your-property-ja.html";
   const c = S.company;
-  const onSale = PROPS.filter(p => !p.sold).length;
+  const onSale = PROPS.filter(p => !p.sold && p.status === "在售").length;
   const soldN  = PROPS.filter(p => p.sold).length;
 
   const t = "売却をお考えのオーナー様・不動産会社の皆様へ｜周周・日本の不動産";
@@ -1086,7 +1086,7 @@ function buildLlmsJa() {
   for (const a of arts) (byCat[a.cat] = byCat[a.cat] || []).push(a);
   for (const k in byCat) byCat[k].sort((x, y) => (y.date || "").localeCompare(x.date || ""));
   const one = t => String(t || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 80);
-  const onSale = PROPS.filter(p => !p.sold).length;
+  const onSale = PROPS.filter(p => !p.sold && p.status === "在售").length;
   const cats = Object.keys(JA_CAT).filter(id => byCat[id] && byCat[id].length).map(id =>
     `### ${JA_CAT[id]}\n` + byCat[id].map(a =>
       `- [${JA_CONTENT[a.id].title}](${BASE}${jaSlug(SLUG[a.id])}.html)：${one(JA_CONTENT[a.id].ex)}（執筆 ${a.date}）`

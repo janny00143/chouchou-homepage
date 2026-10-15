@@ -80,7 +80,7 @@ const LANG = {
 
 function block(key) {
   const L = LANG[key];
-  const act = ALL.filter(p => !p.sold);
+  const act = ALL.filter(p => !p.sold && p.status === "在售");
 
   const items = act.map((p, i) => {
     const d = L.pick(p);
@@ -134,4 +134,4 @@ for (const key of Object.keys(LANG)) {
   fs.writeFileSync(f, s);
   n++;
 }
-console.log("物件專區 SEO 區塊已寫入", n, "頁（在售", ALL.filter(p => !p.sold).length, "件）");
+console.log("物件專區 SEO 區塊已寫入", n, "頁（在售", ALL.filter(p => !p.sold && p.status === "在售").length, "件）");

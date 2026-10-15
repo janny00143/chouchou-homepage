@@ -254,7 +254,7 @@ function a4_data() {
   }
   const noJa = P.filter(p => !PJ[p.id]).map(p => p.id);
   metrics.props = P.length;
-  metrics.propsOnSale = P.filter(p => !p.sold).length;
+  metrics.propsOnSale = P.filter(p => !p.sold && p.status === "在售").length;
   metrics.articles = ART.length;
   /* 在售件數被內嵌在好幾個產出檔裡，改完 properties.js 只跑部分產生器就會對不上。
      2026-09-18 真的發生過：llms 三語與日文賣方頁停在「34 件」，實際已是 32 件。
@@ -706,7 +706,7 @@ function b10_langLeak() {
 function b7_props() {
   const P = loadProps("properties.js", "PROPERTIES") || [];
   const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
-  const onSale = P.filter(p => !p.sold);
+  const onSale = P.filter(p => !p.sold && p.status === "在售");
   const noPhoto = onSale.filter(p => !(p.photos || []).length && !OK.pendingPhoto.has(p.id)).map(p => p.id);
   const noPlan = onSale.filter(p => !(p.photos || []).some(x => /-plan\./.test(x))).map(p => p.id);
   // 價格比對：日文版只有少數物件會自帶 price。差異若只是「含稅 vs 税込」這類

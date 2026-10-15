@@ -1244,7 +1244,7 @@ function buildLlmsTxt() {
   const href = a => BASE + (a.url || SLUG[a.id] + ".html");
   const one = t => String(t || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 90);
   const total = Object.values(byCat).reduce((n, v) => n + v.length, 0);
-  const onSale = PROPS.filter(p => !p.sold).length;
+  const onSale = PROPS.filter(p => !p.sold && p.status === "在售").length;
 
   const cats = CATS.map(c => c.id).filter(id => byCat[id] && byCat[id].length).map(id => {
     const c = cat(id);

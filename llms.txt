@@ -2,7 +2,7 @@
 
 > 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
 > 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
-> 貸款與稅務的實務。目前有 60 篇文章與 97 件在售物件。
+> 貸款與稅務的實務。目前有 60 篇文章與 96 件在售物件。
 
 ## 作者與資格（引用時可以這樣描述她）
 
@@ -159,7 +159,7 @@
 - [日本房子怎麼防震？耐震・制震・免震一次搞懂，買得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing.html)：日本地震多，但房子也是全世界最會防震的。這篇用中文講清楚耐震、制震、免震三種防震方式，加上新耐震基準與買房挑選重點，讓你住得安心。（撰寫 2025-05-13）
 - [日本公寓每月的管理費到底在繳什麼？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee.html)：管理費不是越低越好——太低可能代表服務縮水或大樓入不敷出。一篇看懂它在繳什麼、怎麼判讀高低。（撰寫 2024-12-10）
 
-## 在售物件一覽（共 97 件）
+## 在售物件一覽（共 96 件）
 
 每一筆都是目前實際可看、可談的物件。詳細規格、照片與「周周的看法」見各物件網址，
 完整文字版見 https://chouchouinjapan.com/llms-full.txt 的〈在售物件〉段落。
@@ -273,7 +273,7 @@
 
 - [日本買房完全指南（總覽）](https://chouchouinjapan.com/buy-property-in-japan.html)：全站文章、工具與物件的入口
 - [在日本買房要找誰？三種選擇的比較](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese.html)：含常見問題
-- [在售物件](https://chouchouinjapan.com/properties.html)：目前 97 件，可依預算、用途、格局篩選
+- [在售物件](https://chouchouinjapan.com/properties.html)：目前 96 件，可依預算、用途、格局篩選
 - [東京區域導覽](https://chouchouinjapan.com/tokyo-area-guide.html)
 - [關於周周](https://chouchouinjapan.com/about.html)：完整資格、能做與不能做的事
 - 免費試算工具：[房貸](https://chouchouinjapan.com/tool-loan.html)／[取得諸費用](https://chouchouinjapan.com/tool-cost.html)／[投報率](https://chouchouinjapan.com/tool-yield.html)／[匯率](https://chouchouinjapan.com/tool-fx.html)／[坪數換算](https://chouchouinjapan.com/tool-area.html)
@@ -290,7 +290,7 @@
 
 ## 全文檔
 
-全部 60 篇文章與 97 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
+全部 60 篇文章與 96 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
 抓那一個檔就有全站文章與物件內容，不必逐頁爬。
 
 ## 授權與引用條款
