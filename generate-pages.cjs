@@ -752,7 +752,9 @@ function threadsPostHTML(p) {
   const mine = (p.my_replies || []).filter(t => String(t || "").trim());
   const extra = mine.length
     ? `<div style="margin-top:10px;padding:12px 14px;background:var(--bg,#faf7f5);border-radius:12px;font-size:15px">`
-      + mine.map(t => `<p style="margin:0 0 6px">${esc(t)}</p>`).join("")
+      + `<p style="margin:0 0 8px;font-size:13px;color:var(--mut)">周周在留言的補充</p>`
+      // 用跟內文同一套分段規則，否則留言裡的換行會被擠成一整坨
+      + mine.map(t => threadsBody(t)).join("")
       + `</div>`
     : "";
   return `<article id="${p.code}" style="margin:0 0 34px;padding-bottom:26px;border-bottom:1px solid var(--line)">
