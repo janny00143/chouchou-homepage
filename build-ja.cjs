@@ -896,15 +896,27 @@ function propWardJa(p) {
   return m ? m[2] : "";
 }
 function propNearbyHTMLJa(p) {
+  const sold = p.status !== "在售";
   const ward = propWardJa(p);
+  let list;
+  if (sold) {
+    /* 成約済みでページを残す物件：同種別・同都府県・価格が近い在售を 3 件 */
+    const pref = x => (PLAIN_JA(x.location || "").match(/^(神奈川県|千葉県|埼玉県|大阪府|京都府|兵庫県)/) || ["東京都"])[0];
+    const base = propYenJa(p.price) || 0;
+    const dist = x => { const v = propYenJa(x.price); return base && v ? Math.abs(Math.log(v / base)) : 9; };
+    list = onSalePropsJa().filter(x => x.id !== p.id && x.cat === p.cat && pref(x) === pref(p))
+      .sort((a, b) => dist(a) - dist(b)).slice(0, 3);
+    if (!list.length) return "";
+  } else {
   if (!ward) return "";
   const pool = onSalePropsJa().filter(x => x.id !== p.id);
-  let list = pool.filter(x => propWardJa(x) === ward);
+  list = pool.filter(x => propWardJa(x) === ward);
   if (list.length < 2) return "";
   list = list.slice().sort((a, b) => (b.cat === p.cat ? 1 : 0) - (a.cat === p.cat ? 1 : 0));
   const seed = String(p.id).split("").reduce((n, c) => n + c.charCodeAt(0), 0);
   const off = seed % list.length;
   list = list.slice(off).concat(list.slice(0, off)).slice(0, 3);
+  }
   const cards = list.map(x => {
     const img = (x.photos && x.photos[0])
       ? String(x.photos[0]).split("/").map(encodeURIComponent).join("/") : "";
@@ -916,6 +928,10 @@ function propNearbyHTMLJa(p) {
       + '<span class="apprice">' + esc(PLAIN_JA(String(x.price || "価格はお問い合わせください")).replace(/[（(]\s*税込\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
+  if (sold) return '<section class="apsec" style="margin-top:26px"><h2>似た条件の物件をお探しですか？</h2>'
+    + '<p class="apsub">価格帯・種別が近い、現在ご紹介できる物件でございます。ご希望の条件をお知らせいただければ、あらためてお探しいたします。</p>'
+    + '<div class="apgrid">' + cards + "</div>"
+    + '<a class="apmore" href="properties-ja.html">物件一覧を見る →</a></section>';
   return '<section class="apsec" style="margin-top:26px"><h2>' + esc(ward) + 'の他の物件</h2>'
     + '<p class="apsub">同じ区で現在ご紹介できる物件でございます。まとめてのご内見も承ります。</p>'
     + '<div class="apgrid">' + cards + "</div>"

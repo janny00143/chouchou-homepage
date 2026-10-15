@@ -1037,8 +1037,18 @@ function propNearby(p) {
   const off = seed % list.length;
   return list.slice(off).concat(list.slice(0, off)).slice(0, 3);
 }
+/* 已成約但頁面保留的物件（keepPage）：同區在售常不足 2 件，改找「同類型、同都縣、價位最接近」的 3 件，
+   並把頁尾改成導向 LINE（周周 2026-10-15 核准） */
+function propSimilar(p) {
+  const pref = x => (PLAIN(x.location || "").match(/^(神奈川縣|千葉縣|埼玉縣|大阪府|京都府|兵庫縣)/) || ["東京都"])[0];
+  const base = propYen(p.price) || 0;
+  const dist = x => { const v = propYen(x.price); return base && v ? Math.abs(Math.log(v / base)) : 9; };
+  return onSaleProps().filter(x => x.id !== p.id && x.cat === p.cat && pref(x) === pref(p))
+    .sort((a, b) => dist(a) - dist(b)).slice(0, 3);
+}
 function propNearbyHTML(p) {
-  const list = propNearby(p);
+  const sold = p.status !== "在售";
+  const list = sold ? propSimilar(p) : propNearby(p);
   if (!list.length) return "";
   const cards = list.map(x => {
     const img = (x.photos && x.photos[0])
@@ -1051,6 +1061,10 @@ function propNearbyHTML(p) {
       + '<span class="apprice">' + esc(PLAIN(String(x.price || "價格請洽詢")).replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
+  if (sold) return '<section class="apsec" style="margin-top:26px"><h2>找類似的物件？這幾間現在還在售</h2>'
+    + '<p class="apsub">價位與類型相近的在售物件。想找更符合條件的，直接把預算和希望區域告訴周周，我幫你先篩一輪。</p>'
+    + '<div class="apgrid">' + cards + "</div>"
+    + '<a class="apmore" href="' + S.line + '" target="_blank" rel="noopener">加 LINE 跟周周說需求 →</a></section>';
   return '<section class="apsec" style="margin-top:26px"><h2>' + esc(propWard(p)) + '的其他物件</h2>'
     + '<p class="apsub">同一區、現在也在售的。想一起看、一天排完也可以。</p>'
     + '<div class="apgrid">' + cards + "</div>"
