@@ -261,30 +261,27 @@
    - 若 `failure` → **重跑失敗的 deploy job**（`rerun_failed_jobs`）並**再次確認 success** 後才回報；不要只叫周周清快取。
    - 若周周反映「改了很久沒更新／刷新很多次還是舊的」→ **先查部署狀態、不要預設是快取**；很可能就是部署失敗，重跑一次即可。
 
-9. **⭐ 從開發分支同步到 `main` 的正確做法（2026-08-31 踩過的坑，務必照做）**：
-   以前用 `git checkout <開發分支> -- .` 把檔案複製過去——**這個做法只會「覆蓋／新增」，不會「刪除」**。
-   只要開發分支曾經搬移或刪掉檔案，`main` 就會同時留著新舊兩份，樹愈長愈大而且沒人發現
-   （2026-08-31 就因此讓根目錄膨脹到 1196 項，GitHub 檔案列表被截斷）。
-   **正確做法：讓 `main` 的樹「完全等於」開發分支的樹**，用 `commit-tree` 一次做好（不是 force push、不改歷史）：
+9. **⭐ 同步到 `main` 的正確做法（2026-10-15 修訂：舊的 `commit-tree`「讓 main 的樹等於開發分支」做法已廢止）**：
+   舊做法會把「只存在於 `main`、開發分支沒有」的檔案**一起刪掉**——2026-10-15 就因此誤刪了另一個工作階段（脆文精選）剛放上去的 `t/` 檔案，雖然當天補回，但這是不可再犯的事故。
+   **現在的唯一做法（不刪任何別人的檔案）：**
 
    ```bash
    git fetch origin main
-   NEW=$(git commit-tree <開發分支>^{tree} -p origin/main -m "說明")
-   git branch -f _dm $NEW && git checkout _dm
-   git push origin HEAD:main
-   git checkout <開發分支> && git branch -D _dm
+   git rev-list --count HEAD..origin/main      # 必須是 0；不是 0 就先 merge origin/main 進來（衝突要逐一人工看，不可整批取我方）
+   git push origin HEAD:main                   # 只允許 fast-forward；被拒絕就重新 fetch，絕不 force
    ```
 
-   **推之前一定要先看差異**，確認要刪的都是預期中的檔案：
+   - **嚴禁**：`commit-tree` 蓋樹、`git push --force`（含 `--force` 推 main）、`git checkout <分支> -- .` 整批覆蓋、`git rm`／刪除不是自己這次新增的檔案。
+   - 推之前先看 `git diff --stat origin/main HEAD`；**任何「從 main 消失的檔案」都必須是自己這次明確要刪的**（例如下架物件的頁面），否則停手。
+   - 根目錄檔案數逼近 1,000 的問題，用「把沒引用的圖搬進 `img-original/`」處理，不用整樹同步。
 
-   ```bash
-   git diff --stat origin/main <開發分支> | tail -5
-   comm -23 <(git ls-tree -r --name-only origin/main|sort) \
-            <(git ls-tree -r --name-only <開發分支>|sort)   # 這些會從 main 消失
-   ```
-
-   ⚠️ 有些檔案是**只存在於 `main`**（例如 `service.html` 這種以前直接在 main 上建的示範頁）。
-   同步前先把它們 `git checkout origin/main -- <檔名>` 收進開發分支，不要讓它們被清掉。
+10. **⭐ 多工作階段共用規則（周周 2026-10-16 指示）**：
+   周周同時開著**另一個 Claude 工作階段在做「脆文精選」**（Threads 精選頁，`threads-*.html`、`threads-posts.json`、`t/` 等），所以 `main` 隨時可能有別人的新提交。任何工作階段都必須：
+   1. **不要刪、不要覆蓋、不要整理自己沒建立的檔案**（尤其 `threads-*`、`t/`）。看起來像垃圾也不要動，要動先問周周並給密語。
+   2. **動手前**先 `git fetch origin main`，看 `git log HEAD..origin/main --stat` 知道別人改了什麼。
+   3. **只用 fast-forward 推送**（見第 9 條）；產生器重跑後若出現「非自己這次內容」的大量差異，停手查原因。
+   4. **只要 push 到 main，回報給周周時用白話列出：新增了哪些檔案、改了哪些、刪了哪些（沒有就寫「沒有刪除」）**。刪除任何檔案一律要明講。
+   5. 看到 `main` 上有別的工作階段做的變動，也要在回報裡順帶提一句（像 10/15 那次 `t/` 被誤刪又補回）。
 
 ---
 
