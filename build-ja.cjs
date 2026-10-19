@@ -219,7 +219,9 @@ const crypto = require("crypto");
 const UPD_FILE = ROOT + "/article-updated.json";
 const UPD = (() => { try { return JSON.parse(fs.readFileSync(UPD_FILE, "utf8")); } catch (e) { return {}; } })();
 const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
-const contentHash = o => crypto.createHash("sha1").update(JSON.stringify(o)).digest("hex").slice(0, 12);
+/* 2026-10-19：文章用圖搬進 img/ 之後，body 裡的路徑多了「img/」前綴。
+   算雜湊前先拿掉，不然每篇都會被誤判成「有更新」、更新日全部變成今天。 */
+const contentHash = o => crypto.createHash("sha1").update(JSON.stringify(o).replace(/(['"=(])img\//g, "$1")).digest("hex").slice(0, 12);
 function updatedOnJa(a, j) {
   const h = contentHash([j.title, j.ex, j.seo, j.body]);
   const rec = (UPD[a.id] = UPD[a.id] || {});

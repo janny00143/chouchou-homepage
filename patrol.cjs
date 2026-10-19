@@ -776,8 +776,8 @@ function c2_images() {
   /* 2026-09-29：物件写真は prop/ に移動（root が 1000 件に近づいたため）。
      root と prop/ の両方を見る。参照側は "prop/xxx.webp" と書かれるが、
      上の正規表現は「/」を含まないので basename で照合される。 */
-  const sub = fs.existsSync(path.join(ROOT, "prop"))
-    ? fs.readdirSync(path.join(ROOT, "prop")).filter(f => imgRe.test(f)).map(f => "prop/" + f) : [];
+  const sub = ["prop", "img"].flatMap(d => fs.existsSync(path.join(ROOT, d))
+    ? fs.readdirSync(path.join(ROOT, d)).filter(f => imgRe.test(f)).map(f => d + "/" + f) : []);
   const imgs = fs.readdirSync(ROOT).filter(f => imgRe.test(f)).concat(sub);
   const unused = imgs.filter(f => { const b = f.split("/").pop(); return !refs.has(b) && !refs.has(encodeURIComponent(b)); });
   const big = imgs.filter(f => fs.statSync(path.join(ROOT, f)).size > 500 * 1024)

@@ -293,7 +293,9 @@ const crypto = require("crypto");
 const UPD_FILE = ROOT + "/article-updated.json";
 const UPD = (() => { try { return JSON.parse(fs.readFileSync(UPD_FILE, "utf8")); } catch (e) { return {}; } })();
 const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" });
-const contentHash = o => crypto.createHash("sha1").update(JSON.stringify(o)).digest("hex").slice(0, 12);
+/* 2026-10-19：文章用圖搬進 img/ 之後，body 裡的路徑多了「img/」前綴。
+   算雜湊前先拿掉，不然每篇都會被誤判成「有更新」、更新日全部變成今天。 */
+const contentHash = o => crypto.createHash("sha1").update(JSON.stringify(o).replace(/(['"=(])img\//g, "$1")).digest("hex").slice(0, 12);
 function updatedOn(a) {
   const h = contentHash([a.title, a.ex, a.seo, a.body]);
   const rec = (UPD[a.id] = UPD[a.id] || {});
@@ -711,7 +713,7 @@ const THREADS_PAGES = [
     crumb: "脆文精選・在日生活",
     h1: "在日本住久了才知道的事",
     metaTitle: "在日本住久了才知道的事｜東京生活觀察（周周 Threads 精選）",
-    desc: "鬼門開和日本的お盆是同一天、夏天電車冷氣冷到發抖、日本同事有事沒事就刷牙——一個住在東京的台灣人，記下的日本生活觀察。",
+    desc: "鬼門開和日本的お盆是同一天、夏天電車冷氣冷到發抖、日本同事有事沒事就刷牙——一個住在東京的台灣人，隨手記下的日本生活觀察。",
     keywords: "日本生活,東京生活,在日台灣人,日本文化,日本職場,日本旅遊",
     lead: "買房之外，我也住在這裡。這些是住久了才會發現、但旅遊書不會寫的事。",
     ctaTitle: "在考慮搬來日本嗎？",
