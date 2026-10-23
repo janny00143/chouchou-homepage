@@ -74,13 +74,13 @@ function decode(s) {
 }
 const strip = h => decode(h.replace(/<[^>]+>/g, " "));
 
-async function get(url, method = "GET") {
+async function get(url, method = "GET", extraHeaders) {
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), TIMEOUT);
   try {
     const res = await fetch(url, {
       method, redirect: "follow", signal: ctl.signal,
-      headers: { "User-Agent": UA, "Accept-Language": "ja,zh-TW;q=0.8" },
+      headers: { "User-Agent": UA, "Accept-Language": "ja,zh-TW;q=0.8", ...(extraHeaders || {}) },
     });
     clearTimeout(t);
     return res;
@@ -155,10 +155,17 @@ async function one([zh, ja, page]) {
   // 逐一確認 PDF 真的在（200 才留）
   const pdfs = [];
   for (const c of uniq.slice(0, 8)) {
+    /* ⚠️ HEAD 失敗就一定要改用 GET 再試一次。很多政府網站只收 GET，
+       對 HEAD 回 403 或 404——品川區就是這樣，它的中文版 PDF 明明在，
+       卻因為 HEAD 被擋而被判成失效（周周 2026-10-23 指出品川有中文版才查出來）。
+       GET 用 Range 只取開頭 1KB，不必為了確認存在而整份 5MB 下載。 */
     let r = await get(c.url, "HEAD");
-    if (!r || r.status === 405 || r.status === 501) r = await get(c.url, "GET");
-    if (r && r.ok) {
-      const len = Number(r.headers.get("content-length") || 0);
+    if (!r || !r.ok) r = await get(c.url, "GET", { Range: "bytes=0-1023" });
+    if (r && (r.ok || r.status === 206)) {
+      // 用 Range 取回來時 content-length 是那 1KB，要改看 content-range 的總長度
+      const cr = r.headers.get("content-range") || "";
+      const total = Number((cr.match(/\/(\d+)$/) || [])[1] || 0);
+      const len = total || Number(r.headers.get("content-length") || 0);
       pdfs.push({ ...c, status: r.status, sizeKB: len ? Math.round(len / 1024) : null });
     } else {
       pdfs.push({ ...c, status: r ? r.status : "fetch failed", sizeKB: null, dead: true });
