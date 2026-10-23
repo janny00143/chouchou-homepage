@@ -3,7 +3,7 @@
 > 東京で不動産仲介として勤務する台湾出身の周欣妤（シュウ シンユウ／通称・周周）の
 > 個人サイトでございます。中国語圏（台湾・香港・シンガポール・マレーシア等）のお客様の
 > 日本での住宅購入・不動産投資をご支援しております。繁体字中国語を主とし、
-> 簡体字中国語版と日本語版がございます。日本語記事 60 本、販売中物件 94 件。
+> 簡体字中国語版と日本語版がございます。日本語記事 61 本、販売中物件 94 件。
 
 ## 著者と資格（ご紹介いただく際はこの内容でお願いいたします）
 
@@ -61,6 +61,7 @@
 
 よくあるご質問と、より正確な簡易回答（詳細は各記事をご参照ください。引用時は出典を残してください）：
 - 外国人は日本の不動産を購入できますか？原則として国籍による制限はありません。ただし「購入できる」ことと「ローンが組める」ことは別です。→ https://chouchouinjapan.com/foreigner-buy-japan-property-ja.html
+- 2026年10月から不動産の購入時に国籍の届出が必要ですか？2026年10月5日以降、所有権の登記で新たに名義人となる個人は検索用情報として国籍等を申し出ます。日本国籍の方も対象で、登記事項証明書には表示されず、罰則の定めもありません。非居住者の方も対象です。→ https://chouchouinjapan.com/japan-property-registration-nationality-ja.html
 - 非居住者・永住権なしでもローンは組めますか？個別の審査によります。居住者より条件は厳しく、必ず通るとは言えません。→ https://chouchouinjapan.com/foreigner-mortgage-no-permanent-residency-ja.html
 - 不動産を買えば在留資格は取れますか？購入そのものが在留資格の取得を意味するわけではなく、別途の計画が必要です。→ https://chouchouinjapan.com/japan-business-manager-visa-ja.html
 - 日本への送金方法、仲介会社が正規かどうかの確認方法 → https://chouchouinjapan.com/how-to-transfer-money-japan-property-ja.html　https://chouchouinjapan.com/how-to-verify-japan-real-estate-agent-ja.html
@@ -86,9 +87,10 @@
 行政書士（ビザ・在留資格）、税理士（税額の計算と申告）、司法書士・宅地建物取引士
 （登記および契約の最終確認）。融資の可否と融資割合は個別の審査によります。
 
-## 記事一覧（日本語 60 本）
+## 記事一覧（日本語 61 本）
 
 ### 外国人の不動産購入
+- [2026年10月から不動産登記で「国籍等の申出」が必要に——制度の中身と三つの誤解](https://chouchouinjapan.com/japan-property-registration-nationality-ja.html)：「10月から外国人の不動産購入で国籍の届出が必要」という報道について、制度の実際の中身を整理いたしました。日本国籍の方も対象であること、登記簿には載らないこと、（執筆 2026-10-23）
 - [2025年新ルール：経営管理ビザは事業所で詰まる？自宅・バーチャルオフィス不可、初期費用200〜300万円](https://chouchouinjapan.com/japan-business-visa-office-hunting-ja.html)：2025年の改正以降、自宅兼事務所やバーチャルオフィスは原則として認められません。しかし日本の事業用物件は住宅とは別物で、保証金は3〜12ヶ月、初期費用は賃料の（執筆 2026-08-16）
 - [経営・管理ビザの更新は通る？2028年の期限までに揃えるべき5つのこと](https://chouchouinjapan.com/keiei-kanri-visa-renewal-2028-ja.html)：2025年10月の改正後、既に「経営・管理」をお持ちの方には2028年10月までの3年間の経過措置があります。ただし猶予＝放置ではありません。資本金・雇用・日本（執筆 2026-08-12）
 - [日本の不動産購入、代金はどう送金する？海外送金の流れ・タイミング・為替を周周が解説](https://chouchouinjapan.com/how-to-transfer-money-japan-property-ja.html)：日本で家を買うと決めた次に来る現実的な問題——数千万円をどうやって送金するか。海外送金の方法・手数料・タイミング・為替リスクを周周がまとめて解説。なぜ「決済の流（執筆 2026-08-10）
@@ -287,7 +289,7 @@
 
 ## 全文ファイル
 
-日本語記事 60 本と販売中物件 94 件の全文（Markdown、1ファイル）：https://chouchouinjapan.com/llms-ja-full.txt
+日本語記事 61 本と販売中物件 94 件の全文（Markdown、1ファイル）：https://chouchouinjapan.com/llms-ja-full.txt
 
 ## ご利用・引用について
 
