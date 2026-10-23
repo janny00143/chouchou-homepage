@@ -44,7 +44,11 @@ const OK = {
   // Google Search Console 的驗證檔，本來就只有一行、沒有 meta
   verifyFile: /^google[0-9a-f]+\.html$/i,
   // 這些頁不套一般的 SEO 規則
-  skipSeo: new Set(["404.html"]),
+  //  ・404.html：錯誤頁
+  //  ・stats.html：周周自己看的點閱統計後台（2026-10-23 建立）。刻意帶 noindex、
+  //    不進 sitemap、站上沒有任何連結、要自己打網址＋通行碼。它不是給客戶看的頁，
+  //    所以沒有 meta description 與 LINE 入口都是對的，不是漏做。
+  skipSeo: new Set(["404.html", "stats.html"]),
   // property-admin.html → /admin/ 是目錄索引連結，解析成 admin/index.html 才對
   // （已由連結檢查的 resolve 邏輯處理，不需另外列白名單）
   // a9/a13/a14/a16/a35 的封面刻意用 YouTube 外連縮圖，永遠不要回報
