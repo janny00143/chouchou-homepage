@@ -109,21 +109,37 @@ async function one([zh, ja, page]) {
   const html = await res.text();
   const list = anchors(html, page);
 
+  /* 這一頁本身就是「中文版專頁」嗎（例：江戶川區 .../pamphlet/china.html）。
+     是的話，頁內的 PDF 不必每個都標語言也算中文版。 */
+  const pageIsCn = /\/(china|chinese|zh|cn)[\./]/i.test(page) ||
+    CN_HINT.test(strip(html.slice(0, 3000)).slice(0, 400));
+
+  /* ⚠️ 判斷語言一定要以「連結自己的文字」為主，前後文只能當輔助。
+     2026-10-23 第一次跑就是因為吃了前後文，把千代田區的 Français、
+     中央區與杉並區的「英語」版都當成中文版抓進來——給客戶錯的語言
+     比沒給還糟。所以只收「連結文字本身明確寫了中文」的，
+     或是在中文版專頁裡面的。 */
   const cands = [];
   for (const a of list) {
     if (!/\.pdf(\?|$)/i.test(a.href)) continue;
-    const blob = a.text + " " + a.title + " " + a.ctx;
-    if (!CN_HINT.test(blob)) continue;
-    // 連結文字本身明確是別的語言就跳過（context 命中中文是因為同一列有多語版）
     const own = a.text + " " + a.title;
-    if (OTHER_LANG.test(own) && !CN_HINT.test(own)) continue;
-    const trad = /繁体|繁體/.test(blob);
-    cands.push({ url: a.href, label: a.text || a.title, traditional: trad });
+    if (OTHER_LANG.test(own)) continue;              // 自己標了別的語言 → 出局
+    const ownCn = CN_HINT.test(own);
+    if (!ownCn && !pageIsCn) continue;               // 自己沒標中文、也不在中文專頁 → 不收
+    const trad = /繁体|繁體/.test(own + " " + a.ctx);
+    cands.push({
+      url: a.href,
+      label: a.text || a.title,
+      traditional: trad,
+      rank: (ownCn ? 10 : 0) + (trad ? 3 : 0),       // 自己標中文的排前面，繁體再加分
+    });
   }
 
-  // 去重複
+  // 去重複，並讓最像「正式中文版」的排前面
   const seen = new Set();
-  const uniq = cands.filter(c => !seen.has(c.url) && seen.add(c.url));
+  const uniq = cands
+    .filter(c => !seen.has(c.url) && seen.add(c.url))
+    .sort((x, y) => y.rank - x.rank);
 
   // 逐一確認 PDF 真的在（200 才留）
   const pdfs = [];
