@@ -946,12 +946,23 @@ const META = JSON.parse(document.getElementById("vmeta").textContent);
 const TITLE = {}; META.forEach(m => TITLE[m.id] = m.title);
 const logEl = document.getElementById("implog"), goBtn = document.getElementById("go");
 
+const loginBtn = document.getElementById("login");
 onAuthStateChanged(auth, u => {
-  document.getElementById("who").textContent = u ? ("已登入：" + (u.email || "")) : "";
+  document.getElementById("who").textContent = u ? ("✅ 已登入：" + (u.email || "")) : "";
   goBtn.disabled = !u;
+  loginBtn.style.display = u ? "none" : "";   // 登入後就不要再出現登入鈕，免得重複點
+  if (u) logEl.textContent = "";              // 也把先前的錯誤訊息清掉
 });
-document.getElementById("login").onclick = () =>
-  signInWithPopup(auth, new GoogleAuthProvider()).catch(e => { logEl.textContent = "登入失敗：" + e.message; });
+loginBtn.onclick = () => {
+  logEl.textContent = "";
+  signInWithPopup(auth, new GoogleAuthProvider()).catch(e => {
+    /* 連點兩次登入鈕（前一個視窗被後一個取消）或自己把視窗關掉，
+       都不是真的失敗，顯示「登入失敗」只會嚇到人。安靜忽略。 */
+    const code = (e && e.code) || "";
+    if (code === "auth/cancelled-popup-request" || code === "auth/popup-closed-by-user") return;
+    logEl.textContent = "登入失敗：" + e.message;
+  });
+};
 
 /* CSV 解析：只認「第一欄像網址路徑、某一欄是數字」的列，其他（標題、總計）全部略過。
    GA 的數字常有千分位逗號又被引號包起來，所以逗號切欄前要先處理引號。 */
