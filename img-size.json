@@ -67,14 +67,6 @@
   1280,
   720
  ],
- "img/cover-three-stations-ja.webp": [
-  1200,
-  540
- ],
- "img/cover-three-stations-zh.webp": [
-  1200,
-  540
- ],
  "img/cover-tax.webp": [
   360,
   360
@@ -3430,5 +3422,13 @@
  "prop/prop-togoshi5-p2b-road1.webp": [
   960,
   1280
+ ],
+ "img/cover-tokyo-gomi-zh.webp": [
+  1200,
+  540
+ ],
+ "img/cover-tokyo-gomi-ja.webp": [
+  1200,
+  540
  ]
 }
