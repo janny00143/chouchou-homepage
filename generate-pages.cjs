@@ -310,6 +310,49 @@ function saveUpdated() {
   fs.writeFileSync(UPD_FILE, JSON.stringify(sorted, null, 1) + "\n");
 }
 
+/* ── 東京 23 區・垃圾分類中文版 PDF 下載表（2026-10-23，周周指示「直接把載點連到網頁上」）──
+   資料來自 ward-gomi-links.json，那個檔是 .github/workflows/ward-gomi.yml
+   在 GitHub 的機器上去各區官網抓、而且逐一驗證過回 200 才寫進去的
+   （這個容器的 egress policy 擋掉 city.*.lg.jp，抓不到也驗不了）。
+   所以**不要手改那個 JSON**；要更新就去 Actions 按一次 workflow。
+   文章的 body 裡放 <!--WARD-GOMI-TABLE--> 當佔位，這裡替換成表格，
+   JSON 一更新、重跑產生器表格就自動跟上。 */
+function wardGomiTable(lang) {
+  let data;
+  try { data = JSON.parse(fs.readFileSync(ROOT + "/ward-gomi-links.json", "utf8")); }
+  catch (e) { return ""; }      // 檔案還沒產生就當作沒有這一段，不要讓產生器掛掉
+  const TD = "padding:9px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top";
+  const tw = lang === "tw";
+  const head = tw ? ["區", "官方中文版"] : ["区", "中国語版"];
+  const rows = data.wards.map(w => {
+    const name = tw ? w.ward : w.wardJa;
+    let cell;
+    if (w.pdfs && w.pdfs.length) {
+      const p = w.pdfs[0];
+      const size = p.sizeKB ? `（${p.sizeKB >= 1024 ? (p.sizeKB / 1024).toFixed(1) + " MB" : p.sizeKB + " KB"}）` : "";
+      // JSON 裡的 traditional 是抓取當下判斷的；這裡再從標籤認一次，
+      // 因為荒川區官網把「繁体」打成「繫体」，不重抓也要標得出來。
+      const trad = (p.traditional || /繁体|繁體|繫体|繫體/.test(p.label || "")) ? (tw ? "　繁體" : "　繁体字") : "";
+      cell = `<a href="${esc(p.url)}" target="_blank" rel="noopener" style="color:#15803d;font-weight:700">⬇︎ ${tw ? "下載 PDF" : "PDF"}</a>`
+        + `<span style="color:#78716c;font-size:13px">${size}${trad}</span>`;
+      if (w.pdfs.length > 1) {
+        cell += `　<a href="${esc(w.page)}" target="_blank" rel="noopener" style="color:#78716c;font-size:13px">${tw ? "其他版本" : "他の版"}</a>`;
+      }
+    } else {
+      cell = `<a href="${esc(w.page)}" target="_blank" rel="noopener" style="color:#78716c">${tw ? "官方頁（未提供中文版）" : "公式ページ"}</a>`;
+    }
+    return `<tr><td style="${TD};white-space:nowrap"><a href="${esc(w.page)}" target="_blank" rel="noopener" style="color:inherit;font-weight:700">${name}</a></td><td style="${TD}">${cell}</td></tr>`;
+  }).join("");
+  const note = tw
+    ? `＊連結直接指向各區官方網站的 PDF，點了就會下載，所以拿到的永遠是最新版。資料更新日 ${data.updated}，每週自動重新確認一次。`
+    : `＊リンクは各区公式サイトのPDFに直接つながります。最終確認日 ${data.updated}。毎週自動で再確認しております。`;
+  return `<div style="overflow-x:auto;margin:14px 0"><table style="width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7">`
+    + `<thead><tr style="background:#f0fdf4">`
+    + head.map(h => `<th style="text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap">${h}</th>`).join("")
+    + `</tr></thead><tbody>${rows}</tbody></table>`
+    + `<p style="font-size:12.5px;color:#78716c;margin-top:8px">${note}</p></div>`;
+}
+
 const { buildRelMap } = require("./related.cjs");
 const REL = buildRelMap(ART, a => !!(a.url || SLUG[a.id]));
 
@@ -338,7 +381,7 @@ function page(a) {
   const c = cat(a.cat);
   const cover = coverURL(a);
   const bg = "background-image:" + (cover ? "url('" + cover + "')," : "") + c.g + (a.cpos ? ";background-position:" + a.cpos : "");
-  const bodyHTML = a.body.map(p => { const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); if (m) return '<h2 class="ah">' + m[1] + "</h2>"; const s2 = t.match(/^<b>([\s\S]*?)<\/b>([\s\S]*)$/); if (s2) { const rest = s2[2].trim(); return '<h2 class="ah sh2">' + s2[1] + "</h2>" + (rest ? "<p>" + rest + "</p>" : ""); } return "<p>" + p + "</p>"; }).join("");
+  const bodyHTML = a.body.map(p => { if (p.indexOf("<!--WARD-GOMI-TABLE-->") > -1) return wardGomiTable("tw"); const t = p.trim(); if (t.startsWith("<div")) return p; if (/^(<b>)?(資料來源|本文為|※)/.test(t)) return '<p class="src">' + p + "</p>"; const m = t.match(/^<b>([\s\S]+)<\/b>$/); if (m) return '<h2 class="ah">' + m[1] + "</h2>"; const s2 = t.match(/^<b>([\s\S]*?)<\/b>([\s\S]*)$/); if (s2) { const rest = s2[2].trim(); return '<h2 class="ah sh2">' + s2[1] + "</h2>" + (rest ? "<p>" + rest + "</p>" : ""); } return "<p>" + p + "</p>"; }).join("");
   const em = ytEmbed(a.video);
   const vidId = em ? em.split("/embed/")[1] : "";
   const vid = em ? `<div class="vid"><div class="ytf" data-id="${vidId}"><img src="https://i.ytimg.com/vi/${vidId}/maxresdefault.jpg" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/${vidId}/hqdefault.jpg&#39;" alt="影片" loading="lazy" width="1280" height="720"><span class="pbtn">▶</span></div></div>` : "";

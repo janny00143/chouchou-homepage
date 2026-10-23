@@ -123,10 +123,13 @@ async function one([zh, ja, page]) {
   for (const a of list) {
     if (!/\.pdf(\?|$)/i.test(a.href)) continue;
     const own = a.text + " " + a.title;
-    if (OTHER_LANG.test(own)) continue;              // 自己標了別的語言 → 出局
     const ownCn = CN_HINT.test(own);
+    /* ⚠️ 「中国語・韓国語版」「【Chinese・Korean】」這種一份 PDF 收多種語言的很常見，
+       所以只有「沒標中文、卻標了別的語言」才出局。2026-10-23 第二次跑時漏掉這個
+       條件，把江東區與豐島區的中文版誤殺了。 */
+    if (!ownCn && OTHER_LANG.test(own)) continue;
     if (!ownCn && !pageIsCn) continue;               // 自己沒標中文、也不在中文專頁 → 不收
-    const trad = /繁体|繁體/.test(own + " " + a.ctx);
+    const trad = /繁体|繁體|繫体|繫體/.test(own + " " + a.ctx);   // 荒川區官網把「繁体」打成「繫体」
     cands.push({
       url: a.href,
       label: a.text || a.title,
