@@ -205,7 +205,18 @@
    "wardJa": "品川区",
    "page": "https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-gomi/gomi-kateigomi/gomi-kateigomi-dashikata/hpg000005617.html",
    "pageOk": true,
-   "pdfs": []
+   "pdfs": [
+    {
+     "url": "https://www.city.shinagawa.tokyo.jp/PC/_res/projects/default_project/_page_/001/003/974/chinese.pdf",
+     "label": "【Chinese】「資源・ごみの分け方・出し方」(2026年発行) （PDF 5.0 MB）",
+     "traditional": false,
+     "multilang": false,
+     "rank": 10,
+     "status": "GET=404",
+     "sizeKB": 5070,
+     "unverified": true
+    }
+   ]
   },
   {
    "ward": "目黑區",
@@ -418,7 +429,7 @@
      "multilang": true,
      "rank": 6,
      "status": 200,
-     "sizeKB": 1723
+     "sizeKB": null
     },
     {
      "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/001/856/jigyoukeigomi50604.pdf",
