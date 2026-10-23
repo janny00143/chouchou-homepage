@@ -1,0 +1,75 @@
+# ══════════════════════════════════════════════════════════════════
+# 東京 23 區・垃圾分類中文版 PDF 抓取 ＋ 全站外部連結檢查
+#
+# 為什麼需要這支：寫網站的 AI 跑在有 egress policy 的容器裡，
+# city.*.lg.jp、moj.go.jp 這些網域連 CONNECT 都被回 403（政策阻擋，
+# 不是網路故障，也不可繞過）。所以**容器裡永遠抓不到各區官網**，
+# 也沒辦法驗證文章裡引用的外部連結還活著沒有。
+#
+# 這支跑在 GitHub 自己的機器上（沒有那個 proxy）：
+#   ① fetch-ward-gomi.cjs：去 23 區官網抓「中文版 PDF」的直連，
+#      逐一確認回 200，寫進 ward-gomi-links.json 並 commit 回 repo。
+#   ② linkcheck.cjs：掃全站 HTML 的外部連結，找出真的失效的（404／DNS）。
+#      對方擋機器人（403 等）只警告、不讓 workflow 紅字——
+#      誤報久了就沒人看，patrol.cjs 當初就是為了治這個毛病才存在的。
+#
+# 紅字時 patrol 的 A12 會把結論讀回來，併進每天早上的回報。
+#
+# ⚠️ 這支只做「讀取、檢查、寫一個 JSON」，不碰 Pages 的部署流程。
+#    周周 2026-10-23 以通關密語核准建立。
+# ══════════════════════════════════════════════════════════════════
+name: 23區垃圾分類連結
+
+on:
+  schedule:
+    - cron: "17 20 * * 0"      # 每週一次（UTC 週日 20:17 ＝ 日本時間週一 05:17）
+  workflow_dispatch:            # 也可以在 Actions 頁面手動按
+
+permissions:
+  contents: write               # 抓到的 JSON 要 commit 回 repo
+
+concurrency:
+  group: ward-gomi
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    name: 抓 23 區中文 PDF 並檢查外部連結
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 抓 23 區的中文版 PDF
+        id: fetch
+        continue-on-error: true      # 某一區改版抓不到，不要害整支紅字到看不見連結檢查的結果
+        run: node fetch-ward-gomi.cjs
+
+      - name: 把抓到的結果 commit 回 repo
+        run: |
+          set -e
+          if git diff --quiet -- ward-gomi-links.json; then
+            echo "各區連結沒有變動，不用 commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ward-gomi-links.json
+          git commit -m "23區垃圾分類：更新中文版 PDF 連結（自動抓取）
+
+          由 .github/workflows/ward-gomi.yml 於 GitHub 的機器上抓取並驗證。
+          容器的 egress policy 擋掉 city.*.lg.jp，所以這件事只能在這裡做。"
+          git push
+
+      - name: 檢查全站外部連結
+        run: node linkcheck.cjs
+
+      - name: 各區官網有抓不到的
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "::error::有區的官方頁抓不到（可能改版了）。看上面「抓 23 區的中文版 PDF」那一步的 log，並更新 fetch-ward-gomi.cjs 的 WARDS。"
+          exit 1

@@ -1,0 +1,174 @@
+#!/usr/bin/env node
+/* ══════════════════════════════════════════════════════════════════
+   東京 23 區・垃圾分類「中文版 PDF」抓取器
+   （周周 2026-10-23 指示「23 區都去抓下來」「要可以下載 PDF」，密語核准）
+
+   ▍為什麼要做成 GitHub Action
+     寫網站的 AI 跑在有 egress policy 的容器裡，`city.*.lg.jp` 這些網域
+     連 CONNECT 都被回 403（政策阻擋，不是網路問題，不可繞過）。
+     所以**容器裡永遠抓不到各區官網**。
+     這支設計成在 GitHub 的機器上跑（.github/workflows/ward-gomi.yml），
+     那邊連得到日本的政府網站，抓完把結果 commit 回 repo，
+     產生器再讀 ward-gomi-links.json 把表格做出來。
+
+   ▍抓什麼
+     每一區的官方頁 → 解析 HTML → 找出「中文版」的 PDF 連結。
+     判斷方式是看連結文字與前後文有沒有中文相關的字（中国語／中文／Chinese／
+     簡体／繁体…），再確認該 PDF 真的回 200。
+     抓不到就留空，產生器會退回「連到官方頁」——**寧可少給，不要給假的**。
+
+   ▍怎麼跑
+     node fetch-ward-gomi.cjs           # 全部 23 區
+     node fetch-ward-gomi.cjs 荒川區     # 只抓一區（除錯用）
+   ══════════════════════════════════════════════════════════════════ */
+
+const fs = require("fs");
+const path = require("path");
+
+const UA = "Mozilla/5.0 (compatible; chouchou-gomi/1.0; +https://chouchouinjapan.com/)";
+const TIMEOUT = 25000;
+
+/* 23 區的官方垃圾分類／外語版頁面。
+   ⚠️ 這些網址是搜尋引擎實際回傳的，不是拼湊的。改版時請更新這裡。 */
+const WARDS = [
+  ["千代田區", "千代田区", "https://www.city.chiyoda.lg.jp/koho/kurashi/gomi/wakekata/index.html"],
+  ["中央區", "中央区", "https://www.city.chuo.lg.jp/a0039/kurashi/gomi/bunbetsu/wakekata/panhuretto.html"],
+  ["港區", "港区", "https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/guidebook.html"],
+  ["新宿區", "新宿区", "https://www.city.shinjuku.lg.jp/seikatsu/file09_02_00001.html"],
+  ["文京區", "文京区", "https://www.city.bunkyo.lg.jp/b039/p000928.html"],
+  ["台東區", "台東区", "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/20180124165732477.html"],
+  ["墨田區", "墨田区", "https://www.city.sumida.lg.jp/kurashi/gomi_recycle/wakedashi_pamphlet/foreignlanguage.html"],
+  ["江東區", "江東区", "https://www.city.koto.lg.jp/388010/kurashi/gomi/kate/7348.html"],
+  ["品川區", "品川区", "https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-gomi/gomi-kateigomi/gomi-kateigomi-dashikata/hpg000005617.html"],
+  ["目黑區", "目黒区", "https://www.city.meguro.tokyo.jp/recycle/kurashi/gomi/shigengomipdf.html"],
+  ["大田區", "大田区", "https://www.city.ota.tokyo.jp/seikatsu/gomi/gaikokujinnmukepannfure.html"],
+  ["世田谷區", "世田谷区", "https://www.city.setagaya.lg.jp/02241/409.html"],
+  ["澀谷區", "渋谷区", "https://www.city.shibuya.tokyo.jp/kurashi/gomi/kateigomi/gomi_panf.html"],
+  ["中野區", "中野区", "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/dashikata/leaflet.html"],
+  ["杉並區", "杉並区", "https://www.city.suginami.tokyo.jp/s104/5928.html"],
+  ["豐島區", "豊島区", "https://www.city.toshima.lg.jp/gomi-fl/foreignlanguage.html"],
+  ["北區", "北区", "https://www.city.kita.lg.jp/living/bins/1002013/1002019.html"],
+  ["荒川區", "荒川区", "https://www.city.arakawa.tokyo.jp/a025/bunbetusassi.html"],
+  ["板橋區", "板橋区", "https://www.city.itabashi.tokyo.jp/tetsuduki/gomi/shigen/1001856.html"],
+  ["練馬區", "練馬区", "https://www.city.nerima.tokyo.jp/kurashi/gomi/recycle/downloads.html"],
+  ["足立區", "足立区", "https://www.city.adachi.tokyo.jp/seso/manual.html"],
+  ["葛飾區", "葛飾区", "https://www.city.katsushika.lg.jp/information/1000087/1030269/1025771/1018561.html"],
+  ["江戶川區", "江戸川区", "https://www.city.edogawa.tokyo.jp/e025/kurashi/gomi_recycle/kategomi/bunbetsu/shigengomi/pamphlet/china.html"],
+];
+
+/* 連結文字／前後文裡出現這些字，就當成「這是中文版」 */
+const CN_HINT = /中国語|中國語|中文|簡体|简体|繁体|繁體|Chinese|chinese|CHINESE|中・韓|英・中|中文版|ちゅうごくご/;
+/* 這些是其他語言，要排除（避免把韓文版當成中文版） */
+const OTHER_LANG = /ハングル|韓国語|韓國語|Korean|english|English|ENGLISH|英語版|ベトナム|ネパール|タガログ|ミャンマー|やさしい日本語|Vietnam|Nepal|Tagalog|Myanmar/;
+
+function decode(s) {
+  return String(s || "")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#(\d+);/g, (_, d) => String.fromCharCode(+d))
+    .replace(/\s+/g, " ").trim();
+}
+const strip = h => decode(h.replace(/<[^>]+>/g, " "));
+
+async function get(url, method = "GET") {
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), TIMEOUT);
+  try {
+    const res = await fetch(url, {
+      method, redirect: "follow", signal: ctl.signal,
+      headers: { "User-Agent": UA, "Accept-Language": "ja,zh-TW;q=0.8" },
+    });
+    clearTimeout(t);
+    return res;
+  } catch (e) { clearTimeout(t); return null; }
+}
+
+/* 把頁面裡的 <a> 全部拆出來：{ href, text, context } */
+function anchors(html, baseUrl) {
+  const out = [];
+  for (const m of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+    const attrs = m[1] || "";
+    const hm = attrs.match(/href\s*=\s*["']([^"']+)["']/i);
+    if (!hm) continue;
+    let href;
+    try { href = new URL(decode(hm[1]), baseUrl).toString(); } catch (e) { continue; }
+    const text = strip(m[2]);
+    const title = (attrs.match(/title\s*=\s*["']([^"']*)["']/i) || [])[1] || "";
+    // 前後各取一段文字當 context（有些區把語言寫在連結外面）
+    const i = m.index;
+    const ctx = strip(html.slice(Math.max(0, i - 260), i + m[0].length + 120));
+    out.push({ href, text, title: decode(title), ctx });
+  }
+  return out;
+}
+
+async function one([zh, ja, page]) {
+  const res = await get(page);
+  if (!res || !res.ok) {
+    return { ward: zh, wardJa: ja, page, pageOk: false, pageStatus: res ? res.status : "fetch failed", pdfs: [] };
+  }
+  const html = await res.text();
+  const list = anchors(html, page);
+
+  const cands = [];
+  for (const a of list) {
+    if (!/\.pdf(\?|$)/i.test(a.href)) continue;
+    const blob = a.text + " " + a.title + " " + a.ctx;
+    if (!CN_HINT.test(blob)) continue;
+    // 連結文字本身明確是別的語言就跳過（context 命中中文是因為同一列有多語版）
+    const own = a.text + " " + a.title;
+    if (OTHER_LANG.test(own) && !CN_HINT.test(own)) continue;
+    const trad = /繁体|繁體/.test(blob);
+    cands.push({ url: a.href, label: a.text || a.title, traditional: trad });
+  }
+
+  // 去重複
+  const seen = new Set();
+  const uniq = cands.filter(c => !seen.has(c.url) && seen.add(c.url));
+
+  // 逐一確認 PDF 真的在（200 才留）
+  const pdfs = [];
+  for (const c of uniq.slice(0, 8)) {
+    let r = await get(c.url, "HEAD");
+    if (!r || r.status === 405 || r.status === 501) r = await get(c.url, "GET");
+    if (r && r.ok) {
+      const len = Number(r.headers.get("content-length") || 0);
+      pdfs.push({ ...c, status: r.status, sizeKB: len ? Math.round(len / 1024) : null });
+    } else {
+      pdfs.push({ ...c, status: r ? r.status : "fetch failed", sizeKB: null, dead: true });
+    }
+    await new Promise(s => setTimeout(s, 350));
+  }
+  return { ward: zh, wardJa: ja, page, pageOk: true, pdfs: pdfs.filter(p => !p.dead) };
+}
+
+(async () => {
+  const only = process.argv[2];
+  const targets = only ? WARDS.filter(w => w[0] === only || w[1] === only) : WARDS;
+  if (!targets.length) { console.error("找不到這一區：" + only); process.exit(2); }
+
+  const out = [];
+  for (const w of targets) {
+    process.stdout.write(`抓 ${w[0]} … `);
+    const r = await one(w);
+    out.push(r);
+    console.log(r.pageOk ? `頁面 OK，中文 PDF ${r.pdfs.length} 個` + (r.pdfs.some(p => p.traditional) ? "（有繁體）" : "") : `頁面抓不到（${r.pageStatus}）`);
+    await new Promise(s => setTimeout(s, 500));
+  }
+
+  const withPdf = out.filter(r => r.pdfs.length).length;
+  const pageFail = out.filter(r => !r.pageOk);
+  console.log(`\n== 結果：${out.length} 區中，${withPdf} 區抓到中文 PDF ==`);
+  if (pageFail.length) {
+    console.log(`⚠️ 官方頁抓不到的 ${pageFail.length} 區（網址可能改版了，要更新 fetch-ward-gomi.cjs 的 WARDS）：`);
+    for (const r of pageFail) console.log(`   ${r.ward} [${r.pageStatus}] ${r.page}`);
+  }
+
+  if (only) { console.log(JSON.stringify(out, null, 1)); return; }
+
+  fs.writeFileSync(path.join(__dirname, "ward-gomi-links.json"),
+    JSON.stringify({ updated: new Date().toISOString().slice(0, 10), wards: out }, null, 1) + "\n");
+  console.log("\n已寫入 ward-gomi-links.json");
+
+  // 官方頁本身抓不到才算失敗（PDF 抓不到只是那一區沒放中文版，不是錯誤）
+  process.exit(pageFail.length ? 1 : 0);
+})();
