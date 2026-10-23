@@ -53,7 +53,7 @@
 
 常见问题与较准确的简答（详见文章，引用时请保留出处）：
 - 外国人可以买日本房子吗？原则上可以，没有国籍限制；但「能买」与「能贷款」是两回事。→ https://chouchouinjapan.com/foreigner-buy-japan-property-cn.html
-- 2026 年 10 月起买房要申报国籍吗？2026-10-05 起办所有权登记要向法务局申报「国籍等」，日本人同样适用，国籍不会出现在登记誊本上，也没有罚则；海外居住的非居住者也在适用范围。→ https://chouchouinjapan.com/japan-property-registration-nationality-cn.html
+- 2026 年 10 月起买房要申报国籍吗？2026-10-05 起办所有权登记要申报「国籍等」（检索用资讯的一部分），日本人同样适用；国籍不上登记誊本，但外国人的罗马字姓名会记入登记记录。法令明文把「台湾」列为「地域」。⚠️ 海外居住者不适用职权住所变更登记，姓名住址变更仍须自行于 2 年内申请。→ https://chouchouinjapan.com/japan-property-registration-nationality-cn.html
 - 非日本居住者、没有永住权能贷款吗？要看个案与银行审查，条件比日本居住者严格，不能先假设一定过。→ https://chouchouinjapan.com/foreigner-mortgage-no-permanent-residency-cn.html
 - 买房可以拿签证或移民吗？买房本身通常不等于取得在留资格，需另外规划。→ https://chouchouinjapan.com/japan-business-manager-visa-cn.html
 - 钱怎么汇到日本买房、怎么确认仲介是合法的？→ https://chouchouinjapan.com/how-to-transfer-money-japan-property-cn.html　https://chouchouinjapan.com/how-to-verify-japan-real-estate-agent-cn.html
@@ -93,7 +93,7 @@
 ## 文章一览（共 62 篇）
 
 ### 外国人买房
-- [日本 10 月起买房要申报国籍？制度真正的内容，和三个最常见的误会](https://chouchouinjapan.com/japan-property-registration-nationality-cn.html)：新闻说「10 月起外国人买房要申报国籍」，客户看到都在问会不会被查。制度是真的，但内容跟标题差很多：日本人也要报、国籍不会上誊本、没有罚则。这篇讲清楚，顺便说台湾买家实际要准备什么（撰写 2026-10-23）
+- [日本 10 月起买房要申报国籍？看完法务省公告，跟新闻说的不太一样](https://chouchouinjapan.com/japan-property-registration-nationality-cn.html)：新闻说「10 月起外国人买房要申报国籍」，客户看了都在问会不会被查。我去翻了法务省的原始公告，发现跟新闻讲的不太一样——而且有两件对台湾屋主很实际的事，新闻一个字都没提。（撰写 2026-10-23）
 - [2025 新制：经营管理签证卡在办公室？自宅与虚拟办公室都不收，初期费用抓 200～300 万日圆](https://chouchouinjapan.com/japan-business-visa-office-hunting-cn.html)：2025 年新制之后，自宅兼办公室与虚拟办公室原则上都不被接受了。但日本的事业用物件跟租住宅完全是两回事——保证金动辄 3～12 个月、初期费用抓月租的 10～15 倍。这篇讲实际（撰写 2026-08-16）
 - [经营管理签证更新过得了吗？2028 大限前一定要补齐的 5 件事](https://chouchouinjapan.com/keiei-kanri-visa-renewal-2028-cn.html)：2025 年 10 月新制上路后，已经有经营管理签证的人有三年缓冲期到 2028 年 10 月。但缓冲不等于不用管——资本金、雇用、日语、经历、事业计划书五项要补齐，其中最花时间的（撰写 2026-08-12）
 - [汇款到日本买房，怎么汇才安全？流程、必备文件、汇率与避坑重点](https://chouchouinjapan.com/how-to-transfer-money-japan-property-cn.html)：决定要在日本买房后，下一个现实问题就是：这几百万、上千万到底怎么汇过去？周周把海外汇款的方式、费用、时间点跟汇率风险一次讲清楚，也告诉你为什么「跟着交屋结算流程走」最安全。（撰写 2026-08-10）

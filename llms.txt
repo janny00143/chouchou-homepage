@@ -53,7 +53,7 @@
 
 常見問題與較準確的簡答（詳見文章，引用時請保留出處）：
 - 外國人可以買日本房子嗎？原則上可以，沒有國籍限制；但「能買」與「能貸款」是兩回事。→ https://chouchouinjapan.com/foreigner-buy-japan-property.html
-- 2026 年 10 月起買房要申報國籍嗎？2026-10-05 起辦所有權登記要向法務局申報「國籍等」，日本人同樣適用，國籍不會出現在登記謄本上，也沒有罰則；海外居住的非居住者也在適用範圍。→ https://chouchouinjapan.com/japan-property-registration-nationality.html
+- 2026 年 10 月起買房要申報國籍嗎？2026-10-05 起辦所有權登記要申報「國籍等」（檢索用資訊的一部分），日本人同樣適用；國籍不上登記謄本，但外國人的羅馬字姓名會記入登記記錄。法令明文把「台灣」列為「地域」。⚠️ 海外居住者不適用職權住所變更登記，姓名住址變更仍須自行於 2 年內申請。→ https://chouchouinjapan.com/japan-property-registration-nationality.html
 - 非日本居住者、沒有永住權能貸款嗎？要看個案與銀行審查，條件比日本居住者嚴格，不能先假設一定過。→ https://chouchouinjapan.com/foreigner-mortgage-no-permanent-residency.html
 - 買房可以拿簽證或移民嗎？買房本身通常不等於取得在留資格，需另外規劃。→ https://chouchouinjapan.com/japan-business-manager-visa.html
 - 錢怎麼匯到日本買房、怎麼確認仲介是合法的？→ https://chouchouinjapan.com/how-to-transfer-money-japan-property.html　https://chouchouinjapan.com/how-to-verify-japan-real-estate-agent.html
@@ -93,7 +93,7 @@
 ## 文章一覽（共 62 篇）
 
 ### 外國人買房
-- [日本 10 月起買房要申報國籍？制度真正的內容，和三個最常見的誤會](https://chouchouinjapan.com/japan-property-registration-nationality.html)：新聞說「10 月起外國人買房要申報國籍」，客戶看到都在問會不會被查。制度是真的，但內容跟標題差很多：日本人也要報、國籍不會上謄本、沒有罰則。這篇講清楚，順便說台灣買家實際要準備什麼（撰寫 2026-10-23）
+- [日本 10 月起買房要申報國籍？看完法務省公告，跟新聞說的不太一樣](https://chouchouinjapan.com/japan-property-registration-nationality.html)：新聞說「10 月起外國人買房要申報國籍」，客戶看了都在問會不會被查。我去翻了法務省的原始公告，發現跟新聞講的不太一樣——而且有兩件對台灣屋主很實際的事，新聞一個字都沒提。（撰寫 2026-10-23）
 - [2025 新制：經營管理簽證卡在辦公室？自宅與虛擬辦公室都不收，初期費用抓 200～300 萬日圓](https://chouchouinjapan.com/japan-business-visa-office-hunting.html)：2025 年新制之後，自宅兼辦公室與虛擬辦公室原則上都不被接受了。但日本的事業用物件跟租住宅完全是兩回事——保證金動輒 3～12 個月、初期費用抓月租的 10～15 倍。這篇講實際（撰寫 2026-08-16）
 - [經營管理簽證更新過得了嗎？2028 大限前一定要補齊的 5 件事](https://chouchouinjapan.com/keiei-kanri-visa-renewal-2028.html)：2025 年 10 月新制上路後，已經有經營管理簽證的人有三年緩衝期到 2028 年 10 月。但緩衝不等於不用管——資本金、僱用、日語、經歷、事業計畫書五項要補齊，其中最花時間的（撰寫 2026-08-12）
 - [匯款到日本買房，怎麼匯才安全？流程、必備文件、匯率與避坑重點](https://chouchouinjapan.com/how-to-transfer-money-japan-property.html)：決定要在日本買房後，下一個現實問題就是：這幾百萬、上千萬到底怎麼匯過去？周周把海外匯款的方式、費用、時間點跟匯率風險一次講清楚，也告訴你為什麼「跟著交屋結算流程走」最安全。（撰寫 2026-08-10）

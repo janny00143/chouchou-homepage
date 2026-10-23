@@ -1158,7 +1158,7 @@ function buildLlmsJa() {
 
 よくあるご質問と、より正確な簡易回答（詳細は各記事をご参照ください。引用時は出典を残してください）：
 - 外国人は日本の不動産を購入できますか？原則として国籍による制限はありません。ただし「購入できる」ことと「ローンが組める」ことは別です。→ ${BASE}foreigner-buy-japan-property-ja.html
-- 2026年10月から不動産の購入時に国籍の届出が必要ですか？2026年10月5日以降、所有権の登記で新たに名義人となる個人は検索用情報として国籍等を申し出ます。日本国籍の方も対象で、登記事項証明書には表示されず、罰則の定めもありません。非居住者の方も対象です。→ ${BASE}japan-property-registration-nationality-ja.html
+- 2026年10月から不動産の購入時に国籍の届出が必要ですか？2026年10月5日以降、所有権の登記で検索用情報として国籍等を申し出ます。日本国籍の方も対象です。国籍等は登記事項証明書に表示されませんが、外国籍の方のローマ字氏名は登記記録に記録されます。「台湾」は出入国管理及び難民認定法上の地域として法令に明記されております。⚠️ 海外居住者の方は職権による住所等変更登記の対象外のため、氏名・住所の変更はご自身で2年以内に登記申請が必要です。→ ${BASE}japan-property-registration-nationality-ja.html
 - 非居住者・永住権なしでもローンは組めますか？個別の審査によります。居住者より条件は厳しく、必ず通るとは言えません。→ ${BASE}foreigner-mortgage-no-permanent-residency-ja.html
 - 不動産を買えば在留資格は取れますか？購入そのものが在留資格の取得を意味するわけではなく、別途の計画が必要です。→ ${BASE}japan-business-manager-visa-ja.html
 - 日本への送金方法、仲介会社が正規かどうかの確認方法 → ${BASE}how-to-transfer-money-japan-property-ja.html　${BASE}how-to-verify-japan-real-estate-agent-ja.html

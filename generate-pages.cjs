@@ -1750,7 +1750,7 @@ function buildLlmsTxt() {
 
 常見問題與較準確的簡答（詳見文章，引用時請保留出處）：
 - 外國人可以買日本房子嗎？原則上可以，沒有國籍限制；但「能買」與「能貸款」是兩回事。→ ${BASE}foreigner-buy-japan-property.html
-- 2026 年 10 月起買房要申報國籍嗎？2026-10-05 起辦所有權登記要向法務局申報「國籍等」，日本人同樣適用，國籍不會出現在登記謄本上，也沒有罰則；海外居住的非居住者也在適用範圍。→ ${BASE}japan-property-registration-nationality.html
+- 2026 年 10 月起買房要申報國籍嗎？2026-10-05 起辦所有權登記要申報「國籍等」（檢索用資訊的一部分），日本人同樣適用；國籍不上登記謄本，但外國人的羅馬字姓名會記入登記記錄。法令明文把「台灣」列為「地域」。⚠️ 海外居住者不適用職權住所變更登記，姓名住址變更仍須自行於 2 年內申請。→ ${BASE}japan-property-registration-nationality.html
 - 非日本居住者、沒有永住權能貸款嗎？要看個案與銀行審查，條件比日本居住者嚴格，不能先假設一定過。→ ${BASE}foreigner-mortgage-no-permanent-residency.html
 - 買房可以拿簽證或移民嗎？買房本身通常不等於取得在留資格，需另外規劃。→ ${BASE}japan-business-manager-visa.html
 - 錢怎麼匯到日本買房、怎麼確認仲介是合法的？→ ${BASE}how-to-transfer-money-japan-property.html　${BASE}how-to-verify-japan-real-estate-agent.html
