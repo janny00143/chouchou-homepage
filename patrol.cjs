@@ -188,6 +188,16 @@ function a1_syntax() {
         try { JSON.parse(m[2]); } catch (e) { badLd.push(`${f}: ${e.message.slice(0, 60)}`); }
         continue;
       }
+      /* type="application/json" 是「把資料塞進頁面給 JS 讀」的標準做法，不是程式碼
+         （stats.html 的文章清單 #vmeta／#vslug 就是這樣放的）。
+         2026-10-23：少了這一行，JSON 會被丟進 new Function 驗，
+         報 Unexpected token ':' —— 是誤判，不是真的語法錯。
+         這裡照樣驗它是不是合法 JSON，壞掉一樣抓得到。 */
+      if (/type\s*=\s*["']application\/json["']/.test(attr)) {
+        nLd++;
+        try { JSON.parse(m[2]); } catch (e) { badLd.push(`${f}: (application/json) ${e.message.slice(0, 50)}`); }
+        continue;
+      }
       nJs++;
       try { new Function(m[2]); } catch (e) { badJs.push(`${f}: ${e.message.slice(0, 60)}`); }
     }

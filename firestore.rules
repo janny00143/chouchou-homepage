@@ -63,6 +63,35 @@ service cloud.firestore {
         && (resource.data.uid == request.auth.uid || isAdmin());
     }
 
+    // ── 文章點閱次數（views.js，2026-10-23 新增）──
+    // views/{文章id} = { n: 累計次數, base: 從 GA 匯入的歷史基數 }
+    // 顯示的數字 = base + n。
+    match /views/{id} {
+
+      // 讀：公開（統計頁與文章頁都要讀得到）
+      allow read: if true;
+
+      // 第一次：只能建成 n = 1，不能一來就塞個大數字。
+      // 周周本人不受限（匯入 GA 歷史數字時要能一次寫 base）。
+      allow create: if isAdmin()
+        || (request.resource.data.keys().hasOnly(['n'])
+            && request.resource.data.n == 1);
+
+      // 之後：只能「剛好 +1」，而且只准動 n 這一個欄位。
+      // ⚠️ 這裡一定要用 diff().affectedKeys()，不可以寫成
+      //    request.resource.data.keys().hasOnly(['n'])——
+      //    前端用的是 merge 寫入，request.resource.data 是「合併後的整份文件」，
+      //    已經填了 base 的文章會連 base 一起出現在 keys 裡，用 hasOnly 會整個擋掉。
+      // get('n', 0) 是為了「周周先填了 base、還沒有人看過」的文章也能從 0 開始加。
+      allow update: if isAdmin()
+        || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['n'])
+            && request.resource.data.n is int
+            && request.resource.data.n == resource.data.get('n', 0) + 1);
+
+      // 刪除：只有周周本人（避免有人把某篇的數字洗掉重來）
+      allow delete: if isAdmin();
+    }
+
     // 其餘所有路徑：全部禁止
     match /{document=**} {
       allow read, write: if false;

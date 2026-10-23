@@ -326,6 +326,7 @@ const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周�
 const TAIL = `<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="回到頂端">↑</button>
 <script type="module" src="comments.js"></script>
+<script type="module" src="views.js"></script>
 <script>document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ytf');if(f&&!f.dataset.l){f.dataset.l=1;f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.id+'?autoplay=1" title="影片" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe>';}});</script>
 <script>(function(){var rp=document.getElementById('rp'),btt=document.getElementById('btt');function os(){var h=document.documentElement,sc=h.scrollTop||document.body.scrollTop,mx=h.scrollHeight-h.clientHeight;rp.style.width=(mx>0?sc/mx*100:0)+'%';btt.style.display=sc>500?'flex':'none';}window.addEventListener('scroll',os,{passive:true});os();btt.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};var post=document.querySelector('.post');if(post){var heads=[];post.querySelectorAll('h2.ah, p').forEach(function(el){var t='';if(el.tagName==='H2'){t=el.textContent.trim();}else{var fe=el.querySelector('b');if(!fe||el.firstElementChild!==fe)return;t=fe.textContent.trim();}if(t.length>=3&&t.length<=42)heads.push({p:el,t:t});});if(heads.length>=4){var toc=document.createElement('div');toc.className='toc collapsed';var tt=document.createElement('div');tt.className='toc-t';tt.innerHTML='📑 本篇目錄 <span class="toc-x"></span>';tt.onclick=function(){toc.classList.toggle('collapsed');};var list=document.createElement('div');list.className='toc-list';heads.forEach(function(h,i){var id='sec'+i;h.p.id=id;h.p.classList.add('sec');var a=document.createElement('a');a.href='#'+id;a.textContent=h.t;list.appendChild(a);});toc.appendChild(tt);toc.appendChild(list);post.parentNode.insertBefore(toc,post);}}})();</script>
 <!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref=isJa?'ja.html':(isCn?p.slice(0,-8)+'-ja.html':p.slice(0,-5)+'-ja.html');var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>`;
@@ -407,7 +408,7 @@ ${SBAR}
 <p style="font-size:13px;color:var(--mut);margin-bottom:14px"><a href="index.html" style="color:var(--mut)">首頁</a> › ${c.name}</p>
 ${a.coverFit === "full" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}" loading="lazy" style="width:100%;height:auto;border-radius:18px;display:block;margin:0 auto 20px">` : a.coverFit === "medium" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:480px;width:100%;height:auto;border-radius:18px">` : a.coverFit === "contain" ? `<img${wh(cover)} src="${cover}" alt="${esc(a.title)}" loading="lazy" style="display:block;margin:0 auto 20px;max-width:100%;max-height:210px;width:auto;height:auto;border-radius:18px">` : `<div class="acov" style="${bg}"><span>${c.name}</span></div>`}
 <h1 class="atitle" style="margin-bottom:10px">${a.title}</h1>
-<div class="am" style="display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin-bottom:16px"><span>撰寫者：周周</span><span>撰寫 ${a.date}</span>${updatedOn(a) > a.date ? `<span>・最後更新 ${updatedOn(a)}</span>` : ""}</div>
+<div class="am" style="display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin-bottom:16px"><span>撰寫者：周周</span><span>撰寫 ${a.date}</span>${updatedOn(a) > a.date ? `<span>・最後更新 ${updatedOn(a)}</span>` : ""}<span class="vcnt" data-vid="${a.id}" data-count="1" data-unit=" 次閱讀" style="visibility:hidden"></span></div>
 <div class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">f 分享</a><a href="https://www.threads.net/intent/post?text=${encodeURIComponent(a.title+" "+url)}" target="_blank" rel="noopener">Threads 分享</a><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(a.title)}" target="_blank" rel="noopener">𝕏 分享</a><a href="javascript:void(0)" onclick="navigator.clipboard&&navigator.clipboard.writeText('${url}');this.textContent='✓ 已複製';return false">🔗 複製連結</a></div>
 <div class="post">
 ${bodyHTML}
@@ -820,7 +821,196 @@ for (const a of ART) {
 }
 
 // 商業關鍵字落地頁（繁中；-cn 由 build-cn 產生、-ja 在 build-ja.cjs）
+/* ── 點閱統計頁 stats.html（周周 2026-10-23 指示：「文章的點閱次數想要可視化」）──
+   ・這是給周周自己看的後台，不是給讀者看的：帶 noindex、不進 sitemap、
+     站上任何地方都沒有連結，要自己打網址 /stats.html。
+   ・進來要先輸入通行碼 CHOUCHOU-STATS（大小寫皆可）。
+     ⚠️ 刻意「不」沿用翻譯機那一組：同一組碼寫在愈多頁面、洩漏面愈大，
+        而且 patrol 的 A6 會（正確地）把它當成金鑰外流報出來。
+     這只是「不要被路過的人看到」，數字本身在 Firestore 是公開可讀的，
+     不是真正的權限控管。要換碼就改這一行，然後重跑產生器。
+   ・數字由 views.js 讀 Firestore 的 views 集合（base + n）。
+   ・下方的「匯入 GA 歷史數據」要用周周的 Google 帳號登入才寫得進去
+     （Firestore 規則裡只有 isAdmin() 能寫 base）。 */
+function pageStats() {
+  const rows = ART
+    .filter(a => a.url || SLUG[a.id])
+    .map(a => ({ id: a.id, title: a.title, url: a.url || SLUG[a.id] + ".html", cat: cat(a.cat).name, date: a.date }));
+  const metaJson = JSON.stringify(rows).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
+  /* slug（不含 .html）→ 文章 id。GA 匯出的是網址路徑，要靠這張表換回 id。
+     三語網址都對到同一個 id，所以 GA 的繁中／簡中／日文三列會自動加總。 */
+  const slugMap = {};
+  for (const a of ART) {
+    const base = a.url ? a.url.replace(/\.html$/, "") : SLUG[a.id];
+    if (!base) continue;
+    slugMap[base] = a.id;
+    slugMap[base + "-cn"] = a.id;
+    slugMap[base + "-ja"] = a.id;
+  }
+  const slugJson = JSON.stringify(slugMap).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
+
+  return `<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>文章點閱統計｜周周的日本房仲</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+${STYLE}
+<style>
+#gate{max-width:420px;margin:12vh auto;text-align:center}
+#gate input{width:200px;text-align:center;letter-spacing:3px;font-family:inherit;font-size:16px;padding:11px 14px;border:1px solid var(--line);border-radius:12px}
+#app{display:none}
+.vsum{background:#fafaf9;border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:15px;margin-bottom:20px}
+.vsum b{font-size:22px;color:var(--rose)}
+.vlist{display:flex;flex-direction:column;gap:14px}
+.vrow{display:flex;align-items:center;gap:14px}
+.vno{width:30px;text-align:right;font-weight:700;color:var(--mut);font-size:15px;flex:0 0 auto}
+.vmain{flex:1;min-width:0}
+.vt{font-weight:700;font-size:15px;color:inherit;text-decoration:none;display:block;margin-bottom:5px}
+.vt:hover{color:var(--rose)}
+.vbar{height:9px;background:#f5f5f4;border-radius:99px;overflow:hidden}
+.vbar i{display:block;height:100%;background:linear-gradient(90deg,#fb7185,#f43f5e);border-radius:99px}
+.vmeta{font-size:12.5px;color:var(--mut);margin-top:4px}
+.vv{width:76px;text-align:right;font-weight:700;font-size:17px;flex:0 0 auto}
+#imp{margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+#imp textarea{width:100%;box-sizing:border-box;min-height:140px;font-family:ui-monospace,monospace;font-size:13px;padding:12px;border:1px solid var(--line);border-radius:12px}
+#imp .btn{cursor:pointer}
+#implog{font-size:13.5px;line-height:1.9;margin-top:12px;white-space:pre-wrap}
+</style></head><body>
+<div id="gate">
+  <p style="font-size:15px;margin-bottom:14px">請輸入通行碼</p>
+  <input id="pw" type="password" autocomplete="off" placeholder="••••••">
+  <p id="pwerr" style="color:#dc2626;font-size:13.5px;height:20px;margin-top:10px"></p>
+</div>
+
+<div id="app"><main class="wrap" style="max-width:860px;padding-top:26px">
+<a class="back" href="index.html">← 回首頁</a>
+<h1 class="atitle" style="margin:10px 0 6px">文章點閱統計</h1>
+<p style="color:var(--mut);font-size:14px;margin-bottom:22px">
+  繁中・簡中・日文三個版本的點閱數會加總在同一篇。同一台裝置看同一篇，6 小時內只算一次。<br>
+  這頁沒有放在站上任何地方，也不會被搜尋引擎收錄。
+</p>
+<div id="vstats"><p style="color:var(--mut)">讀取中…</p></div>
+
+<section id="imp">
+  <h2 style="font-size:18px;margin-bottom:8px">匯入 Google Analytics 的歷史數據</h2>
+  <p style="color:var(--mut);font-size:14px;line-height:1.9;margin-bottom:14px">
+    這個計數器是 2026-10-23 才開始算的，在那之前的點閱數都在 GA 裡。<br>
+    <b>GA 匯出步驟：</b>GA4 →「報表」→「生命週期」→「參與」→「網頁和畫面」→ 右上角「分享這份報表」→「下載檔案」→ CSV。<br>
+    下載後把檔案用記事本打開，整份貼進下面的框框（含標題列沒關係，程式會自己略過），
+    再按「寫入」。會寫進每篇文章的「歷史基數」欄位，<b>不會蓋掉</b>這幾天新累積的數字。<br>
+    要先用周周本人的 Google 帳號登入才寫得進去。
+  </p>
+  <p><button id="login" class="btn btn-line" style="border:none">用 Google 登入</button>
+     <span id="who" style="font-size:14px;margin-left:10px;color:var(--mut)"></span></p>
+  <textarea id="csv" placeholder="網頁路徑和畫面類別,瀏覽次數&#10;/tokyo-garbage-sorting-guide.html,123&#10;/japan-property-tax-guide.html,456"></textarea>
+  <p style="margin-top:10px">
+    <button id="prev" class="btn" style="background:#fff;border:1.5px solid var(--line);cursor:pointer">先試算（不寫入）</button>
+    <button id="go" class="btn btn-line" style="border:none;margin-left:8px" disabled>寫入</button>
+  </p>
+  <div id="implog"></div>
+</section>
+</main></div>
+
+<script type="application/json" id="vmeta">${metaJson}</script>
+<script type="application/json" id="vslug">${slugJson}</script>
+<script type="module" src="views.js"></script>
+<script>
+/* 通行碼門（純前端，只是不要被路過的人看到）。
+   ⚠️ 刻意用普通的 <script>，不要併進下面那個 module：
+      module 只要有一個 import 載不到（Firebase 的 CDN 被擋、網路不穩），
+      整段就不會執行，通行碼門會永遠打不開、整頁變空白。 */
+(function () {
+  var PASS = "CHOUCHOU-STATS";
+  var gate = document.getElementById("gate"), app = document.getElementById("app");
+  function open_() { gate.style.display = "none"; app.style.display = "block"; }
+  try { if (sessionStorage.getItem("statsok") === "1") open_(); } catch (e) {}
+  document.getElementById("pw").addEventListener("keydown", function (e) {
+    if (e.key !== "Enter") return;
+    if (e.target.value.trim().toUpperCase() === PASS) {
+      try { sessionStorage.setItem("statsok", "1"); } catch (err) {}
+      open_();
+    } else document.getElementById("pwerr").textContent = "通行碼不對";
+  });
+})();
+</script>
+<script type="module">
+/* ── GA CSV → 歷史基數 ── */
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const cfg = { apiKey: "AIzaSyAzwbqz1f7PqDifv4GNd6b1v4Y-JK5tli4", authDomain: "chouchou-homepage.firebaseapp.com", projectId: "chouchou-homepage", storageBucket: "chouchou-homepage.firebasestorage.app", messagingSenderId: "487849516915", appId: "1:487849516915:web:62fb4b31c8e358595aef06" };
+const app_ = getApps().length ? getApp() : initializeApp(cfg);
+const auth = getAuth(app_), fdb = getFirestore(app_);
+const SLUGMAP = JSON.parse(document.getElementById("vslug").textContent);
+const META = JSON.parse(document.getElementById("vmeta").textContent);
+const TITLE = {}; META.forEach(m => TITLE[m.id] = m.title);
+const logEl = document.getElementById("implog"), goBtn = document.getElementById("go");
+
+onAuthStateChanged(auth, u => {
+  document.getElementById("who").textContent = u ? ("已登入：" + (u.email || "")) : "";
+  goBtn.disabled = !u;
+});
+document.getElementById("login").onclick = () =>
+  signInWithPopup(auth, new GoogleAuthProvider()).catch(e => { logEl.textContent = "登入失敗：" + e.message; });
+
+/* CSV 解析：只認「第一欄像網址路徑、某一欄是數字」的列，其他（標題、總計）全部略過。
+   GA 的數字常有千分位逗號又被引號包起來，所以逗號切欄前要先處理引號。 */
+function parseCsv(txt) {
+  const out = {};
+  const skipped = [];
+  for (const raw of txt.split(/\\r?\\n/)) {
+    if (!raw.trim() || raw.trim()[0] === "#") continue;
+    const cells = [];
+    let cur = "", q = false;
+    for (const ch of raw) {
+      if (ch === '"') { q = !q; continue; }
+      if (ch === "," && !q) { cells.push(cur); cur = ""; continue; }
+      cur += ch;
+    }
+    cells.push(cur);
+    const path = (cells[0] || "").trim();
+    const m = path.match(/([A-Za-z0-9._-]+)\\.html/);
+    if (!m) continue;
+    let n = 0;
+    for (let i = 1; i < cells.length; i++) {
+      const v = cells[i].replace(/[\\s,]/g, "");
+      if (/^\\d+$/.test(v)) { n = parseInt(v, 10); break; }
+    }
+    if (!n) continue;
+    const id = SLUGMAP[m[1]];
+    if (!id) { skipped.push(path); continue; }
+    out[id] = (out[id] || 0) + n;
+  }
+  return { out, skipped };
+}
+
+function render(res, done) {
+  const ids = Object.keys(res.out).sort((a, b) => res.out[b] - res.out[a]);
+  let t = (done ? "✅ 已寫入 " : "試算結果：") + ids.length + " 篇，合計 "
+    + ids.reduce((s, k) => s + res.out[k], 0).toLocaleString("en-US") + " 次\\n";
+  ids.forEach(k => { t += "　" + (TITLE[k] || k) + "：" + res.out[k].toLocaleString("en-US") + "\\n"; });
+  if (res.skipped.length) t += "\\n對不到文章、已略過（" + res.skipped.length + " 列）：\\n　" + res.skipped.slice(0, 20).join("\\n　");
+  logEl.textContent = t;
+}
+document.getElementById("prev").onclick = () => render(parseCsv(document.getElementById("csv").value), false);
+goBtn.onclick = async () => {
+  const res = parseCsv(document.getElementById("csv").value);
+  const ids = Object.keys(res.out);
+  if (!ids.length) { logEl.textContent = "沒有解析到任何資料。"; return; }
+  if (!confirm("要把 " + ids.length + " 篇的歷史基數寫進去嗎？（會覆蓋上一次匯入的基數，但不影響這幾天新累積的點閱）")) return;
+  goBtn.disabled = true; logEl.textContent = "寫入中…";
+  try {
+    for (const id of ids) await setDoc(doc(fdb, "views", id), { base: res.out[id] }, { merge: true });
+    render(res, true);
+    setTimeout(() => location.reload(), 1200);
+  } catch (e) { logEl.textContent = "寫入失敗：" + e.message; goBtn.disabled = false; }
+};
+</script>
+</body></html>`;
+}
+
 fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese.html", pageAgentTW());
+fs.writeFileSync(ROOT + "/stats.html", pageStats());
 fs.writeFileSync(ROOT + "/buy-property-in-japan.html", pageHubTW());
 console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html");
 
