@@ -174,7 +174,16 @@
    "wardJa": "江東区",
    "page": "https://www.city.koto.lg.jp/388010/kurashi/gomi/kate/7348.html",
    "pageOk": true,
-   "pdfs": []
+   "pdfs": [
+    {
+     "url": "https://www.city.koto.lg.jp/388010/kurashi/gomi/kate/documents/20260319120029.pdf",
+     "label": "【Chinese・Korean】資源・ごみの分け方・出し方（中国語・韓国語版）（PDF：1,975KB）（別ウィンドウで開きます）",
+     "traditional": false,
+     "rank": 10,
+     "status": 200,
+     "sizeKB": null
+    }
+   ]
   },
   {
    "ward": "品川區",
@@ -316,7 +325,16 @@
    "wardJa": "豊島区",
    "page": "https://www.city.toshima.lg.jp/gomi-fl/foreignlanguage.html",
    "pageOk": true,
-   "pdfs": []
+   "pdfs": [
+    {
+     "url": "https://www.city.toshima.lg.jp/documents/27707/20260716110355.pdf",
+     "label": "英語版・中国語版・韓国語版「資源回収・ごみ収集のお知らせ」と「曜日一覧」（PDF：2,495KB）",
+     "traditional": false,
+     "rank": 10,
+     "status": 200,
+     "sizeKB": 2495
+    }
+   ]
   },
   {
    "ward": "北區",
@@ -343,16 +361,16 @@
     {
      "url": "https://www.city.arakawa.tokyo.jp/documents/18400/tyuuhan.pdf",
      "label": "資源・塑膠・垃圾分類與丟棄方法手冊（中国語（繫体字））（PDF：9,901KB）",
-     "traditional": false,
-     "rank": 10,
+     "traditional": true,
+     "rank": 13,
      "status": 200,
      "sizeKB": 9901
     },
     {
      "url": "https://www.city.arakawa.tokyo.jp/documents/18400/kantai.pdf",
      "label": "资源・塑料・垃圾分类与投放指南手册（中国語（簡体字））（PDF：19,599KB）",
-     "traditional": false,
-     "rank": 10,
+     "traditional": true,
+     "rank": 13,
      "status": 200,
      "sizeKB": 19599
     }
@@ -370,7 +388,7 @@
      "traditional": false,
      "rank": 10,
      "status": 200,
-     "sizeKB": 1723
+     "sizeKB": null
     },
     {
      "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/001/856/jigyoukeigomi50604.pdf",
