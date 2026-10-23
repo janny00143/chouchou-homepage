@@ -397,9 +397,9 @@
     {
      "url": "https://www.city.arakawa.tokyo.jp/documents/18400/kantai.pdf",
      "label": "资源・塑料・垃圾分类与投放指南手册（中国語（簡体字））（PDF：19,599KB）",
-     "traditional": true,
+     "traditional": false,
      "multilang": false,
-     "rank": 13,
+     "rank": 10,
      "status": 200,
      "sizeKB": 19599
     }
