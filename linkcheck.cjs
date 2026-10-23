@@ -43,6 +43,11 @@ const SKIP = [
      （搜尋引擎仍抓得到該頁的渋谷区鶯谷町住址與免許番号）。
      回 404 的「死連結」判斷對這個網域沒有意義，所以整個網域跳過。 */
   /^https?:\/\/(www\.)?suumo\.jp\//,
+  /* 品川區的 PDF 也是回 404 擋機器人：HEAD／GET／GET+Range 全部 404，
+     但周周 2026-10-23 從官方頁點同一個網址下載到了 5,191,484 bytes
+     的 chinese.pdf（官方頁自己寫「PDF 5.0 MB」）。
+     同一個理由也寫在 fetch-ward-gomi.cjs 的 BOT_404。 */
+  /^https?:\/\/www\.city\.shinagawa\.tokyo\.jp\/PC\/_res\//,
   /^https?:\/\/i\.ytimg\.com\//,                // 縮圖圖床
   /^https?:\/\/fonts\.(googleapis|gstatic)\.com/,
   /^https?:\/\/www\.googletagmanager\.com/,
