@@ -11,6 +11,7 @@
      "url": "https://www.city.chiyoda.lg.jp/documents/1952/wakekataposter-ch_1.pdf",
      "label": "資源とごみの分け方・出し方ポスター（中文）（PDF：475KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -19,6 +20,7 @@
      "url": "https://www.city.chiyoda.lg.jp/documents/1952/hayami31_ch.pdf",
      "label": "住所別早見表（中文）（PDF：137KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -35,6 +37,7 @@
      "url": "https://www.city.chuo.lg.jp/documents/5392/chinese2024.pdf",
      "label": "中国語（簡体字）（PDF：5,044KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -51,6 +54,7 @@
      "url": "https://www.city.minato.tokyo.jp/documents/6284/20260413193558.pdf",
      "label": "资源与垃圾的 分类 指南（中国語版）（PDF：9,908KB（PDF：9,290KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 9289
@@ -59,6 +63,7 @@
      "url": "https://www.city.minato.tokyo.jp/documents/6284/20260413200625.pdf",
      "label": "中国語版・分別チラシ（Chinese）（PDF：1,653KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 1652
@@ -75,6 +80,7 @@
      "url": "https://www.city.shinjuku.lg.jp/content/000259257.pdf",
      "label": "資源・ごみの分け方・出し方（中国語版） [PDF形式：1.4MB] （新規ウィンドウ表示）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 1344
@@ -83,6 +89,7 @@
      "url": "https://www.city.shinjuku.lg.jp/content/000259265.pdf",
      "label": "資源・ごみの分け方・出し方（中国語版） [PDF形式：2.9MB] （新規ウィンドウ表示）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 2955
@@ -91,6 +98,7 @@
      "url": "https://www.city.shinjuku.lg.jp/content/000270257.pdf",
      "label": "事業系の資源・ごみの出し方（中国語版） [PDF形式：1.1MB] （新規ウィンドウ表示）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 1075
@@ -99,6 +107,7 @@
      "url": "https://www.city.shinjuku.lg.jp/content/000270282.pdf",
      "label": "ご家庭で使用済みになった小型電子機器等を回収しています（中国語版） [PDF形式：471KB] （新規ウィンドウ表示）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 470
@@ -107,6 +116,7 @@
      "url": "https://www.city.shinjuku.lg.jp/content/000443825.pdf",
      "label": "小型充電式電池の回収チラシ（中国語） [PDF形式：353KB] （新規ウィンドウ表示）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 352
@@ -123,6 +133,7 @@
      "url": "https://www.city.bunkyo.lg.jp/documents/955/gomitoshigennowakekatadashikata_chinese.pdf",
      "label": "ごみと資源の分け方・出し方（中国語版/簡体中文）（PDF：812KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -139,6 +150,7 @@
      "url": "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/20180124165732477.files/Chinese.pdf",
      "label": "中国語版(Chinese)（PDF：835KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 835
@@ -147,6 +159,7 @@
      "url": "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/20180124165732477.files/Chinese_region.pdf",
      "label": "中国語版 収集曜日一覧(Chinese)（PDF：2,789KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 2789
@@ -163,6 +176,7 @@
      "url": "https://www.city.sumida.lg.jp/kurashi/gomi_recycle/wakedashi_pamphlet/foreignlanguage.files/wakedashi202603C.pdf",
      "label": "資源とごみの分け方・出し方（中国語・Chinese）（PDF：5,472KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 5472
@@ -179,7 +193,8 @@
      "url": "https://www.city.koto.lg.jp/388010/kurashi/gomi/kate/documents/20260319120029.pdf",
      "label": "【Chinese・Korean】資源・ごみの分け方・出し方（中国語・韓国語版）（PDF：1,975KB）（別ウィンドウで開きます）",
      "traditional": false,
-     "rank": 10,
+     "multilang": true,
+     "rank": 6,
      "status": 200,
      "sizeKB": null
     }
@@ -202,6 +217,7 @@
      "url": "https://www.city.meguro.tokyo.jp/documents/4396/r8-pamphlet-chinese.pdf",
      "label": "中国語版「資源とごみの分け方・出し方」（PDF：3,495KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -210,6 +226,7 @@
      "url": "https://www.city.meguro.tokyo.jp/documents/4396/jigyoumuke_chinese.pdf",
      "label": "中国語版 事業者向けリーフレット（PDF：10,062KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 10061
@@ -226,6 +243,7 @@
      "url": "https://www.city.ota.tokyo.jp/seikatsu/gomi/gaikokujinnmukepannfure.files/08cyuugoku.pdf",
      "label": "資源とごみの分け方・出し方中国語版（PDF：8,786KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 8787
@@ -234,6 +252,7 @@
      "url": "https://www.city.ota.tokyo.jp/seikatsu/gomi/gaikokujinnmukepannfure.files/purasuchikuci.pdf",
      "label": "中国語版プラスチックの出し方（PDF：3,817KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 3818
@@ -250,6 +269,7 @@
      "url": "https://www.city.setagaya.lg.jp/documents/409/wakedashid-data-c.pdf",
      "label": "資源とごみの分け方・出し方（中国語版）（PDF：3,788KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -266,6 +286,7 @@
      "url": "https://files.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/04a455829bd643e4a1716114495b2615/2024wakedashiChina.pdf",
      "label": "資源とごみの分け方・出し方（中国語版）（PDF 419KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -282,6 +303,7 @@
      "url": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/dashikata/leaflet.files/nakanoGomi_2026_cn.pdf",
      "label": "資源とごみの分け方・出し方（中国語版）（PDF形式：2,386KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 2387
@@ -290,6 +312,7 @@
      "url": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/dashikata/leaflet.files/shudannkaishu_2026_cn.pdf",
      "label": "集団回収実施日一覧（中国語版）（PDF形式：334KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 335
@@ -298,6 +321,7 @@
      "url": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/dashikata/leaflet.files/rev_Nakanogomi_cn.pdf",
      "label": "資源プラスチックの出し方（中国語版・令和6年4月～）（PDF形式：1,650KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 1651
@@ -314,6 +338,7 @@
      "url": "https://www.city.suginami.tokyo.jp/documents/5928/3gaikokugo.pdf",
      "label": "中国語（ちゅうごくご）（PDF：3,565KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": null
@@ -330,7 +355,8 @@
      "url": "https://www.city.toshima.lg.jp/documents/27707/20260716110355.pdf",
      "label": "英語版・中国語版・韓国語版「資源回収・ごみ収集のお知らせ」と「曜日一覧」（PDF：2,495KB）",
      "traditional": false,
-     "rank": 10,
+     "multilang": true,
+     "rank": 6,
      "status": 200,
      "sizeKB": 2495
     }
@@ -346,6 +372,7 @@
      "url": "https://www.city.kita.lg.jp/_res/projects/default_project/_page_/001/002/019/wakekatadashikata_chugokugo.pdf",
      "label": "中国語「家庭ごみ・資源の分け方出し方」 （PDF 1.2MB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 1212
@@ -362,6 +389,7 @@
      "url": "https://www.city.arakawa.tokyo.jp/documents/18400/tyuuhan.pdf",
      "label": "資源・塑膠・垃圾分類與丟棄方法手冊（中国語（繫体字））（PDF：9,901KB）",
      "traditional": true,
+     "multilang": false,
      "rank": 13,
      "status": 200,
      "sizeKB": 9901
@@ -370,6 +398,7 @@
      "url": "https://www.city.arakawa.tokyo.jp/documents/18400/kantai.pdf",
      "label": "资源・塑料・垃圾分类与投放指南手册（中国語（簡体字））（PDF：19,599KB）",
      "traditional": true,
+     "multilang": false,
      "rank": 13,
      "status": 200,
      "sizeKB": 19599
@@ -386,15 +415,17 @@
      "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/001/856/sigenntogomi50604.pdf",
      "label": "資源とごみの分け方・出し方チラシ（外国語版 日・英・中・韓） （PDF 1.7MB）",
      "traditional": false,
-     "rank": 10,
+     "multilang": true,
+     "rank": 6,
      "status": 200,
-     "sizeKB": null
+     "sizeKB": 1723
     },
     {
      "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/001/856/jigyoukeigomi50604.pdf",
      "label": "事業系ごみの出し方（外国語版 日・英・中・韓） （PDF 1.1MB）",
      "traditional": false,
-     "rank": 10,
+     "multilang": true,
+     "rank": 6,
      "status": 200,
      "sizeKB": 1105
     }
@@ -410,6 +441,7 @@
      "url": "https://www.city.nerima.tokyo.jp/kurashi/gomi/recycle/downloads.files/2026_c.pdf",
      "label": "令和8年10月版 中国語版（Chinese） 簡易版 練馬区資源・ごみの分け方と出し方（PDF：3,112KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 3112
@@ -426,7 +458,8 @@
      "url": "https://www.city.adachi.tokyo.jp/documents/56163/20260502.pdf",
      "label": "資源とごみの分け方・出し方リーフレット（中国語・韓国版）（PDF：1,621KB）",
      "traditional": false,
-     "rank": 10,
+     "multilang": true,
+     "rank": 6,
      "status": 200,
      "sizeKB": 1621
     }
@@ -442,6 +475,7 @@
      "url": "https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/018/561/2022chn.pdf",
      "label": "ごみの出し方（中国語） （PDF 565.0KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 10,
      "status": 200,
      "sizeKB": 565
@@ -450,17 +484,10 @@
      "url": "https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/018/561/2022jpn.pdf",
      "label": "ごみの出し方（日本語） （PDF 222.6KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 223
-    },
-    {
-     "url": "https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/018/561/2022eng.pdf",
-     "label": "ごみの出し方（英語） （PDF 122.2KB）",
-     "traditional": false,
-     "rank": 0,
-     "status": 200,
-     "sizeKB": 122
     }
    ]
   },
@@ -474,6 +501,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c.pdf",
      "label": "全頁（PDF：6,778KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 6777
@@ -482,6 +510,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c1.pdf",
      "label": "封面（PDF：911KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 911
@@ -490,6 +519,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c2.pdf",
      "label": "容器包装塑料（PDF：924KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 924
@@ -498,6 +528,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c3.pdf",
      "label": "废纸（PDF：646KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 646
@@ -506,6 +537,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c4.pdf",
      "label": "玻璃瓶、罐、塑料瓶（PDF：677KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 677
@@ -514,6 +546,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c5.pdf",
      "label": "可燃垃圾（PDF：759KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 758
@@ -522,6 +555,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c6.pdf",
      "label": "不可燃垃圾・电池的种类和丢弃方法（PDF：1,068KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 1068
@@ -530,6 +564,7 @@
      "url": "https://www.city.edogawa.tokyo.jp/documents/6072/bumbetsupamphlet-c7.pdf",
      "label": "大件垃圾（PDF：966KB）",
      "traditional": false,
+     "multilang": false,
      "rank": 0,
      "status": 200,
      "sizeKB": 966
