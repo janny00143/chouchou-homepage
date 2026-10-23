@@ -106,6 +106,41 @@ function anchors(html, baseUrl) {
   return out;
 }
 
+/* 確認一個 PDF 真的存在。
+   ⚠️ 政府網站對「不像瀏覽器」的請求很敏感，所以要一路放寬著試，
+   不可以一次失敗就判它死掉——品川區的中文版就是這樣被誤判成失效的
+   （周周 2026-10-23 指出品川有中文版才查出來）。順序：
+     ① HEAD（最省流量，多數區吃這個）
+     ② GET + Range 只取開頭 1KB，並帶 Referer（裝成從該區頁面點過來）
+     ③ GET 完整（不帶 Range；有些主機看到 Range 直接回錯），
+        確認到就立刻取消下載，不會真的把整份 10MB 拉完
+   回傳 { ok, status, sizeKB, tried }；tried 是每一步的結果，失敗時印出來診斷。 */
+async function exists(url, referer) {
+  const ref = { Referer: referer, Accept: "application/pdf,*/*" };
+  const steps = [
+    ["HEAD", "HEAD", undefined],
+    ["GET+Range", "GET", { ...ref, Range: "bytes=0-1023" }],
+    ["GET", "GET", ref],
+  ];
+  const tried = [];
+  for (const [name, method, headers] of steps) {
+    const r = await get(url, method, headers);
+    if (!r) { tried.push(`${name}=連不上`); continue; }
+    tried.push(`${name}=${r.status}`);
+    if (r.ok || r.status === 206) {
+      // 用 Range 取回來時 content-length 是那 1KB，要改看 content-range 的總長度
+      const cr = r.headers.get("content-range") || "";
+      const total = Number((cr.match(/\/(\d+)$/) || [])[1] || 0);
+      const len = total || Number(r.headers.get("content-length") || 0);
+      try { if (r.body) await r.body.cancel(); } catch (e) {}   // 不要真的把整份下載完
+      return { ok: true, status: r.status, sizeKB: len ? Math.round(len / 1024) : null, tried: tried.join(" ") };
+    }
+    try { if (r.body) await r.body.cancel(); } catch (e) {}
+    await new Promise(s => setTimeout(s, 250));
+  }
+  return { ok: false, status: tried[tried.length - 1] || "fetch failed", tried: tried.join(" ") };
+}
+
 async function one([zh, ja, page]) {
   const res = await get(page);
   if (!res || !res.ok) {
@@ -134,7 +169,10 @@ async function one([zh, ja, page]) {
        條件，把江東區與豐島區的中文版誤殺了。 */
     if (!ownCn && OTHER_LANG.test(own)) continue;
     if (!ownCn && !pageIsCn) continue;               // 自己沒標中文、也不在中文專頁 → 不收
-    const trad = /繁体|繁體|繫体|繫體/.test(own + " " + a.ctx);   // 荒川區官網把「繁体」打成「繫体」
+    /* ⚠️ 繁簡也只能看連結自己的文字。吃前後文的話，荒川區那種「繁体版、簡体版」
+       並排的頁面會把簡體那份也標成繁體（2026-10-23 發現）。
+       另外該區官網把「繁体」打成「繫体」，所以兩種寫法都認。 */
+    const trad = /繁体|繁體|繫体|繫體/.test(own);
     cands.push({
       url: a.href,
       label: a.text || a.title,
@@ -155,20 +193,11 @@ async function one([zh, ja, page]) {
   // 逐一確認 PDF 真的在（200 才留）
   const pdfs = [];
   for (const c of uniq.slice(0, 8)) {
-    /* ⚠️ HEAD 失敗就一定要改用 GET 再試一次。很多政府網站只收 GET，
-       對 HEAD 回 403 或 404——品川區就是這樣，它的中文版 PDF 明明在，
-       卻因為 HEAD 被擋而被判成失效（周周 2026-10-23 指出品川有中文版才查出來）。
-       GET 用 Range 只取開頭 1KB，不必為了確認存在而整份 5MB 下載。 */
-    let r = await get(c.url, "HEAD");
-    if (!r || !r.ok) r = await get(c.url, "GET", { Range: "bytes=0-1023" });
-    if (r && (r.ok || r.status === 206)) {
-      // 用 Range 取回來時 content-length 是那 1KB，要改看 content-range 的總長度
-      const cr = r.headers.get("content-range") || "";
-      const total = Number((cr.match(/\/(\d+)$/) || [])[1] || 0);
-      const len = total || Number(r.headers.get("content-length") || 0);
-      pdfs.push({ ...c, status: r.status, sizeKB: len ? Math.round(len / 1024) : null });
-    } else {
-      pdfs.push({ ...c, status: r ? r.status : "fetch failed", sizeKB: null, dead: true });
+    const r = await exists(c.url, page);
+    if (r.ok) pdfs.push({ ...c, status: r.status, sizeKB: r.sizeKB });
+    else {
+      pdfs.push({ ...c, status: r.status, sizeKB: null, dead: true });
+      console.log(`\n   ⚠️ ${zh}：這份確認不到，已排除 → ${c.url}\n      ${r.tried}`);
     }
     await new Promise(s => setTimeout(s, 350));
   }
