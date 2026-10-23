@@ -333,8 +333,11 @@ function wardGomiTable(lang) {
       // JSON 裡的 traditional 是抓取當下判斷的；這裡再從標籤認一次，
       // 因為荒川區官網把「繁体」打成「繫体」，不重抓也要標得出來。
       const trad = (p.traditional || /繁体|繁體|繫体|繫體/.test(p.label || "")) ? (tw ? "　繁體" : "　繁体字") : "";
+      // 多語合一份的要講，不然客戶打開看到英文開頭會以為下錯檔
+      const multi = (p.multilang || /英語|English|ハングル|韓国語|韓国版|Korean|日・英|・韓|英・中|中・韓/.test(p.label || ""))
+        ? (tw ? "　<span style='color:#b45309'>多語合一份</span>" : "　<span style='color:#b45309'>多言語合本</span>") : "";
       cell = `<a href="${esc(p.url)}" target="_blank" rel="noopener" style="color:#15803d;font-weight:700">⬇︎ ${tw ? "下載 PDF" : "PDF"}</a>`
-        + `<span style="color:#78716c;font-size:13px">${size}${trad}</span>`;
+        + `<span style="color:#78716c;font-size:13px">${size}${trad}${multi}</span>`;
       if (w.pdfs.length > 1) {
         cell += `　<a href="${esc(w.page)}" target="_blank" rel="noopener" style="color:#78716c;font-size:13px">${tw ? "其他版本" : "他の版"}</a>`;
       }

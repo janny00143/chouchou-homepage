@@ -59,7 +59,12 @@ const WARDS = [
 /* 連結文字／前後文裡出現這些字，就當成「這是中文版」 */
 const CN_HINT = /中国語|中國語|中文|簡体|简体|繁体|繁體|Chinese|chinese|CHINESE|中・韓|英・中|中文版|ちゅうごくご/;
 /* 這些是其他語言，要排除（避免把韓文版當成中文版） */
-const OTHER_LANG = /ハングル|韓国語|韓國語|Korean|english|English|ENGLISH|英語版|ベトナム|ネパール|タガログ|ミャンマー|やさしい日本語|Vietnam|Nepal|Tagalog|Myanmar/;
+const OTHER_LANG = /ハングル|韓国語|韓國語|韓国版|Korean|english|English|ENGLISH|英語|ベトナム|ネパール|タガログ|ミャンマー|やさしい日本語|Vietnam|Nepal|Tagalog|Myanmar/;
+/* 一份 PDF 收了好幾種語言的（豐島區「英語版・中国語版・韓国語版」、板橋區「日・英・中・韓」、
+   江東區「中国語・韓国語版」、足立區「中国語・韓国版」…）。
+   這種要標出來——客戶下載後打開看到英文開頭，會以為自己下錯檔案。
+   周周 2026-10-23 指出豐島區的情況後補上。 */
+const MULTI_LANG = /英語|English|ハングル|韓国語|韓国版|Korean|多言語|多語|日・英|・英・|・韓|英・中|中・韓|・ハングル/;
 
 function decode(s) {
   return String(s || "")
@@ -134,7 +139,10 @@ async function one([zh, ja, page]) {
       url: a.href,
       label: a.text || a.title,
       traditional: trad,
-      rank: (ownCn ? 10 : 0) + (trad ? 3 : 0),       // 自己標中文的排前面，繁體再加分
+      multilang: MULTI_LANG.test(own),          // 一份收了多種語言
+
+      // 純中文版 > 多語合一份；繁體再加分
+      rank: (ownCn ? 10 : 0) + (trad ? 3 : 0) - (MULTI_LANG.test(own) ? 4 : 0),
     });
   }
 
