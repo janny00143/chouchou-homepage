@@ -52,13 +52,15 @@ jobs:
       - name: 把抓到的結果 commit 回 repo
         run: |
           set -e
-          if git diff --quiet -- ward-gomi-links.json; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # ⚠️ 要先 add 再比對。對「還沒被追蹤的新檔案」，git diff --quiet 會回 0
+          #    （看起來像沒變動），第一次跑就會跳過 commit——2026-10-23 踩過。
+          git add ward-gomi-links.json
+          if git diff --cached --quiet -- ward-gomi-links.json; then
             echo "各區連結沒有變動，不用 commit"
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ward-gomi-links.json
           git commit -m "23區垃圾分類：更新中文版 PDF 連結（自動抓取）
 
           由 .github/workflows/ward-gomi.yml 於 GitHub 的機器上抓取並驗證。

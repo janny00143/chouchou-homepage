@@ -34,6 +34,10 @@ const SKIP = [
   /^https?:\/\/janny00143\.github\.io/,
   /^https?:\/\/lin\.ee\//,                      // LINE 短網址會擋機器人
   /^https?:\/\/(www\.)?youtube\.com\/@/,        // 頻道頁常回 403
+  /^https?:\/\/(twitter|x)\.com\/intent\//,      // 分享按鈕，一律擋機器人
+  /^https?:\/\/(www\.)?facebook\.com\/sharer/,
+  /^https?:\/\/(www\.)?threads\.(net|com)\/intent\//,
+  /^https?:\/\/social-plugins\.line\.me\//,
   /^https?:\/\/i\.ytimg\.com\//,                // 縮圖圖床
   /^https?:\/\/fonts\.(googleapis|gstatic)\.com/,
   /^https?:\/\/www\.googletagmanager\.com/,
@@ -56,7 +60,10 @@ function collect() {
   const map = new Map();
   for (const f of htmlFiles()) {
     const s = fs.readFileSync(f, "utf8");
-    for (const m of s.matchAll(/href=["']([^"']+)["']/g)) {
+    /* ⚠️ 只掃 <a> 的 href。<link rel="preconnect" href="https://i.ytimg.com"> 這種
+       是給瀏覽器預先連線用的，連到裸網域本來就會 404，不是壞掉的連結。
+       2026-10-23 第一次跑就踩到這個誤判。 */
+    for (const m of s.matchAll(/<a\b[^>]*?href=["']([^"']+)["']/gi)) {
       const u = m[1].trim();
       if (!/^https?:\/\//i.test(u)) continue;
       if (SKIP.some(re => re.test(u))) continue;
