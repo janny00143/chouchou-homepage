@@ -447,6 +447,56 @@ function a10_llms() {
     `6 個檔｜網址 ${urls} 條｜${bad.length ? "有問題" : "全部對得到頁面、篇數一致"}`, bad.slice(0, 10));
 }
 
+/* A12：23 區垃圾分類的 PDF 連結與全站外部連結（2026-10-23）
+   這兩件事巡邏自己都做不到——容器的 proxy 擋掉 city.*.lg.jp 與多數日本官方網域，
+   所以改由 .github/workflows/ward-gomi.yml 在 GitHub 的機器上每週跑
+   （fetch-ward-gomi.cjs 抓各區中文版 PDF、linkcheck.cjs 掃全站外部連結），
+   這裡只把結論讀回來，外加檢查本機那份 JSON 有沒有過期。 */
+function a12_wardgomi() {
+  const bad = [];
+  let summary = "";
+
+  // ① 本機的 ward-gomi-links.json：日期別太舊，而且要有一定數量的直連
+  const f = path.join(ROOT, "ward-gomi-links.json");
+  if (!fs.existsSync(f)) {
+    bad.push("缺 ward-gomi-links.json（文章第九節的各區表格會整個不見）");
+  } else {
+    try {
+      const j = JSON.parse(fs.readFileSync(f, "utf8"));
+      const n = (j.wards || []).length;
+      const withPdf = (j.wards || []).filter(w => (w.pdfs || []).length).length;
+      const ageD = Math.round((Date.now() - new Date(j.updated + "T00:00:00Z").getTime()) / 86400000);
+      summary = `${n} 區／${withPdf} 區有 PDF 直連｜資料 ${ageD} 天前`;
+      if (n !== 23) bad.push(`JSON 只有 ${n} 區，應該是 23 區`);
+      if (withPdf < 20) bad.push(`只有 ${withPdf} 區抓到中文 PDF（之前是 22），可能有區改版了`);
+      // 每週跑一次，超過 16 天沒更新代表排程沒在動
+      if (ageD > 16) bad.push(`JSON 已經 ${ageD} 天沒更新，確認 Actions 的「23區垃圾分類連結」排程還開著`);
+    } catch (e) { bad.push("ward-gomi-links.json 讀不開：" + e.message); }
+  }
+
+  // ② 那支 workflow 最近一次的結論（紅字代表有區抓不到、或有連結真的失效）
+  const raw = sh(`curl -s -m 20 "https://api.github.com/repos/janny00143/chouchou-homepage/actions/workflows/ward-gomi.yml/runs?per_page=3"`);
+  let runs = [];
+  try { runs = JSON.parse(raw || "{}").workflow_runs || []; } catch (e) { }
+  if (!raw || !runs.length) {
+    bad.push("查不到 workflow 結果（網路受限或還沒跑過），需人工確認");
+  } else {
+    const r = runs.find(x => x.status === "completed") || runs[0];
+    if (r.status !== "completed") {
+      summary += `｜workflow #${r.run_number} 還在跑`;
+    } else {
+      summary += `｜workflow #${r.run_number} ${r.conclusion}`;
+      if (r.conclusion !== "success") {
+        bad.push("workflow 紅字：可能是某區官方頁改版，或文章裡有外部連結真的失效（404）。去看那次的 log：");
+        bad.push(r.html_url || "");
+      }
+    }
+  }
+
+  add("A12", "23區垃圾分類連結＋全站外部連結", bad.length ? "FAIL" : "OK",
+    summary || "無資料", bad.slice(0, 8));
+}
+
 function a7_idempotent() {
   if (!WANT_GEN) {
     add("A7", "產生器冪等", "INFO", "本次略過（要檢查請加 --gen，它會實際重寫產出檔）");
@@ -888,7 +938,7 @@ function diffBaseline() {
 async function main() {
   checkGit();
   checkDeploy();
-  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); await a8_runtime(); a7_idempotent(); }
+  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();

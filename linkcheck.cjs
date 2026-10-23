@@ -38,6 +38,11 @@ const SKIP = [
   /^https?:\/\/(www\.)?facebook\.com\/sharer/,
   /^https?:\/\/(www\.)?threads\.(net|com)\/intent\//,
   /^https?:\/\/social-plugins\.line\.me\//,
+  /* ⚠️ SUUMO 擋機器人擋得很徹底：首頁回 403，公司頁卻回 404（不是真的沒了）。
+     2026-10-23 它把周周公司自己的 SUUMO 公司頁報成失效，查證後頁面其實活著
+     （搜尋引擎仍抓得到該頁的渋谷区鶯谷町住址與免許番号）。
+     回 404 的「死連結」判斷對這個網域沒有意義，所以整個網域跳過。 */
+  /^https?:\/\/(www\.)?suumo\.jp\//,
   /^https?:\/\/i\.ytimg\.com\//,                // 縮圖圖床
   /^https?:\/\/fonts\.(googleapis|gstatic)\.com/,
   /^https?:\/\/www\.googletagmanager\.com/,

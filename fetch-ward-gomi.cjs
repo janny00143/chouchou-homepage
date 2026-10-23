@@ -66,6 +66,23 @@ const OTHER_LANG = /ハングル|韓国語|韓國語|韓国版|Korean|english|En
    周周 2026-10-23 指出豐島區的情況後補上。 */
 const MULTI_LANG = /英語|English|ハングル|韓国語|韓国版|Korean|多言語|多語|日・英|・英・|・韓|英・中|中・韓|・ハングル/;
 
+/* ⚠️ 「確認不到就一定是壞連結」這個假設不成立。
+   有些區的主機會對「不像瀏覽器」的請求直接回 404（不是 403），
+   但同一個網址用瀏覽器點就下載得到——品川區就是這樣：
+   HEAD／GET＋Range／GET 全部回 404，而周周 2026-10-23 從官方頁
+   點同一個網址下載到了 5,191,484 bytes 的 chinese.pdf，
+   和官方頁自己寫的「PDF 5.0 MB」吻合。
+   這種「人工確認過存在、但機器永遠驗不到」的網址列在這裡：
+   驗不過也保留，並在 JSON 標 unverified，表格照樣給下載連結。
+   ⚠️ 要加新的進來，必須是「周周或我真的點開下載過」的網址，不可以憑猜。 */
+const BOT_404 = [
+  {
+    re: /^https:\/\/www\.city\.shinagawa\.tokyo\.jp\/PC\/_res\/.*\/chinese\.pdf$/,
+    sizeKB: 5070,            // 5,191,484 bytes，周周實際下載到的檔案
+    why: "品川區主機對機器人回 404；周周 2026-10-23 實際下載過這個網址",
+  },
+];
+
 function decode(s) {
   return String(s || "")
     .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
@@ -196,8 +213,14 @@ async function one([zh, ja, page]) {
     const r = await exists(c.url, page);
     if (r.ok) pdfs.push({ ...c, status: r.status, sizeKB: r.sizeKB });
     else {
-      pdfs.push({ ...c, status: r.status, sizeKB: null, dead: true });
-      console.log(`\n   ⚠️ ${zh}：這份確認不到，已排除 → ${c.url}\n      ${r.tried}`);
+      const trust = BOT_404.find(t => t.re.test(c.url));
+      if (trust) {
+        pdfs.push({ ...c, status: r.status, sizeKB: trust.sizeKB, unverified: true });
+        console.log(`\n   ℹ️ ${zh}：機器驗不到（${r.tried}），但這個網址人工確認過，保留\n      ${trust.why}`);
+      } else {
+        pdfs.push({ ...c, status: r.status, sizeKB: null, dead: true });
+        console.log(`\n   ⚠️ ${zh}：這份確認不到，已排除 → ${c.url}\n      ${r.tried}`);
+      }
     }
     await new Promise(s => setTimeout(s, 350));
   }
