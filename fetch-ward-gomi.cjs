@@ -165,7 +165,22 @@ async function one([zh, ja, page]) {
     }
     await new Promise(s => setTimeout(s, 350));
   }
-  return { ward: zh, wardJa: ja, page, pageOk: true, pdfs: pdfs.filter(p => !p.dead) };
+  const good = pdfs.filter(p => !p.dead);
+
+  /* 一個中文版都沒抓到時，把這一頁所有的 PDF 連結印出來。
+     不這樣做就只知道「抓不到」，不知道是這區真的沒有中文版，
+     還是我的判斷漏了它的寫法。品川區就是這樣查出來的（周周 2026-10-23 指出它有）。 */
+  if (!good.length) {
+    const all = list.filter(a => /\.pdf(\?|$)/i.test(a.href)).slice(0, 14);
+    if (all.length) {
+      console.log(`\n   ── ${zh} 這一頁的 PDF 連結（供診斷）──`);
+      for (const a of all) console.log(`      「${(a.text || a.title || "(無文字)").slice(0, 50)}」 ${a.href}`);
+    } else {
+      console.log(`\n   ── ${zh} 這一頁找不到任何 PDF 連結（可能是 JS 動態產生，或在子頁面）──`);
+    }
+  }
+
+  return { ward: zh, wardJa: ja, page, pageOk: true, pdfs: good };
 }
 
 (async () => {
