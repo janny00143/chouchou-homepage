@@ -849,6 +849,45 @@ function pageStats() {
   }
   const slugJson = JSON.stringify(slugMap).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
 
+  /* 正規化後的「標題 → 文章 id」對照表。
+     GA 的總覽報表（「報表數據匯報」）頁面那一欄給的是**網頁標題**而不是網址，
+     所以光有 slugMap 會一篇都對不到（周周 2026-10-23 實際匯出時踩到）。
+     繁中與日文標題可以純從資料算出來（產生器就是這樣組 <title> 的）；
+     簡中是 build-cn 轉出來的，這裡算不出來，交給前端做繁簡模糊比對。 */
+  /* 日文標題在 ja-content.json（這支產生器本來不讀它，為了標題對照才讀）。
+     檔案不在或壞掉就只放繁中標題，不要讓整支產生器掛掉。 */
+  let JA = {};
+  try { JA = JSON.parse(fs.readFileSync(ROOT + "/ja-content.json", "utf8")); } catch (e) { JA = {}; }
+  const titleMap = {};
+  const normT = x => {
+    let t = String(x == null ? "" : x);
+    // 站名後綴：產生器用全形「｜」，手寫頁（minpaku.html）用半形「|」
+    for (const sep of ["｜周周", "| 周周", "|周周"]) {
+      const i = t.lastIndexOf(sep);
+      if (i > 0) { t = t.slice(0, i); break; }
+    }
+    return t.split(" ").join("").split("　").join("").trim();
+  };
+  for (const a of ART) {
+    if (!(a.url || SLUG[a.id])) continue;
+    titleMap[normT(a.title)] = a.id;
+    const j = JA[a.id];
+    if (j && j.title) titleMap[normT(j.title)] = a.id;
+    /* a4 民宿走的是手寫頁 minpaku.html，它的 <title> 跟 ART 的 title 完全不同
+       （「2026年東京23區民宿法規完全指南」vs「2026 最新｜日本民宿…」），
+       只靠 ART 會對不到 GA 的資料。手寫頁標題是穩定的，直接讀檔最準。 */
+    if (a.url) {
+      const b = a.url.replace(/\.html$/, "");
+      for (const f of [b + ".html", b + "-cn.html", b + "-ja.html"]) {
+        try {
+          const mt = fs.readFileSync(ROOT + "/" + f, "utf8").match(/<title>([^<]*)<\/title>/);
+          if (mt) titleMap[normT(mt[1])] = a.id;
+        } catch (e) { /* 該語言版本不存在就跳過 */ }
+      }
+    }
+  }
+  const titleJson = JSON.stringify(titleMap).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
+
   return `<!doctype html><html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -913,6 +952,7 @@ ${STYLE}
 
 <script type="application/json" id="vmeta">${metaJson}</script>
 <script type="application/json" id="vslug">${slugJson}</script>
+<script type="application/json" id="vtitle">${titleJson}</script>
 <script type="module" src="views.js"></script>
 <script>
 /* 通行碼門（純前端，只是不要被路過的人看到）。
@@ -942,6 +982,7 @@ const cfg = { apiKey: "AIzaSyAzwbqz1f7PqDifv4GNd6b1v4Y-JK5tli4", authDomain: "ch
 const app_ = getApps().length ? getApp() : initializeApp(cfg);
 const auth = getAuth(app_), fdb = getFirestore(app_);
 const SLUGMAP = JSON.parse(document.getElementById("vslug").textContent);
+const TITLEMAP = JSON.parse(document.getElementById("vtitle").textContent);
 const META = JSON.parse(document.getElementById("vmeta").textContent);
 const TITLE = {}; META.forEach(m => TITLE[m.id] = m.title);
 const logEl = document.getElementById("implog"), goBtn = document.getElementById("go");
@@ -964,7 +1005,37 @@ loginBtn.onclick = () => {
   });
 };
 
-/* CSV 解析：只認「第一欄像網址路徑、某一欄是數字」的列，其他（標題、總計）全部略過。
+/* 把 GA 給的網頁標題換回文章 id。
+   ・先去掉「｜周周・日本房仲」這類站名後綴與空白，再精確比對。
+   ・簡中頁的標題是繁中轉出來的（「买房」vs「買房」），字不一樣但**長度一定相同**，
+     所以精確比不到時，就找「長度相同、逐字相同率最高」的那一個。
+     門檻 0.55，而且要比第二名高 0.1 以上才算數——寧可略過，也不要認錯篇。
+   ・物件頁、工具頁、首頁的標題不在表裡，會自然落到「對不到」清單。 */
+function normT(x) {
+  let t = String(x == null ? "" : x);
+  for (const sep of ["｜周周", "| 周周", "|周周"]) {
+    const i = t.lastIndexOf(sep);
+    if (i > 0) { t = t.slice(0, i); break; }
+  }
+  return t.split(" ").join("").split("　").join("").trim();
+}
+function matchTitle(raw) {
+  const k = normT(raw);
+  if (k.length < 6) return null;              // 太短的（國家代碼、事件名）不要猜
+  if (TITLEMAP[k]) return TITLEMAP[k];
+  let best = null, b1 = 0, b2 = 0;
+  for (const t in TITLEMAP) {
+    if (t.length !== k.length) continue;
+    let same = 0;
+    for (let i = 0; i < k.length; i++) if (k[i] === t[i]) same++;
+    const sc = same / k.length;
+    if (sc > b1) { b2 = b1; b1 = sc; best = TITLEMAP[t]; }
+    else if (sc > b2) b2 = sc;
+  }
+  return (b1 >= 0.55 && b1 - b2 >= 0.1) ? best : null;
+}
+
+/* CSV 解析：第一欄可以是網址路徑，也可以是 GA 總覽報表給的網頁標題。
    GA 的數字常有千分位逗號又被引號包起來，所以逗號切欄前要先處理引號。 */
 function parseCsv(txt) {
   const out = {};
@@ -979,17 +1050,26 @@ function parseCsv(txt) {
       cur += ch;
     }
     cells.push(cur);
-    const path = (cells[0] || "").trim();
-    const m = path.match(/([A-Za-z0-9._-]+)\\.html/);
-    if (!m) continue;
+    const key = (cells[0] || "").trim();
+    if (!key) continue;
     let n = 0;
     for (let i = 1; i < cells.length; i++) {
       const v = cells[i].replace(/[\\s,]/g, "");
       if (/^\\d+$/.test(v)) { n = parseInt(v, 10); break; }
     }
     if (!n) continue;
-    const id = SLUGMAP[m[1]];
-    if (!id) { skipped.push(path); continue; }
+    let id = null;
+    const m = key.match(/([A-Za-z0-9._-]+)\\.html/);
+    if (m) id = SLUGMAP[m[1]] || null;     // 網址路徑格式
+    if (!id) id = matchTitle(key);         // GA 總覽報表的網頁標題格式
+    if (!id) {
+      /* GA 的總覽報表混了很多不是網頁的列（週次 0025、國家代碼 TW、
+         管道 Organic Search、事件 page_view…）。那些安靜略過就好，
+         只把「看起來真的是本站網頁」的列出來給周周看——
+         那通常是物件頁、工具頁，或是改過標題的舊文章。 */
+      if (key.indexOf("周周") > -1 || key.indexOf(".html") > -1) skipped.push(key);
+      continue;
+    }
     out[id] = (out[id] || 0) + n;
   }
   return { out, skipped };
@@ -1000,7 +1080,9 @@ function render(res, done) {
   let t = (done ? "✅ 已寫入 " : "試算結果：") + ids.length + " 篇，合計 "
     + ids.reduce((s, k) => s + res.out[k], 0).toLocaleString("en-US") + " 次\\n";
   ids.forEach(k => { t += "　" + (TITLE[k] || k) + "：" + res.out[k].toLocaleString("en-US") + "\\n"; });
-  if (res.skipped.length) t += "\\n對不到文章、已略過（" + res.skipped.length + " 列）：\\n　" + res.skipped.slice(0, 20).join("\\n　");
+  if (res.skipped.length) t += "\\n對不到文章、已略過（" + res.skipped.length
+    + " 列。物件頁、工具頁、首頁本來就不算；若其中有文章，多半是後來改過標題）：\\n　"
+    + res.skipped.slice(0, 40).join("\\n　");
   logEl.textContent = t;
 }
 document.getElementById("prev").onclick = () => render(parseCsv(document.getElementById("csv").value), false);
