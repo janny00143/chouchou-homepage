@@ -497,6 +497,20 @@ function a12_wardgomi() {
     }
   }
 
+  // ③ 文章頁要跟 JSON 同步。workflow 每週只更新 JSON、不會重跑產生器，
+  //    所以表格與「資料更新日」會卡在舊版——2026-10-27 第一次週跑就發生了
+  //    （板橋區的檔案大小與更新日都停在舊的）。產生器冪等檢查只有 A 型日加
+  //    --gen 才跑，中間可能卡好幾天，所以這裡每天比對一次。
+  try {
+    const up = JSON.parse(fs.readFileSync(f, "utf8")).updated;
+    const stale = ["tokyo-garbage-sorting-guide.html", "tokyo-garbage-sorting-guide-cn.html"]
+      .filter(p => fs.existsSync(path.join(ROOT, p)) && !read(p).includes(up));
+    if (stale.length) {
+      bad.push(`文章頁的「資料更新日」還停在舊版（JSON 已是 ${up}）：${stale.join("、")}`);
+      bad.push("→ 重跑第 9 節那六支產生器就會同步");
+    }
+  } catch (e) { }
+
   add("A12", "23區垃圾分類連結＋全站外部連結", bad.length ? "FAIL" : "OK",
     summary || "無資料", bad.slice(0, 8));
 }
