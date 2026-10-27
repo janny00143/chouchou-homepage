@@ -62,6 +62,10 @@ let src = fs.readFileSync(ROOT + "/index.html", "utf8");
 const ART = eval("[" + src.match(/const ART=\[([\s\S]*?)\n\];/)[1] + "]");
 const S = eval("(" + src.match(/const S = (\{[\s\S]*?\n\});/)[1] + ")");
 const CATS = eval(src.match(/const CATS=(\[[\s\S]*?\]);/)[1]);
+/* 首頁的常見問題。faq.html 直接用這一份，不另外複製一份文字——
+   首頁改了、重跑產生器，獨立頁就跟著改。
+   ⚠️ 正則要抓 [[ … ]]，寫成 \[[\s\S]*?\] 會在第一個 ] 就停住。 */
+const FAQ_HOME = eval(src.match(/const FAQ=(\[\[[\s\S]*?\]\]);/)[1]);
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
@@ -369,7 +373,7 @@ const HEAD_SCRIPTS = `<script>/* 防複製守門：頁面若被開在非本站�
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"><script src="imgguard.js" defer></script>`;
 const SBAR = `<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.webp" alt="" style="height:28px;width:auto;display:block" width="420" height="501">周周・日本房仲</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>`;
-const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="index.html" style="color:var(--mut)">首頁</a><a href="buy-property-in-japan.html" style="color:var(--mut)">📚 日本買房指南</a><a href="japan-real-estate-agent-for-taiwanese.html" style="color:var(--mut)">🤝 買房要找誰</a><a href="feedback.html" style="color:var(--mut)">💬 意見回饋</a><a href="tool-loan.html" style="color:var(--mut)">🧮 試算工具</a><a href="videos.html" style="color:var(--mut)">🎬 影片</a></div><div class="wrap cp">© 周周・日本房仲</div></footer>`;
+const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="index.html" style="color:var(--mut)">首頁</a><a href="buy-property-in-japan.html" style="color:var(--mut)">📚 日本買房指南</a><a href="japan-real-estate-agent-for-taiwanese.html" style="color:var(--mut)">🤝 買房要找誰</a><a href="faq.html" style="color:var(--mut)">❓ 常見問題</a><a href="feedback.html" style="color:var(--mut)">💬 意見回饋</a><a href="tool-loan.html" style="color:var(--mut)">🧮 試算工具</a><a href="videos.html" style="color:var(--mut)">🎬 影片</a></div><div class="wrap cp">© 周周・日本房仲</div></footer>`;
 const TAIL = `<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="回到頂端">↑</button>
 <script type="module" src="comments.js"></script>
@@ -606,6 +610,46 @@ ${FAQ_AGENT.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
         { "@type": "ListItem", position: 2, name: "在日本買房要找誰", item: url }
+      ] }
+    ],
+    main
+  });
+}
+
+/* 常見問題獨立頁（周周 2026-10-27 指示：「我要獨立的我才能給客戶」）。
+   首頁的常見問題是 JS 分頁，切換時不會動網址列，所以沒有網址可以傳給客戶。
+   這一頁用同一份 FAQ 資料產生，有自己的 title／description／canonical，
+   也帶 FAQPage 結構化資料，能被 Google 單獨收錄。 */
+function pageFaqTW() {
+  const slug = "faq";
+  const url = BASE + slug + ".html";
+  const main = `
+<p>這一頁把客戶最常問我的問題整理在一起。答案就是我平常在 LINE 上會講的版本——沒有話術，該保守的地方就寫保守，因為貸款、稅務、在留資格這些事，講得太滿對你沒有好處。</p>
+<p>看完還是不確定自己的狀況算哪一種，直接把狀況丟給我就好，我先幫你判斷方向，不用急著決定什麼。</p>
+
+${FAQ_HOME.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+
+<h2 class="ah">沒有回答到你的問題？</h2>
+<p>想先把整個流程看過一遍，可以從<a href="buy-property-in-japan.html">日本買房完全指南</a>開始；還在考慮要找哪一種仲介，看<a href="japan-real-estate-agent-for-taiwanese.html">在日本買房要找誰</a>；想知道我是誰、我實際能幫你做什麼，寫在<a href="about.html">關於周周</a>；想直接看物件就到<a href="properties.html">在售物件</a>。</p>
+<p>還是找不到答案的話，加 LINE 問我最快。問問題不用客氣，也不會因此就被推銷。</p>
+
+<p class="src">※ 本頁為一般資訊整理，非投資建議。能否貸款與可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約由司法書士／宅建士確認；買房本身通常不等於取得簽證或移民資格，在留資格請諮詢行政書士。制度可能調整，實際請以官方最新公告為準。</p>`;
+  return landing({
+    slug,
+    metaTitle: "日本買房常見問題｜外國人能不能買、貸款、簽證、費用與流程｜周周・日本房仲",
+    h1: "日本買房常見問題",
+    lead: "外國人能不能買？買房會不會送簽證？非居住者貸得到嗎？從看房到交屋要多久、房價以外還要準備多少錢——客戶最常問的問題都在這裡。",
+    crumb: "常見問題",
+    desc: "台灣人在日本買房最常問的問題一次整理：外國人可不可以買、買房是不是等於取得簽證、非日本居住者能不能貸款、人在台灣能不能遠端買、從看房到交屋要多久、房價之外的諸費用大約多少、屋齡高的中古屋能不能貸、持有期間每年要繳什麼稅、不會日文怎麼辦、購屋款怎麼匯到日本。由在東京執業的台灣房仲周周（株式会社アンドプラス 住宅營業部）整理。",
+    keywords: "日本買房常見問題,外國人買日本房,日本買房貸款,非居住者貸款,日本買房流程,日本買房費用,買房簽證,日本不動產FAQ,台灣人買日本房",
+    ctaTitle: "你的問題不在上面？直接問我就好",
+    ctaSub: "預算、想住哪一區、自住還是收租——跟我說一聲，我先幫你看方向。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: "zh-Hant", url,
+        mainEntity: FAQ_HOME.map(q => ({ "@type": "Question", name: q[0], acceptedAnswer: { "@type": "Answer", text: q[1] } })) },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+        { "@type": "ListItem", position: 2, name: "常見問題", item: url }
       ] }
     ],
     main
@@ -1152,7 +1196,8 @@ goBtn.onclick = async () => {
 fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese.html", pageAgentTW());
 fs.writeFileSync(ROOT + "/stats.html", pageStats());
 fs.writeFileSync(ROOT + "/buy-property-in-japan.html", pageHubTW());
-console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html");
+fs.writeFileSync(ROOT + "/faq.html", pageFaqTW());
+console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html / faq.html");
 
 // 脆文精選（繁中；-cn 由 build-cn 產生，日文版不做——內容是寫給華語圈讀者的）
 for (const cfg of THREADS_PAGES) {
@@ -1200,6 +1245,7 @@ for (const p of PROPS.filter(x => !x.sold && (x.status === "在售" || x.keepPag
 }
 // 商業關鍵字落地頁：hub 是「日本買房」的入口，權重高於一般文章
 urls.push({ loc: BASE + "buy-property-in-japan.html", pr: "0.9", cf: "weekly" });
+urls.push({ loc: BASE + "faq.html", pr: "0.8" });
 urls.push({ loc: BASE + "buy-property-in-japan-ja.html", pr: "0.7", cf: "weekly" });
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese.html", pr: "0.8" });
 // 脆文精選：第一手實務內容，權重比一般工具頁高
@@ -1209,6 +1255,7 @@ for (const cfg of THREADS_PAGES) {
   urls.push({ loc: BASE + cfg.slug + ".html", lm, pr: "0.7", cf: "weekly" });
 }
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese-ja.html", pr: "0.7" });
+urls.push({ loc: BASE + "faq-ja.html", pr: "0.7" });
 urls.push({ loc: BASE + "about.html", pr: "0.8" });      // 作者介紹頁：E-E-A-T 的權威來源
 urls.push({ loc: BASE + "about-ja.html", pr: "0.8" });
 urls.push({ loc: BASE + "privacy.html", pr: "0.3" });

@@ -72,7 +72,7 @@ const HEAD_SCRIPTS = `<script>/* 防複製守門：頁面若被開在非本站�
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script><script src="imgguard.js" defer></script>`;
 const SBAR = `<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.webp" alt="" style="height:28px;width:auto;display:block" width="420" height="501">周周・日本の不動産</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div></div>`;
-const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a><a href="buy-property-in-japan-ja.html" style="color:var(--mut)">📚 記事一覧</a><a href="japan-real-estate-agent-for-taiwanese-ja.html" style="color:var(--mut)">🤝 中華圏のお客様の購入窓口</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
+const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a><a href="buy-property-in-japan-ja.html" style="color:var(--mut)">📚 記事一覧</a><a href="japan-real-estate-agent-for-taiwanese-ja.html" style="color:var(--mut)">🤝 中華圏のお客様の購入窓口</a><a href="faq-ja.html" style="color:var(--mut)">❓ よくあるご質問</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="トップへ戻る">↑</button>
 <script type="module" src="comments.js"></script>
@@ -606,6 +606,48 @@ const FAQ_AGENT_JA = [
    "東京23区を中心に、神奈川・千葉・埼玉の実需向け区分および戸建、収益物件、店舗・事務所まで幅広く拝見しております。借地権物件は原則お取り扱いしておりません。物件資料をお送りいただければ、買主層との相性をお返しいたします。"]
 ];
 
+/* 日本語版のよくあるご質問。文面は build-ja-home.cjs の FAQ_JA をそのまま使う
+   （日本語の原文を二か所に持つと必ずずれるため、ここでは読み込むだけ）。 */
+const FAQ_JA = eval(
+  fs.readFileSync(ROOT + "/build-ja-home.cjs", "utf8")
+    .match(/const FAQ_JA = (\[[\s\S]*?\n\]);/)[1]);
+
+/* よくあるご質問の独立ページ（周周 2026-10-27 指示）。
+   トップページのFAQはJSのタブでURLが変わらないため、お客様にお送りできる
+   URLが無かった。繁体字版 faq.html と同じ内容を日本語で。 */
+function pageFaqJa() {
+  const url = BASE + "faq-ja.html";
+  const main = `
+<p>中華圏（台湾・香港・シンガポール・マレーシア）のお客様から実際によくいただくご質問をまとめております。回答は当方が普段そのままお伝えしている内容で、融資・税務・在留資格については断定を避け、確認先を明記しております。</p>
+<p>売主様・不動産会社の皆様には、中華圏の買主がどのような点を気にされるかの参考としてご覧いただければ幸いです。</p>
+
+${FAQ_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+
+<h2 class="ah">こちらもご覧ください</h2>
+<p>ご購入の流れ全体は<a href="buy-property-in-japan-ja.html">記事一覧</a>から、窓口の違いについては<a href="japan-real-estate-agent-for-taiwanese-ja.html">中華圏のお客様の購入窓口</a>をご覧くださいませ。</p>
+
+<p class="src">※ 本ページは一般的な情報の整理であり、投資助言ではございません。融資の可否・借入可能額は個別の事情と金融機関の審査により、税額は税理士、登記・契約は司法書士および宅地建物取引士にご確認ください。不動産の購入自体が在留資格の取得につながるものではなく、在留資格については行政書士にご相談ください。制度は変更される場合がございますので、最新の公的情報をご確認ください。</p>`;
+  return landingJa({
+    slug: "faq",
+    metaTitle: "日本の不動産購入 よくあるご質問（中華圏のお客様）｜周周・日本の不動産",
+    h1: "よくあるご質問",
+    lead: "外国人でも購入できるのか、非居住者の融資、ビザとの関係、内見から引き渡しまでの期間、諸費用の目安——中華圏のお客様から実際にいただくご質問をまとめました。",
+    crumb: "よくあるご質問",
+    desc: "外国人による日本の不動産購入についてよくいただくご質問をまとめております。購入の可否、ビザとの関係、非居住者の融資、リモートでのご契約、内見から引き渡しまでの期間、諸費用の目安、築古物件の融資、保有中の税金、言語面のサポート、海外からの送金について。東京の株式会社アンドプラス 住宅営業部所属、台湾出身エージェント周周が整理しております。",
+    keywords: "日本 不動産 購入 よくある質問,外国人 不動産購入,非居住者 融資,中華圏 買主,台湾人 日本 不動産,東京 不動産 中国語対応",
+    ctaTitle: "その他のご質問もお気軽にどうぞ",
+    ctaSub: "物件のご相談、中華圏の買主層についてのご質問など、LINEにてお気軽にお問い合わせくださいませ。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: "ja", url,
+        mainEntity: FAQ_JA.map(q => ({ "@type": "Question", name: q[0], acceptedAnswer: { "@type": "Answer", text: q[1] } })) },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+        { "@type": "ListItem", position: 2, name: "よくあるご質問", item: url } ] }
+    ],
+    main
+  });
+}
+
 function pageAgentJa() {
   const c = S.company;
   const url = BASE + "japan-real-estate-agent-for-taiwanese-ja.html";
@@ -750,7 +792,8 @@ ${catHTML}
 
 fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese-ja.html", pageAgentJa());
 fs.writeFileSync(ROOT + "/buy-property-in-japan-ja.html", pageHubJa());
-console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html 已產生");
+fs.writeFileSync(ROOT + "/faq-ja.html", pageFaqJa());
+console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html / faq-ja.html 已產生");
 
 /* ── 販売中物件：AI 向けレイヤー（周周 2026-10-03 承認）──────────────────
    llms-ja.txt には「販売中物件 N 件」という件数しか無く、AI は中身を知らない。
