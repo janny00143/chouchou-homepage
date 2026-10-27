@@ -508,7 +508,12 @@ const rt=a=>Math.max(1,Math.round(a.body.join("").replace(/\s/g,"").length/350))
 function socHTML(){let s="";if(S.ig)s+=`<a href="${S.ig}" target="_blank" title="Instagram" style="background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)" rel='noopener'>IG</a>`;if(S.yt)s+=`<a href="${S.yt}" target="_blank" title="YouTube" style="background:#ff0000" rel='noopener'>YT</a>`;if(S.tiktok)s+=`<a href="${S.tiktok}" target="_blank" title="TikTok" style="background:#111" rel='noopener'>抖</a>`;if(S.threads)s+=`<a href="${S.threads}" target="_blank" title="Threads" style="background:#111" rel='noopener'>脆</a>`;return s}
 function toggleTheme(){var d=document.documentElement,n=d.getAttribute("data-theme")==="dark"?"light":"dark";d.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}themeIcon();}
 function themeIcon(){document.querySelectorAll(".tgl").forEach(function(b){b.textContent=document.documentElement.getAttribute("data-theme")==="dark"?"☀️":"🌙";});}
-function show(v,id){if(v==='translate'){location.href='translate.html';return;}if(v==='tools'){location.href='tools.html';return;}if(v==='videos'){location.href='videos.html';return;}if(v==='feedback'){location.href='feedback.html';return;}document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));document.getElementById('v-'+v).classList.add('on');document.querySelectorAll('#mainnav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));document.getElementById('mnav').style.display='none';if(v==='article'&&id)openArt(id);window.scrollTo({top:0,behavior:'smooth'});}
+function show(v,id){if(v==='translate'){location.href='translate.html';return;}if(v==='tools'){location.href='tools.html';return;}if(v==='videos'){location.href='videos.html';return;}if(v==='feedback'){location.href='feedback.html';return;}document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));document.getElementById('v-'+v).classList.add('on');
+  /* 切分頁時順便換網址，這樣每個分頁都有自己可以傳給別人的網址
+     （周周 2026-10-27：「就原本這個頁面加上網址就好了呀」）。
+     ・用 replaceState 不用 location.hash，才不會跳動、也不會塞滿上一頁紀錄。
+     ・article 不寫進網址：它要靠 id 才有內容，寫了重新整理會開到空的。 */
+  if(v!=='article'){try{history.replaceState(null,'',v==='home'?location.pathname+location.search:location.pathname+location.search+'#'+v);}catch(e){}}document.querySelectorAll('#mainnav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));document.getElementById('mnav').style.display='none';if(v==='article'&&id)openArt(id);window.scrollTo({top:0,behavior:'smooth'});}
 function setCat(c){curCat=c;const sel=document.getElementById('catSelect');if(sel)sel.value=c||"";show('home');render();const g=document.getElementById('grid');if(g)window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'});}
 function lazyCov(){const els=document.querySelectorAll('.cov[data-cov]');const set=el=>{const a=ART.find(x=>x.id===el.dataset.cov);if(a)el.style.cssText=cov(a);};if(!('IntersectionObserver'in window)){els.forEach(set);return;}const io=new IntersectionObserver((ents,o)=>{ents.forEach(e=>{if(e.isIntersecting){set(e.target);o.unobserve(e.target);}});},{rootMargin:'300px'});els.forEach(el=>io.observe(el));}
 function _isMob(){return window.matchMedia('(max-width:600px)').matches;}
@@ -582,6 +587,16 @@ document.getElementById('liveSvc').innerHTML=LIVE.map(t=>`<div class="it"><span 
 document.getElementById('invSvc').innerHTML=INV.map(t=>`<div class="it"><span class="ck">✓</span>${t}</div>`).join("");
 document.getElementById('faqs').innerHTML=FAQ.map(q=>`<details class="faq"><summary>Q：${q[0]}</summary><p>A：${q[1]}</p></details>`).join("");
 (function(){var rc=function(r,i){return '<div class="rev-card'+(i>=3?' rev-hidden':'')+'">'+'<div class="rev-stars">★★★★★'+(r.date?'<span class="rev-date">'+r.date+'</span>':'')+'</div><p class="rev-text">「'+r.text+'」</p><p class="rev-who">— '+r.who+'</p>'+(r.reply?'<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周 回覆</p><p class="rev-reply-text">'+r.reply+'</p></div>':'')+'</div>';};var rv=REVIEWS.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');}).slice(0,8);document.getElementById('revGrid').innerHTML=rv.map(rc).join('');})();
+/* 有人直接打開 .../#faq 這種網址時，開在對應的分頁上。
+   找不到對應分頁就什麼都不做，維持原本的首頁。 */
+(function(){
+  var go=function(){
+    var h=(location.hash||'').replace(/^#/,'');
+    if(h && h!=='article' && document.getElementById('v-'+h)) show(h);
+  };
+  go();
+  window.addEventListener('hashchange',go);
+})();
 (function(){try{var qp=new URLSearchParams(location.search).get('q');if(qp){var qi=document.getElementById('q');if(qi){qi.value=qp;show('home');}}}catch(e){}})();
 render();
 </script>
