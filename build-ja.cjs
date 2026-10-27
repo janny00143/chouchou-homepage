@@ -1135,6 +1135,9 @@ ${propNearbyHTMLJa(p)}
 <p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 掲載内容は作成時点のものでございます。最終的な条件は現況および重要事項説明書をご確認ください。融資の可否・融資割合は個別の審査により、税額は税理士、登記・契約内容は司法書士および宅地建物取引士にご確認ください。</p>
 </main>
 ${FOOT}
+<!-- LINE追加時に物件情報をクリップボードへコピー（LINEの友だち追加リンクはメッセージを事前入力できないため） -->
+<script>window.PROPINFO={t:${JSON.stringify(PLAIN_JA(p.title))},p:${JSON.stringify(PLAIN_JA(p.price))},loc:${JSON.stringify(PLAIN_JA(p.location || ""))}};</script>
+<script src="propline.js"></script>
 </body>
 </html>`;
 }

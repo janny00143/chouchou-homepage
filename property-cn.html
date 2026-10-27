@@ -320,6 +320,16 @@ body.noscroll{overflow:hidden}
   }
   function render(p){
     document.title=conv(p.title)+"｜周周・日本房仲";
+    /* 按下加 LINE 时把这间的资讯复制到剪贴簿。LINE 的加好友连结没办法预填讯息，
+       所以客户点进去之后周周只会收到一个空白好友，不知道他在看哪一间。
+       （简中版的文字由 conv() 转；propline.js 自己依档名判断语言） */
+    try{
+      window.PROPINFO={t:conv(p.title),p:conv(p.price||""),loc:conv(p.location||"")};
+      if(!document.getElementById("proplinejs")){
+        var pl=document.createElement("script"); pl.id="proplinejs"; pl.src="propline.js";
+        document.body.appendChild(pl);
+      }
+    }catch(e){}
     photos=(p.photos&&p.photos.length)?p.photos.slice():[];
     var gal;
     if(photos.length){

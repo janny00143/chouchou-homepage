@@ -310,6 +310,16 @@ body.noscroll{overflow:hidden}
   }
   function render(p){
     document.title=conv(p.title)+"｜周周・日本の不動産";
+    /* LINE追加時に物件情報をクリップボードへコピー。
+       LINEの友だち追加リンクはメッセージを事前入力できないため、
+       そのままではどの物件についてのお問い合わせか分からない。 */
+    try{
+      window.PROPINFO={t:conv(p.title),p:conv(p.price||""),loc:conv(p.location||"")};
+      if(!document.getElementById("proplinejs")){
+        var pl=document.createElement("script"); pl.id="proplinejs"; pl.src="propline.js";
+        document.body.appendChild(pl);
+      }
+    }catch(e){}
     photos=(p.photos&&p.photos.length)?p.photos.slice():[];
     var gal;
     if(photos.length){

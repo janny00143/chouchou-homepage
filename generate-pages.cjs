@@ -1717,6 +1717,9 @@ ${propNearbyHTML(p)}
 <p style="margin-top:14px;font-size:13px;color:var(--mut);line-height:1.8">※ 本頁資訊以刊登時為準，物件狀況可能異動，實際條件請以現況與重要事項說明書為準。能不能貸、可貸成數依個案與銀行審查為準；稅額請由稅理士確認；登記與契約內容由司法書士・宅地建物取引士確認。</p>
 </main>
 ${FOOT}
+<!-- 按下加 LINE 時，把這間的資訊複製到剪貼簿（LINE 的加好友連結無法預填訊息） -->
+<script>window.PROPINFO={t:${JSON.stringify(PLAIN(p.title))},p:${JSON.stringify(PLAIN(p.price))},loc:${JSON.stringify(PLAIN(p.location || ""))}};</script>
+<script src="propline.js"></script>
 </body>
 </html>`;
 }
