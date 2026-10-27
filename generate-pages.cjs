@@ -666,6 +666,58 @@ ${FAQ_VIDS.length ? `<aside class="faqvid">${FAQ_VIDS.map((v, i) => `<div class=
   });
 }
 
+/* 東京 23 區垃圾分類中文版 PDF 下載（周周 2026-10-27 核准的「官方資料中心」第一頁）。
+   ▍為什麼要獨立一頁
+     表格本來埋在文章第九節。但搜「東京 垃圾 分類 中文」的人多半只想要載點，
+     不想讀三千字；搜尋引擎也很難把文章的第九節當成一個「工具」。
+   ▍和文章的關係
+     文章的表格保留不動（周周 2026-10-23 指示「直接把載點連到網頁上」）。
+     這一頁是「只有表格」的版本，兩邊互相連結；表格本身是同一支
+     wardGomiTable() 產的，資料只有 ward-gomi-links.json 一份。 */
+function pageGomiPdfTW() {
+  const slug = "tokyo-garbage-pdf";
+  const url = BASE + slug + ".html";
+  let updated = "";
+  try { updated = JSON.parse(fs.readFileSync(ROOT + "/ward-gomi-links.json", "utf8")).updated || ""; } catch (e) { }
+  const main = `
+<p>東京 23 區的垃圾分類是<b>各區自己訂</b>的，同樣是塑膠，這一區算可燃、隔壁區要另外回收；收集日也不一樣。所以唯一可靠的做法，是看你住的那一區的官方說明。</p>
+<p>好消息是：23 個區全部都有官方的中文版小冊子，只是散在 23 個網站、檔案位置還會隨改版換掉。我把直連整理在下面，<b>點了就直接下載</b>，而且每週會自動重新確認一次還活著沒有。</p>
+
+${wardGomiTable("tw")}
+
+<h2 class="ah">用之前先知道這幾件事</h2>
+<p><b>以你住的那一區為準。</b>不要用以前住的地方、或朋友住的區的經驗來猜。連同一個區，規則都會隨年份調整。</p>
+<p><b>標「多語合一份」的，是一份 PDF 收了好幾種語言。</b>打開第一頁可能是英文或韓文，往後翻才是中文，不要以為下錯檔。</p>
+<p><b>幾乎都是簡體字。</b>目前只有荒川區另外出了繁體版，表格上有標。看不習慣的話，字其實大同小異，圖示也看得懂。</p>
+<p><b>有「其他版本」連結的區，代表官方還有別的檔案</b>（例如分開的「分類表」與「收集日曆」），點進官方頁可以一起拿。</p>
+
+<h2 class="ah">看完還是有搞不定的</h2>
+<p>這張表只解決「拿到正確的那份 PDF」。至於為什麼東京的垃圾這麼複雜、哪幾樣最常搞錯、大型垃圾要怎麼預約買券、還有買房時我為什麼會特地去看一眼垃圾置場——這些寫在<a href="tokyo-garbage-sorting-guide.html">東京垃圾分類為什麼這麼複雜</a>那一篇。</p>
+<p>如果你是剛搬進來、或正在看房，垃圾置場其實是判斷「這棟管理好不好」最直接的一個線索。要我陪你看，加 LINE 跟我說一聲就好。</p>
+
+<p class="src">※ 連結直接指向各區官方網站的檔案，內容與更新由各區負責，本頁不另外轉存，所以你拿到的永遠是最新版。${updated ? `資料最後確認日 ${esc(updated)}，每週自動重新確認。` : ""}實際分類方式與收集日請以各區最新公告為準。</p>`;
+  return landing({
+    slug,
+    metaTitle: "東京 23 區垃圾分類中文版 PDF 下載（全 23 區官方直連）｜周周・日本房仲",
+    h1: "東京 23 區垃圾分類中文版 PDF 下載",
+    lead: "東京的垃圾分類是各區自己訂的，規則不一樣。23 個區的官方中文版小冊子直連整理在這裡，點了直接下載，每週自動重新確認。",
+    crumb: "23 區垃圾分類 PDF",
+    desc: "東京 23 區官方中文版垃圾分類手冊 PDF 直接下載：千代田、中央、港、新宿、文京、台東、墨田、江東、品川、目黑、大田、世田谷、澀谷、中野、杉並、豐島、北、荒川、板橋、練馬、足立、葛飾、江戶川，全 23 區一次整理，附檔案大小與繁簡標示，連結每週自動重新確認。由在東京執業的台灣房仲周周整理。",
+    keywords: "東京垃圾分類中文,東京23區垃圾分類,垃圾分類PDF下載,日本垃圾分類中文版,東京 ごみ 中文,資源とごみの分け方 中文,東京生活,搬到東京",
+    ctaTitle: "正在找房，或剛搬進東京？",
+    ctaSub: "垃圾置場其實是看一棟房子管理好不好最快的線索。要我陪你看，跟我說一聲就好。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "WebPage", name: "東京 23 區垃圾分類中文版 PDF 下載", inLanguage: "zh-Hant", url,
+        description: "東京 23 區官方中文版垃圾分類手冊的 PDF 直連整理，每週自動重新確認。", publisher: PUBLISHER_TW },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+        { "@type": "ListItem", position: 2, name: "東京 23 區垃圾分類 PDF", item: url }
+      ] }
+    ],
+    main
+  });
+}
+
 // hub 的分類導言：只做「引路」，不重講文章內容
 const HUB_CAT_LEAD = {
   foreign: "外國人到底能不能買、要準備什麼文件、錢怎麼匯過去——沒有身分限制，但流程跟台灣不一樣。",
@@ -1207,7 +1259,8 @@ fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese.html", pageAgent
 fs.writeFileSync(ROOT + "/stats.html", pageStats());
 fs.writeFileSync(ROOT + "/buy-property-in-japan.html", pageHubTW());
 fs.writeFileSync(ROOT + "/faq.html", pageFaqTW());
-console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html / faq.html");
+fs.writeFileSync(ROOT + "/tokyo-garbage-pdf.html", pageGomiPdfTW());
+console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html / faq.html / tokyo-garbage-pdf.html");
 
 // 脆文精選（繁中；-cn 由 build-cn 產生，日文版不做——內容是寫給華語圈讀者的）
 for (const cfg of THREADS_PAGES) {
@@ -1256,6 +1309,7 @@ for (const p of PROPS.filter(x => !x.sold && (x.status === "在售" || x.keepPag
 // 商業關鍵字落地頁：hub 是「日本買房」的入口，權重高於一般文章
 urls.push({ loc: BASE + "buy-property-in-japan.html", pr: "0.9", cf: "weekly" });
 urls.push({ loc: BASE + "faq.html", pr: "0.8" });
+urls.push({ loc: BASE + "tokyo-garbage-pdf.html", pr: "0.8", cf: "weekly" });
 urls.push({ loc: BASE + "buy-property-in-japan-ja.html", pr: "0.7", cf: "weekly" });
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese.html", pr: "0.8" });
 // 脆文精選：第一手實務內容，權重比一般工具頁高
@@ -1266,6 +1320,7 @@ for (const cfg of THREADS_PAGES) {
 }
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese-ja.html", pr: "0.7" });
 urls.push({ loc: BASE + "faq-ja.html", pr: "0.7" });
+urls.push({ loc: BASE + "tokyo-garbage-pdf-ja.html", pr: "0.6", cf: "weekly" });
 urls.push({ loc: BASE + "about.html", pr: "0.8" });      // 作者介紹頁：E-E-A-T 的權威來源
 urls.push({ loc: BASE + "about-ja.html", pr: "0.8" });
 urls.push({ loc: BASE + "privacy.html", pr: "0.3" });

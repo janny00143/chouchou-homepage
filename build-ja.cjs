@@ -615,6 +615,51 @@ const FAQ_JA = eval(
 /* よくあるご質問の独立ページ（周周 2026-10-27 指示）。
    トップページのFAQはJSのタブでURLが変わらないため、お客様にお送りできる
    URLが無かった。繁体字版 faq.html と同じ内容を日本語で。 */
+/* 東京23区のごみ分別・中国語版PDFのまとめページ（繁体字版 tokyo-garbage-pdf.html の日本語版）。
+   日本側の読者（オーナー様・管理会社様）には、中華圏の入居者・買主へそのまま
+   お渡しいただける資料としてご案内する位置づけ。表は繁体字版と同じ
+   ward-gomi-links.json から生成しているため、データは一か所しかない。 */
+function pageGomiPdfJa() {
+  const url = BASE + "tokyo-garbage-pdf-ja.html";
+  let updated = "";
+  try { updated = JSON.parse(fs.readFileSync(ROOT + "/ward-gomi-links.json", "utf8")).updated || ""; } catch (e) { }
+  const main = `
+<p>東京23区のごみの分別は各区が定めており、同じ「プラスチック」でも区によって可燃か資源かが分かれ、収集日も異なります。中華圏からお越しの入居者様・買主様にとって、最初につまずきやすい点でございます。</p>
+<p>23区いずれも中国語版のパンフレットを公開しておりますが、各区のサイトに分散しており、改装のたびにファイルの場所が変わります。本ページでは各区の公式PDFへの直リンクをまとめ、毎週自動で有効性を再確認しております。そのままお渡しいただけます。</p>
+
+${wardGomiTable("ja")}
+
+<h2 class="ah">ご案内の際の注意点</h2>
+<p><b>必ずお住まいの区のものを。</b>以前お住まいだった区や近隣区のものは使えません。同じ区でも年度によって変更がございます。</p>
+<p><b>「多言語合本」と記載のあるものは、一つのPDFに複数言語が収録されております。</b>冒頭が英語や韓国語のため、間違いとお思いになることがございますので、その旨も併せてお伝えいただけますと確実でございます。</p>
+<p><b>ほとんどが簡体字です。</b>繁体字版を別途作成しているのは荒川区のみで、表に明記しております。</p>
+
+<h2 class="ah">関連ページ</h2>
+<p>分別が区ごとに異なる背景、間違えやすい品目、粗大ごみの申込みなどは<a href="tokyo-garbage-sorting-guide-ja.html">東京のごみ分別はなぜ複雑なのか</a>にまとめております。</p>
+<p>中華圏のお客様へのご売却・賃貸をご検討の際は、こうした生活面のご案内まで含めて当方でお引き受けいたします。</p>
+
+<p class="src">※ リンクは各区公式サイトのファイルに直接つながっており、内容と更新は各区の管理によるものでございます。${updated ? `最終確認日 ${esc(updated)}、毎週自動で再確認しております。` : ""}実際の分別方法・収集日は各区の最新のご案内をご確認ください。</p>`;
+  return landingJa({
+    slug: "tokyo-garbage-pdf",
+    metaTitle: "東京23区 ごみ分別 中国語版PDFまとめ（全23区・公式直リンク）｜周周・日本の不動産",
+    h1: "東京23区 ごみ分別 中国語版PDF まとめ",
+    lead: "中華圏の入居者様・買主様にそのままお渡しいただけます。千代田区から江戸川区まで全23区の公式中国語版パンフレットへの直リンクを、毎週自動で再確認しております。",
+    crumb: "23区ごみ分別PDF",
+    desc: "東京23区の公式中国語版ごみ分別パンフレットPDFへの直リンクを全区分まとめております。ファイルサイズ・繁体字／簡体字の別・多言語合本の有無も明記。中華圏の入居者様や買主様へのご案内資料としてお使いいただけます。毎週自動でリンクの有効性を再確認。",
+    keywords: "東京23区 ごみ分別 中国語,ごみ 多言語 パンフレット,外国人入居者 ごみ,中国語 ごみの出し方,東京 ごみ 外国語版",
+    ctaTitle: "中華圏のお客様へのご売却・ご賃貸をお考えでしたら",
+    ctaSub: "物件のご紹介だけでなく、こうした生活面のご案内まで中国語で対応いたします。お気軽にご相談くださいませ。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "WebPage", name: "東京23区 ごみ分別 中国語版PDF まとめ", inLanguage: "ja", url,
+        description: "東京23区の公式中国語版ごみ分別パンフレットPDFへの直リンク集。毎週自動で再確認しております。" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+        { "@type": "ListItem", position: 2, name: "23区ごみ分別PDF", item: url } ] }
+    ],
+    main
+  });
+}
+
 function pageFaqJa() {
   const url = BASE + "faq-ja.html";
   const main = `
@@ -793,6 +838,7 @@ ${catHTML}
 fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese-ja.html", pageAgentJa());
 fs.writeFileSync(ROOT + "/buy-property-in-japan-ja.html", pageHubJa());
 fs.writeFileSync(ROOT + "/faq-ja.html", pageFaqJa());
+fs.writeFileSync(ROOT + "/tokyo-garbage-pdf-ja.html", pageGomiPdfJa());
 console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html / faq-ja.html 已產生");
 
 /* ── 販売中物件：AI 向けレイヤー（周周 2026-10-03 承認）──────────────────
