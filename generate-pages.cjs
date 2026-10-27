@@ -66,6 +66,11 @@ const CATS = eval(src.match(/const CATS=(\[[\s\S]*?\]);/)[1]);
    首頁改了、重跑產生器，獨立頁就跟著改。
    ⚠️ 正則要抓 [[ … ]]，寫成 \[[\s\S]*?\] 會在第一個 ] 就停住。 */
 const FAQ_HOME = eval(src.match(/const FAQ=(\[\[[\s\S]*?\]\]);/)[1]);
+/* 常見問題旁邊那兩支影片的 YouTube id，同樣從首頁讀，不要寫死兩份。 */
+const FAQ_VIDS = (() => {
+  const m = src.match(/<aside class="faqvid">([\s\S]*?)<\/aside>/);
+  return m ? [...m[1].matchAll(/data-id="([A-Za-z0-9_-]+)"/g)].map(x => x[1]) : [];
+})();
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
@@ -627,7 +632,12 @@ function pageFaqTW() {
 <p>這一頁把客戶最常問我的問題整理在一起。答案就是我平常在 LINE 上會講的版本——沒有話術，該保守的地方就寫保守，因為貸款、稅務、在留資格這些事，講得太滿對你沒有好處。</p>
 <p>看完還是不確定自己的狀況算哪一種，直接把狀況丟給我就好，我先幫你判斷方向，不用急著決定什麼。</p>
 
-${FAQ_HOME.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+<div class="faqwrap">
+<div id="faqs">${FAQ_HOME.map(q => `<details class="faq"><summary>Q：${esc(q[0])}</summary><p>A：${esc(q[1])}</p></details>`).join("")}</div>
+${FAQ_VIDS.length ? `<aside class="faqvid">${FAQ_VIDS.map((v, i) => `<div class="fvslide" style="display:${i ? "none" : "block"}"><div style="position:relative;width:100%;padding-top:177.78%;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 4px 16px rgba(0,0,0,.12)"><div class="ytf" data-id="${v}" style="position:absolute;inset:0"><img src="https://i.ytimg.com/vi/${v}/hqdefault.jpg" alt="周周的影片解答" width="480" height="360" loading="lazy"><span class="pbtn">▶</span></div></div></div>`).join("")}<div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px"><button type="button" class="fvbtn" data-d="-1" aria-label="上一支影片" style="border:1px solid var(--line,#ddd);background:#fff;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer">◀</button><span id="fvcnt" style="font-size:13px;color:var(--mut)">1 / ${FAQ_VIDS.length}</span><button type="button" class="fvbtn" data-d="1" aria-label="下一支影片" style="border:1px solid var(--line,#ddd);background:#fff;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer">▶</button></div></aside>` : ""}
+</div>
+<!-- 影片左右切換：跟首頁同一段（.ytf 的點擊載入 iframe 已在 TAIL 裡） -->
+<script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.fvbtn');if(!b)return;var w=b.closest('.faqvid'),sl=w.querySelectorAll('.fvslide'),c=0;sl.forEach(function(x,i){if(x.style.display!=='none')c=i});var n=(c+parseInt(b.dataset.d,10)+sl.length)%sl.length;sl.forEach(function(x,i){x.style.display=i===n?'block':'none'});var t=w.querySelector('#fvcnt');if(t)t.textContent=(n+1)+' / '+sl.length});</script>
 
 <h2 class="ah">沒有回答到你的問題？</h2>
 <p>想先把整個流程看過一遍，可以從<a href="buy-property-in-japan.html">日本買房完全指南</a>開始；還在考慮要找哪一種仲介，看<a href="japan-real-estate-agent-for-taiwanese.html">在日本買房要找誰</a>；想知道我是誰、我實際能幫你做什麼，寫在<a href="about.html">關於周周</a>；想直接看物件就到<a href="properties.html">在售物件</a>。</p>

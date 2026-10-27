@@ -621,7 +621,7 @@ function pageFaqJa() {
 <p>中華圏（台湾・香港・シンガポール・マレーシア）のお客様から実際によくいただくご質問をまとめております。回答は当方が普段そのままお伝えしている内容で、融資・税務・在留資格については断定を避け、確認先を明記しております。</p>
 <p>売主様・不動産会社の皆様には、中華圏の買主がどのような点を気にされるかの参考としてご覧いただければ幸いです。</p>
 
-${FAQ_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+<div id="faqs">${FAQ_JA.map(q => `<details class="faq"><summary>Q：${esc(q[0])}</summary><p>A：${esc(q[1])}</p></details>`).join("")}</div>
 
 <h2 class="ah">こちらもご覧ください</h2>
 <p>ご購入の流れ全体は<a href="buy-property-in-japan-ja.html">記事一覧</a>から、窓口の違いについては<a href="japan-real-estate-agent-for-taiwanese-ja.html">中華圏のお客様の購入窓口</a>をご覧くださいませ。</p>
