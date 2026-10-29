@@ -38,11 +38,6 @@ const { WARDS } = require("./ward-list.cjs");
 
 /* 連結文字長這樣就是通往粗大ごみ那一頁 */
 const SODAI_LINK = /粗大(ごみ|ゴミ|塵)/;
-/* 這些字出現在電話號碼附近，才當成「受理窗口的電話」，
-   不然會抓到頁尾的區公所總機。 */
-const PHONE_CTX = /受付|センター|申込|予約|電話/;
-/* 線上申請 */
-const ONLINE = /インターネット|ネット受付|オンライン|電子申請|申込|受付|sodai|粗大/i;
 
 function decode(s) {
   return String(s || "")
@@ -116,48 +111,114 @@ function findPhone(text) {
   return { phone: hits[0].num, why: "" };
 }
 
-async function one([zh, ja, gomiPage]) {
-  const res = await get(gomiPage);
-  if (!res || !res.ok) {
-    return { ward: zh, wardJa: ja, pageOk: false, pageStatus: res ? res.status : "fetch failed", from: gomiPage };
-  }
-  const html = await res.text();
+/* 分享按鈕、二手網站、影片這些不是「受理窗口」，連結文字有「粗大」也不要跟 */
+const NOT_SODAI_HOST = /(twitter\.com|x\.com|facebook\.com|line\.me|jmty\.jp|youtube\.com|youtu\.be|instagram\.com|mercari|google\.)/i;
+/* 線上申請：文字要像「上網申請」，或網址本身就是受付系統 */
+const ONLINE_TEXT = /インターネット|ネット(で|受付|申込)|オンライン|電子申請|ウェブ|WEB|Web|LINE.{0,6}(受付|申込)/;
+const ONLINE_HOST = /sodai|e-tumo|uketsuke|gomi/i;
+/* 從小冊子頁往上爬到「ごみ・リサイクル」那一層時，只跟這些字的連結 */
+const GOMI_NAV = /ごみ|ゴミ|リサイクル|資源|くらし|暮らし/;
 
-  /* ① 從垃圾頁找「粗大ごみ」的連結 */
-  const cands = anchors(html, gomiPage)
-    .filter(a => SODAI_LINK.test(a.text + " " + a.title))
-    .filter(a => /^https?:/i.test(a.href) && !/\.pdf(\?|$)/i.test(a.href));
-  if (!cands.length) {
-    return { ward: zh, wardJa: ja, pageOk: true, sodaiPage: "", from: gomiPage,
-             note: "垃圾頁上沒有連到粗大ごみ的連結（可能在網站其他位置）" };
-  }
+function okSodaiLink(a, host) {
+  if (!/^https?:/i.test(a.href) || /\.pdf(\?|$)/i.test(a.href)) return false;
+  let h; try { h = new URL(a.href).host; } catch (e) { return false; }
+  if (NOT_SODAI_HOST.test(h)) return false;
+  /* 區公所自己的頁面，或明顯是粗大受付系統的外部網站 */
+  return h === host || ONLINE_HOST.test(h);
+}
 
-  /* 同一個網域的優先，避免跟到外部的受付系統首頁 */
+/* 從起點頁出發，最多看 MAX_PAGES 頁（同網域、只跟「ごみ／リサイクル」類的連結），
+   找到第一個連結文字含「粗大」的就停。
+   起點多半是「外語小冊子」那一頁，本身不一定有粗大ごみ的連結，
+   但麵包屑一定連得回「ごみ・リサイクル」的上層，從那裡就找得到。 */
+const MAX_PAGES = 12;
+async function findSodaiPage(gomiPage) {
   const host = new URL(gomiPage).host;
-  cands.sort((a, b) => (new URL(b.href).host === host) - (new URL(a.href).host === host));
-  const sodaiPage = cands[0].href;
+  const queue = [gomiPage], seen = new Set();
+  let firstOk = null;
+  while (queue.length && seen.size < MAX_PAGES) {
+    const url = queue.shift();
+    if (seen.has(url)) continue;
+    seen.add(url);
+    const res = await get(url);
+    if (!res || !res.ok) { if (url === gomiPage) return { pageOk: false, status: res ? res.status : "fetch failed" }; continue; }
+    if (url === gomiPage) firstOk = true;
+    const html = await res.text();
+    const as = anchors(html, url);
+    const hit = as.filter(a => SODAI_LINK.test(a.text + " " + a.title) && okSodaiLink(a, host))
+      /* 同網域優先；文字短（＝就是「粗大ごみ」那個選單）的優先 */
+      .sort((a, b) => ((new URL(b.href).host === host) - (new URL(a.href).host === host)) || (a.text.length - b.text.length));
+    if (hit.length) return { pageOk: true, sodaiPage: hit[0].href.split("#")[0], via: url, looked: seen.size };
+    for (const a of as) {
+      if (!GOMI_NAV.test(a.text)) continue;
+      let u; try { u = new URL(a.href); } catch (e) { continue; }
+      if (u.host !== host || /\.pdf(\?|$)/i.test(u.pathname)) continue;
+      u.hash = "";
+      if (!seen.has(u.toString())) queue.push(u.toString());
+    }
+    await new Promise(s => setTimeout(s, 300));
+  }
+  return { pageOk: !!firstOk, sodaiPage: "", looked: seen.size };
+}
 
-  /* ② 打開粗大ごみ那一頁，抓電話與線上申請 */
+function pickOnline(as, selfUrl) {
+  const self = selfUrl.split("#")[0];
+  return as.filter(a => {
+    if (!/^https?:/i.test(a.href) || /\.pdf(\?|$)/i.test(a.href)) return false;
+    if (a.href.split("#")[0] === self) return false;              // 「本文へ移動」這種同頁錨點
+    let h; try { h = new URL(a.href).host; } catch (e) { return false; }
+    if (NOT_SODAI_HOST.test(h)) return false;
+    return ONLINE_TEXT.test(a.text + " " + a.title) || ONLINE_HOST.test(h);
+  }).sort((a, b) => {
+    /* 外部受付系統（sodai-web.jp、e-tumo.jp…）最優先 */
+    const sa = ONLINE_HOST.test(new URL(a.href).host) ? 1 : 0, sb = ONLINE_HOST.test(new URL(b.href).host) ? 1 : 0;
+    return sb - sa;
+  });
+}
+
+async function one([zh, ja, gomiPage]) {
+  const f = await findSodaiPage(gomiPage);
+  if (!f.pageOk) return { ward: zh, wardJa: ja, pageOk: false, pageStatus: f.status, from: gomiPage };
+  if (!f.sodaiPage) {
+    return { ward: zh, wardJa: ja, pageOk: true, sodaiPage: "", from: gomiPage,
+             note: `從起點往上找了 ${f.looked} 頁，都沒有連到粗大ごみ的連結` };
+  }
+  const sodaiPage = f.sodaiPage;
+  const host = new URL(gomiPage).host;
+
+  /* 打開粗大ごみ那一頁，抓電話與線上申請。
+     那一頁若只是目錄（電話寫在下一層），再往下看最多 4 個含「粗大」的同網域子頁。 */
   const r2 = await get(sodaiPage);
   if (!r2 || !r2.ok) {
     return { ward: zh, wardJa: ja, pageOk: true, sodaiPage, from: gomiPage,
              note: `粗大ごみ頁打不開（${r2 ? r2.status : "fetch failed"}）` };
   }
   const h2 = await r2.text();
-  const text2 = strip(h2);
-  const { phone, why } = findPhone(text2);
+  const as2 = anchors(h2, sodaiPage);
+  let { phone, why } = findPhone(strip(h2));
+  let online = pickOnline(as2, sodaiPage);
+  let phoneFrom = phone ? sodaiPage : "";
 
-  const online = anchors(h2, sodaiPage)
-    .filter(a => ONLINE.test(a.text + " " + a.title + " " + a.href))
-    .filter(a => /^https?:/i.test(a.href) && a.href !== sodaiPage && !/\.pdf(\?|$)/i.test(a.href))
-    /* 外部的受付システム（sodai-uketsuke.jp など）が本命なので、別ホストを優先 */
-    .sort((a, b) => (new URL(a.href).host === host) - (new URL(b.href).host === host));
+  if (!phone || !online.length) {
+    const subs = [...new Set(as2.filter(a => SODAI_LINK.test(a.text + " " + a.title))
+      .map(a => a.href.split("#")[0])
+      .filter(u => { try { return new URL(u).host === host && u !== sodaiPage && !/\.pdf(\?|$)/i.test(u); } catch (e) { return false; } }))].slice(0, 4);
+    for (const u of subs) {
+      if (phone && online.length) break;
+      const r3 = await get(u);
+      if (!r3 || !r3.ok) continue;
+      const h3 = await r3.text();
+      if (!phone) { const p3 = findPhone(strip(h3)); if (p3.phone) { phone = p3.phone; why = ""; phoneFrom = u; } }
+      if (!online.length) online = pickOnline(anchors(h3, u), u);
+      await new Promise(s => setTimeout(s, 300));
+    }
+  }
 
   return {
     ward: zh, wardJa: ja, pageOk: true, from: gomiPage,
     sodaiPage,
     sodaiTitle: decode((h2.match(/<title>([^<]*)<\/title>/i) || [])[1] || ""),
-    phone, phoneNote: why,
+    phone, phoneNote: why, phoneFrom,
     online: online.length ? { url: online[0].href, label: online[0].text.slice(0, 60) } : null,
   };
 }
