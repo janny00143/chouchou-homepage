@@ -386,7 +386,7 @@
      "multilang": false,
      "rank": 10,
      "status": 200,
-     "sizeKB": 1212
+     "sizeKB": null
     }
    ]
   },
@@ -429,7 +429,7 @@
      "multilang": true,
      "rank": 6,
      "status": 200,
-     "sizeKB": 1723
+     "sizeKB": null
     },
     {
      "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/001/856/jigyoukeigomi50604.pdf",
