@@ -38,9 +38,9 @@
    "from": "https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/guidebook.html",
    "sodaiPage": "https://www.city.minato.tokyo.jp/unei/kurashi/gomi/kate/sodai/index.html",
    "sodaiTitle": "港区ホームページ／粗大ごみの出し方",
-   "phone": "03-3450-8025",
+   "phone": "03-6747-9253",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.minato.tokyo.jp/unei/kurashi/gomi/kate/sodai/index.html",
+   "phoneFrom": "https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/sodaigomi.html",
    "online": {
     "url": "https://ecolife.e-tumo.jp/sodai-minato-tokyo-u/offer/offerList_initDisplay",
     "label": "みなと粗大ごみ受付センター（外部サイトへリンク）"
@@ -53,9 +53,9 @@
    "from": "https://www.city.shinjuku.lg.jp/seikatsu/file09_02_00001.html",
    "sodaiPage": "https://www.city.shinjuku.lg.jp/kankyo/seiso01_000001_00023.html",
    "sodaiTitle": "令和5年1月4日（水）から粗大ごみ収集のお申込み先が変わります：新宿区",
-   "phone": "03-5304-8080",
-   "phoneNote": "",
-   "phoneFrom": "https://www.city.shinjuku.lg.jp/kankyo/seiso01_000001_00023.html",
+   "phone": "",
+   "phoneNote": "頁面上找不到前面寫著「粗大ごみ受付センター」的電話號碼",
+   "phoneFrom": "",
    "online": {
     "url": "https://www.shinjuku-sodai.com/",
     "label": "https://www.shinjuku-sodai.com"
@@ -83,9 +83,9 @@
    "from": "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/20180124165732477.html",
    "sodaiPage": "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/gomiinfo/sodaigomi/sodaikaitei.html",
    "sodaiTitle": "令和5年10月1日から粗大ごみ処理手数料が変更になります 台東区ホームページ",
-   "phone": "03-5246-1018",
+   "phone": "03-6747-5111",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/gomiinfo/sodaigomi/sodaikaitei.html",
+   "phoneFrom": "https://www.city.taito.lg.jp/kurashi/gomi/wakekata/gomiinfo/sodaigomi/sodaigomi.html",
    "online": {
     "url": "https://ecolife.e-tumo.jp/taitosodai-u/",
     "label": "粗大ごみ受付センター（外部サイト）"
@@ -113,12 +113,12 @@
    "from": "https://www.city.koto.lg.jp/388010/kurashi/gomi/kate/7348.html",
    "sodaiPage": "https://www.city.koto.lg.jp/kurashi/gomi/kate/sodaigomi/index.html",
    "sodaiTitle": "粗大ごみ｜江東区",
-   "phone": "03-3647-9111",
+   "phone": "03-6431-9997",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.koto.lg.jp/kurashi/gomi/kate/sodaigomi/index.html",
+   "phoneFrom": "https://www.city.koto.lg.jp/388010/kurashi/gomi/kate/sodaigomi/7367.html",
    "online": {
-    "url": "https://www.city.koto.lg.jp/torikumi.html",
-    "label": "ウェブアクセシビリティ方針"
+    "url": "http://www2.sodai-web.jp/koto/index.html",
+    "label": "粗大ごみ受付センター（外部サイトへリンク）（別ウィンドウで開きます）"
    }
   },
   {
@@ -128,9 +128,9 @@
    "from": "https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-gomi/gomi-kateigomi/gomi-kateigomi-dashikata/hpg000005617.html",
    "sodaiPage": "https://www.city.shinagawa.tokyo.jp/kurashi/gomi/1004032/index.html",
    "sodaiTitle": "粗大ごみ｜品川区公式ウェブサイト",
-   "phone": "03-3777-1111",
+   "phone": "03-6733-5374",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.shinagawa.tokyo.jp/kurashi/gomi/1004032/index.html",
+   "phoneFrom": "https://www.city.shinagawa.tokyo.jp/kurashi/gomi/1004032/1004033.html",
    "online": {
     "url": "https://www.shinagawa-sodai.com/",
     "label": "粗大ごみインターネット受付 （外部リンク）"
@@ -143,9 +143,9 @@
    "from": "https://www.city.meguro.tokyo.jp/recycle/kurashi/gomi/shigengomipdf.html",
    "sodaiPage": "https://www.city.meguro.tokyo.jp/kurashi/gomi/bunbetsu/sodaigomi/index.html",
    "sodaiTitle": "粗大ごみの出し方 | 目黒区",
-   "phone": "03-3715-1111",
+   "phone": "03-5715-0053",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.meguro.tokyo.jp/kurashi/gomi/bunbetsu/sodaigomi/index.html",
+   "phoneFrom": "https://www.city.meguro.tokyo.jp/recycle/kurashi/gomi/tetuzuki.html",
    "online": {
     "url": "https://www2.sodai-web.jp/meguro/index.html",
     "label": ""
@@ -173,12 +173,12 @@
    "from": "https://www.city.setagaya.lg.jp/02241/409.html",
    "sodaiPage": "https://www.city.setagaya.lg.jp/kurashi/gomi/category/11682.html",
    "sodaiTitle": "粗大ごみ | 世田谷区公式ホームページ",
-   "phone": "03-5432-1111",
+   "phone": "03-5715-1133",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.setagaya.lg.jp/kurashi/gomi/category/11682.html",
+   "phoneFrom": "https://www.city.setagaya.lg.jp/02239/27658.html",
    "online": {
-    "url": "https://www.city.setagaya.lg.jp/02239/27658.html",
-    "label": "粗大ごみ処理手数料のオンライン決済が始まりました"
+    "url": "https://www.sodai-setagaya.jp/eco/view/setagaya/top.html",
+    "label": "インターネット"
    }
   },
   {
@@ -192,8 +192,8 @@
    "phoneNote": "",
    "phoneFrom": "https://www.city.shibuya.tokyo.jp/kurashi/gomi/kateigomi/gomi_sodai.html",
    "online": {
-    "url": "https://p1.govtech-express.com/webui/1496310592?survey=a0OIj000000M4WMMA0",
-    "label": "粗大ごみインターネット受付ページ（外部サイト）"
+    "url": "https://kaden23rc.jp/kaden23rc/",
+    "label": "家電リサイクル受付センター（外部サイト）"
    }
   },
   {
@@ -235,7 +235,7 @@
    "sodaiTitle": "粗大ごみ（一辺が30センチメートルを超えるもの）｜豊島区公式ホームページ",
    "phone": "03-6633-2211",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.toshima.lg.jp/150/kurashi/gomi/shigen/009383.html",
+   "phoneFrom": "https://www.city.toshima.lg.jp/151/2012181541.html",
    "online": {
     "url": "https://ecolife.e-tumo.jp/toshima-sodai-u/",
     "label": "https://ecolife.e-tumo.jp/toshima-sodai-u/（新しいウィンドウで開きます）"
@@ -248,9 +248,9 @@
    "from": "https://www.city.kita.lg.jp/living/bins/1002013/1002019.html",
    "sodaiPage": "https://www.city.kita.lg.jp/living/bins/1002013/1002020/index.html",
    "sodaiTitle": "粗大ごみの出し方｜東京都北区",
-   "phone": "03-3908-1111",
+   "phone": "03-6746-5533",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.kita.lg.jp/living/bins/1002013/1002020/index.html",
+   "phoneFrom": "https://www.city.kita.lg.jp/living/bins/1002013/1002020/1002021.html",
    "online": {
     "url": "https://ecolife.e-tumo.jp/sodai-kita-tokyo-u/offer/offerList_initDisplay",
     "label": "東京都北区粗大ごみ受付センター （外部リンク）"
@@ -263,12 +263,12 @@
    "from": "https://www.city.arakawa.tokyo.jp/a025/bunbetusassi.html",
    "sodaiPage": "https://www.city.arakawa.tokyo.jp/recycle/bunbetsu/sodai/index.html",
    "sodaiTitle": "粗大ごみの出し方／荒川区公式サイト",
-   "phone": "03-3802-3111",
+   "phone": "03-6420-3353",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.arakawa.tokyo.jp/recycle/bunbetsu/sodai/index.html",
+   "phoneFrom": "https://www.city.arakawa.tokyo.jp/a025/recycle/sodaigomi/tesuryo.html",
    "online": {
-    "url": "https://www.city.arakawa.tokyo.jp/aboutwebsite/index.html",
-    "label": "ウェブサイトについて"
+    "url": "https://www2.sodai-web.jp/arakawa/index.html",
+    "label": "粗大ごみ受付センター（外部サイトへリンク）（別ウィンドウで開きます）"
    }
   },
   {
@@ -293,12 +293,12 @@
    "from": "https://www.city.nerima.tokyo.jp/kurashi/gomi/recycle/downloads.html",
    "sodaiPage": "https://www.city.nerima.tokyo.jp/kurashi/gomi/wakekata/sodai.html",
    "sodaiTitle": "粗大ごみ（有料・申込制）・料金検索：練馬区公式ホームページ",
-   "phone": "03-5703-5399",
-   "phoneNote": "",
-   "phoneFrom": "https://www.city.nerima.tokyo.jp/kurashi/gomi/wakekata/sodai.html",
+   "phone": "",
+   "phoneNote": "頁面上找不到前面寫著「粗大ごみ受付センター」的電話號碼",
+   "phoneFrom": "",
    "online": {
-    "url": "https://www.sodai-nerima.jp/eco/view/nerima/dustlistSearch.html",
-    "label": "料金検索はこちら（外部サイト）"
+    "url": "https://www.sodai-nerima.jp/",
+    "label": "粗大ごみインターネット申込みはこちら（外部サイト）"
    }
   },
   {
@@ -308,13 +308,10 @@
    "from": "https://www.city.adachi.tokyo.jp/seso/manual.html",
    "sodaiPage": "https://www.city.adachi.tokyo.jp/gomi/kurashi/kankyo/mokuseisodai.html",
    "sodaiTitle": "粗大ごみを資源化（リサイクル）しています｜足立区",
-   "phone": "03-3853-2141",
-   "phoneNote": "",
-   "phoneFrom": "https://www.city.adachi.tokyo.jp/gomi/kurashi/kankyo/mokuseisodai.html",
-   "online": {
-    "url": "https://www.city.adachi.tokyo.jp/accessibility/index.html",
-    "label": "ウェブアクセシビリティ方針"
-   }
+   "phone": "",
+   "phoneNote": "頁面上找不到前面寫著「粗大ごみ受付センター」的電話號碼",
+   "phoneFrom": "",
+   "online": null
   },
   {
    "ward": "葛飾區",
@@ -323,9 +320,9 @@
    "from": "https://www.city.katsushika.lg.jp/information/1000087/1030269/1025771/1018561.html",
    "sodaiPage": "https://www.city.katsushika.lg.jp/kurashi/1000048/1001536/index.html",
    "sodaiTitle": "粗大ごみ・家電など｜葛飾区公式サイト",
-   "phone": "03-3695-1111",
+   "phone": "0570-099-799",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.katsushika.lg.jp/kurashi/1000048/1001536/index.html",
+   "phoneFrom": "https://www.city.katsushika.lg.jp/kurashi/1000048/1001536/1016343.html",
    "online": {
     "url": "https://www2.sodai-web.jp/katsushika/index.html",
     "label": "粗大ごみは、こちらのリンク先からお申込みできます （外部リンク）"
