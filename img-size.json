@@ -2012,8 +2012,8 @@
   380
  ],
  "prop/prop-fukasawa7a-plan.webp": [
-  1400,
-  407
+  1055,
+  982
  ],
  "prop/prop-fukasawa7b-1-pers.webp": [
   1169,
@@ -2028,8 +2028,8 @@
   385
  ],
  "prop/prop-fukasawa7b-plan.webp": [
-  1400,
-  426
+  1024,
+  939
  ],
  "prop/prop-gohongi2-1-pers.webp": [
   1280,
@@ -2108,8 +2108,8 @@
   366
  ],
  "prop/prop-kamimeguro4a-plan.webp": [
-  1400,
-  1362
+  1190,
+  1140
  ],
  "prop/prop-kamimeguro4b-1-pers.webp": [
   947,
@@ -2117,15 +2117,15 @@
  ],
  "prop/prop-kamimeguro4b-2-pers.webp": [
   649,
-  366
+  365
  ],
  "prop/prop-kamimeguro4b-3-pers.webp": [
   649,
-  365
+  366
  ],
  "prop/prop-kamimeguro4b-plan.webp": [
-  1400,
-  1195
+  1210,
+  1005
  ],
  "prop/prop-kamiyoga6-1-pers.webp": [
   1280,
@@ -2361,7 +2361,7 @@
  ],
  "prop/prop-nishinakanobu1a-plan.webp": [
   1400,
-  558
+  552
  ],
  "prop/prop-nishishinagawa2-p5-1-pers.webp": [
   1063,
@@ -3456,6 +3456,62 @@
   853
  ],
  "img/cover-nationality-zh.webp": [
+  1280,
+  720
+ ],
+ "prop/prop-shinmachi2-1-pers.webp": [
+  1280,
+  853
+ ],
+ "prop/prop-shinmachi2-plan.webp": [
+  1169,
+  834
+ ],
+ "prop/prop-nishinakanobu1-p2-plan.webp": [
+  1048,
+  965
+ ],
+ "prop/prop-nishinakanobu1-p2-1-pers.webp": [
+  1063,
+  1063
+ ],
+ "prop/prop-nishinakanobu1-p2-3-pers.webp": [
+  650,
+  366
+ ],
+ "prop/prop-nishinakanobu1-p2-2-pers.webp": [
+  650,
+  366
+ ],
+ "prop/prop-hatanodai6-p3-plan.webp": [
+  1125,
+  931
+ ],
+ "prop/prop-hatanodai6-p3-3-pers.webp": [
+  697,
+  393
+ ],
+ "prop/prop-hatanodai6-p3-2-pers.webp": [
+  697,
+  393
+ ],
+ "prop/prop-hatanodai6-p3-1-pers.webp": [
+  1280,
+  853
+ ],
+ "prop/prop-minamiogikubo4-p2a-plan.webp": [
+  1126,
+  987
+ ],
+ "prop/prop-minamiogikubo4-p2a-1-pers.webp": [
+  1280,
+  720
+ ],
+ "prop/prop-minamiogikubo4-p2b-plan.webp": [
+  1126,
+  987
+ ],
+ "prop/prop-minamiogikubo4-p2b-1-pers.webp": [
   1280,
   720
  ]
