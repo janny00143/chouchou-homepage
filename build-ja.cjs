@@ -10,12 +10,13 @@ function loadProps(file, key) {
   try {
     const ctx = { document: {} }; ctx.window = ctx;
     vm.createContext(ctx);
-    vm.runInContext(fs.readFileSync(__dirname + "/" + file, "utf8"), ctx);
+    /* properties-ja.js 要在同一個環境裡先有 PROPERTIES，才能把繁中 price 換成日文（見該檔結尾） */
+    for (const f of [].concat(file)) vm.runInContext(fs.readFileSync(__dirname + "/" + f, "utf8"), ctx);
     return ctx[key] || null;
   } catch (e) { console.warn("読み込み失敗 " + file + "：" + e.message); return null; }
 }
 const PROPS_RAW = loadProps("properties.js", "PROPERTIES") || [];
-const PROPS_JA_OV = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
+const PROPS_JA_OV = loadProps(["properties.js", "properties-ja.js"], "PROPERTIES_JA") || {};
 const PROPS = PROPS_RAW.map(p => Object.assign({}, p, PROPS_JA_OV[p.id] || {}));
 const BASE = "https://chouchouinjapan.com/";
 

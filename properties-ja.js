@@ -1441,3 +1441,28 @@ window.PROPERTIES_JA = {
     note: "設計・施工から販売まで当社（グランプラス）が一貫して手掛ける<b>新築戸建</b>でございます。土地63.93㎡・延床115.81㎡の3階建で、<b>現在建築中・建物は未完成</b>、引渡し2026年12月上旬予定（建築確認番号 SJK-KX266001070 取得済）。掲載の外観・内観はいずれも完成予想図であり、実際とは異なる場合がございます。\n開放的なLDK、居室は約7.3帖・約6.1帖でございます。\n仕様は耐震等級2、フラット35S（ZEHプラン）適合証明書取得予定。\n学区は区立大原小学校、区立豊葉の杜学園でございます。\n自社物件ですので、仕様・工程・調整可能な範囲まで直接お答えできます。未完成物件はお支払いや融資実行の時期が既存住宅と異なりますので、事前にご説明いたします。現地のご案内・資金計画のご相談はLINEよりお気軽にどうぞ。"
   }
 };
+
+/* ── 日文頁的價格欄：沒有另外寫日文 price 的物件，從繁中 price 自動換字 ──
+   繁中的 price 常寫「（含稅）」「土地＋建物參考總額」「請諮詢」，日文頁直接沿用就會出現中文
+   （2026-10-30 巡邏發現 properties-ja.html 有 47 處「含稅」）。
+   在這裡換一次，物件列表、詳情頁、自社專區、build-ja／build-prop-seo 全部吃得到；
+   繁中 price 改價時日文自動跟著變，不會有兩邊價格不一致的問題。
+   ⚠️ 前提：要先載入 properties.js 再載這支（所有日文頁與產生器都是這個順序）。 */
+window.JA_PRICE = function (s) {
+  return String(s || "")
+    .replace(/含稅/g, "税込")
+    .replace(/土地＋建物參考總額/g, "土地＋建物参考総額")
+    .replace(/詳細請諮詢/g, "詳細はお問い合わせください")
+    .replace(/請諮詢/g, "お問い合わせください");
+};
+(function () {
+  var P = window.PROPERTIES, J = window.PROPERTIES_JA;
+  if (!P || !J) return;
+  P.forEach(function (p) {
+    if (!p.price) return;
+    var o = J[p.id] || (J[p.id] = {});
+    if (o.price) { o.price = window.JA_PRICE(o.price); return; }
+    var q = window.JA_PRICE(p.price);
+    if (q !== p.price) o.price = q;
+  });
+})();

@@ -153,7 +153,7 @@ p.jsub{font-size:14px;color:var(--mut);margin-bottom:12px;padding-left:12px}
     if(pers) tags+='<span>完成予想図</span>';
     if(illu) tags+='<span>イメージ</span>';
     var name=JA?esc(p.title):esc(p.title_cn||p.title);
-    var price=esc(String(p.price||"").split("\n")[0]);
+    var price=esc(String(f(p,"price")||"").split("\n")[0]);
     var stn=esc(String(f(p,"station")||"").split(/／|\//)[0]);
     /* 2026-10-04：静的ページへ（原本は noindex シェル） */
     return '<a class="jcard" href="prop-'+p.id+'-ja.html">'

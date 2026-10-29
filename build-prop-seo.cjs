@@ -78,6 +78,13 @@ const LANG = {
         pick: p => { const j = JA[p.id] || {}; return { title: p.title, loc: j.location || p.location, st: j.station || p.station }; } }
 };
 
+/* 清單上的價格字串跟著語言走：日文用 properties-ja.js 換好的（含稅→税込），簡中轉簡體 */
+function priceText(key, p) {
+  if (key === "ja") return (JA[p.id] && JA[p.id].price) || p.price;
+  if (key === "cn") return toCn(String(p.price));
+  return p.price;
+}
+
 function block(key) {
   const L = LANG[key];
   const act = ALL.filter(p => !p.sold && p.status === "在售");
@@ -112,7 +119,7 @@ function block(key) {
     const st = propStatic(key, p.id);
     const href = st || (L.detail + "?id=" + encodeURIComponent(p.id));
     return '<li><a href="' + href + '">' + esc(d.title) + "</a>"
-      + (p.price ? " — " + esc(String(p.price).split("\n")[0]) : "")
+      + (p.price ? " — " + esc(String(priceText(key, p)).split("\n")[0]) : "")
       + (d.loc ? "（" + esc(d.loc) + "）" : "") + "</li>";
   }).join("");
 
