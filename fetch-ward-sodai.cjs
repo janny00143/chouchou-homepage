@@ -115,12 +115,12 @@ function findPhone(text) {
 }
 
 /* 分享按鈕、二手網站、影片這些不是「受理窗口」，連結文字有「粗大」也不要跟 */
-const NOT_SODAI_HOST = /(twitter\.com|x\.com|facebook\.com|line\.me|jmty\.jp|youtube\.com|youtu\.be|instagram\.com|mercari|google\.)/i;
+const NOT_SODAI_HOST = /(kaden23rc|twitter\.com|x\.com|facebook\.com|line\.me|jmty\.jp|youtube\.com|youtu\.be|instagram\.com|mercari|google\.)/i;
 /* 線上申請：文字要像「上網申請」，或網址本身就是受付系統 */
 /* ⚠️ 單看「ウェブ／オンライン」不夠：2026-10-29 第二次跑抓到「ウェブアクセシビリティ方針」
    「手数料のオンライン決済が始まりました」這種。所以文字要同時有「受付／申込」才算。 */
 const ONLINE_TEXT = /(インターネット|ネット|オンライン|電子申請|ウェブ|WEB|Web|LINE).{0,12}(受付|申込|申し込)|(受付|申込|申し込).{0,6}(インターネット|オンライン|ウェブ|WEB|Web)|受付センター|こちら.{0,6}(から)?お?申込/;
-const NOT_ONLINE_TEXT = /アクセシビリティ|ウェブサイトについて|サイトマップ|料金検索|決済/;
+const NOT_ONLINE_TEXT = /家電|パソコン|アクセシビリティ|ウェブサイトについて|サイトマップ|料金検索|決済/;
 const ONLINE_HOST = /sodai|e-tumo|uketsuke|gomi/i;
 /* 從小冊子頁往上爬到「ごみ・リサイクル」那一層時，只跟這些字的連結 */
 const GOMI_NAV = /ごみ|ゴミ|リサイクル|資源|くらし|暮らし/;
