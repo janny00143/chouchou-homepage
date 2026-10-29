@@ -13,6 +13,10 @@
 #      對方擋機器人（403 等）只警告、不讓 workflow 紅字——
 #      誤報久了就沒人看，patrol.cjs 當初就是為了治這個毛病才存在的。
 #
+#   ③ fetch-ward-sodai.cjs：從同一份 23 區垃圾頁出發，跟著「粗大ごみ」的連結
+#      找到各區大型垃圾的受理電話與線上申請，寫進 ward-sodai.json。
+#      （周周 2026-10-29 以通關密語核准加入）
+#
 # 紅字時 patrol 的 A12 會把結論讀回來，併進每天早上的回報。
 #
 # ⚠️ 這支只做「讀取、檢查、寫一個 JSON」，不碰 Pages 的部署流程。
@@ -49,6 +53,11 @@ jobs:
         continue-on-error: true      # 某一區改版抓不到，不要害整支紅字到看不見連結檢查的結果
         run: node fetch-ward-gomi.cjs
 
+      - name: 抓 23 區的大型垃圾（粗大ごみ）受理窗口
+        id: sodai
+        continue-on-error: true      # 同上：某一區抓不到不要擋住後面
+        run: node fetch-ward-sodai.cjs
+
       - name: 把抓到的結果 commit 回 repo
         run: |
           set -e
@@ -57,11 +66,12 @@ jobs:
           # ⚠️ 要先 add 再比對。對「還沒被追蹤的新檔案」，git diff --quiet 會回 0
           #    （看起來像沒變動），第一次跑就會跳過 commit——2026-10-23 踩過。
           git add ward-gomi-links.json
-          if git diff --cached --quiet -- ward-gomi-links.json; then
+          [ -f ward-sodai.json ] && git add ward-sodai.json
+          if git diff --cached --quiet -- ward-gomi-links.json ward-sodai.json; then
             echo "各區連結沒有變動，不用 commit"
             exit 0
           fi
-          git commit -m "23區垃圾分類：更新中文版 PDF 連結（自動抓取）
+          git commit -m "23區垃圾分類：更新中文版 PDF 連結與大型垃圾窗口（自動抓取）
 
           由 .github/workflows/ward-gomi.yml 於 GitHub 的機器上抓取並驗證。
           容器的 egress policy 擋掉 city.*.lg.jp，所以這件事只能在這裡做。"
@@ -74,4 +84,10 @@ jobs:
         if: steps.fetch.outcome == 'failure'
         run: |
           echo "::error::有區的官方頁抓不到（可能改版了）。看上面「抓 23 區的中文版 PDF」那一步的 log，並更新 fetch-ward-gomi.cjs 的 WARDS。"
+          exit 1
+
+      - name: 大型垃圾的起點頁有抓不到的
+        if: steps.sodai.outcome == 'failure'
+        run: |
+          echo "::error::大型垃圾那一步有區的垃圾頁打不開。看「抓 23 區的大型垃圾」那一步的 log，並更新 ward-list.cjs。"
           exit 1
