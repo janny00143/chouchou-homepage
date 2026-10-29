@@ -106,15 +106,21 @@ function findPhone(text) {
     if (/(ファクス|ファックス|FAX)/i.test(before)) score -= 8;
     if (score > 0) hits.push({ num: m[0], score, before });
   }
-  if (!hits.length) return { phone: "", why: "頁面上找不到像「粗大ごみ受付センター」的電話號碼" };
   hits.sort((a, b) => b.score - a.score);
-  return { phone: hits[0].num, why: "" };
+  /* ⚠️ 只收「前面明確寫著粗大ごみ受付／受付センター」的號碼（score ≥ 4）。
+     2026-10-29 第二次跑，只靠「電話」兩個字加分的號碼有 7 區是區役所總機（…-1111）。
+     抓不到就留白、頁面改放官方頁連結——電話寫錯比沒寫糟很多。 */
+  if (!hits.length || hits[0].score < 4) return { phone: "", why: "頁面上找不到前面寫著「粗大ごみ受付センター」的電話號碼" };
+  return { phone: hits[0].num, why: "", score: hits[0].score };
 }
 
 /* 分享按鈕、二手網站、影片這些不是「受理窗口」，連結文字有「粗大」也不要跟 */
 const NOT_SODAI_HOST = /(twitter\.com|x\.com|facebook\.com|line\.me|jmty\.jp|youtube\.com|youtu\.be|instagram\.com|mercari|google\.)/i;
 /* 線上申請：文字要像「上網申請」，或網址本身就是受付系統 */
-const ONLINE_TEXT = /インターネット|ネット(で|受付|申込)|オンライン|電子申請|ウェブ|WEB|Web|LINE.{0,6}(受付|申込)/;
+/* ⚠️ 單看「ウェブ／オンライン」不夠：2026-10-29 第二次跑抓到「ウェブアクセシビリティ方針」
+   「手数料のオンライン決済が始まりました」這種。所以文字要同時有「受付／申込」才算。 */
+const ONLINE_TEXT = /(インターネット|ネット|オンライン|電子申請|ウェブ|WEB|Web|LINE).{0,12}(受付|申込|申し込)|(受付|申込|申し込).{0,6}(インターネット|オンライン|ウェブ|WEB|Web)|受付センター|こちら.{0,6}(から)?お?申込/;
+const NOT_ONLINE_TEXT = /アクセシビリティ|ウェブサイトについて|サイトマップ|料金検索|決済/;
 const ONLINE_HOST = /sodai|e-tumo|uketsuke|gomi/i;
 /* 從小冊子頁往上爬到「ごみ・リサイクル」那一層時，只跟這些字的連結 */
 const GOMI_NAV = /ごみ|ゴミ|リサイクル|資源|くらし|暮らし/;
@@ -168,7 +174,10 @@ function pickOnline(as, selfUrl) {
     if (a.href.split("#")[0] === self) return false;              // 「本文へ移動」這種同頁錨點
     let h; try { h = new URL(a.href).host; } catch (e) { return false; }
     if (NOT_SODAI_HOST.test(h)) return false;
-    return ONLINE_TEXT.test(a.text + " " + a.title) || ONLINE_HOST.test(h);
+    const tx = a.text + " " + a.title;
+    if (NOT_ONLINE_TEXT.test(tx)) return false;
+    /* 區公所自己網域的連結，文字一定要像「上網申請」；外部受付系統的網域則放行 */
+    return ONLINE_TEXT.test(tx) || (h !== new URL(self).host && ONLINE_HOST.test(h));
   }).sort((a, b) => {
     /* 外部受付系統（sodai-web.jp、e-tumo.jp…）最優先 */
     const sa = ONLINE_HOST.test(new URL(a.href).host) ? 1 : 0, sb = ONLINE_HOST.test(new URL(b.href).host) ? 1 : 0;
