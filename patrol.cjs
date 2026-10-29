@@ -511,6 +511,27 @@ function a12_wardgomi() {
     }
   } catch (e) { }
 
+  // ④ 大型垃圾預約窗口（ward-sodai.json → tokyo-oversized-garbage*.html，2026-10-29 上線）
+  //    同一支 workflow 每週抓。電話只收「前面寫著粗大受付センター」的號碼，
+  //    第一版跑出來 20 區有電話、22 區有網路預約；掉很多代表區公所改版或抓取邏輯壞了。
+  const fs2 = path.join(ROOT, "ward-sodai.json");
+  if (fs.existsSync(fs2)) {
+    try {
+      const j = JSON.parse(fs.readFileSync(fs2, "utf8"));
+      const W = j.wards || [];
+      const ph = W.filter(w => w.phone).length, on = W.filter(w => w.online).length;
+      const ageD = Math.round((Date.now() - new Date(j.updated + "T00:00:00Z").getTime()) / 86400000);
+      summary += `｜大型垃圾 電話 ${ph}／網路 ${on} 區`;
+      if (W.length !== 23) bad.push(`ward-sodai.json 只有 ${W.length} 區，應該是 23 區`);
+      if (ph < 16) bad.push(`大型垃圾頁只剩 ${ph} 區抓到預約電話（上線時 20），看 fetch-ward-sodai.cjs 那一步的 log`);
+      if (on < 18) bad.push(`大型垃圾頁只剩 ${on} 區抓到網路預約（上線時 22）`);
+      if (ageD > 16) bad.push(`ward-sodai.json 已經 ${ageD} 天沒更新`);
+      const stale2 = ["tokyo-oversized-garbage.html", "tokyo-oversized-garbage-ja.html"]
+        .filter(p => fs.existsSync(path.join(ROOT, p)) && !read(p).includes(j.updated));
+      if (stale2.length) bad.push(`大型垃圾頁的資料更新日還停在舊版（JSON 已是 ${j.updated}）：${stale2.join("、")} → 重跑六支產生器`);
+    } catch (e) { bad.push("ward-sodai.json 讀不開：" + e.message); }
+  }
+
   add("A12", "23區垃圾分類連結＋全站外部連結", bad.length ? "FAIL" : "OK",
     summary || "無資料", bad.slice(0, 8));
 }
