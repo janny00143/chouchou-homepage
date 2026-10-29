@@ -410,6 +410,23 @@ function a9_uptime() {
    ② 繁中版的文章數要等於 ART 篇數（產生器每次都會重寫，不一致代表有人沒重跑） */
 // A11：物件照片防盜（2026-10-11）——prop/ 每張都要有 prop-wm/ 浮水印版，且有 prop 圖的頁面要載入 imgguard.js。
 // 新放物件圖卻忘了跑 python3 watermark.py，就會變成「右鍵另存拿到乾淨圖」。
+/* A13：日文頁不該出現的中文價格用語（2026-10-30 起）
+   物件的 price 是用繁中寫的（含稅、參考總額、請諮詢），日文頁靠 properties-ja.js 結尾的
+   JA_PRICE 換成日文。哪天有人新寫一個日文頁直接讀 p.price，中文就又會跑出來——
+   那天巡邏前 properties-ja.html 就掛著 47 個「含稅」沒人發現。 */
+function a13_jaPriceWords() {
+  const RE = /含稅|參考總額|請諮詢/g;
+  const files = fs.readdirSync(ROOT).filter(f => /-ja\.html$|^ja\.html$|^llms-ja.*\.txt$/.test(f));
+  const hits = [];
+  for (const f of files) {
+    const m = read(f).match(RE);
+    if (m) hits.push(`${f}（${m.length} 處：${[...new Set(m)].join("、")}）`);
+  }
+  add("A13", "日文頁的中文價格用語", hits.length ? "FAIL" : "OK",
+    hits.length ? `${hits.length} 個檔有中文價格用語` : `${files.length} 個日文檔 → 0 處`,
+    hits.length ? hits.slice(0, 6).concat(["→ 新頁面請改讀 PROPERTIES_JA 的 price（properties-ja.js 結尾已換好）"]) : []);
+}
+
 function a11_imgguard() {
   const bad = [];
   const src = fs.readdirSync(path.join(ROOT, "prop")).filter(f => f.endsWith(".webp"));
@@ -977,7 +994,7 @@ function diffBaseline() {
 async function main() {
   checkGit();
   checkDeploy();
-  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); await a8_runtime(); a7_idempotent(); }
+  if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); a13_jaPriceWords(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
