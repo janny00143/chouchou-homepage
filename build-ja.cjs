@@ -1,5 +1,6 @@
 /* 產生日文版文章頁（-ja.html）。translate-jobs/ja-content.json 提供翻譯後的 title/ex/tags/body。
    用法：先跑 node generate-pages.cjs，再跑 node build-ja.cjs */
+const { wardSodaiTable, sodaiUpdated } = require("./ward-sodai-table.cjs");
 const fs = require("fs");
 const vm = require("vm");
 
@@ -635,7 +636,7 @@ ${wardGomiTable("ja")}
 <p><b>ほとんどが簡体字です。</b>繁体字版を別途作成しているのは荒川区のみで、表に明記しております。</p>
 
 <h2 class="ah">関連ページ</h2>
-<p>分別が区ごとに異なる背景、間違えやすい品目、粗大ごみの申込みなどは<a href="tokyo-garbage-sorting-guide-ja.html">東京のごみ分別はなぜ複雑なのか</a>にまとめております。</p>
+<p>分別が区ごとに異なる背景、間違えやすい品目、粗大ごみの申込みなどは<a href="tokyo-garbage-sorting-guide-ja.html">東京のごみ分別はなぜ複雑なのか</a>に、各区の粗大ごみ受付窓口は<a href="tokyo-oversized-garbage-ja.html">23区 粗大ごみ受付窓口まとめ</a>にまとめております。</p>
 <p>中華圏のお客様へのご売却・賃貸をご検討の際は、こうした生活面のご案内まで含めて当方でお引き受けいたします。</p>
 
 <p class="src">※ リンクは各区公式サイトのファイルに直接つながっており、内容と更新は各区の管理によるものでございます。${updated ? `最終確認日 ${esc(updated)}、毎週自動で再確認しております。` : ""}実際の分別方法・収集日は各区の最新のご案内をご確認ください。</p>`;
@@ -655,6 +656,47 @@ ${wardGomiTable("ja")}
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
         { "@type": "ListItem", position: 2, name: "23区ごみ分別PDF", item: url } ] }
+    ],
+    main
+  });
+}
+
+/* 東京23区の粗大ごみ受付窓口まとめ（繁体字版 tokyo-oversized-garbage.html の日本語版）。
+   表は ward-sodai-table.cjs を繁体字版と共用、データは ward-sodai.json の一か所のみ。 */
+function pageSodaiJa() {
+  const url = BASE + "tokyo-oversized-garbage-ja.html";
+  const updated = sodaiUpdated();
+  const main = `
+<p>ソファ・マットレス・机・自転車などの粗大ごみは、事前申込みと粗大ごみ処理券の購入が必要で、受付窓口は区ごとに異なります。中華圏からお越しの入居者様・買主様が、引越しの際に最も戸惑われる点の一つでございます。</p>
+<p>本ページでは23区公式の電話受付とインターネット受付の入口をまとめ、毎週自動で各区公式サイトから再取得しております。</p>
+
+${wardSodaiTable("ja", esc)}
+
+<h2 class="ah">ご案内の際の注意点</h2>
+<p><b>家電リサイクル法の対象4品目（エアコン・テレビ・冷蔵庫／冷凍庫・洗濯機／衣類乾燥機）とパソコンは、粗大ごみでは出せません。</b>別途の回収ルートとなります。</p>
+<p><b>3〜4月の引越し繁忙期は予約が数週間先になることがございます。</b>退去日が決まった段階でのお申込みをお勧めいただけますと確実です。</p>
+<p><b>電話受付は日本語が中心です。</b>日本語に不慣れな方には、インターネット受付のほうがスムーズでございます。</p>
+
+<h2 class="ah">関連ページ</h2>
+<p>各区の中国語版ごみ分別パンフレットは<a href="tokyo-garbage-pdf-ja.html">東京23区 ごみ分別 中国語版PDF まとめ</a>、分別が区ごとに異なる背景は<a href="tokyo-garbage-sorting-guide-ja.html">東京のごみ分別はなぜ複雑なのか</a>にまとめております。</p>
+
+<p class="src">※ 表の電話番号・受付ページは各区公式サイトから自動で整理したもので、内容と更新は各区の管理によるものでございます。${updated ? `最終確認日 ${esc(updated)}、毎週自動で再確認しております。` : ""}受付方法・手数料・収集日は各区の最新のご案内をご確認ください。</p>`;
+  return landingJa({
+    slug: "tokyo-oversized-garbage",
+    metaTitle: "東京23区 粗大ごみ受付窓口まとめ（電話・インターネット受付）｜周周・日本の不動産",
+    h1: "東京23区 粗大ごみ受付窓口まとめ",
+    lead: "23区公式の粗大ごみ電話受付とインターネット受付の入口を一覧にしております。中華圏の入居者様・買主様へのご案内にお使いくださいませ。",
+    crumb: "23区粗大ごみ受付",
+    desc: "東京23区の粗大ごみ受付センターの電話番号とインターネット受付ページを全区分まとめております。家電リサイクル法対象品目の注意点も記載。毎週自動で各区公式サイトから再取得。",
+    keywords: "東京23区 粗大ごみ 受付,粗大ごみ 電話番号,粗大ごみ インターネット受付,外国人入居者 粗大ごみ,引越し 粗大ごみ",
+    ctaTitle: "中華圏のお客様へのご売却・ご賃貸をお考えでしたら",
+    ctaSub: "物件のご紹介だけでなく、こうした生活面のご案内まで中国語で対応いたします。お気軽にご相談くださいませ。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "WebPage", name: "東京23区 粗大ごみ受付窓口まとめ", inLanguage: "ja", url,
+        description: "東京23区の粗大ごみ電話受付・インターネット受付の一覧。毎週自動で再確認しております。" },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+        { "@type": "ListItem", position: 2, name: "23区粗大ごみ受付", item: url } ] }
     ],
     main
   });
@@ -839,6 +881,7 @@ fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese-ja.html", pageAg
 fs.writeFileSync(ROOT + "/buy-property-in-japan-ja.html", pageHubJa());
 fs.writeFileSync(ROOT + "/faq-ja.html", pageFaqJa());
 fs.writeFileSync(ROOT + "/tokyo-garbage-pdf-ja.html", pageGomiPdfJa());
+fs.writeFileSync(ROOT + "/tokyo-oversized-garbage-ja.html", pageSodaiJa());
 console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html / faq-ja.html 已產生");
 
 /* ── 販売中物件：AI 向けレイヤー（周周 2026-10-03 承認）──────────────────

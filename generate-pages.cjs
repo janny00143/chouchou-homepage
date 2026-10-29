@@ -366,6 +366,7 @@ function wardGomiTable(lang) {
 }
 
 const { buildRelMap } = require("./related.cjs");
+const { wardSodaiTable, sodaiUpdated } = require("./ward-sodai-table.cjs");
 const REL = buildRelMap(ART, a => !!(a.url || SLUG[a.id]));
 
 
@@ -692,7 +693,7 @@ ${wardGomiTable("tw")}
 <p><b>有「其他版本」連結的區，代表官方還有別的檔案</b>（例如分開的「分類表」與「收集日曆」），點進官方頁可以一起拿。</p>
 
 <h2 class="ah">看完還是有搞不定的</h2>
-<p>這張表只解決「拿到正確的那份 PDF」。至於為什麼東京的垃圾這麼複雜、哪幾樣最常搞錯、大型垃圾要怎麼預約買券、還有買房時我為什麼會特地去看一眼垃圾置場——這些寫在<a href="tokyo-garbage-sorting-guide.html">東京垃圾分類為什麼這麼複雜</a>那一篇。</p>
+<p>這張表只解決「拿到正確的那份 PDF」。至於為什麼東京的垃圾這麼複雜、哪幾樣最常搞錯、大型垃圾要怎麼預約買券、還有買房時我為什麼會特地去看一眼垃圾置場——這些寫在<a href="tokyo-garbage-sorting-guide.html">東京垃圾分類為什麼這麼複雜</a>那一篇；各區大型垃圾的預約電話整理在<a href="tokyo-oversized-garbage.html">23 區大型垃圾預約窗口</a>。</p>
 <p>如果你是剛搬進來、或正在看房，垃圾置場其實是判斷「這棟管理好不好」最直接的一個線索。要我陪你看，加 LINE 跟我說一聲就好。</p>
 
 <p class="src">※ 連結直接指向各區官方網站的檔案，內容與更新由各區負責，本頁不另外轉存，所以你拿到的永遠是最新版。${updated ? `資料最後確認日 ${esc(updated)}，每週自動重新確認。` : ""}實際分類方式與收集日請以各區最新公告為準。</p>`;
@@ -712,6 +713,56 @@ ${wardGomiTable("tw")}
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
         { "@type": "ListItem", position: 2, name: "東京 23 區垃圾分類 PDF", item: url }
+      ] }
+    ],
+    main
+  });
+}
+
+/* 東京 23 區大型垃圾（粗大ごみ）預約窗口整理頁（周周 2026-10-27 核准的「官方資料中心」第二頁）。
+   表格資料來自 ward-sodai.json，由 GitHub Actions 每週從各區官網抓（見 fetch-ward-sodai.cjs）。 */
+function pageSodaiTW() {
+  const slug = "tokyo-oversized-garbage";
+  const url = BASE + slug + ".html";
+  const updated = sodaiUpdated();
+  const main = `
+<p>沙發、床墊、書桌、腳踏車——這些在東京叫「大型垃圾」（粗大ごみ），不能直接拿去一般的垃圾置場放，要<b>先預約、再買處理券</b>，約好的那天才能拿出去。</p>
+<p>麻煩的是每一區的受理窗口都不一樣，網路上查到的電話常常是別區的，或是已經換掉的舊號碼。我把 23 區官方的預約電話與網路預約入口整理在下面，每週自動從各區官網重新抓一次。</p>
+
+${wardSodaiTable("tw", esc)}
+
+<h2 class="ah">流程大致是這四步</h2>
+<p><b>1. 預約。</b>打上面的電話，或用網路預約。會問你要丟什麼、大小、住址，然後告訴你收集日、要貼多少錢的處理券，以及一組受理號碼。</p>
+<p><b>2. 買處理券。</b>去超商或貼有「粗大ごみ処理券取扱所」標示的店家買，金額照預約時說的。有些區可以線上付款，預約頁面上會寫。</p>
+<p><b>3. 寫上名字或受理號碼，貼在物品上。</b>一件東西貼一張（或幾張加起來到指定金額），貼在看得到的地方。</p>
+<p><b>4. 收集日當天早上放到指定地點。</b>多半是家門口或公寓指定的位置，時間依各區規定，通常要在早上就放好。</p>
+
+<h2 class="ah">幾件容易踩雷的事</h2>
+<p><b>不是每個大東西都收。</b>冷氣、電視、冰箱（含冷凍庫）、洗衣機（含乾衣機）這四樣依家電回收法不能當大型垃圾丟，電腦也不行，要走另外的回收管道。</p>
+<p><b>搬家旺季要提早。</b>3 到 4 月預約常常排到好幾週後，退租日都到了舊家具還在。決定搬家就先預約，不要等到最後一週。</p>
+<p><b>電話多半是日文。</b>網路預約不用講話，比較適合日文還不熟的人；有些區也提供多語對應，可以看官方頁。</p>
+<p>多大才算大型垃圾、各區費用大概多少、還有分類為什麼這麼複雜，寫在<a href="tokyo-garbage-sorting-guide.html">東京垃圾分類為什麼這麼複雜</a>那一篇；各區的中文版分類手冊在<a href="tokyo-garbage-pdf.html">23 區垃圾分類中文版 PDF 下載</a>。</p>
+
+<h2 class="ah">買房時我也會看這一塊</h2>
+<p>中古屋偶爾會遇到前屋主留下舊家具、舊家電，看屋時覺得「附家具賺到了」，交屋後才發現是好幾件要花錢處理的東西。這種我在看屋與議價階段就會幫你看清楚，必要時請賣方交屋前處理掉。有需要就加 LINE 跟我說。</p>
+
+<p class="src">※ 表格中的電話與網址由各區官方網站自動整理，內容與更新由各區負責。${updated ? `資料最後確認日 ${esc(updated)}，每週自動重新確認。` : ""}受理方式、費用與收集日請以你所在區的最新公告為準。</p>`;
+  return landing({
+    slug,
+    metaTitle: "東京 23 區大型垃圾（粗大ごみ）預約電話與網路申請一覽｜周周・日本房仲",
+    h1: "東京 23 區大型垃圾預約窗口一覽",
+    lead: "沙發、床墊、書桌這類大型垃圾要先預約再買處理券。23 區官方的預約電話與網路預約入口整理在這裡，每週自動從官網重新確認。",
+    crumb: "23 區大型垃圾預約",
+    desc: "東京 23 區大型垃圾（粗大ごみ）的官方預約電話與網路申請入口一次整理：千代田、中央、港、新宿、文京、台東、墨田、江東、品川、目黑、大田、世田谷、澀谷、中野、杉並、豐島、北、荒川、板橋、練馬、足立、葛飾、江戶川。附預約、買處理券到收集日的流程，以及不能當大型垃圾丟的家電。每週自動從各區官網重新確認。",
+    keywords: "東京大型垃圾,粗大ごみ 預約,粗大ごみ 中文,東京丟沙發,東京丟床墊,粗大ごみ処理券,東京搬家 垃圾,東京生活",
+    ctaTitle: "正在找房，或準備搬進東京？",
+    ctaSub: "前屋主留下的舊家具、舊家電要誰處理，看屋時就該問清楚。要我陪你看，跟我說一聲就好。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "WebPage", name: "東京 23 區大型垃圾預約窗口一覽", inLanguage: "zh-Hant", url,
+        description: "東京 23 區官方大型垃圾（粗大ごみ）預約電話與網路申請入口整理，每週自動重新確認。", publisher: PUBLISHER_TW },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+        { "@type": "ListItem", position: 2, name: "東京 23 區大型垃圾預約", item: url }
       ] }
     ],
     main
@@ -1260,7 +1311,8 @@ fs.writeFileSync(ROOT + "/stats.html", pageStats());
 fs.writeFileSync(ROOT + "/buy-property-in-japan.html", pageHubTW());
 fs.writeFileSync(ROOT + "/faq.html", pageFaqTW());
 fs.writeFileSync(ROOT + "/tokyo-garbage-pdf.html", pageGomiPdfTW());
-console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html / faq.html / tokyo-garbage-pdf.html");
+fs.writeFileSync(ROOT + "/tokyo-oversized-garbage.html", pageSodaiTW());
+console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html / faq.html / tokyo-garbage-pdf.html / tokyo-oversized-garbage.html");
 
 // 脆文精選（繁中；-cn 由 build-cn 產生，日文版不做——內容是寫給華語圈讀者的）
 for (const cfg of THREADS_PAGES) {
@@ -1310,6 +1362,7 @@ for (const p of PROPS.filter(x => !x.sold && (x.status === "在售" || x.keepPag
 urls.push({ loc: BASE + "buy-property-in-japan.html", pr: "0.9", cf: "weekly" });
 urls.push({ loc: BASE + "faq.html", pr: "0.8" });
 urls.push({ loc: BASE + "tokyo-garbage-pdf.html", pr: "0.8", cf: "weekly" });
+urls.push({ loc: BASE + "tokyo-oversized-garbage.html", pr: "0.7", cf: "weekly" });
 urls.push({ loc: BASE + "buy-property-in-japan-ja.html", pr: "0.7", cf: "weekly" });
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese.html", pr: "0.8" });
 // 脆文精選：第一手實務內容，權重比一般工具頁高
@@ -1321,6 +1374,7 @@ for (const cfg of THREADS_PAGES) {
 urls.push({ loc: BASE + "japan-real-estate-agent-for-taiwanese-ja.html", pr: "0.7" });
 urls.push({ loc: BASE + "faq-ja.html", pr: "0.7" });
 urls.push({ loc: BASE + "tokyo-garbage-pdf-ja.html", pr: "0.6", cf: "weekly" });
+urls.push({ loc: BASE + "tokyo-oversized-garbage-ja.html", pr: "0.5", cf: "weekly" });
 urls.push({ loc: BASE + "about.html", pr: "0.8" });      // 作者介紹頁：E-E-A-T 的權威來源
 urls.push({ loc: BASE + "about-ja.html", pr: "0.8" });
 urls.push({ loc: BASE + "privacy.html", pr: "0.3" });
