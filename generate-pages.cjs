@@ -1091,6 +1091,19 @@ function pageStats() {
       }
     }
   }
+  /* 改過標題的舊文章：GA 的歷史資料還掛在舊標題底下，不補的話那些點閱會被略過。
+     只放「同一篇文章、只是改標題」的；換題的（例如 a61 原本是中目黑那篇）不可以放，
+     否則會把別篇的點閱算進來。簡中舊標題由前端繁簡模糊比對自動對到。
+     「\u6ce8」是「注」的跳脫寫法：舊標題本身含日文詞，直接寫會被 check-lang 當成正文誤報。 */
+  const OLD_TITLES = {
+    "在日本買地自建？土地購入＋\u6ce8文住宅的流程、優點與選地重點一次看": "a38",
+    "日本で土地を買って家を建てる？土地購入＋\u6ce8文住宅の流れ・メリット・土地選びのポイント": "a38",
+    "錢怎麼匯到日本買房？海外匯款的流程、時間點與匯率，周周一次講清楚": "a41",
+    "民宿、月租、一般出租：同一間房，三種收益模式到底差在哪？": "a46",
+    "經營管理簽證的辦公室怎麼租？自宅不能用了，初期費用要準備 200～300 萬日圓": "a44",
+    "經營管理簽的辦公室怎麼找？自宅不能用了，租金與保證金要抓多少": "a44",
+  };
+  for (const t in OLD_TITLES) if (!titleMap[normT(t)]) titleMap[normT(t)] = OLD_TITLES[t];
   const titleJson = JSON.stringify(titleMap).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
 
   return `<!doctype html><html lang="zh-Hant"><head>
@@ -1139,13 +1152,15 @@ ${STYLE}
   <h2 style="font-size:18px;margin-bottom:8px">匯入 Google Analytics 的歷史數據</h2>
   <p style="color:var(--mut);font-size:14px;line-height:1.9;margin-bottom:14px">
     這個計數器是 2026-10-23 才開始算的，在那之前的點閱數都在 GA 裡。<br>
-    <b>GA 匯出步驟：</b>GA4 →「報表」→「生命週期」→「參與」→「網頁和畫面」→ 右上角「分享這份報表」→「下載檔案」→ CSV。<br>
-    下載後把檔案用記事本打開，整份貼進下面的框框（含標題列沒關係，程式會自己略過），
+    <b>GA 匯出步驟：</b>GA4 →「報表」→「生命週期」→「參與」→「網頁和畫面」→ 右上角「分享這份報表」→「下載檔案」→ CSV。<b>日期請選到 2026/10/22 為止</b>（10/23 起這邊自己有在算，選到今天會重複算一週）。<br>
+    下載後按「選擇 GA 的 CSV 檔」挑那個檔（或用記事本打開整份貼進框框，含標題列沒關係，程式會自己略過），
     再按「寫入」。會寫進每篇文章的「歷史基數」欄位，<b>不會蓋掉</b>這幾天新累積的數字。<br>
     要先用周周本人的 Google 帳號登入才寫得進去。
   </p>
   <p><button id="login" class="btn btn-line" style="border:none">用 Google 登入</button>
      <span id="who" style="font-size:14px;margin-left:10px;color:var(--mut)"></span></p>
+  <p style="margin-bottom:8px"><label class="btn" style="background:#fff;border:1.5px solid var(--line);cursor:pointer">📂 選擇 GA 的 CSV 檔<input id="csvfile" type="file" accept=".csv,text/csv" style="display:none"></label>
+     <span style="font-size:13px;color:var(--mut);margin-left:6px">（選完會自動填進下面的框框，也可以照舊貼上）</span></p>
   <textarea id="csv" placeholder="網頁路徑和畫面類別,瀏覽次數&#10;/tokyo-garbage-sorting-guide.html,123&#10;/japan-property-tax-guide.html,456"></textarea>
   <p style="margin-top:10px">
     <button id="prev" class="btn" style="background:#fff;border:1.5px solid var(--line);cursor:pointer">先試算（不寫入）</button>
@@ -1290,6 +1305,15 @@ function render(res, done) {
     + res.skipped.slice(0, 40).join("\\n　");
   logEl.textContent = t;
 }
+/* 直接選檔：讀成文字丟進框框，再自動試算一次，周周不用開記事本複製貼上。 */
+document.getElementById("csvfile").onchange = e => {
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+  f.text().then(t => {
+    document.getElementById("csv").value = t;
+    render(parseCsv(t), false);
+  }).catch(err => { logEl.textContent = "讀檔失敗：" + err.message; });
+};
 document.getElementById("prev").onclick = () => render(parseCsv(document.getElementById("csv").value), false);
 goBtn.onclick = async () => {
   const res = parseCsv(document.getElementById("csv").value);
