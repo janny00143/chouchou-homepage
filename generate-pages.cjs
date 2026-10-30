@@ -74,6 +74,7 @@ const FAQ_VIDS = (() => {
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
+  "a63": "shibuya-halloween",
   "a62": "japan-property-registration-nationality",
   "a61": "tokyo-garbage-sorting-guide",
   "a60": "japan-fire-earthquake-insurance-guide",
