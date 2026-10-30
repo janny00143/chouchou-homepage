@@ -34,6 +34,7 @@
 .cbtn.prev{left:0}.cbtn.next{right:0}.cbtn:hover{background:var(--rose)}.cbtn.hide{opacity:0;pointer-events:none}
 @media(max-width:600px){.vidwall .vw{flex:0 0 72%}}
 .vidwall iframe{width:100%;height:100%;border:0;display:block}.ytf{position:relative;cursor:pointer;width:100%;height:100%;background:#000;display:block}.ytf img{width:100%;height:100%;object-fit:cover;display:block}.ytf .pbtn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;padding-left:3px;pointer-events:none}.ytf:hover .pbtn{background:var(--rose)}
+.longv{max-width:820px;margin:0 auto 30px;display:grid;gap:18px}.longv .lv{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 4px 14px rgba(0,0,0,.12)}.vsec{font-weight:800;font-size:17px;margin:4px 0 12px;text-align:left}
 .empty{text-align:center;color:var(--mut);padding:30px;border:1px dashed var(--line);border-radius:14px}
 .cta{background:linear-gradient(135deg,#f43f5e,#fb923c);color:#fff;border-radius:18px;padding:24px;text-align:center;margin:24px 0}.cta p{margin-bottom:12px;font-size:15px}
 .cta .btn-line{background:#fff;color:var(--rose);border-radius:999px;font-weight:700;padding:12px 26px}
@@ -47,14 +48,18 @@ html[data-theme="dark"] .sbar{background:#1c1917}
   <a class="back" href="index-cn.html">← 回首页</a>
   <div class="top"><h1>🎬 周周的影片</h1><p>用影片带你认识日本买房、自住、投资与生活的眉角</p></div>
   <div style="text-align:center"><a class="yt" href="https://www.youtube.com/@travelfish67" target="_blank" rel="noopener">▶ 订阅 YouTube 频道</a></div>
+  <div id="longwrap" style="display:none"><p class="vsec">🎥 最新影片</p><div class="longv" id="longv"></div><p class="vsec">📱 短影音</p></div>
   <div class="carousel"><button class="cbtn prev" onclick="scrollVids(-1)" aria-label="上一个">‹</button><div class="vidwall" id="vidwall"></div><button class="cbtn next" onclick="scrollVids(1)" aria-label="下一个">›</button></div>
   <div class="cta"><p>看完影片有问题，或想找适合的物件？<br>直接加 LINE 找周周聊聊 👇</p><a class="btn-line" id="lineCta" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">💬 加 LINE 咨询</a></div>
   <p class="foot">© 周周・日本房仲</p>
 </div>
 <script>
 // 要新增影片：把 YouTube 影片 ID 加进这个阵列即可（网址 youtube.com/watch?v=XXXX 或 shorts/XXXX 的 XXXX）
+// 横式（一般长片）放 LONG：整宽 16:9 显示在最上面；直式 Shorts 放 VIDEOS（9:16 轮播）。
+const LONG=["JuCNNIFfuWY"];
 const VIDEOS=["N9ivvqZa1ek","io4OkXjveeU","GvRyve5hGCY","7Mg2-YEuM0o","g6TzzDSh5NA","8qUlo4F8PKQ","L-dGrN2jiUY","bQGr-Cm3Umw","PPI5b5W-l4k","IVBNhY7N0Ac","z3fE68ir-6E","hTtulzKgjzM","fAizcxutacY","8fY3ioHl8a0","FIK0Ol9uEXc","-8bCGb_-WiM"];
 function scrollVids(d){var el=document.getElementById('vidwall');el.scrollBy({left:d*el.clientWidth*0.85,behavior:'smooth'});}
+if(LONG.length){document.getElementById('longwrap').style.display='block';document.getElementById('longv').innerHTML=LONG.map(function(id){return '<div class="lv"><div class="ytf" data-id="'+id+'"><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg\'" alt="影片缩图" loading="lazy"><span class="pbtn">▶</span></div></div>';}).join('');}
 var w=document.getElementById('vidwall');
 w.innerHTML=VIDEOS.length?VIDEOS.map(function(id){return '<div class="vw"><div class="ytf" data-id="'+id+'"><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg\'" alt="影片缩图" loading="lazy"><span class="pbtn">▶</span></div></div>';}).join(''):'<div class="empty">影片陆续上架中，先到 YouTube 频道看看吧！</div>';
 (function(){var pv=document.querySelector('.cbtn.prev'),nx=document.querySelector('.cbtn.next');function upd(){if(!pv||!nx)return;pv.classList.toggle('hide',w.scrollLeft<=2);nx.classList.toggle('hide',w.scrollLeft>=w.scrollWidth-w.clientWidth-2);}w.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();})();
