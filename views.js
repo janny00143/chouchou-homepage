@@ -42,6 +42,11 @@ const firebaseConfig = {
 };
 const RECAPTCHA_SITE_KEY = "6Lf0joMtAAAAANfTspfN91tDC5pWQ-oG6fzfgLb2";
 
+/* 文章頁顯示時每篇固定多加的數字（周周 2026-10-30 指示：「每篇加 20 就好」）。
+   只加在讀者看到的文章頁；統計頁（stats.html）顯示真實數字，周周看得到實際成效。
+   不要改成加進 Firestore——那樣真實數字就分不出來了。 */
+const DISPLAY_BONUS = 20;
+
 /* 同一篇文章幾小時內不重複計數 */
 const DEDUP_HOURS = 6;
 
@@ -106,7 +111,7 @@ async function runCounters() {
       }
       const [snap, sb] = await Promise.all([getDoc(ref), getStaticBase()]);
       const v = snap.exists() ? snap.data() : {};
-      const total = baseOf(id, v, sb) + Number(v.n || 0);
+      const total = baseOf(id, v, sb) + Number(v.n || 0) + DISPLAY_BONUS;
       el.textContent = "👁 " + fmt(total) + (el.dataset.unit || "");
       el.style.visibility = "visible";
     } catch (e) {
