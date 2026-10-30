@@ -90,8 +90,7 @@
     "東京生活",
     "看房重點"
    ],
-   "cover": "img/cover-japan-vegetables.webp",
-   "coverFit": "full",
+   "cover": "img/cover-japan-vegetables-salad.webp",
    "video": "",
    "checked": "2026-10-30",
    "ex": "在台灣，便當一定有三樣菜、熱炒店一定點一盤炒青菜；到了日本，外食的蔬菜幾乎都是生菜沙拉。我自己的解法就兩個：去中華料理店，或乾脆自己煮。這篇分享外食怎麼點、超市買什麼最好炒，還有很多人搬進去才發現的事——廚房到底能不能大火快炒。",
@@ -106,6 +105,7 @@
     "我最常去的是中華料理店，日本人叫「町中華」的那種街坊小店。菜單上找「野菜炒め」（炒青菜）或「肉野菜炒め定食」，就是一大盤炒高麗菜、豆芽、紅蘿蔔加肉片；另一個是湯麵「タンメン」，上面鋪滿炒過的蔬菜，一碗就能吃到不少。",
     "其他還有幾個方向：定食屋會附小菜（小鉢）和味噌湯；冬天吃火鍋（鍋料理），白菜、茼蒿、菇類一次吃很多；台灣料理店有炒空心菜，韓國料理的涼拌小菜（ナムル）也是青菜；趕時間的話，便利商店也有溫蔬菜（温野菜）和蔬菜湯。",
     "<b>三、自己煮：這幾種日本超市的菜最適合快炒</b>",
+    "<div style='margin:16px 0'><img src='img/japan-vegetables-market.webp' class='artimg' width='1280' height='853' loading='lazy' alt='日本超市買得到的蔬菜：紅蘿蔔、青蔥、花椰菜、小番茄'></div>",
     "<div style='overflow-x:auto;margin:14px 0'><table style='width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7'><thead><tr style='background:#f0fdf4'><th style='text-align:left;padding:10px 12px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>菜名（日文）</th><th style='text-align:left;padding:10px 12px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>像台灣的</th><th style='text-align:left;padding:10px 12px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>怎麼煮</th></tr></thead><tbody><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>小松菜（こまつな）</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>介於青江菜和菠菜之間</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>蒜炒、燙都好，一年四季都買得到</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>青江菜（チンゲン菜）</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>就是青江菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>快炒、炒香菇最對味</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>豆苗（とうみょう）</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>豌豆苗</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>蒜炒很香；根部泡水還能再長一次</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>豆芽（もやし）</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>豆芽菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>便宜又快熟，炒韭菜、炒肉絲</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>高麗菜（キャベツ）</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>高麗菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>日本的偏甜，蒜炒、炒蝦米都好吃</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>空心菜（空芯菜）</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>空心菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>夏天才有，多在中華或亞洲食材店</td></tr></tbody></table></div>",
     "忙的時候，冷凍蔬菜也很好用，業務超市（業務スーパー）這類店有大包裝，直接下鍋就好。想找台灣常吃但日本少見的葉菜，池袋北口、新大久保、上野一帶的中華食材店比較有機會買到。",
     "<b>四、租房、買房前，先看廚房能不能炒菜</b>",
@@ -126,7 +126,7 @@
     "東京生活",
     "内見のポイント"
    ],
-   "cover": "img/cover-japan-vegetables-ja.webp",
+   "cover": "img/cover-japan-vegetables-salad.webp",
    "body": [
     "台湾のお客様から来日後によく伺うのが、「温かい青菜炒めが恋しい」というお声です。",
     "台湾では、お弁当屋さんで野菜のおかずを3品選び、炒め物の店では必ず青菜炒めを一皿頼みます。日本の外食では野菜はサラダや小鉢のおひたしが中心で、数か月暮らしてから「何日も温かい野菜を食べていない」と気づく方も少なくありません。",
@@ -138,6 +138,7 @@
     "よく利用するのは町中華です。「野菜炒め」や「肉野菜炒め定食」、炒めた野菜がたっぷりのった「タンメン」がおすすめです。",
     "ほかにも、小鉢と味噌汁が付く定食屋、白菜や春菊をたっぷり食べられる冬の鍋料理、空芯菜炒めのある台湾料理店、ナムルのある韓国料理店などがございます。急ぐときはコンビニの温野菜や野菜スープも便利です。",
     "<b>3. 炒め物に向くスーパーの野菜</b>",
+    "<div style='margin:16px 0'><img src='img/japan-vegetables-market.webp' class='artimg' width='1280' height='853' loading='lazy' alt='スーパーで手に入る野菜：にんじん、長ねぎ、ブロッコリー、ミニトマト'></div>",
     "<div style='overflow-x:auto;margin:14px 0'><table style='width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7'><thead><tr style='background:#f0fdf4'><th style='text-align:left;padding:10px 12px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>野菜</th><th style='text-align:left;padding:10px 12px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>特徴</th><th style='text-align:left;padding:10px 12px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>おすすめの食べ方</th></tr></thead><tbody><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>小松菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>通年手に入り、クセが少ない</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>にんにく炒め、おひたし</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>チンゲン菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>台湾の青江菜と同じ</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>強火でさっと炒める</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>豆苗</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>根を水に浸けると再収穫できる</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>にんにく炒め</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>もやし</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>手頃で火の通りが早い</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>ニラや豚肉と炒める</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>キャベツ</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>甘みが強い</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>にんにく炒め</td></tr><tr><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>空芯菜</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>夏季が中心</td><td style='padding:9px 12px;border-bottom:1px solid #e7e5e4;vertical-align:top'>中華・アジア食材店で入手しやすい</td></tr></tbody></table></div>",
     "忙しいときは業務スーパーなどの冷凍野菜も便利です。台湾でよく食べる葉物は、池袋北口・新大久保・上野周辺の中華食材店で見つかることがございます。",
     "<b>4. 住まい選びではキッチンを確認</b>",
@@ -148,5 +149,5 @@
    ]
   }
  },
- "_note": "2026-10-30 周周指示先撤下、之後一週一篇慢慢發。重新上線：把 tw 放回 index.html ART 最前面、ja 放回 ja-content.json、兩處 SLUG 加回（a64→japan-vegetables-how-to-eat、a65→japan-milk-price），封面從 img-original/ 搬回 img/，id 依當時最大編號重新編。發之前先請周周找圖。"
+ "_note": "2026-10-30 周周指示先撤下、之後一週一篇慢慢發。重新上線：把 tw 放回 index.html ART 最前面、ja 放回 ja-content.json、兩處 SLUG 加回（a64→japan-vegetables-how-to-eat、a65→japan-milk-price），封面從 img-original/ 搬回 img/，id 依當時最大編號重新編。發之前先請周周找圖。 ／2026-10-30 周周傳了照片（沙拉、蔬菜，上傳到 repo 根目錄的 pexels-*.jpg，原檔已移到 img-original/）：a64 封面改用 img-original/cover-japan-vegetables-salad.webp（實景照、不疊字、一般照片封面不設 coverFit，中日共用），內文插 img-original/japan-vegetables-market.webp。發的時候把這兩張搬到 img/，img-size.json 加 [1280,853]。舊的排版封面 cover-japan-vegetables(-ja).webp 不用了。"
 }
