@@ -152,7 +152,9 @@ const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g,
 const cat = id => CATS.find(c => c.id === id) || { name: "未分類", g: "linear-gradient(135deg,#a8a29e,#d6d3d1)", c: "#a8a29e" };
 const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/); return m ? "https://www.youtube.com/embed/" + m[1] : ""; };
 const rt = a => Math.max(1, Math.round(a.body.join("").replace(/\s/g, "").length / 350));
-const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
+/* 逐段編碼：封面搬進 img/ 之後，整串 encodeURIComponent 會把「/」編成 %2F（img%2Fxxx.webp），
+   GitHub Pages 找不到檔案 → 文章頁封面與分享縮圖破圖（2026-10-30 修正）。 */
+const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + String(c).split("/").map(encodeURIComponent).join("/")) : ""; };
 
 /* ── 文章分類 → 要推薦哪一種在售物件（提案 1・2026-10-04 擴大覆蓋）────────
    原本只有 invest 與 minpaku 兩類會出現物件卡片，55 篇文章裡只有 9 篇有，
@@ -1155,7 +1157,7 @@ ${STYLE}
     <b>GA 匯出步驟：</b>GA4 →「報表」→「生命週期」→「參與」→「網頁和畫面」→ 右上角「分享這份報表」→「下載檔案」→ CSV。<b>日期請選到 2026/10/22 為止</b>（10/23 起這邊自己有在算，選到今天會重複算一週）。<br>
     下載後按「選擇 GA 的 CSV 檔」挑那個檔（或用記事本打開整份貼進框框，含標題列沒關係，程式會自己略過），
     再按「寫入」。會寫進每篇文章的「歷史基數」欄位，<b>不會蓋掉</b>這幾天新累積的數字。<br>
-    要先用周周本人的 Google 帳號登入才寫得進去。
+    要先用周周本人的 Google 帳號登入才寫得進去。<br>💡 嫌麻煩的話，把 CSV 丟給 Claude 就好：它會跑 <code>ga-base.cjs</code> 把歷史數字直接放進網站（views-base.json），不用登入、不用匯入。
   </p>
   <p><button id="login" class="btn btn-line" style="border:none">用 Google 登入</button>
      <span id="who" style="font-size:14px;margin-left:10px;color:var(--mut)"></span></p>
@@ -1309,7 +1311,12 @@ function render(res, done) {
 document.getElementById("csvfile").onchange = e => {
   const f = e.target.files && e.target.files[0];
   if (!f) return;
-  f.text().then(t => {
+  /* GA 或 Excel 有時存成 UTF-16，直接當 UTF-8 讀會變亂碼，先看檔頭判斷 */
+  f.arrayBuffer().then(buf => {
+    const u = new Uint8Array(buf);
+    const enc = (u[0] === 0xff && u[1] === 0xfe) ? "utf-16le" : (u[0] === 0xfe && u[1] === 0xff) ? "utf-16be" : "utf-8";
+    return new TextDecoder(enc).decode(buf).replace(/^\uFEFF/, "");
+  }).then(t => {
     document.getElementById("csv").value = t;
     render(parseCsv(t), false);
   }).catch(err => { logEl.textContent = "讀檔失敗：" + err.message; });

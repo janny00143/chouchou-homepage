@@ -13,6 +13,7 @@
      顯示的數字 ＝ base + n。
      base 是「這個計數器上線以前」的點閱數（從 Google Analytics 匯入），
      由周周在 Firebase 主控台填，或用匯入腳本寫入；前端永遠不會動到它。
+     Firestore 沒有 base 的文章，改用 views-base.json（ga-base.cjs 產生）的數字。
 
    ▍三語合併計算
      繁中／簡中／日文看的是同一篇文章，所以共用同一個 id，數字是加總。
@@ -63,6 +64,22 @@ function getDb() {
 
 function fmt(n) { return Number(n || 0).toLocaleString("en-US"); }
 
+/* GA 歷史點閱的靜態備份（views-base.json，由 ga-base.cjs 從周周給的 GA CSV 產生）。
+   Firestore 裡有 base 就用 Firestore 的；沒有才用這份補上。
+   讀不到這個檔就當作 0，不要影響計數本身。 */
+let staticBase = null;
+function getStaticBase() {
+  if (!staticBase) {
+    staticBase = fetch("views-base.json", { cache: "no-cache" })
+      .then(r => (r.ok ? r.json() : {}))
+      .catch(() => ({}));
+  }
+  return staticBase;
+}
+function baseOf(id, v, sb) {
+  return v && v.base != null ? Number(v.base || 0) : Number((sb && sb[id]) || 0);
+}
+
 /* 這台裝置最近有沒有看過這篇？看過就不再 +1（但照樣顯示數字） */
 function shouldCount(id) {
   try {
@@ -87,9 +104,9 @@ async function runCounters() {
       if (el.hasAttribute("data-count") && shouldCount(id)) {
         await setDoc(ref, { n: increment(1) }, { merge: true });
       }
-      const snap = await getDoc(ref);
+      const [snap, sb] = await Promise.all([getDoc(ref), getStaticBase()]);
       const v = snap.exists() ? snap.data() : {};
-      const total = Number(v.base || 0) + Number(v.n || 0);
+      const total = baseOf(id, v, sb) + Number(v.n || 0);
       el.textContent = "👁 " + fmt(total) + (el.dataset.unit || "");
       el.style.visibility = "visible";
     } catch (e) {
@@ -108,10 +125,10 @@ async function runStats() {
 
   let rows = [];
   try {
-    const snap = await getDocs(collection(getDb(), "views"));
-    const m = {};
-    snap.forEach(s => { const v = s.data() || {}; m[s.id] = Number(v.base || 0) + Number(v.n || 0); });
-    rows = meta.map(a => ({ ...a, v: m[a.id] || 0 }));
+    const [snap, sb] = await Promise.all([getDocs(collection(getDb(), "views")), getStaticBase()]);
+    const fsv = {};
+    snap.forEach(s => { fsv[s.id] = s.data() || {}; });
+    rows = meta.map(a => ({ ...a, v: baseOf(a.id, fsv[a.id], sb) + Number((fsv[a.id] || {}).n || 0) }));
   } catch (e) {
     box.innerHTML = '<p style="color:#dc2626">讀不到點閱資料，請確認 Firestore 規則已發布。</p>';
     return;

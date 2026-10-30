@@ -158,7 +158,9 @@ const wh = src => {
 
 const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 const ytEmbed = u => { if (!u) return ""; const m = u.match(/(?:youtu\.be\/|v=|\/embed\/|shorts\/)([\w-]{11})/); return m ? "https://www.youtube.com/embed/" + m[1] : ""; };
-const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + encodeURIComponent(c)) : ""; };
+/* 逐段編碼：封面搬進 img/ 之後，整串 encodeURIComponent 會把「/」編成 %2F（img%2Fxxx.webp），
+   GitHub Pages 找不到檔案 → 文章頁封面與分享縮圖破圖（2026-10-30 修正）。 */
+const coverURL = a => { const c = a.hero || a.cover; return c ? (/^https?:\/\//.test(c) ? c : BASE + String(c).split("/").map(encodeURIComponent).join("/")) : ""; };
 const jaSlug = slug => slug + "-ja";
 
 /* 繁中版 generate-pages.cjs と同じルール（提案1・2026-10-04 対象分類を拡大）。
