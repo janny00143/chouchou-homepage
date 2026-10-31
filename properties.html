@@ -258,7 +258,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       +'<div class="ph">'+photo+badge+tag+((ntag||wtag||vtag||ptag||ltag)?'<span class="tagrow">'+ntag+ltag+wtag+vtag+ptag+'</span>':"")+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
-      +PRICEHTML(String(p.price||'').replace(/[（(]\s*皆?含稅\s*[）)]/g,''),'price','價格請洽詢')
+      +PRICEHTML(String(p.priceShort||p.price||'').replace(/[（(]\s*皆?含稅\s*[）)]/g,''),'price','價格請洽詢')
       + (parseYen(p.price)>0?'<div class="fxline" data-yen="'+parseYen(p.price)+'" style="font-size:12.5px;color:var(--mut);margin:-8px 0 6px"></div>':'')
       +station
       +'</div></a>';
@@ -650,7 +650,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       var ph=(p.thumb||(p.photos&&p.photos[0]))||"";
       var walk=walkMin(p);
       return '<div class="pm-pop">'+(ph?'<img src="'+esc(ph)+'" alt="">':'')
-        +'<b>'+C(p.title_cn||p.title)+'</b><div class="pr">'+C(String(p.price||'').split('\n')[0].replace(/[（(]\s*皆?含稅\s*[）)]/g,''))+'</div>'
+        +'<b>'+C(p.title_cn||p.title)+'</b><div class="pr">'+C(String(p.priceShort||p.price||'').split('\n')[0].replace(/[（(]\s*皆?含稅\s*[）)]/g,''))+'</div>'
         +'<div class="st">'+C(wardLabel(p))+(walk?'・🚉 '+walk+('分'):'')+'</div>'
         +'<a class="go" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">看物件詳情 →</a></div>';
     }

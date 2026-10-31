@@ -250,7 +250,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       +'<div class="ph">'+photo+badge+tag+((ntag||wtag||vtag||ptag||ltag)?'<span class="tagrow">'+ntag+ltag+wtag+vtag+ptag+'</span>':"")+'</div>'
       +'<div class="body">'
       +'<h3>'+C(name)+laytag+'</h3>'
-      +PRICEHTML(String(p.price||'').replace(/[（(]\s*税込\s*[）)]/g,''),'price','価格はお問い合わせください')
+      +PRICEHTML(String(p.priceShort||p.price||'').replace(/[（(]\s*税込\s*[）)]/g,''),'price','価格はお問い合わせください')
       +station
       +'</div></a>';
   }
@@ -643,7 +643,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       var ph=(p.thumb||(p.photos&&p.photos[0]))||"";
       var walk=walkMin(p);
       return '<div class="pm-pop">'+(ph?'<img src="'+esc(ph)+'" alt="">':'')
-        +'<b>'+esc(p.title)+'</b><div class="pr">'+esc(String(p.price||'').split('\n')[0].replace(/[（(]\s*税込\s*[）)]/g,''))+'</div>'
+        +'<b>'+esc(p.title)+'</b><div class="pr">'+esc(String(p.priceShort||p.price||'').split('\n')[0].replace(/[（(]\s*税込\s*[）)]/g,''))+'</div>'
         +'<div class="st">'+C(wardLabel(p))+(walk?'・🚉 '+walk+('分'):'')+'</div>'
         +'<a class="go" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">物件詳細を見る →</a></div>';
     }

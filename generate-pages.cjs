@@ -286,7 +286,7 @@ function propBlockHTML(a) {
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + name + "</b>"
       + '<span class="apmeta">' + esc(p.location || "") + "</span>"
-      + '<span class="apprice">' + esc(String(p.price || "價格請洽詢").replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
+      + '<span class="apprice">' + esc(String(p.priceShort || p.price || "價格請洽詢").replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
   const [h2, sub] = propBlockTitle(a, list.areaHit);
