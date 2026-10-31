@@ -325,6 +325,7 @@ node check-lang.cjs       # 中文頁面的日文殘留檢查（只回報、不�
 - **必須排在 `build-cn.cjs` 之後**，因為 `properties-cn.html` 是 build-cn 從繁中版重新產生的，
   先跑會被蓋掉、而且簡中頁會殘留繁中版的網址。
 - **`<!--PROP-SEO-->` 到 `<!--/PROP-SEO-->` 之間不要手改**，改物件請改 `properties.js` 再重跑。
+- **首頁的「周周精選物件」也是 `build-prop-seo.cjs` 產生的**（2026-10-31）：`index.html`／`index-cn.html`／`ja.html` 的 `<!--HOME-PROPS-->` 到 `<!--/HOME-PROPS-->` 之間不要手改。挑法是 pin 大的優先、再來最新上架，取 6 件有照片的；想讓某件上首頁就給它 pin。`ja.html` 的標記寫在 `build-ja-home.cjs` 的樣板裡。
 - ⚠️ **改完 `properties.js` 要跑「全部六支」，不可以只跑 `build-cn` ＋ `build-prop-seo`**
   （2026-09-18 的 A7 冪等檢查抓到）。因為「在售件數」被內嵌在三個地方：
   `llms.txt`／`llms-cn.txt`（generate-pages＋build-cn 產）、`llms-ja.txt`（build-ja 產）、

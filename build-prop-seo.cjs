@@ -129,6 +129,64 @@ function block(key) {
     + rows + "</ul></section></noscript>\n" + MARK_E;
 }
 
+/* ── 首頁「周周精選物件」（周周 2026-10-31：「物件專區幫我在首頁可以做得更明顯一點」）──
+   首頁不載入 properties.js（250KB），所以在這裡直接產生靜態卡片，塞進
+   index.html／index-cn.html／ja.html 的 <!--HOME-PROPS--> 區塊。
+   挑法：pin 大的在前（周周指定置頂的），再來是最新上架，取 6 件有照片的。
+   ⚠️ 必須在 build-cn、build-ja-home 之後跑（它們會重新產生 index-cn.html／ja.html）。 */
+const HM_S = "<!--HOME-PROPS-->", HM_E = "<!--/HOME-PROPS-->";
+const HOME = {
+  tw: { file: "index.html", list: "properties.html", head: "🏠 周周精選物件", count: n => "目前在售 " + n + " 件",
+        all: "看全部物件 →", map: "🗺 用地圖找", sub: "東京 23 區自住・投資，獨家物件也在這裡。看到喜歡的直接點進去，或加 LINE 跟我說你的條件。",
+        walk: "徒步", min: "分", ask: "價格請洽詢" },
+  cn: { file: "index-cn.html", list: "properties-cn.html", head: "🏠 周周精选物件", count: n => "目前在售 " + n + " 件",
+        all: "看全部物件 →", map: "🗺 用地图找", sub: "东京 23 区自住・投资，独家物件也在这里。看到喜欢的直接点进去，或加 LINE 跟我说你的条件。",
+        walk: "徒步", min: "分", ask: "价格请洽询" },
+  ja: { file: "ja.html", list: "properties-ja.html", head: "🏠 おすすめ物件", count: n => "販売中 " + n + " 件",
+        all: "すべての物件を見る →", map: "🗺 地図で探す", sub: "東京23区の自宅用・投資用物件をご紹介しております。気になる物件はそのまま詳細をご覧いただけます。",
+        walk: "徒歩", min: "分", ask: "価格はお問い合わせください" }
+};
+const listedTs = p => Date.parse(p.listed || "") || 0;
+const walkMin = st => { let best = 0, m; const re = /[徒]\s*[步歩]\s*約?(\d+)\s*分/g; while ((m = re.exec(String(st || "")))) { const v = +m[1]; if (!best || v < best) best = v; } return best; };
+const wardOf = loc => { const m = String(loc || "").match(/([^\s都道府縣県]{1,4}?[區区市])/); return m ? m[1] : ""; };
+function homeBlock(key) {
+  const H = HOME[key], L = LANG[key];
+  const act = ALL.filter(p => !p.sold && p.status === "在售");
+  const pick = act.filter(p => (p.photos || []).length && !/^https?:/i.test(p.photos[0]) && !(p.group && p.group !== "jisha"))
+    .sort((a, b) => ((b.pin || 0) - (a.pin || 0)) || (listedTs(b) - listedTs(a))).slice(0, 6);
+  const cards = pick.map(p => {
+    const d = L.pick(p);
+    const j = JA[p.id] || {};
+    const st = propStatic(key, p.id);
+    const href = st || (L.detail + "?id=" + encodeURIComponent(p.id));
+    let price = key === "ja" ? (j.priceShort || j.price || p.priceShort || p.price) : (p.priceShort || p.price);
+    price = String(price || H.ask).split("\n")[0].replace(/[（(]\s*(皆?含稅|税込)\s*[）)]/g, "");
+    if (key === "cn") price = toCn(price);
+    const w = walkMin(d.st), ward = wardOf(d.loc);
+    const img = p.thumb || p.photos[0];
+    return '<a class="hp-card" href="' + href + '"><div class="hp-ph"><img src="' + esc(img) + '" alt="' + esc(d.title) + '" loading="lazy" width="400" height="300"></div>'
+      + '<div class="hp-b"><b>' + esc(d.title) + '</b><div class="hp-pr">' + esc(price) + '</div>'
+      + '<div class="hp-st">' + esc(ward) + (w ? "・🚉 " + H.walk + " " + w + " " + H.min : "") + '</div></div></a>';
+  }).join("");
+  return HM_S + "\n"
+    + '<style>.herob .b-prop{background:#f4547a;color:#fff;border-color:#f4547a}.hpsec{max-width:1100px;margin:34px auto 6px;padding:0 16px}.hp-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}.hp-hd h2{font-size:clamp(22px,2.6vw,28px);margin:0}.hp-cnt{display:inline-block;margin-left:10px;font-size:14px;font-weight:800;color:#e11d48;background:#fff1f2;border:1px solid #fecdd3;border-radius:999px;padding:3px 12px;vertical-align:middle}.hp-sub{color:#78716c;font-size:14.5px;line-height:1.8;margin:0 0 16px}.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.hp-card{display:block;background:#fff;border:1px solid #eee9e7;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .15s,box-shadow .15s}.hp-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.1)}.hp-ph{aspect-ratio:4/3;background:#f5f5f4;overflow:hidden}.hp-ph img{width:100%;height:100%;object-fit:cover;display:block}.hp-b{padding:12px 14px 14px}.hp-b b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px;line-height:1.5;min-height:3em}.hp-pr{color:#e11d48;font-weight:900;font-size:18px;margin:6px 0 2px}.hp-st{font-size:13px;color:#78716c}.hp-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0 4px}.hp-btns a{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:12px 26px;font-weight:800;font-size:15px;text-decoration:none}.hp-all{background:#f4547a;color:#fff;box-shadow:0 6px 16px rgba(244,84,122,.3)}.hp-map{background:#fff;color:#e11d48;border:2px solid #f6adbe}@media(max-width:820px){.hp-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.hp-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px}.hp-card{flex:0 0 76%;scroll-snap-align:start}}</style>\n'
+    + '<section class="hpsec"><div class="hp-hd"><h2>' + esc(H.head) + '<span class="hp-cnt">' + esc(H.count(act.length)) + '</span></h2></div>'
+    + '<p class="hp-sub">' + esc(H.sub) + '</p><div class="hp-grid">' + cards + '</div>'
+    + '<div class="hp-btns"><a class="hp-all" href="' + H.list + '">' + esc(H.all) + '</a><a class="hp-map" href="' + H.list + '#pmapSec">' + esc(H.map) + '</a></div></section>\n'
+    + HM_E;
+}
+let hn = 0;
+for (const key of Object.keys(HOME)) {
+  const f = ROOT + "/" + HOME[key].file;
+  if (!fs.existsSync(f)) continue;
+  let s = fs.readFileSync(f, "utf8");
+  const re = new RegExp(HM_S + "[\\s\\S]*?" + HM_E);
+  if (!re.test(s)) { console.log("首頁沒有 HOME-PROPS 標記，跳過：", HOME[key].file); continue; }
+  fs.writeFileSync(f, s.replace(re, homeBlock(key)));
+  hn++;
+}
+console.log("首頁精選物件已寫入", hn, "頁");
+
 let n = 0;
 for (const key of Object.keys(LANG)) {
   const f = ROOT + "/" + LANG[key].file;
