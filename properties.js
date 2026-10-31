@@ -169,6 +169,7 @@ window.PROPERTIES = [
   {
     id: "galicia-morishita6",
     listed: "2026-10-08",
+    pin: 31,   /* 周周 2026-10-31 指示：物件專區放到最前面 */
     status: "在售",
     cat: "invest",
     title: "ガリシア森下Ⅵ（2〜12階）",
