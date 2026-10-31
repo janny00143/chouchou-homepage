@@ -838,10 +838,15 @@ function b7_props() {
     if (!j || !j.price || !p.price || OK.priceTextAllow.has(p.id)) continue;
     if (norm(p.price) !== norm(j.price)) priceDiff.push(`${p.id}\n      TW: ${p.price}\n      JA: ${j.price}`);
   }
-  const bad = noPhoto.map(i => `缺照片: ${i}`).concat(priceDiff.map(x => `中日價格不一致: ${x}`));
+  // 物件地圖（2026-10-31）：在售物件都要有座標，不然地圖上會少一顆。缺了就跑 node geo-props.cjs
+  let geo = {};
+  try { geo = JSON.parse(fs.readFileSync(path.join(ROOT, "prop-geo.json"), "utf8")); } catch (e) { geo = {}; }
+  const noGeo = onSale.filter(p => !geo[p.id]).map(p => p.id);
+  const bad = noPhoto.map(i => `缺照片: ${i}`).concat(priceDiff.map(x => `中日價格不一致: ${x}`))
+    .concat(noGeo.map(i => `缺地圖座標（跑 node geo-props.cjs）: ${i}`));
   metrics.noPlan = noPlan.length;
   add("B7", "物件呈現", bad.length ? "FAIL" : "OK",
-    `在售 ${onSale.length}｜缺照片 ${noPhoto.length}｜缺間取圖 ${noPlan.length}｜中日價格不一致 ${priceDiff.length}`,
+    `在售 ${onSale.length}｜缺照片 ${noPhoto.length}｜缺間取圖 ${noPlan.length}｜中日價格不一致 ${priceDiff.length}｜缺地圖座標 ${noGeo.length}`,
     bad.concat(noPlan.length ? [`缺間取圖（非錯誤，待補）: ${noPlan.join(",")}`] : []).slice(0, 10));
 }
 

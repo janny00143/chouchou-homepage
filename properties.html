@@ -129,6 +129,14 @@ footer a{color:#d6d3d1;text-decoration:none}
 .sold-band b{font-size:15px;font-weight:900;color:var(--rose-d,#e11d48)}
 .sold-when{font-size:12px;color:var(--mut);margin-top:5px}
 .sold-foot{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.pmap{margin:4px 0 22px}.pmap-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:16px}
+#pmapTgl{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-family:inherit;font-size:13px;font-weight:700;color:var(--mut);cursor:pointer}
+#pmap{height:420px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#eef2f3;z-index:0}
+.pmap.off #pmap,.pmap.off .pmap-n{display:none}
+@media(max-width:600px){#pmap{height:340px}}
+.pmap-n{font-size:12.5px;color:var(--mut);margin-top:6px;line-height:1.7}.pmap-n .lg{display:inline-flex;align-items:center;gap:4px;margin-left:8px}.pmap-n .lg i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.pm-pin{width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.pm-pop{width:210px;font-family:inherit}.pm-pop img{width:100%;height:118px;object-fit:cover;border-radius:8px;display:block;margin-bottom:6px}.pm-pop b{display:block;font-size:13.5px;line-height:1.45;color:#1c1917}.pm-pop .pr{color:#e11d48;font-weight:800;font-size:13.5px;margin:3px 0}.pm-pop .st{font-size:12px;color:#78716c;line-height:1.5}.pm-pop a.go{display:inline-block;margin-top:6px;color:#e11d48;font-weight:800;font-size:13px;text-decoration:none}
 .propmore{text-align:center;margin:22px 0 6px}#propMore{display:none;align-items:center;gap:6px;background:var(--rose);color:#fff;border:none;border-radius:999px;padding:12px 28px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(244,63,94,.25)}#propMore.fold{background:#fff;color:#57534e;border:1.5px solid #e7e5e4;box-shadow:none}
 #soldMore{display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid #e7e5e4;border-radius:999px;padding:10px 22px;font-family:inherit;font-size:14px;font-weight:700;color:#57534e;cursor:pointer}
 #soldMore:hover{background:#faf9f7;border-color:#d6d3d1}
@@ -172,6 +180,8 @@ footer a{color:#d6d3d1;text-decoration:none}
 
 
   <a class="jishalink" href="jisha.html">🏗️ 什麼是「自社物件」？—— 我們自己設計、自己蓋的房子 →<small>設計・施工・銷售同一家，賣方直售沒有中間轉手；建築條件付售地的規則也在這一頁講清楚。</small></a>
+  <div class="pmap" id="pmapSec"><div class="pmap-h"><b>🗺 用地圖看物件位置</b><button type="button" id="pmapTgl">收起地圖</button></div>
+  <div id="pmap"></div><p class="pmap-n">📍 標示為大概位置（町丁目），點標記看物件、再點一次進詳情　<span class="lg"><i style="background:#f97316"></i>自社物件</span><span class="lg"><i style="background:#e11d48"></i>其他物件</span></p></div>
   <div class="grid" id="grid"></div>
   <div class="propmore"><button type="button" id="propMore" style="display:none"></button></div>
 
@@ -526,6 +536,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(sig!==_propSig){_propSig=sig;_propOpen=false;}
     var vis=_propOpen?items:items.slice(0,PROP_PAGE);
     grid.innerHTML=items.length?vis.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    if(window._pmapUpdate)window._pmapUpdate(items);
     var mb=document.getElementById("propMore");
     if(mb){
       if(items.length<=PROP_PAGE){mb.style.display="none";}
@@ -610,6 +621,58 @@ footer a{color:#d6d3d1;text-decoration:none}
     mb.addEventListener("click",function(){
       _propOpen=!_propOpen; render();
       if(!_propOpen){var g=document.getElementById("grid"); if(g)g.scrollIntoView({behavior:"smooth",block:"start"});}
+    });
+  })();
+  /* ── 物件地圖（周周 2026-10-31）────────────────────────────
+     座標在 prop-geo.json（geo-props.cjs 產生），只到「町丁目的中心點」，看得出大概在哪一帶，
+     不會指到某一棟。同一丁目的多筆物件稍微錯開，免得疊成一點。
+     地圖跟著上面的篩選走：選了區域、預算、分類，地圖上就只剩那些物件。
+     底圖：國土地理院「淡色地圖」；程式：Leaflet（cdnjs）。載入失敗就整塊收起，不影響列表。 */
+  (function(){
+    var sec=document.getElementById("pmapSec"), box=document.getElementById("pmap"), tgl=document.getElementById("pmapTgl");
+    if(!sec||!box)return;
+    var GEO=null, map=null, layer=null, pending=null, first=true;
+    function css(h){var l=document.createElement("link");l.rel="stylesheet";l.href=h;document.head.appendChild(l);}
+    function js(src,cb){var s=document.createElement("script");s.src=src;s.onload=cb;s.onerror=function(){sec.style.display="none";};document.head.appendChild(s);}
+    css("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css");
+    var geoReady=fetch("prop-geo.json").then(function(r){return r.json();}).then(function(j){GEO=j;}).catch(function(){sec.style.display="none";});
+    js("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js",function(){ geoReady.then(init); });
+    function init(){
+      if(!window.L||!GEO)return;
+      map=L.map(box,{scrollWheelZoom:false,zoomControl:true}).setView([35.67,139.74],11);
+      L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",{maxZoom:18,attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>'}).addTo(map);
+      map.on("click",function(){map.scrollWheelZoom.enable();});
+      layer=L.layerGroup().addTo(map);
+      if(pending)draw(pending);
+    }
+    function pin(c){return L.divIcon({className:"",html:'<div class="pm-pin" style="background:'+c+'"></div>',iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-20]});}
+    function pop(p){
+      var ph=(p.thumb||(p.photos&&p.photos[0]))||"";
+      var walk=walkMin(p);
+      return '<div class="pm-pop">'+(ph?'<img src="'+esc(ph)+'" alt="">':'')
+        +'<b>'+C(p.title_cn||p.title)+'</b><div class="pr">'+C(String(p.price||'').split('\n')[0].replace(/[（(]\s*皆?含稅\s*[）)]/g,''))+'</div>'
+        +'<div class="st">'+C(wardLabel(p))+(walk?'・🚉 '+walk+('分'):'')+'</div>'
+        +'<a class="go" href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'">看物件詳情 →</a></div>';
+    }
+    function draw(items){
+      pending=items; if(!map||!GEO)return;
+      layer.clearLayers();
+      var seen={}, pts=[];
+      items.forEach(function(p){
+        var g=GEO[p.id]; if(!g)return;
+        var k=g[0]+","+g[1], n=seen[k]=(seen[k]||0)+1, lat=g[0], lng=g[1];
+        if(n>1){ var a=n*2.4, r=0.0007*Math.sqrt(n); lat+=r*Math.sin(a); lng+=r*Math.cos(a)*1.23; }
+        L.marker([lat,lng],{icon:pin(p.group==="jisha"?"#f97316":"#e11d48"),title:String(p.title_cn||p.title||"")})
+          .bindPopup(pop(p),{maxWidth:240}).addTo(layer);
+        pts.push([lat,lng]);
+      });
+      if(pts.length){ map.fitBounds(pts,{padding:[30,30],maxZoom:15}); }
+      first=false;
+    }
+    window._pmapUpdate=draw;
+    if(tgl)tgl.addEventListener("click",function(){
+      var off=sec.classList.toggle("off"); tgl.textContent=off?"打開地圖":"收起地圖";
+      if(!off&&map)setTimeout(function(){map.invalidateSize();if(pending)draw(pending);},50);
     });
   })();
   function applyUrlState(){
