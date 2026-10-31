@@ -1746,7 +1746,7 @@ function propNearbyHTML(p) {
       + (img ? '<span class="apimg" style="background-image:url(\'' + img + '\')"></span>' : '<span class="apimg"></span>')
       + '<span class="apbody"><b>' + esc(propTitleTW(x)) + "</b>"
       + '<span class="apmeta">' + esc(PLAIN(x.location || "")) + "</span>"
-      + '<span class="apprice">' + esc(PLAIN(String(x.price || "價格請洽詢")).replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
+      + '<span class="apprice">' + esc(PLAIN(String(x.priceShort || x.price || "價格請洽詢")).replace(/[（(]\s*皆?含稅\s*[）)]/g, "").split("\n")[0]) + yieldLine + "</span>"
       + "</span></a>";
   }).join("");
   if (sold) return '<section class="apsec" style="margin-top:26px"><h2>找類似的物件？這幾間現在還在售</h2>'
@@ -1842,6 +1842,7 @@ ${STYLE}
 .ptab{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
 .ptab th,.ptab td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
 .ptab th{width:34%;color:var(--mut);font-weight:700;white-space:nowrap}
+.plist{border-collapse:collapse;margin:0 0 14px;font-size:15px}.plist td{padding:7px 16px 7px 0;border-bottom:1px dashed #eee3e5;vertical-align:baseline}.plist td:first-child{color:#57534e;font-weight:700}.plist td:last-child{color:#e11d48;font-weight:900;font-size:17px;white-space:nowrap}
 .pprice{font-size:26px;font-weight:900;color:var(--rose-d);margin:2px 0 6px;line-height:1.35;white-space:pre-line}
 .psub{color:var(--mut);font-size:14.5px;margin-bottom:10px}
 </style>
@@ -1854,7 +1855,7 @@ ${SBAR}
 <p style="font-size:13px;color:var(--mut);margin-bottom:12px"><a href="index.html" style="color:var(--mut)">首頁</a> › <a href="properties.html" style="color:var(--mut)">物件專區</a></p>
 <h1 class="atitle" style="margin-bottom:6px">${esc(title)}</h1>
 <p class="psub">${esc(PLAIN(p.title))}</p>
-<p class="pprice">${esc(PLAIN(p.price))}</p>
+${p.priceList && p.priceList.length ? `<p class="pprice">${esc(PLAIN(p.priceShort || p.price))}</p><table class="plist">${p.priceList.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</table>` : `<p class="pprice">${esc(PLAIN(p.price))}</p>`}
 ${p.status === "在售" ? "" : '<p style="display:inline-block;background:#fdecef;color:var(--rose-d);font-weight:700;border-radius:8px;padding:6px 14px;margin:0 0 8px">已成交</p>'}
 ${propGallery(p)}
 <table class="ptab">${propSpecRows(p)}</table>

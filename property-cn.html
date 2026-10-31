@@ -145,7 +145,7 @@ body.noscroll{overflow:hidden}
 @keyframes lfpulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
 @media(max-width:820px){.line-float{right:14px;bottom:14px;padding:12px 18px;font-size:14px}}
 .share{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.share a{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;cursor:pointer}.share a:hover{border-color:var(--rose);color:var(--rose)}
-</style>
+.plist{border-collapse:collapse;margin:-6px 0 16px;font-size:15px;min-width:min(100%,360px)}.plist td{padding:7px 14px 7px 0;border-bottom:1px dashed #eee3e5;vertical-align:baseline}.plist td:first-child{color:#57534e;font-weight:700;white-space:nowrap}.plist td:last-child{color:#e11d48;font-weight:900;font-size:17px;white-space:nowrap}</style>
 </head>
 <body>
 <header>
@@ -223,6 +223,9 @@ body.noscroll{overflow:hidden}
       return '<p class="np">'+B(l)+'</p>';
     }).join("");
   }
+  /* 多价格物件（priceList，2026-10-31 ガリシア森下Ⅵ）：大字放起价，下面一张小表逐列列出各楼层／房型金额，
+     不要把好几个价格挤在同一行被浏览器乱断行 */
+  function PRICELIST(p){return '<div class="pprice">'+C(p.priceShort||String(p.price||'').split('\n')[0])+'</div><table class="plist">'+p.priceList.map(function(r){return '<tr><td>'+C(r[0])+'</td><td>'+C(r[1])+'</td></tr>';}).join('')+'</table>';}
   function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
 
   var photos=[],pi=0,pImg,pCnt,pThumbs;
@@ -287,7 +290,9 @@ body.noscroll{overflow:hidden}
   var ALL=[];
   function wardOf(p){var m=String(p.location||"").match(/([^\s\u90fd\u9053\u5e9c\u770c\u53bf]{1,6}[\u5340\u533a\u5e02\u90e1])/);return m?m[1]:"";}
   function relatedHTML(cur){
-    var pool=ALL.filter(function(x){return x.id!==cur.id && !x.sold;});
+    /* 大阪等「其它」地区的物件只推荐给同样是其它地区的物件；东京的物件页不推大阪（周周 2026-10-31） */
+    var isOther=function(x){return !!(x.group&&x.group!=="jisha");};
+    var pool=ALL.filter(function(x){return x.id!==cur.id && !x.sold && isOther(x)===isOther(cur);});
     if(!pool.length)return "";
     var cy=parseYen(cur.price), cw=wardOf(cur);
     var scored=pool.map(function(x){
@@ -309,7 +314,7 @@ body.noscroll{overflow:hidden}
       h+='<a class="rcard" href="property-cn.html?id='+encodeURIComponent(x.id)+'">'
         +'<div class="rph">'+ph+'</div>'
         +'<div class="rb"><h3>'+C(x.title_cn||x.title)+'</h3>'
-        +'<p class="rp">'+C(String(x.price||"价格请洽询").split("\n")[0])+'</p>'
+        +'<p class="rp">'+C(String(x.priceShort||x.price||"价格请洽询").split("\n")[0])+'</p>'
         +'<p class="rs">'+C(x.station||x.location||"")+'</p></div></a>';
     });
     return h+'</div></section>';
@@ -386,7 +391,7 @@ body.noscroll{overflow:hidden}
     var body='<div class="pbody">'
       +'<h1 class="ptitle">'+C(p.title)+cn+'</h1>'
       +badges
-      +PRICEHTML(p.price,'pprice','价格请洽询')
+      +(p.priceList&&p.priceList.length?PRICELIST(p):PRICEHTML(p.price,'pprice','价格请洽询'))
       + (parseYen(p.price)>0?'<div class="fxline" data-yen="'+parseYen(p.price)+'" style="font-size:14px;color:var(--mut);margin:-16px 0 16px"></div>':'')
       +share
       +facts
