@@ -129,6 +129,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 .sold-band b{font-size:15px;font-weight:900;color:var(--rose-d,#e11d48)}
 .sold-when{font-size:12px;color:var(--mut);margin-top:5px}
 .sold-foot{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.propmore{text-align:center;margin:22px 0 6px}#propMore{display:none;align-items:center;gap:6px;background:var(--rose);color:#fff;border:none;border-radius:999px;padding:12px 28px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(244,63,94,.25)}#propMore.fold{background:#fff;color:#57534e;border:1.5px solid #e7e5e4;box-shadow:none}
 #soldMore{display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid #e7e5e4;border-radius:999px;padding:10px 22px;font-family:inherit;font-size:14px;font-weight:700;color:#57534e;cursor:pointer}
 #soldMore:hover{background:#faf9f7;border-color:#d6d3d1}
 .sold-see{font-size:14px;font-weight:700;color:var(--rose-d,#e11d48)}
@@ -167,11 +168,12 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="jisha">自社物件</button>
     <button data-cat="other">其它</button>
   </div>
-  <div class="sortrow"><div class="pqwrap"><span class="pqico">🔍</span><input id="pq" type="search" autocomplete="off" placeholder="搜尋地名、車站、格局…" aria-label="搜尋地名、車站、格局…"><button type="button" class="pqclr" id="pqclr" aria-label="清除搜尋">&times;</button></div><select id="psort"><option value="default">排序：預設</option><option value="price-asc">價格：低 → 高</option><option value="price-desc">價格：高 → 低</option><option value="size-desc">面積：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面積：小 → 大</option></select><select id="pbudget"><option value="all">預算：不限</option><option value="a">～3,000萬円</option><option value="b">3,000～5,000萬円</option><option value="c">5,000～8,000萬円</option><option value="d">8,000萬～1.5億円</option><option value="e">1.5億円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以內</option><option value="7">徒步 7 分以內</option><option value="10">徒步 10 分以內</option><option value="15">徒步 15 分以內</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大樓（マンション）</option><option value="house">獨棟透天（戸建）</option><option value="shop">店舖・事務所</option><option value="whole">整棟</option><option value="land">土地・建築條件付</option></select><select id="pview"><option value="all">景觀：不限</option><option value="skytree">看得到晴空塔</option><option value="tower">看得到東京鐵塔</option><option value="night">夜景・開闊視野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
+  <div class="sortrow"><div class="pqwrap"><span class="pqico">🔍</span><input id="pq" type="search" autocomplete="off" placeholder="搜尋地名、車站、格局…" aria-label="搜尋地名、車站、格局…"><button type="button" class="pqclr" id="pqclr" aria-label="清除搜尋">&times;</button></div><select id="psort"><option value="default">排序：預設</option><option value="price-asc">價格：低 → 高</option><option value="price-desc">價格：高 → 低</option><option value="size-desc">面積：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面積：小 → 大</option></select><select id="pbudget"><option value="all">預算：不限</option><option value="a">～3,000萬円</option><option value="b">3,000～5,000萬円</option><option value="c">5,000～8,000萬円</option><option value="d">8,000萬～1.5億円</option><option value="e">1.5億円以上</option></select><select id="pwalk"><option value="all">徒步：不限</option><option value="5">徒步 5 分以內</option><option value="7">徒步 7 分以內</option><option value="10">徒步 10 分以內</option><option value="15">徒步 15 分以內</option></select><select id="parea"><option value="all">區域：不限</option></select><select id="puse"><option value="all">用途：不限</option><option value="mansion">公寓大樓（マンション）</option><option value="house">獨棟透天（戸建）</option><option value="shop">店舖・事務所</option><option value="whole">整棟</option><option value="land">土地・建築條件付</option></select><select id="pview"><option value="all">景觀：不限</option><option value="skytree">看得到晴空塔</option><option value="tower">看得到東京鐵塔</option><option value="night">夜景・開闊視野</option></select><select id="players"><option value="all">格局：不限</option><option value="1r">1R・1K・1DK（套房）</option><option value="1ldk">1LDK・2DK</option><option value="2ldk">2LDK</option><option value="3ldk">3LDK 以上</option></select></div>
 
 
   <a class="jishalink" href="jisha.html">🏗️ 什麼是「自社物件」？—— 我們自己設計、自己蓋的房子 →<small>設計・施工・銷售同一家，賣方直售沒有中間轉手；建築條件付售地的規則也在這一頁講清楚。</small></a>
   <div class="grid" id="grid"></div>
+  <div class="propmore"><button type="button" id="propMore" style="display:none"></button></div>
 
   <div id="soldSec" style="display:none"><h2 style="font-size:20px;font-weight:900;margin:36px 0 6px">🏆 過去販售物件</h2><p style="color:var(--mut);font-size:14px;margin-bottom:16px">這些物件已順利成交。想找類似條件的物件，歡迎加 LINE 告訴周周你的需求，我幫你留意最新釋出！</p><div class="grid" id="soldGrid"></div><div class="sold-foot"><button type="button" id="soldMore" onclick="toggleSold()" style="display:none"></button><a class="sold-see" href="properties.html#top">看目前在售的物件 →</a></div></div>
 
@@ -349,6 +351,12 @@ footer a{color:#d6d3d1;text-decoration:none}
   var BUDGET={a:[0,3000e4],b:[3000e4,5000e4],c:[5000e4,8000e4],d:[8000e4,15000e4],e:[15000e4,Infinity]};
   var budgetMode="all";
   /* 車站徒步分鐘：從 station 字串抓「徒步N分」，同一物件有多條路線時取最短的那個 */
+  /* 區域（周周 2026-10-31：「分類也可以做更多了，車站距離，區域」）
+     選項從在售物件的區名自動產生（依件數多到少），所以新增物件不用改這裡。 */
+  var areaMode="all";
+  /* 同一區有「目黑／目黒」兩種寫法，比對前先統一字形，免得拆成兩個選項 */
+  function areaKey(p){ return String(wardLabel(p)||"").replace(/\u9ED2/g,"\u9ED1").replace(/\u6E0B/g,"\u6F80").replace(/\u8C4A/g,"\u8C50").replace(/\u6A2A/g,"\u6A6B").replace(/\u533A/g,"\u5340"); }
+  function inArea(p){ return areaMode==="all" || areaKey(p)===areaMode; }
   var walkMax=0;
   function walkMin(p){
     var t=String(p.station||""), best=0, re=/\u5F92[\u6B65\u6B69]\u7D04?(\d+)\u5206/g, m;
@@ -444,6 +452,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     return true;
   }
 
+  var PROP_PAGE=18,_propOpen=false,_propSig="";
   function render(){
     if(!act){ grid.innerHTML=emptyMsg(); return; }
     var items=act.filter(function(p){
@@ -453,6 +462,7 @@ footer a{color:#d6d3d1;text-decoration:none}
       if(!inUse(p))return false;
       if(!inLayout(p))return false;
       if(!inView(p))return false;
+      if(!inArea(p))return false;
       /* 大阪物件只在點「大阪」時才顯示，不混進「全部」或其他分類
          （周周 2026-09-20：「大阪的不需要跟全部放一起，就是上方選單丟一個大阪區」） */
       if(selCat!=="other" && ptags(p).other)return false;
@@ -510,7 +520,18 @@ footer a{color:#d6d3d1;text-decoration:none}
        物件的 group 欄位：空＝一般（東京・首都圈）／"jisha"＝自社／"osaka"＝大阪。
        只有在畫面上真的出現兩區以上時才顯示區塊標題，單一區就跟以前一樣不加標。 */
     shown=items;
-    grid.innerHTML=items.length?items.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    /* 一次先顯示 18 張，按「查看更多」再全部打開（周周 2026-10-31：物件太多，比照文章區摺疊）。
+       篩選或排序條件一改就回到 18 張。 */
+    var sig=[selCat,kw,sortMode,budgetMode,walkMax,useMode,layMode,viewMode,areaMode].join("|");
+    if(sig!==_propSig){_propSig=sig;_propOpen=false;}
+    var vis=_propOpen?items:items.slice(0,PROP_PAGE);
+    grid.innerHTML=items.length?vis.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    var mb=document.getElementById("propMore");
+    if(mb){
+      if(items.length<=PROP_PAGE){mb.style.display="none";}
+      else{mb.style.display="inline-flex";mb.classList.toggle("fold",_propOpen);
+        mb.textContent=_propOpen?"收合":"查看更多物件（還有 %d 件）".replace("%d",items.length-PROP_PAGE);}
+    }
     fxFill();
   }
 
@@ -541,7 +562,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     _pq.addEventListener("search",_pqRun);      /* type=search 的小叉叉 */
     if(_pqc)_pqc.addEventListener("click",function(){ _pq.value=""; _pq.focus(); _pqRun(); });
   }
-  ["psort","pwalk","pbudget","puse","players","pview"].forEach(function(id){
+  ["psort","pwalk","parea","pbudget","puse","players","pview"].forEach(function(id){
     var el=document.getElementById(id);
     if(el)el.addEventListener("change",function(){syncFromControls();writeUrl();render();});
   });
@@ -553,7 +574,7 @@ footer a{color:#d6d3d1;text-decoration:none}
      ・只用 replaceState，不會在瀏覽紀錄裡堆一堆項目
      ・網址帶進來的值一律先跟畫面上真的有的選項核對過才套用，
        亂帶參數不會讓頁面進入奇怪狀態 */
-  var QMAP=[["sort","psort"],["budget","pbudget"],["walk","pwalk"],
+  var QMAP=[["sort","psort"],["budget","pbudget"],["walk","pwalk"],["area","parea"],
             ["use","puse"],["view","pview"],["layout","players"]];
   function syncFromControls(){
     var g=function(id){var e=document.getElementById(id);return e?e.value:null;},v;
@@ -563,6 +584,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if((v=g("puse"))!=null)useMode=v;
     if((v=g("players"))!=null)layMode=v;
     if((v=g("pview"))!=null)viewMode=v;
+    if((v=g("parea"))!=null)areaMode=v;
   }
   function writeUrl(){
     if(!window.history||!history.replaceState)return;
@@ -575,6 +597,21 @@ footer a{color:#d6d3d1;text-decoration:none}
     });
     try{history.replaceState(null,"",location.pathname+(q.length?"?"+q.join("&"):"")+location.hash);}catch(_){}
   }
+  (function(){
+    var sel=document.getElementById("parea"); if(!sel||!act)return;
+    /* 大阪物件只在「大阪」分頁出現（周周 2026-09-20），所以不列進區域選單 */
+    var cnt={}; act.forEach(function(p){ if(ptags(p).other)return; var w=areaKey(p); if(w)cnt[w]=(cnt[w]||0)+1;});
+    Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]||(a<b?-1:1);}).forEach(function(w){
+      var o=document.createElement("option"); o.value=w; o.textContent=C(w)+"（"+cnt[w]+"）"; sel.appendChild(o);
+    });
+  })();
+  (function(){
+    var mb=document.getElementById("propMore"); if(!mb)return;
+    mb.addEventListener("click",function(){
+      _propOpen=!_propOpen; render();
+      if(!_propOpen){var g=document.getElementById("grid"); if(g)g.scrollIntoView({behavior:"smooth",block:"start"});}
+    });
+  })();
   function applyUrlState(){
     var q; try{q=new URLSearchParams(location.search);}catch(_){return;}
     var c=(q.get("cat")||"").replace(/[^a-z]/gi,"");
