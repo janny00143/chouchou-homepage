@@ -1,11 +1,11 @@
 {
- "date": "2026-10-30",
+ "date": "2026-10-31",
  "mode": "A",
  "metrics": {
   "pages": 569,
   "inlineJs": 3675,
-  "jsonLd": 1047,
-  "links": 12880,
+  "jsonLd": 1050,
+  "links": 12877,
   "sitemap": 555,
   "props": 107,
   "propsOnSale": 96,
