@@ -1385,7 +1385,7 @@ urls.push({ loc: BASE + "quiz.html", pr: "0.6" });
 /* 物件獨立頁（提案 2・2026-10-03）。lastmod 用 properties.js 的 listed，
    不用 git／mtime —— 新檔沒有 git 紀錄，退回 mtime 會讓 sitemap 每跑一次就變，
    產生器就不冪等了（patrol A7 會抓到）。 */
-for (const p of PROPS.filter(x => !x.sold && (x.status === "在售" || x.keepPage))) {
+for (const p of PROPS.filter(x => (!x.sold && x.status === "在售") || x.keepPage)) {
   const lm = p.listed || "";
   urls.push({ loc: BASE + "prop-" + p.id + ".html", lm, pr: "0.7", cf: "weekly" });
   urls.push({ loc: BASE + "prop-" + p.id + "-ja.html", lm, pr: "0.6" });
@@ -1525,7 +1525,8 @@ const PROP_CAT_TW = { invest: "投資收租", live: "自住", house: "一戶建"
 const propUrl = p => BASE + "prop-" + p.id + ".html";   /* 提案 2 之後指可被收錄的靜態頁 */
 const onSaleProps = () => PROPS.filter(p => !p.sold && p.status === "在售");
 /* keepPage:true ＝ 成約後仍保留獨立頁（周周 2026-10-11：向丘2 成約不撤下、網址不變），頁內改標「已成約」 */
-const pagedProps = () => PROPS.filter(p => !p.sold && (p.status === "在售" || p.keepPage));
+/* 2026-10-31：成交後移到「過去販售」（sold:true）但 keepPage 的，獨立頁照留（資料已先精簡，地址只到區） */
+const pagedProps = () => PROPS.filter(p => (!p.sold && p.status === "在售") || p.keepPage);
 
 function propsIndexTw() {
   const by = {};
@@ -1854,7 +1855,7 @@ ${SBAR}
 <h1 class="atitle" style="margin-bottom:6px">${esc(title)}</h1>
 <p class="psub">${esc(PLAIN(p.title))}</p>
 <p class="pprice">${esc(PLAIN(p.price))}</p>
-${p.status === "在售" ? "" : '<p style="display:inline-block;background:#fdecef;color:var(--rose-d);font-weight:700;border-radius:8px;padding:6px 14px;margin:0 0 8px">已成約</p>'}
+${p.status === "在售" ? "" : '<p style="display:inline-block;background:#fdecef;color:var(--rose-d);font-weight:700;border-radius:8px;padding:6px 14px;margin:0 0 8px">已成交</p>'}
 ${propGallery(p)}
 <table class="ptab">${propSpecRows(p)}</table>
 <div class="post">

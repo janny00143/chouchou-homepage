@@ -120,6 +120,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 .sold-card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,25,23,.28),rgba(28,25,23,0) 46%)}
 .sold-rib{position:absolute;top:0;left:0;z-index:2;background:rgba(41,37,36,.82);color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.5px;padding:6px 13px;border-radius:0 0 12px 0;backdrop-filter:blur(2px)}
 .sold-card .body{padding:13px 15px 15px}
+.sold-card.sold-open{cursor:pointer;text-decoration:none;color:inherit}.sold-card.sold-open:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
 .sold-card h3{font-size:15.5px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .sold-meta{font-size:12.5px;color:var(--mut);margin-top:6px;line-height:1.7}
 .sold-meta .dot{opacity:.45;margin:0 2px}
@@ -281,11 +282,14 @@ footer a{color:#d6d3d1;text-decoration:none}
     var line=[ward,type].filter(Boolean).map(C).join("・")||C("东京都内");
     var meta=p.area?C(p.area):'';
     var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+'</div>':"";
-    return '<div class="card sold-card">'
+    /* keepPage 的成交物件（周周 2026-10-31：向丘2）可以点开看，页面资料已精简、地址只到区 */
+    var open_=!!p.keepPage, tag=open_?'a':'div';
+    return '<'+tag+' class="card sold-card'+(open_?' sold-open':'')+'"'+(open_?' href="'+(/-cn\.html$/.test(location.pathname)?'prop-'+p.id+'-cn.html':'prop-'+p.id+'.html')+'"':'')+'>'
       +'<div class="ph">'+photo+'<span class="sold-rib">已成交</span></div>'
       +'<div class="body"><h3>'+line+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'
-      +(meta?'<div class="sold-meta">'+meta+'</div>':'')+when+'</div>'
-      +'</div>';
+      +(meta?'<div class="sold-meta">'+meta+'</div>':'')+when
+      +(open_?'<div class="sold-see" style="margin-top:8px">看详细 →</div>':'')+'</div>'
+      +'</'+tag+'>';
   }
   var _soldOpen=false;
   function renderSold(){

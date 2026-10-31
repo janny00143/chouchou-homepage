@@ -902,7 +902,7 @@ const NOTE_MD_JA = t => String(t || "")
 const PROP_CAT_JA = { invest: "投資・収益物件", live: "住まい（実需）", house: "戸建", land: "土地・建築条件付売地" };
 const propUrlJa = p => BASE + "prop-" + p.id + "-ja.html";   /* 提案2以降は静的ページを指す */
 const onSalePropsJa = () => PROPS.filter(p => !p.sold && p.status === "在售");
-const pagedPropsJa = () => PROPS.filter(p => !p.sold && (p.status === "在售" || p.keepPage));
+const pagedPropsJa = () => PROPS.filter(p => (!p.sold && p.status === "在售") || p.keepPage);
 
 function propsIndexJa() {
   const by = {};
