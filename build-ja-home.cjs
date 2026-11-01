@@ -193,8 +193,7 @@ const head = `<!-- 周周・日本語ランディングページ（完整版 SPA
   "@context": "https://schema.org", "@type": "RealEstateAgent", "name": "周周・日本の不動産", "url": "https://chouchouinjapan.com/ja.html",
   "image": "https://chouchouinjapan.com/pexels-jakubzerdzicki-29521542.jpg",
   "description": "東京を拠点に活動する台湾出身の不動産エージェント。中国語（繁体字）・台湾語・日本語のトリリンガルで、日本の不動産購入・自宅探し・投資・住宅ローン・ご契約までサポートしています。",
-  "areaServed": ["東京", "神奈川", "千葉", "横浜"], "telephone": "03-6451-2540", "email": "s-syu@and-p.jp",
-  "address": { "@type": "PostalAddress", "streetAddress": "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号", "addressCountry": "JP" },
+  "areaServed": ["東京", "神奈川", "千葉", "横浜"], "telephone": "03-6451-2540", "address": { "@type": "PostalAddress", "streetAddress": "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号", "addressCountry": "JP" },
   "founder": { "@type": "Person", "name": "周欣妤（周周）", "jobTitle": "住宅営業・不動産エージェント", "worksFor": "株式会社アンドプラス 住宅営業部" },
   "sameAs": ["https://www.instagram.com/travelfish67/", "https://www.youtube.com/@travelfish67", "https://www.tiktok.com/@travelfish67", "https://www.threads.com/@travelfish.jp?igshid=NTc4MTIwNjQ2YQ==", "https://lin.ee/RscRWCp"]
 })}</script>
@@ -428,8 +427,8 @@ const S = ${JSON.stringify({
   bio: BIO_JA,
   line: "https://lin.ee/RscRWCp", lineId: "@202dzwok",
   ig: "https://www.instagram.com/travelfish67/", yt: "https://www.youtube.com/@travelfish67", tiktok: "https://www.tiktok.com/@travelfish67", threads: "https://www.threads.com/@travelfish.jp?igshid=NTc4MTIwNjQ2YQ==",
-  company: { license: "東京都知事 (2) 第102938号", addr: "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号", mobile: "080-7232-9598", tel: "03-6451-2540", fax: "03-6452-5910", email: "s-syu@and-p.jp", hp: "https://and-p.jp" }
-})};
+  company: { license: "東京都知事 (2) 第102938号", addr: "〒150-0032 東京都渋谷区鶯谷町3-1 ＳＵビル301号", mobile: "080-7232-9598", tel: "03-6451-2540", fax: "03-6452-5910", email: "s-syu\u0040and-p.jp", hp: "https://and-p.jp" }
+}).replace(/s-syu@/g, "s-syu\\u0040")};   // 信箱不要以明文出現在原始碼（防垃圾信爬蟲）
 const CATS=${JSON.stringify(CATS_JA)};
 const ART=${JSON.stringify(ART_JA)};
 const PROCESS=${JSON.stringify(PROCESS_JA)};

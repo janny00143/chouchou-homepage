@@ -309,13 +309,16 @@ function a5_firestore() {
 function a6_secrets() {
   // 巡邏程式自己一定會出現這些字串（偵測樣式寫在裡面），要排除，否則永遠 FAIL
   const files = fs.readdirSync(ROOT)
-    .filter(f => /\.(html|js|cjs|json)$/i.test(f))
+    .filter(f => /\.(html|js|cjs|json|txt)$/i.test(f))
     .filter(f => f !== "patrol.cjs");
   const probes = [
     // 翻譯機解鎖碼：只有 translate 系列自己可以有（那是驗證邏輯本體）
     { name: "翻譯機解鎖碼", re: /ZHOUZHOU/, allow: f => /^translate/.test(f) },
     { name: "ADMIN_TOKEN 明文", re: /zz159357/, allow: () => false },
     { name: "周周信箱明文", re: /janny00jou@gmail\.com/, allow: () => false },
+    // 公司信箱（2026-11-01 周周：「這個信箱最近釣魚跟垃圾郵件超多」）。頁面上要寫成 s-syu&#64;and-p.jp（HTML）
+    // 或 "s-syu\u0040and-p.jp"（JS 字串），結構化資料不放 email——明文會被垃圾信爬蟲抓走
+    { name: "公司信箱明文（會被垃圾信爬蟲抓）", re: /s-syu@and-p\.jp/, allow: () => false },
     { name: "私鑰", re: /-----BEGIN (RSA |EC )?PRIVATE KEY-----/, allow: () => false },
   ];
   const hits = [];

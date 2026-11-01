@@ -423,7 +423,7 @@ function pageOwnerJa() {
     description: d,
     parentOrganization: { "@type": "Organization", name: c.name, url: c.hp },
     address: { "@type": "PostalAddress", addressCountry: "JP", streetAddress: c.addr },
-    telephone: c.tel, email: c.email,
+    telephone: c.tel,
     areaServed: ["東京都", "神奈川県", "千葉県", "埼玉県"],
     knowsLanguage: ["ja", "zh-Hant", "zh-Hans"],
     identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: c.license }
@@ -527,7 +527,7 @@ ${dl("担当", c.person)}
 ${dl("宅地建物取引業者免許番号", c.license)}
 ${dl("所在地", c.addr)}
 ${dl("電話", c.tel + "（FAX " + c.fax + "）")}
-${dl("メール", '<a href="mailto:' + c.email + '" style="color:var(--rose)">' + c.email + "</a>")}
+${dl("メール", '<a href="mailto:' + String(c.email).replace("@", "&#64;") + '" style="color:var(--rose)">' + String(c.email).replace("@", "&#64;") + "</a>")}
 ${dl("会社サイト", '<a href="' + c.hp + '" target="_blank" rel="noopener" style="color:var(--rose)">' + c.hp + "</a>")}
 </div>
 
@@ -768,7 +768,7 @@ ${FAQ_AGENT_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-botto
 <div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">宅地建物取引業者免許番号</div><div>${c.license}</div></div>
 <div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">所在地</div><div>${c.addr}</div></div>
 <div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">電話</div><div>${c.tel}（FAX ${c.fax}）</div></div>
-<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">メール</div><div><a href="mailto:${c.email}" style="color:var(--rose)">${c.email}</a></div></div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94em"><div style="color:var(--mut)">メール</div><div><a href="mailto:${String(c.email).replace("@", "&#64;")}" style="color:var(--rose)">${String(c.email).replace("@", "&#64;")}</a></div></div>
 </div>
 
 <p class="src">※ 本ページはサービスのご案内であり、投資勧誘を目的とするものではございません。仲介報酬は宅地建物取引業法の報酬告示の範囲内。融資の可否および融資割合は個別の審査によります。税額は税理士、登記および契約は司法書士・宅地建物取引士のご確認によります。不動産の取得のみをもって在留資格が得られるものではございません。</p>`;
@@ -787,7 +787,7 @@ ${FAQ_AGENT_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-botto
         description: "東京23区を中心に、中華圏のお客様へ日本の不動産をご紹介しております。",
         parentOrganization: { "@type": "Organization", name: c.name, url: c.hp },
         address: { "@type": "PostalAddress", addressCountry: "JP", streetAddress: c.addr },
-        telephone: c.tel, email: c.email,
+        telephone: c.tel,
         areaServed: ["東京都", "神奈川県", "千葉県", "埼玉県"],
         knowsLanguage: ["ja", "zh-Hant", "zh-Hans"],
         identifier: { "@type": "PropertyValue", name: "宅地建物取引業者免許番号", value: c.license } },
