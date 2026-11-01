@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-11-01",
  "wards": [
   {
    "ward": "千代田區",
@@ -147,8 +147,8 @@
    "phoneNote": "",
    "phoneFrom": "https://www.city.meguro.tokyo.jp/recycle/kurashi/gomi/tetuzuki.html",
    "online": {
-    "url": "https://www2.sodai-web.jp/meguro/index.html",
-    "label": ""
+    "url": "https://www.city.meguro.tokyo.jp/recycle/kurashi/gomi/sodaimaintenance.html",
+    "label": "粗大ごみインターネット受付システム保守メンテナンスのお知らせ"
    }
   },
   {
@@ -306,12 +306,15 @@
    "wardJa": "足立区",
    "pageOk": true,
    "from": "https://www.city.adachi.tokyo.jp/seso/manual.html",
-   "sodaiPage": "https://www.city.adachi.tokyo.jp/gomi/kurashi/kankyo/mokuseisodai.html",
-   "sodaiTitle": "粗大ごみを資源化（リサイクル）しています｜足立区",
+   "sodaiPage": "https://www.city.adachi.tokyo.jp/seso/2023riyu-sukyoutei.html",
+   "sodaiTitle": "粗大ごみリユース事業｜足立区",
    "phone": "",
    "phoneNote": "頁面上找不到前面寫著「粗大ごみ受付センター」的電話號碼",
    "phoneFrom": "",
-   "online": null
+   "online": {
+    "url": "https://www.city.adachi.tokyo.jp/hodo/line/index.html",
+    "label": "足立区LINE公式アカウントから申込む"
+   }
   },
   {
    "ward": "葛飾區",

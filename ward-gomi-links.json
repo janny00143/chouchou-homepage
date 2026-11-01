@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-11-01",
  "wards": [
   {
    "ward": "千代田區",
@@ -465,6 +465,15 @@
    "page": "https://www.city.adachi.tokyo.jp/seso/manual.html",
    "pageOk": true,
    "pdfs": [
+    {
+     "url": "https://www.city.adachi.tokyo.jp/documents/56163/2.pdf",
+     "label": "「収集日のご案内」（中国語）（PDF：322KB）",
+     "traditional": false,
+     "multilang": false,
+     "rank": 10,
+     "status": 200,
+     "sizeKB": 321
+    },
     {
      "url": "https://www.city.adachi.tokyo.jp/documents/56163/20260502.pdf",
      "label": "資源とごみの分け方・出し方リーフレット（中国語・韓国版）（PDF：1,621KB）",
