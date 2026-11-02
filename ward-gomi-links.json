@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-02",
  "wards": [
   {
    "ward": "千代田區",
@@ -82,7 +82,7 @@
      "traditional": false,
      "multilang": false,
      "rank": 10,
-     "status": 200,
+     "status": 206,
      "sizeKB": 1344
     },
     {
