@@ -40,7 +40,7 @@
 >    頻率從「每月 2～3 篇」改成**每週一一篇**，照下表日期依序寫、當天上線。**一週只上一篇，不要提早一次全發。**
 >    | 週一 | 題目 | 分類 |
 >    |---|---|---|
->    | 2026-11-02 | 【周周指定】東京丟大型垃圾全流程：預約、處理券、四種家電、搬家前幾週要動作（連到 `tokyo-oversized-garbage.html` 與 a61）。封面可用周周提供、目前沒用到的 `img/gomi-signs-zh-ja.webp`（台日雙語分類指示牌，有周周頭像，資訊圖用 coverFit:"contain"）；或照 CLAUDE.md §3 用實景照 | `life`・垃圾第二篇 |
+>    | ~~2026-11-02~~ ✅ 已上線 `tokyo-large-garbage-disposal-guide`（a64） | 【周周指定】東京丟大型垃圾全流程：預約、處理券、四種家電、搬家前幾週要動作（連到 `tokyo-oversized-garbage.html` 與 a61）。封面可用周周提供、目前沒用到的 `img/gomi-signs-zh-ja.webp`（台日雙語分類指示牌，有周周頭像，資訊圖用 coverFit:"contain"）；或照 CLAUDE.md §3 用實景照 | `life`・垃圾第二篇 |
 >    | 2026-11-09 | 【周周指定】日本的房子冬天為什麼這麼冷？木造、單層玻璃、沒有中央暖氣；買房怎麼看斷熱、雙層窗、地暖（連 a8 浴室暖風乾燥機） | `life` |
 >    | 2026-11-16 | 【周周指定】搬到東京後 14 天內要辦的手續：轉入登記、健保、年金、My Number、銀行、手機（連 a33 水電瓦斯、a34 門號、a57 看醫生） | `life` |
 >    | 2026-11-23 | 【周周指定・已寫好】在日本怎麼吃青菜？外食都是生菜沙拉（稿在 `drafts/a64-a65-veg-milk.json` 的 a64） | `life` |
@@ -168,6 +168,10 @@
    封面用掉：`art-3s1k-seishi.webp`（誠之小學校實拍，周周 2026-09-20 提供；
    原本的 `pexels-slava-v-2159989286-36451111.webp` 因與 a14 內頁大圖重複已換下）
 ## 已完成
+✅ 2026-11-02 `tokyo-large-garbage-disposal-guide` 東京丟大型垃圾全流程：預約、處理券、四樣不能丟的家電，搬家前幾週就要動（a64・life，周周指定週更排程）
+   封面用掉：`img/gomi-signs-zh-ja.webp`（周周 10/23 提供的台日雙語分類牌＋頭像，`coverFit:"contain"`，三語共用）；周周拍到大型垃圾貼券的實景照可換
+   內文連到 a61（垃圾分類）、`tokyo-oversized-garbage.html`（23 區窗口一覽）；查證來源：墨田・杉並・板橋・世田谷・目黑・新宿・江戶川區公告、各自治體對無許可回收業者的提醒（2026-11 查閱）
+   ⚠️ 草稿 a64/a65（青菜・牛奶）上線時 id 要改成接續的編號（a65、a66）
 ✅ 2026-10-09 `japan-mansion-repair-reserve-fund` 東京都內的管理費＋修繕費平均快 3 萬日圓？！到底什麼是修繕費？（a58・knowhow，周周 2026-10-09 親自點題）
    封面用掉：`cover-mansion-repair-fee.webp`（自製資訊圖：¥28,667＝管理費 14,878＋修繕積立金 13,788，`coverFit:"full"`；只放數字與日文通用漢字，三語共用）
    內文插圖：`condo-large-scale-repair.webp`（Wikimedia Commons「Condominium in maintenance.jpg」，Namazu-tron／CC BY-SA 3.0，市川市公寓大規模修繕中的鷹架＋防護網；已在圖說附署名與授權連結）
