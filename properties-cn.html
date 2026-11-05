@@ -642,7 +642,17 @@ footer a{color:#d6d3d1;text-decoration:none}
       if(!window.L||!GEO)return;
       map=L.map(box,{scrollWheelZoom:false,zoomControl:true}).setView([35.67,139.74],11);
       L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",{maxZoom:18,attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>'}).addTo(map);
-      map.on("click",function(){map.scrollWheelZoom.enable();});
+      /* 电脑版：滑鼠移到地图上先盖一层灰底提示，点一下才开滚轮缩放；移开就关（周周 2026-11-05）。手机不加。 */
+      (function(){
+        if(!(window.matchMedia&&matchMedia("(hover:hover) and (pointer:fine)").matches)){map.on("click",function(){map.scrollWheelZoom.enable();});return;}
+        var v=document.createElement("div");
+        v.style.cssText="position:absolute;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;background:rgba(41,37,36,.5);color:#fff;font-weight:800;font-size:18px;letter-spacing:.02em;text-align:center;padding:0 20px;pointer-events:none;opacity:0;transition:opacity .2s;text-shadow:0 1px 4px rgba(0,0,0,.5)";
+        v.textContent="🖱 点一下地图，就可以用滑鼠滚轮放大缩小";
+        box.appendChild(v); var on=false;
+        box.addEventListener("mouseenter",function(){if(!on)v.style.opacity="1";});
+        box.addEventListener("mouseleave",function(){on=false;map.scrollWheelZoom.disable();v.style.opacity="0";});
+        box.addEventListener("mousedown",function(){on=true;map.scrollWheelZoom.enable();v.style.opacity="0";});
+      })();
       layer=L.layerGroup().addTo(map);
       if(pending)draw(pending);
     }
