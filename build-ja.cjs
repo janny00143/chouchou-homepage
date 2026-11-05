@@ -1012,7 +1012,8 @@ function propVideoLdJa(p, url) {
     name: PLAIN_JA(p.title) + "｜物件動画",
     description: PLAIN_JA(p.title) + " の物件紹介動画（周周・日本の不動産）",
     thumbnailUrl: ["https://i.ytimg.com/vi/" + vid + "/maxresdefault.jpg"],
-    uploadDate: p.videoDate,
+    /* Search Console（2026-11-05）：只寫日期會報「datetime 無效／缺少時區」，補成日本時間的完整 ISO 8601 */
+    uploadDate: /T\d/.test(p.videoDate) ? p.videoDate : p.videoDate + "T00:00:00+09:00",
     embedUrl: em,
     contentUrl: "https://www.youtube.com/watch?v=" + vid,
     publisher: PUBLISHER_JA,

@@ -1896,7 +1896,8 @@ function propVideoLd(p, url) {
     name: PLAIN(p.title_cn || p.title) + "｜物件影片",
     description: PLAIN(p.title_cn || p.title) + " 的物件介紹影片（周周・日本房仲）",
     thumbnailUrl: ["https://i.ytimg.com/vi/" + vid + "/maxresdefault.jpg"],
-    uploadDate: p.videoDate,
+    /* Search Console（2026-11-05）：只寫日期會報「datetime 無效／缺少時區」，補成日本時間的完整 ISO 8601 */
+    uploadDate: /T\d/.test(p.videoDate) ? p.videoDate : p.videoDate + "T00:00:00+09:00",
     embedUrl: em,
     contentUrl: "https://www.youtube.com/watch?v=" + vid,
     publisher: PUBLISHER_TW,

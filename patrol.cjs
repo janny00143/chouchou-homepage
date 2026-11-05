@@ -713,6 +713,11 @@ function b4_structured() {
     // 產生器塞的 noscript 清單，沒有它搜尋引擎讀不到任何物件
     if (!/<!--PROP-SEO-->/.test(read(f))) bad.push(`${f}: 缺 PROP-SEO 區塊`);
   }
+  // VideoObject 的 uploadDate 要有時間＋時區（Search Console 2026-11-05 報「datetime 無效／缺少時區」）
+  for (const f of fs.readdirSync(ROOT).filter(x => /\.html$/.test(x))) {
+    for (const m of read(f).matchAll(/"uploadDate":"([^"]*)"/g))
+      if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/.test(m[1])) bad.push(`${f}: VideoObject uploadDate 沒有時區（${m[1]}）`);
+  }
   metrics.itemList = itemCount;
   add("B4", "結構化資料", bad.length ? "FAIL" : "OK",
     `文章 JSON-LD 缺欄位 ${bad.filter(x => /缺 headline|缺 datePublished|缺 author|沒有 Article/.test(x)).length}｜物件 ItemList ${itemCount} 筆`,
