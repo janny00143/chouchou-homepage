@@ -10,10 +10,11 @@
    "日本の暮らし",
    "中古物件"
   ],
-  "cover": "img/gomi-signs-zh-ja.webp",
+  "cover": "img/gomi-bins-outdoor.webp",
   "body": [
    "先日、東京に引っ越してきたばかりのお客様からLINEが届きました。「古いソファを1階の集積所に出したら、黄色い紙を貼られてしまって……」。粗大ごみはそのままでは出せないので、お持ち帰りくださいという管理会社からのお知らせでした。",
    "東京では、ソファ、マットレス、本棚、自転車などの大きなものは粗大ごみとして扱われます。処分できないわけではなく、「事前に申し込み、料金を払い、指定日に出す」という手順が必要です。前回の〈<a href='tokyo-garbage-sorting-guide-ja.html' style='color:#e11d48;font-weight:600'>東京のごみ分別はなぜこんなに複雑なのか</a>〉でも少し触れましたが、今回は一連の流れを最初から最後までご説明いたします。",
+   "<div style='margin:6px 0 16px'><img src='img/gomi-signs-zh-ja.webp' alt='日中2か国語のごみ分別表示：可燃ごみ・不燃ごみ・資源ごみ' loading='lazy' class='artimg' width='1254' height='1254'><p style='font-size:13px;color:#78716c;text-align:center;margin-top:6px'>日常のごみは可燃・不燃・資源の3分類。粗大ごみは別途申込みが必要です</p></div>",
    "<b>一、粗大ごみに当たるもの</b>",
    "東京23区の多くは「最も長い辺が30cmを超えるもの」を目安にしています。たとえば墨田区では、最大辺が30cmを超える家具などを粗大ごみとしています。本棚を板にばらせば小さくなるのでは、というご質問もよくいただきますが、墨田区は分解しても粗大ごみとして扱うと明記しています。",
    "代表的なものはソファ、ベッド、マットレス、机・いす、たんす、本棚、カーペット、扇風機、電子レンジ、自転車、ベビーカーなどです。対象品目や料金の表記は区によって異なりますので、お住まいの区の案内をご確認ください。",
@@ -22,7 +23,7 @@
    "<div style='overflow-x:auto;margin:14px 0'><table style='width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7'><thead><tr style='background:#f0fdf4'><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>ステップ</th><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>内容</th><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>ポイント</th></tr></thead><tbody><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>① 申込み</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>お住まいの区の粗大ごみ受付センターに電話またはインターネットで申し込み、品目と数量を伝える</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>インターネットは多くの区で24時間受付、電話はおおむね午前8時〜午後7時</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>② 受付内容の確認</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>受付番号、収集日、料金、必要な処理券の種類と枚数が案内される</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>受付番号は処理券に記入するので控えておく</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>③ 処理券の購入</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>コンビニや取扱店で「有料粗大ごみ処理券」を購入</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>A券200円・B券300円の2種類。案内された枚数を購入</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>④ 記入・貼付</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>処理券に受付番号（または氏名）と収集日を書き、品物の見やすい所に貼る</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>品物ごとに貼る</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>⑤ 排出</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>収集日の朝8時までに、申込み時に決めた場所へ出す</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>集合住宅は粗大ごみ専用置場があることが多いので管理員に確認</td></tr></tbody></table></div>",
    "料金は品目と大きさによって異なり、小物は数百円、大型家具は1点で千円台以上になることもあります。処理券の券面は、23区の多くでA券200円・B券300円です（墨田区・杉並区などの案内）。組み合わせは受付センターが案内してくれます。",
    "意外と知られていないのが、処理券は区ごとに発行されているという点です。以前住んでいた区で買った券が引越し先の区で使えるとは限りませんので、まとめ買いはせず、出すときに買うのがおすすめです。",
-   "⚠️ 23区は受付電話もインターネット申込みの窓口も区ごとに異なり、ネットで見つけた番号が別の区のものということもよくあります。23区の公式窓口を〈<a href='tokyo-oversized-garbage-ja.html' style='color:#e11d48;font-weight:600'>23区 粗大ごみ受付窓口一覧</a>〉にまとめ、毎週自動で確認しています。お住まいの区をそのままクリックしてください。",
+   "⚠️ 23区は受付電話もインターネット申込みの窓口も区ごとに異なり、ネットで見つけた番号が別の区のものということもよくあります。23区の公式窓口を〈<a href='tokyo-oversized-garbage-ja.html' style='color:#e11d48;font-weight:600'>23区 粗大ごみ受付窓口一覧</a>〉にまとめ、毎週更新しています。お住まいの区をそのままクリックしてください。",
    "<b>三、区で収集しない家電</b>",
    "エアコン、テレビ、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機の4品目は、家電リサイクル法により粗大ごみとしては出せません。買い替え時に販売店に引き取ってもらうか、購入した店に依頼するのが基本で、どちらも難しい場合は東京23区の家電リサイクル受付センターに回収を依頼できます。費用は「リサイクル料金＋収集運搬料金」で、リサイクル料金はメーカーが定めています。新宿区の案内では、エアコン990円、170L以下の冷蔵庫3,740円（2024年4月時点）で、収集運搬料金は別途かかります。",
    "パソコンも粗大ごみでは出せません。PCリサイクルマークのある製品はメーカーが無料で回収しており、目黒区や板橋区などでは提携業者による宅配便回収も利用できます。ハードディスクのデータはご自身で消去しておく必要があります。",
@@ -36,7 +37,7 @@
    "ここからは不動産会社としての実務のお話です。中古物件では、売主様が古い家具やエアコン、カーテンなどを残していかれることがあります。内覧時には「家具付きでお得」と感じても、引渡し後に半分は費用をかけて処分が必要だった、というケースも少なくありません。エアコンや冷蔵庫であれば、前述の家電リサイクルの手続きも必要です。",
    "こうした残置物は、売買契約の前に、どの設備を引き継ぐか、どれを引渡しまでに売主様に撤去していただくかを明確にし、契約書や付帯設備表に反映させるのが基本です。私は内覧の段階で一つひとつ確認し、引渡し前にも現地で再確認しております。",
    "東京で物件をお探しの方、購入後の家具の処分でお困りの方は、LINEでお気軽にご相談ください。お住まいの区に合わせた方法をご案内いたします。融資の可否や融資額は個別の状況と金融機関の審査により、登記・契約については司法書士・宅地建物取引士が確認いたします。",
-   "<div style='margin:22px 0'><a href='tokyo-oversized-garbage-ja.html' style='display:block;padding:14px 18px;border-radius:12px;background:#fff1f2;border:1px solid #fecdd3;color:#e11d48;font-weight:700;text-decoration:none;line-height:1.75'>📖 関連記事：23区 粗大ごみ受付電話・インターネット申込み一覧（毎週自動確認） →</a></div>",
+   "<div style='margin:22px 0'><a href='tokyo-oversized-garbage-ja.html' style='display:block;padding:14px 18px;border-radius:12px;background:#fff1f2;border:1px solid #fecdd3;color:#e11d48;font-weight:700;text-decoration:none;line-height:1.75'>📖 関連記事：23区 粗大ごみ受付電話・インターネット申込み一覧（毎週更新） →</a></div>",
    "<div style='margin:22px 0'><a href='tokyo-garbage-sorting-guide-ja.html' style='display:block;padding:14px 18px;border-radius:12px;background:#fff1f2;border:1px solid #fecdd3;color:#e11d48;font-weight:700;text-decoration:none;line-height:1.75'>📖 関連記事：東京のごみ分別はなぜこんなに複雑？入居前に知っておきたいこと →</a></div>",
    "<b>出典</b>",
    "<div style='font-size:12.5px;color:#78716c;line-height:1.8;margin-top:8px'>・墨田区「粗大ごみの出し方」、杉並区・板橋区・世田谷区・目黒区の粗大ごみに関する案内（処理券A券200円・B券300円、自己搬入、繁忙期の案内）、新宿区・目黒区の家電リサイクル法に関する案内（リサイクル料金は2024年4月時点）、目黒区・江戸川区の家庭用パソコンの処分方法、杉並区・千葉市など各自治体の無許可回収業者への注意喚起（2026年11月閲覧）。<br>＊料金や収集方法は区によって異なり、変更されることがあります。最新の情報はお住まいの区の案内をご確認ください。</div>"

@@ -333,9 +333,11 @@ const body = `<header>
         <a href="https://www.instagram.com/p/DaZoAseTGGd/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">📷 Instagramのお客様の声</a>
         <a href="feedback-ja.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--rose);box-shadow:inset 0 0 0 2px var(--rose);font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;text-decoration:none">✍️ ご感想を投稿</a>
       </div>
-      <div class="rev-grid">
+      <div class="rev-marq" onclick="this.classList.toggle('paused')"><div class="rev-track" style="--rvdur:${REVIEWS_JA.length*8}s">
         ${REVIEWS_JA.map(r => `<div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">「${r.text}」</p><p class="rev-who">— ${r.who}</p>${r.reply?`<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周より</p><p class="rev-reply-text">${r.reply}</p></div>`:""}</div>`).join("\n        ")}
-      </div>
+        ${REVIEWS_JA.map(r => `<div class="rev-card" aria-hidden="true"><div class="rev-stars">★★★★★</div><p class="rev-text">「${r.text}」</p><p class="rev-who">— ${r.who}</p>${r.reply?`<div class="rev-reply"><p class="rev-reply-who"><span class="rev-av">周</span>周周より</p><p class="rev-reply-text">${r.reply}</p></div>`:""}</div>`).join("\n        ")}
+      </div></div>
+      <p style="text-align:center;font-size:12.5px;color:var(--mut);margin-top:6px">カーソルを合わせる（スマホはタップ）と一時停止します</p>
       <div class="note" style="background:#fffbeb;border:2px solid #f59e0b;max-width:none;margin-top:16px">${JA_UI.reviewsNote}</div>
       <div id="cmts" data-slug="home-reviews" data-lang="ja" data-title="ご感想をお聞かせください ♡" data-sub="フォームでなくても大丈夫です。Googleアカウントでログインすれば、この場でそのまま投稿でき、送信後すぐに表示されます。個別のご相談は上のフォームからどうぞ。"></div>
     </div>
