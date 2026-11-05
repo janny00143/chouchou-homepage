@@ -149,6 +149,27 @@
 
 window.PROPERTIES = [
   {
+    id: "seta-heights203",
+    listed: "2026-11-05",
+    layoutTag: "3LDK",
+    status: "在售",
+    cat: "live",
+    title: "瀬田ハイツ 203号室",
+    title_cn: "二子玉川站7分 全新翻新3LDK 71.82㎡（LDK約15.1帖・到車站平路）",
+    price: "7,298万円（含稅）",
+    location: "東京都世田谷區瀨田1丁目",
+    station: "東急田園都市線・大井町線「二子玉川」站 徒步7分",
+    layout: "3LDK（LDK約15.1帖＋洋室約5.8帖＋洋室約5.1帖＋洋室約4.2帖）",
+    size: "專有71.82㎡（約21.73坪）・陽台6.96㎡",
+    age: "1977年2月築・2026年9月17日全新翻新完工・現況空屋・可即時交屋",
+    facing: "RC造6層建的2樓・總戶數40戶・第一種中高層住居專用地域・不可養寵物・不可作事務所使用",
+    mgmt: "管理費17,520円＋修繕基金（修繕積立金）15,150円／月（合計32,670円・全部委託・通勤管理・東急社區）。2025年1月已實施大規模修繕、2023年4月屋頂防水改修；修繕基金預定2026年中調整（檢討中）；不住在本棟的屋主另付管委會協力金每月2,500円。停車場目前無空位（月租28,000円）",
+    right: "所有權",
+    yield: "",
+    photos: ["prop/prop-seta-heights203-1.webp", "prop/prop-seta-heights203-plan.webp", "prop/prop-seta-heights203-2.webp", "prop/prop-seta-heights203-3.webp", "prop/prop-seta-heights203-4.webp", "prop/prop-seta-heights203-5.webp", "prop/prop-seta-heights203-6.webp", "prop/prop-seta-heights203-7.webp", "prop/prop-seta-heights203-8.webp", "prop/prop-seta-heights203-9.webp", "prop/prop-seta-heights203-10.webp", "prop/prop-seta-heights203-11.webp"],
+    note: "■ 這間是什麼\n二子玉川站徒步7分、2026年9月剛全新翻新完工的3LDK，專有約72㎡，空屋可以馬上看房。\n■ 亮點\n<b>LDK約15.1帖</b>，餐桌和沙發都放得下，再加三間洋室，一家人住剛好。到二子玉川站是沿著綠道走的平路，不用爬坡、車也少；二子玉川RISE、高島屋都在徒步範圍，假日走去多摩川河岸散步也很近。\n■ 格局與設備\n每間房都有衣櫥，走廊另有兩處收納，洗臉間和廁所也有專用棚架。廚房附食洗機與淨水器，浴室有保溫浴缸、追焚與浴室暖風乾燥機，冷氣也已經裝好。\n■ 管理與生活\n東急社區全部委託管理，2025年1月剛做完大規模修繕。附近小學、中學、保育園都在步行範圍，適合有小孩的家庭。\n■ 想看房或試算貸款\n照片中的家具是佈置用，不含在售價內。這棟是1977年築（舊耐震基準），但可以取得「耐震基準適合證明書」（需另付費用）；這種屋齡各家銀行看法差很多，我可以先幫你問過幾家再決定怎麼出手。加LINE跟周周說一聲，貸款能不能貸、可貸成數依個案與銀行審查為準。"
+  },
+  {
     id: "atlas-ikejiri601",
     listed: "2026-11-02",
     layoutTag: "2LDK",
