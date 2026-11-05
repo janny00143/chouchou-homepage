@@ -295,7 +295,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     var when=p.soldDate?'<div class="sold-when">'+esc(p.soldDate)+'</div>':"";
     /* keepPage 的成交物件（周周 2026-10-31：向丘2）可以点开看，页面资料已精简、地址只到区 */
     var open_=!!p.keepPage, tag=open_?'a':'div';
-    return '<'+tag+' class="card sold-card'+(open_?' sold-open':'')+'"'+(open_?' href="'+(/-cn\.html$/.test(location.pathname)?'prop-'+p.id+'-cn.html':'prop-'+p.id+'.html')+'"':'')+'>'
+    return '<'+tag+' class="card sold-card'+(open_?' sold-open':'')+'"'+(open_?' href="'+DETAIL+'?id='+encodeURIComponent(p.id)+'"':'')+'>'
       +'<div class="ph">'+photo+'<span class="sold-rib">已成交</span></div>'
       +'<div class="body"><h3>'+line+(lay?'<span class="laytag">'+esc(lay)+'</span>':'')+'</h3>'
       +(meta?'<div class="sold-meta">'+meta+'</div>':'')+when
