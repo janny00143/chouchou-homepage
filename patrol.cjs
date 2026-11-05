@@ -336,9 +336,14 @@ function a6_secrets() {
 function findChromium() {
   const base = "/opt/pw-browsers";
   if (!fs.existsSync(base)) return null;
+  // 2026-11 起容器改成 /opt/pw-browsers/chromium 直接是執行檔、資料夾叫 chrome-linux64
+  const direct = path.join(base, "chromium");
+  if (fs.existsSync(direct) && fs.statSync(direct).isFile()) return direct;
   for (const d of fs.readdirSync(base)) {
-    const p = path.join(base, d, "chrome-linux", "chrome");
-    if (fs.existsSync(p)) return p;
+    for (const sub of ["chrome-linux", "chrome-linux64"]) {
+      const p = path.join(base, d, sub, "chrome");
+      if (fs.existsSync(p)) return p;
+    }
   }
   return null;
 }
