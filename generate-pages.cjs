@@ -991,7 +991,8 @@ function pageThreadsTW(cfg) {
         "@type": "SocialMediaPosting",
         headline: threadsTitle(p.text),
         articleBody: p.text,
-        datePublished: p.date,
+        // Google 討論區結構化資料要求 datetime 帶時區（Search Console 2026-11-08 報錯）
+        datePublished: /T\d/.test(p.date) ? p.date : p.date + "T00:00:00+09:00",
         inLanguage: "zh-Hant",
         author: COPYRIGHT_TW,
         publisher: PUBLISHER_TW,

@@ -723,6 +723,11 @@ function b4_structured() {
     for (const m of read(f).matchAll(/"uploadDate":"([^"]*)"/g))
       if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/.test(m[1])) bad.push(`${f}: VideoObject uploadDate 沒有時區（${m[1]}）`);
   }
+  // 脆文精選的 SocialMediaPosting（Google 歸在「討論區」）datePublished 也要帶時區（Search Console 2026-11-08 報錯）
+  for (const f of fs.readdirSync(ROOT).filter(x => /^threads-.*\.html$/.test(x))) {
+    for (const m of read(f).matchAll(/"@type":"SocialMediaPosting"[^{}]*?"datePublished":"([^"]*)"/g))
+      if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/.test(m[1])) { bad.push(`${f}: SocialMediaPosting datePublished 沒有時區（${m[1]}）`); break; }
+  }
   metrics.itemList = itemCount;
   add("B4", "結構化資料", bad.length ? "FAIL" : "OK",
     `文章 JSON-LD 缺欄位 ${bad.filter(x => /缺 headline|缺 datePublished|缺 author|沒有 Article/.test(x)).length}｜物件 ItemList ${itemCount} 筆`,
