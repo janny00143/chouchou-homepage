@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-08",
  "wards": [
   {
    "ward": "千代田區",
@@ -82,7 +82,7 @@
      "traditional": false,
      "multilang": false,
      "rank": 10,
-     "status": 206,
+     "status": 200,
      "sizeKB": 1344
     },
     {
@@ -344,17 +344,7 @@
    "wardJa": "杉並区",
    "page": "https://www.city.suginami.tokyo.jp/s104/5928.html",
    "pageOk": true,
-   "pdfs": [
-    {
-     "url": "https://www.city.suginami.tokyo.jp/documents/5928/3gaikokugo.pdf",
-     "label": "中国語（ちゅうごくご）（PDF：3,565KB）",
-     "traditional": false,
-     "multilang": false,
-     "rank": 10,
-     "status": 200,
-     "sizeKB": null
-    }
-   ]
+   "pdfs": []
   },
   {
    "ward": "豐島區",

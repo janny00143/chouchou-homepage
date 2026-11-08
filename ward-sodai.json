@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-08",
  "wards": [
   {
    "ward": "千代田區",
@@ -201,14 +201,14 @@
    "wardJa": "中野区",
    "pageOk": true,
    "from": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/dashikata/leaflet.html",
-   "sodaiPage": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/sodaigomi/index.html",
-   "sodaiTitle": "粗大ごみの申込み | 中野区",
+   "sodaiPage": "https://www.city.tokyo-nakano.lg.jp/faq/gomi/gomi23.html",
+   "sodaiTitle": "○○は粗大ごみですか？ | 中野区",
    "phone": "03-5715-2255",
    "phoneNote": "",
-   "phoneFrom": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/sodaigomi/jizenmoshikomi.html",
+   "phoneFrom": "https://www.city.tokyo-nakano.lg.jp/faq/gomi/sodaigomi02.html",
    "online": {
-    "url": "https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/sodaigomi/internetmoshikomi02.html",
-    "label": "粗大ごみ収集のインターネット申込み"
+    "url": "http://www2.sodai-web.jp/nakano/index.html",
+    "label": "粗大ごみ受付センターのホームページ（外部サイト）"
    }
   },
   {
