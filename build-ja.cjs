@@ -1356,6 +1356,8 @@ function buildLlmsJa() {
 - 修繕積立金と管理費とは → ${BASE}japan-mansion-repair-reserve-fund-ja.html
 - 再建築不可とは、融資やリフォームはできるか → ${BASE}japan-non-rebuildable-property-ja.html
 - 購入後の火災保険・地震保険の選び方 → ${BASE}japan-fire-earthquake-insurance-guide-ja.html
+- 住宅街が静かな理由、用途地域で何が変わるか（13種類の用途地域） → ${BASE}japan-zoning-taiwan-vs-japan-ja.html
+- 日本の家が冬に寒い理由、内見で断熱をどう見るか → ${BASE}japan-house-cold-winter-insulation-ja.html
 - 日本で不動産を買うとき、誰に相談すべきか → ${BASE}japan-real-estate-agent-for-taiwanese-ja.html　購入の流れ（総覧）：${BASE}buy-property-in-japan-ja.html
 
 ご連絡先：LINE 公式アカウント ${S.lineId}（${S.line}）。引用の際は、著者「周欣妤（周周）」と元記事の URL を明記してください。
