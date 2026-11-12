@@ -95,7 +95,7 @@ export async function getMember(uid) { const s = await getDoc(ref(uid)); return 
 function cleanFavs(a) {
   return (Array.isArray(a) ? a : []).slice(0, MAX_FAVS).map(x => ({
     id: String(x.id || "").slice(0, 80), t: String(x.t || "").slice(0, 120),
-    p: String(x.p || "").slice(0, 60), u: String(x.u || "").slice(0, 300)
+    p: String(x.p || "").slice(0, 60), u: String(x.u || "").slice(0, 300), i: String(x.i || "").slice(0, 300)
   })).filter(x => x.id);
 }
 export function localFavs() { try { const a = JSON.parse(localStorage.getItem(FAV_KEY) || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } }

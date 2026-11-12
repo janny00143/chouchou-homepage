@@ -59,6 +59,12 @@
   function has(id) { return load().some(function (x) { return x.id === id; }); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function pageUrl(id) { return location.origin + location.pathname.replace(/[^\/]*$/, "") + "prop-" + id + sfx + ".html"; }
+  /* 收藏清單要顯示縮圖（周周 2026-11-12：收藏點開就連到物件頁——加照片和 › 讓它一看就知道可以點） */
+  function absImg(s) { try { return s ? new URL(s, location.href).href.slice(0, 300) : ""; } catch (e) { return ""; } }
+  function detailImg() {
+    var og = document.querySelector('meta[property="og:image"]'); if (og && /\/prop\//.test(og.content)) return og.content;
+    var im = document.querySelector('img[src*="prop/"]'); return im ? im.getAttribute("src") : "";
+  }
   function ga(name, extra) { try { if (typeof gtag === "function") gtag("event", name, extra || {}); } catch (e) { } }
 
   function toggle(id, info) {
@@ -67,7 +73,7 @@
     if (i >= 0) { a.splice(i, 1); save(a); toast(T.toastDel); }
     else {
       if (a.length >= MAX) { toast(T.full); return; }
-      a.unshift({ id: id, t: info.t || id, p: info.p || "", u: pageUrl(id) }); save(a); toast(T.toastAdd);
+      a.unshift({ id: id, t: info.t || id, p: info.p || "", u: pageUrl(id), i: absImg(info.i) }); save(a); toast(T.toastAdd);
       ga("favorite_add", { prop_id: id });
     }
     paint();
@@ -85,7 +91,7 @@
     ".favbox{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(560px,100%);max-height:82vh;overflow:auto;background:#fff;border-radius:18px 18px 0 0;padding:18px 18px 22px;box-shadow:0 -8px 30px rgba(0,0,0,.2)}" +
     ".favbox h3{font-size:18px;margin:0 0 4px}.favbox .fnote{font-size:12.5px;color:#78716c;margin:0 0 12px}" +
     ".favrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0ece8}" +
-    ".favrow a{flex:1;color:#1c1917;text-decoration:none;line-height:1.5}.favrow a b{display:block;font-size:14.5px}.favrow a span{font-size:13px;color:#e11d48;font-weight:700}" +
+    ".favrow a{flex:1;min-width:0;display:flex;align-items:center;gap:10px;color:#1c1917;text-decoration:none;line-height:1.5;border-radius:10px}.favrow a:hover{background:#fff7f8}.favrow a img,.favrow .fnoimg{width:64px;height:48px;border-radius:8px;object-fit:cover;flex:0 0 auto;background:#fdf2f4;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:20px}.favrow a em{flex:1;min-width:0;font-style:normal}.favrow a b{display:block;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.favrow a span{font-size:13px;color:#e11d48;font-weight:700}.favrow a u{text-decoration:none;color:#e11d48;font-size:22px;font-weight:700;flex:0 0 auto;padding-right:2px}" +
     ".favrow button{border:0;background:#f5f5f4;color:#57534e;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:16px}" +
     ".favact{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}.favact button{flex:1;min-width:140px;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:15px;cursor:pointer}" +
     ".favact .fsend{background:#06c755;color:#fff}.favact .fclr{background:#f5f5f4;color:#57534e;flex:0 0 auto}.favact .fcls{background:#fff;border:1.5px solid #e7e5e4;color:#57534e;flex:0 0 auto}" +
@@ -122,7 +128,7 @@
     var c = btn.closest("a.card"); if (!c) return {};
     var h = c.querySelector("h3"), t = "";
     if (h) { var cl = h.cloneNode(true); var lt = cl.querySelector(".laytag"); if (lt) lt.remove(); t = cl.textContent.trim(); }
-    var pr = c.querySelector(".price"); return { t: t, p: pr ? pr.textContent.trim() : "" };
+    var pr = c.querySelector(".price"), im = c.querySelector(".ph img"); return { t: t, p: pr ? pr.textContent.trim() : "", i: im ? im.getAttribute("src") : "" };
   }
 
   /* ── 物件詳情頁：標題下方加按鈕 ── */
@@ -155,7 +161,7 @@
   function openPanel() {
     var a = load();
     var rows = a.length ? a.map(function (x) {
-      return '<div class="favrow"><a href="' + esc(x.u) + '"><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></a><button type="button" data-del="' + esc(x.id) + '" aria-label="remove">×</button></div>';
+      return '<div class="favrow"><a href="' + esc(x.u) + '">' + (x.i ? '<img src="' + esc(x.i) + '" alt="" loading="lazy">' : '<i class="fnoimg">🏠</i>') + '<em><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></em><u>›</u></a><button type="button" data-del="' + esc(x.id) + '" aria-label="remove">×</button></div>';
     }).join("") : '<p class="favempty">' + esc(T.empty) + '</p>';
     var memberUrl = "member" + sfx + ".html";
     var noteHtml = isMember() ? '<p class="fnote">' + esc(T.synced) + ' <a href="' + memberUrl + '">' + esc(T.title) + ' →</a></p>'
@@ -191,7 +197,7 @@
     var b = t.closest && t.closest(".favbtn");
     if (b) { e.preventDefault(); e.stopPropagation(); toggle(b.getAttribute("data-fav"), cardInfo(b)); return; }
     var d = t.closest && t.closest(".favdet");
-    if (d) { e.preventDefault(); var P = window.PROPINFO || {}; toggle(d.getAttribute("data-favd"), { t: P.t || document.title.split("｜")[0], p: P.p || "" }); return; }
+    if (d) { e.preventDefault(); var P = window.PROPINFO || {}; toggle(d.getAttribute("data-favd"), { t: P.t || document.title.split("｜")[0], p: P.p || "", i: detailImg() }); return; }
     if (!panel || !panel.contains(t)) return;
     var del = t.closest("[data-del]");
     if (del) { var id = del.getAttribute("data-del"); save(load().filter(function (x) { return x.id !== id; })); paint(); openPanel(); return; }

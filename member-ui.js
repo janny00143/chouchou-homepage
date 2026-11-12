@@ -35,6 +35,7 @@ function busy(btn, on) { if (!btn) return; btn.disabled = on; btn.style.opacity 
 
 /* ── 1. 還沒登入 ── */
 function viewLogin() {
+  wide(false);
   root.innerHTML =
     '<div class="card"><ul class="perks">' + T.perks.map(p => '<li>' + p + '</li>').join("") + '</ul></div>' +
     '<div class="card">' +
@@ -80,6 +81,7 @@ function regionOptions(sel) {
       '<option value="' + esc(r) + '"' + (r === sel ? " selected" : "") + '>' + esc(regionLabel(r)) + '</option>').join("") + '</optgroup>').join("");
 }
 function viewProfile(isEdit) {
+  wide(false);
   const m = MEMBER || {}, u = USER || {};
   root.innerHTML = '<div class="card"><h2>' + esc(isEdit ? T.editTitle : T.profileTitle) + '</h2><p class="sub">' + esc(isEdit ? "" : T.profileSub) + '</p>' +
     '<form id="pForm">' +
@@ -128,14 +130,33 @@ function viewProfile(isEdit) {
 }
 
 /* ── 3. 會員中心 ── */
+/* 會員中心在電腦上用兩欄：左邊收藏、右邊會員資料（周周 2026-11-12） */
+function wide(on) { const w = root.closest(".wrap"); if (w) w.classList.toggle("wide", !!on); }
+/* 舊的收藏沒有存縮圖：讀一次物件資料補上，順便存回本機與雲端 */
+let _thumbTried = false;
+function fillThumbs(favs) {
+  if (_thumbTried || !favs.some(x => !x.i)) return; _thumbTried = true;
+  const s = document.createElement("script"); s.src = "properties.js";
+  s.onload = () => {
+    const P = {}; (window.PROPERTIES || []).forEach(p => { P[p.id] = p; });
+    const base = location.href.replace(/[^\/]*$/, ""); let changed = false;
+    const a = M.localFavs().map(x => { const p = P[x.id]; const img = p && (p.thumb || (p.photos && p.photos[0]));
+      if (!x.i && img) { changed = true; return Object.assign({}, x, { i: base + img }); } return x; });
+    if (!changed) return;
+    try { localStorage.setItem("chou_favs_v1", JSON.stringify(a)); } catch (e) { }
+    if (USER && MEMBER) { try { M.pushFavs(); } catch (e) { } }
+    if (document.getElementById("hEdit")) viewHome();
+  };
+  document.head.appendChild(s);
+}
 function viewHome(flash) {
   const m = MEMBER || {}, favs = M.localFavs();
   root.innerHTML =
     (flash ? '<div class="flash">' + esc(flash) + '</div>' : '') +
-    '<div class="card"><h2>' + esc(T.hello.replace("{name}", m.name || "")) + '</h2>' +
+    '<div class="mgrid"><div class="card"><h2>' + esc(T.hello.replace("{name}", m.name || "")) + '</h2>' +
     '<p class="sub">' + esc(T.homeSub) + '</p>' +
     '<h3>♥ ' + esc(T.myFavs) + '（' + favs.length + '）</h3>' +
-    (favs.length ? '<div class="favs">' + favs.map(x => '<a class="fv" href="' + esc(x.u) + '"><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></a>').join("") + '</div>'
+    (favs.length ? '<div class="favs">' + favs.map(x => '<a class="fv" href="' + esc(x.u) + '">' + (x.i ? '<img src="' + esc(x.i) + '" alt="" loading="lazy">' : '<i>🏠</i>') + '<em><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></em><u>›</u></a>').join("") + '</div>'
       : '<p class="sub">' + T.noFavs + '</p>') +
     '<p style="margin-top:14px"><a class="btn-line" href="' + esc(T.propsUrl) + '">' + esc(T.seeProps) + '</a></p></div>' +
     '<div class="card"><h3>' + esc(T.myInfo) + '</h3><dl class="info">' +
@@ -145,7 +166,9 @@ function viewHome(flash) {
     '<label class="chk"><input type="checkbox" id="hNews"' + (m.consentNews ? " checked" : "") + '><span>' + T.consentNews + '</span></label>' +
     '<p class="err" id="hErr"></p>' +
     '<div class="row2"><button type="button" class="ghost" id="hEdit">' + esc(T.edit) + '</button><button type="button" class="ghost" id="hOut">' + esc(T.logout) + '</button></div>' +
-    '<p class="small" style="margin-top:16px"><a href="#" id="hDel">' + esc(T.del) + '</a>　·　<a href="' + PRIVACY + '">' + esc(T.privacyLink) + '</a></p></div>';
+    '<p class="small" style="margin-top:16px"><a href="#" id="hDel">' + esc(T.del) + '</a>　·　<a href="' + PRIVACY + '">' + esc(T.privacyLink) + '</a></p></div></div>';
+  wide(true);
+  fillThumbs(favs);
   document.getElementById("hEdit").onclick = () => viewProfile(true);
   document.getElementById("hOut").onclick = () => M.logout();
   document.getElementById("hNews").onchange = async (ev) => {
