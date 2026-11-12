@@ -180,6 +180,27 @@
         (r.why.length ? '<span class="why">' + r.why.join("・") + '</span>' : '') + '</div></a>';
     }).join("") + '</div></div>';
   }
+  /* 去 SUUMO 看「其他公司」符合條件的物件（周周 2026-11-12：讓客戶知道他可能有哪些選擇，可以原連結）。
+     ⚠️ 不把別家的物件抓下來放在我們網站（廣告規約：未經同意不得刊登他社物件），只給「帶好條件的搜尋連結」。
+     參數已實測：sc=區碼 kt=價格上限(萬) mb/mt=面積 cn=屋齡上限。 */
+  function suumoUrl(c) {
+    var u = "https://suumo.jp/jj/bukken/ichiran/JJ012FC001/?ar=030&bs=011&ta=13&sc=" + c + "&pc=30";
+    if (st.budget) u += "&kb=1&kt=" + Math.round(st.budget * 1.05);
+    if (st.band != null) { u += "&mb=" + BAND_RANGE[st.band][0]; if (st.band < 4) u += "&mt=" + BAND_RANGE[st.band][1]; }
+    if (st.age != null && st.age < 4) u += "&cn=" + [1, 10, 20, 30][st.age];
+    return u;
+  }
+  function secLinks() {
+    var ws = st.wards.length ? st.wards.slice(0, 6) : (function () {
+      var b = st.band != null ? st.band : 2;
+      return CODES.map(function (c) { var m = med(c, b); return { c: c, m: m }; }).filter(function (r) { return r.m != null && (!st.budget || r.m <= st.budget * 1.1); })
+        .sort(function (a, b) { return st.budget ? (W[b.c].land - W[a.c].land) : (a.m - b.m); }).slice(0, 6).map(function (r) { return r.c; });
+    })();
+    if (!ws.length) return "";
+    return '<div class="msec"><h3>' + T.secLinks + '</h3><p class="msub">' + T.secLinksSub + '</p><div class="mlk">' + ws.map(function (c) {
+      return '<a href="' + suumoUrl(c) + '" target="_blank" rel="noopener nofollow" onclick="try{gtag(\'event\',\'match_suumo\')}catch(e){}"><b>' + T.wardNames[c] + '</b><span>' + T.linksBtn + ' ↗</span></a>';
+    }).join("") + '</div><p class="mnote">' + T.linksNote + '</p></div>';
+  }
   function secFate() {
     /* 買房命盤（趣味）：全部或大部分條件都填時才出現 */
     var c = (st.wards[0]) || (function () { if (!st.budget) return "13112"; var best = null; CODES.forEach(function (k) { var m = med(k, st.band != null ? st.band : 2); if (m != null && m <= st.budget && (!best || W[k].land > W[best].land)) best = k; }); return best || "13121"; })();
@@ -256,6 +277,7 @@
       if (st.band != null && !(st.wards.length && st.wards.length <= 3)) h += secSize();
       if (st.age != null) h += secAge();
       h += secProps();
+      h += secLinks();
       if (n >= 3) h += secFate();
       h += secCta();
       out.innerHTML = h;
