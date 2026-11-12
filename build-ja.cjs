@@ -1232,6 +1232,7 @@ ${FOOT}
 <!-- LINE追加時に物件情報をクリップボードへコピー（LINEの友だち追加リンクはメッセージを事前入力できないため） -->
 <script>window.PROPINFO={t:${JSON.stringify(PLAIN_JA(p.title))},p:${JSON.stringify(PLAIN_JA(p.price))},loc:${JSON.stringify(PLAIN_JA(p.location || ""))}};</script>
 <script src="propline.js"></script>
+<script src="favs.js" defer></script>
 </body>
 </html>`;
 }

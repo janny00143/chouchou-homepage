@@ -1877,6 +1877,7 @@ ${FOOT}
 <!-- 按下加 LINE 時，把這間的資訊複製到剪貼簿（LINE 的加好友連結無法預填訊息） -->
 <script>window.PROPINFO={t:${JSON.stringify(PLAIN(p.title))},p:${JSON.stringify(PLAIN(p.price))},loc:${JSON.stringify(PLAIN(p.location || ""))}};</script>
 <script src="propline.js"></script>
+<script src="favs.js" defer></script>
 </body>
 </html>`;
 }
