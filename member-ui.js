@@ -11,6 +11,10 @@ const LANG = /-ja\.html$/.test(path) ? "ja" : (/-cn\.html$/.test(path) ? "cn" : 
 const PRIVACY = LANG === "ja" ? "privacy-ja.html" : (LANG === "cn" ? "privacy-cn.html" : "privacy.html");
 const root = document.getElementById("member");
 let USER = null, MEMBER = null, MODE = "login";
+/* ?next=properties.html：從物件專區的「會員搶先看」鎖卡片過來的，登入或註冊完就送回去。
+   只接受同站的 xxx.html，避免被拿來轉址到外部網站。 */
+const NEXT = (() => { try { const n = new URLSearchParams(location.search).get("next") || ""; return /^[a-z0-9-]+\.html$/.test(n) ? n : ""; } catch (e) { return ""; } })();
+function goNext(delay) { if (NEXT) setTimeout(() => { location.href = NEXT; }, delay || 0); }
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const regionLabel = r => LANG === "ja" ? (M.REGION_JA[r] || r) : (LANG === "cn" ? (M.REGION_CN[r] || r) : r);
@@ -115,6 +119,7 @@ function viewProfile(isEdit) {
       await M.mergeFavs(USER, MEMBER);
       MEMBER = await M.getMember(USER.uid);
       viewHome(isEdit ? T.saved : T.welcome);
+      if (!isEdit) goNext(1500);
     } catch (e) { showErr("pErr", e); }
     busy(btn, false);
   };
@@ -165,6 +170,7 @@ M.onUser(async (user) => {
     if (!MEMBER) { viewProfile(false); return; }
     await M.mergeFavs(user, MEMBER);
     viewHome();
+    goNext(600);
   } catch (e) {
     root.innerHTML = '<div class="card"><p class="err" style="display:block">' + esc(errMsg(e)) + '</p><button type="button" class="ghost" id="xOut">' + esc(T.logout) + '</button></div>';
     document.getElementById("xOut").onclick = () => M.logout();

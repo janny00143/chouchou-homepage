@@ -142,7 +142,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 #soldMore{display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid #e7e5e4;border-radius:999px;padding:10px 22px;font-family:inherit;font-size:14px;font-weight:700;color:#57534e;cursor:pointer}
 #soldMore:hover{background:#faf9f7;border-color:#d6d3d1}
 .sold-see{font-size:14px;font-weight:700;color:var(--rose-d,#e11d48)}
-.jishalink{display:block;margin:10px 0 0;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:14px;padding:11px 15px;font-size:14px;font-weight:700;color:#e11d48}.jishalink small{display:block;font-weight:400;font-size:12.5px;color:#78716c;margin-top:2px}.btn-member{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 8px;background:#fff;color:#e11d48;border:1.5px solid #fecdd3;border-radius:999px;padding:10px 18px;font-weight:800;font-size:15px;text-decoration:none}.btn-member:hover{background:#fff1f2}</style>
+.jishalink{display:block;margin:10px 0 0;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:14px;padding:11px 15px;font-size:14px;font-weight:700;color:#e11d48}.jishalink small{display:block;font-weight:400;font-size:12.5px;color:#78716c;margin-top:2px}.btn-member{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 8px;background:#fff;color:#e11d48;border:1.5px solid #fecdd3;border-radius:999px;padding:10px 18px;font-weight:800;font-size:15px;text-decoration:none}.btn-member:hover{background:#fff1f2}.mlink,.hnav .mlink{font-size:13.5px;font-weight:800;color:#e11d48;text-decoration:none;white-space:nowrap;padding:6px 4px}.lockcard .ph{overflow:hidden}.lockcard .ph img{filter:blur(7px) grayscale(.35) brightness(1.03);transform:scale(1.12)}.lockov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:rgba(255,255,255,.28);color:#292524;text-shadow:0 1px 6px rgba(255,255,255,.9);font-weight:800;font-size:15px;letter-spacing:.5px}.lockov b{font-size:30px;line-height:1}.lockcard .lockprice{color:#a8a29e;letter-spacing:2px}.locktxt{font-size:13px;color:var(--mut);line-height:1.6}.lockbtn{margin-top:auto;display:block;text-align:center;background:#fff;border:1.5px solid #fecdd3;color:#e11d48;font-weight:800;border-radius:999px;padding:9px;font-size:14px}.lockcard:hover .lockbtn{background:#fff1f2}.mtag{background:rgba(225,29,72,.92);color:#fff;font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}#lockBar{display:none;margin:0 0 16px;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:16px;padding:14px 16px;line-height:1.7}#lockBar .t{font-weight:800;font-size:16px;color:#be123c}#lockBar .p{font-size:13.5px;color:#57534e;margin-top:2px}#lockBar a{display:inline-block;margin-top:9px;background:#e11d48;color:#fff;font-weight:800;border-radius:999px;padding:8px 18px;text-decoration:none;font-size:14px}#lockBar.mem{background:#f0fdf4;border-color:#bbf7d0}#lockBar.mem .t{color:#15803d;font-size:14.5px}@media(max-width:600px){.hnav .mlink{display:none}}</style>
 </head>
 <body>
 <header>
@@ -151,6 +151,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <div class="hnav">
       <a class="hide-sm" href="index-cn.html">← 回首页</a>
       <a class="hide-sm" href="index-cn.html#" onclick="location.href='index-cn.html';return false;">文章</a>
+      <a class="mlink" id="mlink" href="member-cn.html?next=properties.html">登入<span class="hide-sm">／注册</span></a>
       <a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 咨询</a>
     </div>
   </div>
@@ -162,7 +163,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <p>这里是周周精选的日本东京不动产。无论你想<b>自住</b>、<b>投资收租</b>，还是找<b>一户建</b>或<b>土地</b>，都可以先看看；有兴趣或想找更多、更符合你需求的物件，直接加 LINE 跟我说，我帮你筛选、线上看屋、全程中文把关。</p>
     <div class="cta">
       <a class="btn-line big" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">＋ 加 LINE 询问物件</a>
-      <a class="btn-member" href="member-cn.html">♥ 免费加入会员・收藏物件</a>
+      <a class="btn-member" href="member-cn.html?next=properties.html">♥ 免费注册・抢先看最新物件</a>
     </div>
   </div>
 </section>
@@ -182,6 +183,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="other">其它</button>
   </div>
   <div class="sortrow sortrow-top"><select id="psort"><option value="default">排序：预设</option><option value="price-asc">价格：低 → 高</option><option value="price-desc">价格：高 → 低</option><option value="size-desc">面积：大 → 小</option><option value="new">最新上架</option><option value="size-asc">面积：小 → 大</option></select><span class="ms-cnt2" id="msCnt2"></span></div>
+  <div id="lockBar"></div>
   <div class="grid" id="grid"></div>
   <div class="propmore"><button type="button" id="propMore" style="display:none"></button></div>
   <a class="jishalink" style="margin-top:22px" href="jisha-cn.html">🏗️ 什么是「自社物件」？—— 我们自己设计、自己盖的房子 →<small>设计・施工・销售同一家，卖方直售没有中间转手；建筑条件付售地的规则也在这一页讲清楚。</small></a>
@@ -233,6 +235,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 
   // 卡片：封面＋名称（日文＋中文）＋价格＋车站，整张是连到独立物件页的连结
   function card(p,i){
+    if(isLocked(p))return lockCard(p);
     var multi=p.photos&&p.photos.length>1;
     var photo=(p.photos&&p.photos.length)
       ? '<img class="'+(/-plan\./.test(String(p.thumb||p.photos[0]||""))?"fitall":"")+'" src="'+esc(p.thumb||p.photos[0])+'" alt="'+C(p.title)+'" loading="lazy">'+(multi?'<span class="cnt">📷 '+p.photos.length+'</span>':'')
@@ -250,7 +253,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     /* 建筑条件付土地的封面用的是「盖好之后」的完成预想图，乍看像在卖房子。
        周周 2026-09-29：封面再加一个小框写「土地」，避免误会卖的是建物。 */
     var ltag=(p.cat==="land")?'<span class="ltag">'+conv("土地")+'</span>':"";
-    var ntag=isNew(p)?'<span class="ntag">新上架</span>':"";
+    var ntag=(IS_MEMBER&&_newest[p.id])?'<span class="mtag">'+C("会员抢先")+'</span>':isNew(p)?'<span class="ntag">新上架</span>':"";
     /* 景观是很具体的卖点（看得到晴空塔、夜景），在列表就标出来，不要只写在内文 */
     var vw=VIEW[p.view]; var wtag=vw?'<span class="wtag">'+vw.icon+' '+conv(vw.label)+'</span>':"";
     var vtag=p.video?'<span class="vtag">🎬 有影片</span>':"";
@@ -276,6 +279,33 @@ footer a{color:#d6d3d1;text-decoration:none}
   }
 
   var act=list?list.filter(function(p){return !p.sold;}):null;
+  /* ── 会员抢先看（周周 2026-11-12：「物件专区做几个灰灰锁起来的更多物件请登入，引导大家注册」）──
+     最新上架的 LOCK_N 件（不含 pin、要有照片）：没登入的人看到的是模糊锁住的卡片，点了去注册／登入，
+     登入后自动回到这页。会员（localStorage chou_member=1，由 member-core.js 设定）看到的是正常卡片＋「会员抢先」标签。
+     ⚠️ 这是引导注册用的「软性」锁：物件独立页、property.html?id=、首页精选、搜寻引擎用的 JSON-LD 都照常公开，
+        LINE 分享出去的物件连结不受影响。不要把它当成真正的权限控管。 */
+  var IS_MEMBER=(function(){try{return localStorage.getItem("chou_member")==="1";}catch(e){return false;}})();
+  var LOCK_N=6, LOCK_URL="member-cn.html?next=properties.html", _newest={};
+  (act||[]).filter(function(p){return !p.pin&&p.cat!=="land"&&listedTs(p)>0&&p.photos&&p.photos.length;})
+    .sort(function(a,b){return listedTs(b)-listedTs(a);}).slice(0,LOCK_N).forEach(function(p){_newest[p.id]=1;});
+  function isLocked(p){return !IS_MEMBER&&!!_newest[p.id];}
+  function lockCard(p){
+    var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
+    var head=[wardLabel(p),CAT[p.cat]||"",lay].filter(Boolean).join("・")||"东京都内";
+    return '<a class="card lockcard" href="'+LOCK_URL+'" onclick="try{gtag(\'event\',\'lock_click\')}catch(e){}">'
+      +'<div class="ph"><img src="'+esc(p.thumb||p.photos[0])+'" alt="" aria-hidden="true" loading="lazy"><span class="lockov"><b>🔒</b>'+C("会员抢先看")+'</span></div>'
+      +'<div class="body"><h3>'+C(head)+'</h3><div class="price lockprice">●,●●● 万円</div>'
+      +'<div class="locktxt">'+C("最新上架・免费注册或登入就能看完整资讯")+'</div><span class="lockbtn">'+C("♥ 免费注册看物件")+'</span></div></a>';
+  }
+  (function(){
+    var n=0; for(var k in _newest)n++;
+    var ml=document.getElementById("mlink"); if(ml&&IS_MEMBER){ml.textContent=conv(innerWidth<=600?"♥ 会员":"♥ 会员专区");ml.href="member-cn.html";}
+    var hb=document.querySelector(".hero .btn-member"); if(hb&&IS_MEMBER){hb.textContent=conv("♥ 会员专区");hb.href="member-cn.html";}
+    var bar=document.getElementById("lockBar"); if(!bar||!n)return;
+    if(IS_MEMBER){bar.className="mem";bar.innerHTML='<div class="t">'+conv("♥ 会员你好！最新上架的物件已经为你解锁")+'</div>';}
+    else bar.innerHTML='<div class="t">'+conv("🔒 最新上架的 {n} 件，会员抢先看").replace("{n}",n)+'</div><div class="p">'+conv("免费注册就能：<b>看最新物件</b>・<b>收藏不会不见</b>（换手机也在）・<b>每月电子报专业分析</b>")+'</div><a href="'+LOCK_URL+'">'+conv("♥ 免费注册／登入")+'</a>';
+    bar.style.display="block";
+  })();
   var soldList=list?list.filter(function(p){return p.sold;}).sort(function(a,b){return (a.soldOrder||0)-(b.soldOrder||0);}):[];
   /* 已成交物件的卡片：周周指示——只放一张图、不可点开、地址只到「区」（丁目数字都不写），
      为的是保护已成交客户的隐私。所以这里不共用 card()，另外做一个简化版。 */
@@ -537,7 +567,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(sig!==_propSig){_propSig=sig;_propOpen=false;}
     var vis=_propOpen?items:items.slice(0,PROP_PAGE);
     grid.innerHTML=items.length?vis.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
-    if(window._pmapUpdate)window._pmapUpdate(items);
+    if(window._pmapUpdate)window._pmapUpdate(items.filter(function(p){return !isLocked(p);}));
     var _c1=document.getElementById("msCnt"),_c2=document.getElementById("msCnt2");
     if(_c1)_c1.textContent=items.length; if(_c2)_c2.textContent="共 "+items.length+" 件";
     var mb=document.getElementById("propMore");

@@ -140,7 +140,7 @@ footer a{color:#d6d3d1;text-decoration:none}
 #soldMore{display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid #e7e5e4;border-radius:999px;padding:10px 22px;font-family:inherit;font-size:14px;font-weight:700;color:#57534e;cursor:pointer}
 #soldMore:hover{background:#faf9f7;border-color:#d6d3d1}
 .sold-see{font-size:14px;font-weight:700;color:var(--rose-d,#e11d48)}
-.jishalink{display:block;margin:10px 0 0;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:14px;padding:11px 15px;font-size:14px;font-weight:700;color:#e11d48}.jishalink small{display:block;font-weight:400;font-size:12.5px;color:#78716c;margin-top:2px}.btn-member{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 8px;background:#fff;color:#e11d48;border:1.5px solid #fecdd3;border-radius:999px;padding:10px 18px;font-weight:800;font-size:15px;text-decoration:none}.btn-member:hover{background:#fff1f2}</style>
+.jishalink{display:block;margin:10px 0 0;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:14px;padding:11px 15px;font-size:14px;font-weight:700;color:#e11d48}.jishalink small{display:block;font-weight:400;font-size:12.5px;color:#78716c;margin-top:2px}.btn-member{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 8px;background:#fff;color:#e11d48;border:1.5px solid #fecdd3;border-radius:999px;padding:10px 18px;font-weight:800;font-size:15px;text-decoration:none}.btn-member:hover{background:#fff1f2}.mlink,.hnav .mlink{font-size:13.5px;font-weight:800;color:#e11d48;text-decoration:none;white-space:nowrap;padding:6px 4px}.lockcard .ph{overflow:hidden}.lockcard .ph img{filter:blur(7px) grayscale(.35) brightness(1.03);transform:scale(1.12)}.lockov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:rgba(255,255,255,.28);color:#292524;text-shadow:0 1px 6px rgba(255,255,255,.9);font-weight:800;font-size:15px;letter-spacing:.5px}.lockov b{font-size:30px;line-height:1}.lockcard .lockprice{color:#a8a29e;letter-spacing:2px}.locktxt{font-size:13px;color:var(--mut);line-height:1.6}.lockbtn{margin-top:auto;display:block;text-align:center;background:#fff;border:1.5px solid #fecdd3;color:#e11d48;font-weight:800;border-radius:999px;padding:9px;font-size:14px}.lockcard:hover .lockbtn{background:#fff1f2}.mtag{background:rgba(225,29,72,.92);color:#fff;font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}#lockBar{display:none;margin:0 0 16px;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:16px;padding:14px 16px;line-height:1.7}#lockBar .t{font-weight:800;font-size:16px;color:#be123c}#lockBar .p{font-size:13.5px;color:#57534e;margin-top:2px}#lockBar a{display:inline-block;margin-top:9px;background:#e11d48;color:#fff;font-weight:800;border-radius:999px;padding:8px 18px;text-decoration:none;font-size:14px}#lockBar.mem{background:#f0fdf4;border-color:#bbf7d0}#lockBar.mem .t{color:#15803d;font-size:14.5px}@media(max-width:600px){.hnav .mlink{display:none}}</style>
 </head>
 <body>
 <header>
@@ -149,6 +149,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <div class="hnav">
       <a class="hide-sm" href="ja.html">← ホームへ</a>
       <a class="hide-sm" href="ja.html">コラム</a>
+      <a class="mlink" id="mlink" href="member-ja.html?next=properties-ja.html">ログイン</a>
       <a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談</a>
     </div>
   </div>
@@ -180,6 +181,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <button data-cat="other">その他</button>
   </div>
   <div class="sortrow sortrow-top"><select id="psort"><option value="default">並び替え：おすすめ順</option><option value="price-asc">価格：安い順</option><option value="price-desc">価格：高い順</option><option value="size-desc">面積：広い順</option><option value="new">新着順</option><option value="size-asc">面積：狭い順</option></select><span class="ms-cnt2" id="msCnt2"></span></div>
+  <div id="lockBar"></div>
   <div class="grid" id="grid"></div>
   <div class="propmore"><button type="button" id="propMore" style="display:none"></button></div>
   <a class="jishalink" style="margin-top:22px" href="jisha-ja.html">🏗️ 自社物件とは —— 設計・施工・販売まで当社で一貫 →<small>取引態様は売主。建築条件付売地の仕組みもこちらでご説明しております。</small></a>
@@ -228,6 +230,7 @@ footer a{color:#d6d3d1;text-decoration:none}
   var VIEW={skytree:{icon:"\u{1F5FC}",label:"スカイツリービュー"},tower:{icon:"\u{1F5FC}",label:"東京タワービュー"},night:{icon:"\u{1F303}",label:"夜景・眺望良好"}};
 
   function card(p,i){
+    if(isLocked(p))return lockCard(p);
     var multi=p.photos&&p.photos.length>1;
     var photo=(p.photos&&p.photos.length)
       ? '<img src="'+esc(p.thumb||p.photos[0])+'" alt="'+C(p.title)+'" loading="lazy">'+(multi?'<span class="cnt">📷 '+p.photos.length+'</span>':'')
@@ -243,7 +246,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     var isPers=/-pers\./.test(String((p.photos&&p.photos[0])||""));
     var ptag=isPers?'<span class="ptag">完成予想図</span>':"";
     var ltag=(p.cat==="land")?'<span class="ltag">土地</span>':"";
-    var ntag=isNew(p)?'<span class="ntag">新着</span>':"";
+    var ntag=(IS_MEMBER&&_newest[p.id])?'<span class="mtag">'+C("会員先行")+'</span>':isNew(p)?'<span class="ntag">新着</span>':"";
     var vw=VIEW[p.view]; var wtag=vw?'<span class="wtag">'+vw.icon+' '+vw.label+'</span>':"";
     var vtag=p.video?'<span class="vtag">🎬 動画あり</span>':"";
     var station=p.station?'<div class="station">🚉 '+C(p.station)+'</div>':"";
@@ -267,6 +270,33 @@ footer a{color:#d6d3d1;text-decoration:none}
   }
 
   var act=list?list.filter(function(p){return !p.sold;}):null;
+  /* ── 會員搶先看（周周 2026-11-12：「物件專區做幾個灰灰鎖起來的更多物件請登入，引導大家註冊」）──
+     最新上架的 LOCK_N 件（不含 pin、要有照片）：沒登入的人看到的是模糊鎖住的卡片，點了去註冊／登入，
+     登入後自動回到這頁。會員（localStorage chou_member=1，由 member-core.js 設定）看到的是正常卡片＋「会員先行」標籤。
+     ⚠️ 這是引導註冊用的「軟性」鎖：物件獨立頁、property.html?id=、首頁精選、搜尋引擎用的 JSON-LD 都照常公開，
+        LINE 分享出去的物件連結不受影響。不要把它當成真正的權限控管。 */
+  var IS_MEMBER=(function(){try{return localStorage.getItem("chou_member")==="1";}catch(e){return false;}})();
+  var LOCK_N=6, LOCK_URL="member-ja.html?next=properties-ja.html", _newest={};
+  (act||[]).filter(function(p){return !p.pin&&p.cat!=="land"&&listedTs(p)>0&&p.photos&&p.photos.length;})
+    .sort(function(a,b){return listedTs(b)-listedTs(a);}).slice(0,LOCK_N).forEach(function(p){_newest[p.id]=1;});
+  function isLocked(p){return !IS_MEMBER&&!!_newest[p.id];}
+  function lockCard(p){
+    var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
+    var head=[wardLabel(p),CAT[p.cat]||"",lay].filter(Boolean).join("・")||"東京都内";
+    return '<a class="card lockcard" href="'+LOCK_URL+'" onclick="try{gtag(\'event\',\'lock_click\')}catch(e){}">'
+      +'<div class="ph"><img src="'+esc(p.thumb||p.photos[0])+'" alt="" aria-hidden="true" loading="lazy"><span class="lockov"><b>🔒</b>'+C("会員先行公開")+'</span></div>'
+      +'<div class="body"><h3>'+C(head)+'</h3><div class="price lockprice">●,●●●万円</div>'
+      +'<div class="locktxt">'+C("新着物件・無料会員登録／ログインで詳細をご覧いただけます")+'</div><span class="lockbtn">'+C("♥ 無料登録して見る")+'</span></div></a>';
+  }
+  (function(){
+    var n=0; for(var k in _newest)n++;
+    var ml=document.getElementById("mlink"); if(ml&&IS_MEMBER){ml.textContent=conv(innerWidth<=600?"♥ 会員":"♥ 会員ページ");ml.href="member-ja.html";}
+    var hb=document.querySelector(".hero .btn-member"); if(hb&&IS_MEMBER){hb.textContent=conv("♥ 会員ページ");hb.href="member-ja.html";}
+    var bar=document.getElementById("lockBar"); if(!bar||!n)return;
+    if(IS_MEMBER){bar.className="mem";bar.innerHTML='<div class="t">'+conv("♥ 会員様、新着物件のロックを解除しました")+'</div>';}
+    else bar.innerHTML='<div class="t">'+conv("🔒 新着 {n} 件は会員様に先行公開中").replace("{n}",n)+'</div><div class="p">'+conv("無料会員登録で：<b>新着物件を先行公開</b>・<b>お気に入りを保存</b>（機種変更しても消えません）・<b>毎月の市況レポート</b>")+'</div><a href="'+LOCK_URL+'">'+conv("♥ 無料会員登録／ログイン")+'</a>';
+    bar.style.display="block";
+  })();
   var soldList=list?list.filter(function(p){return p.sold;}).sort(function(a,b){return (a.soldOrder||0)-(b.soldOrder||0);}):[];
   /* 成約済み物件のカード：ご成約されたお客様のプライバシー保護のため、
      写真は1枚のみ・詳細ページへは遷移しない・所在地は「区」までとし丁目は表示しない。
@@ -530,7 +560,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     if(sig!==_propSig){_propSig=sig;_propOpen=false;}
     var vis=_propOpen?items:items.slice(0,PROP_PAGE);
     grid.innerHTML=items.length?vis.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
-    if(window._pmapUpdate)window._pmapUpdate(items);
+    if(window._pmapUpdate)window._pmapUpdate(items.filter(function(p){return !isLocked(p);}));
     var _c1=document.getElementById("msCnt"),_c2=document.getElementById("msCnt2");
     if(_c1)_c1.textContent=items.length; if(_c2)_c2.textContent=""+items.length+" 件";
     var mb=document.getElementById("propMore");

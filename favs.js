@@ -107,7 +107,7 @@
   /* ── 物件專區：卡片加 🤍 ── */
   function idFromHref(h) { var m = String(h || "").match(/[?&]id=([^&#]+)/); return m ? decodeURIComponent(m[1]) : ""; }
   function decorateCards() {
-    var cards = document.querySelectorAll("#grid a.card");
+    var cards = document.querySelectorAll("#grid a.card:not(.lockcard)");
     for (var i = 0; i < cards.length; i++) {
       var c = cards[i], id = idFromHref(c.getAttribute("href"));
       if (!id) continue;
