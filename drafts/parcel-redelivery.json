@@ -1,0 +1,85 @@
+{
+ "_note": "2026-11-12 周周指定（「新文章：在日本怎麼收包裹（可以寫留守可填單）做」）。草稿：tw 放 index.html ART 最前面（補 id／date／cover／checked），ja 放 ja-content.json（補 cover），兩處 SLUG 加 parcel：建議 slug japan-parcel-redelivery-guide。id 用當時歷史上沒用過的下一個編號。封面還沒做（建議用信箱／宅配箱實景照，或請周周拍一張不在連絡票）。內文連 japan-utilities-setup-guide、japan-used-apartment-checklist（日文 -ja）。上線前再查一次國交省最新的再配達率（2025 年數字若已公布就更新）。",
+ "parcel": {
+  "tw": {
+   "seo": "在日本收到「不在連絡票（ご不在連絡票）」不用慌，那是快遞來過但你不在家的通知。本文教你看懂票上的欄位（公司、追蹤號碼、保管期限、QR Code、電話），用掃碼、語音電話或 LINE 三種方式申請重新配送（再配達），以及放門口（置き配）、公寓宅配箱、超商取貨等少拿到票的方法；外國人常見的表札沒寫名字、搬家沒辦轉居屆兩個問題；最後從房仲角度提醒看房時看宅配箱與管理規約。",
+   "cat": "life",
+   "title": "在日本收到「不在連絡票」怎麼辦？重新配送、放門口、宅配箱一次看懂",
+   "tags": [
+    "不在連絡票",
+    "再配達",
+    "宅配箱",
+    "日本生活",
+    "網購"
+   ],
+   "video": "",
+   "ex": "信箱裡夾了一張全日文的小紙條，不是罰單，是快遞沒遇到你的「不在連絡票」。這篇教你看懂票上寫什麼、三種方法申請重新配送，還有放門口、宅配箱、超商取貨這些讓你以後少拿到票的做法。",
+   "body": [
+    "剛搬來日本的客人，最常傳給我的照片之一，是一張夾在信箱裡的小紙條：「周周，這張是什麼？我是不是被罰錢了？」",
+    "放心，不是罰單。那是「不在連絡票（ご不在連絡票）」，意思是：快遞來過了，但你不在家。日本的快遞很少直接放門口，沒人簽收就會帶回去，留一張票讓你預約重新配送（再配達）。第一次看到全日文的票會有點慌，這篇帶你一步一步看懂，順便講幾個讓你以後少拿到這張票的方法。",
+    "<b>一、先看懂不在連絡票上寫了什麼</b>",
+    "每家快遞的票長得不一樣，但上面的資訊大同小異。拿到票先找這幾個地方：",
+    "<div style='overflow-x:auto;margin:14px 0'><table style='width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7'><thead><tr style='background:#f0fdf4'><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>票上的欄位</th><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>代表什麼</th></tr></thead><tbody><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>是哪一家</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>黑貓（ヤマト運輸）、佐川急便、日本郵便……票的顏色和格式各家不同，先看最上面的公司名</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>追蹤號碼（お問い合わせ伝票番号）</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>最重要的一串數字，申請重新配送一定會用到</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>來過的時間</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>上面會寫送來的日期與時間</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>保管期限</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>超過期限沒領，包裹會退回寄件人。期限寫在票上，看到票就盡快處理</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>QR Code／網址</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>用手機掃，直接進入重新配送的申請頁</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>電話</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>自動語音受理的號碼（照語音按追蹤號碼），或負責司機的手機</td></tr></tbody></table></div>",
+    "其中追蹤號碼和保管期限最重要。保管期限各家、各種郵件不一樣，以票上寫的為準，不要放著好幾天才處理。",
+    "<b>二、重新配送怎麼申請？三種方法</b>",
+    "第一種最簡單：用手機掃票上的 QR Code。會直接打開那家公司的重新配送頁面，追蹤號碼通常已經帶好，你只要選日期和時段，再確認地址就完成了。時段的切法各家不同，例如「上午」「傍晚」「夜間」，選一個你確定在家的就好。",
+    "第二種是打票上的自動語音電話。照語音指示用按鍵輸入追蹤號碼、希望的日期和時段。全程日文，第一次可能聽不太懂，建議還是用掃碼的方式。",
+    "第三種是用 LINE。黑貓、佐川、日本郵便都有 LINE 官方帳號，加好友、綁定會員之後，可以在 LINE 裡收到配送通知、直接改時間或改收件方式。常收網購的人很推薦，之後連票都不太會拿到。",
+    "如果你人就在附近，也可以直接去領：日本郵便的包裹可以到負責的郵局窗口領，黑貓、佐川可以到營業所領，記得帶票和證件。",
+    "<b>三、讓自己少拿到不在連絡票的方法</b>",
+    "依國土交通省的調查，2024 年 10 月日本的快遞重新配送率大約是 10%，也就是十件裡有一件要跑第二次。國家一直在推「一次送到」，所以現在有很多選擇，可以讓你不用在家等：",
+    "放門口（置き配）：網購時或在快遞的會員頁面指定「放玄關前」「放瓦斯表箱」等，送到就拍照通知你。方便，但要注意保管風險，貴重物品不建議。",
+    "宅配箱（宅配ボックス）：很多公寓大樓一樓有宅配箱，快遞會把包裹放進去，在你的信箱留一張使用通知，上面寫箱子號碼和開箱密碼，或用感應卡打開。",
+    "超商或取貨點：在網購或快遞會員設定中改成便利商店、車站的取貨櫃（像 PUDO 這種）取件，下班順路就能拿。",
+    "<b>四、外國人常踩的兩個雷</b>",
+    "第一個是信箱和門口沒寫名字。日本的郵件和包裹很依賴「表札」，信箱上沒有你的名字，送件的人可能會判斷「這裡沒有這個人」而退回。剛搬進去的第一件事，就是在信箱貼上名字，羅馬拼音也可以。",
+    "第二個是搬家沒辦轉寄。搬家後可以向郵局申請轉居（転居届），一年內寄到舊地址的郵件會免費轉到新家。台灣的親友、銀行、證券公司寄來的東西，常常就是靠這個救回來的。",
+    "搬家前後要辦的手續很多，水電瓦斯可以參考〈<a href='japan-utilities-setup-guide.html' style='color:#e11d48;font-weight:600'>日本水電瓦斯怎麼開通</a>〉。",
+    "<b>五、周周的建議：看房時順便看「收包裹方不方便」</b>",
+    "很多客人買房時不會想到這件事，住進去才發現每天在跟不在連絡票奮鬥。帶看的時候，我會順便看大樓有沒有宅配箱、數量夠不夠、管理規約允不允許放門口；有自動鎖的大樓，快遞進不來放不了門口，宅配箱就更重要。",
+    "這些看起來是小事，但每天都會碰到。中古公寓看房時還有哪些地方要注意，可以看〈<a href='japan-used-apartment-checklist.html' style='color:#e11d48;font-weight:600'>日本中古公寓看房檢查清單</a>〉。如果你正在找東京的房子，把喜歡的物件丟給我，我會連生活上這些細節一起幫你看。加 LINE 跟我說就好。",
+    "<b>資料來源</b>",
+    "<div style='font-size:12.5px;color:#78716c;line-height:1.8;margin-top:8px'>・國土交通省「宅配便再配達實態調查」（2024 年 10 月：約 10.2%）；日本郵便、ヤマト運輸、佐川急便的不在連絡票與重新配送說明、各社 LINE 官方帳號服務說明；日本郵便「轉居屆（転居届）」說明（2026 年 11 月查閱）。<br>＊各家的時段、保管期限與服務內容會調整，實際以各公司最新公告與票上記載為準。</div>"
+   ]
+  },
+  "ja": {
+   "title": "ご不在連絡票が届いたら？再配達・置き配・宅配ボックスまでわかりやすく",
+   "seo": "郵便受けに入っていた「ご不在連絡票」は、配達に来たもののご不在だったというお知らせです。票の見方（配送会社・伝票番号・保管期限・QRコード・電話番号）、QRコード・自動音声・LINEによる再配達の依頼方法、置き配・宅配ボックス・コンビニ受取など不在票を減らす工夫、外国籍の方がつまずきやすい表札と転居届、内見時に確認したい宅配ボックスと管理規約までご説明いたします。",
+   "ex": "郵便受けに挟まれた日本語の小さな紙は罰金ではなく、ご不在連絡票です。票の見方、再配達の3つの依頼方法、置き配・宅配ボックス・コンビニ受取など不在票を減らす工夫をまとめました。",
+   "tags": [
+    "ご不在連絡票",
+    "再配達",
+    "宅配ボックス",
+    "日本の暮らし",
+    "通販"
+   ],
+   "body": [
+    "日本に来たばかりのお客様から、郵便受けに挟まれた小さな紙の写真が届くことがよくあります。「これは何でしょうか、罰金ですか？」",
+    "ご安心ください、罰金ではございません。これは「ご不在連絡票」で、配達に来たもののご不在だったというお知らせです。日本の宅配便は不在時に玄関前へ置いていくことが少なく、持ち帰ったうえで再配達の依頼をお願いする形が一般的です。本記事では票の読み方と再配達の依頼方法、そして不在票を受け取りにくくする工夫をご紹介いたします。",
+    "<b>一、ご不在連絡票の見方</b>",
+    "票の形式は会社ごとに異なりますが、記載内容はおおむね共通です。まずは次の項目をご確認ください。",
+    "<div style='overflow-x:auto;margin:14px 0'><table style='width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7'><thead><tr style='background:#f0fdf4'><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>票の項目</th><th style='text-align:left;padding:10px 11px;border-bottom:2px solid #bbf7d0;white-space:nowrap'>内容</th></tr></thead><tbody><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>配送会社</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>ヤマト運輸・佐川急便・日本郵便など。会社ごとに票の色や形式が異なります</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>お問い合わせ伝票番号</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>再配達の依頼に必ず使う番号です</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>訪問日時</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>配達に来た日付と時間</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>保管期限</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>期限を過ぎると差出人に返送されます。期限は票に記載されています</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>QRコード／URL</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>スマートフォンで読み取ると再配達の受付ページが開きます</td></tr><tr><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>電話番号</td><td style='padding:10px 11px;border-bottom:1px solid #e7e5e4;vertical-align:top'>自動音声受付の番号、または担当ドライバーの携帯番号</td></tr></tbody></table></div>",
+    "特に伝票番号と保管期限が重要です。保管期限は会社や郵便物の種類によって異なりますので、票の記載をご確認のうえ、早めにお手続きください。",
+    "<b>二、再配達の依頼方法は3通り</b>",
+    "最も簡単なのは、票のQRコードをスマートフォンで読み取る方法です。各社の再配達ページが開き、多くの場合は伝票番号も入力済みですので、日付と時間帯を選ぶだけで完了します。時間帯の区分は会社ごとに異なります。",
+    "2つ目は、票に記載の自動音声受付に電話し、案内に従って伝票番号と希望日時を入力する方法です。",
+    "3つ目はLINEです。ヤマト運輸・佐川急便・日本郵便はいずれもLINE公式アカウントがあり、会員登録と連携をすると、配達予定の通知を受け取ったり、LINE上で日時や受け取り方法を変更したりできます。",
+    "お近くにいらっしゃる場合は、日本郵便は配達担当の郵便局の窓口、ヤマト運輸・佐川急便は営業所で受け取ることもできます。票と本人確認書類をお持ちください。",
+    "<b>三、不在票を受け取りにくくする工夫</b>",
+    "国土交通省の調査では、2024年10月の宅配便の再配達率は約10%で、10個に1個は2回目の配達が必要になっています。国も再配達の削減を進めており、在宅しなくても受け取れる方法が増えています。",
+    "置き配：通販サイトや配送会社の会員ページで「玄関前」「メーターボックス」などを指定すると、配達完了時に写真で通知されます。便利ですが、盗難などのリスクもあるため高価な物にはおすすめしません。",
+    "宅配ボックス：多くのマンションでは1階に宅配ボックスがあり、配達員が荷物を入れると、郵便受けにボックス番号と暗証番号を記載した利用票が入ります。",
+    "コンビニ・受取ロッカー：通販や配送会社の会員設定で、コンビニや駅の受取ロッカー（PUDOなど）での受け取りに変更できます。",
+    "<b>四、外国籍の方がつまずきやすい2つのこと</b>",
+    "1つ目は表札です。郵便受けや玄関にお名前がないと、宛先人が住んでいないと判断されて返送されることがあります。入居後はまず郵便受けにお名前（ローマ字でも可）を表示しましょう。",
+    "2つ目は転居届です。引越し後に郵便局へ転居届を出すと、旧住所宛ての郵便物が1年間無料で新住所へ転送されます。",
+    "引越し前後の手続きについては〈<a href='japan-utilities-setup-guide-ja.html' style='color:#e11d48;font-weight:600'>電気・水道・ガスの開通手続き</a>〉もご覧ください。",
+    "<b>五、内見の際は「荷物の受け取りやすさ」も確認を</b>",
+    "住まい選びではあまり意識されませんが、入居後に毎日のように関わるポイントです。内見の際は、宅配ボックスの有無と数、管理規約で置き配が認められているかも確認しております。オートロックのマンションでは配達員が玄関前まで入れないため、宅配ボックスの重要性がより高くなります。",
+    "中古マンションの内見のポイントは〈<a href='japan-used-apartment-checklist-ja.html' style='color:#e11d48;font-weight:600'>中古マンション内見チェックリスト</a>〉でもご紹介しております。東京でお住まいをお探しでしたら、気になる物件をお送りください。暮らしの細かな点まであわせて確認いたします。お気軽にLINEでご相談ください。",
+    "<b>出典</b>",
+    "<div style='font-size:12.5px;color:#78716c;line-height:1.8;margin-top:8px'>・国土交通省「宅配便再配達実態調査」（2024年10月：約10.2%）、日本郵便・ヤマト運輸・佐川急便のご不在連絡票と再配達のご案内、各社LINE公式アカウントのサービス案内、日本郵便「転居届」のご案内（2026年11月閲覧）。<br>＊時間帯・保管期限・サービス内容は変更されることがあります。最新の各社案内と票の記載をご確認ください。</div>"
+   ]
+  }
+ }
+}
