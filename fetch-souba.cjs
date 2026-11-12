@@ -46,5 +46,7 @@ const median = a => { if (!a.length) return null; const s = a.slice().sort((x, y
   }
   if (ok < 20) { console.error("成功 " + ok + " 區，太少，不覆寫 souba.json"); process.exit(1); }
   fs.writeFileSync(OUT, JSON.stringify(out));
+  /* 網頁直接用 <script src="souba.js"> 載入（file:// 也能開） */
+  fs.writeFileSync(path.join(__dirname, "souba.js"), "/* 由 fetch-souba.cjs 產生，勿手改 */\nwindow.SOUBA=" + JSON.stringify(out) + ";\n");
   console.log("souba.json 已更新：" + ok + "/23 區（" + out.fetched + "）");
 })();

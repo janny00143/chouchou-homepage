@@ -119,6 +119,22 @@ service cloud.firestore {
       allow delete: if (request.auth != null && request.auth.uid == uid) || isAdmin();
     }
 
+    // ── 買房定位分析紀錄（match.js，2026-11-12 新增）──
+    // 訪客按「開始分析」時匿名存一筆條件（不含姓名聯絡方式），給周周在後台看客人需求。
+    // 任何人只能「新增」、而且欄位與大小都鎖死；讀取、刪除只有周周。
+    match /leads/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['budget','wards','band','age','people','pet','verdict','lang','createdAt'])
+        && request.resource.data.budget is int && request.resource.data.budget >= 0 && request.resource.data.budget <= 10000000
+        && request.resource.data.wards is list && request.resource.data.wards.size() <= 23
+        && request.resource.data.band is int && request.resource.data.age is int
+        && request.resource.data.people is int && request.resource.data.pet is int
+        && request.resource.data.verdict is string && request.resource.data.verdict.size() <= 30
+        && request.resource.data.lang in ['tw','cn','ja']
+        && request.resource.data.createdAt == request.time;
+      allow read, delete: if isAdmin();
+      allow update: if false;
+    }
+
     // 其餘所有路徑：全部禁止
     match /{document=**} {
       allow read, write: if false;

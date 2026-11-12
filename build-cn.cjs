@@ -12,7 +12,7 @@ const slugMatch = idx.match(/SLUG=\{([^}]*)\}/);
 const slugs = [...slugMatch[1].matchAll(/"a\d+":"([^"]+)"/g)].map(m => m[1]);
 
 // 需要產生 -cn 的內部頁面（會被互相連結的都要做，否則 404）
-const staticPages = ["index.html","properties.html","property.html","jisha.html","minpaku.html","translate.html","feedback.html","member.html","videos.html","tools.html","partners.html","quiz.html","property-types.html","tokyo-area-guide.html",
+const staticPages = ["index.html","properties.html","property.html","jisha.html","minpaku.html","translate.html","feedback.html","member.html","tokyo-home-match.html","videos.html","tools.html","partners.html","quiz.html","property-types.html","tokyo-area-guide.html",
   "about.html","privacy.html","buy-property-in-japan.html","japan-real-estate-agent-for-taiwanese.html","faq.html","tokyo-garbage-pdf.html","tokyo-oversized-garbage.html",
   "threads-japan-property-qa.html","threads-agent-diary.html","threads-japan-life.html","tool-loan.html","tool-cost.html","tool-agent.html","tool-yield.html","tool-fx.html","tool-area.html","tool-convert.html"];
 /* 物件獨立頁 prop-<id>.html（提案 2・2026-10-03）：由 generate-pages.cjs 產出，

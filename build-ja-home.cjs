@@ -161,7 +161,7 @@ const JA_UI = {
   articleHelpfulSub: "気になる物件があれば、ぜひ周周まで直接お送りください。",
   nav: { home: "ホーム", services: "サービス内容", process: "購入の流れ", live: "マイホーム購入", invest: "投資・収益物件", translate: "不動産資料翻訳", videos: "動画", faq: "よくあるご質問", about: "会社概要", feedback: "ご意見・ご要望" },
   navddSvc: "サービス ▾", navddTool: "ツール ▾",
-  tools: [["🏦 住宅ローン試算", "tool-loan-ja.html"], ["💴 購入費用", "tool-cost-ja.html"], ["🤝 仲介手数料", "tool-agent-ja.html"], ["📈 利回り試算", "tool-yield-ja.html"], ["💱 為替レート", "tool-fx-ja.html"], ["📐 坪・畳換算", "tool-area-ja.html"]],
+  tools: [["🔮 住まい診断", "tokyo-home-match-ja.html"], ["🏦 住宅ローン試算", "tool-loan-ja.html"], ["💴 購入費用", "tool-cost-ja.html"], ["🤝 仲介手数料", "tool-agent-ja.html"], ["📈 利回り試算", "tool-yield-ja.html"], ["💱 為替レート", "tool-fx-ja.html"], ["📐 坪・畳換算", "tool-area-ja.html"]],
   mobileLabels: { services: "サービス", tools: "ツール" },
   catAll: "📚 すべての記事"
 };

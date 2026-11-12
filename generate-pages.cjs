@@ -794,6 +794,7 @@ const HUB_STEPS = [
   ["4. 看房、出價、簽約、交屋", "從看房到交屋大約要多久、每一關要準備什麼文件，事先知道就不會慌。", "japan-property-contract-documents"]
 ];
 const HUB_TOOLS = [
+  ["tokyo-home-match.html", "🔮 買房定位分析", "輸入預算、地區、大小或屋齡，看你在東京能買到什麼"],
   ["tool-loan.html", "🧮 房貸試算", "輸入總價、頭期、利率與年限，估月付金額"],
   ["tool-cost.html", "💰 取得諸費用試算", "抓出總價之外還要準備多少現金"],
   ["tool-yield.html", "📈 投報率試算", "表面與實質兩種算法一起看"],
@@ -1379,7 +1380,7 @@ for (const a of ART) {
   if (SLUG[a.id]) urls.push({ loc: BASE + SLUG[a.id] + "-ja.html", lm: a.date, pr: "0.7" });
 }
 urls.push({ loc: BASE + "minpaku-ja.html", pr: "0.6" });
-const STATIC_TOOLS = ["tools", "videos", "feedback", "member", "tool-agent", "tool-area", "tool-convert", "tool-cost", "tool-fx", "tool-loan", "tool-yield"];
+const STATIC_TOOLS = ["tools", "videos", "feedback", "member", "tokyo-home-match", "tool-agent", "tool-area", "tool-convert", "tool-cost", "tool-fx", "tool-loan", "tool-yield"];
 for (const p of STATIC_TOOLS) {
   urls.push({ loc: BASE + p + ".html", pr: "0.6" });
   urls.push({ loc: BASE + p + "-ja.html", pr: "0.6" });

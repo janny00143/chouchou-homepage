@@ -812,6 +812,7 @@ const HUB_CAT_LEAD_JA = {
   knowhow: "内見、価格交渉、契約、決済——実務で使う共通知識。"
 };
 const HUB_TOOLS_JA = [
+  ["tokyo-home-match-ja.html", "🔮 住まい診断", "予算・エリア・広さ・築年数から狙える住まいを診断"],
   ["tool-loan-ja.html", "🧮 住宅ローン試算", "価格・頭金・金利・期間から月々の返済額を試算"],
   ["tool-cost-ja.html", "💰 取得諸費用の試算", "本体価格以外に必要な現金を把握"],
   ["tool-yield-ja.html", "📈 利回り試算", "表面と実質、二通りで確認"],

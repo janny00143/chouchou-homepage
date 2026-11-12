@@ -38,6 +38,7 @@ ol.help li{margin:4px 0 4px 18px;font-size:14px}
 <script type="module">
 import * as M from "./member-core.js";
 import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* 管理帳號 Email 的 SHA-256（跟 comments.js 同一組；不把信箱明文寫進公開的原始碼） */
 const ADMIN_EMAIL_HASHES = ["fb4c495d6b71d12de079627de4175750d8742623085ade8a0e64f050eb0ceeaa"];
@@ -51,7 +52,24 @@ const app=document.getElementById("app");
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ts=v=>{ try{ const d=v&&v.toDate?v.toDate():null; if(!d) return ""; const p=n=>String(n).padStart(2,"0");
   return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes()); }catch(e){ return ""; } };
-let ALL=[];
+let ALL=[], LEADS=[];
+/* 買房定位分析紀錄（tokyo-home-match.html 匿名存的條件） */
+const WN={13101:"千代田",13102:"中央",13103:"港",13104:"新宿",13105:"文京",13106:"台東",13107:"墨田",13108:"江東",13109:"品川",13110:"目黑",13111:"大田",13112:"世田谷",13113:"澀谷",13114:"中野",13115:"杉並",13116:"豐島",13117:"北",13118:"荒川",13119:"板橋",13120:"練馬",13121:"足立",13122:"葛飾",13123:"江戶川"};
+const BANDS=["〜40㎡","40〜60㎡","60〜80㎡","80〜100㎡","100㎡〜"], AGES=["新築","10年內","20年內","30年內","不拘"], PEOPLE=["1人","2人","3人","4人+"];
+function leadsHtml(){
+  if(!LEADS.length) return '<div class="card"><b>🔮 買房定位分析紀錄</b><p class="mut" style="margin-top:6px">還沒有紀錄（或 Firestore 規則還沒發布 leads 那一段）。</p></div>';
+  const wc={}, bc={0:0,1:0,2:0,3:0,4:0}; let bsum=[], n30=0;
+  LEADS.forEach(l=>{(l.wards||[]).forEach(w=>wc[w]=(wc[w]||0)+1); if(l.band>=0) bc[l.band]++; if(l.budget>0) bsum.push(l.budget); const d=l.createdAt&&l.createdAt.toDate?l.createdAt.toDate():null; if(d&&Date.now()-d<30*864e5) n30++;});
+  bsum.sort((a,b)=>a-b); const medB=bsum.length?bsum[bsum.length>>1]:0;
+  const topW=Object.entries(wc).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const man=v=>v>=10000?(v/10000).toFixed(v%10000?2:0)+"億":v.toLocaleString()+"萬";
+  return '<div class="card"><b>🔮 買房定位分析紀錄（最近 '+LEADS.length+' 筆）</b><div class="stats" style="margin-top:10px"><div class="stat"><b>'+n30+'</b>近 30 天分析次數</div><div class="stat"><b>'+(medB?man(medB):"—")+'</b>預算中位數</div></div>'+
+   '<p style="margin-top:12px"><b>最多人看的區</b></p>'+topW.map(([k,v])=>'<div class="bar"><span style="width:70px">'+esc(WN[k]||k)+'</span><i style="width:'+Math.max(4,v/topW[0][1]*220)+'px"></i>'+v+'</div>').join("")+
+   '<p style="margin-top:10px"><b>想要的大小</b></p>'+Object.entries(bc).map(([k,v])=>'<div class="bar"><span style="width:70px">'+BANDS[k]+'</span><i style="width:'+Math.max(2,v/Math.max(1,...Object.values(bc))*220)+'px"></i>'+v+'</div>').join("")+
+   '<div class="tw" style="margin-top:12px"><table><thead><tr><th>時間</th><th>預算</th><th>地區</th><th>大小</th><th>屋齡</th><th>人數</th><th>寵物</th><th>結論</th><th>語言</th></tr></thead><tbody>'+
+   LEADS.map(l=>'<tr><td>'+esc(ts(l.createdAt))+'</td><td>'+(l.budget?man(l.budget):"")+'</td><td>'+(l.wards||[]).map(w=>esc(WN[w]||w)).join("、")+'</td><td>'+(l.band>=0?BANDS[l.band]:"")+'</td><td>'+(l.age>=0?AGES[l.age]:"")+'</td><td>'+(l.people>=0?PEOPLE[l.people]:"")+'</td><td>'+(l.pet===0?"有":l.pet===1?"無":"")+'</td><td>'+esc(l.verdict)+'</td><td>'+esc(l.lang)+'</td></tr>').join("")+'</tbody></table></div>'+
+   '<p class="mut" style="margin-top:8px">這些是匿名條件（沒有姓名、聯絡方式）。客人按「用 LINE 傳給周周」時，同樣的內容會出現在 LINE 對話裡。</p></div>';
+}
 
 function csv(rows){ return "﻿"+rows.map(r=>r.map(v=>{ v=String(v==null?"":v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }).join(",")).join("\r\n"); }
 function download(name,text){ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([text],{type:"text/csv;charset=utf-8"})); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); }
@@ -76,6 +94,7 @@ function render(list){
    '<div class="tw" style="margin-top:10px"><table><thead><tr><th>加入日</th><th>姓名</th><th>居住地</th><th>LINE ID</th><th>電話</th><th>Email</th><th>電子報</th><th>收藏</th><th>語言</th></tr></thead><tbody>'+
    rows.map(m=>'<tr><td>'+esc(ts(m.createdAt))+'</td><td>'+esc(m.name)+'</td><td>'+esc(m.region)+'</td><td>'+esc(m.lineId)+'</td><td>'+esc(m.phone)+'</td><td>'+esc(m.email)+'</td><td>'+(m.consentNews?'<span class="tag">同意</span>':'<span class="tag no">不收</span>')+'</td><td>'+(m.favs||[]).map(f=>'<a href="property.html?id='+encodeURIComponent(f.id)+'" target="_blank">'+esc(f.t)+'</a>').join("<br>")+'</td><td>'+esc(m.lang)+'</td></tr>').join("")+
    '</tbody></table></div></div>'+
+   leadsHtml()+
    '<div class="card"><b>每月寄電子報的步驟（Brevo）</b><ol class="help">'+
      '<li>按上面「匯出 Brevo 用 CSV」。</li>'+
      '<li>Brevo → 聯絡人（Contacts）→ 匯入（Import contacts）→ 上傳這個檔案，選你的會員名單（List）。重複的 Email 會自動更新、不會重複寄。</li>'+
@@ -89,6 +108,7 @@ function render(list){
   document.getElementById("xBrevo").onclick=()=>download("brevo-"+today()+".csv",csv([["EMAIL","FIRSTNAME","REGION","LINE_ID","LANG"]].concat(ALL.filter(m=>m.consentNews).map(m=>[m.email,m.name,m.region,m.lineId,m.lang]))));
 }
 async function load(){
+  try{ const q=await getDocs(query(collection(M.db,"leads"),orderBy("createdAt","desc"),limit(300))); LEADS=q.docs.map(d=>d.data()); }catch(e){ LEADS=[]; }
   try{ ALL=await M.allMembers(); ALL.sort((a,b)=>((b.createdAt&&b.createdAt.seconds)||0)-((a.createdAt&&a.createdAt.seconds)||0)); render(ALL); }
   catch(e){ app.innerHTML='<div class="card"><p class="err">讀不到會員資料（'+esc(e.code||e.message)+'）。請確認 Firebase 的安全規則已經貼上並發布。</p></div>'; }
 }
