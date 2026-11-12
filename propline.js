@@ -27,10 +27,22 @@
   var path = location.pathname;
   var lang = /-ja\.html$/.test(path) ? "ja" : (/-cn\.html$/.test(path) ? "cn" : "tw");
   var T = {
-    tw: { head: "我想詢問這間：", toast: "已幫你複製物件資訊，在 LINE 貼上傳給周周就可以囉 👌" },
-    cn: { head: "我想询问这间：", toast: "已帮你复制房源信息，在 LINE 粘贴发给周周就可以啰 👌" },
-    ja: { head: "こちらの物件についてお伺いしたいです：", toast: "物件情報をコピーしました。LINEに貼り付けてお送りくださいませ 👌" }
+    tw: { head: "我想詢問這間：", toast: "已幫你複製物件資訊，在 LINE 貼上傳給周周就可以囉 👌",
+          toastM: "訊息已幫你填好，在 LINE 按「送出」就可以囉 👌（沒出現的話直接貼上也行）" },
+    cn: { head: "我想询问这间：", toast: "已帮你复制房源信息，在 LINE 粘贴发给周周就可以啰 👌",
+          toastM: "消息已帮你填好，在 LINE 按「发送」就可以啰 👌（没出现的话直接粘贴也行）" },
+    ja: { head: "こちらの物件についてお伺いしたいです：", toast: "物件情報をコピーしました。LINEに貼り付けてお送りくださいませ 👌",
+          toastM: "メッセージを入力済みです。LINEで送信ボタンを押してください 👌（表示されない場合は貼り付けてください）" }
   }[lang];
+
+  /* ▍2026-11-12 周周核准「方案 A」：手機上直接開聊天室並預填訊息
+     LINE 官方的 URL scheme：https://line.me/R/oaMessage/{@ 換成 %40 的 LINE ID}/?{訊息}
+     （developers.line.biz「Use LINE features with the LINE URL scheme」）。
+     只在手機上改連結：電腦版 LINE 是否支援官方沒寫，電腦維持原本的加好友＋複製。
+     還沒加好友的人可能先看到加好友畫面，所以「複製」也照做，當保險。 */
+  var OA_ID = "%40202dzwok";
+  var MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+  function oaURL() { return "https://line.me/R/oaMessage/" + OA_ID + "/?" + encodeURIComponent(text()); }
 
   function text() {
     var line2 = [P.p, P.loc].filter(Boolean).join("｜");
@@ -74,7 +86,7 @@
         + "opacity:0;transition:opacity .2s;pointer-events:none;text-align:center";
       document.body.appendChild(tip);
     }
-    tip.textContent = T.toast;
+    tip.textContent = MOBILE ? T.toastM : T.toast;
     tip.style.opacity = "1";
     clearTimeout(tip._t);
     tip._t = setTimeout(function () { tip.style.opacity = "0"; }, 4000);
@@ -85,6 +97,7 @@
     if (!a || !a.href) return;
     if (a.href.indexOf("lin.ee") === -1 && a.href.indexOf("line.me") === -1) return;
     copy(text());
+    if (MOBILE && a.href.indexOf("lin.ee") !== -1) a.href = oaURL();   // 同步改寫，瀏覽器會照新網址開
     toast();
   }, true);
 })();
