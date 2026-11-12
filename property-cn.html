@@ -363,6 +363,15 @@ body.noscroll{overflow:hidden}
        大阪那批共 8 个栏位都印出原始标签。比照「周周的看法」的做法：
        先全部跳脱，再只把 <b></b> 放回来。 */
     function CB(x){return C(x).replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>");}
+function zoneOf(s,ja){
+      /* 用途地域：从规格栏（facing，抄自贩売図面）把用途地域抓出来，独立显示一行（周周 2026-11-12） */
+      var re=/\u7b2c[\u4e00\u4e8c]\u7a2e(?:\u4f4e\u5c64|\u4e2d\u9ad8\u5c64)?\u4f4f\u5c45[\u5c08\u5c02]\u7528\u5730\u57df|\u7b2c[\u4e00\u4e8c]\u7a2e\u4f4f\u5c45\u5730\u57df|\u6e96\u4f4f\u5c45\u5730\u57df|\u7530\u5712\u4f4f\u5c45\u5730\u57df|\u8fd1[\u9130\u96a3]\u5546\u696d\u5730\u57df|\u9130\u8fd1\u5546\u696d\u5730\u57df|\u5546\u696d\u5730\u57df|[\u6e96\u51c6]\u5de5\u696d\u5730\u57df|\u5de5\u696d[\u5c08\u5c02]\u7528\u5730\u57df|\u5de5\u696d\u5730\u57df/g;
+      var out=[],m; s=String(s||"").replace(/<[^>]+>/g,"");
+      while((m=re.exec(s))){var z=m[0].replace("\u9130\u8fd1","\u8fd1\u9130").replace("\u51c6","\u6e96");
+        z=ja?z.replace("\u8fd1\u9130","\u8fd1\u96a3").replace("\u5c08","\u5c02"):z.replace("\u8fd1\u96a3","\u8fd1\u9130").replace("\u5c02","\u5c08");
+        if(out.indexOf(z)<0)out.push(z);}
+      return out.join("\uff0f");
+    }
     function row(l,v,ic){
       if(!v)return "";
       /* 「円／月」「㎡／戸」这种单位用的斜线不能拆，只拆真正的并列项目（例如三个车站） */
@@ -383,7 +392,7 @@ body.noscroll{overflow:hidden}
     var facts='<div class="pfacts">'+chip("格局",p.layout)+chip("面积",p.size)+chip("屋龄",p.age)+chip("投报",p.yield)+'</div>';
     var spec='<ul class="pspec">'
       +row("地点",p.location)+row("车站",p.station,"\u{1F689}")+row("格局",p.layout)+row("面积",p.size)
-      +row("屋龄",p.age)+row("朝向",p.facing)+row("管理",p.mgmt)+row("权利",p.right)+row("投报",p.yield)+'</ul>';
+      +row("屋龄",p.age)+row("朝向",p.facing)+(zoneOf(p.facing,false)?'<li><b>用途地域</b><span>'+CB(zoneOf(p.facing,false))+'　<a href="japan-zoning-taiwan-vs-japan-cn.html" style="color:#e11d48;font-weight:600">这代表什么？→</a></span></li>':"")+row("管理",p.mgmt)+row("权利",p.right)+row("投报",p.yield)+'</ul>';
     var mapBtn=p.location?'<a class="pmap" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.location)+'" target="_blank" rel="noopener">📍 在 Google 地图看位置</a>':"";
     var note=p.note?'<div class="pnote"><span class="nh">💬 周周的看法</span>'+NOTEHTML(p.note)+'</div>':"";
     var vid="";

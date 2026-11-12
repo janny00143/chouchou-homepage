@@ -1614,6 +1614,15 @@ function propTitleTW(p) {
 const propSlug = p => "prop-" + p.id;
 const propPageUrl = p => BASE + propSlug(p) + ".html";
 
+function zoneOf(s,ja){
+  /* 用途地域：從規格欄（facing，抄自販売図面）把用途地域抓出來，獨立顯示一行（周周 2026-11-12） */
+  var re=/第[一二]種(?:低層|中高層)?住居[專専]用地域|第[一二]種住居地域|準住居地域|田園住居地域|近[鄰隣]商業地域|鄰近商業地域|商業地域|[準准]工業地域|工業[專専]用地域|工業地域/g;
+  var out=[],m; s=String(s||"").replace(/<[^>]+>/g,"");
+  while((m=re.exec(s))){var z=m[0].replace("鄰近","近鄰").replace("准","準");
+    z=ja?z.replace("近鄰","近隣").replace("專","専"):z.replace("近隣","近鄰").replace("専","專");
+    if(out.indexOf(z)<0)out.push(z);}
+  return out.join("／");
+}
 function propSpecRows(p) {
   const rows = [
     ["價格", p.price], ["所在地", p.location], ["交通", p.station],
@@ -1621,8 +1630,10 @@ function propSpecRows(p) {
     ["其他條件", p.facing], ["管理費與修繕基金（修繕積立金）", p.mgmt],
     ["權利形態", p.right], ["投報率", p.yield]
   ];
+  const z = zoneOf(p.facing, false);
   return rows.filter(r => PLAIN(r[1])).map(r =>
-    `<tr><th>${esc(r[0])}</th><td>${esc(PLAIN(r[1]))}</td></tr>`).join("");
+    `<tr><th>${esc(r[0])}</th><td>${esc(PLAIN(r[1]))}</td></tr>`).join("")
+    + (z ? `<tr><th>用途地域</th><td>${esc(z)}　<a href="japan-zoning-taiwan-vs-japan.html" style="color:#e11d48;font-weight:600">這代表什麼？→</a></td></tr>` : "");
 }
 
 function propNoteHTML(p) {

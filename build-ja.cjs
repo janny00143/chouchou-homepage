@@ -962,6 +962,15 @@ function propYenJa(s) {
   return ((m[1] ? parseFloat(m[1]) * 1e4 : 0) + (m[2] ? parseInt(m[2].replace(/,/g, ""), 10) : 0)) * 1e4;
 }
 
+function zoneOf(s,ja){
+  /* 用途地域：從規格欄（facing，抄自販売図面）把用途地域抓出來，獨立顯示一行（周周 2026-11-12） */
+  var re=/第[一二]種(?:低層|中高層)?住居[專専]用地域|第[一二]種住居地域|準住居地域|田園住居地域|近[鄰隣]商業地域|鄰近商業地域|商業地域|[準准]工業地域|工業[專専]用地域|工業地域/g;
+  var out=[],m; s=String(s||"").replace(/<[^>]+>/g,"");
+  while((m=re.exec(s))){var z=m[0].replace("鄰近","近鄰").replace("准","準");
+    z=ja?z.replace("近鄰","近隣").replace("專","専"):z.replace("近隣","近鄰").replace("専","專");
+    if(out.indexOf(z)<0)out.push(z);}
+  return out.join("／");
+}
 function propSpecRowsJa(p) {
   const rows = [
     ["価格", p.price], ["所在地", p.location], ["交通", p.station],
@@ -969,8 +978,10 @@ function propSpecRowsJa(p) {
     ["その他条件", p.facing], ["管理費・修繕積立金", p.mgmt],
     ["権利形態", p.right], ["利回り", p.yield]
   ];
+  const z = zoneOf(p.facing, true);
   return rows.filter(r => PLAIN_JA(r[1])).map(r =>
-    `<tr><th>${esc(r[0])}</th><td>${esc(PLAIN_JA(r[1]))}</td></tr>`).join("");
+    `<tr><th>${esc(r[0])}</th><td>${esc(PLAIN_JA(r[1]))}</td></tr>`).join("")
+    + (z ? `<tr><th>用途地域</th><td>${esc(z)}　<a href="japan-zoning-taiwan-vs-japan-ja.html" style="color:#e11d48;font-weight:600">用途地域とは →</a></td></tr>` : "");
 }
 
 function propNoteHTMLJa(p) {

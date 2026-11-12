@@ -352,6 +352,15 @@ body.noscroll{overflow:hidden}
        大阪那批共 8 個欄位都印出原始標籤。比照「周周的看法」的做法：
        先全部跳脫，再只把 <b></b> 放回來。 */
     function CB(x){return C(x).replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>");}
+function zoneOf(s,ja){
+      /* 用途地域：從規格欄（facing，抄自販売図面）把用途地域抓出來，獨立顯示一行（周周 2026-11-12） */
+      var re=/\u7b2c[\u4e00\u4e8c]\u7a2e(?:\u4f4e\u5c64|\u4e2d\u9ad8\u5c64)?\u4f4f\u5c45[\u5c08\u5c02]\u7528\u5730\u57df|\u7b2c[\u4e00\u4e8c]\u7a2e\u4f4f\u5c45\u5730\u57df|\u6e96\u4f4f\u5c45\u5730\u57df|\u7530\u5712\u4f4f\u5c45\u5730\u57df|\u8fd1[\u9130\u96a3]\u5546\u696d\u5730\u57df|\u9130\u8fd1\u5546\u696d\u5730\u57df|\u5546\u696d\u5730\u57df|[\u6e96\u51c6]\u5de5\u696d\u5730\u57df|\u5de5\u696d[\u5c08\u5c02]\u7528\u5730\u57df|\u5de5\u696d\u5730\u57df/g;
+      var out=[],m; s=String(s||"").replace(/<[^>]+>/g,"");
+      while((m=re.exec(s))){var z=m[0].replace("\u9130\u8fd1","\u8fd1\u9130").replace("\u51c6","\u6e96");
+        z=ja?z.replace("\u8fd1\u9130","\u8fd1\u96a3").replace("\u5c08","\u5c02"):z.replace("\u8fd1\u96a3","\u8fd1\u9130").replace("\u5c02","\u5c08");
+        if(out.indexOf(z)<0)out.push(z);}
+      return out.join("\uff0f");
+    }
     function row(l,v,ic){
       if(!v)return "";
       /* 「円／月」「㎡／戸」這種單位用的斜線不能拆，只拆真正的並列項目（例如三個車站） */
@@ -372,7 +381,7 @@ body.noscroll{overflow:hidden}
     var facts='<div class="pfacts">'+chip("間取り",p.layout)+chip("面積",p.size)+chip("築年",p.age)+chip("利回り",p.yield)+'</div>';
     var spec='<ul class="pspec">'
       +row("所在地",p.location)+row("交通",p.station,"\u{1F689}")+row("間取り",p.layout)+row("面積",p.size)
-      +row("築年",p.age)+row("向き・階",p.facing)+row("管理費等",p.mgmt)+row("権利",p.right)+row("利回り",p.yield)+'</ul>';
+      +row("築年",p.age)+row("向き・階",p.facing)+(zoneOf(p.facing,true)?'<li><b>用途地域</b><span>'+esc(zoneOf(p.facing,true))+'　<a href="japan-zoning-taiwan-vs-japan-ja.html" style="color:#e11d48;font-weight:600">用途地域とは →</a></span></li>':"")+row("管理費等",p.mgmt)+row("権利",p.right)+row("利回り",p.yield)+'</ul>';
     var mapBtn=p.location?'<a class="pmap" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.location)+'" target="_blank" rel="noopener">📍 Googleマップで見る</a>':"";
     var note=p.note?'<div class="pnote"><span class="nh">💬 おすすめポイント</span>'+NOTEHTML(p.note)+'</div>':"";
     var vid="";
