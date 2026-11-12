@@ -232,27 +232,6 @@ window.PROPERTIES = [
     photos: ["prop/prop-urbanest-komazawa601-1.webp", "prop/prop-urbanest-komazawa601-plan.webp", "prop/prop-urbanest-komazawa601-2.webp", "prop/prop-urbanest-komazawa601-3.webp", "prop/prop-urbanest-komazawa601-4.webp", "prop/prop-urbanest-komazawa601-5.webp", "prop/prop-urbanest-komazawa601-6.webp", "prop/prop-urbanest-komazawa601-7.webp", "prop/prop-urbanest-komazawa601-8.webp", "prop/prop-urbanest-komazawa601-9.webp", "prop/prop-urbanest-komazawa601-10.webp", "prop/prop-urbanest-komazawa601-11.webp", "prop/prop-urbanest-komazawa601-12.webp"],
     note: "■ 這間是什麼\n駒澤大學站徒步5分、6樓的2LDK，2026年10月9日剛全新翻新完工，空屋可以馬上看房。\n■ 亮點\n<b>駒澤奧林匹克公園</b>徒步約5分鐘（約400m），慢跑、散步、帶小孩放電都很方便；陽台側視野開闊。翻新時加裝了內窗（インナーサッシ），隔熱、隔音、防結露都更好。\n■ 格局與設備\n專有約53㎡，LDK約12.0帖＋兩間洋室，對面式廚房附食洗機與淨水器，浴室有保溫浴缸、追焚與浴室乾燥機，給排水管與瓦斯管另有10年長期保固。\n■ 管理與生活\n2021年8月做完大規模修繕，管委會的結餘金也很充足。超市マルエツ約500m、藥妝店約120m。\n■ 想看房或試算貸款\n照片中的家具是佈置用，不含在售價內。這種屋齡各家銀行看法不同，我可以先幫你問過幾家再決定怎麼出手，加LINE跟我說一聲就好。"
   },
-  {
-    id: "lupinus-yoga310",
-    listed: "2026-11-02",
-    layoutTag: "1SLDK",
-    status: "在售",
-    cat: "live",
-    title: "ルピナス用賀 310号室",
-    title_cn: "用賀站6分・二子玉川站15分 2004年築南西向・全新翻新1SLDK（可養寵物）",
-    price: "6,998万円（含稅）",
-    location: "東京都世田谷區玉川台2丁目",
-    station: "東急田園都市線「用賀」站 徒步6分／東急田園都市線・大井町線「二子玉川」站 徒步15分",
-    layout: "1SLDK＋步入式衣帽間＋玄關收納（LDK約11.2帖＋洋室約4.5帖＋多功能房（サービスルーム）約3.8帖）",
-    size: "專有47.00㎡（約14.22坪・含PS）・陽台7.50㎡",
-    age: "2004年8月築・2026年10月9日全新翻新完工・現況空屋・可即時交屋",
-    facing: "南西向・RC造8層建的3樓・總戶數86戶・可養寵物（2隻為限、依規約）・不可作事務所使用",
-    mgmt: "管理費8,000円＋修繕基金（修繕積立金）11,100円／月（合計19,100円・全部委託・通勤管理・森Trust住宅服務）。修繕基金預定2026年11月起調整；修繕基金結餘約8,263萬円（2025年6月）。停車場有空位：每月25,000～32,000円",
-    right: "所有權",
-    yield: "",
-    photos: ["prop/prop-lupinus-yoga310-1.webp", "prop/prop-lupinus-yoga310-plan.webp", "prop/prop-lupinus-yoga310-2.webp", "prop/prop-lupinus-yoga310-3.webp", "prop/prop-lupinus-yoga310-4.webp", "prop/prop-lupinus-yoga310-5.webp", "prop/prop-lupinus-yoga310-6.webp", "prop/prop-lupinus-yoga310-7.webp", "prop/prop-lupinus-yoga310-8.webp", "prop/prop-lupinus-yoga310-9.webp", "prop/prop-lupinus-yoga310-10.webp", "prop/prop-lupinus-yoga310-11.webp", "prop/prop-lupinus-yoga310-12.webp", "prop/prop-lupinus-yoga310-13.webp", "prop/prop-lupinus-yoga310-14.webp"],
-    note: "■ 這間是什麼\n用賀站徒步6分、二子玉川站15分，2004年築的南西向1SLDK，2026年10月9日剛全新翻新完工，空屋可以直接看。\n■ 亮點\n2004年築、<b>86戶</b>的社區，修繕基金結餘超過8千萬円、有長期修繕計畫，管理面讓人放心；可以養2隻寵物，對有毛小孩的家庭很難得。\n■ 格局與設備\n專有47㎡，LDK約11.2帖＋洋室＋多功能房，洋室用三片拉門、可以跟客廳打通或隔開；有步入式衣帽間和玄關收納。翻新加裝了內窗（隔音隔熱），廚房附食洗機與淨水器、浴室乾燥機，LDK新裝冷氣。\n■ 生活\n用賀站前有OK超市，假日到二子玉川逛街，砧公園也在附近，生活機能和綠意兼具。\n■ 想看房或試算貸款\n照片中的家具是佈置用，不含在售價內。加LINE跟周周說一聲，貸款能不能貸、可貸成數依個案與銀行審查為準，我用中文一步一步陪你確認。"
-  },
 
   {
     id: "diana-garden-ebisu",
