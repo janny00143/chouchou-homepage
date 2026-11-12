@@ -38,7 +38,7 @@
       for (var i = 0; i < r.length - 1; i++) { var c = r[i][0] * r[i + 1][1] - r[i + 1][0] * r[i][1]; A += c; X += (r[i][0] + r[i + 1][0]) * c; Y += (r[i][1] + r[i + 1][1]) * c; }
       if (Math.abs(A) > best) { best = Math.abs(A); cen = [X / (3 * A), Y / (3 * A)]; }
     });
-    SHAPES[f.properties.n] = { d: d, c: cen };
+    SHAPES[f.properties.c] = { d: d, c: cen };
   });
 
   function tabs(id) {
@@ -110,7 +110,7 @@
     squarify(zones, 0, 0, TW, TH).forEach(function (zr) {
       var zz = zr.it, pad = 3, top = 20;
       heads += '<rect x="' + zr.x.toFixed(1) + '" y="' + zr.y.toFixed(1) + '" width="' + zr.w.toFixed(1) + '" height="' + zr.h.toFixed(1) + '" fill="' + ZC[zz.z] + '"/>' +
-        '<text class="zh" x="' + (zr.x + 6).toFixed(1) + '" y="' + (zr.y + 15).toFixed(1) + '">' + zz.z + '・' + fmt(zz.v, "pop") + '</text>';
+        '<text class="zh" x="' + (zr.x + 6).toFixed(1) + '" y="' + (zr.y + 15).toFixed(1) + '">' + zz.z + (zr.w > 150 ? '・' + fmt(zz.v, "pop") : '') + '</text>';
       squarify(zz.ks.map(function (k) { return { k: k, v: val(k, "pop") }; }), zr.x + pad, zr.y + top, Math.max(1, zr.w - pad * 2), Math.max(1, zr.h - top - pad)).forEach(function (c) {
         var k = c.it.k, ci = cls(val(k, "price"), b), big = c.w > 62 && c.h > 34;
         cells += '<g data-k="' + k + '"><rect x="' + (c.x + 1).toFixed(1) + '" y="' + (c.y + 1).toFixed(1) + '" width="' + Math.max(0, c.w - 2).toFixed(1) + '" height="' + Math.max(0, c.h - 2).toFixed(1) + '" rx="3" fill="' + PAL[Math.max(0, ci)] + '"><title>' + W[k].name + '｜' + D.metrics.pop.tab + ' ' + fmt(val(k, "pop"), "pop") + '｜' + D.metrics.price.tab + ' ' + fmt(val(k, "price"), "price") + '</title></rect>' +

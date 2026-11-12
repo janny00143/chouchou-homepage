@@ -86,6 +86,26 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .src a{color:#2563eb;word-break:break-all}
 .disc{font-size:12px;color:var(--mut);text-align:center;margin:22px 0 44px;line-height:1.8}
 @media(max-width:600px){.hero h1{font-size:23px}.stat .v{font-size:17px}}
+.avcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;margin-top:12px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.avcard h3{font-size:16.5px;font-weight:900;margin-bottom:2px}
+.av-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 6px}
+.av-tabs button{border:1.5px solid var(--line);background:#fafaf9;color:#57534e;border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.av-tabs button.on{background:var(--rose-d);border-color:var(--rose-d);color:#fff}
+.av-q{font-size:13.5px;color:var(--mut);margin:2px 0 8px;line-height:1.7}
+.av-svg{width:100%;height:auto;display:block}
+.av-p path{stroke:#fff;stroke-width:1.2;cursor:pointer;transition:opacity .15s}.av-p path:hover{opacity:.82}.av-p path.sel{stroke:#292524;stroke-width:2.4}
+.av-t text{font-size:13px;font-weight:700;text-anchor:middle;dominant-baseline:middle;pointer-events:none;paint-order:stroke}
+.av-leg,.av-zl{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:#57534e;margin-top:8px}
+.av-leg i,.av-zl i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.av-info{margin-top:10px;background:#fafaf9;border:1px dashed var(--line);border-radius:12px;padding:10px 13px;font-size:13.5px;color:#57534e;line-height:1.9;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}
+.av-info b{color:var(--ink)}.av-info .z{color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px}.av-info .kv b{color:var(--rose-d)}.av-info a{color:var(--rose-d);font-weight:700}
+.av-bars{display:grid;gap:5px}
+.av-row{display:grid;grid-template-columns:92px 1fr 92px;align-items:center;gap:8px;font-size:13.5px}
+.av-row .n{white-space:nowrap;color:#44403c}.av-row .bw{background:#f5f5f4;border-radius:6px;height:14px;overflow:hidden}.av-row .bw i{display:block;height:100%;border-radius:6px}
+.av-row .v{text-align:right;font-weight:700;color:#292524;white-space:nowrap;font-variant-numeric:tabular-nums}
+.av-tree .zh{font-size:12.5px;font-weight:800;fill:#fff}.av-tree .tn{font-size:12.5px;font-weight:800}.av-tree .tv{font-size:11px;opacity:.9}.av-tree g{cursor:pointer}
+.av-cap{font-size:12.5px;color:var(--mut);margin-top:6px}
+@media(max-width:600px){.av-t text{font-size:15px}.av-row{grid-template-columns:78px 1fr 84px;font-size:12.5px}}
 </style>
 
 <header>
@@ -100,7 +120,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <span class="kick">🗺️ エリア相場ガイド</span>
     <h1>東京23区、<span>エリア別相場</span>を1ページで</h1>
     <p>「どの区で買えばいいの？」——お客様から最も多くいただくご質問です。最新の市場データをもとに、東京5大エリアの価格水準・賃料相場・各区の個性を整理しました。まずは大きな方向感をつかんでから、一緒に物件を選びましょう。</p>
-    <span class="upd">📅 相場データ更新：2026年8月（各数値の時点・出典はページ下部参照）</span>
+    <span class="upd">📅 相場データ更新：2026年8月｜地価・人口グラフ：2026年公的データ（出典はページ下部）</span>
   </section>
 
   <div class="sech"><div class="n">1</div><h2>まずは全体感：東京の今の価格水準</h2></div>
@@ -112,14 +132,27 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
   </div>
   <div class="note">💡 <b>「売出価格」と「成約価格」はなぜこんなに違う？</b>売出平均は都心の超高額新築や億ション（高級マンション）に引き上げられやすく、売主の強気な値付けも反映されます。一方、成約価格はさまざまな築年数・広さの実際の取引を含みます。相場を見るときは両方が大切：売出価格でトレンドの方向を、成約価格で実際の水準を確認しましょう。なお23区の中古1LDKの相場帯は約<b>2,300万〜8,500万円</b>、2LDKは約<b>3,100万〜1億7,000万円</b>（2026年）——同じ間取りでもエリア次第で3〜4倍の差が出ます。これこそ「エリア選び」が重要な理由です。</div>
 
-  <div class="sech"><div class="n">2</div><h2>5大エリア概観：ご予算に合うのはどのエリア？</h2></div>
+  <div class="sech"><div class="n">2</div><h2>データで見る23区：地価・上昇率・人口</h2></div>
+  <div class="note">💡 本セクションは<b>国の地価公示</b>（土地1㎡あたりの価格。マンション価格ではありません）を使用しています。各区の相対的な価格水準と上昇傾向の比較に最も適した指標です。23区の住宅地平均は約 <b>85.6万円/㎡</b>、対前年 +9.0%で、<b>2026年は下落した区がありません</b>。</div>
+  <div class="avcard"><h3>🗺️ 23区マップ：価格水準と上昇率</h3><div id="avMap"></div></div>
+  <div class="avcard"><h3>📊 23区ランキング</h3><div id="avBars"></div></div>
+  <div class="avcard"><h3>🌳 ツリーマップ：人口 × 地価</h3><div id="avTree"></div></div>
+  <div class="zone">
+    <p><b>周周の読み解き</b></p>
+    <p>・<b>最も高い区と手頃な区の差は9倍以上</b>：住宅地平均価格は千代田区 約363万円/㎡、港区 約301万円に対し、葛飾区 約39万円、足立区 約41万円。同じご予算でも、区によって手に入る広さが大きく変わります。</p>
+    <p>・<b>上昇率上位は都心だけではありません</b>：港区 16.6%、台東区 14.2%、品川区 13.9%が上位で、墨田区も13.2%。浅草・スカイツリー周辺の城東エリアは、都心に迫る上昇を見せています。</p>
+    <p>・<b>人口の多い区は上昇が穏やか</b>：人口上位の世田谷区（約96万人）・練馬区・大田区は上昇率6〜8%台。需要が厚く価格も急騰しにくい、居住用として検討しやすいエリアです。</p>
+    <p style="margin-top:10px">地価はあくまで方向性の指標で、実際の価格は築年数・駅距離・管理状況で大きく変わります。最新の成約事例に基づく相場は、周周までお気軽にお問い合わせください。</p>
+  </div>
+
+  <div class="sech"><div class="n">3</div><h2>5大エリア概観：ご予算に合うのはどのエリア？</h2></div>
   <div id="zones"></div>
 
-  <div class="sech"><div class="n">3</div><h2>人気の12区を個別にご紹介</h2></div>
+  <div class="sech"><div class="n">4</div><h2>人気の12区を個別にご紹介</h2></div>
   <div class="note">華僑・華人のお客様からよくご質問いただく12区をまとめました。価格帯は <span class="tier">￥</span> の数で相対的な高さを表します（<span class="tier">￥￥￥￥￥</span>＝23区最高価格帯）。タップして各区の個性をご覧ください。</div>
   <div id="wards"></div>
 
-  <div class="sech"><div class="n">4</div><h2>周周からのエリア選びアドバイス</h2></div>
+  <div class="sech"><div class="n">5</div><h2>周周からのエリア選びアドバイス</h2></div>
   <div class="zone">
     <p><b>🏠 ご自宅用</b>：まず「生活圏」、次に利回りです。通勤ルート・スーパー・学区・病院は、帳簿上の値上がり率よりも日々の暮らしの満足度を左右します。ご予算が限られる場合は、都心で狭い物件よりも、城南・城東エリアで「広めで生活利便性の高い」物件を選ぶ方が、住み心地も将来の売却もスムーズです。</p>
     <p><b>📈 投資・賃貸経営</b>：都心3区は資産価値が落ちにくい一方、利回りは低め。城東・城北は価格が手頃で賃貸需要も安定しており、表面利回りは相対的に良好です。大切なのは帳簿上の利回りより「実際に貸せるか」——駅距離・築年数・管理状態は周周がしっかりチェックいたします。</p>
@@ -135,6 +168,9 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
   <div class="src">
     <b>📚 データ出典（クリックで原典へ）</b>
+    ・23区の地価：東京都財務局「令和8年地価公示価格（東京都分）」区市町村別用途別平均価格表・対前年変動率表（2026年3月17日公表、価格時点2026年1月1日）：<a href="https://www.zaimu.metro.tokyo.lg.jp/kijunchi/chikakouji/r8kouji" target="_blank" rel="noopener">zaimu.metro.tokyo.lg.jp</a><br>
+    ・23区の人口：東京都総務局統計部「東京都の人口（推計）」令和8年10月1日現在（2026年10月29日公表）：<a href="https://www.toukei.metro.tokyo.lg.jp/jsuikei/js-index.htm" target="_blank" rel="noopener">toukei.metro.tokyo.lg.jp</a><br>
+    ・地図の境界：「国土数値情報（行政区域データ）」（国土交通省）をスマートニュース メディア研究所が簡素化したデータを加工して作成。<br>
     ・東京カンテイ「中古マンション70㎡価格 月別推移」月例レポート（2026年発表）：<a href="https://www.kantei.ne.jp/report/category/70m2/" target="_blank" rel="noopener">kantei.ne.jp</a><br>
     ・東日本不動産流通機構（東日本レインズ）「Market Watch」月報・季報（2026年）：<a href="https://www.reins.or.jp/library/" target="_blank" rel="noopener">reins.or.jp</a><br>
     ・23区賃料相場：民間賃貸ポータル2026年公表統計（1K平均 約11.5万円/月）。<br>
@@ -223,5 +259,7 @@ zh.innerHTML=ZONES.map(function(z){return "<div class='zone'><div class='zh'><di
 var wh=document.getElementById("wards");
 wh.innerHTML=WARDS.map(function(w,i){return "<div class='acc' id='acc"+i+"'><div class='acc-h' onclick=\"document.getElementById('acc"+i+"').classList.toggle('open')\"><div class='ic'>"+w.ic+"</div><div class='tt'><b>"+w.name+"　<span class='tier'>"+w.tier+"</span></b><span>"+w.sub+"</span></div><div class='arw'>▼</div></div><div class='acc-body'><p>"+w.txt+"</p><div class='row'>"+w.row+"</div><div class='fit'>♥ "+w.fit+"</div></div></div>"}).join("");
 </script>
+<script>window.AREA_DATA={"order":["price","chg","pop"],"metrics":{"price":{"tab":"住宅地平均価格","unit":"万円/㎡","div":10000,"dp":1,"q":"色が濃いほど地価が高いエリアです。各区をタップすると数値を表示します。","qBar":"23区の住宅地平均価格ランキング（1㎡あたり）。"},"chg":{"tab":"年間変動率","unit":"%","pre":"+","dp":1,"q":"色が濃いほど、この1年の上昇率が高いエリアです（2026年は全区で上昇）。","qBar":"対前年変動率ランキング。"},"pop":{"tab":"人口","unit":"万人","div":10000,"dp":1,"q":"色が濃いほど人口が多く、住宅需要の裾野が広いエリアです。","qBar":"区別人口ランキング。"}},"T":{"more":"","tapHint":"👆 地図上の区をタップすると、地価・変動率・人口を表示します。","mapAria":"東京23区地図","treeAria":"東京23区 人口と地価のツリーマップ","treeQ":"面積が大きいほど人口が多く、色が濃いほど地価が高いことを示します。「人口が多く手頃な区」と「人口は少ないが高額な区」が一目で分かります。","treeCap":"枠の色＝5大エリア、ブロックの色＝住宅地平均価格（凡例は下記）。"},"zoneColors":{"都心3区":"#be123c","副都心":"#ea580c","城南・城西":"#7c3aed","城東":"#0284c7","城北":"#059669"},"wards":{"13101":{"name":"千代田区","short":"千代田","zone":"都心3区","price":3631400,"chg":10.7,"pop":66737},"13102":{"name":"中央区","short":"中央","zone":"都心3区","price":1930000,"chg":13.8,"pop":184132},"13103":{"name":"港区","short":"港","zone":"都心3区","price":3013700,"chg":16.6,"pop":272990},"13104":{"name":"新宿区","short":"新宿","zone":"副都心","price":1131600,"chg":11.2,"pop":360775},"13105":{"name":"文京区","short":"文京","zone":"副都心","price":1448100,"chg":13.8,"pop":250860},"13106":{"name":"台東区","short":"台東","zone":"城東","price":1320800,"chg":14.2,"pop":228029},"13107":{"name":"墨田区","short":"墨田","zone":"城東","price":613300,"chg":13.2,"pop":285910},"13108":{"name":"江東区","short":"江東","zone":"城東","price":661500,"chg":11.9,"pop":554468},"13109":{"name":"品川区","short":"品川","zone":"城南・城西","price":1244100,"chg":13.9,"pop":429062},"13110":{"name":"目黒区","short":"目黒","zone":"城南・城西","price":1404500,"chg":13.7,"pop":286399},"13111":{"name":"大田区","short":"大田","zone":"城南・城西","price":647600,"chg":7.9,"pop":761109},"13112":{"name":"世田谷区","short":"世田谷","zone":"城南・城西","price":779900,"chg":7.0,"pop":957373},"13113":{"name":"渋谷区","short":"渋谷","zone":"城南・城西","price":1874100,"chg":11.0,"pop":237740},"13114":{"name":"中野区","short":"中野","zone":"城南・城西","price":782700,"chg":9.0,"pop":355957},"13115":{"name":"杉並区","short":"杉並","zone":"城南・城西","price":703200,"chg":8.2,"pop":599714},"13116":{"name":"豊島区","short":"豊島","zone":"副都心","price":912100,"chg":12.9,"pop":306073},"13117":{"name":"北区","short":"北","zone":"城北","price":742000,"chg":11.6,"pop":370341},"13118":{"name":"荒川区","short":"荒川","zone":"城東","price":718700,"chg":11.8,"pop":228074},"13119":{"name":"板橋区","short":"板橋","zone":"城北","price":553600,"chg":8.5,"pop":599841},"13120":{"name":"練馬区","short":"練馬","zone":"城北","price":480500,"chg":6.2,"pop":763313},"13121":{"name":"足立区","short":"足立","zone":"城東","price":410800,"chg":6.3,"pop":706990},"13122":{"name":"葛飾区","short":"葛飾","zone":"城東","price":387500,"chg":5.6,"pop":468449},"13123":{"name":"江戸川区","short":"江戸川","zone":"城東","price":441100,"chg":5.7,"pop":709029}}};</script>
+<script src="area-viz.js" defer></script>
 <!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p.slice(-8)==='-ja.html'||p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref,jaHref;if(p.slice(-8)==='-ja.html'){var base=p.slice(0,-8);twHref=base+'.html';cnHref=base+'-cn.html';jaHref=p;}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;jaHref=p.slice(0,-8)+'-ja.html';}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';jaHref=p.slice(0,-5)+'-ja.html';}var cur=(p.slice(-8)==='-ja.html')?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);var hdRight=document.querySelector('header .hd-right');if(hdRight){hdRight.appendChild(wrap);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
 </html>

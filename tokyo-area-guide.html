@@ -86,6 +86,26 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .src a{color:#2563eb;word-break:break-all}
 .disc{font-size:12px;color:var(--mut);text-align:center;margin:22px 0 44px;line-height:1.8}
 @media(max-width:600px){.hero h1{font-size:23px}.stat .v{font-size:17px}}
+.avcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;margin-top:12px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.avcard h3{font-size:16.5px;font-weight:900;margin-bottom:2px}
+.av-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 6px}
+.av-tabs button{border:1.5px solid var(--line);background:#fafaf9;color:#57534e;border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.av-tabs button.on{background:var(--rose-d);border-color:var(--rose-d);color:#fff}
+.av-q{font-size:13.5px;color:var(--mut);margin:2px 0 8px;line-height:1.7}
+.av-svg{width:100%;height:auto;display:block}
+.av-p path{stroke:#fff;stroke-width:1.2;cursor:pointer;transition:opacity .15s}.av-p path:hover{opacity:.82}.av-p path.sel{stroke:#292524;stroke-width:2.4}
+.av-t text{font-size:13px;font-weight:700;text-anchor:middle;dominant-baseline:middle;pointer-events:none;paint-order:stroke}
+.av-leg,.av-zl{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:#57534e;margin-top:8px}
+.av-leg i,.av-zl i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.av-info{margin-top:10px;background:#fafaf9;border:1px dashed var(--line);border-radius:12px;padding:10px 13px;font-size:13.5px;color:#57534e;line-height:1.9;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}
+.av-info b{color:var(--ink)}.av-info .z{color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px}.av-info .kv b{color:var(--rose-d)}.av-info a{color:var(--rose-d);font-weight:700}
+.av-bars{display:grid;gap:5px}
+.av-row{display:grid;grid-template-columns:92px 1fr 92px;align-items:center;gap:8px;font-size:13.5px}
+.av-row .n{white-space:nowrap;color:#44403c}.av-row .bw{background:#f5f5f4;border-radius:6px;height:14px;overflow:hidden}.av-row .bw i{display:block;height:100%;border-radius:6px}
+.av-row .v{text-align:right;font-weight:700;color:#292524;white-space:nowrap;font-variant-numeric:tabular-nums}
+.av-tree .zh{font-size:12.5px;font-weight:800;fill:#fff}.av-tree .tn{font-size:12.5px;font-weight:800}.av-tree .tv{font-size:11px;opacity:.9}.av-tree g{cursor:pointer}
+.av-cap{font-size:12.5px;color:var(--mut);margin-top:6px}
+@media(max-width:600px){.av-t text{font-size:15px}.av-row{grid-template-columns:78px 1fr 84px;font-size:12.5px}}
 </style>
 
 <header>
@@ -100,7 +120,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <span class="kick">🗺️ 區域行情專頁</span>
     <h1>東京23區買房，<span>行情</span>一次看懂</h1>
     <p>「我該買在哪一區？」是周周最常被問的問題。這一頁用最新的市場數據，帶你看懂東京五大區域的房價水準、租金行情跟各區個性，先有大方向，再一起挑物件。</p>
-    <span class="upd">📅 行情數據更新：2026年8月（資料時點見各數字與頁尾來源）</span>
+    <span class="upd">📅 行情數據更新：2026年8月｜地價與人口圖表：2026年官方數據（來源見頁尾）</span>
   </section>
 
   <div class="sech"><div class="n">1</div><h2>先看大局：東京現在多貴？</h2></div>
@@ -112,14 +132,27 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
   </div>
   <div class="note">💡 <b>「開價」跟「成交價」為什麼差這麼多？</b>開價平均容易被都心的超高價新案、豪宅拉高，而且賣方普遍開得比較敢；實際成交則包含各種屋齡、大小的物件。看行情時兩個都要看：開價看趨勢方向，成交價看真實水位。另外中古 1LDK 在23區的行情帶大約落在 <b>2,300萬〜8,500萬円</b>、2LDK 約 <b>3,100萬〜1億7,000萬円</b>（2026年，依區域差很大）——同一種格局，選區不同價差可以到 3〜4 倍，這就是「選區」重要的原因。</div>
 
-  <div class="sech"><div class="n">2</div><h2>五大區域總覽：你的預算適合哪一帶？</h2></div>
+  <div class="sech"><div class="n">2</div><h2>用數據看23區：地價、漲幅、人口</h2></div>
+  <div class="note">💡 這一段用的是<b>官方地價公示</b>（土地每㎡的價格，不是公寓的房價），它最適合拿來比較各區的「相對貴賤」跟「漲勢」。23區住宅地平均約 <b>85.6 萬円/㎡</b>，一年漲 9.0%，而且<b>2026 年沒有任何一區下跌</b>。</div>
+  <div class="avcard"><h3>🗺️ 23區地圖：哪裡貴、哪裡漲最多</h3><div id="avMap"></div></div>
+  <div class="avcard"><h3>📊 23區排行榜</h3><div id="avBars"></div></div>
+  <div class="avcard"><h3>🌳 樹狀圖：人口 × 地價</h3><div id="avTree"></div></div>
+  <div class="zone">
+    <p><b>周周看這三張圖</b></p>
+    <p>・<b>最貴與最親民差 9 倍以上</b>：千代田區住宅地平均約 363 萬円/㎡、港區約 301 萬円，葛飾區約 39 萬円、足立區約 41 萬円。同樣的預算，選區不同，能買到的空間完全不一樣。</p>
+    <p>・<b>漲最多的不只在都心</b>：一年漲幅前三名是港區 16.6%、台東區 14.2%、品川區 13.9%，墨田區也有 13.2%。淺草、晴空塔這一帶的城東，漲勢已經追上都心。</p>
+    <p>・<b>人口大區漲得比較溫和</b>：世田谷（約 96 萬人）、練馬、大田是人口最多的三區，地價漲幅落在 6〜8%，對自住族來說是「需求穩、價格不會一下子衝太快」的選擇。</p>
+    <p style="margin-top:10px">地價是看方向的指標，實際房價還要看屋齡、車站距離、管理狀況。想知道某一區現在的實際成交行情，直接問周周，我用最新成交資料幫你比。</p>
+  </div>
+
+  <div class="sech"><div class="n">3</div><h2>五大區域總覽：你的預算適合哪一帶？</h2></div>
   <div id="zones"></div>
 
-  <div class="sech"><div class="n">3</div><h2>熱門區逐區介紹</h2></div>
+  <div class="sech"><div class="n">4</div><h2>熱門區逐區介紹</h2></div>
   <div class="note">周周幫大家整理台灣客人最常問的 12 個區。價位用 <span class="tier">￥</span> 表示相對高低（<span class="tier">￥￥￥￥￥</span>＝23區最高價帶），點開看各區個性。</div>
   <div id="wards"></div>
 
-  <div class="sech"><div class="n">4</div><h2>周周的選區建議</h2></div>
+  <div class="sech"><div class="n">5</div><h2>周周的選區建議</h2></div>
   <div class="zone">
     <p><b>🏠 自住</b>：先想「生活圈」再想投報。通勤路線、超市、學區、醫院，比帳面上的增值率更影響每天的幸福感。預算有限時，與其在都心買小，不如往城南、城東挑「大一點、生活機能好」的物件，住起來舒服、將來也好轉手。</p>
     <p><b>📈 投資收租</b>：都心3區保值抗跌但投報率偏低；城東、城北總價親民、租金需求穩定，表面投報率（表面利回り）相對好看。重點是租得掉比帳面投報率重要——車站距離、屋齡、管理狀態，周周都會幫你把關。</p>
@@ -135,6 +168,9 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
   <div class="src">
     <b>📚 資料來源（點擊可查原始報告）</b>
+    ・23區地價：東京都財務局「令和8年地價公示價格（東京都分）」區市町村別用途別平均價格表、對前年變動率表（2026年3月17日公布，價格時點 2026年1月1日）：<a href="https://www.zaimu.metro.tokyo.lg.jp/kijunchi/chikakouji/r8kouji" target="_blank" rel="noopener">zaimu.metro.tokyo.lg.jp</a><br>
+    ・23區人口：東京都總務局統計部「東京都的人口（推計）」2026年10月1日現在（2026年10月29日公布）：<a href="https://www.toukei.metro.tokyo.lg.jp/jsuikei/js-index.htm" target="_blank" rel="noopener">toukei.metro.tokyo.lg.jp</a><br>
+    ・地圖邊界：「國土數值情報（行政區域資料）」（國土交通省）經 SmartNews Media Research Institute 簡化後加工製作。<br>
     ・東京鑑定（東京カンテイ）「中古マンション70㎡価格 月別推移」月例報告（2026年發布）：<a href="https://www.kantei.ne.jp/report/category/70m2/" target="_blank" rel="noopener">kantei.ne.jp</a><br>
     ・東日本不動産流通機構（東日本レインズ）「Market Watch」月報・季報（2026年）：<a href="https://www.reins.or.jp/library/" target="_blank" rel="noopener">reins.or.jp</a><br>
     ・23區租金行情：民間租屋平台 2026 年公開統計（1K 平均約11.5萬円/月）。<br>
@@ -224,5 +260,7 @@ zh.innerHTML=ZONES.map(function(z){return "<div class='zone'><div class='zh'><di
 var wh=document.getElementById("wards");
 wh.innerHTML=WARDS.map(function(w,i){return "<div class='acc' id='acc"+i+"'><div class='acc-h' onclick=\"document.getElementById('acc"+i+"').classList.toggle('open')\"><div class='ic'>"+w.ic+"</div><div class='tt'><b>"+w.name+"　<span class='tier'>"+w.tier+"</span></b><span>"+w.sub+"</span></div><div class='arw'>▼</div></div><div class='acc-body'><p>"+w.txt+"</p><div class='row'>"+w.row+"</div><div class='fit'>♥ "+w.fit+"</div></div></div>"}).join("");
 </script>
+<script>window.AREA_DATA={"order":["price","chg","pop"],"metrics":{"price":{"tab":"住宅地平均地價","unit":"萬円/㎡","div":10000,"dp":1,"q":"顏色越深＝土地越貴。點一下各區看數字。","qBar":"23 區住宅地平均地價排行（每㎡）。"},"chg":{"tab":"一年漲幅","unit":"%","pre":"+","dp":1,"q":"顏色越深＝過去一年漲得越多（2026 年沒有任何一區下跌）。","qBar":"過去一年地價漲幅排行。"},"pop":{"tab":"人口","unit":"萬人","div":10000,"dp":1,"q":"顏色越深＝人口越多，也就是住宅需求的「底盤」越大。","qBar":"各區人口排行。"}},"T":{"more":"","tapHint":"👆 點地圖上的任一區，這裡會顯示該區的地價、漲幅、人口。","mapAria":"東京23區地圖","treeAria":"東京23區人口與地價樹狀圖","treeQ":"方塊越大＝人口越多；顏色越深＝地價越貴。一眼看出「人多又便宜」和「人少但很貴」的區。","treeCap":"外框顏色＝五大區域；方塊顏色＝住宅地平均地價（圖例同下）。"},"zoneColors":{"都心3區":"#be123c","副都心":"#ea580c","城南・城西":"#7c3aed","城東":"#0284c7","城北":"#059669"},"wards":{"13101":{"name":"千代田區","short":"千代田","zone":"都心3區","price":3631400,"chg":10.7,"pop":66737},"13102":{"name":"中央區","short":"中央","zone":"都心3區","price":1930000,"chg":13.8,"pop":184132},"13103":{"name":"港區","short":"港","zone":"都心3區","price":3013700,"chg":16.6,"pop":272990},"13104":{"name":"新宿區","short":"新宿","zone":"副都心","price":1131600,"chg":11.2,"pop":360775},"13105":{"name":"文京區","short":"文京","zone":"副都心","price":1448100,"chg":13.8,"pop":250860},"13106":{"name":"台東區","short":"台東","zone":"城東","price":1320800,"chg":14.2,"pop":228029},"13107":{"name":"墨田區","short":"墨田","zone":"城東","price":613300,"chg":13.2,"pop":285910},"13108":{"name":"江東區","short":"江東","zone":"城東","price":661500,"chg":11.9,"pop":554468},"13109":{"name":"品川區","short":"品川","zone":"城南・城西","price":1244100,"chg":13.9,"pop":429062},"13110":{"name":"目黑區","short":"目黑","zone":"城南・城西","price":1404500,"chg":13.7,"pop":286399},"13111":{"name":"大田區","short":"大田","zone":"城南・城西","price":647600,"chg":7.9,"pop":761109},"13112":{"name":"世田谷區","short":"世田谷","zone":"城南・城西","price":779900,"chg":7.0,"pop":957373},"13113":{"name":"澀谷區","short":"澀谷","zone":"城南・城西","price":1874100,"chg":11.0,"pop":237740},"13114":{"name":"中野區","short":"中野","zone":"城南・城西","price":782700,"chg":9.0,"pop":355957},"13115":{"name":"杉並區","short":"杉並","zone":"城南・城西","price":703200,"chg":8.2,"pop":599714},"13116":{"name":"豐島區","short":"豐島","zone":"副都心","price":912100,"chg":12.9,"pop":306073},"13117":{"name":"北區","short":"北","zone":"城北","price":742000,"chg":11.6,"pop":370341},"13118":{"name":"荒川區","short":"荒川","zone":"城東","price":718700,"chg":11.8,"pop":228074},"13119":{"name":"板橋區","short":"板橋","zone":"城北","price":553600,"chg":8.5,"pop":599841},"13120":{"name":"練馬區","short":"練馬","zone":"城北","price":480500,"chg":6.2,"pop":763313},"13121":{"name":"足立區","short":"足立","zone":"城東","price":410800,"chg":6.3,"pop":706990},"13122":{"name":"葛飾區","short":"葛飾","zone":"城東","price":387500,"chg":5.6,"pop":468449},"13123":{"name":"江戶川區","short":"江戶川","zone":"城東","price":441100,"chg":5.7,"pop":709029}}};</script>
+<script src="area-viz.js" defer></script>
 <!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p.slice(-8)==='-ja.html'||p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref,jaHref;if(p.slice(-8)==='-ja.html'){var base=p.slice(0,-8);twHref=base+'.html';cnHref=base+'-cn.html';jaHref=p;}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;jaHref=p.slice(0,-8)+'-ja.html';}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';jaHref=p.slice(0,-5)+'-ja.html';}var cur=(p.slice(-8)==='-ja.html')?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);var hdRight=document.querySelector('header .hd-right');if(hdRight){hdRight.appendChild(wrap);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
 </html>
