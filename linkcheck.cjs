@@ -49,6 +49,9 @@ const SKIP = [
      同一個理由也寫在 fetch-ward-gomi.cjs 的 BOT_404。 */
   /^https?:\/\/www\.city\.shinagawa\.tokyo\.jp\/PC\/_res\//,
   /^https?:\/\/i\.ytimg\.com\//,                // 縮圖圖床
+  /* 大田・品川・新宿區的大型垃圾線上申請網站：對機器人的請求回 404，
+     周周 2026-11-12 用手機實際點過三個網址都打得開（各區公所官網公布的網址）。 */
+  /^https?:\/\/(www\.)?(ota|shinagawa|shinjuku)-sodai\.com\//,
   /^https?:\/\/fonts\.(googleapis|gstatic)\.com/,
   /^https?:\/\/www\.googletagmanager\.com/,
   /^https?:\/\/www\.gstatic\.com/,
