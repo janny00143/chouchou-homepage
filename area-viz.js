@@ -67,7 +67,7 @@
     var labels = KEYS.map(function (k) { var s = SHAPES[k]; if (!s) return ""; var c = cls(val(k, metric), b);
       return '<text x="' + s.c[0].toFixed(0) + '" y="' + s.c[1].toFixed(0) + '" fill="' + ink(c) + '">' + W[k].short + '</text>'; }).join("");
     el.innerHTML = tabs() + '<p class="av-q">' + D.metrics[metric].q + '</p>' +
-      '<svg viewBox="0 0 ' + VW + ' ' + VH + '" class="av-svg" role="img" aria-label="' + T.mapAria + '"><g class="av-p">' + paths + '</g><g class="av-t">' + labels + '</g></svg>' +
+      '<svg viewBox="0 0 ' + VW + ' ' + VH + '" class="av-svg" role="img" aria-label="' + T.mapAria + '"><g class="av-p">' + paths + '</g><path id="avOl" class="av-ol" d=""/><g class="av-t">' + labels + '</g></svg>' +
       legend(metric) + '<div class="av-info" id="avInfo">' + T.tapHint + '</div>';
   }
 
@@ -124,16 +124,18 @@
   }
 
   function drawAll() { drawMap(); drawBars(); drawTree(); }
+  /* 外框另外畫一層在最上面（周周 2026-11-12：鄰區會蓋住邊線，看起來缺一角） */
+  function outline(k) { var o = document.getElementById("avOl"); if (o) o.setAttribute("d", k && SHAPES[k] ? SHAPES[k].d : ""); }
   /* 滑鼠移上去就出現（周周 2026-11-12）；手機沒有 hover，維持點一下顯示在圖下方 */
   var tip = document.createElement("div"); tip.className = "av-tip"; document.body.appendChild(tip);
   var HOVER_SEL = "#avMap [data-k], #avTree [data-k], #avBars [data-k]";
   document.addEventListener("mousemove", function (e) {
     var g = e.target.closest && e.target.closest(HOVER_SEL);
-    if (!g) { tip.style.display = "none"; document.querySelectorAll(".av-hov").forEach(function (x) { x.classList.remove("av-hov"); }); return; }
+    if (!g) { if (tip.style.display !== "none") { tip.style.display = "none"; tip.removeAttribute("data-k"); outline(""); } document.querySelectorAll(".av-hov").forEach(function (x) { x.classList.remove("av-hov"); }); return; }
     var k = g.getAttribute("data-k");
     if (tip.getAttribute("data-k") !== k) { tip.innerHTML = info(k); tip.setAttribute("data-k", k);
       document.querySelectorAll(".av-hov").forEach(function (x) { x.classList.remove("av-hov"); });
-      document.querySelectorAll('[data-k="' + k + '"]').forEach(function (x) { if (x.closest("#avMap,#avTree,#avBars")) x.classList.add("av-hov"); }); }
+      document.querySelectorAll('[data-k="' + k + '"]').forEach(function (x) { if (x.closest("#avMap,#avTree,#avBars")) x.classList.add("av-hov"); }); outline(k); }
     tip.style.display = "block";
     var w = tip.offsetWidth, h = tip.offsetHeight, x = e.clientX + 16, y = e.clientY + 16;
     if (x + w > innerWidth - 8) x = e.clientX - w - 16; if (y + h > innerHeight - 8) y = e.clientY - h - 16;
@@ -145,7 +147,7 @@
     var g = e.target.closest && e.target.closest("#avMap [data-k], #avTree [data-k], #avBars [data-k]");
     if (g) { var k = g.getAttribute("data-k"), box = g.closest("#avTree") ? "avInfo2" : (g.closest("#avBars") ? null : "avInfo");
       if (box) { var ib = document.getElementById(box); if (ib) ib.innerHTML = info(k); }
-      document.querySelectorAll("#avMap path").forEach(function (p) { p.classList.toggle("sel", p.getAttribute("data-k") === k); });
+      outline(k);
     }
   });
   try { drawAll(); } catch (err) { ["avMap", "avBars", "avTree"].forEach(function (id) { var el = document.getElementById(id); if (el) el.style.display = "none"; }); }
