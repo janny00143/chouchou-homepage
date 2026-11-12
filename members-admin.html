@@ -71,10 +71,10 @@ function render(list){
      '<div class="stat"><b>'+ALL.length+'</b>會員總數</div><div class="stat"><b>'+news+'</b>同意收電子報</div><div class="stat"><b>'+recent+'</b>近 30 天新加入</div></div>'+
    '<div class="btns"><button class="pri" id="xBrevo">⬇ 匯出 Brevo 用 CSV（只含同意電子報）</button><button id="xAll">⬇ 匯出全部會員 CSV（Excel 可開）</button><button id="xReload">↻ 重新整理</button></div></div>'+
    '<div class="card"><b>居住地分布</b>'+regTop.map(([k,v])=>'<div class="bar"><span style="width:140px">'+esc(k)+'</span><i style="width:'+Math.max(4,Math.round(v/regMax*260))+'px"></i>'+v+'</div>').join("")+'</div>'+
-   '<div class="card"><b>最多人收藏的物件（前 10）</b>'+(top.length?top.map(([id,o])=>'<div class="bar"><span>'+o.n+' 人</span><a href="'+esc(o.u)+'" target="_blank">'+esc(o.t||id)+'</a></div>').join(""):'<p class="mut">還沒有人收藏。</p>')+'</div>'+
+   '<div class="card"><b>最多人收藏的物件（前 10）</b>'+(top.length?top.map(([id,o])=>'<div class="bar"><span>'+o.n+' 人</span><a href="property.html?id='+encodeURIComponent(id)+'" target="_blank">'+esc(o.t||id)+'</a></div>').join(""):'<p class="mut">還沒有人收藏。</p>')+'</div>'+
    '<div class="card"><b>會員名單（'+rows.length+'）</b><input type="search" id="q" placeholder="搜尋姓名、地區、LINE ID、電話、Email、收藏物件…" value="'+esc(q)+'">'+
    '<div class="tw" style="margin-top:10px"><table><thead><tr><th>加入日</th><th>姓名</th><th>居住地</th><th>LINE ID</th><th>電話</th><th>Email</th><th>電子報</th><th>收藏</th><th>語言</th></tr></thead><tbody>'+
-   rows.map(m=>'<tr><td>'+esc(ts(m.createdAt))+'</td><td>'+esc(m.name)+'</td><td>'+esc(m.region)+'</td><td>'+esc(m.lineId)+'</td><td>'+esc(m.phone)+'</td><td>'+esc(m.email)+'</td><td>'+(m.consentNews?'<span class="tag">同意</span>':'<span class="tag no">不收</span>')+'</td><td>'+(m.favs||[]).map(f=>'<a href="'+esc(f.u)+'" target="_blank">'+esc(f.t)+'</a>').join("<br>")+'</td><td>'+esc(m.lang)+'</td></tr>').join("")+
+   rows.map(m=>'<tr><td>'+esc(ts(m.createdAt))+'</td><td>'+esc(m.name)+'</td><td>'+esc(m.region)+'</td><td>'+esc(m.lineId)+'</td><td>'+esc(m.phone)+'</td><td>'+esc(m.email)+'</td><td>'+(m.consentNews?'<span class="tag">同意</span>':'<span class="tag no">不收</span>')+'</td><td>'+(m.favs||[]).map(f=>'<a href="property.html?id='+encodeURIComponent(f.id)+'" target="_blank">'+esc(f.t)+'</a>').join("<br>")+'</td><td>'+esc(m.lang)+'</td></tr>').join("")+
    '</tbody></table></div></div>'+
    '<div class="card"><b>每月寄電子報的步驟（Brevo）</b><ol class="help">'+
      '<li>按上面「匯出 Brevo 用 CSV」。</li>'+

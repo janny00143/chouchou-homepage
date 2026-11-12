@@ -58,7 +58,8 @@
   function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) { } syncCloud(); }
   function has(id) { return load().some(function (x) { return x.id === id; }); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
-  function pageUrl(id) { return location.origin + location.pathname.replace(/[^\/]*$/, "") + "prop-" + id + sfx + ".html"; }
+  /* 收藏點開一律到 property.html?id=（周周 2026-11-12：要第二種版面，不要 prop-xxx.html 那種） */
+  function pageUrl(id) { return location.origin + location.pathname.replace(/[^\/]*$/, "") + "property" + sfx + ".html?id=" + encodeURIComponent(id); }
   /* 收藏清單要顯示縮圖（周周 2026-11-12：收藏點開就連到物件頁——加照片和 › 讓它一看就知道可以點） */
   function absImg(s) { try { return s ? new URL(s, location.href).href.slice(0, 300) : ""; } catch (e) { return ""; } }
   function detailImg() {
@@ -156,12 +157,12 @@
     document.body.appendChild(panel);
   }
   function listText(a) {
-    return [T.head].concat(a.slice(0, 10).map(function (x, i) { return (i + 1) + ". " + x.t + (x.p ? "（" + x.p + "）" : "") + "\n" + x.u; })).join("\n");
+    return [T.head].concat(a.slice(0, 10).map(function (x, i) { return (i + 1) + ". " + x.t + (x.p ? "（" + x.p + "）" : "") + "\n" + pageUrl(x.id); })).join("\n");
   }
   function openPanel() {
     var a = load();
     var rows = a.length ? a.map(function (x) {
-      return '<div class="favrow"><a href="' + esc(x.u) + '">' + (x.i ? '<img src="' + esc(x.i) + '" alt="" loading="lazy">' : '<i class="fnoimg">🏠</i>') + '<em><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></em><u>›</u></a><button type="button" data-del="' + esc(x.id) + '" aria-label="remove">×</button></div>';
+      return '<div class="favrow"><a href="' + esc(pageUrl(x.id)) + '">' + (x.i ? '<img src="' + esc(x.i) + '" alt="" loading="lazy">' : '<i class="fnoimg">🏠</i>') + '<em><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></em><u>›</u></a><button type="button" data-del="' + esc(x.id) + '" aria-label="remove">×</button></div>';
     }).join("") : '<p class="favempty">' + esc(T.empty) + '</p>';
     var memberUrl = "member" + sfx + ".html";
     var noteHtml = isMember() ? '<p class="fnote">' + esc(T.synced) + ' <a href="' + memberUrl + '">' + esc(T.title) + ' →</a></p>'

@@ -156,7 +156,7 @@ function viewHome(flash) {
     '<div class="mgrid"><div class="card"><h2>' + esc(T.hello.replace("{name}", m.name || "")) + '</h2>' +
     '<p class="sub">' + esc(T.homeSub) + '</p>' +
     '<h3>♥ ' + esc(T.myFavs) + '（' + favs.length + '）</h3>' +
-    (favs.length ? '<div class="favs">' + favs.map(x => '<a class="fv" href="' + esc(x.u) + '">' + (x.i ? '<img src="' + esc(x.i) + '" alt="" loading="lazy">' : '<i>🏠</i>') + '<em><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></em><u>›</u></a>').join("") + '</div>'
+    (favs.length ? '<div class="favs">' + favs.map(x => '<a class="fv" href="property' + (LANG === "ja" ? "-ja" : (LANG === "cn" ? "-cn" : "")) + '.html?id=' + encodeURIComponent(x.id) + '">' + (x.i ? '<img src="' + esc(x.i) + '" alt="" loading="lazy">' : '<i>🏠</i>') + '<em><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></em><u>›</u></a>').join("") + '</div>'
       : '<p class="sub">' + T.noFavs + '</p>') +
     '<p style="margin-top:14px"><a class="btn-line" href="' + esc(T.propsUrl) + '">' + esc(T.seeProps) + '</a></p></div>' +
     '<div class="card"><h3>' + esc(T.myInfo) + '</h3><dl class="info">' +
