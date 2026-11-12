@@ -1787,7 +1787,31 @@ function propReadMore(p) {
 </div>`;
 }
 
-function propPage(p) {
+
+/* ── 物件獨立頁＝互動版面（周周 2026-11-12：「版面不統一我不喜歡，統一就OK」）──
+   prop-<id>.html 的網址、title／description／canonical／hreflang／JSON-LD 都不變（SEO 照舊），
+   但畫面直接用 property.html 那套版面：把模板的 head 換成這頁的 SEO head，
+   用 window.PROP_ID 指定物件（模板的 getId() 會先看它），原本的靜態內容留在 #app 裡給沒有 JS 的爬蟲讀，
+   JS 一跑就被互動版面取代（.seo-static 預設隱藏，noscript 時才顯示）。
+   ⚠️ 版面要改就改 property.html，這裡不用動。 */
+function asInteractive(staticHtml, id) {
+  const tpl = fs.readFileSync(ROOT + "/property.html", "utf8");
+  const pick = (s, a, b) => { const i = s.indexOf(a), j = s.indexOf(b, i); if (i < 0 || j < 0) throw new Error("asInteractive: " + a); return s.slice(i, j); };
+  const headA = pick(staticHtml, "<title>", '<link rel="icon"');
+  const ogStart = staticHtml.indexOf('<meta property="og:type"');
+  const headB = staticHtml.slice(ogStart, staticHtml.indexOf("\n", staticHtml.indexOf('<meta name="twitter:card"')));
+  const lds = (staticHtml.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) || []).join("\n");
+  const body = pick(staticHtml, "<main", "</main>").replace(/^<main[^>]*>/, "").replace(/<a href="property(-ja)?\.html\?id=[^"]*">[^<]*<\/a>(　·　)?/g, "");
+  let out = tpl.replace(/<title>[\s\S]*?(?=<link rel="icon")/, () => headA)
+    .replace(/(<link rel="icon"[^>]*>)/, (m) => m + '\n<meta name="robots" content="index,follow">\n' + headB + "\n" + lds + "\n<style>.seo-static{display:none}</style><noscript><style>.seo-static{display:block}</style></noscript>")
+    .replace('<div id="app"></div>', () => '<div id="app"><div class="seo-static">' + body + '</div></div>')
+    .replace('<script src="properties.js"></script>', () => '<script>window.PROP_ID=' + JSON.stringify(id) + ';</script>\n<script src="properties.js"></script>');
+  if (out.indexOf("window.PROP_ID") < 0 || out.indexOf("seo-static") < 0) throw new Error("asInteractive: template changed (" + id + ")");
+  return out.replace(/^<!--[^\n]*-->\n/, "");
+}
+
+function propPage(p) { return asInteractive(propPageStatic(p), p.id); }
+function propPageStatic(p) {
   const url = propPageUrl(p);
   const title = propTitleTW(p);
   const t = esc(title) + "｜周周・日本房仲";

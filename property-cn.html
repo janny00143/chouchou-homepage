@@ -230,7 +230,7 @@ body.noscroll{overflow:hidden}
   function PRICEHTML(v,cls,fb){var a=String(v==null||v===""?fb:v).split("\n");return '<div class="'+cls+'">'+C(a[0])+(a[1]?'<span class="price2">'+C(a[1])+'</span>':'')+'</div>';}
 
   var photos=[],pi=0,pImg,pCnt,pThumbs;
-  function getId(){try{return new URLSearchParams(location.search).get("id");}catch(e){var m=location.search.match(/[?&]id=([^&]+)/);return m?decodeURIComponent(m[1]):null;}}
+  function getId(){if(window.PROP_ID)return window.PROP_ID;try{return new URLSearchParams(location.search).get("id");}catch(e){var m=location.search.match(/[?&]id=([^&]+)/);return m?decodeURIComponent(m[1]):null;}}
 
   function notFound(){
     app.innerHTML='<div class="pnotfound"><div class="big">🏠</div>'
@@ -312,7 +312,7 @@ body.noscroll{overflow:hidden}
       var ph=(x.photos&&x.photos.length)
         ? '<img class="'+(/-plan\./.test(String(x.thumb||x.photos[0]||""))?"fitall":"")+'" src="'+esc(x.thumb||x.photos[0])+'" alt="'+C(x.title)+'" loading="lazy">'
         : '<div class="rnoimg">🏠</div>';
-      h+='<a class="rcard" href="property-cn.html?id='+encodeURIComponent(x.id)+'">'
+      h+='<a class="rcard" href="prop-'+encodeURIComponent(x.id)+(/-cn\.html$/.test(location.pathname)?'-cn':'')+'.html">'
         +'<div class="rph">'+ph+'</div>'
         +'<div class="rb"><h3>'+C(x.title_cn||x.title)+'</h3>'
         +'<p class="rp">'+C(String(x.priceShort||x.price||"价格请洽询").split("\n")[0])+'</p>'
