@@ -31,6 +31,17 @@ function errMsg(e) {
   return T.errGeneral + (c ? "（" + c + "）" : "");
 }
 function showErr(id, e) { const el = document.getElementById(id); if (!el) return; const m = typeof e === "string" ? e : errMsg(e); el.textContent = m; el.style.display = m ? "block" : "none"; }
+/* 新會員加入 → 寄信通知周周（周周 2026-11-12：「有人加入會員就提醒我」）。
+   用跟 feedback.html 同一組 Web3Forms（只會寄到周周自己的信箱）；寄失敗不影響註冊。 */
+function notifyOwner(d) {
+  try {
+    const regionTxt = regionLabel(d.region);
+    fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ access_key: "d1ac2743-8999-4270-abe8-9896caaf693b", subject: "【新會員加入】" + d.name + "・" + regionTxt, from_name: "周周網站・會員系統",
+        "姓名": d.name, "居住地": regionTxt, "LINE ID": d.lineId, "電話": d.phone, "Email": d.email, "電子報": d.consentNews ? "同意" : "不收",
+        "語言": LANG, "註冊頁": location.href.split("?")[0], "後台": location.origin + location.pathname.replace(/[^\/]*$/, "") + "members-admin.html" }) }).catch(() => { });
+  } catch (e) { }
+}
 function busy(btn, on) { if (!btn) return; btn.disabled = on; btn.style.opacity = on ? ".6" : ""; }
 
 /* ── 1. 還沒登入 ── */
@@ -116,7 +127,7 @@ function viewProfile(isEdit) {
     busy(btn, true);
     try {
       await M.saveProfile(USER, data, MEMBER, LANG);
-      if (!MEMBER) ga("member_signup", { region: data.region, news: data.consentNews ? 1 : 0 });
+      if (!MEMBER) { ga("member_signup", { region: data.region, news: data.consentNews ? 1 : 0 }); notifyOwner(data); }
       MEMBER = await M.getMember(USER.uid);
       await M.mergeFavs(USER, MEMBER);
       MEMBER = await M.getMember(USER.uid);
