@@ -156,11 +156,11 @@
    "wardJa": "大田区",
    "pageOk": true,
    "from": "https://www.city.ota.tokyo.jp/seikatsu/gomi/gaikokujinnmukepannfure.html",
-   "sodaiPage": "https://www.city.ota.tokyo.jp/seikatsu/gomi/sodaigomi_ichiran.html",
-   "sodaiTitle": "大田区ホームページ：粗大ごみ品目一覧",
-   "phone": "",
-   "phoneNote": "頁面上找不到前面寫著「粗大ごみ受付センター」的電話號碼",
-   "phoneFrom": "",
+   "sodaiPage": "https://www.city.ota.tokyo.jp/seikatsu/gomi/shigentogomi/sodai.html",
+   "sodaiTitle": "大田区ホームページ：粗大ごみ",
+   "phone": "0570-037-530",
+   "phoneNote": "",
+   "phoneFrom": "https://www.city.ota.tokyo.jp/seikatsu/gomi/shigentogomi/sodai.html",
    "online": {
     "url": "https://www.ota-sodai.com/",
     "label": ""

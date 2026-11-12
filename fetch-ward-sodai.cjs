@@ -260,6 +260,22 @@ async function one([zh, ja, gomiPage]) {
 
   if (only) { console.log(JSON.stringify(out, null, 1)); return; }
 
+  /* ▍保留上次的好資料（2026-11-12）：區公所網站的連結順序常變，同一區這週抓到「申込」頁、
+     下週可能抓到「品目一覽」頁而沒有電話（11/12 大田區就這樣把 0570-037-530 弄丟）。
+     新結果少了電話或線上申請、但上次有，就沿用上次的那一組，並在 log 註明。 */
+  try {
+    const prev = JSON.parse(fs.readFileSync(path.join(__dirname, "ward-sodai.json"), "utf8")).wards || [];
+    for (const r of out) {
+      const o = prev.find(x => x.ward === r.ward);
+      if (!o || !r.pageOk) continue;
+      if (!r.phone && o.phone) {
+        Object.assign(r, { sodaiPage: o.sodaiPage, sodaiTitle: o.sodaiTitle, phone: o.phone, phoneNote: o.phoneNote, phoneFrom: o.phoneFrom });
+        console.log(`   ↩ ${r.ward}：這次沒抓到電話，沿用上次的 ${o.phone}（${o.sodaiPage}）`);
+      }
+      if (!r.online && o.online) { r.online = o.online; console.log(`   ↩ ${r.ward}：這次沒抓到線上申請，沿用上次的`); }
+    }
+  } catch (e) { /* 第一次跑沒有舊檔，略過 */ }
+
   fs.writeFileSync(path.join(__dirname, "ward-sodai.json"),
     JSON.stringify({ updated: new Date().toISOString().slice(0, 10), wards: out }, null, 1) + "\n");
   console.log("\n已寫入 ward-sodai.json");
