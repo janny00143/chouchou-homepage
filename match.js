@@ -78,26 +78,33 @@
   function monthlyTxt(price) { var m = monthlyOf(price); return m ? fmt(T.monthly, { m: (m >= 10 ? Math.round(m) : m.toFixed(1)) + T.man }) : ""; }
 
   /* ── 年收反推預算（提案 1）── */
-  var LTV = [1.0, 0.8, 0.7];   // 永住／非永住／海外居住（後兩者是試算假設，頁面上有寫）
-  function loanCalc() {
-    if (!st.inc || st.inc < 100) return null;
-    var yrs = termYears(); if (yrs < 5) return { yrs: yrs, tooOld: true, ltv: 0 };
-    var ratio = st.inc < 400 ? 0.30 : 0.35;       // Flat35 總返済負擔率基準
-    var monthly = st.inc * ratio / 12, loanMax = pv(monthly, rate(), yrs), down = st.down || 0, ltv = LTV[st.res || 0];
+  /* 可貸成數：永住／非永住 7〜8 成／海外居住 6.5〜7 成（周周 2026-11-12 指定；頁面上寫明是試算假設）。
+     有範圍的就算兩次，畫面顯示「低〜高」，套用成預算時用保守的低標。 */
+  var LTV = [[1.0, 1.0], [0.7, 0.8], [0.65, 0.7]];
+  function calcWith(ltv, yrs, ratio, loanMax, down) {
     var p1 = (loanMax + down) / (1 + COST), p2 = ltv < 1 ? down / (1 + COST - ltv) : Infinity;
     var price = Math.floor(Math.min(p1, p2) / 10) * 10;
     if (!(price > 0)) return { yrs: yrs, ltv: ltv, price: 0, loan: 0, monthly: 0, ratio: ratio, capByDown: true };
     var loan = Math.max(0, Math.min(loanMax, price * (1 + COST) - down));
     return { yrs: yrs, ltv: ltv, ratio: ratio, price: price, loan: loan, monthly: pmt(loan, rate(), yrs), capByDown: p2 < p1 };
   }
+  function loanCalc() {
+    if (!st.inc || st.inc < 100) return null;
+    var yrs = termYears(); if (yrs < 5) return { yrs: yrs, tooOld: true, ltv: 0 };
+    var ratio = st.inc < 400 ? 0.30 : 0.35;       // Flat35 總返済負擔率基準
+    var loanMax = pv(st.inc * ratio / 12, rate(), yrs), down = st.down || 0, R = LTV[st.res || 0];
+    var lo = calcWith(R[0], yrs, ratio, loanMax, down), hi = R[1] > R[0] ? calcWith(R[1], yrs, ratio, loanMax, down) : lo;
+    lo.hi = hi; return lo;
+  }
+  function rng(a, b) { return b != null && Math.round(b) > Math.round(a) ? fmtMan(a) + "〜" + fmtMan(b) : fmtMan(a); }
   function loanLine() {
     var el = $("#mLoanOut"); if (!el) return;
     var L = loanCalc();
     if (!L) { el.innerHTML = '<span class="mlo-hint">' + T.loanNeedInc + '</span>'; return; }
     if (L.tooOld) { el.innerHTML = '<span class="mlo-hint">' + T.loanTooOld + '</span>'; return; }
     if (!L.price) { el.innerHTML = '<span class="mlo-hint">' + T.loanNeedDown + '</span>'; return; }
-    el.innerHTML = '<div class="mlo-p">' + fmt(T.loanOut, { p: fmtMan(L.price) }) + ' ' + fxSpan(L.price) + '</div><div class="mlo-s">' +
-      fmt(T.loanOutSub, { l: fmtMan(L.loan), d: fmtMan(st.down || 0), m: fmtMan(L.monthly), y: L.yrs, r: rate() }) + '</div>' +
+    el.innerHTML = '<div class="mlo-p">' + fmt(T.loanOut, { p: rng(L.price, L.hi.price) }) + ' ' + fxSpan(L.price) + '</div><div class="mlo-s">' +
+      fmt(T.loanOutSub, { l: rng(L.loan, L.hi.loan), d: fmtMan(st.down || 0), m: rng(L.monthly, L.hi.monthly), y: L.yrs, r: rate() }) + '</div>' +
       (st.budget === L.price ? '<span class="mlo-ok">' + T.loanApplied + '</span>' : '<button type="button" class="mlo-b" id="mLoanApply">' + T.loanApply + '</button>');
     var ap = $("#mLoanApply");
     if (ap) ap.addEventListener("click", function () { st.budget = L.price; paint(); ga("match_loan_apply"); });
@@ -259,10 +266,11 @@
     var r = rate(), notes = T.loanAssume.map(function (s) { return '<li>' + fmt(s, { r: r }) + '</li>'; });
     if (st.res === 1) notes.push('<li>' + T.loanRes1 + '</li>'); if (st.res === 2) notes.push('<li>' + T.loanRes2 + '</li>');
     if (L.capByDown) notes.push('<li>' + T.loanCapDown + '</li>');
+    if (L.hi.price > L.price) notes.push('<li>' + fmt(T.loanRangeNote, { p: fmtMan(L.price) }) + '</li>');
     var tile = function (k, v, sub) { return '<div class="mls"><small>' + k + '</small><b>' + v + '</b>' + (sub || "") + '</div>'; };
     return '<div class="msec mloansec"><h3>' + T.secLoan + '</h3><p class="msub">' + T.secLoanSub + '</p><div class="mlgrid">' +
-      tile(T.kPrice, fmtMan(L.price), fxSpan(L.price)) + tile(T.kLoan, fmtMan(L.loan), fxSpan(L.loan)) +
-      tile(T.kMonthly, fmtMan(L.monthly), fxSpan(L.monthly)) + tile(T.kYears, fmt(T.yearsU, { y: L.yrs }), '<small class="mfx">' + fmt(T.rateU, { r: r }) + '</small>') +
+      tile(T.kPrice, rng(L.price, L.hi.price), fxSpan(L.price)) + tile(T.kLoan, rng(L.loan, L.hi.loan), fxSpan(L.loan)) +
+      tile(T.kMonthly, rng(L.monthly, L.hi.monthly), fxSpan(L.monthly)) + tile(T.kYears, fmt(T.yearsU, { y: L.yrs }), '<small class="mfx">' + fmt(T.rateU, { r: r }) + '</small>') +
       '</div><ul class="mlnote">' + notes.join("") + '</ul><p class="mlcta">' + T.loanCta + '</p></div>';
   }
   function secBudget() {

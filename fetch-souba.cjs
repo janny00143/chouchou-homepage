@@ -62,8 +62,13 @@ function parseLand(html) {
   });
   return { tsubo: +all[1], n: +all[2], bands };
 }
+/* 周周 2026-11-12：「23 區外不要放進去」。SUUMO 是「各站徒步 15 分內」，邊界附近可能混進區外的車站
+   （例如川崎・狛江・和光・市川一帶）。2026-11-12 全部 455 站都核對過在 23 區內；
+   之後每週出現「新車站」會列出來，確認是區外就加進這個清單，會整站剔除、不算進中央值。 */
+const EXCLUDE = new Set([]);
+const keepSt = rows => rows.filter(r => !EXCLUDE.has(r.st));
 const median = a => { if (!a.length) return null; const s = a.slice().sort((x, y) => x - y), h = s.length >> 1; return s.length % 2 ? s[h] : Math.round((s[h - 1] + s[h]) / 2); };
-const sumBands = bands => bands.map(rows => ({ n: rows.length, med: median(rows.map(r => r.med)), lo: rows.length ? Math.min(...rows.map(r => r.lo)) : null, hi: rows.length ? Math.max(...rows.map(r => r.hi)) : null, stations: rows }));
+const sumBands = bands => bands.map(keepSt).map(rows => ({ n: rows.length, med: median(rows.map(r => r.med)), lo: rows.length ? Math.min(...rows.map(r => r.lo)) : null, hi: rows.length ? Math.max(...rows.map(r => r.hi)) : null, stations: rows }));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   let prev = {}; try { prev = JSON.parse(fs.readFileSync(OUT, "utf8")); } catch (e) { }
@@ -92,6 +97,10 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   }
   if (ok < 20) { console.error("中古マンション只成功 " + ok + " 區，太少，不覆寫 souba.json"); process.exit(1); }
   for (const k in okT) if (okT[k] < 18 && !(prev.types && prev.types[k])) console.error("⚠️ " + k + " 只成功 " + okT[k] + " 區");
+  /* 新出現的車站 → 列出來給人確認是不是 23 區內 */
+  const stSet = d => { const a = new Set(); const add = w => (w.bands || []).forEach(b => (b.stations || []).forEach(x => a.add(x.st)));
+    Object.values(d.wards || {}).forEach(add); ["hnew", "hused"].forEach(k => d.types && d.types[k] && Object.values(d.types[k].wards).forEach(add)); return a; };
+  if (prev.wards) { const old = stSet(prev), now = [...stSet(out)].filter(x => !old.has(x)); if (now.length) console.log("⚠️ 新出現的車站（請確認在 23 區內，區外的加進 EXCLUDE）：" + now.join("、")); }
   fs.writeFileSync(OUT, JSON.stringify(out));
   /* 網頁直接用 <script src="souba.js"> 載入（file:// 也能開） */
   fs.writeFileSync(path.join(__dirname, "souba.js"), "/* 由 fetch-souba.cjs 產生，勿手改 */\nwindow.SOUBA=" + JSON.stringify(out) + ";\n");
