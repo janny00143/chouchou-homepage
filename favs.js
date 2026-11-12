@@ -30,26 +30,32 @@
     tw: { add: "🤍 收藏這間", added: "♥ 已收藏", chip: "♥ 收藏", title: "我的收藏",
           empty: "還沒有收藏的物件。看到喜歡的，按卡片右上角的 🤍 就會存在這裡。",
           send: "用 LINE 傳給周周", clear: "全部清除", close: "關閉",
-          note: "收藏只存在你這支手機／這台電腦的瀏覽器裡，不會上傳。",
+          note: "沒登入時，收藏只存在這支手機／這台電腦的瀏覽器裡。",
+          join: "♥ 免費加入會員：換手機也看得到收藏，每月先看推薦物件 →", synced: "已同步到你的會員帳號 ✓",
           head: "我收藏了這幾間，想詢問：", toastAdd: "已加入收藏 ♥", toastDel: "已移除收藏",
           toastCopy: "已複製收藏清單，在 LINE 貼上傳給周周就可以囉 👌", full: "收藏最多 30 間" },
     cn: { add: "🤍 收藏这间", added: "♥ 已收藏", chip: "♥ 收藏", title: "我的收藏",
           empty: "还没有收藏的房源。看到喜欢的，按卡片右上角的 🤍 就会存在这里。",
           send: "用 LINE 发给周周", clear: "全部清除", close: "关闭",
-          note: "收藏只存在你这部手机／这台电脑的浏览器里，不会上传。",
+          note: "没登录时，收藏只存在这部手机／这台电脑的浏览器里。",
+          join: "♥ 免费加入会员：换手机也看得到收藏，每月先看推荐房源 →", synced: "已同步到你的会员账号 ✓",
           head: "我收藏了这几间，想询问：", toastAdd: "已加入收藏 ♥", toastDel: "已移除收藏",
           toastCopy: "已复制收藏清单，在 LINE 粘贴发给周周就可以啰 👌", full: "收藏最多 30 间" },
     ja: { add: "🤍 お気に入りに追加", added: "♥ お気に入り済み", chip: "♥ お気に入り", title: "お気に入り物件",
           empty: "お気に入りの物件はまだありません。気になる物件はカード右上の 🤍 から保存できます。",
           send: "LINEで周周に送る", clear: "すべて削除", close: "閉じる",
-          note: "お気に入りはお使いの端末のブラウザにのみ保存され、送信されることはありません。",
+          note: "ログインしていない場合、お気に入りはお使いの端末のブラウザにのみ保存されます。",
+          join: "♥ 無料会員登録で、どの端末でもお気に入りを確認・毎月おすすめ物件をお届け →", synced: "会員アカウントに同期済みです ✓",
           head: "お気に入りの物件についてお伺いしたいです：", toastAdd: "お気に入りに追加しました ♥", toastDel: "お気に入りから削除しました",
           toastCopy: "お気に入り一覧をコピーしました。LINEに貼り付けてお送りください 👌", full: "お気に入りは最大30件までです" }
   }[lang];
   var MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
 
   function load() { try { var a = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
-  function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) { } }
+  function isMember() { try { return localStorage.getItem("chou_member") === "1"; } catch (e) { return false; } }
+  /* 會員登入過：收藏變動就同步到會員帳號（member-core.js 只在這時才載入，不拖慢一般訪客） */
+  function syncCloud() { if (isMember()) { try { import("./member-core.js").then(function (m) { m.pushFavs(); })["catch"](function () { }); } catch (e) { } } }
+  function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) { } syncCloud(); }
   function has(id) { return load().some(function (x) { return x.id === id; }); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function pageUrl(id) { return location.origin + location.pathname.replace(/[^\/]*$/, "") + "prop-" + id + sfx + ".html"; }
@@ -83,7 +89,8 @@
     ".favrow button{border:0;background:#f5f5f4;color:#57534e;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:16px}" +
     ".favact{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}.favact button{flex:1;min-width:140px;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:15px;cursor:pointer}" +
     ".favact .fsend{background:#06c755;color:#fff}.favact .fclr{background:#f5f5f4;color:#57534e;flex:0 0 auto}.favact .fcls{background:#fff;border:1.5px solid #e7e5e4;color:#57534e;flex:0 0 auto}" +
-    ".favempty{color:#78716c;font-size:14px;padding:14px 0}";
+    ".favempty{color:#78716c;font-size:14px;padding:14px 0}" +
+    ".fjoin{display:block;background:#fff1f2;border:1px solid #fecdd3;color:#e11d48;font-weight:800;font-size:14px;border-radius:12px;padding:10px 12px;margin:0 0 10px;text-decoration:none;line-height:1.6}.fnote a{color:#e11d48;font-weight:700}";
   document.head.appendChild(css);
 
   var tip;
@@ -150,7 +157,10 @@
     var rows = a.length ? a.map(function (x) {
       return '<div class="favrow"><a href="' + esc(x.u) + '"><b>' + esc(x.t) + '</b><span>' + esc(x.p) + '</span></a><button type="button" data-del="' + esc(x.id) + '" aria-label="remove">×</button></div>';
     }).join("") : '<p class="favempty">' + esc(T.empty) + '</p>';
-    panel.innerHTML = '<div class="favbox"><h3>♥ ' + esc(T.title) + '（' + a.length + '）</h3><p class="fnote">' + esc(T.note) + '</p>' + rows +
+    var memberUrl = "member" + sfx + ".html";
+    var noteHtml = isMember() ? '<p class="fnote">' + esc(T.synced) + ' <a href="' + memberUrl + '">' + esc(T.title) + ' →</a></p>'
+      : '<p class="fnote">' + esc(T.note) + '</p><a class="fjoin" href="' + memberUrl + '">' + esc(T.join) + '</a>';
+    panel.innerHTML = '<div class="favbox"><h3>♥ ' + esc(T.title) + '（' + a.length + '）</h3>' + noteHtml + rows +
       '<div class="favact">' + (a.length ? '<button type="button" class="fsend">' + esc(T.send) + '</button><button type="button" class="fclr">' + esc(T.clear) + '</button>' : "") +
       '<button type="button" class="fcls">' + esc(T.close) + '</button></div></div>';
     panel.style.display = "block";

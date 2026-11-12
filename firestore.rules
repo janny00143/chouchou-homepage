@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-// Firestore 安全規則（留言功能 comments 集合）
+// Firestore 安全規則（留言 comments／點閱 views／會員 members）
 //
 // 這份是「參考備份」，不會自動套用。
 // 要生效必須到 Firebase 主控台貼上並按「發布」：
@@ -90,6 +90,33 @@ service cloud.firestore {
 
       // 刪除：只有周周本人（避免有人把某篇的數字洗掉重來）
       allow delete: if isAdmin();
+    }
+
+    // ── 會員（member-core.js，2026-11-12 新增，周周指示＋密語）──
+    // members/{uid}：一人一份。本人只能讀寫自己那份；全部名單只有周周讀得到。
+    function validMember(d) {
+      return d.keys().hasOnly(['name','region','lineId','phone','email','consentPrivacy',
+                               'consentNews','favs','lang','createdAt','updatedAt'])
+        && d.name is string && d.name.size() > 0 && d.name.size() <= 60
+        && d.region is string && d.region.size() > 0 && d.region.size() <= 40
+        && d.lineId is string && d.lineId.size() > 0 && d.lineId.size() <= 60
+        && d.phone is string && d.phone.matches('^[0-9+()\\- ]{6,24}$')
+        && d.email is string && d.email.size() <= 120 && d.email.matches('^[^@ ]+@[^@ ]+[.][^@ ]+$')
+        && d.consentPrivacy == true
+        && d.consentNews is bool
+        && d.favs is list && d.favs.size() <= 30
+        && d.lang in ['tw','cn','ja']
+        && d.updatedAt == request.time;
+    }
+    match /members/{uid} {
+      allow read: if (request.auth != null && request.auth.uid == uid) || isAdmin();
+      allow create: if request.auth != null && request.auth.uid == uid
+        && validMember(request.resource.data)
+        && request.resource.data.createdAt == request.time;
+      allow update: if request.auth != null && request.auth.uid == uid
+        && validMember(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if (request.auth != null && request.auth.uid == uid) || isAdmin();
     }
 
     // 其餘所有路徑：全部禁止

@@ -1,0 +1,65 @@
+<!-- 周周・會員專區（member-ui.js＋member-core.js）。 -->
+<html lang="zh-Hant-TW">
+<meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
+<script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","字級調整");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>會員專區｜周周・日本房仲</title>
+<meta name="description" content="免費加入周周・日本房仲的會員：收藏的東京物件換手機、換電腦都看得到，每月一封電子報搶先看日本房市趨勢與推薦物件，符合條件的新物件優先用 LINE 通知你。">
+<link rel="canonical" href="https://chouchouinjapan.com/member.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/member.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://chouchouinjapan.com/member-cn.html">
+<link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/member-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://chouchouinjapan.com/member.html">
+<meta property="og:title" content="會員專區｜周周・日本房仲"><meta property="og:description" content="免費加入周周・日本房仲的會員：收藏的東京物件換手機、換電腦都看得到，每月一封電子報搶先看日本房市趨勢與推薦物件，符合條件的新物件優先用 LINE 通知你。"><meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.sbar{background:#fff;border-bottom:1px solid var(--line)}
+.wrap{max-width:600px;margin:0 auto;padding:0 16px}a{color:inherit}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
+.top{text-align:center;margin-bottom:18px}.top h1{font-size:25px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px}
+.f{margin-bottom:15px}.f label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:6px}
+.f input,.f select,.f textarea{width:100%;border:1px solid var(--line);background:#f5f5f4;border-radius:12px;padding:11px 13px;font-size:15px;font-family:inherit;color:var(--ink);outline:none}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--rose);background:#fff}
+.f textarea{min-height:130px;resize:vertical;line-height:1.7}
+.req{color:var(--rose)}
+.submit{width:100%;background:var(--rose);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:16px;padding:13px;cursor:pointer;font-family:inherit;text-align:center}
+.submit:hover{background:var(--rose-d)}
+.or{text-align:center;color:var(--mut);font-size:13px;margin:16px 0}
+.line-wrap{text-align:center}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:14px;line-height:1.7}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px}
+.fzoom{zoom:var(--fs,1.1)}
+.perks{list-style:none;display:grid;gap:10px}.perks li{background:#fff1f2;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.7}
+.gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--ink)}
+.tabs2{display:flex;gap:6px;margin-bottom:14px}.tabs2 button{flex:1;border:1px solid var(--line);background:#f5f5f4;border-radius:10px;padding:9px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--mut)}.tabs2 button.on{background:#fff;color:var(--rose-d);border-color:#fecdd3}
+.hint{font-size:12px;color:var(--mut);margin-top:5px}.small{font-size:13px;color:var(--mut);text-align:center;margin-top:12px}.small a{color:var(--mut)}
+.err{display:none;background:#fef2f2;color:#b91c1c;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:6px 0 12px;line-height:1.6}
+.card h2{font-size:20px;margin-bottom:4px}.card h3{font-size:16px;margin:16px 0 8px}.sub{color:var(--mut);font-size:14px;margin-bottom:14px;line-height:1.7}
+.chk{display:flex;align-items:flex-start;gap:9px;font-size:14px;margin:6px 0 12px;line-height:1.7;cursor:pointer}.chk input{margin-top:5px;flex:0 0 auto}.chk a{color:var(--rose-d);font-weight:600}
+.ghost{width:100%;margin-top:10px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;color:#57534e}
+.row2{display:flex;gap:10px}.row2 .ghost{flex:1}
+.flash{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:12px;padding:12px 14px;font-weight:700;margin-bottom:14px;text-align:center}
+.favs{display:grid;gap:8px}.fv{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none}.fv b{display:block;font-size:14.5px}.fv span{color:var(--rose-d);font-weight:700;font-size:13.5px}
+.info{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px;margin-bottom:12px}.info dt{color:var(--mut)}.info dd{word-break:break-all}
+</style>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本房仲</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>
+<div class="wrap fzoom">
+  <a class="back" href="index.html">← 回首頁</a>
+  <div class="top"><h1>♥ 周周的會員專區</h1><p>收藏物件、每月搶先看房市趨勢與推薦物件，免費加入</p></div>
+  <div id="member"></div>
+  <p class="foot">© 周周・日本房仲</p>
+</div>
+<script>window.MEMBER_T={"loading": "讀取中…", "perks": ["♥ 收藏的物件存在會員帳號，換手機、換電腦都看得到", "📬 每月一封電子報：東京房市趨勢＋周周推薦物件，比網站更早看到", "🔔 有符合你條件的新物件，周周會優先用 LINE 通知你"], "google": "用 Google 帳號登入／註冊", "or": "或用 Email", "tabLogin": "登入", "tabSignup": "註冊新帳號", "pw": "密碼", "pwHint": "至少 6 個字", "doLogin": "登入", "doSignup": "註冊", "forgot": "忘記密碼？", "resetSent": "已寄出重設密碼的信，請到信箱查看。", "errNeedEmail": "請先在上面填 Email，再按忘記密碼。", "profileTitle": "填寫會員資料", "profileSub": "最後一步！填好之後就完成註冊。這些資料只有周周看得到，用來聯絡你、寄電子報。", "editTitle": "修改會員資料", "fName": "姓名", "fRegion": "居住地", "fLine": "LINE ID", "fPhone": "聯絡電話", "phLine": "例如：chouchou123", "phPhone": "例如：+886 912 345 678", "choose": "請選擇", "consentNews": "我願意收到周周的電子報（每月一次：房市趨勢＋推薦物件，可隨時取消）", "consentPriv": "我已閱讀並同意<a href='{privacy}' target='_blank'>隱私權政策</a>（含會員資料的使用說明）", "join": "完成註冊", "save": "儲存", "cancel": "取消", "logout": "登出", "hello": "{name}，歡迎回來 👋", "homeSub": "收藏會自動同步到你的會員帳號。看到喜歡的物件，直接加 LINE 跟我說就好。", "myFavs": "我的收藏", "noFavs": "還沒有收藏。到物件專區按卡片右上角的 ♡ 就可以收藏。", "propsUrl": "properties.html", "seeProps": "看物件專區 →", "myInfo": "我的會員資料", "edit": "修改資料", "del": "刪除我的會員資料", "delConfirm": "確定要刪除會員資料嗎？收藏與聯絡資料都會刪除，而且無法復原。", "deleted": "會員資料已刪除。謝謝你，有需要隨時再回來 🙏", "privacyLink": "隱私權政策", "welcome": "註冊完成！歡迎加入 🎉", "saved": "已儲存 ✓", "errRequired": "每一欄都要填喔。", "errPhone": "電話請只填數字（可含 + 和 -）。", "errEmail": "Email 格式好像不對。", "errPriv": "請先勾選同意隱私權政策。", "errLogin": "Email 或密碼不正確。", "errExists": "這個 Email 已經註冊過了，請改用「登入」。", "errWeak": "密碼至少要 6 個字。", "errMany": "嘗試太多次了，請稍等一下再試。", "errSetup": "會員系統正在設定中，請稍後再試，或直接加 LINE 跟周周說。", "errGeneral": "發生錯誤，請稍後再試，或直接加 LINE 跟周周說。"};</script>
+<script type="module" src="member-ui.js"></script>
+
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref=isJa?'ja.html':(isCn?p.slice(0,-8)+'-ja.html':p.slice(0,-5)+'-ja.html');var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 語言';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
+</html>

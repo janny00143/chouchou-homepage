@@ -1,0 +1,66 @@
+<!-- 周周・會員專區（member-ui.js＋member-core.js）。 -->
+<html lang="ja">
+<meta charset="utf-8">
+<!--langredir--><script>(function(){try{var p=location.pathname.split('/').pop()||'index.html';if(p!=='ja.html'&&p.slice(-8)!=='-ja.html'){var isCn=p.slice(-8)==='-cn.html';var L=localStorage.getItem('lang');if(L==='cn'&&!isCn){location.replace(p.slice(0,-5)+'-cn.html');return;}if(L==='tw'&&isCn){location.replace(p.slice(0,-8)+'.html');return;}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lang]');if(!a)return;var l=a.getAttribute('data-lang');if(l==='tw'||l==='cn'){try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
+<script>(function(){var css="html[data-fs=s]{--fs:1}html[data-fs=m]{--fs:1.1}html[data-fs=l]{--fs:1.22}.fsctl{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;gap:2px;background:#fff;border:1px solid #e7e5e4;border-radius:999px;padding:3px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.fsctl button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#78716c;padding:5px 9px;border-radius:999px;font-family:inherit;line-height:1}.fsctl button.on{background:#f43f5e;color:#fff}";var st=document.createElement("style");st.textContent=css;(document.head||document.documentElement).appendChild(st);var f="m";try{f=localStorage.getItem("fs")||"m";}catch(e){}document.documentElement.setAttribute("data-fs",f);window.setFS=function(x){document.documentElement.setAttribute("data-fs",x);try{localStorage.setItem("fs",x);}catch(e){}u();};function u(){var c=document.documentElement.getAttribute("data-fs"),bs=document.querySelectorAll(".fsctl button");for(var i=0;i<bs.length;i++){bs[i].className=(bs[i].getAttribute("data-f")===c?"on":"");}}function init(){if(document.querySelector(".fsctl"))return;var d=document.createElement("div");d.className="fsctl";d.setAttribute("aria-label","文字サイズ");var labels=["小","中","大"],keys=["s","m","l"];for(var i=0;i<3;i++){(function(k,t){var btn=document.createElement("button");btn.textContent=t;btn.setAttribute("data-f",k);btn.onclick=function(){setFS(k);};d.appendChild(btn);})(keys[i],labels[i]);}document.body.appendChild(d);u();}if(document.body){init();}else{document.addEventListener("DOMContentLoaded",init);}})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f43f5e">
+<title>会員ページ｜周周・日本の不動産</title>
+<meta name="description" content="周周の会員にご登録いただくと、お気に入り物件をどの端末でも確認でき、毎月のメールマガジンで東京の市況とおすすめ物件をいち早くお届けします。">
+<link rel="canonical" href="https://chouchouinjapan.com/member-ja.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://chouchouinjapan.com/member.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://chouchouinjapan.com/member-cn.html">
+<link rel="alternate" hreflang="ja" href="https://chouchouinjapan.com/member-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://chouchouinjapan.com/member.html">
+<meta property="og:title" content="会員ページ｜周周・日本の不動産"><meta property="og:description" content="周周の会員にご登録いただくと、お気に入り物件をどの端末でも確認でき、毎月のメールマガジンで東京の市況とおすすめ物件をいち早くお届けします。"><meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--green-d:#059669;--ink:#292524;--mut:#78716c;--bg:#fafaf9;--line:#e7e5e4}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans JP',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.sbar{background:#fff;border-bottom:1px solid var(--line)}
+.wrap{max-width:600px;margin:0 auto;padding:0 16px}a{color:inherit}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:12px;font-weight:500;cursor:pointer;font-size:15px;padding:11px 22px;text-decoration:none}.btn-line:hover{background:var(--green-d)}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin:14px 0}
+.top{text-align:center;margin-bottom:18px}.top h1{font-size:25px}.top p{color:var(--mut);font-size:14px;margin-top:6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px}
+.f{margin-bottom:15px}.f label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:6px}
+.f input,.f select,.f textarea{width:100%;border:1px solid var(--line);background:#f5f5f4;border-radius:12px;padding:11px 13px;font-size:15px;font-family:inherit;color:var(--ink);outline:none}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--rose);background:#fff}
+.f textarea{min-height:130px;resize:vertical;line-height:1.7}
+.req{color:var(--rose)}
+.submit{width:100%;background:var(--rose);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:16px;padding:13px;cursor:pointer;font-family:inherit;text-align:center}
+.submit:hover{background:var(--rose-d)}
+.or{text-align:center;color:var(--mut);font-size:13px;margin:16px 0}
+.line-wrap{text-align:center}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:11px 14px;font-size:12.5px;margin-top:14px;line-height:1.7}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin:8px 0 30px}
+.fzoom{zoom:var(--fs,1.1)}
+.perks{list-style:none;display:grid;gap:10px}.perks li{background:#fff1f2;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.7}
+.gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--ink)}
+.tabs2{display:flex;gap:6px;margin-bottom:14px}.tabs2 button{flex:1;border:1px solid var(--line);background:#f5f5f4;border-radius:10px;padding:9px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--mut)}.tabs2 button.on{background:#fff;color:var(--rose-d);border-color:#fecdd3}
+.hint{font-size:12px;color:var(--mut);margin-top:5px}.small{font-size:13px;color:var(--mut);text-align:center;margin-top:12px}.small a{color:var(--mut)}
+.err{display:none;background:#fef2f2;color:#b91c1c;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:6px 0 12px;line-height:1.6}
+.card h2{font-size:20px;margin-bottom:4px}.card h3{font-size:16px;margin:16px 0 8px}.sub{color:var(--mut);font-size:14px;margin-bottom:14px;line-height:1.7}
+.chk{display:flex;align-items:flex-start;gap:9px;font-size:14px;margin:6px 0 12px;line-height:1.7;cursor:pointer}.chk input{margin-top:5px;flex:0 0 auto}.chk a{color:var(--rose-d);font-weight:600}
+.ghost{width:100%;margin-top:10px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;color:#57534e}
+.row2{display:flex;gap:10px}.row2 .ghost{flex:1}
+.flash{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:12px;padding:12px 14px;font-weight:700;margin-bottom:14px;text-align:center}
+.favs{display:grid;gap:8px}.fv{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none}.fv b{display:block;font-size:14.5px}.fv span{color:var(--rose-d);font-weight:700;font-size:13.5px}
+.info{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px;margin-bottom:12px}.info dt{color:var(--mut)}.info dd{word-break:break-all}
+</style>
+<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="font-weight:800;color:var(--rose);font-size:17px">周周・日本の不動産</a><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">LINEで相談する</a></div></div>
+<div class="wrap fzoom">
+  <a class="back" href="ja.html">← ホームへ戻る</a>
+  <div class="top"><h1>♥ 周周の会員ページ</h1><p>お気に入りの保存と、毎月の市況・おすすめ物件のご案内（登録無料）</p></div>
+  <div id="member"></div>
+  <p class="foot">© 周周・日本房仲</p>
+</div>
+<script>window.MEMBER_T={"loading": "読み込み中…", "perks": ["♥ お気に入り物件を会員アカウントに保存。スマホでもパソコンでも確認できます", "📬 毎月1回のメールマガジン：東京の不動産市況と周周のおすすめ物件をいち早くお届けします", "🔔 ご希望に合う新着物件は、周周からLINEで優先的にご案内いたします"], "google": "Googleアカウントでログイン／登録", "or": "またはメールアドレスで", "tabLogin": "ログイン", "tabSignup": "新規登録", "pw": "パスワード", "pwHint": "6文字以上", "doLogin": "ログイン", "doSignup": "登録", "forgot": "パスワードをお忘れの方", "resetSent": "パスワード再設定のメールをお送りしました。", "errNeedEmail": "上の欄にメールアドレスをご入力ください。", "profileTitle": "会員情報のご入力", "profileSub": "最後のステップです。ご入力いただいた情報は周周のみが確認し、ご連絡とメールマガジンの配信に使用いたします。", "editTitle": "会員情報の変更", "fName": "お名前", "fRegion": "お住まいの地域", "fLine": "LINE ID", "fPhone": "電話番号", "phLine": "例：chouchou123", "phPhone": "例：090-1234-5678", "choose": "選択してください", "consentNews": "周周のメールマガジン（毎月1回・市況とおすすめ物件）を受け取る（いつでも配信停止できます）", "consentPriv": "<a href='{privacy}' target='_blank'>プライバシーポリシー</a>（会員情報の取扱いを含む）を確認し、同意します", "join": "登録する", "save": "保存する", "cancel": "キャンセル", "logout": "ログアウト", "hello": "{name}様、ようこそ", "homeSub": "お気に入りは会員アカウントに自動で保存されます。気になる物件はLINEでお気軽にご相談ください。", "myFavs": "お気に入り", "noFavs": "お気に入りはまだありません。物件情報ページのカード右上の ♡ から保存できます。", "propsUrl": "properties-ja.html", "seeProps": "物件情報を見る →", "myInfo": "会員情報", "edit": "変更する", "del": "会員情報を削除する", "delConfirm": "会員情報を削除してもよろしいですか？お気に入りとご連絡先が削除され、元に戻せません。", "deleted": "会員情報を削除いたしました。ご利用ありがとうございました。", "privacyLink": "プライバシーポリシー", "welcome": "ご登録ありがとうございます。", "saved": "保存しました ✓", "errRequired": "すべての項目をご入力ください。", "errPhone": "電話番号は数字（+、-可）でご入力ください。", "errEmail": "メールアドレスの形式をご確認ください。", "errPriv": "プライバシーポリシーへの同意にチェックしてください。", "errLogin": "メールアドレスまたはパスワードが正しくありません。", "errExists": "このメールアドレスは登録済みです。「ログイン」からお進みください。", "errWeak": "パスワードは6文字以上でご設定ください。", "errMany": "試行回数が多すぎます。しばらくしてからお試しください。", "errSetup": "会員機能は現在準備中です。恐れ入りますが、しばらくしてからお試しいただくか、LINEでご連絡ください。", "errGeneral": "エラーが発生しました。しばらくしてからお試しいただくか、LINEでご連絡ください。"};</script>
+<script type="module" src="member-ui.js"></script>
+
+<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref='ja.html';var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 言語';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>
+</html>

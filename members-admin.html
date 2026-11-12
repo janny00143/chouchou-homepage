@@ -1,0 +1,103 @@
+<!doctype html>
+<!-- 周周的會員後台（2026-11-12）。
+     ・帶 noindex、不進 sitemap、站上沒有任何連結，要自己打網址：/members-admin.html
+     ・用周周的 Google 帳號登入才讀得到資料——真正的權限在 Firestore 規則（isAdmin），
+       這頁的帳號判斷只是決定要不要顯示畫面。
+     ・「匯出 Brevo 用 CSV」只匯出有勾「同意收電子報」的會員，欄位對應 Brevo 的匯入格式。 -->
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>會員後台｜周周</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--rose:#f43f5e;--rose-d:#e11d48;--green:#10b981;--ink:#292524;--mut:#78716c;--line:#e7e5e4;--bg:#fafaf9}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,'Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 60px}h1{font-size:22px;margin-bottom:4px}.mut{color:var(--mut);font-size:13.5px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0}
+button{font-family:inherit;cursor:pointer;border-radius:10px;border:1.5px solid var(--line);background:#fff;padding:9px 14px;font-weight:700;font-size:14px}
+button.pri{background:var(--rose);border-color:var(--rose);color:#fff}button.grn{background:var(--green);border-color:var(--green);color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.stats{display:flex;flex-wrap:wrap;gap:10px}.stat{background:#fff1f2;border-radius:12px;padding:10px 14px;min-width:120px}.stat b{display:block;font-size:22px;color:var(--rose-d)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f5f5f4;white-space:nowrap;position:sticky;top:0}
+.tw{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:12px}
+input[type=search]{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14px;margin-top:10px}
+.tag{display:inline-block;font-size:12px;border-radius:999px;padding:1px 8px;background:#ecfdf5;color:#047857;font-weight:700}.tag.no{background:#f5f5f4;color:#78716c}
+.bar{display:flex;align-items:center;gap:8px;font-size:13.5px;margin:4px 0}.bar i{display:block;height:10px;background:var(--rose);border-radius:6px}
+.err{background:#fef2f2;color:#b91c1c;border-radius:10px;padding:10px 12px;margin-top:10px}
+ol.help li{margin:4px 0 4px 18px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>♥ 會員後台</h1>
+  <p class="mut">只有周周的帳號看得到。會員資料是客戶的個資，匯出的檔案請不要轉寄或公開。</p>
+  <div id="app"><div class="card">讀取中…</div></div>
+</div>
+<script type="module">
+import * as M from "./member-core.js";
+import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+/* 管理帳號 Email 的 SHA-256（跟 comments.js 同一組；不把信箱明文寫進公開的原始碼） */
+const ADMIN_EMAIL_HASHES = ["fb4c495d6b71d12de079627de4175750d8742623085ade8a0e64f050eb0ceeaa"];
+async function isAdmin(u){
+  try{ const e=((u&&u.email)||"").trim().toLowerCase(); if(!e) return false;
+    const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(e));
+    return ADMIN_EMAIL_HASHES.includes(Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join(""));
+  }catch(e){ return false; }
+}
+const app=document.getElementById("app");
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ts=v=>{ try{ const d=v&&v.toDate?v.toDate():null; if(!d) return ""; const p=n=>String(n).padStart(2,"0");
+  return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes()); }catch(e){ return ""; } };
+let ALL=[];
+
+function csv(rows){ return "﻿"+rows.map(r=>r.map(v=>{ v=String(v==null?"":v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }).join(",")).join("\r\n"); }
+function download(name,text){ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([text],{type:"text/csv;charset=utf-8"})); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); }
+const today=()=>new Date().toISOString().slice(0,10);
+
+function render(list){
+  const q=(document.getElementById("q")||{}).value||"";
+  const rows=list.filter(m=>!q||JSON.stringify(m).toLowerCase().includes(q.toLowerCase()));
+  const news=ALL.filter(m=>m.consentNews).length;
+  const reg={}; ALL.forEach(m=>reg[m.region]=(reg[m.region]||0)+1);
+  const fav={}; ALL.forEach(m=>(m.favs||[]).forEach(f=>{ fav[f.id]=fav[f.id]||{t:f.t,u:f.u,n:0}; fav[f.id].n++; }));
+  const top=Object.entries(fav).sort((a,b)=>b[1].n-a[1].n).slice(0,10);
+  const regTop=Object.entries(reg).sort((a,b)=>b[1]-a[1]); const regMax=regTop.length?regTop[0][1]:1;
+  const recent=ALL.filter(m=>{ const d=m.createdAt&&m.createdAt.toDate?m.createdAt.toDate():null; return d&&(Date.now()-d)<30*864e5; }).length;
+  app.innerHTML=
+   '<div class="card"><div class="stats">'+
+     '<div class="stat"><b>'+ALL.length+'</b>會員總數</div><div class="stat"><b>'+news+'</b>同意收電子報</div><div class="stat"><b>'+recent+'</b>近 30 天新加入</div></div>'+
+   '<div class="btns"><button class="pri" id="xBrevo">⬇ 匯出 Brevo 用 CSV（只含同意電子報）</button><button id="xAll">⬇ 匯出全部會員 CSV（Excel 可開）</button><button id="xReload">↻ 重新整理</button></div></div>'+
+   '<div class="card"><b>居住地分布</b>'+regTop.map(([k,v])=>'<div class="bar"><span style="width:140px">'+esc(k)+'</span><i style="width:'+Math.max(4,Math.round(v/regMax*260))+'px"></i>'+v+'</div>').join("")+'</div>'+
+   '<div class="card"><b>最多人收藏的物件（前 10）</b>'+(top.length?top.map(([id,o])=>'<div class="bar"><span>'+o.n+' 人</span><a href="'+esc(o.u)+'" target="_blank">'+esc(o.t||id)+'</a></div>').join(""):'<p class="mut">還沒有人收藏。</p>')+'</div>'+
+   '<div class="card"><b>會員名單（'+rows.length+'）</b><input type="search" id="q" placeholder="搜尋姓名、地區、LINE ID、電話、Email、收藏物件…" value="'+esc(q)+'">'+
+   '<div class="tw" style="margin-top:10px"><table><thead><tr><th>加入日</th><th>姓名</th><th>居住地</th><th>LINE ID</th><th>電話</th><th>Email</th><th>電子報</th><th>收藏</th><th>語言</th></tr></thead><tbody>'+
+   rows.map(m=>'<tr><td>'+esc(ts(m.createdAt))+'</td><td>'+esc(m.name)+'</td><td>'+esc(m.region)+'</td><td>'+esc(m.lineId)+'</td><td>'+esc(m.phone)+'</td><td>'+esc(m.email)+'</td><td>'+(m.consentNews?'<span class="tag">同意</span>':'<span class="tag no">不收</span>')+'</td><td>'+(m.favs||[]).map(f=>'<a href="'+esc(f.u)+'" target="_blank">'+esc(f.t)+'</a>').join("<br>")+'</td><td>'+esc(m.lang)+'</td></tr>').join("")+
+   '</tbody></table></div></div>'+
+   '<div class="card"><b>每月寄電子報的步驟（Brevo）</b><ol class="help">'+
+     '<li>按上面「匯出 Brevo 用 CSV」。</li>'+
+     '<li>Brevo → 聯絡人（Contacts）→ 匯入（Import contacts）→ 上傳這個檔案，選你的會員名單（List）。重複的 Email 會自動更新、不會重複寄。</li>'+
+     '<li>Brevo → 行銷活動（Campaigns）→ 建立 Email，貼上周周幫你寫好的電子報內容，選這份名單寄出。</li>'+
+     '<li>有人在信裡按「取消訂閱」，Brevo 會自動不再寄給他；他也可以在網站會員專區取消勾選。</li></ol></div>';
+  document.getElementById("q").oninput=()=>{ const pos=document.getElementById("q").selectionStart; render(ALL); const q2=document.getElementById("q"); q2.focus(); q2.setSelectionRange(pos,pos); };
+  document.getElementById("xReload").onclick=load;
+  document.getElementById("xAll").onclick=()=>download("members-"+today()+".csv",csv([["加入日","更新日","姓名","居住地","LINE ID","電話","Email","同意電子報","收藏物件","語言"]].concat(ALL.map(m=>[ts(m.createdAt),ts(m.updatedAt),m.name,m.region,m.lineId,m.phone,m.email,m.consentNews?"是":"否",(m.favs||[]).map(f=>f.t).join(" / "),m.lang]))));
+  /* Brevo 匯入：EMAIL 必要；FIRSTNAME 是內建屬性；SMS 要國碼格式所以不放；
+     REGION、LINE_ID 第一次匯入時在 Brevo 裡「建立新屬性」即可（文字型）。 */
+  document.getElementById("xBrevo").onclick=()=>download("brevo-"+today()+".csv",csv([["EMAIL","FIRSTNAME","REGION","LINE_ID","LANG"]].concat(ALL.filter(m=>m.consentNews).map(m=>[m.email,m.name,m.region,m.lineId,m.lang]))));
+}
+async function load(){
+  try{ ALL=await M.allMembers(); ALL.sort((a,b)=>((b.createdAt&&b.createdAt.seconds)||0)-((a.createdAt&&a.createdAt.seconds)||0)); render(ALL); }
+  catch(e){ app.innerHTML='<div class="card"><p class="err">讀不到會員資料（'+esc(e.code||e.message)+'）。請確認 Firebase 的安全規則已經貼上並發布。</p></div>'; }
+}
+M.onUser(async u=>{
+  if(!u){ app.innerHTML='<div class="card"><p>請用周周的 Google 帳號登入。</p><div class="btns"><button class="pri" id="lg">用 Google 登入</button></div></div>';
+    document.getElementById("lg").onclick=()=>signInWithPopup(M.auth,new GoogleAuthProvider()).catch(e=>alert(e.message)); return; }
+  if(!(await isAdmin(u))){ app.innerHTML='<div class="card"><p class="err">這個帳號沒有權限。</p><div class="btns"><button id="lo">登出</button></div></div>'; document.getElementById("lo").onclick=()=>M.logout(); return; }
+  load();
+});
+</script>
+</body>
+</html>
