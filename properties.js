@@ -2340,7 +2340,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-yutaka4-p3-1-pers.webp","prop/prop-yutaka4-p3-plan.webp"],
+    photos: ["prop/prop-yutaka4-p3-1.webp", "prop/prop-yutaka4-p3-plan.webp", "prop/prop-yutaka4-p3-2.webp", "prop/prop-yutaka4-p3-3.webp", "prop/prop-yutaka4-p3-4.webp", "prop/prop-yutaka4-p3-5.webp", "prop/prop-yutaka4-p3-6.webp", "prop/prop-yutaka4-p3-7.webp", "prop/prop-yutaka4-p3-8.webp", "prop/prop-yutaka4-p3-9.webp", "prop/prop-yutaka4-p3-10.webp", "prop/prop-yutaka4-p3-11.webp", "prop/prop-yutaka4-p3-12.webp", "prop/prop-yutaka4-p3-13.webp", "prop/prop-yutaka4-p3-14.webp", "prop/prop-yutaka4-p3-15.webp", "prop/prop-yutaka4-p3-16.webp"],
     note: "■ 這間是什麼\n品川區豊町、下神明站徒步約6分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。\n■ 格局與亮點\nLDK約24.0帖，居室約6.1帖、約6.0帖。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立豊葉の杜學園（小中一貫校）。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。未完工物件的付款節奏與貸款時點跟中古屋不一樣，這個我會先幫你排出來。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
