@@ -109,6 +109,20 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .av-tree .zh{font-size:12.5px;font-weight:800;fill:#fff}.av-tree .tn{font-size:12.5px;font-weight:800}.av-tree .tv{font-size:11px;opacity:.9}.av-tree g{cursor:pointer}
 .av-cap{font-size:12.5px;color:var(--mut);margin-top:6px}
 @media(max-width:600px){.av-t text{font-size:15px}.av-row{grid-template-columns:78px 1fr 84px;font-size:12.5px}}
+
+/* 买房定位分析宣传（周周 2026-11-13：在区域指南页宣传这个功能，图文并茂；图＝工具的真实画面） */
+.hero .mp-top{display:inline-block;margin-top:12px;font-weight:700;color:var(--rose-d);font-size:14px;background:#fff;border:1.5px solid #fecdd3;border-radius:999px;padding:7px 16px;text-decoration:none}
+.mpromo{background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1.5px solid #fecdd3;border-radius:18px;padding:20px 18px;margin-top:22px}
+.mp-k{display:inline-block;background:#fff;color:var(--rose-d);font-weight:700;font-size:12.5px;padding:4px 12px;border-radius:999px}
+.mpromo h3{font-size:20px;font-weight:900;margin:10px 0 6px;line-height:1.45}.mpromo .mp-h p{color:#57534e;font-size:14px;margin:0;line-height:1.8}
+.mp-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.mp-g figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.mp-g img{display:block;width:100%;height:auto}
+.mp-g figcaption{padding:10px 12px 12px;font-size:13px;color:#57534e;line-height:1.7}.mp-g figcaption b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
+.mp-cta{text-align:center;margin-top:16px}
+.mp-btn{display:inline-block;background:linear-gradient(90deg,#f43f5e,#f97316);color:#fff!important;font-weight:900;font-size:16.5px;padding:13px 30px;border-radius:999px;box-shadow:0 8px 20px rgba(244,63,94,.25);text-decoration:none}
+.mp-cta small{display:block;color:var(--mut);font-size:12.5px;margin-top:8px}
+@media(max-width:700px){.mpromo h3{font-size:18px}.mp-g{grid-template-columns:1fr;gap:10px}.mp-g figure{display:grid;grid-template-columns:40% 1fr;align-items:center}.mp-g figcaption{padding:8px 12px}}
 </style>
 
 <header>
@@ -124,6 +138,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <h1>东京23区买房，<span>行情</span>一次看懂</h1>
     <p>「我该买在哪一区？」是周周最常被问的问题。这一页用最新的市场数据，带你看懂东京五大区域的房价水准、租金行情跟各区个性，先有大方向，再一起挑物件。</p>
     <span class="upd">📅 行情数据更新：2026年8月｜地价与人口图表：2026年官方数据（来源见页尾）</span>
+    <br><a class="mp-top" href="tokyo-home-match-cn.html" onclick="try{gtag('event','area_match_promo',{pos:'hero'})}catch(e){}">🔮 输入预算，马上算出你买得到哪几区 →</a>
   </section>
 
   <div class="sech"><div class="n">1</div><h2>先看大局：东京现在多贵？</h2></div>
@@ -150,6 +165,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
   <div class="sech"><div class="n">3</div><h2>五大区域总览：你的预算适合哪一带？</h2></div>
   <div id="zones"></div>
+  <div class="mpromo"><div class="mp-h"><span class="mp-k">🔮 免费工具</span><h3>看完行情，换你算算看：我的预算买得到哪里？</h3><p>预算、想住的区、大小——任填一项就能算。用 SUUMO 最新开价行情和官方地价公示，一次告诉你这三件事：</p></div><div class="mp-g"><figure><img src="img/match-v-tw.webp" width="640" height="640" alt="买房定位分析的结论画面：预算 6,000万円买 40〜60㎡，在杉并区、中野区刚刚好" loading="lazy"><figcaption><b>① 你的买房定位</b>预算够不够、差多少、月付大概多少，一句话讲清楚。</figcaption></figure><figure><img src="img/match-map-tw.webp" width="640" height="640" alt="23 区可负担地图：依预算把每一区分成四种颜色" loading="lazy"><figcaption><b>② 23 区可负担地图</b>绿色很宽裕、蓝色刚刚好、黄色有点紧、红色差一段——你的预算在哪几区最好用，一眼看出来。</figcaption></figure><figure><img src="img/match-prop-tw.webp" width="640" height="640" alt="配对结果：周周在售的中野区物件" loading="lazy"><figcaption><b>③ 直接配对周周的物件</b>从我手上的在售物件挑最接近你条件的；超出预算一点点的，也会告诉你「再加多少就买得到」。</figcaption></figure></div><div class="mp-cta"><a class="mp-btn" href="tokyo-home-match-cn.html" onclick="try{gtag('event','area_match_promo',{pos:'zones'})}catch(e){}">🔮 免费帮我算 →</a><small>不用注册、大约 30 秒；结果可以一键用 LINE 传给周周，我再用成交行情帮你看一次。</small></div></div>
+
 
   <div class="sech"><div class="n">4</div><h2>热门区逐区介绍</h2></div>
   <div class="note">周周帮大家整理台湾客人最常问的 12 个区。价位用 <span class="tier">￥</span> 表示相对高低（<span class="tier">￥￥￥￥￥</span>＝23区最高价带），点开看各区个性。</div>

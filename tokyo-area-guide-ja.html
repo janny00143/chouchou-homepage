@@ -109,6 +109,20 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .av-tree .zh{font-size:12.5px;font-weight:800;fill:#fff}.av-tree .tn{font-size:12.5px;font-weight:800}.av-tree .tv{font-size:11px;opacity:.9}.av-tree g{cursor:pointer}
 .av-cap{font-size:12.5px;color:var(--mut);margin-top:6px}
 @media(max-width:600px){.av-t text{font-size:15px}.av-row{grid-template-columns:78px 1fr 84px;font-size:12.5px}}
+
+/* 買房定位分析宣傳（周周 2026-11-13：在區域指南頁宣傳這個功能，圖文並茂；圖＝工具的真實畫面） */
+.hero .mp-top{display:inline-block;margin-top:12px;font-weight:700;color:var(--rose-d);font-size:14px;background:#fff;border:1.5px solid #fecdd3;border-radius:999px;padding:7px 16px;text-decoration:none}
+.mpromo{background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1.5px solid #fecdd3;border-radius:18px;padding:20px 18px;margin-top:22px}
+.mp-k{display:inline-block;background:#fff;color:var(--rose-d);font-weight:700;font-size:12.5px;padding:4px 12px;border-radius:999px}
+.mpromo h3{font-size:20px;font-weight:900;margin:10px 0 6px;line-height:1.45}.mpromo .mp-h p{color:#57534e;font-size:14px;margin:0;line-height:1.8}
+.mp-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.mp-g figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.mp-g img{display:block;width:100%;height:auto}
+.mp-g figcaption{padding:10px 12px 12px;font-size:13px;color:#57534e;line-height:1.7}.mp-g figcaption b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
+.mp-cta{text-align:center;margin-top:16px}
+.mp-btn{display:inline-block;background:linear-gradient(90deg,#f43f5e,#f97316);color:#fff!important;font-weight:900;font-size:16.5px;padding:13px 30px;border-radius:999px;box-shadow:0 8px 20px rgba(244,63,94,.25);text-decoration:none}
+.mp-cta small{display:block;color:var(--mut);font-size:12.5px;margin-top:8px}
+@media(max-width:700px){.mpromo h3{font-size:18px}.mp-g{grid-template-columns:1fr;gap:10px}.mp-g figure{display:grid;grid-template-columns:40% 1fr;align-items:center}.mp-g figcaption{padding:8px 12px}}
 </style>
 
 <header>
@@ -124,6 +138,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <h1>東京23区、<span>エリア別相場</span>を1ページで</h1>
     <p>「どの区で買えばいいの？」——お客様から最も多くいただくご質問です。最新の市場データをもとに、東京5大エリアの価格水準・賃料相場・各区の個性を整理しました。まずは大きな方向感をつかんでから、一緒に物件を選びましょう。</p>
     <span class="upd">📅 相場データ更新：2026年8月｜地価・人口グラフ：2026年公的データ（出典はページ下部）</span>
+    <br><a class="mp-top" href="tokyo-home-match-ja.html" onclick="try{gtag('event','area_match_promo',{pos:'hero'})}catch(e){}">🔮 ご予算を入れるだけで、狙えるエリアを無料診断 →</a>
   </section>
 
   <div class="sech"><div class="n">1</div><h2>まずは全体感：東京の今の価格水準</h2></div>
@@ -150,6 +165,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
   <div class="sech"><div class="n">3</div><h2>5大エリア概観：ご予算に合うのはどのエリア？</h2></div>
   <div id="zones"></div>
+  <div class="mpromo"><div class="mp-h"><span class="mp-k">🔮 無料ツール</span><h3>相場をご覧になったら、次はご予算で診断してみませんか</h3><p>ご予算・ご希望エリア・広さのどれか一つから診断できます。SUUMOの最新相場と地価公示をもとに、次の3点をお示しします。</p></div><div class="mp-g"><figure><img src="img/match-v-ja.webp" width="640" height="640" alt="住まい診断の結果画面：ご予算6,000万円・40〜60㎡で杉並区・中野区がちょうど良い" loading="lazy"><figcaption><b>① あなたの住まい診断</b>ご予算で足りるか、どれくらい差があるか、月々の返済目安までひと目で分かります。</figcaption></figure><figure><img src="img/match-map-ja.webp" width="640" height="640" alt="23区 購入しやすさマップ：ご予算に応じて各区を4色で表示" loading="lazy"><figcaption><b>② 23区 購入しやすさマップ</b>緑は余裕あり、青はちょうど良い、黄はやや厳しい、赤は差がある——ご予算が活きるエリアが一目瞭然です。</figcaption></figure><figure><img src="img/match-prop-ja.webp" width="640" height="640" alt="マッチング結果：周周が掲載中の中野区の物件" loading="lazy"><figcaption><b>③ 掲載物件とマッチング</b>周周の掲載物件からご条件に近いものを自動でご提案。ご予算を少し上回る物件は「あと○○万円」と表示します。</figcaption></figure></div><div class="mp-cta"><a class="mp-btn" href="tokyo-home-match-ja.html" onclick="try{gtag('event','area_match_promo',{pos:'zones'})}catch(e){}">🔮 無料で診断する →</a><small>会員登録不要・約30秒。診断結果はLINEでそのまま周周にお送りいただけます。</small></div></div>
+
 
   <div class="sech"><div class="n">4</div><h2>人気の12区を個別にご紹介</h2></div>
   <div class="note">華僑・華人のお客様からよくご質問いただく12区をまとめました。価格帯は <span class="tier">￥</span> の数で相対的な高さを表します（<span class="tier">￥￥￥￥￥</span>＝23区最高価格帯）。タップして各区の個性をご覧ください。</div>

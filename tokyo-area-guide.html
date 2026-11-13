@@ -109,6 +109,20 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 .av-tree .zh{font-size:12.5px;font-weight:800;fill:#fff}.av-tree .tn{font-size:12.5px;font-weight:800}.av-tree .tv{font-size:11px;opacity:.9}.av-tree g{cursor:pointer}
 .av-cap{font-size:12.5px;color:var(--mut);margin-top:6px}
 @media(max-width:600px){.av-t text{font-size:15px}.av-row{grid-template-columns:78px 1fr 84px;font-size:12.5px}}
+
+/* 買房定位分析宣傳（周周 2026-11-13：在區域指南頁宣傳這個功能，圖文並茂；圖＝工具的真實畫面） */
+.hero .mp-top{display:inline-block;margin-top:12px;font-weight:700;color:var(--rose-d);font-size:14px;background:#fff;border:1.5px solid #fecdd3;border-radius:999px;padding:7px 16px;text-decoration:none}
+.mpromo{background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1.5px solid #fecdd3;border-radius:18px;padding:20px 18px;margin-top:22px}
+.mp-k{display:inline-block;background:#fff;color:var(--rose-d);font-weight:700;font-size:12.5px;padding:4px 12px;border-radius:999px}
+.mpromo h3{font-size:20px;font-weight:900;margin:10px 0 6px;line-height:1.45}.mpromo .mp-h p{color:#57534e;font-size:14px;margin:0;line-height:1.8}
+.mp-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.mp-g figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.mp-g img{display:block;width:100%;height:auto}
+.mp-g figcaption{padding:10px 12px 12px;font-size:13px;color:#57534e;line-height:1.7}.mp-g figcaption b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
+.mp-cta{text-align:center;margin-top:16px}
+.mp-btn{display:inline-block;background:linear-gradient(90deg,#f43f5e,#f97316);color:#fff!important;font-weight:900;font-size:16.5px;padding:13px 30px;border-radius:999px;box-shadow:0 8px 20px rgba(244,63,94,.25);text-decoration:none}
+.mp-cta small{display:block;color:var(--mut);font-size:12.5px;margin-top:8px}
+@media(max-width:700px){.mpromo h3{font-size:18px}.mp-g{grid-template-columns:1fr;gap:10px}.mp-g figure{display:grid;grid-template-columns:40% 1fr;align-items:center}.mp-g figcaption{padding:8px 12px}}
 </style>
 
 <header>
@@ -124,6 +138,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
     <h1>東京23區買房，<span>行情</span>一次看懂</h1>
     <p>「我該買在哪一區？」是周周最常被問的問題。這一頁用最新的市場數據，帶你看懂東京五大區域的房價水準、租金行情跟各區個性，先有大方向，再一起挑物件。</p>
     <span class="upd">📅 行情數據更新：2026年8月｜地價與人口圖表：2026年官方數據（來源見頁尾）</span>
+    <br><a class="mp-top" href="tokyo-home-match.html" onclick="try{gtag('event','area_match_promo',{pos:'hero'})}catch(e){}">🔮 輸入預算，馬上算出你買得到哪幾區 →</a>
   </section>
 
   <div class="sech"><div class="n">1</div><h2>先看大局：東京現在多貴？</h2></div>
@@ -150,6 +165,8 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdro
 
   <div class="sech"><div class="n">3</div><h2>五大區域總覽：你的預算適合哪一帶？</h2></div>
   <div id="zones"></div>
+  <div class="mpromo"><div class="mp-h"><span class="mp-k">🔮 免費工具</span><h3>看完行情，換你算算看：我的預算買得到哪裡？</h3><p>預算、想住的區、大小——任填一項就能算。用 SUUMO 最新開價行情和官方地價公示，一次告訴你這三件事：</p></div><div class="mp-g"><figure><img src="img/match-v-tw.webp" width="640" height="640" alt="買房定位分析的結論畫面：預算 6,000萬円買 40〜60㎡，在杉並區、中野區剛剛好" loading="lazy"><figcaption><b>① 你的買房定位</b>預算夠不夠、差多少、月付大概多少，一句話講清楚。</figcaption></figure><figure><img src="img/match-map-tw.webp" width="640" height="640" alt="23 區可負擔地圖：依預算把每一區分成四種顏色" loading="lazy"><figcaption><b>② 23 區可負擔地圖</b>綠色很寬裕、藍色剛剛好、黃色有點緊、紅色差一段——你的預算在哪幾區最好用，一眼看出來。</figcaption></figure><figure><img src="img/match-prop-tw.webp" width="640" height="640" alt="配對結果：周周在售的中野區物件" loading="lazy"><figcaption><b>③ 直接配對周周的物件</b>從我手上的在售物件挑最接近你條件的；超出預算一點點的，也會告訴你「再加多少就買得到」。</figcaption></figure></div><div class="mp-cta"><a class="mp-btn" href="tokyo-home-match.html" onclick="try{gtag('event','area_match_promo',{pos:'zones'})}catch(e){}">🔮 免費幫我算 →</a><small>不用註冊、大約 30 秒；結果可以一鍵用 LINE 傳給周周，我再用成交行情幫你看一次。</small></div></div>
+
 
   <div class="sech"><div class="n">4</div><h2>熱門區逐區介紹</h2></div>
   <div class="note">周周幫大家整理台灣客人最常問的 12 個區。價位用 <span class="tier">￥</span> 表示相對高低（<span class="tier">￥￥￥￥￥</span>＝23區最高價帶），點開看各區個性。</div>
