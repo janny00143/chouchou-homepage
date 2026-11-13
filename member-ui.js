@@ -42,6 +42,18 @@ function notifyOwner(d) {
         "語言": LANG, "註冊頁": location.href.split("?")[0], "後台": location.origin + location.pathname.replace(/[^\/]*$/, "") + "members-admin.html" }) }).catch(() => { });
   } catch (e) { }
 }
+/* 自動歡迎信（周周 2026-11-13：會員體驗 C）：新會員有勾「同意電子報」時，順手送進 Brevo 的訂閱表單，
+   Brevo 的自動化（加入名單 → 寄歡迎信）就會寄出。表單網址是公開的嵌入表單網址，不是金鑰；
+   空字串＝還沒設定，就什麼都不做。設定方式見 CLAUDE.md 會員那一列。 */
+const BREVO_FORM = "";
+function toBrevo(d) {
+  if (!BREVO_FORM || !d.consentNews) return;
+  try {
+    const fd = new FormData();
+    fd.append("EMAIL", d.email); fd.append("FIRSTNAME", d.name); fd.append("email_address_check", ""); fd.append("locale", LANG === "ja" ? "ja" : "zh");
+    fetch(BREVO_FORM, { method: "POST", mode: "no-cors", body: fd }).catch(() => { });
+  } catch (e) { }
+}
 function busy(btn, on) { if (!btn) return; btn.disabled = on; btn.style.opacity = on ? ".6" : ""; }
 
 /* ── 1. 還沒登入 ── */
@@ -127,12 +139,11 @@ function viewProfile(isEdit) {
     busy(btn, true);
     try {
       await M.saveProfile(USER, data, MEMBER, LANG);
-      if (!MEMBER) { ga("member_signup", { region: data.region, news: data.consentNews ? 1 : 0 }); notifyOwner(data); }
+      if (!MEMBER) { ga("member_signup", { region: data.region, news: data.consentNews ? 1 : 0 }); notifyOwner(data); toBrevo(data); }
       MEMBER = await M.getMember(USER.uid);
       await M.mergeFavs(USER, MEMBER);
       MEMBER = await M.getMember(USER.uid);
-      viewHome(isEdit ? T.saved : T.welcome);
-      if (!isEdit) goNext(1500);
+      if (isEdit) viewHome(T.saved); else viewWelcome(data);
     } catch (e) { showErr("pErr", e); }
     busy(btn, false);
   };
@@ -140,15 +151,47 @@ function viewProfile(isEdit) {
   const o = document.getElementById("pOut"); if (o) o.onclick = () => M.logout();
 }
 
+/* ── 2.5 註冊完的感謝頁（周周 2026-11-13：會員註冊後的體驗多想一點）──
+   不再自動跳走：從「搶先看」鎖卡來的人，第一顆按鈕就是「回到剛剛看的頁面」。 */
+function viewWelcome(d) {
+  if (!T.welTitle) { viewHome(T.welcome); goNext(1500); return; }
+  const sfx = LANG === "ja" ? "-ja" : (LANG === "cn" ? "-cn" : "");
+  const msg = T.welLineMsg.replace("{name}", d.name).replace("{region}", regionLabel(d.region));
+  const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const lineHref = mobile ? "https://line.me/R/oaMessage/%40202dzwok/?" + encodeURIComponent(msg) : "https://lin.ee/RscRWCp";
+  const B = T.welBtns, btn = (cls, href, txt, k, ext) => '<a class="wb ' + cls + '" href="' + esc(href) + '" data-k="' + k + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><span>' + esc(txt) + '</span><u>›</u></a>';
+  root.innerHTML = '<div class="card welc"><h2>' + esc(T.welTitle.replace("{name}", d.name)) + '</h2>' +
+    '<div class="letter">' + esc(T.welMsg) + '<div class="sign">— ' + esc(T.welSign) + '</div></div>' +
+    '<p class="nx">' + esc(T.welNext) + '</p>' +
+    (NEXT ? btn("back", NEXT, T.welBack, "back") : '') +
+    (NEXT === "properties" + sfx + ".html" ? "" : btn("", "properties" + sfx + ".html", B[0], "props")) + btn("", "tokyo-home-match" + sfx + ".html", B[1], "match") + btn("line", lineHref, B[2], "line", true) +
+    (giftHtml() ? '<div style="margin-top:14px">' + giftHtml() + '</div>' : '') +
+    (d.consentNews ? '<p class="nw">' + esc(T.welNews.replace("{email}", d.email)) + '</p>' : '') +
+    '<p style="margin-top:14px"><a href="#" id="wHome">' + esc(T.welHome) + '</a></p></div>';
+  wide(false);
+  root.querySelectorAll(".wb").forEach(a => a.addEventListener("click", () => {
+    const k = a.getAttribute("data-k"); ga("member_welcome_click", { to: k, transport_type: "beacon" });
+    if (k === "line" && !mobile) { try { navigator.clipboard && navigator.clipboard.writeText(msg); } catch (e) { } }
+  }));
+  document.getElementById("wHome").onclick = (ev) => { ev.preventDefault(); viewHome(); };
+  try { scrollTo({ top: 0, behavior: "smooth" }); } catch (e) { }
+}
+
 /* ── 3. 會員中心 ── */
 /* 會員中心在電腦上用兩欄：左邊收藏、右邊會員資料（周周 2026-11-12） */
 function wide(on) { const w = root.closest(".wrap"); if (w) w.classList.toggle("wide", !!on); }
+/* properties.js 只讀一次（收藏縮圖、新物件推薦共用） */
+let _propsP = null;
+function loadProps() {
+  if (window.PROPERTIES) return Promise.resolve(window.PROPERTIES);
+  if (!_propsP) _propsP = new Promise(res => { const s = document.createElement("script"); s.src = "properties.js"; s.onload = () => res(window.PROPERTIES || []); s.onerror = () => res([]); document.head.appendChild(s); });
+  return _propsP;
+}
 /* 舊的收藏沒有存縮圖：讀一次物件資料補上，順便存回本機與雲端 */
 let _thumbTried = false;
 function fillThumbs(favs) {
   if (_thumbTried || !favs.some(x => !x.i)) return; _thumbTried = true;
-  const s = document.createElement("script"); s.src = "properties.js";
-  s.onload = () => {
+  loadProps().then(() => {
     const P = {}; (window.PROPERTIES || []).forEach(p => { P[p.id] = p; });
     const base = location.href.replace(/[^\/]*$/, ""); let changed = false;
     const a = M.localFavs().map(x => { const p = P[x.id]; const img = p && (p.thumb || (p.photos && p.photos[0]));
@@ -157,8 +200,47 @@ function fillThumbs(favs) {
     try { localStorage.setItem("chou_favs_v1", JSON.stringify(a)); } catch (e) { }
     if (USER && MEMBER) { try { M.pushFavs(); } catch (e) { } }
     if (document.getElementById("hEdit")) viewHome();
-  };
-  document.head.appendChild(s);
+  });
+}
+
+/* ── 會員中心的「你的買房條件」＋「最近上架、接近你條件的物件」（周周 2026-11-13：會員體驗 D）──
+   條件來自 match.js 存在這台裝置的 localStorage「chou_match_last」（不上雲端：members 欄位被規則鎖住）。 */
+const SFX = LANG === "ja" ? "-ja" : (LANG === "cn" ? "-cn" : "");
+function lastMatch() { try { const x = JSON.parse(localStorage.getItem("chou_match_last") || "null"); return x && x.q ? x : null; } catch (e) { return null; } }
+function yen(s) { const m = String(s || "").match(/(?:([\d.]+)\s*[億亿])?\s*(?:([\d,]+)\s*[万萬])?\s*円/); if (!m || (!m[1] && !m[2])) return 0; return (m[1] ? parseFloat(m[1]) * 10000 : 0) + (m[2] ? parseInt(m[2].replace(/,/g, ""), 10) : 0); }
+const fmtMan = v => LANG === "ja" ? (v >= 10000 ? Math.floor(v / 10000) + "億" + (v % 10000 ? (v % 10000).toLocaleString() + "万" : "") + "円" : v.toLocaleString() + "万円")
+  : (v >= 10000 ? Math.floor(v / 10000) + "億" + (v % 10000 ? (v % 10000).toLocaleString() + "萬" : "") + "円" : v.toLocaleString() + "萬円");
+const OUTRE = { kng: /神奈川/, oth: /埼玉|千葉|東京都(?![^\s　]{1,4}?[区區])/, kan: /大阪|京都府|京都市/ };
+function moreCards() {
+  const L = lastMatch(), box = document.getElementById("hMore"); if (!box) return;
+  const lastHtml = '<h3>' + esc(T.lastTitle) + '</h3>' + (L
+    ? '<div class="lastc">' + [L.t, L.b ? fmtMan(L.b) : "", (L.wl || []).concat(L.ol || []).join("・"), L.s].filter(Boolean).map(x => '<b>' + esc(x) + '</b>').join("　") + '</div><a href="tokyo-home-match' + SFX + '.html?' + esc(L.q) + '">' + esc(T.lastGo) + '</a>'
+    : '<p class="sub">' + esc(T.lastNone) + '</p><a href="tokyo-home-match' + SFX + '.html">' + esc(T.lastStart) + '</a>');
+  box.innerHTML = lastHtml + '<h3 style="margin-top:20px">' + esc(L ? T.newTitle : T.newTitleAll) + '</h3><p class="sub">…</p>';
+  loadProps().then(P => {
+    const norm = s => String(s || "").replace(/區/g, "区").replace(/黑/g, "黒").replace(/澀/g, "渋").replace(/豐/g, "豊").replace(/戶/g, "戸");
+    let list = P.filter(p => !p.sold && p.photos && p.photos.length).map(p => ({ p, price: yen(String(p.price || "").split("\n")[0]), loc: norm(p.location) }));
+    if (L) list = list.filter(x => {
+      const okB = !L.b || (x.price && x.price <= L.b * 1.15);
+      const ws = L.w || [], os = L.o || [];
+      const okW = (!ws.length && !os.length) || ws.some(w => x.loc.indexOf(w) >= 0) || os.some(k => OUTRE[k] && OUTRE[k].test(String(x.p.location || "")));
+      return okB && okW;
+    });
+    list.sort((a, b) => String(b.p.listed || "").localeCompare(String(a.p.listed || "")));
+    const now = Date.now(), items = list.slice(0, 4);
+    const html = items.length ? '<div class="favs">' + items.map(x => {
+      const p = x.p, t = LANG === "ja" ? p.title : (p.title_cn || p.title), isNew = p.listed && (now - Date.parse(p.listed)) < 14 * 864e5;
+      return '<a class="fv hm-new" href="prop-' + encodeURIComponent(p.id) + SFX + '.html"><img src="' + esc(p.photos[0]) + '" alt="" loading="lazy">' + (isNew ? '<span class="nb">' + esc(T.newBadge) + '</span>' : '') +
+        '<em><b>' + esc(t) + '</b><span>' + esc(x.price ? fmtMan(x.price) : "") + '</span></em><u>›</u></a>';
+    }).join("") + '</div>' : '<p class="sub">' + esc(T.newNone) + '</p>';
+    box.innerHTML = lastHtml + '<h3 style="margin-top:20px">' + esc(L ? T.newTitle : T.newTitleAll) + '</h3>' + html +
+      '<p style="margin-top:12px"><a class="btn-line" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">' + esc(T.lineAsk) + '</a></p>';
+  });
+}
+function giftHtml() {
+  if (!T.giftTitle) return "";
+  const url = LANG === "cn" ? T.giftUrl.replace(/\.pdf$/, "-cn.pdf") : T.giftUrl;
+  return '<div class="card gift"><h3 style="margin-top:0">' + esc(T.giftTitle) + '</h3><p class="sub">' + esc(T.giftTxt) + '</p><a class="btn-g" href="' + esc(url) + '" target="_blank" rel="noopener" onclick="try{gtag(\'event\',\'member_gift\')}catch(e){}">' + esc(T.giftBtn) + '</a></div>';
 }
 function viewHome(flash) {
   const m = MEMBER || {}, favs = M.localFavs();
@@ -177,9 +259,11 @@ function viewHome(flash) {
     '<label class="chk"><input type="checkbox" id="hNews"' + (m.consentNews ? " checked" : "") + '><span>' + T.consentNews + '</span></label>' +
     '<p class="err" id="hErr"></p>' +
     '<div class="row2"><button type="button" class="ghost" id="hEdit">' + esc(T.edit) + '</button><button type="button" class="ghost" id="hOut">' + esc(T.logout) + '</button></div>' +
-    '<p class="small" style="margin-top:16px"><a href="#" id="hDel">' + esc(T.del) + '</a>　·　<a href="' + PRIVACY + '">' + esc(T.privacyLink) + '</a></p></div></div>';
+    '<p class="small" style="margin-top:16px"><a href="#" id="hDel">' + esc(T.del) + '</a>　·　<a href="' + PRIVACY + '">' + esc(T.privacyLink) + '</a></p></div></div>' +
+    (T.lastTitle ? '<div class="mgrid"><div class="card" id="hMore"></div>' + (giftHtml() || '<div></div>') + '</div>' : '');
   wide(true);
   fillThumbs(favs);
+  moreCards();
   document.getElementById("hEdit").onclick = () => viewProfile(true);
   document.getElementById("hOut").onclick = () => M.logout();
   document.getElementById("hNews").onchange = async (ev) => {

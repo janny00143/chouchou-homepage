@@ -605,6 +605,7 @@
     if (!n) { $("#mOut").innerHTML = '<div class="msec in"><p class="msub">' + T.needOne + '</p></div>'; return; }
     ga("match_run", { filled: n, type: st.type || "any", income: st.inc ? 1 : 0 });
     try { history.replaceState(null, "", location.pathname + "?" + query()); } catch (e) { }
+    try { localStorage.setItem("chou_match_last", JSON.stringify({ q: query(), b: st.budget || 0, w: st.wards.map(function (c) { return T.wardJa[c]; }), wl: st.wards.map(function (c) { return T.wardNames[c]; }), o: st.outer.slice(), ol: st.outer.map(function (k) { return T.outerNames[k]; }), s: st.band != null ? bandsL()[st.band] : "", t: st.type ? T.typeNames[st.type] : "", at: Date.now() })); } catch (e) { }
     var out = $("#mOut");
     out.innerHTML = '<div class="mload"><div class="orb"><i></i><i></i><i></i></div><p>' + T.loading[Math.floor(Math.random() * T.loading.length)] + '</p></div>';
     out.scrollIntoView({ behavior: "smooth", block: "start" });
