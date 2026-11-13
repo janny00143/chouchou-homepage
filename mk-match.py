@@ -358,6 +358,7 @@ for lang, P in PAGE.items():
     s = open(R + P['src'], encoding='utf-8').read()
     head = s[:s.index('<style>')]
     head = head.replace('tokyo-area-guide', SLUG)
+    head = head.replace('img/og-area-guide', 'img/og-home-match')   # 分享預覽圖（2026-11-13）
     head = re.sub(r'<title>[^<]*</title>', '<title>' + P['title'] + '</title>', head, count=1)
     head = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="' + P['desc'] + '">', head, count=1)
     head = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="' + P['ogt'] + '">', head, count=1)
