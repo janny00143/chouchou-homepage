@@ -45,7 +45,7 @@ function notifyOwner(d) {
 /* 自動歡迎信（周周 2026-11-13：會員體驗 C）：新會員有勾「同意電子報」時，順手送進 Brevo 的訂閱表單，
    Brevo 的自動化（加入名單 → 寄歡迎信）就會寄出。表單網址是公開的嵌入表單網址，不是金鑰；
    空字串＝還沒設定，就什麼都不做。設定方式見 CLAUDE.md 會員那一列。 */
-const BREVO_FORM = "";
+const BREVO_FORM = "https://2d6808f4.sibforms.com/serve/MUIFAMeEcosqC35TA1XyOUhgyozoTRr_XFeW1W1kFYaQq9-PqLMOlYK7DblUaMGVlMgNOlbNs-qjUinEtZJMx-sUSrE9-JKFsfTpvFh86g1u334um_0Zqkn6tX-07oUli9uPqMAJl7ILrM_hT0whIsvODua5agxQJtaNwPglQ-kg23F3imNaVAw8aztyfZodv3JRRI1OBWmtHqNbNA==";   // Brevo 表單「Website members」→ 名單「周周會員」（2026-11-13 周周建立）
 function toBrevo(d) {
   if (!BREVO_FORM || !d.consentNews) return;
   try {
