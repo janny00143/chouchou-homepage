@@ -26,7 +26,8 @@
   var FURN = { ms: [0, 1, 2, 3, 4], hnew: [2, 3, 3, 4], hused: [2, 3, 3, 4], land: [2, 3, 3, 4, 4] };
   var AGE_MAX = [0, 10, 20, 30, 999];           // 新築／10年內／20年內／30年內／不限
   var NOW_Y = new Date().getFullYear();
-  var RATE_DEF = T.rateDef || 3.81;             // Flat35 2026年11月 最頻金利（融資比率9成以下、21〜35年）
+  var F35 = window.FLAT35 || {};                // flat35-rate.js（每月 1 號排程更新）
+  var RATE_DEF = F35.rate || T.rateDef || 3.81;   // Flat35 當月最頻金利（融資比率9成以下、21〜35年）
   var COST = 0.07;                              // 購屋雜費（仲介費・登記・稅金・火災保險…）粗估比例
   var CUR = T.lang === "ja" ? null : (/-cn\.html$/.test(location.pathname) ? "CNY" : "TWD");
   var FX = null;
@@ -35,6 +36,7 @@
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var fmtMan = function (v) { if (v == null || isNaN(v)) return "—"; v = Math.round(v); return v >= 10000 ? (Math.floor(v / 10000) + T.oku + (v % 10000 ? (v % 10000).toLocaleString() + T.man : "")) : v.toLocaleString() + T.man; };
   var fmt = function (s, o) { return String(s).replace(/\{(\w+)\}/g, function (_, k) { return o[k] == null ? "" : o[k]; }); };
+  var YM = fmt(T.ymFmt || "{y}/{m}", { y: F35.year || 2026, m: F35.month || 11 });
   function ga(n, x) { try { if (typeof gtag === "function") gtag("event", n, x || {}); } catch (e) { } }
 
   /* ── 狀態 ── */
@@ -167,6 +169,7 @@
     chips($("#mRes"), T.res.map(function (h, i) { return { v: i, h: h }; }), "res");
     $("#mBudgetQ").innerHTML = T.budgetQuick.map(function (v) { return '<button type="button" class="mc" data-v="' + v + '">' + fmtMan(v) + '</button>'; }).join("");
     $("#mBudgetQ").addEventListener("click", function (e) { var b = e.target.closest(".mc"); if (!b) return; var v = +b.getAttribute("data-v"); st.budget = st.budget === v ? null : v; paint(); });
+    var rs = $("#mRateS"); if (rs && T.rateLbl) rs.textContent = fmt(T.rateLbl, { ym: YM });
     numIn("#mBudget", "budget"); numIn("#mInc", "inc"); numIn("#mDown", "down"); numIn("#mAgeP", "ageP"); numIn("#mRate", "rate", true);
     $("#mReset").addEventListener("click", function () { st = blank(); onType(); paint(); $("#mOut").innerHTML = ""; history.replaceState(null, "", location.pathname); });
     $("#mGo").addEventListener("click", run);
@@ -263,7 +266,7 @@
 
   function secLoan() {
     var L = loanCalc(); if (!L || L.tooOld || !L.price) return "";
-    var r = rate(), notes = T.loanAssume.map(function (s) { return '<li>' + fmt(s, { r: r }) + '</li>'; });
+    var r = rate(), notes = T.loanAssume.map(function (s) { return '<li>' + fmt(s, { r: r, ym: YM }) + '</li>'; });
     if (st.res === 1) notes.push('<li>' + T.loanRes1 + '</li>'); if (st.res === 2) notes.push('<li>' + T.loanRes2 + '</li>');
     if (L.capByDown) notes.push('<li>' + T.loanCapDown + '</li>');
     if (L.hi.price > L.price) notes.push('<li>' + fmt(T.loanRangeNote, { p: fmtMan(L.price) }) + '</li>');
@@ -460,7 +463,7 @@
   function secCta() {
     return '<div class="msec mcta"><h3>' + T.ctaTitle + '</h3><p>' + T.ctaTxt + '</p><button type="button" class="mline" id="mSend">' + T.ctaBtn + '</button>' +
       '<div class="mlinks">' + T.links.map(function (l) { return '<a href="' + l[1] + '">' + l[0] + '</a>'; }).join("") + '</div></div>' +
-      '<div class="msrc">' + fmt(T.sources, { d: S.fetched }) + '</div>';
+      '<div class="msrc">' + fmt(T.sources, { d: S.fetched, ym: YM }) + '</div>';
   }
 
   function summaryText() {
