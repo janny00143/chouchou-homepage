@@ -1,5 +1,5 @@
 /* 會員見面禮 PDF 產生器（周周 2026-11-13：會員註冊後的體驗 B）
-   node gift/mk-gift.cjs  →  gift/tokyo-buying-checklist.pdf（繁中）＋ gift/tokyo-buying-checklist-cn.pdf（簡中，opencc 轉）
+   node gift/mk-gift.cjs && python3 gift/flatten-gift.py  →  gift/tokyo-buying-checklist.pdf（繁中）＋ gift/tokyo-buying-checklist-cn.pdf（簡中，opencc 轉）
    內容只寫一般流程與常見作法；貸款・稅務・登記一律寫「依審查／由稅理士／司法書士確認」（CLAUDE.md §4）。 */
 const fs = require("fs"), path = require("path");
 const OpenCC = require("opencc-js");
