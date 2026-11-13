@@ -62,6 +62,8 @@ const OK = {
   // 日文物件價格與繁中的差異若只是這些用詞，不算不一致
   // 森下Ⅵ 的價格刻意寫「5,800万円〜（詳細請諮詢）」，日文版對應「お問い合わせください」（周周 2026-10-08 指示）
   priceTextAllow: new Set(["galicia-morishita6"]),
+  // C2：程式裡出現、但不是站內圖片的檔名（例：match.js 命盤圖卡「下載時的檔名」chouchou-fate.png）
+  notImageNames: new Set(["chouchou-fate.png"]),
   priceSynonyms: [
     ["含稅", "税込"], ["參考總額", "参考価格 総額"], ["參考", "参考"],
     ["總額", "総額"], ["萬円", "万円"], ["價格", "価格"],
@@ -948,6 +950,7 @@ function c2_images() {
       let n = m[1];
       try { n = decodeURIComponent(n); } catch (e) { }
       if (have.has(n) || have.has(m[1])) continue;
+      if (OK.notImageNames.has(n)) continue;
       if (fs.existsSync(path.join(ROOT, n))) continue;
       missing.push(`${f} → ${n}`);
     }
