@@ -58,6 +58,10 @@ CSS = r"""
 .mprop{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:transform .15s,box-shadow .15s}.mprop:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
 .mprop img,.mprop .noimg{width:100%;height:150px;object-fit:cover;background:#fdf2f4;display:flex;align-items:center;justify-content:center;font-size:30px}
 .mpb{padding:10px 12px 12px}.mpb b{display:block;font-size:14px;line-height:1.5}.mpb .pr{display:block;color:var(--rose-d);font-weight:900;font-size:16px;margin-top:4px}.mpb .mt{display:block;font-size:12.5px;color:var(--mut)}
+.mpb .why.st{color:#c2410c;background:#fff7ed}.mpb .why.iv{color:#047857;background:#ecfdf5;margin-right:4px}
+.mstick{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.97);border-top:1px solid #e7e5e4;box-shadow:0 -6px 20px rgba(0,0,0,.06);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:12px;align-items:center;justify-content:center;transform:translateY(120%);transition:transform .3s}
+.mstick.on{transform:none}.mstick span{font-size:13.5px;color:#44403c;font-weight:700;line-height:1.4}.mstick button{background:#06c755;color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:800;font-size:14.5px;white-space:nowrap;cursor:pointer;font-family:inherit}
+.mtab .num{white-space:nowrap}.mtab .rng{white-space:normal}.mtab td:first-child{white-space:nowrap}.mtab th:last-child{white-space:nowrap}
 .mpb .why{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:700;color:#7c3aed;background:#f5f3ff;border-radius:999px;padding:2px 9px}
 .mfate{background:linear-gradient(135deg,#1e1b4b,#4c1d95 55%,#831843);border:0;color:#f5f3ff;perspective:1200px}
 .mfcard{position:relative;min-height:220px;cursor:pointer}
@@ -101,7 +105,7 @@ a.mlinea{display:inline-block;color:#fff;text-decoration:none;margin-top:14px}
 .mmleg{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;font-size:12.5px}.mmleg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
 .mminfo{text-align:center;margin-top:8px;font-size:14px;font-weight:700;color:#44403c;min-height:22px}
 .mshare{text-align:center;margin-top:16px}.mshare button{background:linear-gradient(135deg,#fde68a,#fbcfe8);color:#4c1d95;border:0;border-radius:999px;padding:11px 24px;font-weight:900;font-size:15px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-@media(max-width:640px){.mlgrid{grid-template-columns:1fr 1fr}.mloan .mrow{grid-template-columns:1fr;gap:6px}.mmt text{font-size:20px}.mrow{grid-template-columns:1fr;gap:6px}.mhero h1{font-size:24px}.mbar{grid-template-columns:78px 1fr 84px;font-size:12.5px}.mfrow{grid-template-columns:1fr}.mvt{font-size:26px}}
+@media(max-width:640px){.mz{margin-bottom:10px}.mzl{flex-basis:100%;min-width:0;margin-bottom:-2px}.mtab{font-size:12.5px}.mtab th,.mtab td{padding:7px 4px}.mtab th{font-size:11.5px}.mstick span{font-size:12.5px}.mlgrid{grid-template-columns:1fr 1fr}.mloan .mrow{grid-template-columns:1fr;gap:6px}.mmt text{font-size:20px}.mrow{grid-template-columns:1fr;gap:6px}.mhero h1{font-size:24px}.mbar{grid-template-columns:78px 1fr 84px;font-size:12.5px}.mfrow{grid-template-columns:1fr}.mvt{font-size:26px}}
 """
 
 BODY = """<div class="wrap">
@@ -113,6 +117,7 @@ BODY = """<div class="wrap">
 
   <div class="mform">
     <div class="mrow"><label>{lType}<small>{lTypeS}</small></label><div class="mchips" id="mType"></div></div>
+    <div class="mrow"><label>{lUse}<small>{lUseS}</small></label><div class="mchips" id="mUse"></div></div>
     <div class="mrow"><label>{lBudget}<small>{lBudgetS}</small></label><div><div class="mbud"><input id="mBudget" inputmode="numeric" placeholder="{phBudget}"><span>{man}</span><small class="mfx" id="mBudgetFx"></small></div><div class="mchips" id="mBudgetQ"></div></div></div>
     <div class="mrow"><label>{lWard}<small>{lWardS}</small></label><div id="mWards"></div></div>
     <div class="mrow"><label>{lSize}<small id="mBandS">{lSizeS}</small></label><div class="mchips" id="mBand"></div></div>
@@ -171,8 +176,8 @@ TW = dict(
               "{b} 想買 {band}，在你考慮的區域裡目前還有一段差距（最接近的是 {w}）。別灰心，換區、換大小或換屋齡，都能找到適合你的組合——下面有建議。"],
   meter="你考慮的區域中，約 {p}% 的區在預算範圍內",
   adjust=["換到同一條線上再往外 2〜3 站的車站，價格常常差一截", "放寬屋齡（例如 20 年內 → 30 年內），同區同大小選擇會多很多", "大小降一級，或改看建築條件付土地／中古一戶建", "先抓房貸能借多少，預算的上限可能比你想的還高（能不能貸、可貸成數依銀行審查為準）"],
-  secProps="🏠 周周的在售物件裡，最接近你條件的", secPropsSub="依預算、區域、大小、屋齡自動配對；點進去看照片和周周的看法。", noProps="目前在售物件裡沒有剛好符合的，但周周手上還有很多沒公開的物件，加 LINE 跟我說你的條件就好。",
-  whyBudget="預算內", whyBudgetNear="略超預算", whyWard="你選的區", whySize="大小剛好", whyAge="屋齡符合", landTotal="（土地＋建物參考總額）", newBuild="新築", ageY="屋齡{y}年",
+  secProps="🏠 周周的在售物件裡，最接近你條件的", secPropsSub="依預算、區域、大小、屋齡自動配對；同區、大小剛好但超出預算一點點的也會列出來——頭期款或價格都還有空間談，點進去看照片和周周的看法。", noProps="目前在售物件裡沒有剛好符合的，但周周手上還有很多沒公開的物件，加 LINE 跟我說你的條件就好。",
+  whyBudget="預算內", whyBudgetNear="略超預算", whyStretch="再加 {d} 就買得到", uses=["自住", "投資收租"], sumUse="用途：", yieldTag="投資・表面約{y}", meterMaybe="中央值都比預算高一點，但有 {n} 個區有一部分物件落在預算內（下面有列出來）", stickyTxt="把這份結果傳給周周，幫你找物件", stickyBtn="💬 LINE 傳給周周", whyWard="你選的區", whySize="大小剛好", whyAge="屋齡符合", landTotal="（土地＋建物參考總額）", newBuild="新築", ageY="屋齡{y}年",
   fateTitle="你的買房命盤", fateTap="點一下翻開", fateLabel="",
   fateName={"core": "都心菁英格", "sub": "交通樞紐格", "south": "城南綠意格", "east": "下町人情格", "north": "務實安居格"},
   fateDesc={"core": "重視資產價值與地段稀缺性，你買的不只是房子，是東京的門面。", "sub": "效率至上，轉乘一次到哪都快，出租也好租，是攻守兼備的命格。", "south": "喜歡安靜、綠意與生活質感，住得舒服比什麼都重要。", "east": "愛熱鬧也愛人情味，CP 值與生活感兼顧，越住越有味道。", "north": "務實派代表，用合理的預算住進23區，生活機能一樣不打折。"},
@@ -264,8 +269,8 @@ JA.update(
               "{b} で {band} をご希望の場合、ご検討エリアではまだ差があります（最も近いのは {w}）。エリア・広さ・築年数の組み合わせを変えれば、ぴったりの住まいが見つかります。"],
   meter="ご検討エリアのうち約 {p}% の区がご予算の範囲内です",
   adjust=["同じ路線で2〜3駅外側に広げると、価格が大きく変わることがあります", "築年数の条件を少し広げる（例：20年以内→30年以内）と、選択肢が増えます", "広さを一段階下げる、または建築条件付売地・中古戸建もご検討ください", "まずは借入可能額の確認を。ご予算の上限が想定より上がることもあります（融資可否・金額は金融機関の審査によります）"],
-  secProps="🏠 掲載中の物件から、ご条件に近いもの", secPropsSub="ご予算・エリア・広さ・築年数から自動でマッチングしています。", noProps="現在の掲載物件にはぴったりのものがございません。未公開物件もございますので、LINEでご条件をお知らせください。",
-  whyBudget="予算内", whyBudgetNear="予算やや超", whyWard="ご希望エリア", whySize="広さが合う", whyAge="築年数が合う", landTotal="（土地＋建物参考総額）", newBuild="新築", ageY="築{y}年",
+  secProps="🏠 掲載中の物件から、ご条件に近いもの", secPropsSub="ご予算・エリア・広さ・築年数から自動でマッチングしています。同じエリア・広さでご予算を少し上回る物件も、ご参考までに表示しています。", noProps="現在の掲載物件にはぴったりのものがございません。未公開物件もございますので、LINEでご条件をお知らせください。",
+  whyBudget="予算内", whyBudgetNear="予算やや超", whyStretch="あと{d}でご検討可", uses=["ご自宅用", "投資用"], sumUse="ご用途：", yieldTag="投資用・表面約{y}", meterMaybe="中央値はご予算を上回りますが、{n}区ではご予算内の物件も一部ございます（下記参照）", stickyTxt="診断結果を周周にお送りいただけます", stickyBtn="💬 LINEで送る", whyWard="ご希望エリア", whySize="広さが合う", whyAge="築年数が合う", landTotal="（土地＋建物参考総額）", newBuild="新築", ageY="築{y}年",
   fateTitle="あなたの住まい運命盤", fateTap="タップして開く",
   fateName={"core": "都心エリート型", "sub": "交通ハブ型", "south": "城南グリーン型", "east": "下町ぬくもり型", "north": "堅実くらし型"},
   fateDesc={"core": "資産価値と立地の希少性を重視するタイプ。東京の「顔」となる住まいがお似合いです。", "sub": "効率重視。どこへでも一回の乗換えで行け、賃貸需要も強い攻守のバランス型です。", "south": "静けさと緑、暮らしの質を大切にするタイプ。住み心地を最優先に。", "east": "にぎわいと人情を愛するタイプ。コスパと生活感を両立できます。", "north": "堅実派。手頃な予算で23区に住み、生活利便性も妥協しません。"},
@@ -338,15 +343,15 @@ PAGE = {
    desc='輸入預算、地區、大小或屋齡，任填一項就能分析：這個預算在東京23區各區買得到多大、各區行情中央值，並自動配對周周的在售物件；全部填寫還有趣味的「買房命盤」。資料來自SUUMO相場與官方地價公示。',
    ogt='東京買房定位分析｜周周・日本房仲',
    kick='🔮 免費・買房定位分析', h1='我的預算，在東京能買<span>什麼樣的房子</span>？',
-   lead='預算、地區、大小、屋齡——<b>任填一項</b>就能開始分析；公寓、一戶建、土地都可以，不知道預算也能用年收入推算。全部填寫，還能打開你的「買房命盤」。用 SUUMO 相場與官方地價公示做底，再幫你從周周的在售物件裡配對。',
-   lType='🏠 想買什麼', lTypeS='不選＝用公寓行情分析', loanSum='💴 不知道預算多少？用年收入幫你推算 →', lInc='💴 年收入', lIncS='稅前・夫妻可合計', phInc='例如 800', lDown='👛 自備款', lDownS='能拿出來的現金', phDown='例如 1000', lAgeP='🎂 年齡', phAgeP='例如 35', lRes='🛂 身分', lRate='📈 試算利率', lRateS='預設＝Flat35 當月利率', lBudget='💰 預算', lBudgetS='總價（萬円）', phBudget='例如 8000', lWard='📍 地區', lWardS='可複選', lSize='📏 大小', lSizeS='專有面積', lAge='🏗️ 屋齡', lAgeS='', advSum='＋ 進階（趣味命盤用，可不填）', lPeople='👨‍👩‍👧 幾個人住', lPet='🐾 毛孩', reset='全部清除', skip='不想填表？', skipA='直接加 LINE 問周周 →', T=TW),
+   lead='預算、地區、大小、屋齡——<b>任填一項</b>就能開始分析；公寓、一戶建、土地都可以。全部填寫，還能打開你的「買房命盤」。用 SUUMO 相場與官方地價公示做底，再幫你從周周的在售物件裡配對。',
+   lType='🏠 想買什麼', lTypeS='不選＝用公寓行情分析', lUse='🎯 用途', lUseS='自住還是投資收租？可不選', loanSum='💴 不知道預算多少？用年收入幫你推算 →', lInc='💴 年收入', lIncS='稅前・夫妻可合計', phInc='例如 800', lDown='👛 自備款', lDownS='能拿出來的現金', phDown='例如 1000', lAgeP='🎂 年齡', phAgeP='例如 35', lRes='🛂 身分', lRate='📈 試算利率', lRateS='預設＝Flat35 當月利率', lBudget='💰 預算', lBudgetS='總價（萬円）', phBudget='例如 8000', lWard='📍 地區', lWardS='可複選', lSize='📏 大小', lSizeS='專有面積', lAge='🏗️ 屋齡', lAgeS='', advSum='＋ 進階（趣味命盤用，可不填）', lPeople='👨‍👩‍👧 幾個人住', lPet='🐾 毛孩', reset='全部清除', skip='不想填表？', skipA='直接加 LINE 問周周 →', T=TW),
  'ja': dict(src='tokyo-area-guide-ja.html', out=SLUG + '-ja.html',
    title='東京の住まい診断｜ご予算で狙える区と広さがわかる｜周周・日本の不動産',
    desc='ご予算・エリア・広さ・築年数のいずれか一つから診断できます。東京23区各区で狙える広さや相場の中央値を表示し、掲載中の物件から自動でマッチング。すべて入力すると「住まい運命盤」も。SUUMO相場と公的な地価公示をもとにしています。',
    ogt='東京の住まい診断｜周周・日本の不動産',
    kick='🔮 無料・住まい診断', h1='このご予算で、東京で<span>どんな住まい</span>が狙える？',
-   lead='ご予算・エリア・広さ・築年数——<b>どれか一つ</b>から診断できます。マンション・一戸建て・土地に対応し、ご予算が未定でも年収から試算できます。すべて入力すると「住まい運命盤」も。SUUMO相場と地価公示をもとに、掲載物件からもマッチングいたします。',
-   lType='🏠 種別', lTypeS='未選択はマンション相場で診断', loanSum='💴 ご予算が分からない方は、年収から試算 →', lInc='💴 年収', lIncS='税込・ご夫婦合算可', phInc='例：800', lDown='👛 自己資金', lDownS='頭金に充てられる現金', phDown='例：1000', lAgeP='🎂 年齢', phAgeP='例：35', lRes='🛂 お立場', lRate='📈 試算金利', lRateS='初期値＝フラット35 当月金利', lBudget='💰 ご予算', lBudgetS='総額（万円）', phBudget='例：8000', lWard='📍 エリア', lWardS='複数選択可', lSize='📏 広さ', lSizeS='専有面積', lAge='🏗️ 築年数', lAgeS='', advSum='＋ 詳細（運命盤用・任意）', lPeople='👨‍👩‍👧 ご家族の人数', lPet='🐾 ペット', reset='すべてクリア', skip='入力が面倒な方は', skipA='LINEで直接ご相談ください →', T=JA),
+   lead='ご予算・エリア・広さ・築年数——<b>どれか一つ</b>から診断できます。マンション・一戸建て・土地に対応しています。すべて入力すると「住まい運命盤」も。SUUMO相場と地価公示をもとに、掲載物件からもマッチングいたします。',
+   lType='🏠 種別', lTypeS='未選択はマンション相場で診断', lUse='🎯 ご用途', lUseS='ご自宅用・投資用（任意）', loanSum='💴 ご予算が分からない方は、年収から試算 →', lInc='💴 年収', lIncS='税込・ご夫婦合算可', phInc='例：800', lDown='👛 自己資金', lDownS='頭金に充てられる現金', phDown='例：1000', lAgeP='🎂 年齢', phAgeP='例：35', lRes='🛂 お立場', lRate='📈 試算金利', lRateS='初期値＝フラット35 当月金利', lBudget='💰 ご予算', lBudgetS='総額（万円）', phBudget='例：8000', lWard='📍 エリア', lWardS='複数選択可', lSize='📏 広さ', lSizeS='専有面積', lAge='🏗️ 築年数', lAgeS='', advSum='＋ 詳細（運命盤用・任意）', lPeople='👨‍👩‍👧 ご家族の人数', lPet='🐾 ペット', reset='すべてクリア', skip='入力が面倒な方は', skipA='LINEで直接ご相談ください →', T=JA),
 }
 
 for lang, P in PAGE.items():
