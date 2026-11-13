@@ -76,6 +76,9 @@ CSS = r"""
 .mskip{text-align:center;font-size:13.5px;color:var(--mut);margin-top:12px}.mskip a{color:#06c755;font-weight:800}
 .mlk{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:10px}.mlk a{display:flex;justify-content:space-between;align-items:center;border:1.5px solid #bbf7d0;background:#f0fdf4;border-radius:12px;padding:10px 13px;font-size:14px}.mlk a span{color:#15803d;font-weight:800;font-size:12.5px}.mlk a:hover{background:#dcfce7}
 .mconf{position:fixed;inset:0;pointer-events:none;z-index:500}
+.mtile.maybe{opacity:.62;border:1.5px dashed rgba(0,0,0,.18)}
+.mlow{text-align:center;background:linear-gradient(135deg,#fff7ed,#fff1f2)}.mlow p{font-size:14.5px;color:#44403c;max-width:620px;margin:6px auto 0;line-height:1.8}
+a.mlinea{display:inline-block;color:#fff;text-decoration:none;margin-top:14px}
 .mfx{display:block;font-size:11.5px;color:#78716c;font-weight:500;line-height:1.5}
 .mtab .mfx{font-size:11px}#mBudgetFx{display:inline;margin-left:2px}
 .mpb .mpm{display:block;font-size:12.5px;color:#0f766e;font-weight:700}
@@ -111,14 +114,6 @@ BODY = """<div class="wrap">
   <div class="mform">
     <div class="mrow"><label>{lType}<small>{lTypeS}</small></label><div class="mchips" id="mType"></div></div>
     <div class="mrow"><label>{lBudget}<small>{lBudgetS}</small></label><div><div class="mbud"><input id="mBudget" inputmode="numeric" placeholder="{phBudget}"><span>{man}</span><small class="mfx" id="mBudgetFx"></small></div><div class="mchips" id="mBudgetQ"></div></div></div>
-    <details class="madv mloan" id="mLoanBox"><summary>{loanSum}</summary>
-      <div class="mrow"><label>{lInc}<small>{lIncS}</small></label><div class="mbud"><input id="mInc" inputmode="numeric" placeholder="{phInc}"><span>{man}</span></div></div>
-      <div class="mrow"><label>{lDown}<small>{lDownS}</small></label><div class="mbud"><input id="mDown" inputmode="numeric" placeholder="{phDown}"><span>{man}</span></div></div>
-      <div class="mrow"><label>{lAgeP}</label><div class="mbud"><input id="mAgeP" inputmode="numeric" placeholder="{phAgeP}"><span>{sai}</span></div></div>
-      <div class="mrow"><label>{lRes}</label><div class="mchips" id="mRes"></div></div>
-      <div class="mrow"><label>{lRate}<small id="mRateS">{lRateS}</small></label><div class="mbud"><input id="mRate" inputmode="decimal"><span>%</span></div></div>
-      <div class="mloanout" id="mLoanOut"></div>
-    </details>
     <div class="mrow"><label>{lWard}<small>{lWardS}</small></label><div id="mWards"></div></div>
     <div class="mrow"><label>{lSize}<small id="mBandS">{lSizeS}</small></label><div class="mchips" id="mBand"></div></div>
     <div class="mrow" id="mAgeRow"><label>{lAge}<small>{lAgeS}</small></label><div class="mchips" id="mAge"></div></div>
@@ -152,7 +147,7 @@ TW = dict(
   bandShort=["〜40㎡", "40〜60㎡", "60〜80㎡", "80〜100㎡", "100㎡〜"],
   ages=["新築", "屋齡10年內", "屋齡20年內", "屋齡30年內", "屋齡不拘"],
   people=["1人", "2人", "3人", "4人以上"], pet=["有養／想養", "沒有"],
-  budgetQuick=[3000, 5000, 8000, 10000, 15000, 20000],
+  budgetQuick=[1500, 2000, 3000, 5000, 8000, 10000, 15000, 20000],
   go="開始分析 🔮", goFull="打開我的買房命盤 ✨", filled="已填 {n}／4 項（不填也可以）", needOne="至少選一個條件，周周才知道從哪裡幫你看喔～",
   loading=["周周正在翻 23 區的行情…", "正在比對 23 區、5 種大小的中央值…", "水晶球轉一下，馬上好…"],
   yourInput="你的條件：",
@@ -232,6 +227,11 @@ TW.update(
   cardBudget="預算", cardType="類型", cardWard="地區", cardSize="大小", cardVerdict="定位", cardLucky="幸運區", cardFoot="免費測測看，你的預算能買哪一區 👇",
   sumType="類型：", sumLoan="年收 {i}／自備 {d}／{a} 歲／{r}",
   res=["住日本・永住者", "住日本・非永住", "住在海外"], sai="歲",
+)
+TW.update(
+  lowTitle="💬 1,000萬円以下，在東京 23 區比較難", lowTxt="以目前的行情來看，東京 23 區內 1,000萬円以下的公寓非常少，多半是很小的套房或屋齡很高的物件。建議把預算提高到 1,500萬円以上再試一次；或直接加 LINE 跟周周聊，我幫你看看有沒有適合的選擇。",
+  lineBtn="💬 加 LINE 問周周", chanceAt="部分物件 {m} 起", chanceNote="淡色的區＝價格中央值超過預算，但有一部分物件落在你的預算內，值得一起找找看。",
+  noResult="這個條件從行情數據裡比較難直接找到答案——加 LINE 告訴周周你的需求，我幫你一對一找。",
 )
 JA = dict(TW)
 JA.update(
@@ -324,6 +324,12 @@ JA.update(
   res=["日本在住・永住者", "日本在住・永住許可なし", "海外在住"], sai="歳",
   rateLbl="初期値＝フラット35 {ym}",
   sources="📚 データ出典：中古マンション価格＝SUUMO 中古マンション価格相場（SUUMO掲載物件の価格中央値、各駅徒歩15分以内、{d}取得）、戸建・土地＝SUUMO 新築／中古一戸建て・土地価格相場（同日取得）、金利初期値＝住宅金融支援機構 フラット35 {ym}最頻金利（融資率9割以下）、地価＝東京都財務局「令和8年地価公示」、人口＝東京都総務局統計部「東京都の人口（推計）」令和8年10月1日現在。掲載価格は成約価格とは異なります。融資の可否・金額は金融機関の審査によります。税務は税理士にご確認ください。本診断は一般的な参考情報であり、投資助言ではありません。",
+)
+
+JA.update(
+  lowTitle="💬 1,000万円以下は、東京23区内では難しい状況です", lowTxt="現在の相場では、東京23区内で1,000万円以下の物件は非常に少なく、多くはコンパクトなお部屋や築年数の古い物件です。ご予算を1,500万円以上に設定して再度お試しいただくか、LINEで直接ご相談ください。ご希望に合う選択肢をお探しいたします。",
+  lineBtn="💬 LINEで相談する", chanceAt="一部の物件は{m}から", chanceNote="色の薄い区は、価格中央値はご予算を超えますが、ご予算内の物件も一部ございます。",
+  noResult="このご条件は相場データだけでは判断が難しいため、LINEでご希望をお知らせください。個別にお探しいたします。",
 )
 
 PAGE = {

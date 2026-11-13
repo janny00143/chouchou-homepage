@@ -166,7 +166,7 @@
     chips($("#mAge"), T.ages.map(function (h, i) { return { v: i, h: h }; }), "age");
     chips($("#mPeople"), T.people.map(function (h, i) { return { v: i, h: h }; }), "people");
     chips($("#mPet"), T.pet.map(function (h, i) { return { v: i, h: h }; }), "pet");
-    chips($("#mRes"), T.res.map(function (h, i) { return { v: i, h: h }; }), "res");
+    if ($("#mRes")) chips($("#mRes"), T.res.map(function (h, i) { return { v: i, h: h }; }), "res");
     $("#mBudgetQ").innerHTML = T.budgetQuick.map(function (v) { return '<button type="button" class="mc" data-v="' + v + '">' + fmtMan(v) + '</button>'; }).join("");
     $("#mBudgetQ").addEventListener("click", function (e) { var b = e.target.closest(".mc"); if (!b) return; var v = +b.getAttribute("data-v"); st.budget = st.budget === v ? null : v; paint(); });
     var rs = $("#mRateS"); if (rs && T.rateLbl) rs.textContent = fmt(T.rateLbl, { ym: YM });
@@ -291,14 +291,21 @@
       return { c: c, best: best };
     });
     var can = all.filter(function (r) { return r.best >= 0; }).sort(function (a, b) { return b.best - a.best || W[b.c].land - W[a.c].land; });
-    var cannot = all.filter(function (r) { return r.best < 0; });
+    /* 中央值買不到、但價格帶下限落在預算內的區＝「有機會」（周周：1,000〜2,000萬其實有物件） */
+    var maybe = all.filter(function (r) { return r.best < 0; }).map(function (r) {
+      var w = DATA().wards[r.c], hit = null; if (w) for (var b = 0; b < nb(); b++) { var x = w.bands[b]; if (x && x.n >= 1 && x.lo != null && x.lo <= B) { hit = { b: b, lo: x.lo }; break; } }
+      return hit ? { c: r.c, b: hit.b, lo: hit.lo } : null; }).filter(Boolean).sort(function (a, b) { return a.lo - b.lo; });
+    var cannot = all.filter(function (r) { return r.best < 0 && !maybe.some(function (x) { return x.c === r.c; }); });
     h = '<div class="msec"><h3>' + T.secBudget + '</h3><p class="msub">' + fmt(T.secBudgetSub, { b: fmtMan(B), noun: T.typeNoun[TY()] }) + '</p><div class="mgrid">';
     h += can.map(function (r) {
       var m = med(r.c, r.best);
       return '<div class="mtile z-' + W[r.c].zone + '"><b>' + T.wardNames[r.c] + '</b><span class="big">' + shortL()[r.best] + '</span><small>' + fmt(T.medAt, { m: fmtMan(m) }) + '</small></div>';
     }).join("");
+    h += maybe.map(function (r) { return '<div class="mtile maybe z-' + W[r.c].zone + '"><b>' + T.wardNames[r.c] + '</b><span class="big">' + shortL()[r.b] + '</span><small>' + fmt(T.chanceAt, { m: fmtMan(r.lo) }) + '</small></div>'; }).join("");
     h += cannot.map(function (r) { return '<div class="mtile off"><b>' + T.wardNames[r.c] + '</b><span class="big">—</span><small>' + T.outOfReach + '</small></div>'; }).join("");
-    return h + '</div></div>';
+    h += '</div>' + (maybe.length ? '<p class="mnote">' + T.chanceNote + '</p>' : '') + '</div>';
+    if (!can.length && !maybe.length) h += secNoResult();
+    return h;
   }
   function secWard() {
     var ws = st.wards.slice(0, 3), isLand = TY() === "land";
@@ -351,7 +358,7 @@
   }
   function secProps() {
     var sc = PROPS.map(scoreProp).filter(function (r) { return r && r.s > 0; }).sort(function (a, b) { return b.s - a.s; }).slice(0, 6);
-    if (!sc.length) return '<div class="msec"><h3>' + T.secProps + '</h3><p class="msub">' + T.noProps + '</p></div>';
+    if (!sc.length) return '<div class="msec"><h3>' + T.secProps + '</h3><p class="msub">' + T.noProps + '</p>' + lineBtn() + '</div>';
     var sfx = T.sfx, L = loanCalc(), own = L && !L.tooOld && L.ltv;
     return '<div class="msec"><h3>' + T.secProps + '</h3><p class="msub">' + T.secPropsSub + '</p><div class="mprops">' + sc.map(function (r) {
       var p = r.x.p, ph = (p.photos && p.photos[0]) || "", t = T.lang === "ja" ? p.title : (p.title_cn || p.title);
@@ -369,7 +376,9 @@
   var BS = { ms: "011", hnew: "020", hused: "021", land: "030" }, AP = { ms: ["mb", "mt"], hnew: ["hb", "ht"], hused: ["hb", "ht"], land: ["tb", "tt"] };
   function suumoUrl(c) {
     var t = TY(), R = RANGES[t], u = "https://suumo.jp/jj/bukken/ichiran/JJ012FC001/?ar=030&bs=" + BS[t] + "&ta=13&sc=" + c + "&pc=30";
-    if (st.budget) u += "&kb=1&kt=" + Math.round(st.budget * 1.05);
+    /* SUUMO 的價格上限只接受固定值（500〜8000 每 500、9000、10000、12000），其他數字會跳錯誤頁（周周 2026-11-13：連結都不能用） */
+    if (st.budget) { var want = st.budget * 1.05, KT = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 9000, 10000, 12000];
+      for (var k = 0; k < KT.length; k++) if (KT[k] >= want) { u += "&kt=" + KT[k]; break; } }
     if (st.band != null) { u += "&" + AP[t][0] + "=" + R[st.band][0]; if (R[st.band][1] < 9999) u += "&" + AP[t][1] + "=" + R[st.band][1]; }
     if (st.age != null && st.age < 4 && (t === "ms" || t === "hused")) u += "&cn=" + [1, 10, 20, 30][st.age];
     return u;
@@ -380,6 +389,11 @@
       return CODES.map(function (c) { var m = med(c, b); return { c: c, m: m }; }).filter(function (r) { return r.m != null && (!st.budget || r.m <= st.budget * 1.1); })
         .sort(function (a, b) { return st.budget ? (W[b.c].land - W[a.c].land) : (a.m - b.m); }).slice(0, 6).map(function (r) { return r.c; });
     })();
+    if (!ws.length && st.budget) {
+      /* 中央值都買不到時，改挑「有一部分物件在預算內」的區（價格帶下限最低的 6 區） */
+      ws = CODES.map(function (c) { var w = DATA().wards[c], lo = null; if (w) w.bands.forEach(function (x) { if (x && x.lo != null && (lo == null || x.lo < lo)) lo = x.lo; }); return { c: c, lo: lo }; })
+        .filter(function (r) { return r.lo != null && r.lo <= st.budget; }).sort(function (a, b) { return a.lo - b.lo; }).slice(0, 6).map(function (r) { return r.c; });
+    }
     if (!ws.length) return "";
     return '<div class="msec"><h3>' + T.secLinks + '</h3><p class="msub">' + fmt(T.secLinksSub, { noun: T.typeNoun[TY()] }) + '</p><div class="mlk">' + ws.map(function (c) {
       return '<a href="' + suumoUrl(c) + '" target="_blank" rel="noopener nofollow" onclick="try{gtag(\'event\',\'match_suumo\')}catch(e){}"><b>' + T.wardNames[c] + '</b><span>' + T.linksBtn + ' ↗</span></a>';
@@ -460,6 +474,11 @@
   }
   window.__matchCard = drawCard;   // 給自動測試截圖用
 
+  var LINE_URL = "https://lin.ee/RscRWCp";
+  function lineBtn() { return '<a class="mline mlinea" href="' + LINE_URL + '" target="_blank" rel="noopener" onclick="try{gtag(\'event\',\'line_click\',{from:\'match\'})}catch(e){}">' + T.lineBtn + '</a>'; }
+  /* 周周 2026-11-13：「填寫低於1000萬的就直接說在東京23區內難，請提高預算」「分析不出來就讓它私訊我，放進LINE連結」 */
+  function secLow() { return '<div class="msec mlow"><h3>' + T.lowTitle + '</h3><p>' + T.lowTxt + '</p>' + lineBtn() + '</div>'; }
+  function secNoResult() { return '<div class="msec mlow"><p>' + T.noResult + '</p>' + lineBtn() + '</div>'; }
   function secCta() {
     return '<div class="msec mcta"><h3>' + T.ctaTitle + '</h3><p>' + T.ctaTxt + '</p><button type="button" class="mline" id="mSend">' + T.ctaBtn + '</button>' +
       '<div class="mlinks">' + T.links.map(function (l) { return '<a href="' + l[1] + '">' + l[0] + '</a>'; }).join("") + '</div></div>' +
@@ -483,7 +502,6 @@
   function query() {
     var q = [], add = function (k, v) { if (v != null && v !== "" && !(Array.isArray(v) && !v.length)) q.push(k + "=" + (Array.isArray(v) ? v.join(",") : v)); };
     add("t", st.type); add("b", st.budget); add("w", st.wards); add("s", st.band); add("a", st.age); add("p", st.people); add("pet", st.pet);
-    add("i", st.inc); add("d", st.down); add("g", st.ageP); add("r", st.res); if (st.rate && st.rate !== RATE_DEF) add("rt", st.rate);
     return q.join("&");
   }
   function fromQuery() {
@@ -491,10 +509,8 @@
       var u = new URLSearchParams(location.search), g = function (k) { var v = u.get(k); return v === null || v === "" || isNaN(+v) ? null : +v; };
       var t = u.get("t"); st.type = RANGES[t] && (t === "ms" || (S.types && S.types[t])) ? t : null;
       st.budget = g("b"); st.band = g("s"); st.age = g("a"); st.people = g("p"); st.pet = g("pet");
-      st.inc = g("i"); st.down = g("d"); st.ageP = g("g"); st.res = g("r"); st.rate = g("rt");
       st.wards = (u.get("w") || "").split(",").filter(function (c) { return W[c]; });
       if (st.band != null && st.band >= nb()) st.band = null;
-      if (st.inc && !st.budget) { var L = loanCalc(); if (L && L.price) st.budget = L.price; }
       return filled() > 0;
     } catch (e) { return false; }
   }
@@ -529,8 +545,8 @@
     out.scrollIntoView({ behavior: "smooth", block: "start" });
     setTimeout(function () {
       var h = '<div class="mhead"><span>' + T.yourInput + '</span>' + [st.type ? T.typeNames[st.type] : null, st.budget ? fmtMan(st.budget) : null, st.wards.length ? st.wards.map(function (c) { return T.wardNames[c]; }).join("・") : null, st.band != null ? bandsL()[st.band] : null, st.age != null ? T.ages[st.age] : null].filter(Boolean).map(function (s) { return '<b>' + s + '</b>'; }).join("") + '</div>';
+      if (st.budget && st.budget < 1000) { out.innerHTML = h + secLow() + secCta(); $$(".msec", out).forEach(function (el) { el.classList.add("in"); }); var s0 = $("#mSend"); if (s0) s0.addEventListener("click", sendLine); saveLead(); return; }
       if (st.budget && st.band != null) h += secVerdict();
-      h += secLoan();
       h += secMap();
       if (st.budget && !(st.wards.length && st.wards.length <= 3 && st.band != null)) h += secBudget();
       if (st.wards.length && st.wards.length <= 3) h += secWard();
