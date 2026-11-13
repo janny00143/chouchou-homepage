@@ -99,13 +99,13 @@ a.mlinea{display:inline-block;color:#fff;text-decoration:none;margin-top:14px}
 .mlnote{font-size:12.5px;color:#57534e;line-height:1.75;margin:12px 0 0;padding-left:18px}
 .mlcta{margin-top:10px;font-size:14px;font-weight:700;color:#065f46;background:#ecfdf5;border-radius:12px;padding:10px 12px}
 .mvm{margin-top:8px;font-size:14.5px;font-weight:800;color:#0f766e}.mvm .mfx{display:inline}
-.mmap{width:100%;height:auto;max-height:560px;display:block;margin:10px auto 0}
+.mmap{width:100%;height:auto;max-height:760px;display:block;margin:10px auto 0}.mz.mzo .mc{border-style:dashed}
 .mmp path{stroke:#fff;stroke-width:1.4;cursor:pointer}.mmsel path{fill:none;stroke:#7c3aed;stroke-width:3.4;stroke-linejoin:round;pointer-events:none}.mmhv{fill:none;stroke:#1c1917;stroke-width:2.8;stroke-linejoin:round;pointer-events:none}
 .mmt text{font-size:15px;font-weight:800;fill:#1c1917;text-anchor:middle;dominant-baseline:middle;pointer-events:none;paint-order:stroke;stroke:rgba(255,255,255,.85);stroke-width:3px}
 .mmleg{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;font-size:12.5px}.mmleg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
 .mminfo{text-align:center;margin-top:8px;font-size:14px;font-weight:700;color:#44403c;min-height:22px}
 .mshare{text-align:center;margin-top:16px}.mshare button{background:linear-gradient(135deg,#fde68a,#fbcfe8);color:#4c1d95;border:0;border-radius:999px;padding:11px 24px;font-weight:900;font-size:15px;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-@media(max-width:640px){.mz{margin-bottom:10px}.mzl{flex-basis:100%;min-width:0;margin-bottom:-2px}.mtab{font-size:12.5px}.mtab th,.mtab td{padding:7px 4px}.mtab th{font-size:11.5px}.mstick span{font-size:12.5px}.mlgrid{grid-template-columns:1fr 1fr}.mloan .mrow{grid-template-columns:1fr;gap:6px}.mmt text{font-size:20px}.mrow{grid-template-columns:1fr;gap:6px}.mhero h1{font-size:24px}.mbar{grid-template-columns:78px 1fr 84px;font-size:12.5px}.mfrow{grid-template-columns:1fr}.mvt{font-size:26px}}
+@media(max-width:640px){.mmap{width:calc(100% + 24px);max-width:none;margin:10px -12px 0}.mmt text{font-size:24px!important}.mz{margin-bottom:10px}.mzl{flex-basis:100%;min-width:0;margin-bottom:-2px}.mtab{font-size:12.5px}.mtab th,.mtab td{padding:7px 4px}.mtab th{font-size:11.5px}.mstick span{font-size:12.5px}.mlgrid{grid-template-columns:1fr 1fr}.mloan .mrow{grid-template-columns:1fr;gap:6px}.mmt text{font-size:20px}.mrow{grid-template-columns:1fr;gap:6px}.mhero h1{font-size:24px}.mbar{grid-template-columns:78px 1fr 84px;font-size:12.5px}.mfrow{grid-template-columns:1fr}.mvt{font-size:26px}}
 """
 
 BODY = """<div class="wrap">
@@ -147,7 +147,7 @@ TW = dict(
   lang="tw", sfx="", man="萬円", oku="億",
   wardNames={c: TW_FIX.get(n, n) + "區" for c, n in zip(CODES, JA_NAMES)},
   wardJa={c: n + "区" for c, n in zip(CODES, JA_NAMES)},
-  zones={"core": "都心", "sub": "副都心", "south": "城南・城西", "east": "城東", "north": "城北"},
+  zones={"core": "都心", "sub": "副都心", "south": "城南・城西", "east": "城東", "north": "城北"}, outerZone="23區以外", outerNames={"kng": "橫濱・川崎（神奈川）", "oth": "東京都下・埼玉・千葉", "kan": "大阪・京都"}, secOuter="📍 23區以外：周周手上的物件", secOuterSub="23 區以外的城市，行情差異很大，用平均數反而會誤導，所以這裡不做行情分析，直接列出周周手上符合你條件的物件。想找哪一帶，LINE 跟我說，我用實際成交行情幫你看。", outerNone="這一帶目前沒有公開中的物件，不過周周可以幫你找——LINE 告訴我想要的地點和預算就好。", sumOuter="23區以外：",
   bands=["約40㎡以下（1R〜1LDK）", "40〜60㎡（1LDK〜2LDK）", "60〜80㎡（2LDK〜3LDK）", "80〜100㎡（3LDK〜4LDK）", "100㎡以上（4LDK〜）"],
   bandShort=["〜40㎡", "40〜60㎡", "60〜80㎡", "80〜100㎡", "100㎡〜"],
   ages=["新築", "屋齡10年內", "屋齡20年內", "屋齡30年內", "屋齡不拘"],
@@ -242,7 +242,7 @@ JA = dict(TW)
 JA.update(
   lang="ja", sfx="-ja", man="万円", oku="億",
   wardNames={c: n + "区" for c, n in zip(CODES, JA_NAMES)},
-  zones={"core": "都心", "sub": "副都心", "south": "城南・城西", "east": "城東", "north": "城北"},
+  zones={"core": "都心", "sub": "副都心", "south": "城南・城西", "east": "城東", "north": "城北"}, outerZone="23区外", outerNames={"kng": "横浜・川崎（神奈川）", "oth": "東京都下・埼玉・千葉", "kan": "大阪・京都"}, secOuter="📍 23区外：周周の掲載物件", secOuterSub="23区外は市ごとに相場の差が大きく、平均値ではかえって誤解を招くため、相場診断は行わず、ご条件に合う掲載物件をご紹介しています。ご希望のエリアはLINEでお知らせください。実際の成約データをもとにお調べいたします。", outerNone="このエリアは現在公開中の物件がございません。ご希望の場所とご予算をLINEでお知らせいただければ、お探しいたします。", sumOuter="23区外：",
   bands=["約40㎡以下（1R〜1LDK）", "40〜60㎡（1LDK〜2LDK）", "60〜80㎡（2LDK〜3LDK）", "80〜100㎡（3LDK〜4LDK）", "100㎡以上（4LDK〜）"],
   ages=["新築", "築10年以内", "築20年以内", "築30年以内", "築年数こだわらない"],
   people=["1人", "2人", "3人", "4人以上"], pet=["飼っている／飼いたい", "なし"],

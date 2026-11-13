@@ -40,7 +40,7 @@
   function ga(n, x) { try { if (typeof gtag === "function") gtag("event", n, x || {}); } catch (e) { } }
 
   /* ── 狀態 ── */
-  function blank() { return { use: null, type: null, budget: null, wards: [], band: null, age: null, people: null, pet: null, inc: null, down: null, ageP: null, res: null, rate: null }; }
+  function blank() { return { outer: [], use: null, type: null, budget: null, wards: [], band: null, age: null, people: null, pet: null, inc: null, down: null, ageP: null, res: null, rate: null }; }
   var st = blank();
   function TY() { return st.type || "ms"; }
   function DATA() { var t = TY(); return t === "ms" ? S : (S.types && S.types[t]) || S; }
@@ -131,7 +131,7 @@
     renderBand();
   }
   function paint() {
-    $$("#mWards .mc").forEach(function (b) { b.classList.toggle("on", st.wards.indexOf(b.getAttribute("data-v")) >= 0); });
+    $$("#mWards .mc").forEach(function (b) { var o = b.getAttribute("data-o"); b.classList.toggle("on", o ? st.outer.indexOf(o) >= 0 : st.wards.indexOf(b.getAttribute("data-v")) >= 0); });
     [["#mType", "type"], ["#mUse", "use"], ["#mBand", "band"], ["#mAge", "age"], ["#mPeople", "people"], ["#mPet", "pet"], ["#mRes", "res"]].forEach(function (x) {
       $$(x[0] + " .mc").forEach(function (b) { b.classList.toggle("on", String(st[x[1]]) === b.getAttribute("data-v")); });
     });
@@ -144,7 +144,7 @@
     $("#mCount").textContent = fmt(T.filled, { n: n });
     loanLine();
   }
-  function filled() { return (st.budget ? 1 : 0) + (st.wards.length ? 1 : 0) + (st.band != null ? 1 : 0) + (st.age != null ? 1 : 0); }
+  function filled() { return (st.budget ? 1 : 0) + (st.wards.length || st.outer.length ? 1 : 0) + (st.band != null ? 1 : 0) + (st.age != null ? 1 : 0); }
   function numIn(sel, key, dec) {
     var el = $(sel); if (!el) return;
     el.addEventListener("input", function () { var v = dec ? parseFloat(String(this.value).replace(/[^\d.]/g, "")) : parseInt(String(this.value).replace(/[^\d]/g, ""), 10); st[key] = v > 0 ? v : null; paint(); });
@@ -155,9 +155,12 @@
     $("#mWards").innerHTML = Object.keys(zones).map(function (z) {
       return '<div class="mz"><span class="mzl">' + zones[z] + '</span>' + CODES.filter(function (c) { return W[c].zone === z; })
         .map(function (c) { return '<button type="button" class="mc" data-v="' + c + '">' + T.wardNames[c] + '</button>'; }).join("") + '</div>';
-    }).join("");
+    }).join("") + (T.outerNames ? '<div class="mz mzo"><span class="mzl">' + T.outerZone + '</span>' + Object.keys(T.outerNames).map(function (k) {
+      return '<button type="button" class="mc" data-o="' + k + '">' + T.outerNames[k] + '</button>'; }).join("") + '</div>' : "");
     $("#mWards").addEventListener("click", function (e) {
-      var b = e.target.closest(".mc"); if (!b) return; var v = b.getAttribute("data-v"), i = st.wards.indexOf(v);
+      var b = e.target.closest(".mc"); if (!b) return; var o = b.getAttribute("data-o");
+      if (o) { var k = st.outer.indexOf(o); if (k >= 0) st.outer.splice(k, 1); else st.outer.push(o); paint(); return; }
+      var v = b.getAttribute("data-v"), i = st.wards.indexOf(v);
       if (i >= 0) st.wards.splice(i, 1); else st.wards.push(v); paint();
     });
     var tys = ["ms", "hnew", "hused", "land"].filter(function (k) { return k === "ms" || (S.types && S.types[k]); });
@@ -195,6 +198,31 @@
     var lm = sz.match(/土地(?:面積)?約?([\d.]+)㎡/), landArea = lm ? +lm[1] : 0;   // 類型選「土地」時用土地面積配對
     return { p: p, code: code, price: price, area: area, landArea: landArea, age: age };
   }).filter(function (x) { return x && x.price > 0; });
+
+  /* 23 區外（周周 2026-11-13：萬一是橫濱或 23 區外的呢）：不做行情分析，只配對周周手上的物件 */
+  var OUTRE = { kng: /神奈川/, oth: /埼玉|千葉|東京都(?![^\s　]{1,4}?[区區])/, kan: /大阪|京都府|京都市/ };   // ⚠️ 不可只寫「京都」：「東京都」裡也有京都兩個字
+  var OUTP = ALLP.map(function (p) {
+    var JL = T.lang === "ja" && window.PROPERTIES_JA && window.PROPERTIES_JA[p.id], loc = String((JL && JL.location) || p.location || ""), k = null;
+    Object.keys(OUTRE).forEach(function (kk) { if (!k && OUTRE[kk].test(loc)) k = kk; });
+    if (!k) return null;
+    var price = parseYen(String(p.price || "").split("\n")[0]); if (!price) return null;
+    var sz = String(p.size || ""), am = sz.match(/(?:專有|専有|建物(?:面積)?)約?([\d.]+)㎡/) || sz.match(/([\d.]+)㎡/), ag = String(p.age || "");
+    var y = ag.match(/(\d{4})年/), place = (loc.match(/(?:縣|県|府|東京都)([^\s　0-9０-９]+?[市])([^\s　0-9０-９]+?[區区])?/) || []);
+    return { p: p, outer: k, place: place[1] ? place[1] + (place[2] || "") : T.outerNames[k], price: price, area: am ? +am[1] : 0, landArea: 0, age: /新築/.test(ag) ? 0 : (y ? Math.max(0, NOW_Y - +y[1]) : null) };
+  }).filter(Boolean);
+  function secOuter() {
+    var list = OUTP.filter(function (x) { return st.outer.indexOf(x.outer) >= 0 && typeOk(x); }).map(function (x) {
+      var s = 0, why = [], stretch = 0;
+      if (st.budget) { var r = x.price / st.budget; if (r <= 1.0) { s += r >= 0.55 ? 4 - (1 - r) * 3 : 0.5; why.push(T.whyBudget); } else if (r <= 1.25) { s += 0.8; stretch = x.price - st.budget; } else return null; }
+      if (st.band != null && x.area) { var d = Math.abs(bandOf(x.area) - st.band); s += d === 0 ? 2.5 : d === 1 ? 0.8 : -1; if (!d) why.push(T.whySize); }
+      if (st.age != null && st.age < 4 && x.age != null && x.age <= AGE_MAX[st.age]) { s += 2; why.push(T.whyAge); }
+      var inv = x.p.cat === "invest"; if (inv) s += st.use === 1 ? 2.5 : st.use === 0 ? -2.5 : -0.8;
+      var y = inv ? String(x.p.yield || "").match(/[\d.]+%/) : null;
+      return { x: x, s: s, why: why, stretch: stretch, yld: y ? y[0] : (inv ? "" : null) };
+    }).filter(Boolean).sort(function (a, b) { return b.s - a.s; }).slice(0, 6);
+    return '<div class="msec"><h3>' + T.secOuter + '</h3><p class="msub">' + T.secOuterSub + '</p>' +
+      (list.length ? '<div class="mprops">' + list.map(propCard).join("") + '</div>' : '<p class="msub">' + T.outerNone + '</p>') + lineBtn() + '</div>';
+  }
 
   function typeOk(x) { var c = x.p.cat; if (!st.type) return true; return st.type === "land" ? c === "land" : st.type === "ms" ? (c === "live" || c === "invest") : c === "house"; }
   function bandOf(a) { var R = RANGES[TY()]; for (var i = 0; i < R.length; i++) if (a >= R[i][0] && a < R[i][1]) return i; return R.length - 1; }
@@ -374,15 +402,16 @@
     var sc = PROPS.map(scoreProp).filter(function (r) { return r && r.s > 0; }).sort(function (a, b) { return b.s - a.s; }).slice(0, 6);
     if (!sc.length) return '<div class="msec"><h3>' + T.secProps + '</h3><p class="msub">' + T.noProps + '</p>' + lineBtn() + '</div>';
     var sfx = T.sfx, L = loanCalc(), own = L && !L.tooOld && L.ltv;
-    return '<div class="msec"><h3>' + T.secProps + '</h3><p class="msub">' + T.secPropsSub + '</p><div class="mprops">' + sc.map(function (r) {
-      var p = r.x.p, ph = (p.photos && p.photos[0]) || "", t = T.lang === "ja" ? p.title : (p.title_cn || p.title);
+    return '<div class="msec"><h3>' + T.secProps + '</h3><p class="msub">' + T.secPropsSub + '</p><div class="mprops">' + sc.map(propCard).join("") + '</div><p class="mnote">' + fmt(own ? T.monthlyNoteOwn : T.monthlyNote, { r: rate(), y: own ? L.yrs : 35 }) + '</p></div>';
+  }
+  function propCard(r) {
+      var sfx = T.sfx, p = r.x.p, ph = (p.photos && p.photos[0]) || "", t = T.lang === "ja" ? p.title : (p.title_cn || p.title);
       return '<a class="mprop" href="prop-' + encodeURIComponent(p.id) + sfx + '.html" onclick="try{gtag(\'event\',\'match_prop_click\')}catch(e){}">' +
         (ph ? '<img src="' + esc(ph) + '" alt="" loading="lazy">' : '<div class="noimg">🏠</div>') +
         '<div class="mpb"><b>' + esc(t) + '</b><span class="pr">' + fmtMan(r.x.price) + (p.cat === "land" ? T.landTotal : "") + '</span>' + fxSpan(r.x.price) +
-        '<span class="mpm">' + monthlyTxt(r.x.price) + '</span><span class="mt">' + T.wardNames[r.x.code] + (r.x.area ? '・' + r.x.area + '㎡' : '') + (r.x.age != null ? '・' + (r.x.age === 0 ? T.newBuild : fmt(T.ageY, { y: r.x.age })) : '') + '</span>' +
+        '<span class="mpm">' + monthlyTxt(r.x.price) + '</span><span class="mt">' + (r.x.code ? T.wardNames[r.x.code] : esc(r.x.place)) + (r.x.area ? '・' + r.x.area + '㎡' : '') + (r.x.age != null ? '・' + (r.x.age === 0 ? T.newBuild : fmt(T.ageY, { y: r.x.age })) : '') + '</span>' +
         (r.yld != null ? '<span class="why iv">' + (r.yld ? fmt(T.yieldTag, { y: r.yld }) : T.uses[1]) + '</span>' : '') +
         (r.stretch ? '<span class="why st">' + fmt(T.whyStretch, { d: fmtMan(r.stretch) }) + '</span>' : r.why.length ? '<span class="why">' + r.why.join("・") + '</span>' : '') + '</div></a>';
-    }).join("") + '</div><p class="mnote">' + fmt(own ? T.monthlyNoteOwn : T.monthlyNote, { r: rate(), y: own ? L.yrs : 35 }) + '</p></div>';
   }
   /* 去 SUUMO 看符合條件的物件（周周 2026-11-12：讓客戶知道他可能有哪些選擇，可以原連結）。
      ⚠️ 不把別家的物件抓下來放在我們網站（廣告規約：未經同意不得刊登他社物件），只給「帶好條件的搜尋連結」。
@@ -505,7 +534,8 @@
     if (st.type) parts.push(T.sumType + T.typeNames[st.type]);
     if (st.use != null) parts.push(T.sumUse + T.uses[st.use]);
     parts.push(T.sumBudget + (st.budget ? fmtMan(st.budget) : T.notSet));
-    parts.push(T.sumWard + (st.wards.length ? st.wards.map(function (c) { return T.wardNames[c]; }).join("、") : T.notSet));
+    parts.push(T.sumWard + (st.wards.length ? st.wards.map(function (c) { return T.wardNames[c]; }).join("、") : st.outer.length ? "—" : T.notSet));
+    if (st.outer.length) parts.push(T.sumOuter + st.outer.map(function (k) { return T.outerNames[k]; }).join("、"));
     parts.push(T.sumSize + (st.band != null ? bandsL()[st.band] : T.notSet));
     if (TY() === "ms" || TY() === "hused") parts.push(T.sumAge + (st.age != null ? T.ages[st.age] : T.notSet));
     if (st.inc) parts.push(fmt(T.sumLoan, { i: fmtMan(st.inc), d: fmtMan(st.down || 0), a: st.ageP || "—", r: st.res != null ? T.res[st.res] : "—" }));
@@ -517,7 +547,7 @@
   }
   function query() {
     var q = [], add = function (k, v) { if (v != null && v !== "" && !(Array.isArray(v) && !v.length)) q.push(k + "=" + (Array.isArray(v) ? v.join(",") : v)); };
-    add("t", st.type); add("u", st.use); add("b", st.budget); add("w", st.wards); add("s", st.band); add("a", st.age); add("p", st.people); add("pet", st.pet);
+    add("t", st.type); add("u", st.use); add("b", st.budget); add("w", st.wards); add("o", st.outer); add("s", st.band); add("a", st.age); add("p", st.people); add("pet", st.pet);
     return q.join("&");
   }
   function fromQuery() {
@@ -526,6 +556,7 @@
       var t = u.get("t"); st.type = RANGES[t] && (t === "ms" || (S.types && S.types[t])) ? t : null;
       st.use = g("u") === 0 || g("u") === 1 ? g("u") : null; st.budget = g("b"); st.band = g("s"); st.age = g("a"); st.people = g("p"); st.pet = g("pet");
       st.wards = (u.get("w") || "").split(",").filter(function (c) { return W[c]; });
+      st.outer = (u.get("o") || "").split(",").filter(function (k) { return T.outerNames && T.outerNames[k]; });
       if (st.band != null && st.band >= nb()) st.band = null;
       return filled() > 0;
     } catch (e) { return false; }
@@ -538,7 +569,7 @@
       import("./member-core.js").then(function (M) {
         return import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(function (F) {
           return F.addDoc(F.collection(M.db, "leads"), { budget: st.budget || 0, wards: st.wards.slice(0, 23), band: st.band == null ? -1 : st.band, age: st.age == null ? -1 : st.age,
-            people: st.people == null ? -1 : st.people, pet: st.pet == null ? -1 : st.pet, verdict: (((st.type ? T.typeNames[st.type].replace(/（.*$/, "") + "｜" : "") + (($(".mvt") || {}).textContent || "")).slice(0, 30)), lang: /-cn\.html$/.test(location.pathname) ? "cn" : T.lang, createdAt: F.serverTimestamp() });
+            people: st.people == null ? -1 : st.people, pet: st.pet == null ? -1 : st.pet, verdict: (((st.outer.length ? T.outerZone + "｜" : "") + (st.type ? T.typeNames[st.type].replace(/（.*$/, "") + "｜" : "") + (($(".mvt") || {}).textContent || "")).slice(0, 30)), lang: /-cn\.html$/.test(location.pathname) ? "cn" : T.lang, createdAt: F.serverTimestamp() });
         });
       }).catch(function () { });
     } catch (e) { }
@@ -578,8 +609,12 @@
     out.innerHTML = '<div class="mload"><div class="orb"><i></i><i></i><i></i></div><p>' + T.loading[Math.floor(Math.random() * T.loading.length)] + '</p></div>';
     out.scrollIntoView({ behavior: "smooth", block: "start" });
     setTimeout(function () {
-      var h = '<div class="mhead"><span>' + T.yourInput + '</span>' + [st.type ? T.typeNames[st.type] : null, st.budget ? fmtMan(st.budget) : null, st.wards.length ? st.wards.map(function (c) { return T.wardNames[c]; }).join("・") : null, st.band != null ? bandsL()[st.band] : null, st.age != null ? T.ages[st.age] : null].filter(Boolean).map(function (s) { return '<b>' + s + '</b>'; }).join("") + '</div>';
+      var h = '<div class="mhead"><span>' + T.yourInput + '</span>' + [st.type ? T.typeNames[st.type] : null, st.budget ? fmtMan(st.budget) : null, st.wards.length ? st.wards.map(function (c) { return T.wardNames[c]; }).join("・") : null, st.outer.length ? st.outer.map(function (k) { return T.outerNames[k]; }).join("・") : null, st.band != null ? bandsL()[st.band] : null, st.age != null ? T.ages[st.age] : null].filter(Boolean).map(function (s) { return '<b>' + s + '</b>'; }).join("") + '</div>';
       if (st.budget && st.budget < 1000) { out.innerHTML = h + secLow() + secCta(); $$(".msec", out).forEach(function (el) { el.classList.add("in"); }); var s0 = $("#mSend"); if (s0) s0.addEventListener("click", sendLine); saveLead(); return; }
+      if (st.outer.length) h += secOuter();
+      var only23out = st.outer.length && !st.wards.length;
+      if (only23out) { h += secCta(); }
+      else {
       if (st.budget && st.band != null) h += secVerdict();
       h += secProps();
       h += secMap();
@@ -590,6 +625,7 @@
       h += secLinks();
       if (n >= 3) h += secFate();
       h += secCta();
+      }
       out.innerHTML = h;
       $$(".msec", out).forEach(function (el, i) { el.style.animationDelay = (i * 0.12) + "s"; el.classList.add("in"); });
       var f = $(".mfcard", out); if (f) { f.addEventListener("click", function () { f.classList.add("open"); ga("match_fate_open"); }); setTimeout(function () { f.classList.add("open"); }, 900 + $$(".msec", out).length * 120); }
