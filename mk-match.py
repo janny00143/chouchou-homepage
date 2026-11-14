@@ -58,6 +58,7 @@ CSS = r"""
 .mprop{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:transform .15s,box-shadow .15s}.mprop:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
 .mprop img,.mprop .noimg{width:100%;height:150px;object-fit:cover;background:#fdf2f4;display:flex;align-items:center;justify-content:center;font-size:30px}
 .mpb{padding:10px 12px 12px}.mpb b{display:block;font-size:14px;line-height:1.5}.mpb .pr{display:block;color:var(--rose-d);font-weight:900;font-size:16px;margin-top:4px}.mpb .mt{display:block;font-size:12.5px;color:var(--mut)}
+.mmem{background:linear-gradient(135deg,#f5f3ff,#fdf2f8);border:1px solid #ddd6fe}.mmem h3{margin-top:0}.mmem a.mmemb{display:inline-block;background:#7c3aed;color:#fff;font-weight:800;border-radius:12px;padding:10px 18px;text-decoration:none;margin-top:4px}
 .mpb .why.st{color:#c2410c;background:#fff7ed}.mpb .why.iv{color:#047857;background:#ecfdf5;margin-right:4px}
 .mstick{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.97);border-top:1px solid #e7e5e4;box-shadow:0 -6px 20px rgba(0,0,0,.06);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:12px;align-items:center;justify-content:center;transform:translateY(120%);transition:transform .3s}
 .mstick.on{transform:none}.mstick span{font-size:13.5px;color:#44403c;font-weight:700;line-height:1.4}.mstick button{background:#06c755;color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:800;font-size:14.5px;white-space:nowrap;cursor:pointer;font-family:inherit}
@@ -177,7 +178,7 @@ TW = dict(
   meter="你考慮的區域中，約 {p}% 的區在預算範圍內",
   adjust=["換到同一條線上再往外 2〜3 站的車站，價格常常差一截", "放寬屋齡（例如 20 年內 → 30 年內），同區同大小選擇會多很多", "大小降一級，或改看建築條件付土地／中古一戶建", "先抓房貸能借多少，預算的上限可能比你想的還高（能不能貸、可貸成數依銀行審查為準）"],
   secProps="🏠 周周的在售物件裡，最接近你條件的", secPropsSub="依預算、區域、大小、屋齡自動配對；同區、大小剛好但超出預算一點點的也會列出來——頭期款或價格都還有空間談，點進去看照片和周周的看法。", noProps="目前在售物件裡沒有剛好符合的，但周周手上還有很多沒公開的物件，加 LINE 跟我說你的條件就好。",
-  whyBudget="預算內", whyBudgetNear="略超預算", whyStretch="再加 {d} 就買得到", uses=["自住", "投資收租"], sumUse="用途：", yieldTag="投資・表面約{y}", meterMaybe="中央值都比預算高一點，但有 {n} 個區有一部分物件落在預算內（下面有列出來）", stickyTxt="把這份結果傳給周周，幫你找物件", stickyBtn="💬 LINE 傳給周周", whyWard="你選的區", whySize="大小剛好", whyAge="屋齡符合", landTotal="（土地＋建物參考總額）", newBuild="新築", ageY="屋齡{y}年",
+  whyBudget="預算內", whyBudgetNear="略超預算", whyStretch="再加 {d} 就買得到", uses=["自住", "投資收租"], sumUse="用途：", yieldTag="投資・表面約{y}", meterMaybe="中央值都比預算高一點，但有 {n} 個區有一部分物件落在預算內（下面有列出來）", memTitle="🔔 把這組條件存起來，有新物件第一時間看到", memTxt="免費加入周周的會員：你的買房條件會存在會員中心，符合條件的新物件一上架就看得到；還送《東京買房 10 步清單》PDF。", memBtn="免費加入會員 →", stickyTxt="把這份結果傳給周周，幫你找物件", stickyBtn="💬 LINE 傳給周周", whyWard="你選的區", whySize="大小剛好", whyAge="屋齡符合", landTotal="（土地＋建物參考總額）", newBuild="新築", ageY="屋齡{y}年",
   fateTitle="你的買房命盤", fateTap="點一下翻開", fateLabel="",
   fateName={"core": "都心菁英格", "sub": "交通樞紐格", "south": "城南綠意格", "east": "下町人情格", "north": "務實安居格"},
   fateDesc={"core": "重視資產價值與地段稀缺性，你買的不只是房子，是東京的門面。", "sub": "效率至上，轉乘一次到哪都快，出租也好租，是攻守兼備的命格。", "south": "喜歡安靜、綠意與生活質感，住得舒服比什麼都重要。", "east": "愛熱鬧也愛人情味，CP 值與生活感兼顧，越住越有味道。", "north": "務實派代表，用合理的預算住進23區，生活機能一樣不打折。"},
@@ -270,7 +271,7 @@ JA.update(
   meter="ご検討エリアのうち約 {p}% の区がご予算の範囲内です",
   adjust=["同じ路線で2〜3駅外側に広げると、価格が大きく変わることがあります", "築年数の条件を少し広げる（例：20年以内→30年以内）と、選択肢が増えます", "広さを一段階下げる、または建築条件付売地・中古戸建もご検討ください", "まずは借入可能額の確認を。ご予算の上限が想定より上がることもあります（融資可否・金額は金融機関の審査によります）"],
   secProps="🏠 掲載中の物件から、ご条件に近いもの", secPropsSub="ご予算・エリア・広さ・築年数から自動でマッチングしています。同じエリア・広さでご予算を少し上回る物件も、ご参考までに表示しています。", noProps="現在の掲載物件にはぴったりのものがございません。未公開物件もございますので、LINEでご条件をお知らせください。",
-  whyBudget="予算内", whyBudgetNear="予算やや超", whyStretch="あと{d}でご検討可", uses=["ご自宅用", "投資用"], sumUse="ご用途：", yieldTag="投資用・表面約{y}", meterMaybe="中央値はご予算を上回りますが、{n}区ではご予算内の物件も一部ございます（下記参照）", stickyTxt="診断結果を周周にお送りいただけます", stickyBtn="💬 LINEで送る", whyWard="ご希望エリア", whySize="広さが合う", whyAge="築年数が合う", landTotal="（土地＋建物参考総額）", newBuild="新築", ageY="築{y}年",
+  whyBudget="予算内", whyBudgetNear="予算やや超", whyStretch="あと{d}でご検討可", uses=["ご自宅用", "投資用"], sumUse="ご用途：", yieldTag="投資用・表面約{y}", meterMaybe="中央値はご予算を上回りますが、{n}区ではご予算内の物件も一部ございます（下記参照）", memTitle="🔔 このご条件を保存して、新着物件をいち早く", memTxt="無料の会員登録で、ご希望条件が会員ページに保存され、条件に近い新着物件をすぐにご確認いただけます。", memBtn="無料で会員登録 →", stickyTxt="診断結果を周周にお送りいただけます", stickyBtn="💬 LINEで送る", whyWard="ご希望エリア", whySize="広さが合う", whyAge="築年数が合う", landTotal="（土地＋建物参考総額）", newBuild="新築", ageY="築{y}年",
   fateTitle="あなたの住まい運命盤", fateTap="タップして開く",
   fateName={"core": "都心エリート型", "sub": "交通ハブ型", "south": "城南グリーン型", "east": "下町ぬくもり型", "north": "堅実くらし型"},
   fateDesc={"core": "資産価値と立地の希少性を重視するタイプ。東京の「顔」となる住まいがお似合いです。", "sub": "効率重視。どこへでも一回の乗換えで行け、賃貸需要も強い攻守のバランス型です。", "south": "静けさと緑、暮らしの質を大切にするタイプ。住み心地を最優先に。", "east": "にぎわいと人情を愛するタイプ。コスパと生活感を両立できます。", "north": "堅実派。手頃な予算で23区に住み、生活利便性も妥協しません。"},

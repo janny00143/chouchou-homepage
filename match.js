@@ -523,6 +523,12 @@
   /* 周周 2026-11-13：「填寫低於1000萬的就直接說在東京23區內難，請提高預算」「分析不出來就讓它私訊我，放進LINE連結」 */
   function secLow() { return '<div class="msec mlow"><h3>' + T.lowTitle + '</h3><p>' + T.lowTxt + '</p>' + lineBtn() + '</div>'; }
   function secNoResult() { return '<div class="msec mlow"><p>' + T.noResult + '</p>' + lineBtn() + '</div>'; }
+  /* 會員入口（周周 2026-11-14 核准提案 2）：還沒登入的人，分析完邀請加入會員；條件已存在 localStorage chou_match_last，會員中心會顯示 */
+  function secMember() {
+    try { if (localStorage.getItem("chou_member") === "1") return ""; } catch (e) { }
+    if (!T.memTitle) return "";
+    return '<div class="msec mmem"><h3>' + T.memTitle + '</h3><p class="msub">' + T.memTxt + '</p><a class="mmemb" href="member' + T.sfx + '.html" onclick="try{gtag(\'event\',\'match_member\')}catch(e){}">' + T.memBtn + '</a></div>';
+  }
   function secCta() {
     return '<div class="msec mcta"><h3>' + T.ctaTitle + '</h3><p>' + T.ctaTxt + '</p><button type="button" class="mline" id="mSend">' + T.ctaBtn + '</button>' +
       '<div class="mlinks">' + T.links.map(function (l) { return '<a href="' + l[1] + '">' + l[0] + '</a>'; }).join("") + '</div></div>' +
@@ -618,6 +624,7 @@
       else {
       if (st.budget && st.band != null) h += secVerdict();
       h += secProps();
+      h += secMember();
       h += secMap();
       if (st.budget && !(st.wards.length && st.wards.length <= 3 && st.band != null)) h += secBudget();
       if (st.wards.length && st.wards.length <= 3) h += secWard();

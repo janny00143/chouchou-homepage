@@ -74,6 +74,7 @@ const FAQ_VIDS = (() => {
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
+  "a68": "send-package-japan-to-taiwan",
   "a67": "japan-house-cold-winter-insulation",
   "a66": "japan-zoning-taiwan-vs-japan",
   "a64": "tokyo-large-garbage-disposal-guide",
@@ -385,6 +386,8 @@ const HEAD_SCRIPTS = `<script>/* 防複製守門：頁面若被開在非本站�
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"><script src="imgguard.js" defer></script>`;
 const SBAR = `<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.webp" alt="" style="height:28px;width:auto;display:block" width="420" height="501">周周・日本房仲</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>`;
+/* 會員見面禮入口（周周 2026-11-14 核准提案：首頁與文章結尾放「免費領 10 步清單」→ 加入會員）。簡中由 build-cn 轉；日文頁沒有。 */
+const GIFT_CARD = `<a class="giftcta" href="member.html" onclick="try{gtag('event','gift_cta',{pos:'article'})}catch(e){}" style="display:flex;gap:16px;align-items:center;text-decoration:none;color:inherit;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:16px;padding:14px 16px;margin:22px 0 6px"><img src="img/gift-checklist.webp" width="520" height="405" alt="外國人在東京買房：從看屋到交屋 10 步清單" loading="lazy" style="width:min(150px,30%);height:auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.12);flex:0 0 auto"><span style="display:block"><span style="display:inline-block;font-size:12px;font-weight:700;color:#e11d48;background:#fff;border-radius:999px;padding:2px 10px">🎁 會員免費領</span><b style="display:block;font-size:16px;line-height:1.4;margin:6px 0 4px">外國人在東京買房：從看屋到交屋 10 步清單</b><span style="display:block;font-size:13.5px;color:#57534e;line-height:1.6">免費加入周周的會員，註冊完馬上下載；新物件搶先看，每月還會收到東京房市月報。</span><span style="display:inline-block;margin-top:8px;background:#e11d48;color:#fff;font-weight:700;font-size:14px;border-radius:10px;padding:7px 14px;white-space:nowrap">免費加入，領清單 →</span></span></a>`;
 const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="index.html" style="color:var(--mut)">首頁</a><a href="buy-property-in-japan.html" style="color:var(--mut)">📚 日本買房指南</a><a href="japan-real-estate-agent-for-taiwanese.html" style="color:var(--mut)">🤝 買房要找誰</a><a href="faq.html" style="color:var(--mut)">❓ 常見問題</a><a href="feedback.html" style="color:var(--mut)">💬 意見回饋</a><a href="tool-loan.html" style="color:var(--mut)">🧮 試算工具</a><a href="videos.html" style="color:var(--mut)">🎬 影片</a></div><div class="wrap cp">© 周周・日本房仲</div></footer>`;
 const TAIL = `<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="回到頂端">↑</button>
@@ -478,6 +481,7 @@ ${bodyHTML}
 </div>
 ${vid}
 <div class="ablock" style="margin-top:26px"><div><b>這篇有幫到你嗎？有問題直接問我</b><br><span style="color:var(--mut);font-size:14px">看到喜歡的物件也可以直接貼給周周看看。</span></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 問周周</a></div>
+${GIFT_CARD}
 ${propBlockHTML(a)}
 ${relHTML}
 <div id="cmts" data-slug="${slug}" data-lang="tw"></div>
