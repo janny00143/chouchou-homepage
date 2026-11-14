@@ -90,10 +90,8 @@
 
 ### 資料來源
 
-・日本郵便：寄往台灣的條件表（SAL 停止收件）https://www.post.japanpost.jp/cgi-kokusai/country.php?cid=44 ／EMS 運費表（第1地帶）https://www.post.japanpost.jp/send/oversea/charge/list-ems/zone1.html ／航空包裹運費表 https://www.post.japanpost.jp/send/oversea/charge/list-parcel/zone1.html ／EMS 標準送達天數 https://www.post.japanpost.jp/int/deli_days/ems/kanto.html ／「國際 Air Packet」改名公告（2026 年 6 月）https://www.post.japanpost.jp/service/send/oversea/information/2026/0514_01.html ／2027 年 2 月 1 日費率調整公告 https://www.post.japanpost.jp/service/send/oversea/information/fee_revision_2027/ ／國際郵便我的頁面注意事項 https://www.post.japanpost.jp/service/send/oversea/mypage/attention.html ／寄送限制 https://www.post.japanpost.jp/int/use/restriction/
-・財政部「跨境網購注意事項」（郵包、快遞完稅價格新台幣 2,000 元以下免稅、每半年 6 次）https://www.etax.nat.gov.tw/etwmain/tax-info/network-transaction-taxtation-area/consumer/oversea-online-shopping-notice
-・衛生福利部：郵寄藥品、錠狀膠囊食品、特定用途化粧品的個人自用數量說明 https://www.mohw.gov.tw/cp-16-82861-1.html
-（2026 年 11 月查閱）＊運費、限制與免稅規定都可能調整，寄之前請以日本郵便、財政部關務署、農業部動植物防疫檢疫署、食藥署的最新公告為準。
+・ 日本郵便 國際郵件運費與寄送規定 　・ 財政部 跨境網購（郵包免稅）注意事項 
+（2026 年 11 月查閱，實際以官方最新公告為準）
 
 ---
 

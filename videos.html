@@ -56,7 +56,7 @@ html[data-theme="dark"] .sbar{background:#1c1917}
 <script>
 // 要新增影片：把 YouTube 影片 ID 加進這個陣列即可（網址 youtube.com/watch?v=XXXX 或 shorts/XXXX 的 XXXX）
 // 橫式（一般長片）放 LONG：整寬 16:9 顯示在最上面；直式 Shorts 放 VIDEOS（9:16 輪播）。
-const LONG=["JuCNNIFfuWY"];
+const LONG=["gMQcvIw7XcQ","JuCNNIFfuWY"];
 const VIDEOS=["N9ivvqZa1ek","io4OkXjveeU","GvRyve5hGCY","7Mg2-YEuM0o","g6TzzDSh5NA","8qUlo4F8PKQ","L-dGrN2jiUY","bQGr-Cm3Umw","PPI5b5W-l4k","IVBNhY7N0Ac","z3fE68ir-6E","hTtulzKgjzM","fAizcxutacY","8fY3ioHl8a0","FIK0Ol9uEXc","-8bCGb_-WiM"];
 function scrollVids(d){var el=document.getElementById('vidwall');el.scrollBy({left:d*el.clientWidth*0.85,behavior:'smooth'});}
 if(LONG.length){document.getElementById('longwrap').style.display='block';document.getElementById('longv').innerHTML=LONG.map(function(id){return '<div class="lv"><div class="ytf" data-id="'+id+'"><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg\'" alt="影片縮圖" loading="lazy"><span class="pbtn">▶</span></div></div>';}).join('');}
