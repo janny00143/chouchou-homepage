@@ -822,6 +822,7 @@ window.PROPERTIES = [
   },
   {
     id: "seta-heights203",
+    pin: 30.8,   /* 周周 2026-11-14 指示：森下之後排第 2 */
     listed: "2026-11-05",
     layoutTag: "3LDK",
     status: "在售",
@@ -843,6 +844,7 @@ window.PROPERTIES = [
   },
   {
     id: "atlas-ikejiri601",
+    pin: 30.2,   /* 周周 2026-11-14 指示：森下之後排第 5 */
     listed: "2026-11-02",
     layoutTag: "2LDK",
     status: "在售",
@@ -864,6 +866,7 @@ window.PROPERTIES = [
   },
   {
     id: "plane-sangenjaya802",
+    pin: 30.4,   /* 周周 2026-11-14 指示：森下之後排第 4 */
     listed: "2026-11-02",
     layoutTag: "1LDK",
     status: "在售",
@@ -885,6 +888,7 @@ window.PROPERTIES = [
   },
   {
     id: "urbanest-komazawa601",
+    pin: 30.6,   /* 周周 2026-11-14 指示：森下之後排第 3 */
     listed: "2026-11-02",
     layoutTag: "2LDK",
     status: "在售",
