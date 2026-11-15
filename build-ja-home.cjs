@@ -11,7 +11,8 @@ const ART = eval("[" + src.match(/const ART=\[([\s\S]*?)\n\];/)[1] + "]");
 const CATS = eval(src.match(/const CATS=(\[[\s\S]*?\]);/)[1]);
 const SLUG = eval("(" + src.match(/const SLUG=(\{[\s\S]*?\});/)[1] + ")");
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0]
-  .replace("font-family:'Noto Sans TC',system-ui,sans-serif", "font-family:'Noto Sans JP',system-ui,sans-serif");
+  .replace("font-family:'Noto Sans TC',system-ui,sans-serif", "font-family:'Noto Sans JP',system-ui,sans-serif")
+  + (src.match(/<style id="hero2">[\s\S]*?<\/style>/) || [""])[0].replace(/'Noto Serif TC'/g, "'Noto Serif JP'");
 
 const jaContent = JSON.parse(fs.readFileSync(ROOT + "/ja-content.json", "utf8"));
 
@@ -206,7 +207,7 @@ const head = `<!-- 周周・日本語ランディングページ（完整版 SPA
   mainEntity: FAQ_JA.map(q => ({ "@type": "Question", name: q[0],
     acceptedAnswer: { "@type": "Answer", text: String(q[1]).replace(/<[^>]+>/g, "") } }))
 })}</script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@900&display=swap" rel="stylesheet">
 ${STYLE}`;
 
 const body = `<header>
@@ -222,6 +223,7 @@ const body = `<header>
 <main class="wrap">
   <section class="view on" id="v-home">
     <style>.herob .chips{gap:8px;flex-wrap:wrap}.herob .chip{font-size:13px;padding:7px 12px;gap:6px;white-space:nowrap}.herob .chip svg{width:15px;height:15px}@media(min-width:601px){.herob .chips{flex-wrap:nowrap}}
+    @media(max-width:600px){.herob h1{font-size:18px!important;letter-spacing:0!important;margin-bottom:5px}.herob .sub{font-size:11px;line-height:1.55;letter-spacing:0}.herob .chips{gap:5px}.herob .chip{font-size:10.5px;padding:6px 1px 5px;gap:2px;white-space:nowrap}.herob .chip svg{width:15px;height:15px}.herob .b-case{font-size:12.5px;white-space:nowrap;padding:9px 4px}.herob .chips{margin-top:20px}}
     nav.main a,nav.main .navdd-b{padding:6px 6px;font-size:13px}nav.main .nsep{margin:0}
     @media(max-width:1210px){nav.main{display:none}.burger{display:flex}}
     .burger .bg-t{font-size:13.5px}
@@ -269,6 +271,7 @@ const body = `<header>
 @media(max-width:600px){.smbox{padding:20px 18px 16px}.smhd h3{font-size:16px}}
 </style>
     <div class="herob"><div class="in">
+  <div class="kick">TOKYO REAL ESTATE</div>
   <h1 style="font-size:clamp(23px,3.4vw,38px);letter-spacing:.5px">日本で<span class="hl">住まいを買う</span>、<br>理想の住まいを<span style="white-space:nowrap">見つけよう</span></h1>
   <div class="sub"><span class="s-u">東京の中国語対応 不動産エージェント</span><span class="s-b">｜</span><span class="s-u">マイホーム・投資・ローン・ご契約まで日本語と中国語で</span></div>
   <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.7V21h14V9.7"/><path d="M9.5 21v-6h5v6"/></svg>自宅購入</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7h1.5M9 11h1.5M13.5 11h1.5M9 15h1.5M13.5 15h1.5"/><path d="M10.5 21v-3h3v3"/></svg>投資物件</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3" rx="0.5"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg>ローン相談</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>日本語対応</span></div>
