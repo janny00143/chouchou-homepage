@@ -457,7 +457,8 @@ ${HEAD_SCRIPTS}
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="${t}">
 <meta property="og:description" content="${d}">
-<meta property="og:url" content="${url}">${cover ? `\n<meta property="og:image" content="${cover}">` : ""}
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${cover || "https://chouchouinjapan.com/og-image.jpg"}">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="article:published_time" content="${a.date}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://i.ytimg.com">
@@ -520,6 +521,7 @@ ${HEAD_SCRIPTS}
 <meta property="og:title" content="${t}">
 <meta property="og:description" content="${d}">
 <meta property="og:url" content="${url}">
+<meta property="og:image" content="https://chouchouinjapan.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -1873,7 +1875,8 @@ ${HEAD_SCRIPTS}
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="${t}">
 <meta property="og:description" content="${d}">
-<meta property="og:url" content="${url}">${coverAbs ? `\n<meta property="og:image" content="${esc(coverAbs)}">` : ""}
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${coverAbs ? esc(coverAbs) : "https://chouchouinjapan.com/og-image.jpg"}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://i.ytimg.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
