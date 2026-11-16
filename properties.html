@@ -290,6 +290,13 @@ footer a{color:#d6d3d1;text-decoration:none}
   (act||[]).filter(function(p){return !p.pin&&p.cat!=="land"&&listedTs(p)>0&&p.photos&&p.photos.length;})
     .sort(function(a,b){return listedTs(b)-listedTs(a);}).slice(0,LOCK_N).forEach(function(p){_newest[p.id]=1;});
   function isLocked(p){return !IS_MEMBER&&!!_newest[p.id];}
+  var TEASER_IMG=["img/pexels-pixabay-271655.webp","img/pexels-thirdman-8469940.webp"];
+  function teaserCard(n){
+    return '<a class="card lockcard teaser" href="'+LOCK_URL+'" onclick="try{gtag(\'event\',\'teaser_click\')}catch(e){}">'
+      +'<div class="ph"><img src="'+TEASER_IMG[n%2]+'" alt="" aria-hidden="true" loading="lazy"><span class="lockov"><b>🔒</b>'+C("會員限定")+'</span></div>'
+      +'<div class="body"><h3>'+C("還沒公開的物件")+'</h3><div class="price lockprice">●,●●● 萬円</div>'
+      +'<div class="locktxt">'+C("還沒上網的新物件、價格調整的消息，註冊後周周先用 LINE 跟你說")+'</div><span class="lockbtn">'+C("♥ 免費註冊看看")+'</span></div></a>';
+  }
   function lockCard(p){
     var lay=p.layoutTag||(((p.layout||'').match(/^\d[SLDKR]+/)||[])[0]||'');
     var head=[wardLabel(p),CAT[p.cat]||"",lay].filter(Boolean).join("・")||"東京都內";
@@ -567,7 +574,16 @@ footer a{color:#d6d3d1;text-decoration:none}
     var sig=[selCat,kw,sortMode,budgetMode,walkMax,useMode,layMode,viewMode,areaMode].join("|");
     if(sig!==_propSig){_propSig=sig;_propOpen=false;}
     var vis=_propOpen?items:items.slice(0,PROP_PAGE);
-    grid.innerHTML=items.length?vis.map(function(p,i){return card(p,i);}).join(""):emptyMsg();
+    var _cards=vis.map(function(p,i){return card(p,i);});
+    /* 會員誘導用的 2 張「鎖住的空卡」（周周 2026-11-16：「做 2 個鎖的空圖，引誘人進來看，吸引人登錄會員」）。
+       ⚠️ 不是把真的物件藏起來——所有物件照常公開；這兩張是通用的「未公開物件資訊」入口，
+          圖是通用室內照（不是任何一件物件的照片），不寫地址、價格、坪數，避免變成不存在物件的廣告（おとり広告）。
+          只給沒登入的人看；有篩選條件或找不到物件時不出現。 */
+    if(!IS_MEMBER&&_cards.length>=4){
+      _cards.splice(2,0,teaserCard(0));
+      if(_cards.length>=9)_cards.splice(8,0,teaserCard(1));
+    }
+    grid.innerHTML=items.length?_cards.join(""):emptyMsg();
     if(window._pmapUpdate)window._pmapUpdate(items.filter(function(p){return !isLocked(p);}));
     var _c1=document.getElementById("msCnt"),_c2=document.getElementById("msCnt2");
     if(_c1)_c1.textContent=items.length; if(_c2)_c2.textContent="共 "+items.length+" 件";
