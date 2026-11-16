@@ -277,7 +277,7 @@ footer a{color:#d6d3d1;text-decoration:none}
      ⚠️ 這是引導註冊用的「軟性」鎖：物件獨立頁、property.html?id=、首頁精選、搜尋引擎用的 JSON-LD 都照常公開，
         LINE 分享出去的物件連結不受影響。不要把它當成真正的權限控管。 */
   var IS_MEMBER=(function(){try{return localStorage.getItem("chou_member")==="1";}catch(e){return false;}})();
-  var LOCK_N=6, LOCK_URL="member-ja.html?next=properties-ja.html", _newest={};
+  var LOCK_N=0,/* 周周 2026-11-16：鍵はかけない（非会員にも新着物件を表示） */ LOCK_URL="member-ja.html?next=properties-ja.html", _newest={};
   (act||[]).filter(function(p){return !p.pin&&p.cat!=="land"&&listedTs(p)>0&&p.photos&&p.photos.length;})
     .sort(function(a,b){return listedTs(b)-listedTs(a);}).slice(0,LOCK_N).forEach(function(p){_newest[p.id]=1;});
   function isLocked(p){return !IS_MEMBER&&!!_newest[p.id];}

@@ -163,7 +163,7 @@ footer a{color:#d6d3d1;text-decoration:none}
     <p>这里是周周精选的日本东京不动产。无论你想<b>自住</b>、<b>投资收租</b>，还是找<b>一户建</b>或<b>土地</b>，都可以先看看；有兴趣或想找更多、更符合你需求的物件，直接加 LINE 跟我说，我帮你筛选、线上看屋、全程中文把关。</p>
     <div class="cta">
       <a class="btn-line big" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">＋ 加 LINE 询问物件</a>
-      <a class="btn-member" href="member-cn.html?next=properties.html">♥ 免费注册・抢先看最新物件</a>
+      <a class="btn-member" href="member-cn.html?next=properties.html">♥ 免费注册・新物件通知你</a>
       <a class="btn-member" href="tokyo-home-match-cn.html">🔮 不知道预算买得到什么？免费定位分析</a>
     </div>
   </div>
@@ -286,7 +286,7 @@ footer a{color:#d6d3d1;text-decoration:none}
      ⚠️ 这是引导注册用的「软性」锁：物件独立页、property.html?id=、首页精选、搜寻引擎用的 JSON-LD 都照常公开，
         LINE 分享出去的物件连结不受影响。不要把它当成真正的权限控管。 */
   var IS_MEMBER=(function(){try{return localStorage.getItem("chou_member")==="1";}catch(e){return false;}})();
-  var LOCK_N=6, LOCK_URL="member-cn.html?next=properties.html", _newest={};
+  var LOCK_N=0,/* 周周 2026-11-16：「不要真的锁，非会员也要看得见新物件」→ 关掉（0＝不锁），机制留着 */ LOCK_URL="member-cn.html?next=properties.html", _newest={};
   (act||[]).filter(function(p){return !p.pin&&p.cat!=="land"&&listedTs(p)>0&&p.photos&&p.photos.length;})
     .sort(function(a,b){return listedTs(b)-listedTs(a);}).slice(0,LOCK_N).forEach(function(p){_newest[p.id]=1;});
   function isLocked(p){return !IS_MEMBER&&!!_newest[p.id];}
