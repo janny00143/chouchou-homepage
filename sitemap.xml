@@ -154,7 +154,7 @@
 <url><loc>https://chouchouinjapan.com/feedback.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/feedback-ja.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/member.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
-<url><loc>https://chouchouinjapan.com/member-ja.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/member-ja.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tokyo-home-match.html</loc><lastmod>2026-11-14</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tokyo-home-match-ja.html</loc><lastmod>2026-11-14</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/tool-agent.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
@@ -171,6 +171,10 @@
 <url><loc>https://chouchouinjapan.com/tool-yield-ja.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/translate-ja.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/quiz.html</loc><lastmod>2026-11-15</lastmod><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/prop-kyodo-palace201.html</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://chouchouinjapan.com/prop-kyodo-palace201-ja.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/prop-kumanomae-ekimae.html</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://chouchouinjapan.com/prop-kumanomae-ekimae-ja.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-lions-kagurazaka6-801.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-lions-kagurazaka6-801-ja.html</loc><lastmod>2026-11-13</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-doutour-east5212.html</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -614,6 +618,8 @@
 <url><loc>https://chouchouinjapan.com/prop-koyama3-p6-cn.html</loc><lastmod>2026-09-29</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-koyama7-p2a-cn.html</loc><lastmod>2026-09-29</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-koyama7-p2b-cn.html</loc><lastmod>2026-09-29</lastmod><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/prop-kumanomae-ekimae-cn.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+<url><loc>https://chouchouinjapan.com/prop-kyodo-palace201-cn.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-kyoto-uta-cn.html</loc><lastmod>2026-09-20</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-lamerpalais-nishiogi301-cn.html</loc><lastmod>2026-11-13</lastmod><priority>0.6</priority></url>
 <url><loc>https://chouchouinjapan.com/prop-levenheim-otsuka202-cn.html</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
