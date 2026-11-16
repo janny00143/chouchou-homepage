@@ -312,7 +312,7 @@ body.noscroll{overflow:hidden}
     var pick=scored.slice(0,3).map(function(o){return o.p;});
     if(!pick.length)return "";
     var h='<section class="related"><h2>こちらの物件もおすすめ</h2><p class="rsub">ご覧の物件と価格帯・エリアが近い物件をピックアップしました。</p><div class="rwrap"><div class="rpage1"><div class="rgrid">';
-    pick.forEach(function(x){
+    var _rc=function(x){var h='';
       var ph=(x.photos&&x.photos.length)
         ? '<img src="'+esc(x.thumb||x.photos[0])+'" alt="'+C(x.title)+'" loading="lazy">'
         : '<div class="rnoimg">🏠</div>';
@@ -321,19 +321,21 @@ body.noscroll{overflow:hidden}
         +'<div class="rb"><h3>'+C(x.title)+'</h3>'
         +'<p class="rp">'+C(String(x.priceShort||x.price||"価格はお問い合わせください").split("\n")[0])+'</p>'
         +'<p class="rs">'+C(x.station||x.location||"")+'</p></div></a>';
-    });
-    /* 右邊「翻一頁」：沒登入→3 張鎖住的會員限定卡＋註冊；已登入→導去物件專區（周周 2026-11-16）。
+    return h;};
+    pick.forEach(function(x){h+=_rc(x);});
+    var more=scored.slice(3,6).map(function(o){return o.p;});
+    /* 右邊「翻一頁」（周周 2026-11-16）。
        ⚠️ 鎖卡用通用室內照、不寫地址價格，不是把真實物件藏起來（避免おとり広告）。 */
     var isMem=(function(){try{return localStorage.getItem("chou_member")==="1";}catch(e){return false;}})();
     var here=(location.pathname.split("/").pop()||"properties.html").replace(/[^a-zA-Z0-9._-]/g,"");
     var lkImg=["img/pexels-pixabay-271655.webp","img/pexels-thirdman-8469940.webp","img/pexels-pixabay-280471.webp"];
-    var p2;
-    if(isMem){ p2='<div class="rcta"><b>'+C("♥ 会員様、いつもありがとうございます。ほかの物件は物件情報ページへ")+'</b><a href="properties-ja.html">'+C("すべての物件を見る →")+'</a></div>'; }
-    else {
-      var mu="member-ja.html?next="+encodeURIComponent(here);
-      p2='<div class="rgrid">'+lkImg.map(function(src){return '<a class="rlk" href="'+mu+'" onclick="try{gtag(\'event\',\'teaser_click\',{where:\'related\'})}catch(e){}"><div class="rph"><img src="'+src+'" alt="" aria-hidden="true" loading="lazy"></div><span class="lk">🔒</span><div class="rb"><h3>'+C("会員限定・未公開物件")+'</h3><p class="rp">●,●●● 万円</p></div></a>';}).join("")+'</div>'
-        +'<div class="rcta"><b>'+C("🔒 会員ログインで非公開物件をもっと見る")+'</b><p>'+C("ネット未掲載の新着物件や価格変更の情報を、ご登録の方に周周からLINEで先にお知らせします（登録無料）。")+'</p><a href="'+mu+'">'+C("♥ 無料会員登録／ログイン")+'</a></div>';
-    }
+    /* 周周 2026-11-16 修改：翻過去一頁就好——沒登入：1 張鎖卡＋2 件真的推薦物件；已登入：3 件真的推薦物件。 */
+    var mu="member-ja.html?next="+encodeURIComponent(here);
+    var lockOne='<a class="rlk" href="'+mu+'" onclick="try{gtag(\'event\',\'teaser_click\',{where:\'related\'})}catch(e){}"><div class="rph"><img src="'+lkImg[0]+'" alt="" aria-hidden="true" loading="lazy"></div><span class="lk">🔒</span><div class="rb"><h3>'+C("会員限定・未公開物件")+'</h3><p class="rp">●,●●● 万円</p></div></a>';
+    var reals=(isMem?more.slice(0,3):more.slice(0,2)).map(_rc).join("");
+    var p2='<div class="rgrid">'+(isMem?"":lockOne)+reals+'</div>';
+    if(!isMem&&!more.length)p2='<div class="rgrid">'+lockOne+'</div>';
+    if(isMem&&!more.length)return h+'</div></div></div></section>';
     return h+'</div></div><div class="rpage2">'+p2+'</div><button type="button" class="rnav" data-l="'+C("もっと見る")+'" aria-label="'+C("もっと見る")+'" onclick="var w=this.parentNode;var f=w.classList.toggle(\'flip\');this.textContent=f?\'‹\':\'›\';this.setAttribute(\'data-l\',f?\''+C("戻る")+'\':\''+C("もっと見る")+'\');try{gtag(\'event\',\'related_flip\')}catch(e){}">›</button></div></section>';
   }
   function paintRelated(p){
