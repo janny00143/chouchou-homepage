@@ -6,7 +6,7 @@
 """
 import fitz, os
 D = os.path.dirname(os.path.abspath(__file__))
-for name in ["tokyo-buying-checklist.pdf", "tokyo-buying-checklist-cn.pdf"]:
+for name in ["tokyo-buying-checklist.pdf", "tokyo-buying-checklist-cn.pdf", "tokyo-buying-checklist-ja.pdf"]:
     src = fitz.open(os.path.join(D, name))
     out = fitz.open()
     for pg in src:
@@ -17,7 +17,8 @@ for name in ["tokyo-buying-checklist.pdf", "tokyo-buying-checklist-cn.pdf"]:
             np.insert_link({"kind": fitz.LINK_URI, "from": r + (-4, -4, 4, 4), "uri": "https://lin.ee/RscRWCp"})
         for r in pg.search_for("chouchouinjapan.com"):
             np.insert_link({"kind": fitz.LINK_URI, "from": r + (-2, -2, 2, 2), "uri": "https://chouchouinjapan.com/"})
-    out.set_metadata({"title": "外國人在東京買房：從看屋到交屋 10 步清單", "author": "周周・日本房仲（株式会社アンドプラス）"})
+    ja = name.endswith("-ja.pdf")
+    out.set_metadata({"title": "外国人が東京で住まいを買う：内見から引渡しまでの10ステップ" if ja else "外國人在東京買房：從看屋到交屋 10 步清單", "author": "周周・日本の不動産（株式会社アンドプラス）" if ja else "周周・日本房仲（株式会社アンドプラス）"})
     src.close()
     tmp = os.path.join(D, name + ".tmp")
     out.save(tmp, garbage=4, deflate=True); out.close()
