@@ -2204,7 +2204,12 @@ ${LICENSE_TW}
           ).join("\n\n");
     }).join("\n\n---\n\n");
 }
-fs.writeFileSync(ROOT + "/llms-full.txt", buildLlmsFull());
+/* 只有「產生時間」那行不同時不重寫（2026-11-18）：以前每天都會多出一個只有日期的 diff，
+   被當成雜訊還原時，連真正的內容變動也一起還原掉了（11/16 物件數 133→135 就漏同步）。 */
+{ const p = ROOT + "/llms-full.txt", txt = buildLlmsFull();
+  const strip = t => t.replace(/^> 產生時間：.*$/m, "");
+  let prev = ""; try { prev = fs.readFileSync(p, "utf8"); } catch (e) {}
+  if (strip(prev) !== strip(txt)) fs.writeFileSync(p, txt); }
 
 saveUpdated();
 console.log("sitemap.xml + robots.txt + llms.txt 已產生");
