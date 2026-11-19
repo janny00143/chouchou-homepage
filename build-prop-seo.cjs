@@ -75,7 +75,7 @@ const LANG = {
   ja: { file: "properties-ja.html", detail: "property-ja.html", page: "properties-ja.html",
         name: "物件情報｜周周・日本の不動産", heading: "販売中の物件一覧",
         note: "販売中の物件一覧です。最終条件は現況および重要事項説明書をご確認ください。",
-        pick: p => { const j = JA[p.id] || {}; return { title: p.title, loc: j.location || p.location, st: j.station || p.station }; } }
+        pick: p => { const j = JA[p.id] || {}; return { title: j.title || p.title, loc: j.location || p.location, st: j.station || p.station }; } }
 };
 
 /* 清單上的價格字串跟著語言走：日文用 properties-ja.js 換好的（含稅→税込），簡中轉簡體 */

@@ -1187,6 +1187,28 @@ function d9_completedCG() {
     onlyCG.concat(mixed).slice(0, 14));
 }
 
+/* D10 日文物件頁退回顯示繁中文字
+   property-ja.html 是 Object.assign(繁中資料, 日文資料)：日文那邊漏寫的欄位會直接顯示繁中原文。
+   2026-11-19 抓到上野毛・ベリスタ的「権利」欄顯示「所有權」，11/20 又抓到金町「高樓層」、中野本町「中野區」。
+   只看日文頁實際會顯示、且繁中值裡有日文不用的字形的欄位。 */
+function d10_jaFallback() {
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
+  const F = ["title", "station", "location", "layout", "size", "age", "facing", "mgmt", "right", "yield"];   // price 由頁面自動轉「税込」，A13 另外查
+  const TW = /[權稅樓區續價們這於與為過還應點]|含稅|徒步/;
+  const bad = [];
+  for (const p of P.filter(x => !x.sold && x.status === "在售")) {
+    const j = PJ[p.id] || {};
+    for (const f of F) {
+      if (j[f] !== undefined) continue;
+      const v = String(p[f] || "");
+      if (v && TW.test(v)) bad.push(`${p.id}.${f}：${v.slice(0, 40)}`);
+    }
+  }
+  add("D10", "日文物件頁退回顯示繁中", bad.length ? "FAIL" : "OK",
+    bad.length ? `${bad.length} 處　→ 在 properties-ja.js 該物件補上日文欄位` : "日文頁沒有退回顯示繁中的欄位", bad.slice(0, 14));
+}
+
 /* D8 手機版實測：橫向溢出、站內破圖（用 Playwright 真的開頁、捲到底）
    A8 只看 console error 與有沒有渲染；版面在手機上被撐寬、內文圖片載不出來它抓不到。
    2026-11-18 Suica 文章的候選圖被 .post img 裁成 3:2，就是截圖才發現的。
@@ -1267,7 +1289,7 @@ async function main() {
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); a13_jaPriceWords(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   // D 段每天都跑（2026-11-19 起）
-  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); await d8_mobile();
+  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); d10_jaFallback(); await d8_mobile();
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 
