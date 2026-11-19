@@ -63,3 +63,7 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
+/* 順便載入手機底部導覽列（2026-11-19）：全站 600 多頁都有這支，掛在這裡就不用改每個產生器。
+   沒有 imgguard 的手寫頁另外直接加 <script src="tabbar.js" defer>。tabbar.js 自己會防重複載入。 */
+(function () { if (window.__chouTabbar || document.querySelector('script[src="tabbar.js"]')) return;
+  var s = document.createElement("script"); s.src = "tabbar.js"; s.defer = true; (document.head || document.documentElement).appendChild(s); })();

@@ -137,8 +137,8 @@ BODY = """<div class="wrap">
 
 STARS = ''.join('<i style="left:%d%%;top:%d%%;animation-delay:%.1fs"></i>' % (x, y, d) for x, y, d in [(8, 20, 0), (18, 70, 1.1), (30, 12, .6), (72, 18, 1.8), (85, 62, .3), (92, 28, 2.4), (60, 80, 1.4), (45, 8, 2.0)])
 
-LINKS_TW = [["🗺️ 東京23區行情與地圖", "tokyo-area-guide.html"], ["🏠 看周周的在售物件", "properties.html"], ["💰 23區預算怎麼抓", "tokyo-23-wards-budget-guide.html"], ["🧾 買房要準備多少錢", "japan-property-purchase-costs.html"], ["🏦 房貸月付試算", "tool-loan.html"], ["✨ 買房人格測驗", "quiz.html"]]
-LINKS_JA = [["🗺️ 東京23区エリアガイド", "tokyo-area-guide-ja.html"], ["🏠 物件情報を見る", "properties-ja.html"], ["💰 23区の予算の目安", "tokyo-23-wards-budget-guide-ja.html"], ["🧾 購入時の諸費用", "japan-property-purchase-costs-ja.html"], ["🏦 住宅ローン試算", "tool-loan-ja.html"]]
+LINKS_TW = [["<svg class='ic-map' width='1em' height='1em' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' style='vertical-align:-.14em;margin-right:.3em'><path d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/><circle cx='12' cy='9.5' r='2.4'/></svg>東京23區行情與地圖", "tokyo-area-guide.html"], ["🏠 看周周的在售物件", "properties.html"], ["💰 23區預算怎麼抓", "tokyo-23-wards-budget-guide.html"], ["🧾 買房要準備多少錢", "japan-property-purchase-costs.html"], ["🏦 房貸月付試算", "tool-loan.html"], ["✨ 買房人格測驗", "quiz.html"]]
+LINKS_JA = [["<svg class='ic-map' width='1em' height='1em' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' style='vertical-align:-.14em;margin-right:.3em'><path d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/><circle cx='12' cy='9.5' r='2.4'/></svg>東京23区エリアガイド", "tokyo-area-guide-ja.html"], ["🏠 物件情報を見る", "properties-ja.html"], ["💰 23区の予算の目安", "tokyo-23-wards-budget-guide-ja.html"], ["🧾 購入時の諸費用", "japan-property-purchase-costs-ja.html"], ["🏦 住宅ローン試算", "tool-loan-ja.html"]]
 
 JA_NAMES = ['千代田', '中央', '港', '新宿', '文京', '台東', '墨田', '江東', '品川', '目黒', '大田', '世田谷', '渋谷', '中野', '杉並', '豊島', '北', '荒川', '板橋', '練馬', '足立', '葛飾', '江戸川']
 TW_FIX = {'目黒': '目黑', '渋谷': '澀谷', '豊島': '豐島', '江戸川': '江戶川'}
@@ -226,7 +226,7 @@ TW.update(
   loanRangeNote="可貸成數抓一個範圍，所以總價也是範圍；按「用這個當預算」時會用比較保守的 {p} 來分析。",
   loanCapDown="目前的上限卡在「自備款」：多準備一點自備款，能買的總價就會往上。",
   loanCta="能不能貸、可貸成數依個案與銀行審查為準。每家銀行看法差很多——加 LINE，周周可以先幫你問過幾家，再決定怎麼出手。",
-  mapTitle="🗺️ 23 區可負擔地圖", mapSub="用你的預算 {b} 和各區「{band}」的價格中央值比：越綠越寬裕，滑過或點一下看各區。",
+  mapTitle="23 區可負擔地圖", mapSub="用你的預算 {b} 和各區「{band}」的價格中央值比：越綠越寬裕，滑過或點一下看各區。",
   mapLeg=["很寬裕", "剛剛好", "有點緊", "差一段", "資料不足"], mapTip="{w}：{band} 中央值 {m}（是你預算的 {p}%）", mapTipLand="{w}：坪單價 {p}萬円 → 預算約買 {t} 坪",
   mapTipNA="{w}：這個條件的資料不足", mapHint="👆 滑過或點一下地圖上的區",
   shareBtn="📸 存成圖卡，分享到 IG／Threads", shareText="我的東京買房命盤出爐了！你也來測：", cardBrand="周周・日本房仲｜東京買房定位分析",
@@ -321,7 +321,7 @@ JA.update(
   loanRangeNote="融資割合を幅で試算しているため、購入可能額も幅で表示しています。予算に設定する際は控えめな {p} を使用します。",
   loanCapDown="現在は自己資金が上限を決めています。自己資金を増やすと購入可能額が上がります。",
   loanCta="融資の可否・金額は金融機関の審査によります。金融機関ごとに判断が大きく異なるため、複数行への事前打診も当方でサポートいたします。",
-  mapTitle="🗺️ 23区 購入しやすさマップ", mapSub="ご予算 {b} と各区の「{band}」価格中央値を比較しています。緑ほど余裕があります。各区にカーソルを合わせる／タップで詳細。",
+  mapTitle="23区 購入しやすさマップ", mapSub="ご予算 {b} と各区の「{band}」価格中央値を比較しています。緑ほど余裕があります。各区にカーソルを合わせる／タップで詳細。",
   mapLeg=["余裕あり", "ちょうど良い", "やや厳しい", "差がある", "データ不足"], mapTip="{w}：{band} 中央値 {m}（ご予算の{p}%）", mapTipLand="{w}：坪単価 {p}万円 → ご予算で約{t}坪",
   mapTipNA="{w}：この条件のデータが不足しています", mapHint="👆 地図の区にカーソルを合わせる／タップ",
   shareBtn="📸 画像で保存してシェア", shareText="東京の住まい運命盤が出ました！あなたも診断：", cardBrand="周周・東京の住まい診断",

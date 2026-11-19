@@ -134,16 +134,17 @@ function block(key) {
    index.html／index-cn.html／ja.html 的 <!--HOME-PROPS--> 區塊。
    挑法：pin 大的在前（周周指定置頂的），再來是最新上架，取 6 件有照片的。
    ⚠️ 必須在 build-cn、build-ja-home 之後跑（它們會重新產生 index-cn.html／ja.html）。 */
+const MAP_ICON = "<svg class='ic-map' width='1em' height='1em' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' style='vertical-align:-.14em;margin-right:.3em'><path d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/><circle cx='12' cy='9.5' r='2.4'/></svg>";  // 細線地圖釘（周周 2026-11-19：🗺 emoji 太醜）
 const HM_S = "<!--HOME-PROPS-->", HM_E = "<!--/HOME-PROPS-->";
 const HOME = {
   tw: { file: "index.html", list: "properties.html", head: "🏠 周周精選物件", count: n => "目前在售 " + n + " 件",
-        all: "看全部物件 →", map: "🗺 用地圖找", sub: "東京 23 區自住・投資，獨家物件也在這裡。在其他網站看到喜歡的物件，也可以把網址傳給我，一樣幫你看、幫你談。",
+        all: "看全部物件 →", map: "用地圖找", sub: "東京 23 區自住・投資，獨家物件也在這裡。在其他網站看到喜歡的物件，也可以把網址傳給我，一樣幫你看、幫你談。",
         walk: "徒步", min: "分", ask: "價格請洽詢" },
   cn: { file: "index-cn.html", list: "properties-cn.html", head: "🏠 周周精选物件", count: n => "目前在售 " + n + " 件",
-        all: "看全部物件 →", map: "🗺 用地图找", sub: "东京 23 区自住・投资，独家物件也在这里。在其他网站看到喜欢的物件，也可以把网址传给我，一样帮你看、帮你谈。",
+        all: "看全部物件 →", map: "用地图找", sub: "东京 23 区自住・投资，独家物件也在这里。在其他网站看到喜欢的物件，也可以把网址传给我，一样帮你看、帮你谈。",
         walk: "徒步", min: "分", ask: "价格请洽询" },
   ja: { file: "ja.html", list: "properties-ja.html", head: "🏠 おすすめ物件", count: n => "販売中 " + n + " 件",
-        all: "すべての物件を見る →", map: "🗺 地図で探す", sub: "東京23区の自宅用・投資用物件をご紹介しております。他のサイトで見つけた物件のご相談も承りますので、URLをお気軽にお送りください。",
+        all: "すべての物件を見る →", map: "地図で探す", sub: "東京23区の自宅用・投資用物件をご紹介しております。他のサイトで見つけた物件のご相談も承りますので、URLをお気軽にお送りください。",
         walk: "徒歩", min: "分", ask: "価格はお問い合わせください" }
 };
 const listedTs = p => Date.parse(p.listed || "") || 0;
@@ -177,7 +178,7 @@ function homeBlock(key) {
     + '<style>.herob .b-prop{background:#f4547a;color:#fff;border-color:#f4547a}.hpsec{max-width:1100px;margin:34px auto 30px;padding:0 16px}.hp-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}.hp-hd h2{font-size:clamp(22px,2.6vw,28px);margin:0}.hp-cnt{display:inline-block;margin-left:10px;font-size:14px;font-weight:800;color:#e11d48;background:#fff1f2;border:1px solid #fecdd3;border-radius:999px;padding:3px 12px;vertical-align:middle}.hp-sub{color:#78716c;font-size:14.5px;line-height:1.8;margin:0 0 16px}.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.hp-card{display:block;background:#fff;border:1px solid #eee9e7;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .15s,box-shadow .15s}.hp-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.1)}.hp-ph{aspect-ratio:4/3;background:#f5f5f4;overflow:hidden}.hp-ph img{width:100%;height:100%;object-fit:cover;display:block}.hp-b{padding:12px 14px 14px}.hp-b b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px;line-height:1.5;min-height:3em}.hp-pr{color:#e11d48;font-weight:900;font-size:18px;margin:6px 0 2px}.hp-st{font-size:13px;color:#78716c}.hp-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0 4px}.hp-btns a{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:12px 26px;font-weight:800;font-size:15px;text-decoration:none}.hp-all{background:#f4547a;color:#fff;box-shadow:0 6px 16px rgba(244,84,122,.3)}.hp-map{background:#fff;color:#e11d48;border:2px solid #f6adbe}@media(max-width:820px){.hp-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.hp-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px}.hp-card{flex:0 0 76%;scroll-snap-align:start}}</style>\n'
     + '<section class="hpsec"><div class="hp-hd"><h2>' + esc(H.head) + '<span class="hp-cnt">' + esc(H.count(act.length)) + '</span></h2></div>'
     + '<p class="hp-sub">' + esc(H.sub) + '</p><div class="hp-grid">' + cards + '</div>'
-    + '<div class="hp-btns"><a class="hp-all" href="' + H.list + '">' + esc(H.all) + '</a><a class="hp-map" href="' + H.list + '#pmapSec">' + esc(H.map) + '</a></div></section>\n'
+    + '<div class="hp-btns"><a class="hp-all" href="' + H.list + '">' + esc(H.all) + '</a><a class="hp-map" href="' + H.list + '#pmapSec">' + MAP_ICON + esc(H.map) + '</a></div></section>\n'
     + HM_E;
 }
 let hn = 0;
