@@ -137,13 +137,13 @@ function block(key) {
 const HM_S = "<!--HOME-PROPS-->", HM_E = "<!--/HOME-PROPS-->";
 const HOME = {
   tw: { file: "index.html", list: "properties.html", head: "🏠 周周精選物件", count: n => "目前在售 " + n + " 件",
-        all: "看全部物件 →", map: "🗺 用地圖找", sub: "東京 23 區自住・投資，獨家物件也在這裡。看到喜歡的直接點進去，或加 LINE 跟我說你的條件。",
+        all: "看全部物件 →", map: "🗺 用地圖找", sub: "東京 23 區自住・投資，獨家物件也在這裡。在其他網站看到喜歡的物件，也可以把網址傳給我，一樣幫你看、幫你談。",
         walk: "徒步", min: "分", ask: "價格請洽詢" },
   cn: { file: "index-cn.html", list: "properties-cn.html", head: "🏠 周周精选物件", count: n => "目前在售 " + n + " 件",
-        all: "看全部物件 →", map: "🗺 用地图找", sub: "东京 23 区自住・投资，独家物件也在这里。看到喜欢的直接点进去，或加 LINE 跟我说你的条件。",
+        all: "看全部物件 →", map: "🗺 用地图找", sub: "东京 23 区自住・投资，独家物件也在这里。在其他网站看到喜欢的物件，也可以把网址传给我，一样帮你看、帮你谈。",
         walk: "徒步", min: "分", ask: "价格请洽询" },
   ja: { file: "ja.html", list: "properties-ja.html", head: "🏠 おすすめ物件", count: n => "販売中 " + n + " 件",
-        all: "すべての物件を見る →", map: "🗺 地図で探す", sub: "東京23区の自宅用・投資用物件をご紹介しております。気になる物件はそのまま詳細をご覧いただけます。",
+        all: "すべての物件を見る →", map: "🗺 地図で探す", sub: "東京23区の自宅用・投資用物件をご紹介しております。他のサイトで見つけた物件のご相談も承りますので、URLをお気軽にお送りください。",
         walk: "徒歩", min: "分", ask: "価格はお問い合わせください" }
 };
 const listedTs = p => Date.parse(p.listed || "") || 0;
