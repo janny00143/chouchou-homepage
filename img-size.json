@@ -5394,5 +5394,37 @@
  "img/suica-new-character-rabbit.webp": [
   518,
   518
+ ],
+ "img/cover-suica-how-to.webp": [
+  1280,
+  720
+ ],
+ "img/suica-step-buy.webp": [
+  900,
+  858
+ ],
+ "img/suica-step-iphone.webp": [
+  900,
+  726
+ ],
+ "img/suica-step-ride.webp": [
+  900,
+  726
+ ],
+ "img/cover-suica-how-to-ja.webp": [
+  1280,
+  720
+ ],
+ "img/suica-step-buy-ja.webp": [
+  900,
+  858
+ ],
+ "img/suica-step-iphone-ja.webp": [
+  900,
+  726
+ ],
+ "img/suica-step-ride-ja.webp": [
+  900,
+  726
  ]
 }
