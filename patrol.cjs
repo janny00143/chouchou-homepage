@@ -41,6 +41,16 @@ const OK = {
   // 供應商一覽只有文字、還沒有図面與照片的物件：先上架（周周 2026-10-08 指示），卡片會顯示「照片準備中」。
   // 取得図面補上照片後，把 id 從這裡拿掉。
   pendingPhoto: new Set([]),
+  // D1：日期已過、但周周說「晚點處理」的物件（站上先維持原樣，不每天報 FAIL）
+  //  ・tsuruhashi-ren（大阪・鶴橋）：「11月上旬開始營運」沒有新資料，周周 2026-11 說晚點處理
+  //  ・kyoto-uta（京都・十條 町家民宿）：「2026年9月中旬預計營運」過期，2026-11-19 巡邏新抓到、已問周周（同一家リアルエステート）
+  knownExpired: new Set(["tsuruhashi-ren", "kyoto-uta"]),
+  // D3：介面／文案提到其他公司，但屬於制度說明、不是叫客人去找別人的（逐條確認後才加）
+  otherCoAllow: [
+    "3か月前に他社の仲介", "跟別家仲介買房",          // 落地頁的客戶故事（找周周才安心），刻意寫的
+    "他社様からお預かり", "間に他社が入りません",     // jisha-ja：廣告揭示義務的說明／自社「中間沒有他社」是賣點
+    "他社様での建築はできず",                          // 建築條件付土地的法定說明（不利益事實，不可拿掉）
+  ],
   // Google Search Console 的驗證檔，本來就只有一行、沒有 meta
   verifyFile: /^google[0-9a-f]+\.html$/i,
   // 這些頁不套一般的 SEO 規則
@@ -987,6 +997,213 @@ function c4_repo() {
 }
 
 /* ══════════════════════════════════════════════════════════════════════
+   D 段：每天都做（2026-11-19 周周：「每天的巡迴再強化，你來想還可以怎麼巡，
+   什麼應該巡沒巡過」）。這幾項都是「出過事、或 CLAUDE.md 有明文規定，
+   但以前只靠人記得」的東西，改成每天自動抓。
+   ══════════════════════════════════════════════════════════════════════ */
+const JST_TODAY = new Date(JST.date + "T00:00:00+09:00");
+const daysFromToday = d => Math.round((d - JST_TODAY) / 86400000);
+
+/* D1 物件的交地／交屋／營運日期過期
+   以前只有每週四盤點才算一次（而且是在 prompt 裡手跑一段 node）。
+   2026-11-12 就發生過：上午把過期日改成「請洽詢」，下午依新図面更新時又把舊日期寫回去，
+   直到 11/19 盤點才發現——中間一整週站上掛著過期廣告。改成每天抓。 */
+function d1_propDates() {
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
+  const MON = { "上旬": 5, "中旬": 15, "下旬": 25 };
+  /* 只抓「預告」：日期前面有「預計」，或後面 16 字內有「預定／預計（予定）」。
+     「2026年7月剛完成全面翻新」「2026年6月8日開始營運」是已經發生的事實，不算過期
+     （第一版 2026-11-19 誤報過這兩種）。 */
+  const reTW = /(預計)?(\d{4})年(\d{1,2})月(?:(\d{1,2})日)?(上旬|中旬|下旬)?(?=([^。\n、，]{0,16}))/g;
+  const reJA = /()(\d{4})年(\d{1,2})月(?:(\d{1,2})日)?(上旬|中旬|下旬)?(?=([^。\n・、]{0,16}))/g;
+  const scan = (txt, re) => {
+    const out = []; re.lastIndex = 0; let m;
+    const t = String(txt || "").replace(/<[^>]+>/g, "");
+    while ((m = re.exec(t))) {
+      if (/^築/.test(m[6])) continue;                       // 「1972年11月築」是屋齡，不是預告
+      if (!(m[1] || /預定|預計|予定/.test(m[6]))) continue;
+      const d = new Date(+m[2], +m[3] - 1, m[4] ? +m[4] : (m[5] ? MON[m[5]] : 28));
+      out.push({ when: d, text: m[0] + m[6] });
+    }
+    return out;
+  };
+  const past = [], soon = [], known = [];
+  for (const p of P.filter(x => !x.sold && x.status === "在售")) {
+    const j = PJ[p.id] || {};
+    const hits = [
+      ...["age", "note", "title", "title_cn"].flatMap(k => scan(p[k], reTW).map(h => ({ ...h, lang: "TW", k }))),
+      ...["age", "note", "title"].flatMap(k => scan(j[k], reJA).map(h => ({ ...h, lang: "JA", k }))),
+    ];
+    for (const h of hits) {
+      const dd = daysFromToday(h.when);
+      const row = `${p.id}［${h.lang}・${h.k}］${h.text}`;
+      if (dd < 0) (OK.knownExpired.has(p.id) ? known : past).push(row);
+      else if (dd <= 7) soon.push(`${row}（${dd} 天後）`);
+    }
+  }
+  metrics.propDatesPast = past.length;
+  add("D1", "物件日期過期（交地／交屋／營運）", past.length ? "FAIL" : (soon.length ? "INFO" : "OK"),
+    `已過期 ${past.length}｜7 天內到期 ${soon.length}｜周周說晚點處理 ${known.length}` +
+    (past.length ? "　→ 自社：雲端図面沒新日期就改「請洽詢」（10/29 規則）；他社：列給周周" : ""),
+    past.concat(soon).slice(0, 14));
+}
+
+/* D2 合規禁語（CLAUDE.md §4：不寫「保證」「一定」「穩賺」「包過」）
+   「保證金」「保證人」「不保證」「包租保證」這些是正當用語或否定句，不算。
+   只抓肯定語氣的組合，例如「保證獲利」「一定可以貸」「穩賺」。 */
+function d2_compliance() {
+  const { ART } = loadIndexData();
+  let JA = {}; try { JA = JSON.parse(read("ja-content.json")); } catch (e) { }
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
+  const TW_BAD = /穩賺|包過|一定賺|保證(獲利|賺錢|會漲|能貸|貸得到|通過|過件|收益)|一定(可以|能|會)貸(得到|過)?|絕對(賺|不會虧)/g;
+  const JA_BAD = /必ず(儲か|借りられ|審査に通)|確実に(儲か|借りられ)|絶対に(儲か|損しない)|保証いたします|利益を保証/g;
+  const negBefore = /(不|非|沒|無|並非|不是|不等於|不代表|不構成|不能|無法|ない)[^。！？\n]{0,8}$/;
+  const negAfter = /^[^。！？\n]{0,22}(不是|不等於|不代表|嗎|？|わけでは|とは限り|ではありません|ではない|ません|でしょうか)/;
+  const strip = t => String(t || "").replace(/<[^>]+>/g, "");
+  const hits = [];
+  const check = (id, txt, re) => {
+    const t = strip(txt); re.lastIndex = 0; let m;
+    while ((m = re.exec(t))) {
+      const pre = t.slice(Math.max(0, m.index - 10), m.index), post = t.slice(m.index + m[0].length);
+      if (negBefore.test(pre) || negAfter.test(post) || /[「『]$/.test(pre)) continue;
+      hits.push(`${id}：…${t.slice(Math.max(0, m.index - 12), m.index + m[0].length + 10)}…`);
+    }
+  };
+  for (const a of ART) check(a.id, [a.title, a.ex, ...(a.body || [])].join("\n"), TW_BAD);
+  for (const [id, a] of Object.entries(JA)) check(id + "（日）", [a.title, a.ex, ...(a.body || [])].join("\n"), JA_BAD);
+  for (const p of P) check(p.id, [p.title, p.title_cn, p.catch, p.note].join("\n"), TW_BAD);
+  for (const [id, p] of Object.entries(PJ)) check(id + "（日）", [p.title, p.catch, p.note].join("\n"), JA_BAD);
+  metrics.complianceHits = hits.length;
+  add("D2", "合規禁語（保證／穩賺／包過／一定貸）", hits.length ? "WARN" : "OK",
+    hits.length ? `${hits.length} 處肯定語氣的保證說法，請改成「依審查為準」` : "文章與物件都沒有肯定語氣的保證說法",
+    hits.slice(0, 10));
+}
+
+/* D3 介面文字提到「其他公司／他社」（CLAUDE.md §3，周周 2026-11-12：不要讓客人覺得要去找別人）
+   文章裡解釋制度（REINS 讓其他公司查得到、電力公司可以換別家）是中性的，不在這裡管；
+   這裡只看「工具、按鈕、物件頁、會員頁」這些介面。 */
+function d3_otherCompany() {
+  const { SLUG } = loadIndexData();
+  const artPages = new Set(Object.values(SLUG).flatMap(s => [s + ".html", s + "-cn.html", s + "-ja.html"]));
+  const files = fs.readdirSync(ROOT).filter(f => /\.(html|js)$/.test(f)
+    && !artPages.has(f) && !/^(prop-|threads-|llms|google)/.test(f) && !/\.min\.js$/.test(f)
+    && !["properties.js", "properties-ja.js", "patrol.cjs"].includes(f));
+  const re = /其他公司|别家公司|別家公司|別家仲介|别家中介|其他仲介|其他中介|其他房仲|他社|他の不動産会社|別の不動産会社/g;
+  const hits = [];
+  for (const f of files) {
+    let t = read(f);
+    if (f === "index.html" || f === "index-cn.html") t = t.replace(/const ART\s*=\s*\[[\s\S]*?\n\];/, "");
+    t = t.replace(/<!--[\s\S]*?-->/g, "").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    for (const m of t.matchAll(re)) {
+      const ctx = t.slice(Math.max(0, m.index - 14), m.index + m[0].length + 10).replace(/\s+/g, " ");
+      if (OK.otherCoAllow.some(a => ctx.includes(a))) continue;
+      hits.push(`${f}：…${ctx}…`);
+    }
+  }
+  add("D3", "介面文字提到其他公司", hits.length ? "WARN" : "OK",
+    hits.length ? `${hits.length} 處，確認是不是在叫客人去找別家（制度說明可加進 OK.otherCoAllow）` : `掃 ${files.length} 個介面檔，沒有`,
+    hits.slice(0, 8));
+}
+
+/* D4 新文章的粗體數量（CLAUDE.md §3：周周多次提醒「粗體太多眼花」，整篇 8～10 個以內）
+   舊文章很多超標，那是規則訂下之前寫的，不追溯；只盯最近 14 天上線的。 */
+function d4_boldNew() {
+  const { ART } = loadIndexData();
+  const recent = ART.filter(a => a.id !== "a2" && daysFromToday(new Date(a.date + "T00:00:00+09:00")) >= -14);
+  const over = recent.map(a => [a, ((a.body || []).join("").match(/<b>/g) || []).length])
+    .filter(([, n]) => n > 12).map(([a, n]) => `${a.id}（${a.date}）粗體 ${n} 個：${String(a.title).slice(0, 26)}`);
+  add("D4", "新文章粗體數量", over.length ? "WARN" : "OK",
+    `最近 14 天 ${recent.length} 篇｜超過 12 個 <b> 的 ${over.length} 篇`, over);
+}
+
+/* D5 自動更新的資料有沒有停擺
+   SUUMO 行情每週一排程重抓、Flat35 利率每月 1 號排程核對。排程掛掉的話，
+   買房定位分析會默默用舊數字，沒人會發現。 */
+function d5_dataFresh() {
+  const bad = [], info = [];
+  try {
+    const f = JSON.parse(read("souba.json")).fetched;
+    const age = -daysFromToday(new Date(f + "T00:00:00+09:00"));
+    (age > 9 ? bad : info).push(`SUUMO 行情 souba.json：${f}（${age} 天前）${age > 9 ? "← 每週一的排程可能沒跑" : ""}`);
+  } catch (e) { bad.push("souba.json 讀不到 fetched 日期"); }
+  try {
+    const m = read("flat35-rate.js").match(/year:\s*(\d+),\s*month:\s*(\d+)/);
+    const [y, mo] = JST.date.split("-").map(Number);
+    const ok = m && (+m[1] === y && +m[2] === mo || +JST.date.slice(8) <= 3);
+    (ok ? info : bad).push(`Flat35 利率 flat35-rate.js：${m ? m[1] + "-" + m[2] : "?"}${ok ? "" : " ← 每月 1 號的核對排程可能沒跑"}`);
+  } catch (e) { bad.push("flat35-rate.js 讀不到年月"); }
+  add("D5", "自動更新資料的新鮮度", bad.length ? "WARN" : "OK", bad.concat(info).join("｜"));
+}
+
+/* D6 有時效的文章（活動、時事）過期
+   ART 可加選填欄位 expires:"YYYY-MM-DD"（例：六本木點燈 12/25 結束）。
+   過了這天就提醒改寫或更新；7 天內到期先預告。expires 不進內容雜湊，加了不會動到「更新日」。 */
+function d6_articleExpiry() {
+  const { ART } = loadIndexData();
+  const rows = [], soon = [];
+  for (const a of ART.filter(x => x.expires)) {
+    const dd = daysFromToday(new Date(a.expires + "T00:00:00+09:00"));
+    if (dd <= 0) rows.push(`${a.id} 已到期（${a.expires}）：${String(a.title).slice(0, 30)}`);
+    else if (dd <= 7) soon.push(`${a.id} ${dd} 天後到期（${a.expires}）：${String(a.title).slice(0, 30)}`);
+  }
+  add("D6", "有時效的文章", rows.length ? "WARN" : (soon.length ? "INFO" : "OK"),
+    `設了到期日的 ${ART.filter(x => x.expires).length} 篇｜已到期 ${rows.length}｜7 天內 ${soon.length}`, rows.concat(soon));
+}
+
+/* D7 分享預覽標籤（LINE／FB 貼連結要有縮圖與標題，周周 2026-11-15）
+   手寫頁新增後忘了跑 og-fill.cjs 就會缺。 */
+function d7_og() {
+  const out = sh("node og-fill.cjs --check");
+  const miss = out.split("\n").filter(l => l.includes("←"));
+  add("D7", "分享預覽標籤（og）", miss.length ? "FAIL" : "OK",
+    miss.length ? `${miss.length} 頁缺 og 標籤 → 跑 node og-fill.cjs` : "手寫頁都有 og 標籤", miss.slice(0, 8));
+}
+
+/* D8 手機版實測：橫向溢出、站內破圖（用 Playwright 真的開頁、捲到底）
+   A8 只看 console error 與有沒有渲染；版面在手機上被撐寬、內文圖片載不出來它抓不到。
+   2026-11-18 Suica 文章的候選圖被 .post img 裁成 3:2，就是截圖才發現的。
+   這裡至少保證：手機寬 390 不會左右滑、站內圖片都載得出來。 */
+async function d8_mobile() {
+  let pw; try { pw = require("playwright"); } catch (e) { add("D8", "手機版實測", "WARN", "沒有 playwright，略過"); return; }
+  const { ART, SLUG } = loadIndexData();
+  const newest = ART.slice().sort((x, y) => String(y.date).localeCompare(String(x.date)))[0];
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  const prop = P.find(p => !p.sold && p.status === "在售" && fs.existsSync(path.join(ROOT, `prop-${p.id}.html`)));
+  const pages = ["index.html", "properties.html", "tokyo-home-match.html", "ja.html"];
+  if (newest && SLUG[newest.id]) pages.push(SLUG[newest.id] + ".html", SLUG[newest.id] + "-ja.html");
+  if (prop) pages.push(`prop-${prop.id}.html`);
+  const bad = [];
+  let browser;
+  try {
+    browser = await pw.chromium.launch();
+    await Promise.all(pages.filter(f => fs.existsSync(path.join(ROOT, f))).map(async f => {
+      const pg = await browser.newPage({ viewport: { width: 390, height: 844 } });
+      try {
+        await pg.goto("file://" + path.join(ROOT, f), { waitUntil: "load", timeout: 30000 });
+        for (let i = 0; i < 12; i++) { await pg.evaluate(y => window.scrollTo(0, y), i * 900); await pg.waitForTimeout(120); }
+        await pg.waitForTimeout(800);
+        const r = await pg.evaluate(() => {
+          const w = document.documentElement.scrollWidth;
+          const broken = [...document.images].filter(im => {
+            const src = im.getAttribute("src") || "";
+            if (!src || /^(https?:|data:)/.test(src) || im.loading === "lazy" && !im.complete) return false;
+            return im.complete && im.naturalWidth === 0;
+          }).map(im => im.getAttribute("src"));
+          return { w, broken: [...new Set(broken)] };
+        });
+        if (r.w > 392) bad.push(`${f}：手機版寬 ${r.w}px（會左右滑）`);
+        for (const b of r.broken.slice(0, 3)) bad.push(`${f}：圖片載不出來 ${b}`);
+      } catch (e) { bad.push(`${f}：開頁失敗 ${String(e.message).slice(0, 60)}`); }
+      await pg.close();
+    }));
+  } finally { if (browser) await browser.close(); }
+  add("D8", "手機版實測（橫向溢出・站內破圖）", bad.length ? "FAIL" : "OK",
+    `390px 寬實際開 ${pages.length} 頁（含最新文章 ${newest ? newest.id : "-"} 三語中的繁／日、物件頁）→ 問題 ${bad.length}`, bad.slice(0, 10));
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    基準線比對：只報「跟上次比有變的數字」
    ══════════════════════════════════════════════════════════════════════ */
 function diffBaseline() {
@@ -1023,6 +1240,8 @@ async function main() {
   checkDeploy();
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); a13_jaPriceWords(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
+  // D 段每天都跑（2026-11-19 起）
+  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); await d8_mobile();
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 
