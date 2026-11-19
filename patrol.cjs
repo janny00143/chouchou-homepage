@@ -1161,6 +1161,32 @@ function d7_og() {
     miss.length ? `${miss.length} 頁缺 og 標籤 → 跑 node og-fill.cjs` : "手寫頁都有 og 標籤", miss.slice(0, 8));
 }
 
+/* D9 已完工的物件還在用完成預想圖（-pers）
+   properties.js 開頭的規則（周周 2026-08-23）：房子蓋好了就要換實景照。
+   2026-11-19 周周：「如果有蓋好的都提醒我補圖」——東が丘・駒場・西品川 part5
+   都是完工好幾週還掛著 CG 才被發現。改成每天抓，WARN 就是要請周周（或去雲端「完成写真」）補照片。 */
+function d9_completedCG() {
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  const done = /已完工|完工済|現況完成|完成済/;
+  const notDone = /尚未完工|未完工|建築中|未著工/;
+  const onlyCG = [], mixed = [];
+  for (const p of P.filter(x => !x.sold && x.status === "在售")) {
+    const txt = String(p.age || "") + "\n" + String(p.note || "");
+    const age = String(p.age || "");
+    if (!(done.test(age) || (done.test(txt) && !notDone.test(age)))) continue;
+    if (notDone.test(age)) continue;
+    const ph = (p.photos || []).filter(f => !/-plan\.|-illust\./.test(f));
+    const cg = ph.filter(f => /-pers\./.test(f));
+    if (!cg.length) continue;
+    (cg.length === ph.length ? onlyCG : mixed).push(`${p.id}（${p.title || ""}）CG ${cg.length}／照片 ${ph.length}`);
+  }
+  metrics.completedCG = onlyCG.length + mixed.length;
+  add("D9", "已完工物件還在用完成預想圖", (onlyCG.length || mixed.length) ? "WARN" : "OK",
+    `只有 CG ${onlyCG.length}｜CG 跟實景混著 ${mixed.length}` +
+    ((onlyCG.length || mixed.length) ? "　→ 先翻雲端該物件的「完成写真」，沒有就請周周補實景照" : ""),
+    onlyCG.concat(mixed).slice(0, 14));
+}
+
 /* D8 手機版實測：橫向溢出、站內破圖（用 Playwright 真的開頁、捲到底）
    A8 只看 console error 與有沒有渲染；版面在手機上被撐寬、內文圖片載不出來它抓不到。
    2026-11-18 Suica 文章的候選圖被 .post img 裁成 3:2，就是截圖才發現的。
@@ -1241,7 +1267,7 @@ async function main() {
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); a13_jaPriceWords(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   // D 段每天都跑（2026-11-19 起）
-  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); await d8_mobile();
+  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); await d8_mobile();
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 

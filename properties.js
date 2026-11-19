@@ -70,6 +70,8 @@
       ・這條取代 2026-08-16「四間自社一戶建改用官方完成預想圖當首圖」的舊做法。
       ・2026-08-24 周周指示連店舖的「改裝後示意圖」也一起拿掉：
         hamamatsucho102／ningyocho104／tsurumi101 的 -pers 已移除，note 裡的相關說明句也一併刪掉。
+      ・2026-11-19 higashigaoka1-p2／komaba1 完工，換成雲端「完成写真」的實景照（-pers 檔留著沒刪）。
+        patrol.cjs 的 D9 會抓「已完工卻只有 -pers」的物件，提醒周周補實景照。
       ・唯一還留 -pers 的是「建築条件付売地」這種房子還沒蓋的物件——那本來就只能放完成予想図，
         不在這條規則的範圍內。
 
@@ -2410,18 +2412,18 @@ window.PROPERTIES = [
     cat: "house",
     title: "東が丘1丁目 part2 新築戸建",
     title_cn: "目黑區東が丘 駒沢大学站13分 新築一戶建",
-    price: "2億6,480万円（含稅）",
+    price: "2億4,980万円（含稅）",
     location: "東京都目黒區東が丘1丁目12-4（舊住居表示）",
     station: "東急田園都市線「駒沢大学」站 徒步約13分／東急東橫線「学芸大学」站 徒步約19分",
     layout: "2層戸建・LDK約26.0帖（總樓地板約169.62㎡）",
     size: "土地115.60㎡（約34.97坪）・建物169.62㎡（約51.31坪）／1樓84.97㎡（含車庫・門廊19.91㎡）＋2樓80.93㎡＋屋頂層3.72㎡",
-    age: "新築（<b>已完工</b>・未入居）・交屋時期請洽詢",
+    age: "新築（<b>已完工</b>・未入居）・可即時交屋",
     facing: "2層樓建・耐震等級3・Flat 35 房貸（フラット35）S（A方案）適合證明書取得預定・第一種低層住居專用地域・第一種高度地區・準防火地域・建蔽率／容積率 60%/150%・建築確認號碼 SJK-KX266001300",
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-higashigaoka1-p2-1-pers.webp","prop/prop-higashigaoka1-p2-plan.webp"],
-    note: "■ 這間是什麼\n目黑區東が丘、駒沢大学站徒步約13分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地115.60㎡、總樓地板169.62㎡的2層樓建，<b>現況已完工</b>，交屋時期請洽詢（建築確認號碼 SJK-KX266001300 已取得）。\n■ 格局與亮點\nLDK約26.0帖，居室約10.0帖、約7.7帖、約6.5帖、約6.2帖，另有約5.6帖的屋頂陽台。設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立東根小學校、區立第十中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
+    photos: ["prop/prop-higashigaoka1-p2-1.webp", "prop/prop-higashigaoka1-p2-plan.webp", "prop/prop-higashigaoka1-p2-2.webp", "prop/prop-higashigaoka1-p2-3.webp", "prop/prop-higashigaoka1-p2-4.webp", "prop/prop-higashigaoka1-p2-5.webp", "prop/prop-higashigaoka1-p2-6.webp", "prop/prop-higashigaoka1-p2-7.webp", "prop/prop-higashigaoka1-p2-8.webp", "prop/prop-higashigaoka1-p2-9.webp", "prop/prop-higashigaoka1-p2-10.webp", "prop/prop-higashigaoka1-p2-11.webp", "prop/prop-higashigaoka1-p2-12.webp", "prop/prop-higashigaoka1-p2-13.webp", "prop/prop-higashigaoka1-p2-14.webp", "prop/prop-higashigaoka1-p2-15.webp"],
+    note: "■ 這間是什麼\n目黑區東が丘、駒沢大学站徒步約13分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。土地115.60㎡、總樓地板169.62㎡的2層樓建，<b>現況已完工</b>，可即時交屋，隨時可以約看（建築確認號碼 SJK-KX266001300 已取得）。\n■ 格局與亮點\nLDK約26.0帖，居室約10.0帖、約7.7帖、約6.5帖、約6.2帖，另有約5.6帖的屋頂陽台。設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。耐震等級3、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立東根小學校、區立第十中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
   {
@@ -2686,7 +2688,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-komaba1-1-pers.webp","prop/prop-komaba1-plan.webp"],
+    photos: ["prop/prop-komaba1-1.webp", "prop/prop-komaba1-plan.webp", "prop/prop-komaba1-2.webp", "prop/prop-komaba1-3.webp", "prop/prop-komaba1-4.webp", "prop/prop-komaba1-5.webp", "prop/prop-komaba1-6.webp", "prop/prop-komaba1-7.webp", "prop/prop-komaba1-8.webp", "prop/prop-komaba1-9.webp", "prop/prop-komaba1-10.webp", "prop/prop-komaba1-11.webp", "prop/prop-komaba1-12.webp"],
     note: "■ 這間是什麼\n目黑區駒場、駒場東大前站徒步約2分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。<b>現況已完工</b>，2026年11月交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約30.2帖，居室約6.4帖、約6.0帖。設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立駒場小學校、區立第一中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
