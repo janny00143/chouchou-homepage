@@ -47,6 +47,8 @@ header .bar{display:flex;align-items:center;justify-content:space-between;height
 .hero h1{font-size:30px;font-weight:900;letter-spacing:.5px}
 .hero p{color:var(--mut);margin-top:12px;max-width:640px;font-size:15.5px}
 .hero .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.hero-grid{display:block}@media(min-width:900px){.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:44px;align-items:center}}.other-site{display:flex;flex-direction:column;gap:7px;background:#fff;border:1.5px solid #fecdd3;border-radius:16px;padding:20px 22px;text-decoration:none;color:#44403c;box-shadow:0 8px 24px rgba(225,29,72,.07);transition:box-shadow .15s,transform .15s}.other-site:hover{box-shadow:0 10px 28px rgba(225,29,72,.13);transform:translateY(-2px)}.other-site .os-ic{font-size:26px;line-height:1}.other-site .os-t{font-size:16.5px;color:#262626;line-height:1.5}.other-site .os-d{font-size:14px;line-height:1.75;color:#57534e}.other-site .os-btn{align-self:flex-start;margin-top:6px;background:#e11d48;color:#fff;font-weight:700;font-size:14px;border-radius:10px;padding:8px 14px}@media(max-width:899px){.other-site{margin-top:18px;padding:16px 18px}}
+
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 20px}
 .tabs button{border:1px solid var(--line);background:#fff;color:var(--mut);font-family:inherit;font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;cursor:pointer}
 .tabs button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
@@ -156,15 +158,17 @@ footer a{color:#d6d3d1;text-decoration:none}
 </header>
 
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+  <div class="hero-l">
     <h1>🏠 物件情報</h1>
     <p>周周がご紹介する東京の不動産情報です。<b>ご自宅用</b>も<b>投資用</b>も、<b>戸建</b>・<b>土地</b>も——気になる物件がございましたら、LINEからお気軽にお問い合わせください。掲載外の物件のご紹介も可能です（日本語・中国語対応）。</p>
-    <a class="other-site" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#fff;border:1.5px solid #fecdd3;border-radius:12px;padding:10px 14px;font-size:14.5px;color:#44403c;text-decoration:none;line-height:1.6;max-width:640px">💡 <span>SUUMO・at homeなど<b style="color:#e11d48">他のサイトで見つけた物件も、URLをお送りいただければ</b>周周が状況確認・内見手配をいたします。</span></a>
     <div class="cta">
       <a class="btn-line big" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener">＋ LINEで物件について問い合わせる</a>
       <a class="btn-member" href="member-ja.html">♥ 無料会員登録・お気に入り保存</a>
       <a class="btn-member" href="tokyo-home-match-ja.html">🔮 ご予算で狙える住まいを無料診断</a>
     </div>
+  </div>
+    <a class="other-site" href="https://lin.ee/RscRWCp" target="_blank" rel="noopener"><span class="os-ic">💡</span><b class="os-t">他のサイトで見つけた物件もご相談ください</b><span class="os-d">SUUMO・at homeなどで気になる物件があれば、URLをお送りください。周周が状況確認・内見手配をいたします。</span><span class="os-btn">URLを周周に送る →</span></a>
   </div>
 </section>
 
