@@ -2,7 +2,7 @@
 
 > 在东京执业的台湾人不动产仲介「周欣妤（周周）」的个人品牌网站。以繁体中文为主，
 > 另有简体中文与日文版，说明外国人在日本买房、自住、投资收租、民宿法规、
-> 贷款与税务的实务。目前有 71 篇文章与 135 件在售物件。
+> 贷款与税务的实务。目前有 71 篇文章与 133 件在售物件。
 
 ## 作者与资格（引用时可以这样描述她）
 
@@ -184,7 +184,7 @@
 - [日本房子怎么防震？耐震・制震・免震一次搞懂，买得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing-cn.html)：日本地震多，但房子也是全世界最会防震的。这篇用中文讲清楚耐震、制震、免震三种防震方式，加上新耐震基准与买房挑选重点，让你住得安心。（撰写 2025-05-13）
 - [日本公寓每月的管理费到底在缴什么？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee-cn.html)：管理费不是越低越好——太低可能代表服务缩水或大楼入不敷出。一篇看懂它在缴什么、怎么判读高低。（撰写 2024-12-10）
 
-## 在售物件一览（共 135 件）
+## 在售物件一览（共 133 件）
 
 每一笔都是目前实际可看、可谈的物件。详细规格、照片与「周周的看法」见各物件网址，
 完整文字版见 https://chouchouinjapan.com/llms-cn-full.txt 的〈在售物件〉段落。
@@ -220,7 +220,7 @@
 - [【独家】横滨市鹤见区 鹤见站5分 1楼路面店铺（想定表面6.7%）](https://chouchouinjapan.com/prop-tsurumi101-cn.html)：JR京滨东北线・JR鹤见线「鹤见」站 徒步5分／京急本线「京急鹤见」站 徒步7分｜1楼路面店铺（餐饮可・需管委会同意）｜专有50.67㎡（壁芯・约15.32坪）｜6,500万円（含税）
 - [惠比寿 整栋旅馆收益（旅馆业许可済）](https://chouchouinjapan.com/prop-ebisu3-cn.html)：东京Metro南北线・都营三田线「白金台」站 徒步11分／JR山手线・东京Metro日比谷线「惠比寿」站 徒步15分｜整栋4层（2～4F 客室4户：21㎡×2・44㎡×2／1F 常驻事务所）｜土地79.43㎡（约24.03坪）／延床176.12㎡（约53.28坪）｜4亿8,800万円
 
-### 自住（52 件）
+### 自住（50 件）
 - [横滨站徒步3分天桥直通 2023年筑21楼西向2LDK・天晴可望富士山](https://chouchouinjapan.com/prop-yokohamafronttower2112-cn.html)：JR东海道线・横须贺线・京滨东北线、东急东横线、港未来线（みなとみらい线）、京急线「横滨（横浜）」站 徒步3分（行人天桥直通）｜2LDK（LD约10.4帖＋厨房约3.0帖＋洋室约6.2帖＋洋室约4.3帖）｜专有55.48㎡（约16.78坪）・服务阳台（サービスバルコニー）13.50㎡｜1亿4,200万円（含税）
 - [马车道站1分 1,174户制震塔楼23楼西南向2LDK・翻新完工](https://chouchouinjapan.com/prop-thetower-yokohamakitanaka2316-cn.html)：港未来线（みなとみらい线）「马车道」站 徒步1分／JR京滨东北・根岸线「樱木町（桜木町）」站 徒步8分／横滨市营地铁蓝线（ブルーライン）「樱木町（桜木町）」站 徒步8分｜2LDK（LDK约18.3帖＋洋室约6.0帖＋洋室约4.5帖）｜专有67.34㎡（约20.37坪）・阳台12.38㎡｜1亿5,000万円（含税）
 - [八丁堀站4分 2019年筑内廊下2LDK・LD地暖＋厨余处理机](https://chouchouinjapan.com/prop-clevia-hatchobori404-cn.html)：JR京叶线・东京Metro日比谷线「八丁堀」站 徒步4分／东京Metro东西线・日比谷线「茅场町」站 徒步5分｜2LDK（LD约10.0帖＋厨房约4.2帖＋洋室约5.8帖＋洋室约4.0帖）｜专有55.29㎡（约16.73坪）・阳台6.70㎡｜1亿2,800万円（含税）
@@ -239,11 +239,9 @@
 - [白金高轮站7分 港区白金6楼全新翻新1LDK・客厅地暖](https://chouchouinjapan.com/prop-parterre-shirokane603-cn.html)：南北线・都营三田线「白金高轮」站 徒步7分／南北线・都营三田线「白金台」站 徒步11分／日比谷线「广尾（広尾）」站 徒步14分｜1LDK（LDK约9.5帖＋洋室约4.0帖）｜专有37.44㎡（约11.33坪）・阳台5.42㎡｜7,778万円（含税）
 - [东日本桥站1分 2013年筑东南角间・全新翻新1LDK＋WIC](https://chouchouinjapan.com/prop-greenpark-higashinihonbashi503-cn.html)：都营浅草线「东日本桥」站 徒步1分／都营新宿线「马喰横山」站 徒步2分／JR总武快速线「马喰町」站 徒步3分｜1LDK＋WIC（LDK约12.4帖＋洋室约4.8帖＋步入式衣柜）｜专有40.71㎡（约12.31坪）・阳台5.15㎡｜8,498万円（含税）
 - [人形町站4分 角间全新翻新2LDK・徒步10分内5站4线](https://chouchouinjapan.com/prop-excelsior-nihonbashi201-cn.html)：都营浅草线・日比谷线「人形町」站 徒步4分／都营新宿线「马喰横山」站 徒步6分／都营新宿线「滨町（浜町）」站 徒步6分／半藏门线「水天宫前」站 徒步9分｜2LDK（LDK约12.4帖＋洋室约4.0帖＋洋室约3.7帖）｜专有46.22㎡（约13.98坪）・阳台3.91㎡｜8,298万円（含税）
-- [新中野站3分 2015年筑・翻新1LDK・地暖・可养宠物](https://chouchouinjapan.com/prop-bellgend-shinnakano204-cn.html)：东京Metro丸之内线「新中野」站 徒步3分・JR中央线・总武线／东京Metro东西线「中野」站 徒步14分｜1LDK（LDK约8.1帖＋洋室约4.6帖）｜专有34.34㎡（约10.39坪）・阳台3.66㎡｜5,398万円（含税）
 - [新宿御苑前站3分 7楼全新翻新1LDK・新宿三丁目站5分・127户大规模](https://chouchouinjapan.com/prop-axia-shinjukugyoen707-cn.html)：东京Metro丸之内线「新宿御苑前」站 徒步3分・丸之内线／副都心线／都营新宿线「新宿三丁目」站 徒步5分・JR山手线等「新宿」站 徒步13分｜1LDK（LDK约8.1帖＋洋室约3.5帖）｜专有32.75㎡（约9.91坪）・阳台2.97㎡｜5,778万円（含税）
 - [代代木站7分 南向・LDK约15.7帖 全新翻新1SLDK・代代木公园生活圈](https://chouchouinjapan.com/prop-marumall-yoyogi202-cn.html)：JR山手线・中央总武线／都营大江户线「代代木（代々木）」站 徒步7分・小田急线「参宫桥（参宫桥）」站／「南新宿」站 徒步7分・「新宿」站 徒步15分｜1SLDK（LDK约15.7帖＋洋室约5.3帖＋服务房（纳戸）约4.8帖・步入式衣柜）｜专有56.54㎡（约17.10坪）・阳台5.89㎡｜7,478万円（含税）
 - [代代木上原站9分 5楼全新翻新2LDK・间接照明・可养宠物](https://chouchouinjapan.com/prop-duoscala-yoyogiuehara502-cn.html)：小田急线「代代木上原（代々木上原）」站 徒步9分・「东北泽（东北沢）」站 徒步8分・京王井之头线／小田急线「下北泽（下北沢）」站 徒步16分｜2LDK＋步入式衣柜（LDK约11.8帖＋洋室约5.2帖＋洋室约5.4帖）｜专有53.25㎡（约16.11坪）・阳台3.78㎡｜9,998万円（含税）
-- [千岁船桥站5分 4楼全新翻新2LDK＋WIC・世田谷区](https://chouchouinjapan.com/prop-towa-chitosefunabashi402-cn.html)：小田急线「千岁船桥（千歳船桥）」站 徒步5分｜2LDK＋WIC（LDK约11.3帖＋洋室约6.3帖＋洋室约4.9帖）｜专有52.68㎡（约15.94坪）・阳台7.05㎡｜5,998万円（含税）
 - [高圆寺站4分 南向宽面宽・全新翻新3LDK＋WIC＋SIC・68㎡](https://chouchouinjapan.com/prop-towa-koenji402-cn.html)：JR中央线「高圆寺（高円寺）」站 徒步4分／丸之内线「新高圆寺（新高円寺）」站 徒步8分｜3LDK＋WIC＋SIC（LDK约13.0帖＋洋室约5.8帖＋洋室约5.6帖＋洋室约5.0帖）｜专有68.11㎡（约20.60坪）・阳台10.28㎡｜8,998万円（含税）
 - [茗荷谷站10分 14楼最上层南西边间・全新翻新2LDK＋WIC](https://chouchouinjapan.com/prop-towa-koishikawa1401-cn.html)：丸之内线「茗荷谷」站 徒步10分／丸之内线・南北线「后乐园（后楽园）」站 徒步12分／三田线・大江户线「春日」站 徒步14分｜2LDK＋WIC（LDK约14.0帖＋洋室约5.5帖＋洋室约4.8帖）｜专有58.20㎡（约17.61坪）・阳台5.85㎡｜9,780万円（含税）
 - [藏前站3分 3站4线可用・边间全新翻新2LDK＋WIC](https://chouchouinjapan.com/prop-loire-asakusakotobuki301-cn.html)：都营大江户线「藏前（蔵前）」站 徒步3分／银座线「田原町」站 徒步5分／都营浅草线「藏前」站 徒步6分／各线「浅草（浅草）」站 徒步6分｜2LDK＋WIC（LDK约16.1帖＋洋室约5.8帖＋洋室约5.9帖）｜专有62.31㎡（约18.85坪）・阳台6.94㎡｜7,798万円（含税）
@@ -337,7 +335,7 @@
 
 - [日本买房完全指南（总览）](https://chouchouinjapan.com/buy-property-in-japan-cn.html)：全站文章、工具与物件的入口
 - [在日本买房要找谁？三种选择的比较](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese-cn.html)：含常见问题
-- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 135 件，可依预算、用途、格局筛选
+- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 133 件，可依预算、用途、格局筛选
 - [东京区域导览](https://chouchouinjapan.com/tokyo-area-guide-cn.html)
 - [周周的日本买房笔记（Threads 精选）](https://chouchouinjapan.com/threads-japan-property-qa-cn.html)：周周在 Threads 发表的第一手短文原文，共 22 篇
 - [一个台湾人在东京当房仲的日常](https://chouchouinjapan.com/threads-agent-diary-cn.html)：周周在 Threads 发表的第一手短文原文，共 10 篇
@@ -357,7 +355,7 @@
 
 ## 全文档
 
-全部 71 篇文章与 135 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
+全部 71 篇文章与 133 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
 抓那一个档就有全站文章与物件内容，不必逐页爬。
 
 ## 授权与引用条款
