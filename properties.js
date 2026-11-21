@@ -70,6 +70,7 @@
       ・這條取代 2026-08-16「四間自社一戶建改用官方完成預想圖當首圖」的舊做法。
       ・2026-08-24 周周指示連店舖的「改裝後示意圖」也一起拿掉：
         hamamatsucho102／ningyocho104／tsurumi101 的 -pers 已移除，note 裡的相關說明句也一併刪掉。
+      ・2026-11-21 nishishinagawa2-p5 完工，換成雲端「完成写真／ホームステージング」實景照（周周指定用這組）。
       ・2026-11-19 higashigaoka1-p2／komaba1 完工，換成雲端「完成写真」的實景照（-pers 檔留著沒刪）。
         patrol.cjs 的 D9 會抓「已完工卻只有 -pers」的物件，提醒周周補實景照。
       ・唯一還留 -pers 的是「建築条件付売地」這種房子還沒蓋的物件——那本來就只能放完成予想図，
@@ -3046,7 +3047,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-nishishinagawa2-p5-1-pers.webp","prop/prop-nishishinagawa2-p5-plan.webp","prop/prop-nishishinagawa2-p5-2-pers.webp","prop/prop-nishishinagawa2-p5-3-pers.webp"],
+    photos: ["prop/prop-nishishinagawa2-p5-1.webp", "prop/prop-nishishinagawa2-p5-plan.webp", "prop/prop-nishishinagawa2-p5-2.webp", "prop/prop-nishishinagawa2-p5-3.webp", "prop/prop-nishishinagawa2-p5-4.webp", "prop/prop-nishishinagawa2-p5-5.webp", "prop/prop-nishishinagawa2-p5-6.webp", "prop/prop-nishishinagawa2-p5-7.webp", "prop/prop-nishishinagawa2-p5-8.webp", "prop/prop-nishishinagawa2-p5-9.webp", "prop/prop-nishishinagawa2-p5-10.webp", "prop/prop-nishishinagawa2-p5-11.webp", "prop/prop-nishishinagawa2-p5-12.webp"],
     note: "■ 這間是什麼\n品川區西品川、大崎站徒步約12分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。<b>現況已完工</b>，2026年12月下旬交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約26.8帖，居室約10.2帖、約7.1帖、約6.1帖。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立三木小學校、區立大崎中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 

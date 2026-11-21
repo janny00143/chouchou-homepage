@@ -1,11 +1,11 @@
 {
  "date": "2026-11-21",
- "mode": "B",
+ "mode": "A",
  "metrics": {
   "pages": 711,
   "inlineJs": 4566,
-  "jsonLd": 1317,
-  "links": 16407,
+  "jsonLd": 1320,
+  "links": 16434,
   "sitemap": 696,
   "props": 144,
   "propsOnSale": 133,
@@ -26,6 +26,6 @@
   "rootItems": 815,
   "propDatesPast": 0,
   "complianceHits": 0,
-  "completedCG": 1
+  "completedCG": 0
  }
 }
