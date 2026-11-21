@@ -1229,6 +1229,18 @@ function d11_feelWords() {
     rows.length ? `${rows.length} 件還沒確認　→ 周周看過說 OK 就加進 OK.feelOk；不對就改掉` : "都確認過了", rows.slice(0, 20));
 }
 
+/* D12 物件照片沒登記在 img-size.json
+   沒登記的話，產生器寫不出 width/height，物件頁會跳版（CLS）。2026-11-22 大巡邏才抓到 11/16 上架的
+   kyodo-palace201、kumanomae-ekimae 漏登（C2 只有週日跑），改成每天查。修法：補進 img-size.json 再重跑六支。 */
+function d12_imgSize() {
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  let sz = {}; try { sz = JSON.parse(read("img-size.json")); } catch (e) { }
+  const miss = [];
+  for (const p of P) for (const f of (p.photos || [])) if (!/^https?:/.test(f) && !sz[f]) miss.push(`${p.id}：${f}`);
+  add("D12", "物件照片登記尺寸（img-size.json）", miss.length ? "FAIL" : "OK",
+    miss.length ? `${miss.length} 張沒登記　→ 補進 img-size.json 後重跑六支產生器` : "全部有登記", miss.slice(0, 14));
+}
+
 /* D8 手機版實測：橫向溢出、站內破圖（用 Playwright 真的開頁、捲到底）
    A8 只看 console error 與有沒有渲染；版面在手機上被撐寬、內文圖片載不出來它抓不到。
    2026-11-18 Suica 文章的候選圖被 .post img 裁成 3:2，就是截圖才發現的。
@@ -1309,7 +1321,7 @@ async function main() {
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); a13_jaPriceWords(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   // D 段每天都跑（2026-11-19 起）
-  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); d10_jaFallback(); d11_feelWords(); await d8_mobile();
+  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); d10_jaFallback(); d11_feelWords(); d12_imgSize(); await d8_mobile();
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 

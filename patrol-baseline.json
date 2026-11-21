@@ -1,6 +1,6 @@
 {
- "date": "2026-11-21",
- "mode": "A",
+ "date": "2026-11-22",
+ "mode": "full",
  "metrics": {
   "pages": 711,
   "inlineJs": 4566,
@@ -20,10 +20,10 @@
   "orphanTw": 0,
   "orphanJa": 0,
   "noPlan": 0,
-  "images": 1293,
+  "images": 1327,
   "unusedImages": 0,
   "imgNoWH": 0,
-  "rootItems": 815,
+  "rootItems": 823,
   "propDatesPast": 0,
   "complianceHits": 0,
   "completedCG": 0
