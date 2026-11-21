@@ -873,6 +873,8 @@ window.PROPERTIES = [
     mgmt: "管理費17,100円＋修繕基金（修繕積立金）20,350円／月（合計37,450円・全部委託・常駐管理・旭化成不動產社區）。社區內停車場有空位：每月28,000～34,000円（2026年7月時點）",
     right: "所有權",
     yield: "",
+    video: "Ul2oQgaAYFM",
+    videoDate: "2026-11-21T10:00:00+09:00",   /* 周周 2026-11-20：11/21 10:00 上片 */
     photos: ["prop/prop-atlas-ikejiri601-1.webp", "prop/prop-atlas-ikejiri601-plan.webp", "prop/prop-atlas-ikejiri601-2.webp", "prop/prop-atlas-ikejiri601-3.webp", "prop/prop-atlas-ikejiri601-4.webp", "prop/prop-atlas-ikejiri601-5.webp", "prop/prop-atlas-ikejiri601-6.webp", "prop/prop-atlas-ikejiri601-7.webp", "prop/prop-atlas-ikejiri601-8.webp", "prop/prop-atlas-ikejiri601-9.webp", "prop/prop-atlas-ikejiri601-10.webp", "prop/prop-atlas-ikejiri601-11.webp", "prop/prop-atlas-ikejiri601-12.webp", "prop/prop-atlas-ikejiri601-13.webp", "prop/prop-atlas-ikejiri601-14.webp"],
     note: "■ 這間是什麼\n池尻大橋站徒步5分、旭化成不動產舊分售・大成建設施工的<b>205戶大型社區</b>，這戶是6樓的角戶，2026年7月剛完成全面翻新，空屋可以直接入住。\n■ 亮點\n專有約70㎡的2LDK，LDK約17.8帖、客廳餐廳有地暖，陽台約17㎡、角戶視野開闊（眺望依天候變化，也無法保證未來周邊建物不變）。地板、壁紙、廚房（附餐具櫃）、衛浴、建具全部換新，另新裝2台冷氣。\n■ 位置與生活\n大樓1樓就有藥妝店與百元商店，超市オオゼキ約140m、OK超市約320m，隔壁就是公園、世田谷公園約630m。24小時有人管理、三重保全，社區裡還有三座庭園，可以養2隻寵物。\n■ 想看房或試算貸款\n家具與擺設不含在售價內。這個價格帶的資金規劃與貸款方式要提早準備，加LINE跟周周說一聲，我用中文一步一步陪你確認。貸款能不能貸、可貸成數依個案與銀行審查為準。"
   },
