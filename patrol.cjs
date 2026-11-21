@@ -46,6 +46,8 @@ const OK = {
   //  ・kyoto-uta（京都・十條 町家民宿）：「2026年9月中旬預計營運」過期，2026-11-19 巡邏新抓到、已問周周（同一家リアルエステート）
   knownExpired: new Set(["tsuruhashi-ren", "kyoto-uta"]),
   // D3：介面／文案提到其他公司，但屬於制度說明、不是叫客人去找別人的（逐條確認後才加）
+  /* D11：周周確認過、現場感受說法沒問題的物件（id → 確認過的字）。新物件上架寫了這類字，D11 會列出來給周周看一次，她說 OK 就加進來。 */
+  feelOk: {},
   otherCoAllow: [
     "3か月前に他社の仲介", "跟別家仲介買房",          // 落地頁的客戶故事（找周周才安心），刻意寫的
     "他社様からお預かり", "間に他社が入りません",     // jisha-ja：廣告揭示義務的說明／自社「中間沒有他社」是賣點
@@ -1209,6 +1211,24 @@ function d10_jaFallback() {
     bad.length ? `${bad.length} 處　→ 在 properties-ja.js 該物件補上日文欄位` : "日文頁沒有退回顯示繁中的欄位", bad.slice(0, 14));
 }
 
+/* D11 物件介紹裡的「現場感受」說法（平路、日照、眺望、安靜…）
+   2026-11-20 瀬田ハイツ：照抄賣方図面「駅までフラットアプローチ」寫成「到車站平路」，周周說實際不是平路。
+   図面上的宣傳句不一定對，客人到現場一看就穿幫。這項只列出來給周周確認（INFO，不算錯），
+   確認過的放進 OK.feelOk，之後不再列。 */
+function d11_feelWords() {
+  const P = loadProps("properties.js", "PROPERTIES") || [];
+  const RE = /平路|不用爬坡|沒有坡|無坡|坡道少|日照(良好|佳|很好|充足)|採光(良好|佳|很好|極佳)|眺望(良好|佳|很好|極佳|開闊)|視野(開闊|很好|極佳)|很安靜|安靜的住宅|環境安靜|閑靜|通風(良好|佳|很好)/g;
+  const rows = [];
+  for (const p of P.filter(x => !x.sold && x.status === "在售")) {
+    const t = [p.title_cn, p.note, p.facing].join(" ").replace(/<[^>]+>/g, "");
+    const ok = OK.feelOk[p.id] || [];
+    const m = [...new Set(t.match(RE) || [])].filter(w => !ok.includes(w));
+    if (m.length) rows.push(`${p.id}（${p.title || ""}）：${m.join("、")}`);
+  }
+  add("D11", "物件介紹的現場感受說法（待周周確認）", rows.length ? "INFO" : "OK",
+    rows.length ? `${rows.length} 件還沒確認　→ 周周看過說 OK 就加進 OK.feelOk；不對就改掉` : "都確認過了", rows.slice(0, 20));
+}
+
 /* D8 手機版實測：橫向溢出、站內破圖（用 Playwright 真的開頁、捲到底）
    A8 只看 console error 與有沒有渲染；版面在手機上被撐寬、內文圖片載不出來它抓不到。
    2026-11-18 Suica 文章的候選圖被 .post img 裁成 3:2，就是截圖才發現的。
@@ -1289,7 +1309,7 @@ async function main() {
   if (doA) { a1_syntax(); a2_links(); a3_sitemap(); a4_data(); a5_firestore(); a6_secrets(); a9_uptime(); a10_llms(); a11_imgguard(); a12_wardgomi(); a13_jaPriceWords(); await a8_runtime(); a7_idempotent(); }
   if (doB) { b1_trilingual(); b2_meta(); b3_hreflang(); b4_structured(); b5_cta(); b6_contextLinks(); b7_props(); b8_lang(); b9_jaLinks(); b10_langLeak(); b11_noindexLinks(); }
   // D 段每天都跑（2026-11-19 起）
-  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); d10_jaFallback(); await d8_mobile();
+  d1_propDates(); d2_compliance(); d3_otherCompany(); d4_boldNew(); d5_dataFresh(); d6_articleExpiry(); d7_og(); d9_completedCG(); d10_jaFallback(); d11_feelWords(); await d8_mobile();
   if (doC) { c1_stale(); c2_images(); c3_external(); c4_repo(); }
   diffBaseline();
 
