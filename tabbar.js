@@ -11,7 +11,7 @@
 (function () {
   if (window.__chouTabbar) return; window.__chouTabbar = 1;
   var f = location.pathname.split("/").pop() || "index.html";
-  if (/^(threads-|members-admin|property-admin|stats|google)/.test(f) || /\/t\//.test(location.pathname)) return;
+  if (/^(threads-|members-admin|property-admin|stats|google|magazine-)/.test(f) || /\/t\//.test(location.pathname)) return;
   var L = (f === "ja.html" || /-ja\.html$/.test(f)) ? "ja" : ((f === "index-cn.html" || /-cn\.html$/.test(f)) ? "cn" : "tw");
   var sfx = L === "ja" ? "-ja" : (L === "cn" ? "-cn" : "");
   var HOME = L === "ja" ? "ja.html" : (L === "cn" ? "index-cn.html" : "index.html");
