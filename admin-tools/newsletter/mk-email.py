@@ -103,7 +103,7 @@ BODY = f'''<div style="display:none;max-height:0;overflow:hidden;font-size:1px;l
 <tr><td style="padding:0 28px 6px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:3px double {BROWN};"><tr>
 <td width="50%" valign="top" style="padding:12px 8px 4px 0;font-family:{SANS};"><div style="font-size:12px;font-weight:700;color:{INK};">Flat35 房貸利率</div><div style="font-family:{SERIF};font-size:26px;font-weight:900;color:{BROWN};">3.81%</div><div style="font-size:11px;color:{MUT};">2026 年 11 月最頻利率</div></td>
-<td width="50%" valign="top" style="padding:12px 0 4px 8px;font-family:{SANS};"><div style="font-size:12px;font-weight:700;color:{INK};">日圓 → 台幣</div><div style="font-family:{SERIF};font-size:26px;font-weight:900;color:{BROWN};">0.2094</div><div style="font-size:11px;color:{MUT};">臺灣銀行即期賣出（11/9）</div></td>
+<td width="50%" valign="top" style="padding:12px 0 4px 8px;font-family:{SANS};"><div style="font-size:12px;font-weight:700;color:{INK};">日圓 → 台幣</div><div style="font-family:{SERIF};font-size:26px;font-weight:900;color:{BROWN};">0.2100</div><div style="font-size:11px;color:{MUT};">臺灣銀行即期賣出（11/23）</div></td>
 </tr></table></td></tr>
 
 <tr><td style="padding:22px 28px 8px;">
