@@ -74,6 +74,7 @@ const FAQ_VIDS = (() => {
 const STYLE = src.match(/<style>[\s\S]*?<\/style>/)[0];
 
 const SLUG = {
+  "a74": "japan-vegetables-how-to-eat",
   "a72": "suica-how-to-buy-and-use",
   "a71": "suica-penguin-new-character-rabbit",
   "a70": "tokyo-move-in-procedures-14-days",
