@@ -42,7 +42,7 @@ CSS = r"""
 .mward{border-top:1px solid #f1eeec;padding-top:12px;margin-top:12px}.mward:first-of-type{border-top:0;margin-top:6px}
 .mwh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}.mwh b{font-size:17px}.mkv{font-size:13px;color:#57534e}
 .mtab{width:100%;border-collapse:collapse;font-size:14px}.mtab th,.mtab td{padding:8px 6px;border-bottom:1px solid #f1eeec;text-align:left}.mtab th{font-size:12.5px;color:var(--mut);font-weight:700}
-.mtab .num{font-variant-numeric:tabular-nums;font-weight:700}.mtab .rng{font-weight:500;color:#57534e}.mtab tr.hl td{background:#fff7ed}.ok{color:#059669;font-weight:900}.ng{color:#d6d3d1}
+.mtab .num{font-variant-numeric:tabular-nums;font-weight:700}.mtab .dn{display:block;font-size:11px;font-weight:400;color:var(--mut)}@media(max-width:600px){.mtab.wd th.rng,.mtab.wd td.rng{display:none}}.mtab .rng{font-weight:500;color:#57534e}.mtab tr.hl td{background:#fff7ed}.ok{color:#059669;font-weight:900}.ng{color:#d6d3d1}
 .mst{margin-top:10px;font-size:13.5px;color:#44403c}.mst span{display:inline-block;background:#f5f5f4;border-radius:999px;padding:3px 10px;margin:4px 6px 0 0}
 .mbars{display:grid;gap:5px;margin-top:10px}.mbar{display:grid;grid-template-columns:100px 1fr 96px;gap:8px;align-items:center;font-size:13.5px}.mbar.dim{opacity:.38}
 .mbar .bw{background:#f5f5f4;border-radius:6px;height:14px;overflow:hidden}.mbar .bw i{display:block;height:100%;border-radius:6px}.mbar .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
@@ -161,6 +161,7 @@ TW = dict(
   medAt="中央值約 {m}", outOfReach="最小的面積帶也超出預算",
   secWard="📍 你選的區域行情（{noun}）", landLine="地價 {p}萬円/㎡（一年 +{c}%）", popLine="人口 {p}萬",
   thSize="大小", thMed="價格中央值", thRange="常見價格帶", thFit="預算內", fewData="資料太少",
+  thDeal="實際成交", dealN="{n} 筆", dealNote="※「實際成交」＝國土交通省公開的近 4 季成交價中央值（不分屋齡），成交不到 3 筆的顯示「—」。開價和成交價通常會有落差，看到喜歡的物件想知道能談到多少，傳給周周幫你看。",
   stationsIn="{band}・預算內比較好入手的車站：", stationsCheap="{band}・相對好入手的車站：",
   secSize="📏 想要「{band}」，各區要多少？", secSizeSub="23 區由低到高排序（SUUMO 刊登{noun}的開價中央值）。顏色＝五大區域。", sizeBudgetNote="顏色變淡的區＝中央值超過你的預算 {b}。",
   secAge="🏗️ 想要「{a}」", unitCase="件", ageNote="↑ 周周目前在售物件裡符合這個屋齡的件數與價格帶（依區域分）。",
@@ -191,7 +192,7 @@ TW = dict(
   ctaTitle="把分析結果傳給周周", ctaTxt="一鍵把你的條件和分析結果傳到周周的 LINE，我會用真實成交行情幫你再看一次，並推薦還沒公開的物件。全程中文、免費諮詢。",
   ctaBtn="💬 用 LINE 傳給周周", copied="分析結果已複製！接下來會打開周周的 LINE，貼上傳給我就可以了。",
   links=LINKS_TW,
-  sources="📚 資料來源：中古公寓價格＝SUUMO 中古マンション価格相場（SUUMO 刊登物件的開價中央值，各站徒步15分內，{d} 擷取）；一戶建與土地＝SUUMO 新築／中古一戸建て・土地價格相場（同日擷取）；利率預設值＝住宅金融支援機構 Flat35 {ym}最頻金利（貸款比例9成以下）；匯率＝open.er-api.com 參考匯率；地價＝東京都財務局「令和8年地價公示」；人口＝東京都統計部「東京都的人口（推計）」2026年10月1日。開價不等於成交價，實際行情請以最新成交資料為準；能不能貸、可貸成數依個案與銀行審查為準；稅務請由稅理士確認。本分析為一般性參考，不構成投資建議。",
+  sources="📚 資料來源：中古公寓價格＝SUUMO 中古マンション価格相場（SUUMO 刊登物件的開價中央值，各站徒步15分內，{d} 擷取）；一戶建與土地＝SUUMO 新築／中古一戸建て・土地價格相場（同日擷取）；利率預設值＝住宅金融支援機構 Flat35 {ym}最頻金利（貸款比例9成以下）；匯率＝open.er-api.com 參考匯率；地價＝東京都財務局「令和8年地價公示」；人口＝東京都統計部「東京都的人口（推計）」2026年10月1日。實際成交價＝國土交通省「不動産情報ライブラリ」不動產交易價格資訊（{mq}）；開價不等於成交價；能不能貸、可貸成數依個案與銀行審查為準；稅務請由稅理士確認。本分析為一般性參考，不構成投資建議。",
   secLinks="🔎 看看有哪些可以選擇", secLinksSub="依你的條件（預算、大小、屋齡）直接打開 SUUMO 的搜尋結果，看目前市面上有哪些{noun}。", linksBtn="在 SUUMO 看", linksNote="看到喜歡的，直接把網址用 LINE 傳給周周——我幫你聯絡、看屋、談價，全程中文，你不用自己跟日本仲介溝通。",
   sumHead="【買房定位分析】", sumBudget="預算：", sumWard="地區：", sumSize="大小：", sumAge="屋齡：", sumPeople="人數：", sumPet="寵物：", sumVerdict="結論：", notSet="未填",
 )
@@ -254,6 +255,7 @@ JA.update(
   medAt="中央値 約{m}", outOfReach="最小の面積帯でも予算超過",
   secWard="📍 選択エリアの相場", landLine="地価 {p}万円/㎡（前年比 +{c}%）", popLine="人口 {p}万人",
   thSize="広さ", thMed="価格中央値", thRange="主な価格帯", thFit="予算内", fewData="データ僅少",
+  thDeal="成約価格", dealN="{n}件", dealNote="※「成約価格」は国土交通省「不動産情報ライブラリ」の直近4四半期の取引価格の中央値（築年数問わず）です。取引が3件未満の場合は「—」と表示しています。",
   stationsIn="{band}・ご予算内で狙いやすい駅：", stationsCheap="{band}・比較的手頃な駅：",
   secSize="📏 「{band}」を希望の場合、各区の相場は？", secSizeSub="23区を低い順に並べています（SUUMO掲載価格の中央値）。色は5大エリアです。", sizeBudgetNote="色が薄い区は、中央値がご予算 {b} を超えています。",
   secAge="🏗️ 「{a}」をご希望の場合", unitCase="件", ageNote="↑ 当サイト掲載中の物件のうち、この築年数に該当する件数と価格帯（エリア別）です。",
@@ -284,7 +286,7 @@ JA.update(
   ctaTitle="診断結果を周周に送る", ctaTxt="ご条件と診断結果をワンタップでLINEに送信できます。最新の成約データをもとに改めて確認し、未公開物件もご紹介いたします。ご相談は無料です。",
   ctaBtn="💬 LINEで周周に送る", copied="診断結果をコピーしました。LINEが開きますので、貼り付けて送信してください。",
   links=LINKS_JA,
-  sources="📚 データ出典：中古マンション価格＝SUUMO 中古マンション価格相場（SUUMO掲載物件の価格中央値、各駅徒歩15分以内、{d}取得）、地価＝東京都財務局「令和8年地価公示」、人口＝東京都総務局統計部「東京都の人口（推計）」令和8年10月1日現在。掲載価格は成約価格とは異なります。融資の可否・金額は金融機関の審査によります。税務は税理士にご確認ください。本診断は一般的な参考情報であり、投資助言ではありません。",
+  sources="📚 データ出典：中古マンション価格＝SUUMO 中古マンション価格相場（SUUMO掲載物件の価格中央値、各駅徒歩15分以内、{d}取得）、地価＝東京都財務局「令和8年地価公示」、人口＝東京都総務局統計部「東京都の人口（推計）」令和8年10月1日現在。成約価格＝国土交通省「不動産情報ライブラリ」不動産取引価格情報（{mq}）。掲載価格は成約価格とは異なります。融資の可否・金額は金融機関の審査によります。税務は税理士にご確認ください。本診断は一般的な参考情報であり、投資助言ではありません。",
   secLinks="🔎 どんな選択肢がある？", secLinksSub="ご条件（予算・広さ・築年数）でSUUMOの検索結果を開き、現在販売中の中古マンションをご覧いただけます。", linksBtn="SUUMOで見る", linksNote="気になる物件があればURLをLINEでお送りください。ご案内・内見・条件交渉まで当方でサポートいたします。",
   sumHead="【住まい診断】", sumBudget="予算：", sumWard="エリア：", sumSize="広さ：", sumAge="築年数：", sumPeople="人数：", sumPet="ペット：", sumVerdict="診断：", notSet="未入力",
 )
@@ -329,7 +331,7 @@ JA.update(
   sumType="種別：", sumLoan="年収 {i}／自己資金 {d}／{a}歳／{r}",
   res=["日本在住・永住者", "日本在住・永住許可なし", "海外在住"], sai="歳",
   rateLbl="初期値＝フラット35 {ym}",
-  sources="📚 データ出典：中古マンション価格＝SUUMO 中古マンション価格相場（SUUMO掲載物件の価格中央値、各駅徒歩15分以内、{d}取得）、戸建・土地＝SUUMO 新築／中古一戸建て・土地価格相場（同日取得）、金利初期値＝住宅金融支援機構 フラット35 {ym}最頻金利（融資率9割以下）、地価＝東京都財務局「令和8年地価公示」、人口＝東京都総務局統計部「東京都の人口（推計）」令和8年10月1日現在。掲載価格は成約価格とは異なります。融資の可否・金額は金融機関の審査によります。税務は税理士にご確認ください。本診断は一般的な参考情報であり、投資助言ではありません。",
+  sources="📚 データ出典：中古マンション価格＝SUUMO 中古マンション価格相場（SUUMO掲載物件の価格中央値、各駅徒歩15分以内、{d}取得）、戸建・土地＝SUUMO 新築／中古一戸建て・土地価格相場（同日取得）、金利初期値＝住宅金融支援機構 フラット35 {ym}最頻金利（融資率9割以下）、地価＝東京都財務局「令和8年地価公示」、人口＝東京都総務局統計部「東京都の人口（推計）」令和8年10月1日現在。成約価格＝国土交通省「不動産情報ライブラリ」不動産取引価格情報（{mq}）。掲載価格は成約価格とは異なります。融資の可否・金額は金融機関の審査によります。税務は税理士にご確認ください。本診断は一般的な参考情報であり、投資助言ではありません。",
 )
 
 JA.update(
@@ -371,7 +373,7 @@ for lang, P in PAGE.items():
     tail = s[s.index('<!--langswitch-->'):]
     body = BODY.format(stars=STARS, man=P['T']['man'], sai=P['T']['sai'], **{k: v for k, v in P.items() if k not in ('src', 'out', 'title', 'desc', 'ogt', 'T')})
     T = dict(P['T'])
-    scripts = ('<script src="souba.js"></script>\n<script src="wards-data.js"></script>\n<script src="properties.js"></script>\n' +
+    scripts = ('<script src="souba.js"></script>\n<script src="mlit.js"></script>\n<script src="wards-data.js"></script>\n<script src="properties.js"></script>\n' +
                ('<script src="properties-ja.js"></script>\n' if lang == 'ja' else '') +
                '<script src="area-viz.js"></script>\n<script src="flat35-rate.js"></script>\n<script>window.MATCH_T=' + json.dumps(T, ensure_ascii=False) + ';</script>\n<script src="match.js" defer></script>\n')
     out = head + style + '\n</head>\n<body>\n' + hdr + '\n' + body + scripts + tail
