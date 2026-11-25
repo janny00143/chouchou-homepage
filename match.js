@@ -350,13 +350,17 @@
   }
   function secWard() {
     var ws = st.wards.slice(0, 3), isLand = TY() === "land";
+    /* 國交省實際成交價（mlit.js，fetch-mlit.cjs 產生）：只用在公寓，跟 SUUMO 開價並列；成交不到 3 筆顯示「—」 */
+    var ML = window.MLIT, showDeal = TY() === "ms" && ML && ML.wards;
     return '<div class="msec"><h3>' + fmt(T.secWard, { noun: T.typeNoun[TY()] }) + '</h3>' + ws.map(function (c) {
       var w = DATA().wards[c], lp = W[c];
       if (!w) return '<div class="mward"><div class="mwh"><b>' + T.wardNames[c] + '</b></div><p class="msub">' + T.fewData + '</p></div>';
+      var MW = showDeal ? ML.wards[c] : null;
       var rows = w.bands.map(function (b, i) {
         var has = b.n >= 2 && b.med != null, okB = st.budget ? (has && b.med <= st.budget) : null;
+        var dl = MW && MW.all && MW.all[i], dcell = showDeal ? '<td class="num">' + (dl && dl.n >= 3 && dl.med != null ? fmtMan(dl.med) + '<small class="dn">' + fmt(T.dealN, { n: dl.n }) + '</small>' : '—') + '</td>' : '';
         var rng = isLand ? (b.tsubo ? fmt(T.tsuboAt2, { t: b.tsubo.toFixed(1) }) : T.fewData) : (has ? fmtMan(b.lo) + '〜' + fmtMan(b.hi) : T.fewData);
-        return '<tr' + (st.band === i ? ' class="hl"' : '') + '><td>' + shortL()[i] + '</td><td class="num">' + (has ? fmtMan(b.med) + fxSpan(b.med) : '—') + '</td><td class="num rng">' + rng + '</td>' + (st.budget ? '<td>' + (!has ? '' : okB ? '<span class="ok">✓</span>' : '<span class="ng">✕</span>') + '</td>' : '') + '</tr>';
+        return '<tr' + (st.band === i ? ' class="hl"' : '') + '><td>' + shortL()[i] + '</td><td class="num">' + (has ? fmtMan(b.med) + fxSpan(b.med) : '—') + '</td>' + dcell + '<td class="num rng">' + rng + '</td>' + (st.budget ? '<td>' + (!has ? '' : okB ? '<span class="ok">✓</span>' : '<span class="ng">✕</span>') + '</td>' : '') + '</tr>';
       }).join("");
       var bi = defBand(), stns = ((w.bands[bi] || {}).stations || []).slice().sort(function (a, b) { return a.med - b.med; });
       var inB = st.budget ? stns.filter(function (s) { return s.med <= st.budget; }) : stns;
@@ -364,9 +368,9 @@
       return '<div class="mward"><div class="mwh"><b>' + T.wardNames[c] + '</b><span class="mzb z-' + lp.zone + '">' + T.zones[lp.zone] + '</span>' +
         (isLand && w.tsubo ? '<span class="mkv">' + fmt(T.landAll, { t: w.tsubo.toFixed(1), n: w.n }) + '</span>' : '') +
         '<span class="mkv">' + fmt(T.landLine, { p: (lp.land / 10000).toFixed(1), c: lp.chg.toFixed(1) }) + '</span><span class="mkv">' + fmt(T.popLine, { p: (lp.pop / 10000).toFixed(1) }) + '</span></div>' +
-        '<table class="mtab"><thead><tr><th>' + T.thSizeT[TY()] + '</th><th>' + (isLand ? T.thMedLand : T.thMed) + '</th><th>' + (isLand ? T.thRangeLand : T.thRange) + '</th>' + (st.budget ? '<th>' + T.thFit + '</th>' : '') + '</tr></thead><tbody>' + rows + '</tbody></table>' +
+        '<table class="mtab' + (showDeal ? ' wd' : '') + '"><thead><tr><th>' + T.thSizeT[TY()] + '</th><th>' + (isLand ? T.thMedLand : T.thMed) + '</th>' + (showDeal ? '<th>' + T.thDeal + '</th>' : '') + '<th class="rng">' + (isLand ? T.thRangeLand : T.thRange) + '</th>' + (st.budget ? '<th>' + T.thFit + '</th>' : '') + '</tr></thead><tbody>' + rows + '</tbody></table>' +
         (pick.length ? '<p class="mst">' + fmt(inB.length && st.budget ? T.stationsIn : T.stationsCheap, { band: shortL()[bi] }) + pick.map(function (s) { return '<span>' + esc(s.st) + ' ' + fmtMan(s.med) + '</span>'; }).join("") + '</p>' : '') + '</div>';
-    }).join("") + (isLand ? '<p class="mnote">' + T.landNote + '</p>' : '') + '</div>';
+    }).join("") + (isLand ? '<p class="mnote">' + T.landNote + '</p>' : '') + (showDeal && T.dealNote ? '<p class="mnote">' + T.dealNote + '</p>' : '') + '</div>';
   }
   function secSize() {
     var b = st.band, rows = CODES.map(function (c) { return { c: c, m: med(c, b) }; }).filter(function (r) { return r.m != null; }).sort(function (a, b) { return a.m - b.m; });
@@ -532,7 +536,7 @@
   function secCta() {
     return '<div class="msec mcta"><h3>' + T.ctaTitle + '</h3><p>' + T.ctaTxt + '</p><button type="button" class="mline" id="mSend">' + T.ctaBtn + '</button>' +
       '<div class="mlinks">' + T.links.map(function (l) { return '<a href="' + l[1] + '">' + l[0] + '</a>'; }).join("") + '</div></div>' +
-      '<div class="msrc">' + fmt(T.sources, { d: S.fetched, ym: YM }) + '</div>';
+      '<div class="msrc">' + fmt(T.sources, { d: S.fetched, ym: YM, mq: window.MLIT && MLIT.quarters ? MLIT.quarters[MLIT.quarters.length - 1] + '〜' + MLIT.quarters[0] : '—' }) + '</div>';
   }
 
   function summaryText() {

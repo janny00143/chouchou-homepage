@@ -45,7 +45,7 @@ function builtAge(s, period) {
   const qs = quarters(), out = { source: "国土交通省 不動産情報ライブラリ（不動産取引価格情報）", url: "https://www.reinfolib.mlit.go.jp/", quarters: qs.map(([y, k]) => y + "Q" + k), fetched: new Date().toISOString().slice(0, 10), unit: "万円", wards: {} };
   let ok = 0;
   for (const code of CODES) {
-    const ms = MS_BANDS.map(() => AGE_BANDS.map(() => [])), land = [];
+    const ms = MS_BANDS.map(() => AGE_BANDS.map(() => [])), all = MS_BANDS.map(() => []), land = [];
     let n = 0;
     for (const [y, k] of qs) {
       const r = get(`${API}?year=${y}&quarter=${k}&area=13&city=${code}&priceClassification=01&language=ja`);
@@ -56,6 +56,7 @@ function builtAge(s, period) {
         const price = +t.TradePrice / 10000; if (!(price > 0)) continue;
         if (/中古マンション/.test(t.Type)) {
           const a = +t.Area, ag = builtAge(t.BuildingYear, t.Period), bi = bandIdx(MS_BANDS, a), ai = ag == null ? -1 : bandIdx(AGE_BANDS, ag);
+          if (bi >= 0) all[bi].push(Math.round(price));   // 不分屋齡（屋齡不明的也算進來）
           if (bi >= 0 && ai >= 0) { ms[bi][ai].push(Math.round(price)); n++; }
         } else if (/宅地\(土地\)/.test(t.Type) && +t.UnitPrice > 0) { land.push(Math.round(+t.UnitPrice / 1000) / 10); n++; }   // ㎡單價（萬円）
       }
@@ -64,6 +65,7 @@ function builtAge(s, period) {
     out.wards[code] = {
       n,
       ms: ms.map(row => row.map(v => ({ n: v.length, med: median(v) }))),
+      all: all.map(v => ({ n: v.length, med: median(v) })),   // 面積帶 × 全部屋齡（match.js 的「實際成交」欄用這個）
       land: { n: land.length, sqm: median(land) }
     };
     if (n) ok++;
