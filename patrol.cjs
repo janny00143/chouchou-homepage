@@ -1013,7 +1013,9 @@ const daysFromToday = d => Math.round((d - JST_TODAY) / 86400000);
 function d1_propDates() {
   const P = loadProps("properties.js", "PROPERTIES") || [];
   const PJ = loadProps("properties-ja.js", "PROPERTIES_JA") || {};
-  const MON = { "上旬": 5, "中旬": 15, "下旬": 25 };
+  /* 期間的「最後一天」才算過期（2026-11-26 修：原本下旬＝25 日，11/26 把「11月下旬交地」誤報成過期）。
+     上旬＝10 日、中旬＝20 日、下旬與只寫「N月」＝該月最後一天。 */
+  const MON = { "上旬": 10, "中旬": 20 };
   /* 只抓「預告」：日期前面有「預計」，或後面 16 字內有「預定／預計（予定）」。
      「2026年7月剛完成全面翻新」「2026年6月8日開始營運」是已經發生的事實，不算過期
      （第一版 2026-11-19 誤報過這兩種）。 */
@@ -1025,7 +1027,7 @@ function d1_propDates() {
     while ((m = re.exec(t))) {
       if (/^築/.test(m[6])) continue;                       // 「1972年11月築」是屋齡，不是預告
       if (!(m[1] || /預定|預計|予定/.test(m[6]))) continue;
-      const d = new Date(+m[2], +m[3] - 1, m[4] ? +m[4] : (m[5] ? MON[m[5]] : 28));
+      const d = m[4] ? new Date(+m[2], +m[3] - 1, +m[4]) : (MON[m[5]] ? new Date(+m[2], +m[3] - 1, MON[m[5]]) : new Date(+m[2], +m[3], 0));
       out.push({ when: d, text: m[0] + m[6] });
     }
     return out;
