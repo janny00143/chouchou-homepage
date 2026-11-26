@@ -2649,7 +2649,7 @@ window.PROPERTIES = [
     mgmt: "戸建，無管理費與修繕基金",
     right: "所有權",
     yield: "",
-    photos: ["prop/prop-komaba1-1.webp", "prop/prop-komaba1-plan.webp", "prop/prop-komaba1-2.webp", "prop/prop-komaba1-3.webp", "prop/prop-komaba1-4.webp", "prop/prop-komaba1-5.webp", "prop/prop-komaba1-6.webp", "prop/prop-komaba1-7.webp", "prop/prop-komaba1-8.webp", "prop/prop-komaba1-9.webp", "prop/prop-komaba1-10.webp", "prop/prop-komaba1-11.webp", "prop/prop-komaba1-12.webp"],
+    photos: ["prop/prop-komaba1-1.webp", "prop/prop-komaba1-13.webp", "prop/prop-komaba1-14.webp", "prop/prop-komaba1-15.webp", "prop/prop-komaba1-16.webp", "prop/prop-komaba1-17.webp", "prop/prop-komaba1-18.webp", "prop/prop-komaba1-19.webp", "prop/prop-komaba1-20.webp", "prop/prop-komaba1-plan.webp", "prop/prop-komaba1-2.webp", "prop/prop-komaba1-3.webp", "prop/prop-komaba1-4.webp", "prop/prop-komaba1-5.webp", "prop/prop-komaba1-6.webp", "prop/prop-komaba1-7.webp", "prop/prop-komaba1-8.webp", "prop/prop-komaba1-9.webp", "prop/prop-komaba1-10.webp", "prop/prop-komaba1-11.webp", "prop/prop-komaba1-12.webp"],
     note: "■ 這間是什麼\n目黑區駒場、駒場東大前站徒步約2分的<b>新築一戶建</b>，從設計、施工到銷售都是我們公司自己來的自社物件。<b>現況已完工</b>，2026年11月交屋預定，可以直接約看。\n■ 格局與亮點\nLDK約30.2帖，居室約6.4帖、約6.0帖。設備是平檯廚房、洗碗機、電動車充電插座、制震阻尼器、全熱交換、第一種換氣、噴塗隔熱、瓦斯衣物乾燥機（乾太くん）。耐震等級2、Flat 35 房貸（フラット35）S 適合證明書取得預定。學區是區立駒場小學校、區立第一中學校。\n■ 自社物件，問到底都可以\n房子是我們自己設計、自己蓋的，用什麼材料、工程走到哪、哪些地方還能微調，我這邊都問得到，不必經過第三家。想看現場或先抓貸款，加LINE跟我說一聲，我用中文一步一步陪你走完。"
   },
 
