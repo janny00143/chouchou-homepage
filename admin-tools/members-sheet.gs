@@ -17,6 +17,22 @@
  *
  * 安全：會員資料只在你的 Google 帳號裡流動（Firestore → 你的試算表），不經過任何第三方。
  *       這份試算表裡是客戶個資，請不要共用給別人。
+ *
+ * ⭐ Brevo 名單自動同步（周周 2026-11-26 核准「Brevo 名單同步ok」）
+ *   每小時更新試算表時，順便把「電子報」欄同步到 Brevo 的「周周會員」名單：
+ *     同意 → 加進名單（已經在的不會重複）；不收 → 從名單移除。
+ *   在 Brevo 信裡按「取消訂閱」的人，Brevo 會一直記得他退訂了，這裡不會把他加回來。
+ *   只會傳「有變動的人」，沒變動就不呼叫 Brevo。
+ *   設定（只要做一次，金鑰只存在你自己的 Apps Script 裡，不會進網站、也不會給我）：
+ *     1. Brevo 右上角帳號 → SMTP & API → API Keys → Generate a new API key（名字隨便取，例如 sheet-sync），複製。
+ *     2. Brevo → Contacts → Lists，點「周周會員」，網址或名單旁邊的 #數字 就是名單編號（ID）。
+ *     3. Apps Script 左邊齒輪「專案設定」→ 最下面「指令碼屬性」→ 新增兩個：
+ *          BREVO_KEY      ＝ 第 1 步複製的金鑰
+ *          BREVO_LIST_ID  ＝ 第 2 步的數字
+ *     4. 試算表選單「周周會員 → 立即同步 Brevo」跑一次，右上角會寫同步結果。
+ *   ⚠️ 若結果寫「401 unrecognised IP」：Brevo → Security → Authorised IPs 把「IP 限制」關掉
+ *      （Google 的伺服器 IP 不固定，開著會一直被擋）。
+ *   沒設定這兩個屬性就自動略過，試算表照常更新。
  */
 const PROJECT = 'chouchou-homepage';
 const SHEET = '會員名單';
@@ -24,7 +40,7 @@ const HEAD = ['加入日', '更新日', '姓名', '居住地', 'LINE ID', '電�
 const LANG = { tw: '繁中', cn: '簡中', ja: '日文' };
 
 function onOpen() {
-  SpreadsheetApp.getUi().createMenu('周周會員').addItem('立即更新', 'syncMembers').addToUi();
+  SpreadsheetApp.getUi().createMenu('周周會員').addItem('立即更新', 'syncMembers').addItem('立即同步 Brevo', 'syncBrevoNow').addToUi();
 }
 
 function setup() {
@@ -69,4 +85,51 @@ function syncMembers() {
   sh.setFrozenRows(1);
   sh.autoResizeColumns(1, HEAD.length);
   sh.getRange(1, HEAD.length + 2).setValue('最後更新：' + Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy/MM/dd HH:mm') + '（共 ' + rows.length + ' 位）');
+  let msg = '';
+  try { msg = syncBrevo(rows); } catch (e) { msg = 'Brevo 同步失敗：' + e.message; }
+  if (msg) sh.getRange(2, HEAD.length + 2).setValue(msg);
+}
+
+function syncBrevoNow() {
+  const p = PropertiesService.getScriptProperties();
+  p.deleteProperty('BREVO_STATE');          // 全部重送一次
+  syncMembers();
+}
+
+/* rows 的欄位順序見 HEAD：姓名 [2]、Email [6]、電子報 [7] */
+function syncBrevo(rows) {
+  const p = PropertiesService.getScriptProperties();
+  const key = p.getProperty('BREVO_KEY'), list = Number(p.getProperty('BREVO_LIST_ID'));
+  if (!key || !list) return '';
+  const prev = JSON.parse(p.getProperty('BREVO_STATE') || '{}');
+  const now = {}, add = [], rm = [];
+  rows.forEach(r => {
+    const email = String(r[6] || '').trim().toLowerCase();
+    if (!email || email.indexOf('@') < 1) return;
+    const st = r[7] === '同意' ? 'in' : 'out';
+    now[email] = st;
+    if (prev[email] === st) return;
+    if (st === 'in') add.push({ email: email, name: String(r[2] || '') });
+    else if (prev[email] === 'in' || prev[email] === undefined) rm.push(email);
+  });
+  const call = (path, body) => UrlFetchApp.fetch('https://api.brevo.com/v3' + path, {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    headers: { 'api-key': key, accept: 'application/json' }, payload: JSON.stringify(body)
+  });
+  let ok = 0, ng = [];
+  add.forEach(c => {
+    const res = call('/contacts', { email: c.email, attributes: { FIRSTNAME: c.name }, listIds: [list], updateEnabled: true });
+    const code = res.getResponseCode();
+    if (code < 300) ok++; else { ng.push(code + ' ' + res.getContentText().slice(0, 80)); delete now[c.email]; }
+  });
+  rm.forEach(e => {   // 一個一個移除：整批送的話，只要其中一個本來就不在名單裡，整批都會被退回
+    const res = call('/contacts/lists/' + list + '/contacts/remove', { emails: [e] });
+    const code = res.getResponseCode();
+    // 400／404「不在名單裡／沒有這個聯絡人」也算完成
+    if (code >= 300 && code !== 400 && code !== 404) { ng.push(code + ' ' + res.getContentText().slice(0, 80)); delete now[e]; }
+  });
+  p.setProperty('BREVO_STATE', JSON.stringify(now));
+  const t = Utilities.formatDate(new Date(), 'Asia/Tokyo', 'MM/dd HH:mm');
+  if (ng.length) return 'Brevo 同步（' + t + '）：有 ' + ng.length + ' 筆失敗，下次會再試。' + ng[0];
+  return 'Brevo 同步（' + t + '）：加入 ' + ok + '、移除 ' + rm.length + '，其餘沒變動';
 }

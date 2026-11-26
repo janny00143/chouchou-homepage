@@ -74,13 +74,13 @@ const HEAD_SCRIPTS = `<script>/* 防複製守門：頁面若被開在非本站�
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN785WJLZ3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XN785WJLZ3");</script><script src="imgguard.js" defer></script>`;
 const SBAR = `<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="ja.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.webp" alt="" style="height:28px;width:auto;display:block" width="420" height="501">周周・日本の不動産</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div></div>`;
-const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a><a href="buy-property-in-japan-ja.html" style="color:var(--mut)">📚 記事一覧</a><a href="japan-real-estate-agent-for-taiwanese-ja.html" style="color:var(--mut)">🤝 中華圏のお客様の購入窓口</a><a href="faq-ja.html" style="color:var(--mut)">❓ よくあるご質問</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
+const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本の不動産</p><p style="font-size:14px;color:var(--mut)">📍 東京23区を中心に、神奈川・千葉・横浜エリアにも対応しています。</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">LINEで相談する</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="ja.html" style="color:var(--mut)">ホーム</a><a href="buy-property-in-japan-ja.html" style="color:var(--mut)">📚 記事一覧</a><a href="japan-real-estate-agent-for-taiwanese-ja.html" style="color:var(--mut)">🤝 中華圏のお客様の購入窓口</a><a href="tokyo-apartment-rental-ja.html" style="color:var(--mut)">🔑 東京のお部屋探し</a><a href="faq-ja.html" style="color:var(--mut)">❓ よくあるご質問</a></div><div class="wrap cp">© 周周・日本の不動産</div></footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="トップへ戻る">↑</button>
 <script type="module" src="comments.js"></script>
 <script type="module" src="views.js"></script>
 <script>document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.ytf');if(f&&!f.dataset.l){f.dataset.l=1;f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.id+'?autoplay=1" title="動画" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:0;display:block"></iframe>';}});</script>
-<script>(function(){var rp=document.getElementById('rp'),btt=document.getElementById('btt');function os(){var h=document.documentElement,sc=h.scrollTop||document.body.scrollTop,mx=h.scrollHeight-h.clientHeight;rp.style.width=(mx>0?sc/mx*100:0)+'%';btt.style.display=sc>500?'flex':'none';}window.addEventListener('scroll',os,{passive:true});os();btt.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};var post=document.querySelector('.post');if(post){var heads=[];post.querySelectorAll('h2.ah, p').forEach(function(el){var t='';if(el.tagName==='H2'){t=el.textContent.trim();}else{var fe=el.querySelector('b');if(!fe||el.firstElementChild!==fe)return;t=fe.textContent.trim();}if(t.length>=3&&t.length<=42)heads.push({p:el,t:t});});if(heads.length>=4){var toc=document.createElement('div');toc.className='toc collapsed';var tt=document.createElement('div');tt.className='toc-t';tt.innerHTML='📑 目次 <span class="toc-x"></span>';tt.onclick=function(){toc.classList.toggle('collapsed');};var list=document.createElement('div');list.className='toc-list';heads.forEach(function(h,i){var id='sec'+i;h.p.id=id;h.p.classList.add('sec');var a=document.createElement('a');a.href='#'+id;a.textContent=h.t;list.appendChild(a);});toc.appendChild(tt);toc.appendChild(list);post.parentNode.insertBefore(toc,post);}}})();</script>`;
+<script>(function(){var rp=document.getElementById('rp'),btt=document.getElementById('btt');function os(){var h=document.documentElement,sc=h.scrollTop||document.body.scrollTop,mx=h.scrollHeight-h.clientHeight;if(rp)rp.style.width=(mx>0?sc/mx*100:0)+'%';if(btt)btt.style.display=sc>500?'flex':'none';}window.addEventListener('scroll',os,{passive:true});os();if(btt)btt.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};var post=document.querySelector('.post');if(post){var heads=[];post.querySelectorAll('h2.ah, p').forEach(function(el){var t='';if(el.tagName==='H2'){t=el.textContent.trim();}else{var fe=el.querySelector('b');if(!fe||el.firstElementChild!==fe)return;t=fe.textContent.trim();}if(t.length>=3&&t.length<=42)heads.push({p:el,t:t});});if(heads.length>=4){var toc=document.createElement('div');toc.className='toc collapsed';var tt=document.createElement('div');tt.className='toc-t';tt.innerHTML='📑 目次 <span class="toc-x"></span>';tt.onclick=function(){toc.classList.toggle('collapsed');};var list=document.createElement('div');list.className='toc-list';heads.forEach(function(h,i){var id='sec'+i;h.p.id=id;h.p.classList.add('sec');var a=document.createElement('a');a.href='#'+id;a.textContent=h.t;list.appendChild(a);});toc.appendChild(tt);toc.appendChild(list);post.parentNode.insertBefore(toc,post);}}})();</script>`;
 /* 語言切換選單。日文專用的落地頁沒有中文版，掛上去會指到不存在的檔案，所以不放。 */
 const LANGSWITCH = `<!--langswitch--><script>(function(){var p=location.pathname.split('/').pop()||'index.html';var isJa=(p==='ja.html');var isCn=(!isJa&&p.slice(-8)==='-cn.html');var twHref,cnHref;if(isJa){twHref='index.html';cnHref='index-cn.html';}else if(isCn){twHref=p.slice(0,-8)+'.html';cnHref=p;}else{twHref=p;cnHref=p.slice(0,-5)+'-cn.html';}var jaHref='ja.html';var cur=isJa?'ja':(isCn?'cn':'tw');function mk(label,href,key){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;a.setAttribute('data-lang',key);var active=(key===cur);a.style.cssText='display:block;padding:9px 14px;font-size:14px;text-decoration:none;border-radius:8px;white-space:nowrap;'+(active?'color:#f43f5e;font-weight:700;background:#fff1f2':'color:#292524');if(active)a.setAttribute('aria-current','page');return a;}var wrap=document.createElement('div');wrap.style.cssText='position:relative;flex:0 0 auto';var btn=document.createElement('button');btn.type='button';btn.textContent='🌐 言語';btn.setAttribute('aria-label','切換語言 / Language / 语言');btn.style.cssText='background:#fff;border:1px solid #e7e5e4;border-radius:999px;font-size:13px;font-weight:700;color:#57534e;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap';var menu=document.createElement('div');menu.style.cssText='display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;min-width:130px;z-index:200';menu.appendChild(mk('繁體中文',twHref,'tw'));menu.appendChild(mk('简体中文',cnHref,'cn'));menu.appendChild(mk('日本語',jaHref,'ja'));btn.onclick=function(e){e.stopPropagation();menu.style.display=(menu.style.display==='block')?'none':'block';};document.addEventListener('click',function(){menu.style.display='none';});wrap.appendChild(btn);wrap.appendChild(menu);function insertInto(container,beforeEl){if(beforeEl&&beforeEl.parentNode===container){container.insertBefore(wrap,beforeEl);}else{container.appendChild(wrap);}}var sbarRow=document.querySelector('.sbar .wrap')||document.querySelector('.sbar .in');if(sbarRow){var line=sbarRow.querySelector('a[href*="lin.ee"]');if(line){var grp=document.createElement('div');grp.style.cssText='display:flex;align-items:center;gap:10px';line.parentNode.insertBefore(grp,line);grp.appendChild(wrap);grp.appendChild(line);}else{sbarRow.appendChild(wrap);}return;}var hdRight=document.querySelector('header .hd-right');if(hdRight){var line2=hdRight.querySelector('.btn-line');insertInto(hdRight,line2);return;}wrap.style.cssText+=';position:fixed;top:10px;right:12px;z-index:210';document.body.appendChild(wrap);})();</script>`;
 
@@ -741,6 +741,68 @@ function pageFaqJa() {
   });
 }
 
+/* 東京のお部屋探し（賃貸仲介）ページ（周周 2026-11-26 核准）。繁中は generate-pages.cjs の pageRentTW()。
+   お客様（中華圏の入居希望者）と、外国籍の方の入居をご検討のオーナー様・管理会社様の両方に向けた内容。 */
+const FAQ_RENT_JA = [
+  ["外国籍でも東京でお部屋を借りられますか。",
+   "お借りいただけます。ただし、日本語での意思疎通や国内の緊急連絡先を条件とするオーナー様、外国籍の方の入居をお受けしていない物件もございます。当方では管理会社様へ入居条件と審査のポイントを事前に確認し、見込みのある物件だけをご案内しております。"],
+  ["来日前から探し始めることはできますか。",
+   "可能でございます。ご予算・ご希望エリア・通勤通学先を伺い、相場感と方向性を先にご提案いたします。オンラインでの内見にも対応しております。来日前のお申込みの可否や必要書類は保証会社・オーナー様ごとに異なりますので、ご在留資格に応じて個別に確認いたします。"],
+  ["日本に連帯保証人がいなくても大丈夫ですか。",
+   "現在、都内の賃貸物件の多くは家賃保証会社のご利用が前提となっており、必ずしも日本人の連帯保証人は必要ございません。保証料はプランにより異なりますので、ご契約前のお見積りに含めてご案内いたします。"],
+  ["退去時の原状回復はどう考えればよいですか。",
+   "国土交通省「原状回復をめぐるトラブルとガイドライン」では、通常の使用による損耗や経年変化の回復は原則として貸主負担とされております。東京都では、契約前に宅地建物取引業者が退去時・入居中の費用負担について書面で説明することが条例で定められております。当方ではこの内容を中国語でも丁寧にご説明いたします。"],
+  ["オーナー様・管理会社様として、外国籍の方の入居に不安があります。",
+   "ご契約前に、ごみの出し方、騒音、契約上の禁止事項、更新・解約の手続きなどを中国語でご説明し、ご理解いただいたうえでお申込みいただいております。入居後のご連絡の窓口としても対応いたしますので、お気軽にご相談くださいませ。"]
+];
+
+function pageRentJa() {
+  const c = S.company;
+  const url = BASE + "tokyo-apartment-rental-ja.html";
+  const main = `
+<p>当方では売買仲介に加えて、東京で暮らす中華圏（台湾・香港など）のお客様のお部屋探しもお手伝いしております。留学生の方、日本の企業へ赴任される方、ご家族を日本へ呼び寄せる方、まずは賃貸で暮らしてからご購入を検討される方など、ご事情はさまざまでございます。</p>
+<p>外国籍の方のお部屋探しでつまずきやすいのは、物件そのものよりも、入居審査の流れ、外国籍の方を受け入れている物件の見極め、そして初期費用の内訳でございます。このページでは、当方がどのようにお手伝いしているかをご説明いたします。</p>
+
+<h2 class="ah">ご入居までの流れ</h2>
+<p><b>一、ご条件の確認。</b>ご予算（賃料）、ご希望エリアや通勤通学先、間取り、ご入居時期、在留資格を伺います。</p>
+<p><b>二、物件の絞り込み。</b>管理会社様へ外国籍の方の入居可否と審査のポイントを事前に確認し、見込みのある物件のみご案内いたします。</p>
+<p><b>三、内見。</b>現地でのご案内のほか、海外にいらっしゃる方にはビデオ通話での内見にも対応しております。</p>
+<p><b>四、入居申込・保証会社審査。</b>申込書の記入を中国語でサポートし、必要書類を事前にご案内いたします。</p>
+<p><b>五、重要事項説明・ご契約。</b>宅地建物取引士による重要事項説明の内容を、中国語で一項目ずつ補足いたします。</p>
+<p><b>六、ご入居。</b>電気・ガス・水道、インターネット、区役所での住所届出などの手続きの順番もご案内いたします。</p>
+
+<h2 class="ah">初期費用について</h2>
+<p>敷金、礼金、仲介手数料、前家賃・日割り家賃、保証会社の保証料、火災保険料、鍵交換費用など、物件ごとに内訳が異なります。お申込みの前に一項目ずつお見積りをお示しし、ご契約時に想定外の費用が出ないよう努めております。</p>
+
+<h2 class="ah">オーナー様・管理会社様へ</h2>
+<p>外国籍の方の入居をご検討の際は、ぜひご相談ください。ご契約前に、ごみの出し方や騒音、契約上の禁止事項、更新・解約の手続きを中国語でご説明し、ご理解いただいたうえでお申込みいただいております。ご入居後のご連絡窓口としても対応いたします。</p>
+
+<h2 class="ah">よくあるご質問</h2>
+${FAQ_RENT_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+
+<p class="src">参考：国土交通省「原状回復をめぐるトラブルとガイドライン（再改訂版）」（平成23年8月）、東京都「東京における住宅の賃貸借に係る紛争の防止に関する条例」、国土交通省「外国人の民間賃貸住宅入居円滑化ガイドライン」、宅地建物取引業法に基づく報酬告示。2026年11月確認。</p>
+<p class="src">※ 本ページはサービスのご案内でございます。入居審査の結果は保証会社・オーナー様のご判断によります。契約内容は重要事項説明書および賃貸借契約書によります。賃貸借契約をもって在留資格が得られるものではございません。仲介業者：${c.name}（${c.license}）。</p>`;
+  return landingJa({
+    slug: "tokyo-apartment-rental",
+    metaTitle: "東京のお部屋探し（中華圏のお客様の賃貸仲介）｜周周・日本の不動産",
+    h1: "東京のお部屋探しも、中国語でお手伝いいたします",
+    lead: "留学・就職・赴任・ご家族の呼び寄せ——外国籍の方のお部屋探しで迷いやすい入居審査、初期費用、ご契約内容を、中国語で一つずつご説明いたします。",
+    crumb: "東京のお部屋探し",
+    desc: "東京で賃貸物件をお探しの中華圏（台湾・香港など）のお客様向けの賃貸仲介サービスのご案内です。ご入居までの流れ（条件確認、外国籍の方の入居可否の事前確認、内見、入居申込と保証会社審査、重要事項説明、ご入居手続き）、初期費用の内訳、原状回復の考え方をご説明しております。外国籍の方の入居をご検討のオーナー様・管理会社様からのご相談も承っております。",
+    keywords: "東京 賃貸 外国人,中国語 賃貸仲介,台湾人 部屋探し,留学生 賃貸,外国籍 入居,保証会社,原状回復,東京 お部屋探し",
+    ctaTitle: "お部屋探しのご相談はLINEからどうぞ",
+    ctaSub: "ご予算・ご希望エリア・ご入居時期をお送りいただければ、方向性をご提案いたします。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "WebPage", name: "東京のお部屋探しも、中国語でお手伝いいたします", inLanguage: "ja", url, description: "中華圏のお客様向け賃貸仲介のご案内。" },
+      { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: "ja", mainEntity: FAQ_RENT_JA.map(q => ({ "@type": "Question", name: q[0], acceptedAnswer: { "@type": "Answer", text: q[1] } })) },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE + "ja.html" },
+        { "@type": "ListItem", position: 2, name: "東京のお部屋探し", item: url } ] }
+    ],
+    main
+  });
+}
+
 function pageAgentJa() {
   const c = S.company;
   const url = BASE + "japan-real-estate-agent-for-taiwanese-ja.html";
@@ -887,6 +949,7 @@ ${catHTML}
 fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese-ja.html", pageAgentJa());
 fs.writeFileSync(ROOT + "/buy-property-in-japan-ja.html", pageHubJa());
 fs.writeFileSync(ROOT + "/faq-ja.html", pageFaqJa());
+fs.writeFileSync(ROOT + "/tokyo-apartment-rental-ja.html", pageRentJa());
 fs.writeFileSync(ROOT + "/tokyo-garbage-pdf-ja.html", pageGomiPdfJa());
 fs.writeFileSync(ROOT + "/tokyo-oversized-garbage-ja.html", pageSodaiJa());
 console.log("落地頁（日文）: japan-real-estate-agent-for-taiwanese-ja.html / buy-property-in-japan-ja.html / faq-ja.html 已產生");
@@ -1401,6 +1464,7 @@ function buildLlmsJa() {
 - 住宅街が静かな理由、用途地域で何が変わるか（13種類の用途地域） → ${BASE}japan-zoning-taiwan-vs-japan-ja.html
 - 日本の家が冬に寒い理由、内見で断熱をどう見るか → ${BASE}japan-house-cold-winter-insulation-ja.html
 - 日本で不動産を買うとき、誰に相談すべきか → ${BASE}japan-real-estate-agent-for-taiwanese-ja.html　購入の流れ（総覧）：${BASE}buy-property-in-japan-ja.html
+- 外国籍の方が東京で賃貸物件を探すとき（中国語対応の賃貸仲介） → ${BASE}tokyo-apartment-rental-ja.html
 
 ご連絡先：LINE 公式アカウント ${S.lineId}（${S.line}）。引用の際は、著者「周欣妤（周周）」と元記事の URL を明記してください。
 

@@ -394,7 +394,7 @@ const HEAD_SCRIPTS = `<script>/* 防複製守門：頁面若被開在非本站�
 const SBAR = `<div class="sbar"><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><a href="index.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;color:var(--rose);font-size:17px"><img src="logo-mark.webp" alt="" style="height:28px;width:auto;display:block" width="420" height="501">周周・日本房仲</a><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div></div>`;
 /* 會員見面禮入口（周周 2026-11-14 核准提案：首頁與文章結尾放「免費領 10 步清單」→ 加入會員）。簡中由 build-cn 轉；日文頁沒有。 */
 const GIFT_CARD = `<style>.gc-arr{display:none}@media(min-width:641px){.giftcta{padding:12px 18px!important;gap:16px!important;max-width:760px}.giftcta .gc-img{width:86px!important}.giftcta .gc-t{font-size:15.5px!important;margin:4px 0 2px!important}.giftcta .gc-desc{font-size:13px!important;line-height:1.55!important}.giftcta .gc-btn{display:none!important}.giftcta .gc-arr{display:flex!important;align-items:center;justify-content:center;flex:0 0 auto;margin-left:auto;width:38px;height:38px;border-radius:50%;background:#e11d48;color:#fff;font-size:22px;font-weight:700;line-height:1}}@media(max-width:640px){.giftcta{gap:12px!important;padding:10px 12px!important;border-radius:12px!important;background:#fff7f7!important}.giftcta .gc-img{width:54px!important;border-radius:5px!important;box-shadow:0 2px 6px rgba(0,0,0,.1)!important}.giftcta .gc-desc,.giftcta .gc-btn{display:none!important}.giftcta .gc-tag{padding:0!important;background:none!important;font-size:11.5px!important}.giftcta .gc-t{font-size:14px!important;margin:2px 0 0!important;line-height:1.45!important;font-weight:700}.giftcta .gc-arr{display:block!important;margin-left:auto;color:#e11d48;font-size:24px;font-weight:700;line-height:1;padding-left:4px}}</style><a class="giftcta" href="member.html" onclick="try{gtag('event','gift_cta',{pos:'article'})}catch(e){}" style="display:flex;gap:16px;align-items:center;text-decoration:none;color:inherit;background:linear-gradient(135deg,#fff1f2,#fff7ed);border:1px solid #fecdd3;border-radius:16px;padding:14px 16px;margin:22px 0 6px"><img src="img/gift-checklist.webp" width="520" height="405" alt="外國人在東京買房：從看屋到交屋 10 步清單" loading="lazy" class="gc-img" style="width:min(150px,30%);height:auto;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.12);flex:0 0 auto"><span style="display:block"><span class="gc-tag" style="display:inline-block;font-size:12px;font-weight:700;color:#e11d48;background:#fff;border-radius:999px;padding:2px 10px">🎁 會員免費領</span><b class="gc-t" style="display:block;font-size:16px;line-height:1.4;margin:6px 0 4px">外國人在東京買房：從看屋到交屋 10 步清單</b><span class="gc-desc" style="display:block;font-size:13.5px;color:#57534e;line-height:1.6">免費加入周周的會員，註冊完馬上下載；新物件搶先看，每月還會收到東京房市月報。</span><span class="gc-btn" style="display:inline-block;margin-top:8px;background:#e11d48;color:#fff;font-weight:700;font-size:14px;border-radius:10px;padding:7px 14px;white-space:nowrap">免費加入，領清單 →</span></span><span class="gc-arr">›</span></a>`;
-const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="index.html" style="color:var(--mut)">首頁</a><a href="buy-property-in-japan.html" style="color:var(--mut)">📚 日本買房指南</a><a href="japan-real-estate-agent-for-taiwanese.html" style="color:var(--mut)">🤝 買房要找誰</a><a href="faq.html" style="color:var(--mut)">❓ 常見問題</a><a href="feedback.html" style="color:var(--mut)">💬 意見回饋</a><a href="tool-loan.html" style="color:var(--mut)">🧮 試算工具</a><a href="videos.html" style="color:var(--mut)">🎬 影片</a></div><div class="wrap cp">© 周周・日本房仲</div></footer>`;
+const FOOT = `<footer><div class="wrap row"><div><p style="font-weight:700">周周・日本房仲</p><p style="font-size:14px;color:var(--mut)">📍 東京23區為主，神奈川、千葉、橫濱周邊也服務</p></div><a class="btn btn-line" href="${S.line}" target="_blank" rel="noopener">加 LINE 諮詢</a></div><div class="wrap" style="padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px"><a href="index.html" style="color:var(--mut)">首頁</a><a href="buy-property-in-japan.html" style="color:var(--mut)">📚 日本買房指南</a><a href="japan-real-estate-agent-for-taiwanese.html" style="color:var(--mut)">🤝 買房要找誰</a><a href="tokyo-apartment-rental.html" style="color:var(--mut)">🔑 東京租屋</a><a href="faq.html" style="color:var(--mut)">❓ 常見問題</a><a href="feedback.html" style="color:var(--mut)">💬 意見回饋</a><a href="tool-loan.html" style="color:var(--mut)">🧮 試算工具</a><a href="videos.html" style="color:var(--mut)">🎬 影片</a></div><div class="wrap cp">© 周周・日本房仲</div></footer>`;
 const TAIL = `<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(a&&a.href&&a.href.indexOf("lin.ee")>-1&&typeof gtag==="function"){gtag("event","line_click",{link_id:a.id||"",page:location.pathname});}});</script>
 <button id="btt" aria-label="回到頂端">↑</button>
 <script type="module" src="comments.js"></script>
@@ -634,6 +634,91 @@ ${FAQ_AGENT.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
         { "@type": "ListItem", position: 2, name: "在日本買房要找誰", item: url }
+      ] }
+    ],
+    main
+  });
+}
+
+/* 東京租屋專屬頁（周周 2026-11-26 核准「租屋專屬頁ok 租屋常見問ok」）。
+   首頁的租屋入口（rentstrip、選單「租屋」）都連到這頁；簡中由 build-cn 轉、日文在 build-ja.cjs 的 pageRentJa()。
+   ⚠️ 站在周周的生意寫：不教怎麼省仲介費、不推直租避開仲介；費用照實講，說法是「我一筆一筆幫你看清楚」。 */
+const RENT_LINE = "https://line.me/R/oaMessage/%40202dzwok/?%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E5%9C%A8%E6%9D%B1%E4%BA%AC%E7%A7%9F%E6%88%BF%20%F0%9F%99%82%0A%E5%B8%8C%E6%9C%9B%E5%8D%80%E5%9F%9F%EF%BC%9A%0A%E6%9C%88%E7%A7%9F%E9%A0%90%E7%AE%97%EF%BC%9A%0A%E6%A0%BC%E5%B1%80%EF%BC%8F%E5%9D%AA%E6%95%B8%EF%BC%9A%0A%E9%A0%90%E8%A8%88%E5%85%A5%E4%BD%8F%EF%BC%9A%0A%E7%B0%BD%E8%AD%89%EF%BC%8F%E8%BA%AB%E5%88%86%EF%BC%9A";
+const FAQ_RENT = [
+  ["外國人在東京租得到房子嗎？",
+   "租得到。不過有些房東會設條件，例如要求會講日文、要有日本的緊急聯絡人，或直接不接受外國人入住，這些在租屋網站上通常看不出來。我會先幫你跟管理公司確認「這間接不接受外國籍」「審查要看什麼」，確定有機會再帶你去看，不讓你白跑。"],
+  ["我還在台灣，可以先開始找嗎？",
+   "可以。可以先把預算、想住的區域、通勤或通學地點傳給我，我先幫你抓行情和方向，也可以用視訊帶你線上看房。至於能不能在入境前就送申請、需要哪些文件，每家保證公司與房東的規定不一樣，我會依你的身分（留學、工作、外派、家屬）先確認清楚再告訴你。"],
+  ["在日本沒有保證人怎麼辦？",
+   "現在東京大部分的租屋都會使用「保證公司（家賃保証会社）」，不一定需要日本人當保證人。保證公司要另外付保證費，金額和方案依公司而不同，有的物件還會要求緊急聯絡人。簽約前我會把這筆費用寫進估算裡，讓你一次看清楚。"],
+  ["初期費用要準備多少？",
+   "依物件差很多。常見的項目有押金（敷金）、禮金（礼金）、仲介手續費、第一個月房租與日割房租、保證公司費用、火災保險、換鎖費等，有的物件沒有禮金、有的押金比較高。我會在你決定申請之前，先把這間的初期費用一筆一筆列出來，不會到簽約才多冒出來。"],
+  ["找周周租房子，費用會比較貴嗎？",
+   "不會。住宅租賃的仲介手續費依宅地建物取引業法（宅建業法）的報酬規定有上限，跟承辦人講不講中文無關。實際金額會寫在估算與契約上，簽約前我都會跟你確認過。"],
+  ["退租的時候，押金會不會被扣光？",
+   "不應該被亂扣。依國土交通省的「原狀回復糾紛與指引」，一般生活造成的磨損與經年變化（例如家具壓痕、日曬造成的壁紙變色）原則上由房東負擔；房客要負擔的是故意或過失造成的損壞。東京都還有條例要求仲介在簽約前，用書面說明退租時的費用負擔。我會在簽約前就用中文把這部分講清楚，特約條款有沒有寫「退租清潔費」之類的，也會先提醒你。"],
+  ["租約兩年到期後要怎麼辦？",
+   "要看你簽的是哪一種契約。一般的「普通借家契約」到期可以續約，東京很多物件續約時要付「更新費（更新料）」，金額寫在契約裡；「定期借家契約」則是到期就結束，想繼續住要雙方同意重新簽約。這兩種差很多，看房時我就會先告訴你這間是哪一種。"],
+  ["租了之後可以轉租或拿來做民宿嗎？",
+   "原則上不行。沒有房東同意的轉租是違約，民宿（民泊）還另外牽涉法規與管理規約。如果你是想投資收租，那就是買房的範圍了，可以直接跟我聊。"]
+];
+
+function pageRentTW() {
+  const slug = "tokyo-apartment-rental";
+  const url = BASE + slug + ".html";
+  const main = `
+<p>「周周，你也有在做租屋嗎？」有喔。我平常除了買賣，也幫在東京生活的華語圈客人找租屋：剛來留學的學生、被公司外派過來的上班族、把家人接來日本的家庭，或是想先租一陣子、再慢慢決定要不要買房的人。</p>
+<p>在日本租房子，難的通常不是找不到物件，而是看不懂流程、不知道哪些房東接受外國人、初期費用一算才發現比想像中多。這頁把我實際帶客人租屋的流程、費用、要準備的資料都整理在這裡，看完你大概就知道自己要準備什麼了。</p>
+
+<h2 class="ah">誰適合找我租屋</h2>
+<p>來東京念書、工作、外派、陪家人過來，或是已經住在日本、想換一間更適合的房子，都可以。區域以東京 23 區為主，神奈川、千葉、埼玉這些通勤圈也可以一起看。人還在台灣也沒關係，可以先線上開始。</p>
+
+<h2 class="ah">從找房到拿鑰匙，大概是這樣</h2>
+<p><b>一、先跟我說條件。</b>預算（月租）、想住的區域或通勤地點、格局與坪數、預計入住時間、你的簽證或身分。用 LINE 傳給我最快，頁面下方有一鍵帶出的範本。</p>
+<p><b>二、我幫你篩選，先確認「接不接外國人」。</b>這是外國人租屋最常卡關的地方。我會先跟管理公司確認入住條件與審查重點，確定有機會再排看房。</p>
+<p><b>三、看房。</b>人在東京就現場帶看；人在海外可以用視訊帶你看，採光、收納、周邊環境我會一起拍給你看。</p>
+<p><b>四、送入居申請、保證公司審查。</b>申請書我會用中文帶你填，需要的資料也會先列給你。審查期間通常是幾天到一週左右，依保證公司與房東而不同。</p>
+<p><b>五、重要事項說明與簽約。</b>簽約前由宅地建物取引士（宅建士）進行重要事項說明，我會用中文逐條幫你解說：租期、續約條件、退租時的費用負擔、禁止事項，一項都不跳過。</p>
+<p><b>六、付初期費用、拿鑰匙入住。</b>入住後的水電瓦斯開通、網路申辦、區公所的住址登記，我也會告訴你順序（轉入手續可以看<a href="tokyo-move-in-procedures-14-days.html">剛搬到東京 14 天內要辦的事</a>）。</p>
+
+<h2 class="ah">初期費用有哪些</h2>
+<p>東京租屋除了第一個月的房租，簽約時還會有幾筆費用，常見的是：押金（敷金）、禮金（礼金）、仲介手續費、第一個月房租與入住當月的日割房租、保證公司的保證費、火災保險、換鎖費。有些物件沒有禮金，有些會多一筆清潔費或消毒費，每一間都不一樣。</p>
+<p>這些費用我會在你決定申請之前，先一筆一筆列給你看，讓你知道總共要準備多少、哪一筆是什麼意思，不會到簽約那天才多冒出來。</p>
+
+<h2 class="ah">要準備哪些資料</h2>
+<p>一般會用到：在留卡（還沒入境時是護照與預定入境的資料）、在職證明或在學證明、收入或存款相關資料、緊急聯絡人。實際要哪些，依保證公司和房東而不同，我會照你的身分先確認一次，再告訴你要準備的清單。</p>
+
+<h2 class="ah">退租的時候，我先幫你把醜話講在前面</h2>
+<p>很多人在日本租屋最大的糾紛是退租扣押金。國土交通省有一份「原狀回復糾紛與指引」，原則是：一般生活造成的磨損和經年變化由房東負擔，房客負擔的是自己弄壞的部分。東京都也有條例，要求仲介在簽約前用書面說明退租與修繕的費用負擔。</p>
+<p>我會在簽約前就用中文跟你把這一段講清楚，契約上有沒有「退租清潔費」「榻榻米更換費」這類特約條款，也會先提醒你，讓你搬進去之前就知道搬出來時大概會發生什麼事。</p>
+
+<h2 class="ah">租屋也是買房的第一步</h2>
+<p>很多客人是先租、住一段時間，熟悉了區域與生活圈之後才決定買。如果你也在想這件事，可以看<a href="rent-or-buy-japan.html">在日本該租還是該買</a>；租屋時想避開的格局，<a href="japan-bath-toilet-separate.html">浴室廁所分開</a>那篇也寫了很多看房時的細節。</p>
+
+<h2 class="ah">常見問題</h2>
+${FAQ_RENT.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6px">${q[0]}</p><p style="margin:0;color:var(--mut)">${q[1]}</p></div>`).join("\n")}
+
+<p style="margin:24px 0 6px"><a class="btn btn-line" href="${RENT_LINE}" target="_blank" rel="noopener" onclick="try{gtag('event','rent_line',{from:'rent_page'})}catch(e){}">用 LINE 傳租屋條件給周周</a></p>
+<p style="font-size:13px;color:var(--mut)">按下去會自動帶出「希望區域／月租預算／格局／預計入住／簽證身分」的範本，填好送出就可以。</p>
+
+<p class="src">資料來源：國土交通省「原状回復をめぐるトラブルとガイドライン（再改訂版）」2011 年 8 月；東京都「東京における住宅の賃貸借に係る紛争の防止に関する条例」（東京都住宅政策本部）；國土交通省「外国人の民間賃貸住宅入居円滑化ガイドライン」；宅地建物取引業法之報酬規定（國土交通省告示）。2026 年 11 月確認。</p>
+<p class="src">※ 本頁為服務說明。審查結果依保證公司與房東判斷，無法保證一定能入住；契約內容以重要事項說明書與租賃契約為準，由宅地建物取引士說明；租屋本身不等於取得簽證或在留資格。制度可能調整，實際請以官方最新公告為準。</p>`;
+  return landing({
+    slug,
+    metaTitle: "東京租屋找周周｜外國人租房流程、初期費用、保證公司、中文協助｜周周・日本房仲",
+    h1: "東京租屋，也可以找周周",
+    lead: "留學、工作、外派、陪家人來日本——外國人在東京租屋，最難的是看不懂流程、不知道哪些房東接受外國人、初期費用算不清楚。從找房到拿鑰匙，我全程用中文陪你。",
+    crumb: "東京租屋",
+    desc: "外國人在東京租房子要怎麼開始？在東京執業的台灣房仲周周整理租屋流程（條件確認、篩選接受外國人的物件、看房、入居申請與保證公司審查、重要事項說明、入住手續）、初期費用有哪些（押金、禮金、仲介手續費、保證公司、火災保險）、要準備的資料，以及退租時押金怎麼算（國土交通省原狀回復指引、東京都條例）。附常見問題，可用 LINE 一鍵傳租屋條件。",
+    keywords: "東京租屋,日本租屋,外國人租屋,東京租房,日本租房中文,留學生租屋,保證公司,初期費用,押金禮金,原狀回復,東京租屋仲介,台灣人在東京租屋",
+    ctaTitle: "想在東京租房子？先把條件丟給我",
+    ctaSub: "預算、區域、預計入住時間跟我說一聲，我先幫你看方向和行情。",
+    ld: [
+      { "@context": "https://schema.org", "@type": "WebPage", name: "東京租屋，也可以找周周", inLanguage: "zh-Hant", url, description: "外國人在東京租屋的流程、初期費用、要準備的資料與退租注意事項，全程中文協助。", publisher: PUBLISHER_TW, about: { "@type": "RealEstateAgent", name: "周周・日本房仲", url: BASE } },
+      { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: "zh-Hant", mainEntity: FAQ_RENT.map(q => ({ "@type": "Question", name: q[0], acceptedAnswer: { "@type": "Answer", text: q[1] } })) },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: BASE },
+        { "@type": "ListItem", position: 2, name: "東京租屋", item: url }
       ] }
     ],
     main
@@ -1359,6 +1444,7 @@ fs.writeFileSync(ROOT + "/japan-real-estate-agent-for-taiwanese.html", pageAgent
 fs.writeFileSync(ROOT + "/stats.html", pageStats());
 fs.writeFileSync(ROOT + "/buy-property-in-japan.html", pageHubTW());
 fs.writeFileSync(ROOT + "/faq.html", pageFaqTW());
+fs.writeFileSync(ROOT + "/tokyo-apartment-rental.html", pageRentTW());
 fs.writeFileSync(ROOT + "/tokyo-garbage-pdf.html", pageGomiPdfTW());
 fs.writeFileSync(ROOT + "/tokyo-oversized-garbage.html", pageSodaiTW());
 console.log("落地頁: japan-real-estate-agent-for-taiwanese.html / buy-property-in-japan.html / faq.html / tokyo-garbage-pdf.html / tokyo-oversized-garbage.html");
@@ -1410,6 +1496,8 @@ for (const p of PROPS.filter(x => (!x.sold && x.status === "在售") || x.keepPa
 // 商業關鍵字落地頁：hub 是「日本買房」的入口，權重高於一般文章
 urls.push({ loc: BASE + "buy-property-in-japan.html", pr: "0.9", cf: "weekly" });
 urls.push({ loc: BASE + "faq.html", pr: "0.8" });
+urls.push({ loc: BASE + "tokyo-apartment-rental.html", pr: "0.8" });
+urls.push({ loc: BASE + "tokyo-apartment-rental-ja.html", pr: "0.6" });
 urls.push({ loc: BASE + "tokyo-garbage-pdf.html", pr: "0.8", cf: "weekly" });
 urls.push({ loc: BASE + "tokyo-oversized-garbage.html", pr: "0.7", cf: "weekly" });
 urls.push({ loc: BASE + "buy-property-in-japan-ja.html", pr: "0.7", cf: "weekly" });
@@ -2070,6 +2158,7 @@ function buildLlmsTxt() {
 - 東京的住宅區為什麼很安靜、看房時用途地域要看什麼？日本有 13 種用途地域，低層住居專用地域連獨立店面都不能開，會影響生活機能、日照與能否經營民宿。→ ${BASE}japan-zoning-taiwan-vs-japan.html
 - 日本的房子冬天為什麼冷、看房時怎麼看斷熱？多半是窗戶（單層玻璃、鋁框）；公寓窗戶屬共用部分不能自行更換，但常可加內窗。→ ${BASE}japan-house-cold-winter-insulation.html
 - 想要買日本房，該找誰？→ ${BASE}japan-real-estate-agent-for-taiwanese.html　整體流程總覽：${BASE}buy-property-in-japan.html
+- 外國人想在東京租房子、要找誰？流程與初期費用 → ${BASE}tokyo-apartment-rental.html
 
 如何聯絡：LINE 官方帳號 ${S.lineId}（${S.line}）。引用時請標註作者「周欣妤（周周）」與原文網址。
 
