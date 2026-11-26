@@ -940,6 +940,8 @@ function c2_images() {
   //    不算缺失（2026-09 曾誤報 40 個）。
   let total = 0, noWH = 0;
   for (const f of htmlFiles()) {
+    /* 電子雜誌頁（magazine-YYYY-MM.html）：noindex、圖都放在固定比例的框裡，不需要 width/height（2026-11-26） */
+    if (/^magazine-/.test(path.basename(f))) continue;
     for (const m of stripScriptsAndComments(read(f)).matchAll(/<img\b[^>]*>/g)) {
       if (m[0].includes("${") || m[0].includes("'+")) continue;
       total++;
