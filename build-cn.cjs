@@ -131,6 +131,8 @@ function convertFile(file) {
 
   // 7) 還原 hreflang 標籤
   s = s.replace(/@@H(\d+)@@/g, (_, i) => hre[+i]);
+  // 8) 專屬分享圖：繁中版用 img/og-xxx-tw.jpg 的，簡中有對應的 -cn 圖就換過去（2026-11-27 租屋頁）
+  s = s.replace(/img\/og-([a-z0-9-]+)-tw\.jpg/g, (m, k) => fs.existsSync(ROOT + "/img/og-" + k + "-cn.jpg") ? "img/og-" + k + "-cn.jpg" : m);
 
   fs.writeFileSync(ROOT + "/" + cn(file), s);
   return cn(file);

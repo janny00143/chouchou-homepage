@@ -574,7 +574,7 @@ ${HEAD_SCRIPTS}
 <meta property="og:title" content="${esc(cfg.metaTitle)}">
 <meta property="og:description" content="${esc(cfg.desc)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="https://chouchouinjapan.com/og-image.jpg">
+<meta property="og:image" content="https://chouchouinjapan.com/${cfg.ogImage || "og-image.jpg"}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -784,6 +784,7 @@ ${FAQ_RENT_JA.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom
 <p class="src">※ 本ページはサービスのご案内でございます。入居審査の結果は保証会社・オーナー様のご判断によります。契約内容は重要事項説明書および賃貸借契約書によります。賃貸借契約をもって在留資格が得られるものではございません。仲介業者：${c.name}（${c.license}）。</p>`;
   return landingJa({
     slug: "tokyo-apartment-rental",
+    ogImage: "img/og-rent-ja.jpg",
     metaTitle: "東京のお部屋探し（中華圏のお客様の賃貸仲介）｜周周・日本の不動産",
     h1: "東京のお部屋探しも、中国語でお手伝いいたします",
     lead: "留学・就職・赴任・ご家族の呼び寄せ——外国籍の方のお部屋探しで迷いやすい入居審査、初期費用、ご契約内容を、中国語で一つずつご説明いたします。",

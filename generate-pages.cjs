@@ -527,7 +527,7 @@ ${HEAD_SCRIPTS}
 <meta property="og:title" content="${t}">
 <meta property="og:description" content="${d}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="https://chouchouinjapan.com/og-image.jpg">
+<meta property="og:image" content="https://chouchouinjapan.com/${cfg.ogImage || "og-image.jpg"}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -705,6 +705,7 @@ ${FAQ_RENT.map(q => `<div class="faq"><p style="font-weight:800;margin-bottom:6p
 <p class="src">※ 本頁為服務說明。審查結果依保證公司與房東判斷，無法保證一定能入住；契約內容以重要事項說明書與租賃契約為準，由宅地建物取引士說明；租屋本身不等於取得簽證或在留資格。制度可能調整，實際請以官方最新公告為準。</p>`;
   return landing({
     slug,
+    ogImage: "img/og-rent-tw.jpg",
     metaTitle: "東京租屋找周周｜外國人租房流程、初期費用、保證公司、中文協助｜周周・日本房仲",
     h1: "東京租屋，也可以找周周",
     lead: "留學、工作、外派、陪家人來日本——外國人在東京租屋，最難的是看不懂流程、不知道哪些房東接受外國人、初期費用算不清楚。從找房到拿鑰匙，我全程用中文陪你。",
