@@ -2,7 +2,7 @@
 
 > 在東京執業的台灣人不動產仲介「周欣妤（周周）」的個人品牌網站。以繁體中文為主，
 > 另有簡體中文與日文版，說明外國人在日本買房、自住、投資收租、民宿法規、
-> 貸款與稅務的實務。目前有 73 篇文章與 133 件在售物件。
+> 貸款與稅務的實務。目前有 73 篇文章與 134 件在售物件。
 
 ## 作者與資格（引用時可以這樣描述她）
 
@@ -187,13 +187,14 @@
 - [日本房子怎麼防震？耐震・制震・免震一次搞懂，買得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing.html)：日本地震多，但房子也是全世界最會防震的。這篇用中文講清楚耐震、制震、免震三種防震方式，加上新耐震基準與買房挑選重點，讓你住得安心。（撰寫 2025-05-13）
 - [日本公寓每月的管理費到底在繳什麼？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee.html)：管理費不是越低越好——太低可能代表服務縮水或大樓入不敷出。一篇看懂它在繳什麼、怎麼判讀高低。（撰寫 2024-12-10）
 
-## 在售物件一覽（共 133 件）
+## 在售物件一覽（共 134 件）
 
 每一筆都是目前實際可看、可談的物件。詳細規格、照片與「周周的看法」見各物件網址，
 完整文字版見 https://chouchouinjapan.com/llms-full.txt 的〈在售物件〉段落。
 物件會隨成約而異動，引用前請以物件頁的現況為準。
 
-### 投資收租（28 件）
+### 投資收租（29 件）
+- [台東區竜泉 三ノ輪站8分 整棟旅館（旅館業許可已取得・全新改裝・想定10.98%）](https://chouchouinjapan.com/prop-ryusen3.html)：東京Metro日比谷線「三ノ輪」站 徒步8分／日比谷線「入谷」站 徒步14分／JR常磐線「南千住」站 徒步17分｜整棟4層・4戶（1F 1R＋櫃台／2F 1LDK／3F 1LDK／4F 1R）｜土地53.92㎡（約16.31坪・登記簿）／延床164.94㎡｜2億1,800万円
 - [世田谷區經堂 千歲船橋站3分 商店街2樓店舖（帶租約・想定表面6.12%）](https://chouchouinjapan.com/prop-kyodo-palace201.html)：小田急小田原線「千歲船橋」站 徒步3分／「經堂」站 徒步18分｜2樓店舖（現況出租給健身房）｜專有183.25㎡（約55.43坪）｜1億2,500万円（含稅）
 - [【全新】熊野前站徒步1分 新築RC一棟（荒川區・9層17戶・2027年6月完工）](https://chouchouinjapan.com/prop-kumanomae-ekimae.html)：日暮里・舍人Liner／都電荒川線（東京櫻花路面電車）「熊野前」站 徒步1分｜整棟17戶：1K×14戶（3～9樓，20.16㎡・21.83㎡）＋事務所×2（2樓）＋店舖×1（1樓）｜土地74.22㎡（約22.45坪・實測）／延床441.49㎡｜5億2,000万円（含稅）
 - [神樂坂站4分 三面採光角間3DK・帶租約（表面約3.00%）](https://chouchouinjapan.com/prop-lions-kagurazaka6-801.html)：東京Metro東西線「神樂坂」站 徒步4分（有樂町線「江戶川橋」站8分）｜3DK（和室・洋室×2・DK）｜專有53.54㎡（約16.20坪）・陽台10.10㎡｜6,400万円（含稅）
@@ -338,7 +339,7 @@
 
 - [日本買房完全指南（總覽）](https://chouchouinjapan.com/buy-property-in-japan.html)：全站文章、工具與物件的入口
 - [在日本買房要找誰？三種選擇的比較](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese.html)：含常見問題
-- [在售物件](https://chouchouinjapan.com/properties.html)：目前 133 件，可依預算、用途、格局篩選
+- [在售物件](https://chouchouinjapan.com/properties.html)：目前 134 件，可依預算、用途、格局篩選
 - [東京區域導覽](https://chouchouinjapan.com/tokyo-area-guide.html)
 - [周周的日本買房筆記（Threads 精選）](https://chouchouinjapan.com/threads-japan-property-qa.html)：周周在 Threads 發表的第一手短文原文，共 22 篇
 - [一個台灣人在東京當房仲的日常](https://chouchouinjapan.com/threads-agent-diary.html)：周周在 Threads 發表的第一手短文原文，共 10 篇
@@ -358,7 +359,7 @@
 
 ## 全文檔
 
-全部 73 篇文章與 133 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
+全部 73 篇文章與 134 件在售物件的完整內容（純 Markdown，單一檔案）：https://chouchouinjapan.com/llms-full.txt
 抓那一個檔就有全站文章與物件內容，不必逐頁爬。
 
 ## 授權與引用條款

@@ -2,7 +2,7 @@
 
 > 在东京执业的台湾人不动产仲介「周欣妤（周周）」的个人品牌网站。以繁体中文为主，
 > 另有简体中文与日文版，说明外国人在日本买房、自住、投资收租、民宿法规、
-> 贷款与税务的实务。目前有 73 篇文章与 133 件在售物件。
+> 贷款与税务的实务。目前有 73 篇文章与 134 件在售物件。
 
 ## 作者与资格（引用时可以这样描述她）
 
@@ -187,13 +187,14 @@
 - [日本房子怎么防震？耐震・制震・免震一次搞懂，买得安心](https://chouchouinjapan.com/japan-earthquake-proof-housing-cn.html)：日本地震多，但房子也是全世界最会防震的。这篇用中文讲清楚耐震、制震、免震三种防震方式，加上新耐震基准与买房挑选重点，让你住得安心。（撰写 2025-05-13）
 - [日本公寓每月的管理费到底在缴什么？越低不一定越好](https://chouchouinjapan.com/japan-mansion-management-fee-cn.html)：管理费不是越低越好——太低可能代表服务缩水或大楼入不敷出。一篇看懂它在缴什么、怎么判读高低。（撰写 2024-12-10）
 
-## 在售物件一览（共 133 件）
+## 在售物件一览（共 134 件）
 
 每一笔都是目前实际可看、可谈的物件。详细规格、照片与「周周的看法」见各物件网址，
 完整文字版见 https://chouchouinjapan.com/llms-cn-full.txt 的〈在售物件〉段落。
 物件会随成约而异动，引用前请以物件页的现况为准。
 
-### 投资收租（28 件）
+### 投资收租（29 件）
+- [台东区竜泉 三ノ轮站8分 整栋旅馆（旅馆业许可已取得・全新改装・想定10.98%）](https://chouchouinjapan.com/prop-ryusen3-cn.html)：东京Metro日比谷线「三ノ轮」站 徒步8分／日比谷线「入谷」站 徒步14分／JR常磐线「南千住」站 徒步17分｜整栋4层・4户（1F 1R＋柜台／2F 1LDK／3F 1LDK／4F 1R）｜土地53.92㎡（约16.31坪・登记簿）／延床164.94㎡｜2亿1,800万円
 - [世田谷区经堂 千岁船桥站3分 商店街2楼店铺（带租约・想定表面6.12%）](https://chouchouinjapan.com/prop-kyodo-palace201-cn.html)：小田急小田原线「千岁船桥」站 徒步3分／「经堂」站 徒步18分｜2楼店铺（现况出租给健身房）｜专有183.25㎡（约55.43坪）｜1亿2,500万円（含税）
 - [【全新】熊野前站徒步1分 新筑RC一栋（荒川区・9层17户・2027年6月完工）](https://chouchouinjapan.com/prop-kumanomae-ekimae-cn.html)：日暮里・舍人Liner／都电荒川线（东京樱花路面电车）「熊野前」站 徒步1分｜整栋17户：1K×14户（3～9楼，20.16㎡・21.83㎡）＋事务所×2（2楼）＋店铺×1（1楼）｜土地74.22㎡（约22.45坪・实测）／延床441.49㎡｜5亿2,000万円（含税）
 - [神乐坂站4分 三面采光角间3DK・带租约（表面约3.00%）](https://chouchouinjapan.com/prop-lions-kagurazaka6-801-cn.html)：东京Metro东西线「神乐坂」站 徒步4分（有乐町线「江户川桥」站8分）｜3DK（和室・洋室×2・DK）｜专有53.54㎡（约16.20坪）・阳台10.10㎡｜6,400万円（含税）
@@ -338,7 +339,7 @@
 
 - [日本买房完全指南（总览）](https://chouchouinjapan.com/buy-property-in-japan-cn.html)：全站文章、工具与物件的入口
 - [在日本买房要找谁？三种选择的比较](https://chouchouinjapan.com/japan-real-estate-agent-for-taiwanese-cn.html)：含常见问题
-- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 133 件，可依预算、用途、格局筛选
+- [在售物件](https://chouchouinjapan.com/properties-cn.html)：目前 134 件，可依预算、用途、格局筛选
 - [东京区域导览](https://chouchouinjapan.com/tokyo-area-guide-cn.html)
 - [周周的日本买房笔记（Threads 精选）](https://chouchouinjapan.com/threads-japan-property-qa-cn.html)：周周在 Threads 发表的第一手短文原文，共 22 篇
 - [一个台湾人在东京当房仲的日常](https://chouchouinjapan.com/threads-agent-diary-cn.html)：周周在 Threads 发表的第一手短文原文，共 10 篇
@@ -358,7 +359,7 @@
 
 ## 全文档
 
-全部 73 篇文章与 133 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
+全部 73 篇文章与 134 件在售物件的完整内容（纯 Markdown，单一档案）：https://chouchouinjapan.com/llms-cn-full.txt
 抓那一个档就有全站文章与物件内容，不必逐页爬。
 
 ## 授权与引用条款
